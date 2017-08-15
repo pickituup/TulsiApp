@@ -10,10 +10,8 @@ using Tulsi.ViewModels;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 
-namespace Tulsi
-{
-    public partial class App : Application
-    {
+namespace Tulsi {
+    public partial class App : Application {
         public AuditLogViewModel AuditLogVM;
         public BuyerViewModel BuyerVM;
         public BuyerRankingsViewModel BuyerRankingsVM;
@@ -29,8 +27,7 @@ namespace Tulsi
         public TodayRatesViewModel TodayRatesVM;
         public SideMenuView SideMenu;
 
-        public App()
-        {
+        public App() {
             InitializeComponent();
 
             //ViewModels
@@ -79,23 +76,19 @@ namespace Tulsi
             MainPage = new NavigationPage(lp);
         }
 
-        protected override void OnStart()
-        {
+        protected override void OnStart() {
             // Handle when your app starts
         }
 
-        protected override void OnSleep()
-        {
+        protected override void OnSleep() {
             // Handle when your app sleeps
         }
 
-        protected override void OnResume()
-        {
+        protected override void OnResume() {
             // Handle when your app resumes
         }
     }
-    public interface IDisplaySize
-    {
+    public interface IDisplaySize {
         int GetWidth();
         int GetHeight();
         int GetWidthDiP();
@@ -103,12 +96,10 @@ namespace Tulsi
         float GetDensity();
     }
     [ContentProperty("Source")]
-    public class ImageResourceExtension : IMarkupExtension
-    {
+    public class ImageResourceExtension : IMarkupExtension {
         public string Source { get; set; }
 
-        public object ProvideValue(IServiceProvider serviceProvider)
-        {
+        public object ProvideValue(IServiceProvider serviceProvider) {
             if (Source == null)
                 return null;
 
@@ -118,22 +109,17 @@ namespace Tulsi
             return imageSource;
         }
     }
-    public class ProfileTransactionImage : IValueConverter
-    {
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            if ((bool)value == true)
-            {
+    public class ProfileTransactionImage : IValueConverter {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
+            if ((bool)value == true) {
                 return ImageSource.FromResource("Tulsi.Images.ptransaction.png");
             }
-            else
-            {
+            else {
                 return ImageSource.FromResource("Tulsi.Images.dtransaction.png");
             }
         }
 
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-        {
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) {
             throw new NotImplementedException();
         }
     }
