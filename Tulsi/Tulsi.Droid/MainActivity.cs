@@ -19,14 +19,13 @@ namespace Tulsi.Droid
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         /// <summary>
-        /// For test commit
+        /// For test commit and bla bla bla
         /// </summary>
         /// <param name="bundle"></param>
         protected override void OnCreate(Bundle bundle)
         {
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
-            var tt = 19;
 
             base.OnCreate(bundle);
 
