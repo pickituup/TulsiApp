@@ -26,7 +26,7 @@ namespace Tulsi.Droid
         {
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
-            
+            var tt = 19;
 
             base.OnCreate(bundle);
 
