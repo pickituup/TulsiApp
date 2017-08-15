@@ -1,0 +1,226 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<m:MenuContainerPage  xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:cal="clr-namespace:Syncfusion.SfCalendar.XForms;assembly=Syncfusion.SfCalendar.XForms"
+             xmlns:calendar="clr-namespace:XamForms.Controls;assembly=XamForms.Controls.Calendar"
+             xmlns:local="clr-namespace:Tulsi;assembly=Tulsi"
+             xmlns:m="clr-namespace:SlideOverKit"
+             x:Class="Tulsi.ArrivalPage" NavigationPage.HasNavigationBar="false">
+  <ScrollView>
+    <AbsoluteLayout>
+      <StackLayout x:Name="MainLayout">
+        <Grid x:Name="ToolbarGrid">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="10" />
+          </Grid.ColumnDefinitions>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+          </Grid.RowDefinitions>
+          <BoxView Color="#2793F5" Grid.ColumnSpan="5" />
+          <Image x:Name="Menu" Source="{local:ImageResource Tulsi.Images.menu.png}"  Grid.Column="1" WidthRequest="20" HeightRequest="17" HorizontalOptions="Center" VerticalOptions="Center" />
+          <Label Grid.Column="2" x:Name="PageTitleLabel" Text="ARRIVAL" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="White" />
+          <Image Grid.Column="3"  x:Name="Search"  WidthRequest="20" HeightRequest="20" HorizontalOptions="Center" VerticalOptions="Center" Source="{local:ImageResource Tulsi.Images.magnifier.png}" />
+        </Grid>
+
+        <Label Text="SELECT DATE" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,15" />
+
+        <Grid BackgroundColor="Transparent" Margin="20,0">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0" />
+            <ColumnDefinition Width="350" />
+            <ColumnDefinition Width="20" />
+          </Grid.ColumnDefinitions>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="280" />
+          </Grid.RowDefinitions>
+          <Image x:Name="CalendarArea" Grid.Column="1" WidthRequest="360" HeightRequest="278" HorizontalOptions="Center" VerticalOptions="Center" />
+          <Grid Grid.Column="1" BackgroundColor="Transparent">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="10" />
+              <ColumnDefinition Width="*" />
+              <ColumnDefinition Width="10" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+              <RowDefinition Height="10" />
+              <RowDefinition Height="*" />
+              <RowDefinition Height="10" />
+            </Grid.RowDefinitions>
+            <calendar:Calendar Grid.Column="1" Grid.Row="1" x:Name="ArrivalCalendar" StartDay="Monday" />
+          </Grid>
+        </Grid>
+        
+        <Grid Margin="20,15">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto" />
+          </Grid.ColumnDefinitions>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+          </Grid.RowDefinitions>
+          <Image x:Name="DatesArea" Grid.Row="0" WidthRequest="360" HeightRequest="230" HorizontalOptions="Start" VerticalOptions="Center" />
+          <Grid BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Start" Margin="0,5">
+            <Grid.RowDefinitions>
+              <RowDefinition Height="20" />
+              <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid BackgroundColor="Transparent" HorizontalOptions="Start">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="160" />
+                <ColumnDefinition Width="50" />
+                <ColumnDefinition Width="10" />
+              </Grid.ColumnDefinitions>
+              <Label Text="FRIDAY" Grid.Column="1" FontAttributes="Bold" VerticalTextAlignment="Center" HorizontalOptions="Center" TextColor="White" />
+              <Label Text="JUNE 24" Grid.Column="2" VerticalTextAlignment="Center" HorizontalOptions="Center" TextColor="White" />
+              <Grid Grid.Column="4" BackgroundColor="Transparent">
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="12" />
+                  <ColumnDefinition Width="12" />
+                  <ColumnDefinition Width="12" />
+                </Grid.ColumnDefinitions>
+                <Image x:Name="c1" Grid.Column="0" WidthRequest="10" HeightRequest="10" HorizontalOptions="Center" VerticalOptions="Center" />
+                <Image x:Name="c2" Grid.Column="1" WidthRequest="10" HeightRequest="10" HorizontalOptions="Center" VerticalOptions="Center" />
+                <Image x:Name="c3" Grid.Column="2" WidthRequest="10" HeightRequest="10" HorizontalOptions="Center" VerticalOptions="Center" />
+              </Grid>
+            </Grid>
+            <Grid x:Name="DateArrivalsList" Grid.Row="1" Margin="0,10" BackgroundColor="Transparent">
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="5" />
+                  <ColumnDefinition Width="10" />
+                  <ColumnDefinition Width="5" />
+                  <ColumnDefinition Width="auto" />
+                  <ColumnDefinition Width="*" />
+                  <ColumnDefinition Width="30" />
+                  <ColumnDefinition Width="3*" />
+                  <ColumnDefinition Width="auto" />
+                  <ColumnDefinition Width="10" />
+                </Grid.ColumnDefinitions>
+              <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+              <RowDefinition Height="auto" />
+              <RowDefinition Height="auto" />
+              <RowDefinition Height="auto" />
+              <RowDefinition Height="auto" />
+              <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+              </Grid.RowDefinitions>
+                <Image x:Name="cg" Grid.Column="1" WidthRequest="10" HeightRequest="10" HorizontalOptions="Center" VerticalOptions="Center" />
+                <Label Text="PSO Orch" Grid.Column="3" VerticalTextAlignment="Center" HorizontalOptions="Start" />
+                <Label Text="280" Grid.Column="5" VerticalTextAlignment="Center" HorizontalOptions="Center" />
+                <Label Text="1,00,110" Grid.Column="7" VerticalTextAlignment="Center" HorizontalOptions="Center" />
+            
+            <Image x:Name="cp1" Grid.Column="1" Grid.Row="2" WidthRequest="10" HeightRequest="10" HorizontalOptions="Center" VerticalOptions="Center" />
+                <Label Text="RSO Orch" Grid.Column="3" Grid.Row="2" VerticalTextAlignment="Center" HorizontalOptions="Start" />
+                <Label Text="280" Grid.Column="5" Grid.Row="2" VerticalTextAlignment="Center" HorizontalOptions="Center" />
+                <Label Text="1,00,110" Grid.Column="7" Grid.Row="2" VerticalTextAlignment="Center" HorizontalOptions="Center" />
+            
+            <Image x:Name="cp2" Grid.Column="1" Grid.Row="4" WidthRequest="10" HeightRequest="10" HorizontalOptions="Center" VerticalOptions="Center" />
+                <Label Text="RLO Orch" Grid.Column="3" Grid.Row="4" VerticalTextAlignment="Center" HorizontalOptions="Start" />
+                <Label Text="280" Grid.Column="5" Grid.Row="4" VerticalTextAlignment="Center" HorizontalOptions="Center" />
+                <Label Text="1,00,110" Grid.Column="7" Grid.Row="4" VerticalTextAlignment="Center" HorizontalOptions="Center" />
+      
+        <Image x:Name="cp3" Grid.Column="1" Grid.Row="6" WidthRequest="10" HeightRequest="10" HorizontalOptions="Center" VerticalOptions="Center" />
+                <Label Text="MLO Orch" Grid.Column="3" Grid.Row="6" VerticalTextAlignment="Center" HorizontalOptions="Start" />
+                <Label Text="280" Grid.Column="5" Grid.Row="6" VerticalTextAlignment="Center" HorizontalOptions="Center" />
+                <Label Text="1,00,110" Grid.Column="7" Grid.Row="6" VerticalTextAlignment="Center" HorizontalOptions="Center" />
+              </Grid>
+          </Grid>
+        </Grid>
+      </StackLayout>
+
+      <ContentView x:Name="SideMenuOverlay" AbsoluteLayout.LayoutFlags="WidthProportional,PositionProportional" IsVisible="False">
+        <Grid x:Name="SideMenu" BackgroundColor="White">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="*" />
+          </Grid.ColumnDefinitions>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="*" />
+          </Grid.RowDefinitions>
+          <Grid x:Name="SideMenuHeader" Grid.ColumnSpan="6">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="40" />
+              <ColumnDefinition Width="auto" />
+              <ColumnDefinition Width="20" />
+              <ColumnDefinition Width="auto" />
+              <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+              <RowDefinition Height="20" />
+              <RowDefinition Height="20" />
+              <RowDefinition Height="20" />
+              <RowDefinition Height="15" />
+            </Grid.RowDefinitions>
+            <BoxView Color="#2793F5" Grid.ColumnSpan="5" Grid.RowSpan="5" />
+            <Label Grid.Column="1" Grid.Row="1"  x:Name="SideMenuHeaderTitleLabel" Text="Profitable" VerticalTextAlignment="End" TextColor="White" />
+            <Label Grid.Column="1" Grid.Row="2" x:Name="SideMenuDescriptionTitleLabel" VerticalTextAlignment="Start" Text="20,000,000 Approx" FontSize="10" FontAttributes="Bold" TextColor="White" />
+            <Image Grid.Column="3" Grid.Row="1"  Grid.RowSpan="2" x:Name="SideMenuHeaderProfitIcon" WidthRequest="40" HeightRequest="40" Source="{local:ImageResource Tulsi.Images.menu_profitability.png}" />
+            <Image Grid.Column="4" Grid.Row="0" HorizontalOptions="End" VerticalOptions="Start" x:Name="SideMenuHeaderCloseIcon" WidthRequest="20" HeightRequest="20" Source="{local:ImageResource Tulsi.Images.menu_close.png}" Margin="0,5,5,0" />
+          </Grid>
+          <Image Grid.Column="1" Grid.Row="2" HorizontalOptions="Center" VerticalOptions="Center" x:Name="BuyerMenuIcon" WidthRequest="20" HeightRequest="20"  Source="{local:ImageResource Tulsi.Images.menu_buyer.png}" />
+          <Image Grid.Column="1" Grid.Row="3" HorizontalOptions="Center" VerticalOptions="Center" x:Name="GrowerMenuIcon" WidthRequest="20" HeightRequest="20"  Source="{local:ImageResource Tulsi.Images.menu_grower.png}" />
+          <Image Grid.Column="1" Grid.Row="4" HorizontalOptions="Center" VerticalOptions="Center" x:Name="AuditLogMenuIcon" WidthRequest="20" HeightRequest="20"  Source="{local:ImageResource Tulsi.Images.menu_audit.png}" />
+          <Image Grid.Column="1" Grid.Row="5" HorizontalOptions="Center" VerticalOptions="Center" x:Name="ReportMenuIcon" WidthRequest="20" HeightRequest="20"  Source="{local:ImageResource Tulsi.Images.menu_report.png}" />
+          <Image Grid.Column="1" Grid.Row="6" HorizontalOptions="Center" VerticalOptions="Center" x:Name="ChatMenuIcon" WidthRequest="20" HeightRequest="20"  Source="{local:ImageResource Tulsi.Images.menu_chat.png}" />
+          <Image Grid.Column="1" Grid.Row="7" HorizontalOptions="Center" VerticalOptions="Center" x:Name="SettingsMenuIcon" WidthRequest="20" HeightRequest="20" Source="{local:ImageResource Tulsi.Images.menu_settings.png}" />
+          <Image Grid.Column="1" Grid.Row="8" HorizontalOptions="Center" VerticalOptions="Center" x:Name="MeMenuIcon" WidthRequest="20" HeightRequest="20" Source="{local:ImageResource Tulsi.Images.menu_me.png}" />
+          <Label Grid.Column="3" Grid.Row="1" x:Name="DashboardMenuItem" Text="Dashboard" Style="{StaticResource MenuItemStyleLabel}" />
+          <Label Grid.Column="3" Grid.Row="2" x:Name="BuyerMenuItem" Text="Buyer" Style="{StaticResource MenuItemStyleLabel}" />
+          <Label Grid.Column="3" Grid.Row="3" x:Name="GrowerMenuItem" Text="Grower" Style="{StaticResource MenuItemStyleLabel}" />
+          <Label Grid.Column="3" Grid.Row="4" x:Name="AuditLogMenuItem" Text="Audit Log" Style="{StaticResource MenuItemStyleLabel}" />
+          <Label Grid.Column="3" Grid.Row="5" x:Name="ReportMenuItem" Text="Report" Style="{StaticResource MenuItemStyleLabel}" />
+          <Label Grid.Column="3" Grid.Row="6" x:Name="ChatMenuItem" Text="Chat" Style="{StaticResource MenuItemStyleLabel}" />
+          <Label Grid.Column="3" Grid.Row="7" x:Name="SettingsMenuItem" Text="Settings" Style="{StaticResource MenuItemStyleLabel}" />
+          <Label Grid.Column="3" Grid.Row="8" x:Name="MeMenuItem" Text="Me" Style="{StaticResource MenuItemStyleLabel}" />
+          <Label Grid.Column="4" Grid.Row="2" Text="70 L" VerticalTextAlignment="Center" HorizontalTextAlignment="Start"  Style="{StaticResource MenuItemStyleLabel}" />
+          <Label Grid.Column="4" Grid.Row="3" Text="2 Cr" VerticalTextAlignment="Center" HorizontalTextAlignment="Start"  Style="{StaticResource MenuItemStyleLabel}" />
+          <Image Grid.Column="4" Grid.Row="4" HorizontalOptions="Center" VerticalOptions="Center" x:Name="AuditExtra" WidthRequest="6" HeightRequest="6" Source="{local:ImageResource Tulsi.Images.bluecircle.png}" />
+          <Image Grid.Column="4" Grid.Row="6" HorizontalOptions="Center" VerticalOptions="Center" x:Name="ChatExtra" WidthRequest="6" HeightRequest="6" Source="{local:ImageResource Tulsi.Images.greencircle.png}" />
+          <BoxView x:Name="DashboardExtraTap" BackgroundColor="Transparent" Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="1" />
+          <BoxView x:Name="BuyerExtraTap" BackgroundColor="Transparent" Grid.Column="5" Grid.Row="2" />
+          <BoxView x:Name="GrowerExtraTap" BackgroundColor="Transparent" Grid.Column="5" Grid.Row="3" />
+          <BoxView x:Name="AuditLogExtraTap" BackgroundColor="Transparent" Grid.Column="5" Grid.Row="4" />
+          <BoxView x:Name="ReportExtraTap" BackgroundColor="Transparent" Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="5" />
+          <BoxView x:Name="ChatExtraTap" BackgroundColor="Transparent" Grid.Column="5" Grid.Row="6" />
+          <BoxView x:Name="SettingsExtraTap" BackgroundColor="Transparent" Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="7" />
+          <BoxView x:Name="MeExtraTap" BackgroundColor="Transparent" Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="8" />
+          <Grid  x:Name="SideMenuFooter" Grid.Row="11" Grid.ColumnSpan="6" Margin="20,10" VerticalOptions="End" BackgroundColor="White">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="10" />
+              <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+              <RowDefinition Height="auto" />
+              <RowDefinition Height="auto" />
+              <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Image Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center" x:Name="FirstCircle" WidthRequest="4" HeightRequest="4" Source="{local:ImageResource Tulsi.Images.bluecircle.png}" />
+            <Image Grid.Row="1" HorizontalOptions="Center" VerticalOptions="Center" x:Name="SecondCircle" WidthRequest="4" HeightRequest="4" Source="{local:ImageResource Tulsi.Images.bluecircle.png}" />
+            <Label Grid.Column="1" Grid.Row="0" Text="Pawan on desk" Style="{StaticResource MenuItemStyleLabel}" />
+            <Label Grid.Column="1" Grid.Row="1" Text="Inderjeet on desk" Style="{StaticResource MenuItemStyleLabel}" />
+          </Grid>
+        </Grid>
+      </ContentView>
+      <ContentView x:Name="OutsideOverlay" AbsoluteLayout.LayoutBounds="1, 0, 0.1, 1" AbsoluteLayout.LayoutFlags="All" IsVisible="False" BackgroundColor="#8a8a8a" Opacity="0.5">
+      </ContentView>
+    </AbsoluteLayout>
+  </ScrollView>
+  </m:MenuContainerPage>

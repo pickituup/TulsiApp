@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<m:MenuContainerPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:Tulsi.Controls"
+             xmlns:local="clr-namespace:Tulsi;assembly=Tulsi"
+             xmlns:m="clr-namespace:SlideOverKit"
+             x:Class="Tulsi.SetupDashboardPage" NavigationPage.HasNavigationBar="false">
+  <StackLayout x:Name="HeaderLayout" BackgroundColor="#DCDCDC">
+    <Grid x:Name="ToolbarGrid">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="10" />
+        <ColumnDefinition Width="20" />
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="20" />
+        <ColumnDefinition Width="10" />
+      </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="50" />
+      </Grid.RowDefinitions>
+      <BoxView Color="#2793F5" Grid.ColumnSpan="5" />
+      <Image x:Name="Menu" Source="{local:ImageResource Tulsi.Images.menu.png}"  Grid.Column="1" WidthRequest="20" HeightRequest="17" HorizontalOptions="Center" VerticalOptions="Center" />
+      <Label Grid.Column="2" x:Name="PageTitleLabel" Text="SETUP DASHBOARD" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="White" />
+      <Image Grid.Column="3"  x:Name="Search"  WidthRequest="20" HeightRequest="20" HorizontalOptions="Center" VerticalOptions="Center" Source="{local:ImageResource Tulsi.Images.magnifier.png}" />
+    </Grid>
+  <ScrollView>
+    
+      <StackLayout x:Name="MainLayout" BackgroundColor="#DCDCDC">
+        
+        <controls:CustomFrame BorderRadius="25"  BackgroundColor="White" Margin="5,0,5,0">
+          <Label VerticalTextAlignment="Center" BackgroundColor="White" HorizontalTextAlignment="Center" TextColor="#2793F5" Margin="10,15,10,15">
+            <Label.FormattedText>
+              <FormattedString>
+                <FormattedString.Spans>
+                  <Span Text="Note: " FontAttributes="Bold" />
+                  <Span Text="You can Turn Off and On the information you want on your dashboard."  />
+                </FormattedString.Spans>
+              </FormattedString>
+            </Label.FormattedText>
+          </Label>
+        </controls:CustomFrame>
+        <controls:CustomFrame BorderRadius="25"  BackgroundColor="White" Margin="5">
+          <Grid x:Name="Settings1" BackgroundColor="White">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="20" />
+              <ColumnDefinition Width="auto" />
+              <ColumnDefinition Width="*" />
+              <ColumnDefinition Width="80" />
+              <ColumnDefinition Width="20" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+              <RowDefinition Height="auto" />
+              <RowDefinition Height="auto" />
+              <RowDefinition Height="20" />
+              <RowDefinition Height="auto" />
+              <RowDefinition Height="20" />
+              <RowDefinition Height="auto" />
+              <RowDefinition Height="20" />
+              <RowDefinition Height="auto" />
+              <RowDefinition Height="20" />
+              <RowDefinition Height="auto" />
+              <RowDefinition Height="20" />
+              <RowDefinition Height="auto" />
+              <RowDefinition Height="20" />
+              <RowDefinition Height="auto" />
+              <RowDefinition Height="auto" />
+              <RowDefinition Height="20" />
+              <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            <Label Grid.Column="1" Grid.Row="1" Text="Buyer Summary" FontAttributes="Bold" />
+            <Switch Grid.Column="3" Grid.Row="1" Grid.RowSpan="2" VerticalOptions="Center" HorizontalOptions="End" IsToggled="True" />
+            <Label Grid.Column="1" Grid.Row="3" Text="Ladaan" FontAttributes="Bold" />
+            <Switch Grid.Column="3" Grid.Row="3" VerticalOptions="Center" HorizontalOptions="End" />
+
+            <Label Grid.Column="1" Grid.Row="5" Text="Cold Store" FontAttributes="Bold" />
+            <Switch Grid.Column="3" Grid.Row="5" Grid.RowSpan="2" VerticalOptions="Center" HorizontalOptions="End" IsToggled="True" />
+            <Label Grid.Column="1" Grid.Row="7" Text="Today's Balance" FontAttributes="Bold" />
+            <Switch Grid.Column="3" Grid.Row="7" Grid.RowSpan="2" VerticalOptions="Center" HorizontalOptions="End" IsToggled="True" />
+            <Label Grid.Column="1" Grid.Row="9" Text="Today's Rates" FontAttributes="Bold" />
+            <Switch Grid.Column="3" Grid.Row="9" Grid.RowSpan="2" VerticalOptions="Center" HorizontalOptions="End" IsToggled="True" />
+
+            <Label Grid.Column="1" Grid.Row="11" Text="Advance Payment List" FontAttributes="Bold" />
+            <Switch Grid.Column="3" Grid.Row="11" VerticalOptions="Center" HorizontalOptions="End" />
+            <Label Grid.Column="1" Grid.Row="13" Text="Cost vs Sale" FontAttributes="Bold" />
+            <Label Grid.Column="1" Grid.Row="14" Text="( Kinnow/Mango )" />
+            <Switch Grid.Column="3" Grid.Row="13" Grid.RowSpan="2" VerticalOptions="Center" HorizontalOptions="End" />
+            <Label Grid.Column="1" Grid.Row="16" Text="Farm Purchase List" FontAttributes="Bold" />
+            <Switch Grid.Column="3" Grid.Row="16" VerticalOptions="Center" HorizontalOptions="End" />
+          </Grid>
+        </controls:CustomFrame>
+      </StackLayout>
+     
+  </ScrollView>
+    </StackLayout>
+</m:MenuContainerPage>

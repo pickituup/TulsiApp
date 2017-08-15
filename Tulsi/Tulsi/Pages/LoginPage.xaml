@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Tulsi;assembly=Tulsi"
+             x:Class="Tulsi.LoginPage" NavigationPage.HasNavigationBar="false">
+<ContentPage.Resources>
+  <ResourceDictionary>
+    <Style TargetType="Entry">
+      <Setter Property="Margin" Value="10" />
+    </Style>
+  </ResourceDictionary>
+</ContentPage.Resources>
+  <Grid x:Name="LoginGrid">
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="10" />
+      <ColumnDefinition Width="*" />
+      <ColumnDefinition Width="10" />
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="*" />
+      <RowDefinition Height="2*" />
+      <RowDefinition Height="*" />
+      <RowDefinition Height="2*" />
+      <RowDefinition Height="2*" />
+      <RowDefinition Height="*" />
+      <RowDefinition Height="2*" />
+      <RowDefinition Height="*" />
+      <RowDefinition Height="2*" />
+    </Grid.RowDefinitions>
+    <Image x:Name="Logo" Grid.Column="1" Grid.Row="1" WidthRequest="208" HeightRequest="83" />
+    <Grid Grid.Column="1" Grid.Row="6">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="auto" />
+        <ColumnDefinition Width="5*" />
+        <ColumnDefinition Width="auto" />
+        <ColumnDefinition Width="*" />
+      </Grid.ColumnDefinitions>
+      <StackLayout Grid.Column="1">
+      <Label x:Name="LoginLink" Text="Log In" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#2692F4" />
+      <BoxView Color="#2692F4" Grid.Column="1"  WidthRequest="35" HeightRequest="3" VerticalOptions="Center" HorizontalOptions="Center" />
+        </StackLayout>
+      <StackLayout Grid.Column="3">
+      <Label x:Name="SignupLink" Text="Sign Up" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#2692F4" />
+      <BoxView Color="#2692F4" Grid.Column="1"  WidthRequest="35" HeightRequest="3" VerticalOptions="Center" HorizontalOptions="Center" />
+         </StackLayout>
+    </Grid>
+    <Label x:Name="ForgotPasswordLink" Grid.Column="1" Grid.Row="7" Text="Forgot Password" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#d9d9d9" />
+  </Grid>
+</ContentPage>

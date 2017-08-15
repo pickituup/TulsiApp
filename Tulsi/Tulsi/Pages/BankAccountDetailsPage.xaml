@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<m:MenuContainerPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:Tulsi.Controls"
+             xmlns:local="clr-namespace:Tulsi;assembly=Tulsi"
+             xmlns:m="clr-namespace:SlideOverKit"
+             x:Class="Tulsi.BankAccountDetailsPage" NavigationPage.HasNavigationBar="false">
+
+  <StackLayout x:Name="HeaderLayout" BackgroundColor="#DCDCDC">
+    <Grid x:Name="ToolbarGrid">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="10" />
+        <ColumnDefinition Width="20" />
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="20" />
+        <ColumnDefinition Width="10" />
+      </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="50" />
+      </Grid.RowDefinitions>
+      <BoxView Color="#2793F5" Grid.ColumnSpan="5" />
+      <Image x:Name="Menu" Source="{local:ImageResource Tulsi.Images.menu.png}"  Grid.Column="1" WidthRequest="20" HeightRequest="17" HorizontalOptions="Center" VerticalOptions="Center" />
+      <Label Grid.Column="2" x:Name="PageTitleLabel" Text="ICICI BANK" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="White" />
+      <Image Grid.Column="3"  x:Name="Search"  WidthRequest="20" HeightRequest="20" HorizontalOptions="Center" VerticalOptions="Center" Source="{local:ImageResource Tulsi.Images.magnifier.png}" />
+    </Grid>
+    <ScrollView>
+      <StackLayout x:Name="MainLayout" BackgroundColor="#DCDCDC">
+        <controls:RoundedContentView Grid.Column="1" BackgroundColor="#2793F5" CornerRadius="10" Margin="10,0,10,0">
+          <controls:RoundedContentView.Content>
+            <Grid BackgroundColor="#2793F5">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="30" />
+              </Grid.ColumnDefinitions>
+              <Grid.RowDefinitions>
+                <RowDefinition Height="40" />
+              </Grid.RowDefinitions>
+              <Label Text="DD / MM / YY" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="White" />
+            </Grid>
+          </controls:RoundedContentView.Content>
+        </controls:RoundedContentView>
+
+        <Grid BackgroundColor="White" Margin="10,-5,10,0">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="30" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="30" />
+          </Grid.ColumnDefinitions>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+          </Grid.RowDefinitions>
+          <Label Grid.Column="1" Grid.Row="1" Text="RSO Rishi" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" />
+          <Label Grid.Column="1" Grid.Row="3" Text="PSO PushPender" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" />
+          <Label Grid.Column="3" Grid.Row="1" Text="2,50,000" VerticalTextAlignment="Center" HorizontalTextAlignment="End" />
+          <Label Grid.Column="3" Grid.Row="3" Text="5,00,000" VerticalTextAlignment="Center" HorizontalTextAlignment="End" />
+        </Grid>
+
+
+        <controls:RoundedContentView Grid.Column="1" BackgroundColor="#2793F5" CornerRadius="10" Margin="10,0,10,0">
+          <controls:RoundedContentView.Content>
+            <Grid BackgroundColor="#2793F5">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="30" />
+              </Grid.ColumnDefinitions>
+              <Grid.RowDefinitions>
+                <RowDefinition Height="40" />
+              </Grid.RowDefinitions>
+              <Label Text="DD / MM / YY" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="White" />
+            </Grid>
+          </controls:RoundedContentView.Content>
+        </controls:RoundedContentView>
+
+        <Grid BackgroundColor="White" Margin="10,-5,10,0">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="30" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="30" />
+          </Grid.ColumnDefinitions>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="auto" />
+          </Grid.RowDefinitions>
+          <Label Grid.Column="1" Grid.Row="1" Text="SKC Arjun" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" />
+          <Label Grid.Column="1" Grid.Row="3" Text="SKC Arjun" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" />
+          <Label Grid.Column="1" Grid.Row="5" Text="SKC Arjun" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" />
+          <Label Grid.Column="3" Grid.Row="1" Text="70,000" VerticalTextAlignment="Center" HorizontalTextAlignment="End" />
+          <Label Grid.Column="3" Grid.Row="3" Text="70,000" VerticalTextAlignment="Center" HorizontalTextAlignment="End" />
+          <Label Grid.Column="3" Grid.Row="5" Text="70,000" VerticalTextAlignment="Center" HorizontalTextAlignment="End" />
+        </Grid>
+
+
+        <controls:RoundedContentView Grid.Column="1" BackgroundColor="#2793F5" CornerRadius="10" Margin="10,0,10,0">
+          <controls:RoundedContentView.Content>
+            <Grid BackgroundColor="#2793F5">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="30" />
+              </Grid.ColumnDefinitions>
+              <Grid.RowDefinitions>
+                <RowDefinition Height="40" />
+              </Grid.RowDefinitions>
+              <Label Text="DD / MM / YY" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="White" />
+            </Grid>
+          </controls:RoundedContentView.Content>
+        </controls:RoundedContentView>
+
+        <Grid BackgroundColor="White" Margin="10,-5,10,0">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="30" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="30" />
+          </Grid.ColumnDefinitions>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+          </Grid.RowDefinitions>
+          <Label Grid.Column="1" Grid.Row="1" Text="SKC Arjun" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" />
+          <Label Grid.Column="1" Grid.Row="3" Text="SKC Arjun" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" />
+          <Label Grid.Column="3" Grid.Row="1" Text="70,000" VerticalTextAlignment="Center" HorizontalTextAlignment="End" />
+          <Label Grid.Column="3" Grid.Row="3" Text="70,000" VerticalTextAlignment="Center" HorizontalTextAlignment="End" />
+        </Grid>
+
+
+      </StackLayout>
+
+
+
+    </ScrollView>
+  </StackLayout>
+  </m:MenuContainerPage>

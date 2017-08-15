@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Tulsi;assembly=Tulsi"
+             x:Class="Tulsi.PasscodePage" NavigationPage.HasNavigationBar="false">
+    <StackLayout x:Name="HeaderLayout" BackgroundColor="#DCDCDC">
+        <Grid x:Name="ToolbarGrid">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10" />
+                <ColumnDefinition Width="20" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="20" />
+                <ColumnDefinition Width="10" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+            </Grid.RowDefinitions>
+            <BoxView Color="#2793F5" Grid.ColumnSpan="5" />
+            <Image x:Name="PasscodeEnter" Grid.Column="1" WidthRequest="20" HeightRequest="16" HorizontalOptions="Center" VerticalOptions="Center" />
+            <Label Grid.Column="2" x:Name="PageTitleLabel" Text="ENTER NEW PASSCODE" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="White" />
+            <Image x:Name="PasscodeCancel" Grid.Column="3"  WidthRequest="20" HeightRequest="20" HorizontalOptions="Center" VerticalOptions="Center" />
+        </Grid>
+        <ScrollView>
+            <StackLayout x:Name="MainLayout" Spacing="10">
+                <Image x:Name="ShieldLogo" WidthRequest="120" HeightRequest="125" Margin="0, 30" HorizontalOptions="Center" VerticalOptions="Center" />
+                <Entry x:Name="PasscodeEntry" Placeholder="Type your passcode here" PlaceholderColor="#d9d9d9" IsPassword="true" Keyboard="Numeric" Margin="30,0,30,0" />
+            </StackLayout>
+        </ScrollView>
+    </StackLayout>
+</ContentPage>

@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:Tulsi.Controls"
+             xmlns:local="clr-namespace:Tulsi;assembly=Tulsi"
+             x:Class="Tulsi.ProfilePage" NavigationPage.HasNavigationBar="false">
+  <ScrollView>
+    <AbsoluteLayout BackgroundColor="#DDDDDD">
+      <StackLayout x:Name="MainLayout" BackgroundColor="#DDDDDD">
+        <Grid x:Name="TopGrid" BackgroundColor="#2793F5">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="40" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="40" />
+          </Grid.ColumnDefinitions>
+          <Grid.RowDefinitions>
+          <RowDefinition Height="50" />
+          <RowDefinition Height="150" />
+          <RowDefinition Height="auto" />
+          <RowDefinition Height="10" />
+          </Grid.RowDefinitions>
+          <Image HorizontalOptions="Start" VerticalOptions="Start" x:Name="HeaderBackIcon" WidthRequest="11" HeightRequest="20" Source="{local:ImageResource Tulsi.Images.profile_back.png}" Margin="15,15" />
+          <Image Grid.Column="2" HorizontalOptions="End" VerticalOptions="Start" x:Name="HeaderCloseIcon" WidthRequest="20" HeightRequest="20" Source="{local:ImageResource Tulsi.Images.menu_close.png}" Margin="0,15,15,0" />
+        <Image Grid.Column="1" Grid.Row="1" x:Name="Logo" Source="{local:ImageResource Tulsi.Images.profile_logo.png}" WidthRequest="150" HeightRequest="150" HorizontalOptions="Center" VerticalOptions="Center" />
+        <StackLayout Grid.Column="1" Grid.Row="2" BackgroundColor="Transparent">
+          <Label Text="Super Sales" FontSize="30" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="White" />
+          <Label Text="John Doe" FontSize="20" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="White" />
+        </StackLayout>
+        </Grid>
+
+        <Grid BackgroundColor="#DDDDDD">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="*" />
+          </Grid.ColumnDefinitions>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="120" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+          </Grid.RowDefinitions>
+        <Label Grid.Column="1" Grid.Row="1" Text="About"  FontSize="20" TextColor="#222222" />
+        <Label Grid.Column="1" Grid.Row="3" Text="How to use"  FontSize="20" TextColor="#222222" />
+        </Grid>
+        <controls:RoundedContentView BackgroundColor="#FFFFFF" Grid.Column="1" Grid.Row="5" CornerRadius="10" Margin="50,5,50,5">
+          <controls:RoundedContentView.Content>
+            <Label Text="Log Out"  FontSize="20" HorizontalOptions="Center" VerticalOptions="Center" TextColor="#222222" Margin="0,5,0,5" />
+          </controls:RoundedContentView.Content>
+        </controls:RoundedContentView>
+      
+      </StackLayout>
+    </AbsoluteLayout>
+  </ScrollView>
+</ContentPage>

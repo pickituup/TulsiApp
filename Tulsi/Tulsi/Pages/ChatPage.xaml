@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:Tulsi.Controls"
+             xmlns:local="clr-namespace:Tulsi;assembly=Tulsi"
+             x:Class="Tulsi.ChatPage" NavigationPage.HasNavigationBar="false">
+
+   
+      <Grid x:Name="MainLayout" BackgroundColor="#DCDCDC" VerticalOptions="FillAndExpand">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="auto" />
+          <RowDefinition Height="*" />
+          
+          <RowDefinition Height="auto" />
+          <RowDefinition Height="auto" />
+          <RowDefinition Height="10" />
+        </Grid.RowDefinitions>
+        <Grid x:Name="ToolbarGrid">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="10" />
+          </Grid.ColumnDefinitions>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+          </Grid.RowDefinitions>
+          <BoxView Color="#2793F5" Grid.ColumnSpan="5" />
+          <Image x:Name="Back" Source="{local:ImageResource Tulsi.Images.back.png}"  Grid.Column="1" WidthRequest="15" HeightRequest="20" HorizontalOptions="Center" VerticalOptions="Center" />
+          <Image x:Name="Photo" Grid.Column="2" WidthRequest="40" HeightRequest="40" HorizontalOptions="Center" VerticalOptions="Center" />
+          <Label x:Name="ChatTitleLabel" Grid.Column="3" Text="ACCOUNTANT&#x0a;Inderjeet Delhi Office" FontSize="12" VerticalOptions="Center" HorizontalOptions="Start" TextColor="White" />
+        </Grid>
+        <ScrollView Grid.Row="1">
+          <StackLayout >
+            <controls:CustomFrame Margin="5,10,10,0" BorderRadius="25"  BackgroundColor="White">
+              <Grid  VerticalOptions="Center" HorizontalOptions="End" BackgroundColor="White">
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="70" />
+                  <ColumnDefinition Width="50" />
+                  <ColumnDefinition Width="160" />
+                  <ColumnDefinition Width="20" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                  <RowDefinition Height="auto" />
+                  <RowDefinition Height="auto" />
+                  <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <Label Grid.ColumnSpan="4" Text="Hey Ivanka, What's new? Did you move to new apartment? I am in city right now, we should go for some drink..." FontSize="12" VerticalOptions="Center" HorizontalOptions="Start" TextColor="#2793F5" />
+                <Label Grid.Column="0" Grid.Row="2" Text="May 20, 2016" FontSize="10" />
+                <Label Grid.Column="1" Grid.Row="2" Text="4:50 pm" FontSize="10" />
+                <Image x:Name="Tick1" Grid.Column="3" Grid.Row="2" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="12" HeightRequest="10" />
+              </Grid>
+            </controls:CustomFrame>
+            <controls:RoundedContentView BackgroundColor="#2793F5" CornerRadius="5" Margin="20,20,0,0" VerticalOptions="Center" HorizontalOptions="Start">
+              <controls:RoundedContentView.Content>
+                <Grid BackgroundColor="#2793F5" Margin="10">
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="70" />
+                    <ColumnDefinition Width="50" />
+                    <ColumnDefinition Width="160" />
+                    <ColumnDefinition Width="20" />
+                  </Grid.ColumnDefinitions>
+                  <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                  </Grid.RowDefinitions>
+                  <Label Grid.ColumnSpan="4" Text="Hi Jakub, yes, I did finally. How are you? That is great idea, We should go!" FontSize="12" VerticalOptions="Center" HorizontalOptions="Start" TextColor="White" />
+                  <Label Grid.Column="0" Grid.Row="2" Text="May 20, 2016" FontSize="10" TextColor="#81C1FA" />
+                  <Label Grid.Column="1" Grid.Row="2" Text="4:50 pm" FontSize="10" TextColor="#81C1FA" />
+                  <Image x:Name="Tick2" Grid.Column="3" Grid.Row="2" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="12" HeightRequest="10" />
+                </Grid>
+              </controls:RoundedContentView.Content>
+            </controls:RoundedContentView>
+
+            <controls:CustomFrame Margin="5,10,10,0" BorderRadius="25"  BackgroundColor="White">
+              <Grid  VerticalOptions="Center" HorizontalOptions="End" BackgroundColor="White">
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="70" />
+                  <ColumnDefinition Width="50" />
+                  <ColumnDefinition Width="160" />
+                  <ColumnDefinition Width="20" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                  <RowDefinition Height="auto" />
+                  <RowDefinition Height="auto" />
+                  <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <Label Grid.ColumnSpan="4" Text="Perfect. I'm fine, thanks. When do you have a time?" FontSize="12" VerticalOptions="Center" HorizontalOptions="Start" TextColor="#2793F5" />
+                <Label Grid.Column="0" Grid.Row="2" Text="May 20, 2016" FontSize="10" />
+                <Label Grid.Column="1" Grid.Row="2" Text="4:50 pm" FontSize="10" />
+                <Image x:Name="Tick3" Grid.Column="3" Grid.Row="2" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="12" HeightRequest="10" />
+              </Grid>
+            </controls:CustomFrame>
+          </StackLayout>
+        </ScrollView>
+        <Label  Grid.Row="2" Margin="25,0,0,0" Text="Ivanka is Typing..." />
+        <controls:CustomFrame Grid.Row="3" Margin="15,0,10,0" BorderRadius="85"  BackgroundColor="White">
+          <Grid BackgroundColor="White">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="*" />
+              <ColumnDefinition Width="50" />
+            </Grid.ColumnDefinitions>
+            <Entry  Placeholder="Your Message" PlaceholderColor="#B3B3B3" FontSize="15" />
+            <Image x:Name="ChatAddImage" Grid.Column="1"  VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="30" HeightRequest="30" />
+          </Grid>
+        </controls:CustomFrame>
+         
+        
+     </Grid>
+  
+</ContentPage>

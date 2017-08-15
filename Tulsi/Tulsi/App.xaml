@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Tulsi.App">
+  <Application.Resources>
+    <ResourceDictionary>
+      <Style x:Key="MenuItemStyleBtn" TargetType="Button">
+        <Setter Property="BackgroundColor" Value="White" />
+        <Setter Property="TextColor" Value="#2793F5" />
+        <Setter Property="HorizontalOptions" Value="Start" />
+        <Setter Property="FontSize" Value="10" />
+      </Style>
+      <Style x:Key="MenuItemStyleLabel" TargetType="Label">
+        <Setter Property="BackgroundColor" Value="White" />
+        <Setter Property="TextColor" Value="#2793F5" />
+        <Setter Property="HorizontalOptions" Value="Start" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="FontSize" Value="10" />
+      </Style>
+      <Style TargetType="Label">
+        <Setter Property="TextColor" Value="#B3B3B3" />
+        <Setter Property="VerticalOptions" Value="Center" />
+      </Style>
+      <Style TargetType="Page">
+        <Setter Property="BackgroundColor" Value="#F3F3F3" />
+      </Style>
+      <Style TargetType="Grid">
+        <Setter Property="BackgroundColor" Value="#F3F3F3" />
+      </Style>
+      <Style TargetType="StackLayout">
+        <Setter Property="BackgroundColor" Value="#F3F3F3" />
+      </Style>
+      <Style TargetType="AbsoluteLayout">
+        <Setter Property="BackgroundColor" Value="#F3F3F3" />
+      </Style>
+    </ResourceDictionary>
+
+  </Application.Resources>
+</Application>

@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<m:MenuContainerPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:Tulsi.Controls"
+             xmlns:local="clr-namespace:Tulsi;assembly=Tulsi"
+             xmlns:m="clr-namespace:SlideOverKit"
+             x:Class="Tulsi.SearchPage" NavigationPage.HasNavigationBar="false">
+  <StackLayout x:Name="HeaderLayout" BackgroundColor="#DCDCDC">
+    <Grid x:Name="ToolbarGrid">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="10" />
+        <ColumnDefinition Width="20" />
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="20" />
+        <ColumnDefinition Width="10" />
+      </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="50" />
+      </Grid.RowDefinitions>
+      <BoxView Color="#2793F5" Grid.ColumnSpan="5" />
+      <Image x:Name="Menu"  Source="{local:ImageResource Tulsi.Images.menu.png}" Grid.Column="1" WidthRequest="20" HeightRequest="17" HorizontalOptions="Center" VerticalOptions="Center" />
+      <Label Grid.Column="2" x:Name="PageTitleLabel" Text="SEARCH" HorizontalOptions="Center" TextColor="White" />
+    </Grid>
+    <ScrollView>
+      <StackLayout x:Name="MainLayout" BackgroundColor ="Transparent">
+
+        <Grid BackgroundColor ="Transparent">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="170" />
+            <ColumnDefinition Width="170" />
+            <ColumnDefinition Width="*" />
+          </Grid.ColumnDefinitions>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+          </Grid.RowDefinitions>
+            <Grid Grid.Column="1" Grid.ColumnSpan="2" x:Name="SearchBoxGrid" BackgroundColor ="Transparent">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="340" />
+              </Grid.ColumnDefinitions>
+              <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+              </Grid.RowDefinitions>
+              <Frame CornerRadius="30" VerticalOptions ="FillAndExpand" HorizontalOptions="FillAndExpand">
+                <controls:EntryEx Placeholder="Search..." PlaceholderColor="#cccccc" BorderWidth ="2" BorderRadius="50" BorderColor = "#cccccc" HeightRequest = "50" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" WidthRequest="320" BackgroundColor ="White" />
+                <Image Source="{local:ImageResource Tulsi.Images.search.png}" WidthRequest="20" HeightRequest="18" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" />
+              </Frame>
+            </Grid>
+            <controls:RoundedContentView x:Name="BuyersArea" Grid.Column="1" Grid.Row="1" BackgroundColor="#027CE9" CornerRadius="30" HorizontalOptions="Center" Margin="0,20">
+              <controls:RoundedContentView.Content>
+                <Grid BackgroundColor="Transparent">
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150" />
+                  </Grid.ColumnDefinitions>
+                  <Grid.RowDefinitions>
+                    <RowDefinition Height="60" />
+                  </Grid.RowDefinitions>
+                  <Label x:Name="BuyersAreaLabel" Text="Buyers" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" />
+                </Grid>
+              </controls:RoundedContentView.Content>
+            </controls:RoundedContentView>
+            <controls:RoundedContentView x:Name="GrowersArea" Grid.Column="2" Grid.Row="1" BackgroundColor="#FFFFFF" CornerRadius="30" HorizontalOptions="Center" Margin="0,20">
+              <controls:RoundedContentView.Content>
+                <Grid BackgroundColor="Transparent">
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150" />
+                  </Grid.ColumnDefinitions>
+                  <Grid.RowDefinitions>
+                    <RowDefinition Height="60" />
+                  </Grid.RowDefinitions>
+                  <Label x:Name="GrowersAreaLabel" Text="Growers" HorizontalOptions="Center" VerticalOptions="Center" TextColor="#CCCCCC" />
+                </Grid>
+              </controls:RoundedContentView.Content>
+            </controls:RoundedContentView>
+        </Grid>
+        <Frame CornerRadius ="20" Margin="30,0" VerticalOptions="FillAndExpand" Grid.RowSpan ="2">
+          <ListView x:Name="SearchResultListView" Grid.Column="1" Grid.ColumnSpan="2" SeparatorVisibility="None" RowHeight="50" BackgroundColor="White" VerticalOptions="CenterAndExpand">
+            <DataTemplate>
+              <ViewCell>
+                <Label TextColor="Green"/>
+              </ViewCell>
+            </DataTemplate>
+          </ListView>
+        </Frame>
+      </StackLayout>
+    </ScrollView>
+  </StackLayout>
+  </m:MenuContainerPage>

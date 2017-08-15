@@ -1,0 +1,354 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<m:MenuContainerPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Tulsi;assembly=Tulsi"
+             xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
+             xmlns:listview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:controls="clr-namespace:Tulsi.Controls"
+             xmlns:m="clr-namespace:SlideOverKit"
+             x:Class="Tulsi.DashboardPage" NavigationPage.HasNavigationBar="false">
+
+  <StackLayout x:Name="HeaderLayout" BackgroundColor="#DCDCDC">
+    <Grid x:Name="ToolbarGrid">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="10" />
+        <ColumnDefinition Width="20" />
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="20" />
+        <ColumnDefinition Width="10" />
+      </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="50" />
+      </Grid.RowDefinitions>
+      <BoxView Color="#2793F5" Grid.ColumnSpan="5" />
+      <Image x:Name="Menu" Source="{local:ImageResource Tulsi.Images.menu.png}"  Grid.Column="1" WidthRequest="20" HeightRequest="17" HorizontalOptions="Center" VerticalOptions="Center" />
+      <Label Grid.Column="2" x:Name="PageTitleLabel" Text="DASHBOARD" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="White" />
+      <Image Grid.Column="3"  x:Name="Search"  WidthRequest="20" HeightRequest="20" HorizontalOptions="Center" VerticalOptions="Center" Source="{local:ImageResource Tulsi.Images.magnifier.png}" />
+    </Grid>
+    <ScrollView>
+
+      <StackLayout x:Name="MainLayout" BackgroundColor="#DCDCDC">
+
+        <controls:CustomFrame BorderRadius="25" Margin="5,0,5,0" BackgroundColor="White">
+          <Label Text="Thought of the Day&#x0a;Lack of money is the root of&#x0a;all evil" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+        </controls:CustomFrame>
+
+        <controls:CustomFrame BorderRadius="25" Margin="5,0,5,0" BackgroundColor="White" >
+          <Grid HorizontalOptions="Center" BackgroundColor="White">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="*" />
+              <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="10" />
+              <RowDefinition Height="auto" />
+              <RowDefinition Height="auto" />
+              <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            <Label Text="BUYER SUMMARY" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.ColumnSpan="2" />
+            <Grid Grid.RowSpan="4" Grid.Row="1" x:Name="ChartGrid"  VerticalOptions="Center" BackgroundColor="White">
+              <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+              </Grid.RowDefinitions>
+            </Grid>
+            <Grid Grid.Column="1" Grid.Row="2" BackgroundColor="White">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10" />
+                <ColumnDefinition Width="10" />
+                <ColumnDefinition Width="auto" />
+              </Grid.ColumnDefinitions>
+              <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+              </Grid.RowDefinitions>
+              <controls:RoundedContentView Grid.RowSpan="2" WidthRequest="2" HeightRequest="8" BackgroundColor="#82DA69" CornerRadius="5">
+              </controls:RoundedContentView>
+              <Label Grid.Column="2" Grid.Row="0" Text="Paid" FontSize="17" HorizontalOptions="Center" />
+              <Label Grid.Column="2" Grid.Row="1" Text="23%" FontSize="17" FontAttributes="Bold" HorizontalOptions="Center"  />
+            </Grid>
+            <Grid Grid.Column="1" Grid.Row="3" BackgroundColor="White">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10" />
+                <ColumnDefinition Width="10" />
+                <ColumnDefinition Width="auto" />
+              </Grid.ColumnDefinitions>
+              <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+              </Grid.RowDefinitions>
+              <controls:RoundedContentView Grid.RowSpan="2" WidthRequest="2" HeightRequest="8" BackgroundColor="#E47132" CornerRadius="5">
+              </controls:RoundedContentView>
+              <Label Grid.Column="2" Grid.Row="0" Text="Over Due" FontSize="17" />
+              <Label Grid.Column="2" Grid.Row="1" Text="5%" FontSize="17" FontAttributes="Bold" />
+            </Grid>
+            <Grid Grid.Column="1" Grid.Row="4" BackgroundColor="White">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10" />
+                <ColumnDefinition Width="10" />
+                <ColumnDefinition Width="auto" />
+              </Grid.ColumnDefinitions>
+              <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+              </Grid.RowDefinitions>
+              <controls:RoundedContentView Grid.RowSpan="2" WidthRequest="2" HeightRequest="8" BackgroundColor="#9EE5FC" CornerRadius="5">
+              </controls:RoundedContentView>
+              <Label Grid.Column="2" Grid.Row="0" Text="Due" FontSize="17" />
+              <Label Grid.Column="2" Grid.Row="1" Text="72%" FontSize="17" FontAttributes="Bold" />
+            </Grid>
+          </Grid>
+        </controls:CustomFrame>
+
+        <controls:CustomFrame BorderRadius="25" Margin="5,0,5,0" BackgroundColor="White" >
+          <Grid x:Name="RatesGrid" BackgroundColor="White">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="*" />
+              <ColumnDefinition Width="5*" />
+              <ColumnDefinition Width="8" />
+              <ColumnDefinition Width="8*" />
+              <ColumnDefinition Width="5*" />
+              <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+              <RowDefinition Height="auto" />
+              <RowDefinition Height="auto" />
+              <RowDefinition Height="auto" />
+              <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            <Label Text="TODAYS RATES" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.ColumnSpan="5" />
+            <Label Grid.Row="1" Grid.Column="1" Text="Wahe Guru" HorizontalTextAlignment="End" />
+            <Label Grid.Row="2" Grid.Column="1" Text="Wahe Guru" HorizontalTextAlignment="End" />
+            <Label Grid.Row="3" Grid.Column="1" Text="Wahe Guru" HorizontalTextAlignment="End" />
+            <Image x:Name="wg1"  Grid.Row="1" Grid.Column="2" WidthRequest="4" HeightRequest="4" HorizontalOptions="End" VerticalOptions="Center" Source="{local:ImageResource Tulsi.Images.graycircle.png}" />
+            <Image x:Name="wg2"  Grid.Row="2" Grid.Column="2" WidthRequest="4" HeightRequest="4" HorizontalOptions="End" VerticalOptions="Center" Source="{local:ImageResource Tulsi.Images.graycircle.png}" />
+            <Image x:Name="wg3"  Grid.Row="3" Grid.Column="2" WidthRequest="4" HeightRequest="4" HorizontalOptions="End" VerticalOptions="Center" Source="{local:ImageResource Tulsi.Images.graycircle.png}" />
+            <BoxView Grid.Row="1" Grid.Column="3" Color="#cccccc" HeightRequest="1" VerticalOptions="Center" Margin="0,0,10,0" />
+            <BoxView Grid.Row="2" Grid.Column="3" Color="#cccccc" HeightRequest="1" VerticalOptions="Center" Margin="0,0,10,0" />
+            <BoxView Grid.Row="3" Grid.Column="3" Color="#cccccc" HeightRequest="1" VerticalOptions="Center" Margin="0,0,10,0" />
+            <controls:RoundedView Grid.Row="1" Grid.Column="4"  Text="182.68" FontAttributes="Bold" BorderColor="#cccccc" TextColor="White" BorderRadius="20" HorizontalTextAlignment="Center"  HeightRequest="30" />
+            <controls:RoundedView Grid.Row="2" Grid.Column="4" Text="182.68" FontAttributes="Bold" BorderColor="#cccccc" TextColor="White" BorderRadius="20" HorizontalTextAlignment="Center"  HeightRequest="30" />
+            <controls:RoundedView Grid.Row="3" Grid.Column="4" Text="182.68" FontAttributes="Bold" BorderColor="#cccccc" TextColor="White" BorderRadius="20" HorizontalTextAlignment="Center"  HeightRequest="30" />
+          </Grid>
+        </controls:CustomFrame>
+
+        <controls:CustomFrame BorderRadius="25" Margin="5,0,5,0" BackgroundColor="White" >
+          <Grid x:Name="ExtraRatesGrid"  BackgroundColor="White">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="*" />
+              <ColumnDefinition Width="90" />
+              <ColumnDefinition Width="10" />
+              <ColumnDefinition Width="90" />
+              <ColumnDefinition Width="10" />
+              <ColumnDefinition Width="90" />
+              <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+              <RowDefinition Height="80" />
+            </Grid.RowDefinitions>
+            <Image Grid.Column="1" x:Name="LaddanBackground"  WidthRequest="90" HeightRequest="75" HorizontalOptions="Center" VerticalOptions="Center" Source="{local:ImageResource Tulsi.Images.border.png}" />
+            <Image Grid.Column="3" x:Name="ColdStoireBackground"  WidthRequest="90" HeightRequest="75" HorizontalOptions="Center" VerticalOptions="Center" Source="{local:ImageResource Tulsi.Images.border.png}" />
+            <Image Grid.Column="5" x:Name="TodaysBalBackground"  WidthRequest="90" HeightRequest="75" HorizontalOptions="Center" VerticalOptions="Center" Source="{local:ImageResource Tulsi.Images.border.png}" />
+            <Grid Grid.Column="1" RowSpacing="0"  BackgroundColor="Transparent" Margin="0,10">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="90" />
+              </Grid.ColumnDefinitions>
+              <Grid.RowDefinitions>
+                <RowDefinition Height="20" />
+                <RowDefinition Height="40" />
+              </Grid.RowDefinitions>
+              <Label Grid.Row="0" Text="Laddan/Bijak" FontSize="12" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="End" />
+              <Label Grid.Row="1" Text="5" FontSize="30" HorizontalOptions="Center" VerticalOptions="Start" />
+            </Grid>
+            <Grid Grid.Column="3" RowSpacing="0"  BackgroundColor="Transparent" Margin="0,10">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="90" />
+              </Grid.ColumnDefinitions>
+              <Grid.RowDefinitions>
+                <RowDefinition Height="20" />
+                <RowDefinition Height="40" />
+              </Grid.RowDefinitions>
+              <Label Grid.Row="0" Text="ColdStoire" FontSize="12" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="End" />
+              <Label Grid.Row="1" Text="2450" FontSize="30" HorizontalOptions="Center" VerticalOptions="Start" />
+            </Grid>
+            <Grid Grid.Column="5" RowSpacing="0" BackgroundColor="Transparent" Margin="0,10">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="90" />
+              </Grid.ColumnDefinitions>
+              <Grid.RowDefinitions>
+                <RowDefinition Height="20" />
+                <RowDefinition Height="40" />
+              </Grid.RowDefinitions>
+              <Label Grid.Row="0" Text="Today's Bal" FontSize="12" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="End" />
+              <Label Grid.Row="1" Text="200" FontSize="30" HorizontalOptions="Center" VerticalOptions="Start" />
+            </Grid>
+          </Grid>
+        </controls:CustomFrame>
+
+        <controls:CustomFrame BorderRadius="25" Margin="5,0,5,0" BackgroundColor="White" >
+          <Grid x:Name="WeatherTipsGrid" BackgroundColor="White">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="*" />
+              <ColumnDefinition Width="10" />
+              <ColumnDefinition Width="auto" />
+              <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="*" />
+              <RowDefinition Height="*" />
+              <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Label x:Name="WeatherHeaderLabel" Text="TODAYS WEATHER REPORT" HorizontalTextAlignment="Center"  Grid.ColumnSpan="3"/>
+            <Image x:Name="wt1" Grid.Row="1" Grid.Column="1" WidthRequest="6" HeightRequest="6" HorizontalOptions="Center" VerticalOptions="Center" Source="{local:ImageResource Tulsi.Images.graycircle.png}" />
+            <Image x:Name="wt2" Grid.Row="2" Grid.Column="1" WidthRequest="6" HeightRequest="6" HorizontalOptions="Center" VerticalOptions="Center" Source="{local:ImageResource Tulsi.Images.graycircle.png}" />
+            <Image x:Name="wt3" Grid.Row="3" Grid.Column="1" WidthRequest="6" HeightRequest="6" HorizontalOptions="Center" VerticalOptions="Center" Source="{local:ImageResource Tulsi.Images.graycircle.png}" />
+            <Label Grid.Row="1" Grid.Column="2" x:Name="WeatherTipOneLabel">
+              <Label.FormattedText>
+                <FormattedString>
+                  <FormattedString.Spans>
+                    <Span Text="It rained pretty heavy in " />
+                    <Span Text="Shimla" FontAttributes="Bold" />
+                    <Span Text=" today." />
+                  </FormattedString.Spans>
+                </FormattedString>
+              </Label.FormattedText>
+            </Label>
+            <Label Grid.Row="2" Grid.Column="2" x:Name="WeatherTipTwoLabel">
+              <Label.FormattedText>
+                <FormattedString>
+                  <FormattedString.Spans>
+                    <Span Text="It hailed in " />
+                    <Span Text="Kinnaur" FontAttributes="Bold" />
+                    <Span Text=" today." />
+                  </FormattedString.Spans>
+                </FormattedString>
+              </Label.FormattedText>
+            </Label>
+            <Label Grid.Row="3" Grid.Column="2" x:Name="WeatherTipThreeLabel">
+              <Label.FormattedText>
+                <FormattedString>
+                  <FormattedString.Spans>
+                    <Span Text="Lucknow " FontAttributes="Bold" />
+                    <Span Text="was very hot today." />
+                  </FormattedString.Spans>
+                </FormattedString>
+              </Label.FormattedText>
+            </Label>
+          </Grid>
+        </controls:CustomFrame>
+
+        <controls:CustomFrame BorderRadius="25" Margin="5,0,5,0" BackgroundColor="White" >
+          <Grid BackgroundColor="White">
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="*" />
+              <RowDefinition Height="*" />
+              <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Label x:Name="NewsHeaderLabel" Text="NEWS REPORT" HorizontalTextAlignment="Center" />
+            <controls:CustomFrame BorderRadius="25" OutlineColor="#cccccc" BackgroundColor="White" Grid.Row="1" HorizontalOptions="Start">
+              <Grid x:Name="News1" BackgroundColor="White">
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="*" />
+                  <ColumnDefinition Width="2*" />
+                  <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                  <RowDefinition Height="80" />
+                </Grid.RowDefinitions>
+                <Image  x:Name="Photo1" WidthRequest="100" HeightRequest="104"  />
+                <Grid Grid.Column="1" VerticalOptions="Center" BackgroundColor="White" Margin="10,0,0,0">
+                  <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                  </Grid.RowDefinitions>
+                  <Label Text="Boating to the island" TextColor="#666666" FontSize="14" VerticalOptions="End"  />
+                  <StackLayout Orientation="Horizontal" Grid.Column="0" Grid.Row="1" Spacing="10" BackgroundColor="White">
+                    <Label Text="Mоdified: May 10, 2016" FontSize="10" VerticalOptions="Start"  />
+                    <Image x:Name="User" WidthRequest="14" HeightRequest="11" HorizontalOptions="Center" VerticalOptions="Center"  />
+                  </StackLayout>
+                </Grid>
+                <Image x:Name="Info1" Grid.Column="2" WidthRequest="25" HeightRequest="25" HorizontalOptions="Center" VerticalOptions="Center"  />
+              </Grid>
+            </controls:CustomFrame>
+            <controls:CustomFrame BorderRadius="25" OutlineColor="#cccccc" BackgroundColor="White" Grid.Row="2" HorizontalOptions="Start">
+              <Grid x:Name="News2" BackgroundColor="White">
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="*" />
+                  <ColumnDefinition Width="2*" />
+                  <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                  <RowDefinition Height="80" />
+                </Grid.RowDefinitions>
+                <Image  x:Name="Photo2" WidthRequest="100" HeightRequest="104"  />
+                <Grid Grid.Column="1" VerticalOptions="Center" BackgroundColor="White" Margin="10,0,0,0">
+                  <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                  </Grid.RowDefinitions>
+                  <Label Text="Boating to the island" TextColor="#666666" FontSize="14" VerticalOptions="End"  />
+                  <StackLayout Orientation="Horizontal" Grid.Column="0" Grid.Row="1" Spacing="10" BackgroundColor="White">
+                    <Label Text="Mоdified: May 10, 2016" FontSize="10" VerticalOptions="Start"  />
+                    <Image x:Name="User2" WidthRequest="14" HeightRequest="11" HorizontalOptions="Center" VerticalOptions="Center"  />
+                  </StackLayout>
+                </Grid>
+                <Image x:Name="Info2" Grid.Column="2" WidthRequest="25" HeightRequest="25" HorizontalOptions="Center" VerticalOptions="Center"  />
+              </Grid>
+            </controls:CustomFrame>
+            <controls:CustomFrame BorderRadius="25" OutlineColor="#cccccc" BackgroundColor="White" Grid.Row="3" HorizontalOptions="Start">
+              <Grid x:Name="News3" BackgroundColor="White">
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="*" />
+                  <ColumnDefinition Width="2*" />
+                  <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                  <RowDefinition Height="80" />
+                </Grid.RowDefinitions>
+                <Image  x:Name="Photo3" WidthRequest="100" HeightRequest="104"  />
+                <Grid Grid.Column="1" VerticalOptions="Center" BackgroundColor="White" Margin="10,0,0,0">
+                  <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                  </Grid.RowDefinitions>
+                  <Label Text="Boating to the island" TextColor="#666666" FontSize="14" VerticalOptions="End"  />
+                  <StackLayout Orientation="Horizontal" Grid.Column="0" Grid.Row="1" Spacing="10" BackgroundColor="White">
+                    <Label Text="Mоdified: May 10, 2016" FontSize="10" VerticalOptions="Start"  />
+                    <Image x:Name="User3" WidthRequest="14" HeightRequest="11" HorizontalOptions="Center" VerticalOptions="Center"  />
+                  </StackLayout>
+                </Grid>
+                <Image x:Name="Info3" Grid.Column="2" WidthRequest="25" HeightRequest="25" HorizontalOptions="Center" VerticalOptions="Center"  />
+              </Grid>
+            </controls:CustomFrame>
+          </Grid>
+        </controls:CustomFrame>
+
+
+
+
+        <!--
+          <ListView x:Name="NewsListView">
+            <ListView.ItemTemplate>
+              <DataTemplate>
+                <Grid Padding="10">
+                  <Grid.RowDefinitions>
+                    <RowDefinition Height="0.4*" />
+                    <RowDefinition Height="0.6*" />
+                  </Grid.RowDefinitions>
+                  <Label Text="{Binding Header}" FontAttributes="Bold" TextColor="Teal" FontSize="21" />
+                  <Label Grid.Row="1" Text="{Binding Edited}" TextColor="Teal" FontSize="15"/>
+                </Grid>
+              </DataTemplate>
+            </ListView.ItemTemplate>
+          </ListView>-->
+
+      </StackLayout>
+
+    </ScrollView>
+  </StackLayout>
+</m:MenuContainerPage>
