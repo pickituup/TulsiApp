@@ -5,13 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Tulsi.Controls;
+using Tulsi.NavigationFramework;
+using Tulsi.Helpers;
 
-namespace Tulsi
-{
-    public partial class LoginPage : ContentPage
-    {
-        public LoginPage()
-        {
+/// <summary>
+/// TODO: define new namespace for all pages, Tulsi.Pages
+/// </summary>
+namespace Tulsi {
+    public partial class LoginPage : ContentPage, IView {
+        public LoginPage() {
             InitializeComponent();
 
             LoginLink.FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label));
@@ -21,31 +23,31 @@ namespace Tulsi
             Logo.Source = ImageSource.FromResource("Tulsi.Images.logo.png");
 
             //Taps
-            TapGestureRecognizer tapGestureRecognizer1 = new TapGestureRecognizer();
-            tapGestureRecognizer1.Tapped += (s, e) =>
-            {
-                DashboardPage dp = new DashboardPage();
-                Application.Current.MainPage = new NavigationPage(dp);
+            TapGestureRecognizer loginTapGestureRecognizer = new TapGestureRecognizer();
+            loginTapGestureRecognizer.Tapped += (s, e) => {
+                //DashboardPage dp = new DashboardPage();
+                //Application.Current.MainPage = new NavigationPage(dp);
+
+                BaseSingleton<ViewSwitchingLogic>.Instance.BuildNavigationStack(ViewType.DashboardPage);
             };
-            LoginLink.GestureRecognizers.Add(tapGestureRecognizer1);
+            LoginLink.GestureRecognizers.Add(loginTapGestureRecognizer);
 
             TapGestureRecognizer tapGestureRecognizer2 = new TapGestureRecognizer();
-            tapGestureRecognizer2.Tapped += (s, e) =>
-            {
+            tapGestureRecognizer2.Tapped += (s, e) => {
                 DisplayAlert("Navigation", "Sign up action", "OK");
             };
             SignupLink.GestureRecognizers.Add(tapGestureRecognizer2);
 
-            TapGestureRecognizer tapGestureRecognizer3 = new TapGestureRecognizer();
-            tapGestureRecognizer3.Tapped += (s, e) =>
-            {
-                PasswordRecoveryPage prp = new PasswordRecoveryPage();
-                Application.Current.MainPage = new NavigationPage(prp);
-            };
-            ForgotPasswordLink.GestureRecognizers.Add(tapGestureRecognizer3);
+            TapGestureRecognizer forgotPasswordTapGestureRecognizer = new TapGestureRecognizer();
+            forgotPasswordTapGestureRecognizer.Tapped += (s, e) => {
+                //PasswordRecoveryPage prp = new PasswordRecoveryPage();
+                //Application.Current.MainPage = new NavigationPage(prp);
 
-            EntryEx EmailEntry = new EntryEx()
-            {
+                BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.PasswordRecoveryPage);
+            };
+            ForgotPasswordLink.GestureRecognizers.Add(forgotPasswordTapGestureRecognizer);
+
+            EntryEx EmailEntry = new EntryEx() {
                 BorderWidth = 2,
                 BorderRadius = 50,
                 BorderColor = Color.FromHex("#d9d9d9"),
@@ -64,8 +66,7 @@ namespace Tulsi
             Grid.SetRow(EmailEntry, 3);
             Grid.SetColumn(EmailEntry, 1);
 
-            EntryEx PasswordEntry = new EntryEx()
-            {
+            EntryEx PasswordEntry = new EntryEx() {
                 BorderWidth = 2,
                 BorderRadius = 50,
                 BorderColor = Color.FromHex("#d9d9d9"),

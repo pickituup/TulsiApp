@@ -110,7 +110,6 @@ namespace Tulsi
                 Application.Current.MainPage.Navigation.PushAsync(pp);
             };
             SideMenuHeaderProfitIcon.GestureRecognizers.Add(MenuTap8);
-            
         }
     }
 }

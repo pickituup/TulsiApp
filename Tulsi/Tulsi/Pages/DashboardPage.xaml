@@ -1,29 +1,62 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <m:MenuContainerPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:Tulsi;assembly=Tulsi"
-             xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
-             xmlns:listview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
-             xmlns:controls="clr-namespace:Tulsi.Controls"
-             xmlns:m="clr-namespace:SlideOverKit"
-             x:Class="Tulsi.DashboardPage" NavigationPage.HasNavigationBar="false">
+                     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                     xmlns:local="clr-namespace:Tulsi;assembly=Tulsi"
+                     xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
+                     xmlns:listview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+                     xmlns:controls="clr-namespace:Tulsi.Controls"
+                     xmlns:m="clr-namespace:SlideOverKit"
+                     x:Class="Tulsi.DashboardPage"
+                     NavigationPage.HasNavigationBar="false">
 
-  <StackLayout x:Name="HeaderLayout" BackgroundColor="#DCDCDC">
+  <StackLayout x:Name="HeaderLayout"
+               BackgroundColor="#DCDCDC">
+
     <Grid x:Name="ToolbarGrid">
+
       <Grid.ColumnDefinitions>
+
         <ColumnDefinition Width="10" />
+
         <ColumnDefinition Width="20" />
+
         <ColumnDefinition Width="*" />
+
         <ColumnDefinition Width="20" />
+
         <ColumnDefinition Width="10" />
       </Grid.ColumnDefinitions>
+
       <Grid.RowDefinitions>
+        
         <RowDefinition Height="50" />
       </Grid.RowDefinitions>
-      <BoxView Color="#2793F5" Grid.ColumnSpan="5" />
-      <Image x:Name="Menu" Source="{local:ImageResource Tulsi.Images.menu.png}"  Grid.Column="1" WidthRequest="20" HeightRequest="17" HorizontalOptions="Center" VerticalOptions="Center" />
-      <Label Grid.Column="2" x:Name="PageTitleLabel" Text="DASHBOARD" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="White" />
-      <Image Grid.Column="3"  x:Name="Search"  WidthRequest="20" HeightRequest="20" HorizontalOptions="Center" VerticalOptions="Center" Source="{local:ImageResource Tulsi.Images.magnifier.png}" />
+      
+      <BoxView Color="#2793F5" 
+               Grid.ColumnSpan="5" />
+      
+      <Image x:Name="Menu" 
+             Source="{local:ImageResource Tulsi.Images.menu.png}"  
+             Grid.Column="1" 
+             WidthRequest="20" 
+             HeightRequest="17" 
+             HorizontalOptions="Center" 
+             VerticalOptions="Center"/>
+      
+      <Label Grid.Column="2"
+             x:Name="PageTitleLabel" 
+             Text="DASHBOARD" 
+             VerticalTextAlignment="Center"
+             HorizontalTextAlignment="Center"
+             TextColor="White"/>
+      
+      <Image Grid.Column="3" 
+             x:Name="Search"  
+             WidthRequest="20" 
+             HeightRequest="20" 
+             HorizontalOptions="Center" 
+             VerticalOptions="Center" 
+             Source="{local:ImageResource Tulsi.Images.magnifier.png}"/>
     </Grid>
     <ScrollView>
 

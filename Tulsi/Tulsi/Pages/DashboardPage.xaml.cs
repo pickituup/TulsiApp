@@ -9,10 +9,11 @@ using Tulsi.Controls;
 using Tulsi.ViewModels;
 using Syncfusion.SfChart.XForms;
 using SlideOverKit;
+using Tulsi.NavigationFramework;
 
 namespace Tulsi
 {
-    public partial class DashboardPage : MenuContainerPage
+    public partial class DashboardPage : MenuContainerPage, IView
     {
         public DashboardPage()
         {

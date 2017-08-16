@@ -3,16 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Tulsi.NavigationFramework;
 using Xamarin.Forms;
 using Tulsi.Controls;
 
-namespace Tulsi
-{
-    public partial class PasswordRecoveryPage : ContentPage
-    {
-        public PasswordRecoveryPage()
-        {
+namespace Tulsi {
+    public partial class PasswordRecoveryPage : ContentPage, IView {
+        public PasswordRecoveryPage() {
             InitializeComponent();
 
             SubmitLink.FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label));
@@ -22,8 +19,7 @@ namespace Tulsi
 
             //Taps
             TapGestureRecognizer tapGestureRecognizer1 = new TapGestureRecognizer();
-            tapGestureRecognizer1.Tapped += (s, e) =>
-            {
+            tapGestureRecognizer1.Tapped += (s, e) => {
                 DisplayAlert("Navigation", "Password recovery action", "OK");
                 //DashboardPage dp = new DashboardPage();
                 //Application.Current.MainPage = new NavigationPage(dp);
@@ -31,8 +27,7 @@ namespace Tulsi
             SubmitLink.GestureRecognizers.Add(tapGestureRecognizer1);
 
 
-            EntryEx EmailEntry = new EntryEx()
-            {
+            EntryEx EmailEntry = new EntryEx() {
                 BorderWidth = 2,
                 BorderRadius = 50,
                 BorderColor = Color.FromHex("#d9d9d9"),

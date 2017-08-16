@@ -7,6 +7,8 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System.Globalization;
 using Tulsi.ViewModels;
+using Tulsi.NavigationFramework;
+using Tulsi.Helpers;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 
@@ -72,8 +74,12 @@ namespace Tulsi {
             NewsPage np = new NewsPage();*/
 
             DashboardPage dp = new DashboardPage();
-            LoginPage lp = new LoginPage();
-            MainPage = new NavigationPage(lp);
+
+
+            //LoginPage lp = new LoginPage();
+            //MainPage = new NavigationPage(lp);
+
+            BaseSingleton<ViewSwitchingLogic>.Instance.BuildNavigationStack(ViewType.LoginPage);
         }
 
         protected override void OnStart() {
