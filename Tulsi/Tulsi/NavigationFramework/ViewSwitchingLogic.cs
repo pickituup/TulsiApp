@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 namespace Tulsi.NavigationFramework {
     public sealed class ViewSwitchingLogic {
@@ -20,7 +15,7 @@ namespace Tulsi.NavigationFramework {
         /// Creates new navigation stack. Root element will be appropriate to the viewType.
         /// </summary>
         public void BuildNavigationStack(ViewType viewType) {
-            Application.Current.MainPage = getViewInNavigationFrameByType(viewType);
+            Application.Current.MainPage = GetViewInNavigationFrameByType(viewType);
         }
 
         /// <summary>
@@ -46,7 +41,7 @@ namespace Tulsi.NavigationFramework {
         /// </summary>
         /// <param name="viewType"></param>
         /// <returns></returns>
-        private IView getViewByType(ViewType viewType) {
+        private IView GetViewByType(ViewType viewType) {
             return _viewContainer.GetViewByType(viewType);
         }
 
@@ -55,7 +50,7 @@ namespace Tulsi.NavigationFramework {
         /// </summary>
         /// <param name="viewType"></param>
         /// <returns></returns>
-        private Page getViewInNavigationFrameByType(ViewType viewType) {
+        private Page GetViewInNavigationFrameByType(ViewType viewType) {
             return _viewContainer.GetViewInNavigationFrameByType(viewType);
         }
 

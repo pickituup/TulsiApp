@@ -43,6 +43,10 @@
     <Compile Include="Controls\RoundedContentView.cs" />
     <Compile Include="Controls\RoundedView.cs" />
     <Compile Include="Helpers\BaseSingleton.cs" />
+    <Compile Include="Menu\SideMenuContainer.cs" />
+    <Compile Include="Menu\SideMenuItem.cs" />
+    <Compile Include="MVVM.Core\IViewModel.cs" />
+    <Compile Include="MVVM.Core\ViewModelBase.cs" />
     <Compile Include="NavigationFramework\IView.cs" />
     <Compile Include="NavigationFramework\ViewBuider.cs" />
     <Compile Include="NavigationFramework\ViewBuilderBase.cs" />
@@ -148,6 +152,7 @@
     <Compile Include="ViewModels\GrowerViewModel.cs" />
     <Compile Include="ViewModels\LadaanViewModel.cs" />
     <Compile Include="ViewModels\LatePaymentsViewModel.cs" />
+    <Compile Include="ViewModels\Menu\SideMenuViewModel.cs" />
     <Compile Include="ViewModels\ProfileViewModel.cs" />
     <Compile Include="ViewModels\ProfitViewModel.cs" />
     <Compile Include="ViewModels\SearchViewModel.cs" />
