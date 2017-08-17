@@ -3,18 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Tulsi.NavigationFramework;
 using Xamarin.Forms;
 using Syncfusion.SfChart.XForms;
 using Tulsi.ViewModels;
 using SlideOverKit;
 
-namespace Tulsi
-{
-    public partial class ProfitPage : MenuContainerPage
-    {
-        public ProfitPage()
-        {
+namespace Tulsi {
+    public partial class ProfitPage : MenuContainerPage, IView {
+        public ProfitPage() {
             InitializeComponent();
 
             ProfitViewModel pvm = ((App)Application.Current).ProfitVM;
@@ -28,15 +25,13 @@ namespace Tulsi
 
             //Toolbar taps
             TapGestureRecognizer ToolbarTap1 = new TapGestureRecognizer();
-            ToolbarTap1.Tapped += (s, e) =>
-            {
+            ToolbarTap1.Tapped += (s, e) => {
                 this.ShowMenu();
             };
             Menu.GestureRecognizers.Add(ToolbarTap1);
 
             TapGestureRecognizer ToolbarTap2 = new TapGestureRecognizer();
-            ToolbarTap2.Tapped += (s, e) =>
-            {
+            ToolbarTap2.Tapped += (s, e) => {
                 SearchPage sp = new SearchPage();
                 Application.Current.MainPage.Navigation.PushAsync(sp);
             };
@@ -44,9 +39,8 @@ namespace Tulsi
 
             //Tabs navigation
             TapGestureRecognizer TabTap1 = new TapGestureRecognizer();
-            TabTap1.Tapped += (s, e) =>
-            {
-                QuarterlyArea.BackgroundColor= Color.FromHex("#2793F5");
+            TabTap1.Tapped += (s, e) => {
+                QuarterlyArea.BackgroundColor = Color.FromHex("#2793F5");
                 QuarterlyLabel.TextColor = Color.White;
                 MonthlyArea.BackgroundColor = Color.Transparent;
                 MonthlyLabel.TextColor = Color.FromHex("#B3B3B3");
@@ -58,8 +52,7 @@ namespace Tulsi
             QuarterlyArea.GestureRecognizers.Add(TabTap1);
 
             TapGestureRecognizer TabTap2 = new TapGestureRecognizer();
-            TabTap2.Tapped += (s, e) =>
-            {
+            TabTap2.Tapped += (s, e) => {
                 QuarterlyArea.BackgroundColor = Color.Transparent;
                 QuarterlyLabel.TextColor = Color.FromHex("#B3B3B3");
                 MonthlyArea.BackgroundColor = Color.FromHex("#2793F5");
@@ -72,8 +65,7 @@ namespace Tulsi
             MonthlyArea.GestureRecognizers.Add(TabTap2);
 
             TapGestureRecognizer TabTap3 = new TapGestureRecognizer();
-            TabTap3.Tapped += (s, e) =>
-            {
+            TabTap3.Tapped += (s, e) => {
                 QuarterlyArea.BackgroundColor = Color.Transparent;
                 QuarterlyLabel.TextColor = Color.FromHex("#B3B3B3");
                 MonthlyArea.BackgroundColor = Color.Transparent;
@@ -86,8 +78,7 @@ namespace Tulsi
             WeeklyLabel.GestureRecognizers.Add(TabTap3);
 
             TapGestureRecognizer TabTap4 = new TapGestureRecognizer();
-            TabTap4.Tapped += (s, e) =>
-            {
+            TabTap4.Tapped += (s, e) => {
                 Year1.TextColor = Color.FromHex("#2793F5");
                 Year2.TextColor = Color.FromHex("#B3B3B3");
 
@@ -96,8 +87,7 @@ namespace Tulsi
             Year1.GestureRecognizers.Add(TabTap4);
 
             TapGestureRecognizer TabTap5 = new TapGestureRecognizer();
-            TabTap5.Tapped += (s, e) =>
-            {
+            TabTap5.Tapped += (s, e) => {
                 Year1.TextColor = Color.FromHex("#B3B3B3");
                 Year2.TextColor = Color.FromHex("#2793F5");
 
@@ -106,16 +96,14 @@ namespace Tulsi
             Year2.GestureRecognizers.Add(TabTap5);
 
             TapGestureRecognizer TabTap6 = new TapGestureRecognizer();
-            TabTap6.Tapped += (s, e) =>
-            {
+            TabTap6.Tapped += (s, e) => {
                 PaidStatsLabel.TextColor = Color.FromHex("#2793F5");
                 AllStatsLabel.TextColor = Color.FromHex("#B3B3B3");
             };
             PaidStatsLabel.GestureRecognizers.Add(TabTap6);
 
             TapGestureRecognizer TabTap7 = new TapGestureRecognizer();
-            TabTap7.Tapped += (s, e) =>
-            {
+            TabTap7.Tapped += (s, e) => {
                 PaidStatsLabel.TextColor = Color.FromHex("#B3B3B3");
                 AllStatsLabel.TextColor = Color.FromHex("#2793F5");
 
@@ -148,7 +136,7 @@ namespace Tulsi
             series.XBindingPath = "Step";
             series.YBindingPath = "Value";
             series.Color = Color.FromHex("#A9D4FB");
-            series.StrokeColor= Color.FromHex("#2793F5");
+            series.StrokeColor = Color.FromHex("#2793F5");
 
             chart.Series.Add(series);
             ChartGrid.Children.Add(chart);

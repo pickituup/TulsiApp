@@ -25,6 +25,7 @@ namespace Tulsi {
             //Taps
             TapGestureRecognizer loginTapGestureRecognizer = new TapGestureRecognizer();
             loginTapGestureRecognizer.Tapped += (s, e) => {
+                // remove that
                 //DashboardPage dp = new DashboardPage();
                 //Application.Current.MainPage = new NavigationPage(dp);
 
@@ -40,10 +41,11 @@ namespace Tulsi {
 
             TapGestureRecognizer forgotPasswordTapGestureRecognizer = new TapGestureRecognizer();
             forgotPasswordTapGestureRecognizer.Tapped += (s, e) => {
+                // remove that
                 //PasswordRecoveryPage prp = new PasswordRecoveryPage();
                 //Application.Current.MainPage = new NavigationPage(prp);
 
-                BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.PasswordRecoveryPage);
+                //BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.PasswordRecoveryPage);
             };
             ForgotPasswordLink.GestureRecognizers.Add(forgotPasswordTapGestureRecognizer);
 

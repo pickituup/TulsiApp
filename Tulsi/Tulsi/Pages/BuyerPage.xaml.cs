@@ -3,18 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Tulsi.NavigationFramework;
+using Tulsi.Helpers;
 using Xamarin.Forms;
 using Syncfusion.SfChart.XForms;
 using Tulsi.ViewModels;
 using SlideOverKit;
 
-namespace Tulsi
-{
-    public partial class BuyerPage : MenuContainerPage
-    {
-        public BuyerPage()
-        {
+namespace Tulsi {
+    public partial class BuyerPage : MenuContainerPage, IView {
+        public BuyerPage() {
             InitializeComponent();
 
             DashboardViewModel dvm = new DashboardViewModel();
@@ -25,8 +23,7 @@ namespace Tulsi
             AbsoluteLayout.SetLayoutBounds(SideMenuOverlay, new Rectangle(0, 0, 0.9, hd - 20));
 
             SfChart chart = new SfChart();
-            DoughnutSeries doughnutSeries = new DoughnutSeries()
-            {
+            DoughnutSeries doughnutSeries = new DoughnutSeries() {
                 ItemsSource = dvm.ChartData,
                 XBindingPath = "Name",
                 YBindingPath = "Value",
@@ -52,21 +49,18 @@ namespace Tulsi
             chart.VerticalOptions = LayoutOptions.Center;
             ChartGrid.Children.Add(chart);
 
-            StackLayout MiddleStack = new StackLayout()
-            {
+            StackLayout MiddleStack = new StackLayout() {
                 VerticalOptions = LayoutOptions.Center,
                 HorizontalOptions = LayoutOptions.Center,
                 BackgroundColor = Color.White
             };
-            Label MiddleText1 = new Label()
-            {
+            Label MiddleText1 = new Label() {
                 Text = "23%",
                 FontSize = 20,
                 FontAttributes = FontAttributes.Bold
 
             };
-            Label MiddleText2 = new Label()
-            {
+            Label MiddleText2 = new Label() {
                 Text = "mobile",
                 FontSize = 10,
                 FontAttributes = FontAttributes.Bold
@@ -85,15 +79,13 @@ namespace Tulsi
 
             //Toolbar taps
             TapGestureRecognizer ToolbarTap1 = new TapGestureRecognizer();
-            ToolbarTap1.Tapped += (s, e) =>
-            {
+            ToolbarTap1.Tapped += (s, e) => {
                 this.ShowMenu();
             };
             Menu.GestureRecognizers.Add(ToolbarTap1);
 
             TapGestureRecognizer ToolbarTap2 = new TapGestureRecognizer();
-            ToolbarTap2.Tapped += (s, e) =>
-            {
+            ToolbarTap2.Tapped += (s, e) => {
                 SearchPage sp = new SearchPage();
                 Application.Current.MainPage.Navigation.PushAsync(sp);
             };
@@ -102,8 +94,7 @@ namespace Tulsi
             //In page navigation
 
             TapGestureRecognizer InPageNavigationTap2 = new TapGestureRecognizer();
-            InPageNavigationTap2.Tapped += (s, e) =>
-            {
+            InPageNavigationTap2.Tapped += (s, e) => {
                 BuyerRankingsPage brp = new BuyerRankingsPage();
                 Application.Current.MainPage.Navigation.PushAsync(brp);
             };
@@ -111,8 +102,7 @@ namespace Tulsi
             RanksLabel.GestureRecognizers.Add(InPageNavigationTap2);
 
             TapGestureRecognizer InPageNavigationTap3 = new TapGestureRecognizer();
-            InPageNavigationTap3.Tapped += (s, e) =>
-            {
+            InPageNavigationTap3.Tapped += (s, e) => {
                 LatePaymentsPage lpp = new LatePaymentsPage();
                 Application.Current.MainPage.Navigation.PushAsync(lpp);
             };
@@ -121,10 +111,8 @@ namespace Tulsi
             RanksLabel.GestureRecognizers.Add(InPageNavigationTap2);
 
         }
-        void OnSelection(object sender, SelectedItemChangedEventArgs e)
-        {
-            if (e.SelectedItem == null)
-            {
+        void OnSelection(object sender, SelectedItemChangedEventArgs e) {
+            if (e.SelectedItem == null) {
                 return; //ItemSelected is called on deselection, which results in SelectedItem being set to null
             }
             BuyerProfilePage bpp = new BuyerProfilePage();

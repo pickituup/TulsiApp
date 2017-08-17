@@ -69,10 +69,6 @@ namespace Tulsi.NavigationFramework {
                 {
                     ViewType.DashboardPage,
                     () => new ViewBuider<DashboardPage>().GetViewInNavigationFrame()
-                },
-                {
-                    ViewType.PasswordRecoveryPage,
-                    () => new ViewBuider<PasswordRecoveryPage>().GetViewInNavigationFrame()
                 }
             };
         }
@@ -94,6 +90,18 @@ namespace Tulsi.NavigationFramework {
                 {
                     ViewType.PasswordRecoveryPage,
                     () => new ViewBuider<PasswordRecoveryPage>().GetView()
+                },
+                {
+                    ViewType.ProfitPage,
+                    () => new ViewBuider<ProfitPage>().GetView()
+                },
+                {
+                    ViewType.BuyerPage,
+                    () => new ViewBuider<BuyerPage>().GetView()
+                },
+                {
+                    ViewType.GrowerPage,
+                    () => new ViewBuider<GrowerPage>().GetView()
                 }
             };
         }

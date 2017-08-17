@@ -26,14 +26,19 @@ namespace Tulsi.NavigationFramework {
         /// <summary>
         /// 
         /// </summary>
-        public async void NavigateTo(ViewType viewType) {
-            //
-            // TODO: check if the view from the TOP of navigation stack equal to the required viewType
-            // (return, and just keep displaing that view)
-            //
+        public void NavigateTo(ViewType viewType) {
+            Page pageToPush = (Page)_viewContainer.GetViewByType(viewType);
 
-            await Application.Current.MainPage.Navigation.PopToRootAsync();
-            await Application.Current.MainPage.Navigation.PushAsync((Page)_viewContainer.GetViewByType(viewType));
+            Page relativePageFromNavigationStack =
+                Application.Current.MainPage.Navigation.NavigationStack
+                .FirstOrDefault(p => p.GetType() == pageToPush.GetType());
+
+            if (relativePageFromNavigationStack != null) {
+                moveToTheExistingPageInNavigationStack(relativePageFromNavigationStack);
+            }
+            else {
+                pushPage(pageToPush);
+            }
         }
 
         /// <summary>
@@ -52,6 +57,38 @@ namespace Tulsi.NavigationFramework {
         /// <returns></returns>
         private Page getViewInNavigationFrameByType(ViewType viewType) {
             return _viewContainer.GetViewInNavigationFrameByType(viewType);
+        }
+
+        /// <summary>
+        /// PageToGoTo must be also setted in navigation stack.
+        /// Pages which goes after 'pageToGoTo' simply will be poped without animations.
+        /// </summary>
+        /// <param name="pageToGoTo"></param>
+        private async void moveToTheExistingPageInNavigationStack(Page pageToGoTo) {
+            List<Page> pagesToLeaveInStack = new List<Page>();
+
+            foreach (Page page in Application.Current.MainPage.Navigation.NavigationStack) {
+                pagesToLeaveInStack.Add(page);
+
+                if (page.Equals(pageToGoTo)) {
+                    break;
+                }
+            }
+
+            int timesToPop = Application.Current.MainPage.Navigation.NavigationStack
+                .Except(pagesToLeaveInStack).Count();
+
+            for (int i = 0; i < timesToPop; i++) {
+                await Application.Current.MainPage.Navigation.PopAsync(false);
+            }
+        }
+
+        /// <summary>
+        /// Pushes 'pageToPush' to the Navigation stack.
+        /// </summary>
+        /// <param name="targetPage"></param>
+        private async void pushPage(Page pageToPush) {
+            await Application.Current.MainPage.Navigation.PushAsync(pageToPush);
         }
     }
 }

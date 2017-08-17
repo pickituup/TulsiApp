@@ -19,6 +19,21 @@ namespace Tulsi.NavigationFramework {
         /// <summary>
         /// 'Main' dashboard page
         /// </summary>
-        DashboardPage
+        DashboardPage,
+
+        /// <summary>
+        /// ProfitPage
+        /// </summary>
+        ProfitPage,
+
+        /// <summary>
+        /// BuyerPage
+        /// </summary>
+        BuyerPage,
+
+        /// <summary>
+        /// GrowerPage
+        /// </summary>
+        GrowerPage
     }
 }

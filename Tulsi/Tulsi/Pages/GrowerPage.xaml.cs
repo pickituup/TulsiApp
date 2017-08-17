@@ -3,18 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Tulsi.NavigationFramework;
 using Xamarin.Forms;
 using Syncfusion.SfChart.XForms;
 using Tulsi.ViewModels;
 using SlideOverKit;
 
-namespace Tulsi
-{
-    public partial class GrowerPage : MenuContainerPage
-    {
-        public GrowerPage()
-        {
+namespace Tulsi {
+    public partial class GrowerPage : MenuContainerPage, IView {
+        public GrowerPage() {
             InitializeComponent();
 
             GrowerViewModel gvm = new GrowerViewModel();
@@ -28,8 +25,7 @@ namespace Tulsi
             BuyerViewModel bvm = new BuyerViewModel();
             this.BindingContext = bvm;
             TransactionsListView.ItemsSource = bvm.TransactionsData;
-            TransactionsListView.ItemSelected += (sender, e) =>
-            {
+            TransactionsListView.ItemSelected += (sender, e) => {
                 ((ListView)sender).SelectedItem = null;
             };
 
@@ -38,30 +34,26 @@ namespace Tulsi
 
             //Toolbar taps
             TapGestureRecognizer ToolbarTap1 = new TapGestureRecognizer();
-            ToolbarTap1.Tapped += (s, e) =>
-            {
+            ToolbarTap1.Tapped += (s, e) => {
                 this.ShowMenu();
             };
             Menu.GestureRecognizers.Add(ToolbarTap1);
 
             TapGestureRecognizer ToolbarTap2 = new TapGestureRecognizer();
-            ToolbarTap2.Tapped += (s, e) =>
-            {
+            ToolbarTap2.Tapped += (s, e) => {
                 SearchPage sp = new SearchPage();
                 Application.Current.MainPage.Navigation.PushAsync(sp);
             };
             Search.GestureRecognizers.Add(ToolbarTap2);
 
             //In page navigation
-            TransactionsListView.ItemSelected += (sender, e) =>
-                {
-                    GrowerProfilePage gpp = new GrowerProfilePage();
-                    Application.Current.MainPage.Navigation.PushAsync(gpp);
-                };
+            TransactionsListView.ItemSelected += (sender, e) => {
+                GrowerProfilePage gpp = new GrowerProfilePage();
+                Application.Current.MainPage.Navigation.PushAsync(gpp);
+            };
 
             SfChart chart = new SfChart();
-            DoughnutSeries doughnutSeries = new DoughnutSeries()
-            {
+            DoughnutSeries doughnutSeries = new DoughnutSeries() {
                 ItemsSource = gvm.ChartData,
                 XBindingPath = "Name",
                 YBindingPath = "Value",
@@ -85,21 +77,18 @@ namespace Tulsi
             //chart.BackgroundColor = Color.FromHex("#F3F3F3");
             ChartGrid.Children.Add(chart);
 
-            StackLayout MiddleStack = new StackLayout()
-            {
+            StackLayout MiddleStack = new StackLayout() {
                 VerticalOptions = LayoutOptions.Center,
                 HorizontalOptions = LayoutOptions.Center,
-                BackgroundColor=Color.White
+                BackgroundColor = Color.White
             };
-            Label MiddleText1 = new Label()
-            {
+            Label MiddleText1 = new Label() {
                 Text = "23%",
                 FontSize = 20,
                 FontAttributes = FontAttributes.Bold
 
             };
-            Label MiddleText2 = new Label()
-            {
+            Label MiddleText2 = new Label() {
                 Text = "mobile",
                 FontSize = 10,
                 FontAttributes = FontAttributes.Bold
@@ -110,16 +99,13 @@ namespace Tulsi
             ChartGrid.Children.Add(MiddleStack);
 
             TransactionsListView.ItemsSource = gvm.TransactionsData;
-            TransactionsListView.ItemSelected += (sender, e) =>
-            {
+            TransactionsListView.ItemSelected += (sender, e) => {
                 ((ListView)sender).SelectedItem = null;
             };
         }
 
-        void OnSelection(object sender, SelectedItemChangedEventArgs e)
-        {
-            if (e.SelectedItem == null)
-            {
+        void OnSelection(object sender, SelectedItemChangedEventArgs e) {
+            if (e.SelectedItem == null) {
                 return; //ItemSelected is called on deselection, which results in SelectedItem being set to null
             }
             GrowerProfilePage gpp = new GrowerProfilePage();
