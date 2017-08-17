@@ -26,49 +26,49 @@ namespace Tulsi.Menu {
                             Assembly assembly = GetType().GetTypeInfo().Assembly;
                             Stream stream = assembly.GetManifestResourceStream("Tulsi.Images.menu_buyer.png");
                             return stream; }),
-                    ViewType = ViewType.LoginPage },
+                    ViewType = ViewType.BuyerPage },
                 new SideMenuItem {
                     Title = "Grower",
                     Image = ImageSource.FromStream(()=> {
                             Assembly assembly = GetType().GetTypeInfo().Assembly;
                             Stream stream = assembly.GetManifestResourceStream("Tulsi.Images.menu_grower.png");
                             return stream; }),
-                    ViewType = ViewType.LoginPage },
+                    ViewType = ViewType.GrowerPage },
                 new SideMenuItem {
                     Title = "Audit Log",
                     Image = ImageSource.FromStream(()=> {
                             Assembly assembly = GetType().GetTypeInfo().Assembly;
                             Stream stream = assembly.GetManifestResourceStream("Tulsi.Images.menu_audit.png");
                             return stream; }),
-                    ViewType = ViewType.LoginPage },
+                    ViewType = ViewType.AuditLogPage },
                 new SideMenuItem {
                     Title = "Report",
                     Image = ImageSource.FromStream(()=> {
                             Assembly assembly = GetType().GetTypeInfo().Assembly;
                             Stream stream = assembly.GetManifestResourceStream("Tulsi.Images.menu_report.png");
                             return stream; }),
-                    ViewType = ViewType.LoginPage },
+                    ViewType = ViewType.ReportsPage },
                 new SideMenuItem {
                     Title = "Chat",
                     Image = ImageSource.FromStream(()=> {
                             Assembly assembly = GetType().GetTypeInfo().Assembly;
                             Stream stream = assembly.GetManifestResourceStream("Tulsi.Images.menu_chat.png");
                             return stream; }),
-                    ViewType = ViewType.LoginPage },
+                    ViewType = ViewType.ChatPage },
                 new SideMenuItem {
                     Title = "Settings",
                     Image = ImageSource.FromStream(()=> {
                             Assembly assembly = GetType().GetTypeInfo().Assembly;
                             Stream stream = assembly.GetManifestResourceStream("Tulsi.Images.menu_settings.png");
                             return stream; }),
-                    ViewType = ViewType.LoginPage },
+                    ViewType = ViewType.SettingsPage },
                 new SideMenuItem {
                     Title = "Me",
                     Image = ImageSource.FromStream(()=> {
                             Assembly assembly = GetType().GetTypeInfo().Assembly;
                             Stream stream = assembly.GetManifestResourceStream("Tulsi.Images.menu_me.png");
                             return stream; }),
-                    ViewType = ViewType.LoginPage }
+                    ViewType = ViewType.ProfilePage }
             };
         }
     }

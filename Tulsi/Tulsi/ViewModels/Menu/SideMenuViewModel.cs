@@ -32,7 +32,7 @@ namespace Tulsi.ViewModels.Menu {
             get { return _selectedSideMenuItem; }
             set {
                 if (SetProperty(ref _selectedSideMenuItem, value)) {
-                    BaseSingleton<ViewSwitchingLogic>.Instance.BuildNavigationStack(value.ViewType);
+                    BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(value.ViewType);
                 }
             }
         }
@@ -49,7 +49,7 @@ namespace Tulsi.ViewModels.Menu {
             SideMenuItems = _sideMenuContainer.BuildSideMenuItems(); 
 
             DisplayProfitPageCommand = new Command(() => {
-                BaseSingleton<ViewSwitchingLogic>.Instance.BuildNavigationStack(ViewType.LoginPage);
+                BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.ProfitPage);
             });
         }
 

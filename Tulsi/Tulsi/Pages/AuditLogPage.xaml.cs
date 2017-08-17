@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Tulsi.NavigationFramework;
 using Xamarin.Forms;
 using Tulsi.ViewModels;
 using SlideOverKit;
 
 namespace Tulsi
 {
-    public partial class AuditLogPage : MenuContainerPage
+    public partial class AuditLogPage : MenuContainerPage, IView
     {
         public AuditLogPage()
         {

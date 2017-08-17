@@ -46,6 +46,7 @@ namespace Tulsi {
                 //Application.Current.MainPage = new NavigationPage(prp);
 
                 //BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.PasswordRecoveryPage);
+                DisplayAlert("Navigation", "Sign up action", "OK");
             };
             ForgotPasswordLink.GestureRecognizers.Add(forgotPasswordTapGestureRecognizer);
 

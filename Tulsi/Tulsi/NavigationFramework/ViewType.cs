@@ -34,6 +34,31 @@ namespace Tulsi.NavigationFramework {
         /// <summary>
         /// GrowerPage
         /// </summary>
-        GrowerPage
+        GrowerPage,
+
+        /// <summary>
+        /// AuditLogPage
+        /// </summary>
+        AuditLogPage,
+
+        /// <summary>
+        /// ReportsPage
+        /// </summary>
+        ReportsPage,
+
+        /// <summary>
+        /// ChatPage
+        /// </summary>
+        ChatPage,
+
+        /// <summary>
+        /// SettingsPage
+        /// </summary>
+        SettingsPage,
+
+        /// <summary>
+        /// ProfilePage
+        /// </summary>
+        ProfilePage
     }
 }

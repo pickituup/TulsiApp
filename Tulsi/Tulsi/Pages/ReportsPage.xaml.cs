@@ -3,16 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Tulsi.NavigationFramework;
 using Xamarin.Forms;
 using SlideOverKit;
 
-namespace Tulsi
-{
-    public partial class ReportsPage : MenuContainerPage
-    {
-        public ReportsPage()
-        {
+namespace Tulsi {
+    public partial class ReportsPage : MenuContainerPage, IView {
+        public ReportsPage() {
             InitializeComponent();
 
 
@@ -24,15 +21,13 @@ namespace Tulsi
 
             //Toolbar taps
             TapGestureRecognizer ToolbarTap1 = new TapGestureRecognizer();
-            ToolbarTap1.Tapped += (s, e) =>
-            {
+            ToolbarTap1.Tapped += (s, e) => {
                 this.ShowMenu();
             };
             Menu.GestureRecognizers.Add(ToolbarTap1);
 
             TapGestureRecognizer ToolbarTap2 = new TapGestureRecognizer();
-            ToolbarTap2.Tapped += (s, e) =>
-            {
+            ToolbarTap2.Tapped += (s, e) => {
                 SearchPage sp = new SearchPage();
                 Application.Current.MainPage.Navigation.PushAsync(sp);
             };
@@ -40,48 +35,42 @@ namespace Tulsi
 
             //In page navigation
             TapGestureRecognizer InPageNavigationTap1 = new TapGestureRecognizer();
-            InPageNavigationTap1.Tapped += (s, e) =>
-            {
+            InPageNavigationTap1.Tapped += (s, e) => {
                 BankAccountsPage bap = new BankAccountsPage();
                 Application.Current.MainPage.Navigation.PushAsync(bap);
             };
             BankReport.GestureRecognizers.Add(InPageNavigationTap1);
 
             TapGestureRecognizer InPageNavigationTap2 = new TapGestureRecognizer();
-            InPageNavigationTap2.Tapped += (s, e) =>
-            {
+            InPageNavigationTap2.Tapped += (s, e) => {
                 GrowerPage gp = new GrowerPage();
                 Application.Current.MainPage.Navigation.PushAsync(gp);
             };
             GrowerReport.GestureRecognizers.Add(InPageNavigationTap2);
 
             TapGestureRecognizer InPageNavigationTap3 = new TapGestureRecognizer();
-            InPageNavigationTap3.Tapped += (s, e) =>
-            {
+            InPageNavigationTap3.Tapped += (s, e) => {
                 BuyerPage bp = new BuyerPage();
                 Application.Current.MainPage.Navigation.PushAsync(bp);
             };
             BuyerReport.GestureRecognizers.Add(InPageNavigationTap3);
 
             TapGestureRecognizer InPageNavigationTap4 = new TapGestureRecognizer();
-            InPageNavigationTap4.Tapped += (s, e) =>
-            {
+            InPageNavigationTap4.Tapped += (s, e) => {
                 ArrivalPage ap = new ArrivalPage();
                 Application.Current.MainPage.Navigation.PushAsync(ap);
             };
             ArrivalReport.GestureRecognizers.Add(InPageNavigationTap4);
 
             TapGestureRecognizer InPageNavigationTap5 = new TapGestureRecognizer();
-            InPageNavigationTap5.Tapped += (s, e) =>
-            {
+            InPageNavigationTap5.Tapped += (s, e) => {
                 ExpensesPage ep = new ExpensesPage();
                 Application.Current.MainPage.Navigation.PushAsync(ep);
             };
             ExpensesReport.GestureRecognizers.Add(InPageNavigationTap5);
 
             TapGestureRecognizer InPageNavigationTap6 = new TapGestureRecognizer();
-            InPageNavigationTap6.Tapped += (s, e) =>
-            {
+            InPageNavigationTap6.Tapped += (s, e) => {
                 AuditLogPage alp = new AuditLogPage();
                 Application.Current.MainPage.Navigation.PushAsync(alp);
             };

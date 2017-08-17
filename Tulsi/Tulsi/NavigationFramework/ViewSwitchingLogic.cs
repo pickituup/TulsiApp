@@ -1,4 +1,6 @@
-﻿using Xamarin.Forms;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Xamarin.Forms;
 
 namespace Tulsi.NavigationFramework {
     public sealed class ViewSwitchingLogic {
@@ -74,7 +76,7 @@ namespace Tulsi.NavigationFramework {
                 .Except(pagesToLeaveInStack).Count();
 
             for (int i = 0; i < timesToPop; i++) {
-                await Application.Current.MainPage.Navigation.PopAsync(false);
+                await Application.Current.MainPage.Navigation.PopAsync();
             }
         }
 
