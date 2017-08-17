@@ -50,29 +50,6 @@ namespace Tulsi {
             //Menu
             SideMenu = new SideMenuView();
 
-            /*LoginPage lp = new LoginPage();
-            DashboardPage dp = new DashboardPage();
-            PasswordRecoveryPage prp = new PasswordRecoveryPage();
-            PasscodePage pcp = new PasscodePage();
-            LadaanPage lap = new LadaanPage();
-            TodayRatesPage trp = new TodayRatesPage();
-            ChatPage cp = new ChatPage();
-            ProfitPage pp = new ProfitPage();
-            ExpensesListPage ep = new ExpensesListPage();
-            BankAccountsPage bp = new BankAccountsPage();
-            BankAccountDetailsPage bdp = new BankAccountDetailsPage();
-            ArrivalPage ap = new ArrivalPage();
-            ArrivalDetailsPage adp = new ArrivalDetailsPage();
-            GrowerProfilePage gpp = new GrowerProfilePage();
-            BuyerProfilePage bpp = new BuyerProfilePage();
-            LatePaymentsPage lpp = new LatePaymentsPage();
-            BuyerRankingsPage brp = new BuyerRankingsPage();
-            SearchPage sp = new SearchPage();
-            StockPendingPage spp = new StockPendingPage();
-            StockPendingDetailsPage spdp = new StockPendingDetailsPage();
-            SetupDashboardPage sdp = new SetupDashboardPage();
-            NewsPage np = new NewsPage();*/
-
             DashboardPage dp = new DashboardPage();
 
 
