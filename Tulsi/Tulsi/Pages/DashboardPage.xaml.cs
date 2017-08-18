@@ -21,8 +21,8 @@ namespace Tulsi {
 
             _viewModel = new DashboardViewModel();
 
-            DashboardViewModel dvm = ((App)Application.Current).DashboardVM;
-            BindingContext = dvm;
+            //DashboardViewModel dvm = ((App)Application.Current).DashboardVM;
+            BindingContext = _viewModel = new DashboardViewModel();
 
 
             Photo1.Source = ImageSource.FromResource("Tulsi.Images.photo1.png");
@@ -70,7 +70,7 @@ namespace Tulsi {
 
             SfChart chart = new SfChart();
             DoughnutSeries doughnutSeries = new DoughnutSeries() {
-                ItemsSource = dvm.ChartData,
+                ItemsSource = _viewModel.ChartData,
                 XBindingPath = "Name",
                 YBindingPath = "Value",
                 DoughnutCoefficient = 0.7,

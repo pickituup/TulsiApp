@@ -45,6 +45,8 @@
     <Compile Include="Helpers\BaseSingleton.cs" />
     <Compile Include="Menu\SideMenuContainer.cs" />
     <Compile Include="Menu\SideMenuItem.cs" />
+    <Compile Include="Model\ChartModel.cs" />
+    <Compile Include="Model\NewsModel.cs" />
     <Compile Include="MVVM.Core\IViewModel.cs" />
     <Compile Include="MVVM.Core\ViewModelBase.cs" />
     <Compile Include="NavigationFramework\IView.cs" />
