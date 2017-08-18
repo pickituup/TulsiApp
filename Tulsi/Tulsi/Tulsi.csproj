@@ -43,8 +43,6 @@
     <Compile Include="Controls\RoundedContentView.cs" />
     <Compile Include="Controls\RoundedView.cs" />
     <Compile Include="Helpers\BaseSingleton.cs" />
-    <Compile Include="Model\DataContainers\BuyerPageTransactionsContainer.cs" />
-    <Compile Include="Model\DataContainers\DataItems\BuyerPageTransactionItem.cs" />
     <Compile Include="Model\DataContainers\SideMenuContainer.cs" />
     <Compile Include="Model\DataContainers\DataItems\SideMenuItem.cs" />
     <Compile Include="Model\ChartModel.cs" />

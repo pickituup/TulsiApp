@@ -5,6 +5,8 @@
              x:Class="Tulsi.Pages.Demo"
                                NavigationPage.HasNavigationBar="False">
 
+    <!--<ListView ItemsSource="{Binding Path=}"/>-->
+    
     <!--<Image>
         <Image.GestureRecognizers>
             <TapGestureRecognizer Command="{Binding Path=}"/>

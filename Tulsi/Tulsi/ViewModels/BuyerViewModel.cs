@@ -52,9 +52,8 @@ namespace Tulsi.ViewModels
         /// </summary>
         public ICommand DisplayLatePaymentsPageCommand { get; private set; }
 
-
         /// <summary>
-        /// 
+        /// Values are hard coded...
         /// </summary>
         public List<Transaction> TransactionsData { get; private set; }
 

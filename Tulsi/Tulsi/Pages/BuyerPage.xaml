@@ -220,10 +220,13 @@
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="*" />
               </Grid.RowDefinitions>
-              <Label Text="BUYER TRANSACTIONS" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"  />
               
-              <ListView x:Name="TransactionsListView" 
-                        SeparatorVisibility="None" 
+              <Label Text="BUYER TRANSACTIONS" 
+                     HorizontalTextAlignment="Center"
+                     VerticalTextAlignment="Center"  />
+              
+              <ListView SeparatorVisibility="None"
+                        ItemsSource="{Binding Path=TransactionsData}"
                         RowHeight="50" 
                         ItemTapped="OnSelection" 
                         Grid.Row="1">

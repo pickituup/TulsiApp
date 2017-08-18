@@ -142,8 +142,11 @@ namespace Tulsi.NavigationFramework {
                 {
                     ViewType.LatePaymentsPage,
                     () => new ViewBuider<LatePaymentsPage>().GetView()
+                },
+                {
+                    ViewType.BuyerProfilePage,
+                    () => new ViewBuider<BuyerProfilePage>().GetView()
                 }
-
             };
         }
     }

@@ -84,6 +84,11 @@ namespace Tulsi.NavigationFramework {
         /// <summary>
         /// LatePaymentsPage
         /// </summary>
-        LatePaymentsPage
+        LatePaymentsPage,
+
+        /// <summary>
+        /// BuyerProfilePage
+        /// </summary>
+        BuyerProfilePage
     }
 }

@@ -21,10 +21,6 @@ namespace Tulsi {
             InitializeComponent();
 
             DashboardViewModel dvm = new DashboardViewModel();
-            //BindingContext = dvm;
-
-            //int hd = DependencyService.Get<IDisplaySize>().GetHeightDiP();
-            //AbsoluteLayout.SetLayoutBounds(SideMenuOverlay, new Rectangle(0, 0, 0.9, hd - 20));
 
             SfChart chart = new SfChart();
             DoughnutSeries doughnutSeries = new DoughnutSeries() {
@@ -76,8 +72,6 @@ namespace Tulsi {
 
             _viewModel = new BuyerViewModel();
             this.BindingContext = _viewModel;
-
-            TransactionsListView.ItemsSource = _viewModel.TransactionsData;
         }
 
         /// <summary>
@@ -96,11 +90,12 @@ namespace Tulsi {
         /// <param name="e"></param>
         void OnSelection(object sender, SelectedItemChangedEventArgs e) {
             if (e.SelectedItem == null) {
-                return; //ItemSelected is called on deselection, which results in SelectedItem being set to null
+                return; 
             }
-            BuyerProfilePage bpp = new BuyerProfilePage();
-            Application.Current.MainPage.Navigation.PushAsync(bpp);
-            //((ListView)sender).SelectedItem = null; //uncomment line if you want to disable the visual selection state.
+            
+            BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.BuyerProfilePage);
+
+            ((ListView)sender).SelectedItem = null; 
         }
     }
 }
