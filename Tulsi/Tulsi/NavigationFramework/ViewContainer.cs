@@ -122,6 +122,10 @@ namespace Tulsi.NavigationFramework {
                 {
                     ViewType.ProfilePage,
                     () => new ViewBuider<ProfilePage>().GetView()
+                },
+                {
+                    ViewType.SearchPage,
+                    () => new ViewBuider<SearchPage>().GetView()
                 }
             };
         }

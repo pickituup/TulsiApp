@@ -11,7 +11,7 @@ using Tulsi.ViewModels;
 using SlideOverKit;
 
 namespace Tulsi {
-    public partial class BuyerPage : MenuContainerPage, IView {
+    public partial class BuyerPage : Pages.PageWithSideMenuBase, IView {
         public BuyerPage() {
             InitializeComponent();
 
@@ -76,7 +76,7 @@ namespace Tulsi {
 
             //Slide menu creating
             //SlideMenu = ((App)Application.Current).SideMenu;
-            SlideMenu = new SideMenuView();
+            //SlideMenu = new SideMenuView();
 
             //Toolbar taps
             TapGestureRecognizer ToolbarTap1 = new TapGestureRecognizer();
@@ -100,7 +100,7 @@ namespace Tulsi {
                 Application.Current.MainPage.Navigation.PushAsync(brp);
             };
             Ranks.GestureRecognizers.Add(InPageNavigationTap2);
-            RanksLabel.GestureRecognizers.Add(InPageNavigationTap2);
+            //RanksLabel.GestureRecognizers.Add(InPageNavigationTap2);
 
             TapGestureRecognizer InPageNavigationTap3 = new TapGestureRecognizer();
             InPageNavigationTap3.Tapped += (s, e) => {

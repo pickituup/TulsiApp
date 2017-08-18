@@ -59,6 +59,11 @@ namespace Tulsi.NavigationFramework {
         /// <summary>
         /// ProfilePage
         /// </summary>
-        ProfilePage
+        ProfilePage,
+
+        /// <summary>
+        /// SearchPage
+        /// </summary>
+        SearchPage
     }
 }
