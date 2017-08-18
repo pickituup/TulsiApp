@@ -10,25 +10,18 @@ using SlideOverKit;
 
 namespace Tulsi {
     public partial class SearchPage : MenuContainerPage, IView {
+
+        private readonly SearchViewModel _viewModel;
+
         public SearchPage() {
             InitializeComponent();
 
-            SearchViewModel svm = ((App)Application.Current).SearchVM;
-            SearchResultListView.ItemsSource = svm.Result;
-            SearchResultListView.ItemSelected += (sender, e) => {
-                ((ListView)sender).SelectedItem = null;
-            };
-
-            //Slide menu creating
-            //SlideMenu = ((App)Application.Current).SideMenu;
             SlideMenu = new SideMenuView();
 
-            //Toolbar taps
-            TapGestureRecognizer menuToolbarTap1 = new TapGestureRecognizer();
-            menuToolbarTap1.Tapped += (s, e) => {
-                this.ShowMenu();
-            };
-            Menu.GestureRecognizers.Add(menuToolbarTap1);
+            BindingContext = _viewModel = new SearchViewModel();
+
+
+
 
             //In page navigation
             TapGestureRecognizer BuyersTap = new TapGestureRecognizer();
@@ -50,6 +43,10 @@ namespace Tulsi {
             };
             GrowersArea.GestureRecognizers.Add(GrowersTap);
 
+        }
+
+        private void ShowMenuCommand(object sender, EventArgs e) {
+            ShowMenu();
         }
     }
 }

@@ -8,10 +8,11 @@ using Xamarin.Forms;
 using Tulsi.ViewModels;
 using Syncfusion.DataSource;
 using SlideOverKit;
+using Tulsi.NavigationFramework;
 
 namespace Tulsi
 {
-    public partial class TodayRatesPage : MenuContainerPage
+    public partial class TodayRatesPage : MenuContainerPage, IView
     {
         public TodayRatesPage()
         {
@@ -26,7 +27,7 @@ namespace Tulsi
             AbsoluteLayout.SetLayoutBounds(SideMenuOverlay, new Rectangle(0, 0, 0.9, hd - 20));
 
             //Slide menu creating
-            SlideMenu = ((App)Application.Current).SideMenu;
+            SlideMenu = new SlideMenuView();
 
             //Toolbar taps
             TapGestureRecognizer ToolbarTap1 = new TapGestureRecognizer();

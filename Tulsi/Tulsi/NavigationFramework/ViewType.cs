@@ -7,42 +7,42 @@ using System.Threading.Tasks;
 namespace Tulsi.NavigationFramework {
     public enum ViewType {
         /// <summary>
-        /// Base login page
+        ///     Base login page
         /// </summary>
         LoginPage,
 
         /// <summary>
-        /// Base password recovery page
+        ///     Base password recovery page
         /// </summary>
         PasswordRecoveryPage,
 
         /// <summary>
-        /// 'Main' dashboard page
+        ///     'Main' dashboard page
         /// </summary>
         DashboardPage,
 
         /// <summary>
-        /// ProfitPage
+        ///     ProfitPage
         /// </summary>
         ProfitPage,
 
         /// <summary>
-        /// BuyerPage
+        ///     BuyerPage
         /// </summary>
         BuyerPage,
 
         /// <summary>
-        /// GrowerPage
+        ///     GrowerPage
         /// </summary>
         GrowerPage,
 
         /// <summary>
-        /// AuditLogPage
+        ///     AuditLogPage
         /// </summary>
         AuditLogPage,
 
         /// <summary>
-        /// ReportsPage
+        ///     ReportsPage
         /// </summary>
         ReportsPage,
 
@@ -52,18 +52,28 @@ namespace Tulsi.NavigationFramework {
         ChatPage,
 
         /// <summary>
-        /// SettingsPage
+        ///     SettingsPage
         /// </summary>
         SettingsPage,
 
         /// <summary>
-        /// ProfilePage
+        ///     ProfilePage
         /// </summary>
         ProfilePage,
 
         /// <summary>
-        /// SearchPage
+        ///     SearchPage
         /// </summary>
-        SearchPage
+        SearchPage,
+
+        /// <summary>
+        ///     Ladaan page.
+        /// </summary>
+        LadaanPage,
+
+        /// <summary>
+        ///     Today rate page
+        /// </summary>
+        TodayRatePage
     }
 }

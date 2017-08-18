@@ -17,7 +17,6 @@ namespace Tulsi {
         public AuditLogViewModel AuditLogVM;
         public BuyerViewModel BuyerVM;
         public BuyerRankingsViewModel BuyerRankingsVM;
-        public DashboardViewModel DashboardVM;
         public ExpensesViewModel ExpensesVM;
         public GrowerViewModel GrowerVM;
         public LadaanViewModel LadaanVM;
@@ -36,7 +35,6 @@ namespace Tulsi {
             AuditLogVM = new AuditLogViewModel();
             BuyerVM = new BuyerViewModel();
             BuyerRankingsVM = new BuyerRankingsViewModel();
-            DashboardVM = new DashboardViewModel();
             ExpensesVM = new ExpensesViewModel();
             GrowerVM = new GrowerViewModel();
             LadaanVM = new LadaanViewModel();

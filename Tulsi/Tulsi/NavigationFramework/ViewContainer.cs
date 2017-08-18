@@ -126,7 +126,16 @@ namespace Tulsi.NavigationFramework {
                 {
                     ViewType.SearchPage,
                     () => new ViewBuider<SearchPage>().GetView()
-                }
+                },
+                {
+                    ViewType.LadaanPage,
+                    () => new ViewBuider<LadaanPage>().GetView()
+                },
+                {
+                    ViewType.TodayRatePage,
+                    () => new ViewBuider<TodayRatesPage>().GetView()
+                },
+
             };
         }
     }

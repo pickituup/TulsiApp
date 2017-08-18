@@ -26,7 +26,13 @@ namespace Tulsi.ViewModels {
             set { SetProperty(ref _newsData, value); }
         }
 
-        public ICommand DisplaySearchPageCommand { get; set; }
+        public ICommand DisplaySearchPageCommand { get; private set; }
+
+        public ICommand DisplayLaddanPageCommand { get; private set; }
+
+        public ICommand DisplayTodayRatePageCommand { get; private set; }
+
+        public ICommand DisplayBuyerPageCommand { get; private set; }
 
         /// <summary>
         ///     ctor().
@@ -39,7 +45,6 @@ namespace Tulsi.ViewModels {
                 new ChartModel { Name = "Due", Value = 72 }
             };
 
-
             NewsData = new ObservableCollection<NewsModel>()
             {
                 new NewsModel { Picture = "Picture", Header = "Boating to the island", Edited="Midified: date", Icon="Icon" },
@@ -48,6 +53,12 @@ namespace Tulsi.ViewModels {
             };
 
             DisplaySearchPageCommand = new Command(() => BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.SearchPage));
+
+            DisplayLaddanPageCommand = new Command(() => BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.LadaanPage));
+
+            DisplayTodayRatePageCommand = new Command(() => BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.TodayRatePage));
+
+            DisplayBuyerPageCommand = new Command(() => BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.BuyerPage));
         }
 
         public void Dispose() {

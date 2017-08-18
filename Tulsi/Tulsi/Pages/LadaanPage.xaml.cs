@@ -7,10 +7,11 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Tulsi.ViewModels;
 using SlideOverKit;
+using Tulsi.NavigationFramework;
 
 namespace Tulsi
 {
-    public partial class LadaanPage : MenuContainerPage
+    public partial class LadaanPage : MenuContainerPage, IView
     {
         public LadaanPage()
         {
@@ -27,7 +28,7 @@ namespace Tulsi
             AbsoluteLayout.SetLayoutBounds(SideMenuOverlay, new Rectangle(0, 0, 0.9, hd - 20));
 
             //Slide menu creating
-            SlideMenu = ((App)Application.Current).SideMenu;
+            SlideMenu = new SlideMenuView();
 
             //Toolbar taps
             TapGestureRecognizer ToolbarTap1 = new TapGestureRecognizer();

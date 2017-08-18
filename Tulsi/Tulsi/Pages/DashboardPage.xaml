@@ -13,7 +13,6 @@
     <StackLayout x:Name="HeaderLayout" BackgroundColor="#DCDCDC">
 
         <!--  Tool bar  -->
-
         <Grid x:Name="ToolbarGrid" BackgroundColor="#2793F5">
             <Grid.RowDefinitions>
                 <RowDefinition Height="50" />
@@ -62,7 +61,6 @@
         </Grid>
 
         <!--  Main content  -->
-
         <ScrollView>
             <StackLayout x:Name="MainLayout" BackgroundColor="#DCDCDC">
                 <controls:CustomFrame
@@ -75,6 +73,7 @@
                         VerticalTextAlignment="Center" />
                 </controls:CustomFrame>
 
+                <!--  BUYER SUMMARY  -->
                 <controls:CustomFrame
                     Margin="5,0,5,0"
                     BackgroundColor="White"
@@ -91,11 +90,16 @@
                             <RowDefinition Height="auto" />
                             <RowDefinition Height="auto" />
                         </Grid.RowDefinitions>
+                      <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding DisplayBuyerPageCommand}" />
+                      </Grid.GestureRecognizers>
                         <Label
                             Grid.ColumnSpan="2"
                             HorizontalTextAlignment="Center"
                             Text="BUYER SUMMARY"
                             VerticalTextAlignment="Center" />
+
+                        <!--  Chart Grid  -->
                         <Grid
                             x:Name="ChartGrid"
                             Grid.Row="1"
@@ -204,11 +208,12 @@
                     </Grid>
                 </controls:CustomFrame>
 
+                <!--  TODAYS RATES  -->
                 <controls:CustomFrame
                     Margin="5,0,5,0"
                     BackgroundColor="White"
                     BorderRadius="25">
-                    <Grid x:Name="RatesGrid" BackgroundColor="White">
+                    <Grid BackgroundColor="White">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="5*" />
@@ -223,6 +228,10 @@
                             <RowDefinition Height="auto" />
                             <RowDefinition Height="auto" />
                         </Grid.RowDefinitions>
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding DisplayTodayRatePageCommand}" />
+                        </Grid.GestureRecognizers>
+
                         <Label
                             Grid.ColumnSpan="5"
                             HorizontalTextAlignment="Center"
@@ -328,7 +337,7 @@
                     Margin="5,0,5,0"
                     BackgroundColor="White"
                     BorderRadius="25">
-                    <Grid x:Name="ExtraRatesGrid" BackgroundColor="White">
+                    <Grid BackgroundColor="White">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="90" />
@@ -341,6 +350,9 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="80" />
                         </Grid.RowDefinitions>
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding DisplayLaddanPageCommand}" />
+                        </Grid.GestureRecognizers>
                         <Image
                             x:Name="LaddanBackground"
                             Grid.Column="1"
@@ -446,6 +458,7 @@
                     </Grid>
                 </controls:CustomFrame>
 
+                <!--  Weather today  -->
                 <controls:CustomFrame
                     Margin="5,0,5,0"
                     BackgroundColor="White"
@@ -469,7 +482,6 @@
                             HorizontalTextAlignment="Center"
                             Text="TODAYS WEATHER REPORT" />
                         <Image
-                            x:Name="wt1"
                             Grid.Row="1"
                             Grid.Column="1"
                             HeightRequest="6"
@@ -478,7 +490,6 @@
                             VerticalOptions="Center"
                             WidthRequest="6" />
                         <Image
-                            x:Name="wt2"
                             Grid.Row="2"
                             Grid.Column="1"
                             HeightRequest="6"
@@ -487,7 +498,6 @@
                             VerticalOptions="Center"
                             WidthRequest="6" />
                         <Image
-                            x:Name="wt3"
                             Grid.Row="3"
                             Grid.Column="1"
                             HeightRequest="6"
@@ -539,6 +549,7 @@
                     </Grid>
                 </controls:CustomFrame>
 
+                <!--  News report  -->
                 <controls:CustomFrame
                     Margin="5,0,5,0"
                     BackgroundColor="White"
@@ -573,8 +584,8 @@
                                     <RowDefinition Height="80" />
                                 </Grid.RowDefinitions>
                                 <Image
-                                    x:Name="Photo1"
                                     HeightRequest="104"
+                                    Source="{local:ImageResource Tulsi.Images.photo1.png}"
                                     WidthRequest="100" />
                                 <Grid
                                     Grid.Column="1"
@@ -601,18 +612,18 @@
                                             Text="Mоdified: May 10, 2016"
                                             VerticalOptions="Start" />
                                         <Image
-                                            x:Name="User"
                                             HeightRequest="11"
                                             HorizontalOptions="Center"
+                                            Source="{local:ImageResource Tulsi.Images.users.png}"
                                             VerticalOptions="Center"
                                             WidthRequest="14" />
                                     </StackLayout>
                                 </Grid>
                                 <Image
-                                    x:Name="Info1"
                                     Grid.Column="2"
                                     HeightRequest="25"
                                     HorizontalOptions="Center"
+                                    Source="{local:ImageResource Tulsi.Images.info.png}"
                                     VerticalOptions="Center"
                                     WidthRequest="25" />
                             </Grid>
@@ -633,8 +644,8 @@
                                     <RowDefinition Height="80" />
                                 </Grid.RowDefinitions>
                                 <Image
-                                    x:Name="Photo2"
                                     HeightRequest="104"
+                                    Source="{local:ImageResource Tulsi.Images.photo1.png}"
                                     WidthRequest="100" />
                                 <Grid
                                     Grid.Column="1"
@@ -661,18 +672,18 @@
                                             Text="Mоdified: May 10, 2016"
                                             VerticalOptions="Start" />
                                         <Image
-                                            x:Name="User2"
                                             HeightRequest="11"
                                             HorizontalOptions="Center"
+                                            Source="{local:ImageResource Tulsi.Images.users.png}"
                                             VerticalOptions="Center"
                                             WidthRequest="14" />
                                     </StackLayout>
                                 </Grid>
                                 <Image
-                                    x:Name="Info2"
                                     Grid.Column="2"
                                     HeightRequest="25"
                                     HorizontalOptions="Center"
+                                    Source="{local:ImageResource Tulsi.Images.info.png}"
                                     VerticalOptions="Center"
                                     WidthRequest="25" />
                             </Grid>
@@ -693,8 +704,8 @@
                                     <RowDefinition Height="80" />
                                 </Grid.RowDefinitions>
                                 <Image
-                                    x:Name="Photo3"
                                     HeightRequest="104"
+                                    Source="{local:ImageResource Tulsi.Images.photo1.png}"
                                     WidthRequest="100" />
                                 <Grid
                                     Grid.Column="1"
@@ -721,18 +732,18 @@
                                             Text="Mоdified: May 10, 2016"
                                             VerticalOptions="Start" />
                                         <Image
-                                            x:Name="User3"
                                             HeightRequest="11"
                                             HorizontalOptions="Center"
+                                            Source="{local:ImageResource Tulsi.Images.users.png}"
                                             VerticalOptions="Center"
                                             WidthRequest="14" />
                                     </StackLayout>
                                 </Grid>
                                 <Image
-                                    x:Name="Info3"
                                     Grid.Column="2"
                                     HeightRequest="25"
                                     HorizontalOptions="Center"
+                                    Source="{local:ImageResource Tulsi.Images.info.png}"
                                     VerticalOptions="Center"
                                     WidthRequest="25" />
                             </Grid>
