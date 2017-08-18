@@ -3,8 +3,9 @@ using System.IO;
 using System.Reflection;
 using Tulsi.NavigationFramework;
 using Xamarin.Forms;
+using Tulsi.Model.DataContainers.DataItems;
 
-namespace Tulsi.Menu {
+namespace Tulsi.Model.DataContainers {
     public sealed class SideMenuContainer {
 
         /// <summary>

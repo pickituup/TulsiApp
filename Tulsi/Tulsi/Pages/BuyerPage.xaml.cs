@@ -23,8 +23,8 @@ namespace Tulsi {
             DashboardViewModel dvm = new DashboardViewModel();
             //BindingContext = dvm;
 
-            int hd = DependencyService.Get<IDisplaySize>().GetHeightDiP();
-            AbsoluteLayout.SetLayoutBounds(SideMenuOverlay, new Rectangle(0, 0, 0.9, hd - 20));
+            //int hd = DependencyService.Get<IDisplaySize>().GetHeightDiP();
+            //AbsoluteLayout.SetLayoutBounds(SideMenuOverlay, new Rectangle(0, 0, 0.9, hd - 20));
 
             SfChart chart = new SfChart();
             DoughnutSeries doughnutSeries = new DoughnutSeries() {

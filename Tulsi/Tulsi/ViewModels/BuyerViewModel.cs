@@ -8,6 +8,7 @@ using Xamarin.Forms;
 using Tulsi.NavigationFramework;
 using Tulsi.Helpers;
 using Tulsi.MVVM.Core;
+using Tulsi.Model;
 
 namespace Tulsi.ViewModels
 {
@@ -63,12 +64,5 @@ namespace Tulsi.ViewModels
         public void Dispose() {
             throw new NotImplementedException("BuyerViewModel.Dispose - not implemented");
         }
-    }
-
-    public class Transaction
-    {
-        public string Code { get; set; }
-        public string Number { get; set; }
-        public string Quantity { get; set; }
     }
 }
