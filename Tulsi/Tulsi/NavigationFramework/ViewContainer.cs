@@ -135,6 +135,14 @@ namespace Tulsi.NavigationFramework {
                     ViewType.TodayRatePage,
                     () => new ViewBuider<TodayRatesPage>().GetView()
                 },
+                {
+                    ViewType.BuyerRankingsPage,
+                    () => new ViewBuider<BuyerRankingsPage>().GetView()
+                },
+                {
+                    ViewType.LatePaymentsPage,
+                    () => new ViewBuider<LatePaymentsPage>().GetView()
+                }
 
             };
         }

@@ -74,6 +74,16 @@ namespace Tulsi.NavigationFramework {
         /// <summary>
         ///     Today rate page
         /// </summary>
-        TodayRatePage
+        TodayRatePage,
+
+        /// <summary>
+        /// BuyerRankingsPage
+        /// </summary>
+        BuyerRankingsPage,
+
+        /// <summary>
+        /// LatePaymentsPage
+        /// </summary>
+        LatePaymentsPage
     }
 }
