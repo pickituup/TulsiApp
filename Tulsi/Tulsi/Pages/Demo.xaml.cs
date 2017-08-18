@@ -25,5 +25,9 @@ namespace Tulsi.Pages {
         private void TapGestureRecognizer_Tapped_1(object sender, EventArgs e) {
 
         }
+
+        private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e) {
+
+        }
     }
 }

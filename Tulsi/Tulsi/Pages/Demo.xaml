@@ -2,9 +2,13 @@
 <pageBase:PageWithSideMenuBase xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:pageBase="clr-namespace:Tulsi.Pages"
+                               xmlns:toolKit="clr-namespace:Tulsi.ToolKit.BindingValueConverters"
              x:Class="Tulsi.Pages.Demo"
                                NavigationPage.HasNavigationBar="False">
 
+    <!--<ListView ItemsSource="{Binding Path=}"
+              ItemSelected="ListView_ItemSelected"/>-->
+    
     <!--<Image>
         <Image.GestureRecognizers>
             <TapGestureRecognizer Command="{Binding Path=}"/>

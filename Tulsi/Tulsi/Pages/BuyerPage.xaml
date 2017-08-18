@@ -9,22 +9,6 @@
 
   <StackLayout x:Name="HeaderLayout" 
                BackgroundColor="#DCDCDC">
-    <!--<Grid x:Name="ToolbarGrid">
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="10" />
-        <ColumnDefinition Width="20" />
-        <ColumnDefinition Width="*" />
-        <ColumnDefinition Width="20" />
-        <ColumnDefinition Width="10" />
-      </Grid.ColumnDefinitions>
-      <Grid.RowDefinitions>
-        <RowDefinition Height="50" />
-      </Grid.RowDefinitions>
-      <BoxView Color="#2793F5" Grid.ColumnSpan="5" />
-      <Image x:Name="Menu" Source="{local:ImageResource Tulsi.Images.menu.png}"  Grid.Column="1" WidthRequest="20" HeightRequest="17" HorizontalOptions="Center" VerticalOptions="Center" />
-      <Label Grid.Column="2" x:Name="PageTitleLabel" Text="BUYER" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="White" />
-      <Image Grid.Column="3"  x:Name="Search"  WidthRequest="20" HeightRequest="20" HorizontalOptions="Center" VerticalOptions="Center" Source="{local:ImageResource Tulsi.Images.magnifier.png}" />
-    </Grid>-->
 
     <!--ActionBar-->
     <Grid x:Name="ToolbarGrid" 
@@ -52,7 +36,7 @@
       <Label
           x:Name="PageTitleLabel"
           HorizontalOptions="Center"
-          Text="DASHBOARD"
+          Text="BUYER"
           TextColor="White"
           VerticalOptions="Center" />
 
@@ -220,12 +204,15 @@
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="*" />
               </Grid.RowDefinitions>
-              <Label Text="BUYER TRANSACTIONS" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"  />
               
-              <ListView x:Name="TransactionsListView" 
-                        SeparatorVisibility="None" 
+              <Label Text="BUYER TRANSACTIONS" 
+                     HorizontalTextAlignment="Center"
+                     VerticalTextAlignment="Center"  />
+              
+              <ListView SeparatorVisibility="None"
+                        ItemsSource="{Binding Path=TransactionsData}"
                         RowHeight="50" 
-                        ItemTapped="OnSelection" 
+                        ItemTapped="OnItemSelected" 
                         Grid.Row="1">
                 
                 <ListView.ItemTemplate>

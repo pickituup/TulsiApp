@@ -43,14 +43,11 @@
     <Compile Include="Controls\RoundedContentView.cs" />
     <Compile Include="Controls\RoundedView.cs" />
     <Compile Include="Helpers\BaseSingleton.cs" />
-    <Compile Include="Model\DataContainers\BuyerPageTransactionsContainer.cs" />
-    <Compile Include="Model\DataContainers\DataItems\BuyerPageTransactionItem.cs" />
+    <Compile Include="Model\BuyerRanking.cs" />
     <Compile Include="Model\DataContainers\SideMenuContainer.cs" />
     <Compile Include="Model\DataContainers\DataItems\SideMenuItem.cs" />
     <Compile Include="Model\ChartModel.cs" />
-    <Compile Include="Model\LadaanEntry.cs" />
     <Compile Include="Model\NewsModel.cs" />
-    <Compile Include="Model\TodayRatesEntry.cs" />
     <Compile Include="Model\Transaction.cs" />
     <Compile Include="MVVM.Core\IViewModel.cs" />
     <Compile Include="MVVM.Core\ViewModelBase.cs" />
@@ -155,7 +152,9 @@
       <DependentUpon>TodayRatesPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SharedService\IDisplaySize.cs" />
+    <Compile Include="ToolKit\BindingValueConverters\RankingsColorConverter.cs" />
+    <Compile Include="ToolKit\BindingValueConverters\RankingsIconConverter.cs" />
+    <Compile Include="ToolKit\BindingValueConverters\RankingsLabelConverter.cs" />
     <Compile Include="ViewModels\AuditLogViewModel.cs" />
     <Compile Include="ViewModels\BuyerRankingsViewModel.cs" />
     <Compile Include="ViewModels\BuyerViewModel.cs" />
