@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Foundation;
+﻿using Tulsi.iOS.Services;
+using Tulsi.SharedService;
 using UIKit;
 using Xamarin.Forms;
-using Tulsi.iOS.Services;
 
 [assembly: Dependency(typeof(DisplaySizeiOS))]
 namespace Tulsi.iOS.Services {

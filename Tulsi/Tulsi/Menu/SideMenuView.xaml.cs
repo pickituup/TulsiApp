@@ -1,6 +1,7 @@
 ﻿using SlideOverKit;
 using System;
 using Tulsi.NavigationFramework;
+using Tulsi.SharedService;
 using Tulsi.ViewModels.Menu;
 using Xamarin.Forms;
 

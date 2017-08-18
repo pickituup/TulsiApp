@@ -150,6 +150,7 @@
       <DependentUpon>TodayRatesPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SharedService\IDisplaySize.cs" />
     <Compile Include="ViewModels\AuditLogViewModel.cs" />
     <Compile Include="ViewModels\BuyerRankingsViewModel.cs" />
     <Compile Include="ViewModels\BuyerViewModel.cs" />

@@ -10,6 +10,7 @@ using Xamarin.Forms.Xaml;
 using Syncfusion.SfChart.XForms;
 using Tulsi.ViewModels;
 using SlideOverKit;
+using Tulsi.SharedService;
 
 namespace Tulsi
 {

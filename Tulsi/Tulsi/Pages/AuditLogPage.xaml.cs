@@ -7,6 +7,7 @@ using Tulsi.NavigationFramework;
 using Xamarin.Forms;
 using Tulsi.ViewModels;
 using SlideOverKit;
+using Tulsi.SharedService;
 
 namespace Tulsi
 {

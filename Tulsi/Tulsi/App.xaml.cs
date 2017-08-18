@@ -69,13 +69,7 @@ namespace Tulsi {
             // Handle when your app resumes
         }
     }
-    public interface IDisplaySize {
-        int GetWidth();
-        int GetHeight();
-        int GetWidthDiP();
-        int GetHeightDiP();
-        float GetDensity();
-    }
+   
     [ContentProperty("Source")]
     public class ImageResourceExtension : IMarkupExtension {
         public string Source { get; set; }
@@ -101,7 +95,7 @@ namespace Tulsi {
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) {
-            throw new NotImplementedException();
+            return value;
         }
     }
 }

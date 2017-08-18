@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using XamForms.Controls;
 using SlideOverKit;
+using Tulsi.SharedService;
 
 namespace Tulsi
 {

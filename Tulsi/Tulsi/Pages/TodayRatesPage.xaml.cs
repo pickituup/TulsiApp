@@ -9,6 +9,7 @@ using Tulsi.ViewModels;
 using Syncfusion.DataSource;
 using SlideOverKit;
 using Tulsi.NavigationFramework;
+using Tulsi.SharedService;
 
 namespace Tulsi
 {

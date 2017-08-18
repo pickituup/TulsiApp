@@ -9,6 +9,7 @@ using Tulsi.Helpers;
 using Xamarin.Forms;
 using Tulsi.ViewModels;
 using SlideOverKit;
+using Tulsi.SharedService;
 
 namespace Tulsi
 {
