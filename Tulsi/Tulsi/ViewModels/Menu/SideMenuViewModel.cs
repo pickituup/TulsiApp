@@ -31,12 +31,11 @@ namespace Tulsi.ViewModels.Menu {
         public Tulsi.Menu.SideMenuItem SelectedSideMenuItem {
             get { return _selectedSideMenuItem; }
             set {
-                if (SetProperty(ref _selectedSideMenuItem, value)) {
+                if (SetProperty(ref _selectedSideMenuItem, value) && value != null) {
                     BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(value.ViewType);
                 }
             }
         }
-
 
         public ICommand DisplayProfitPageCommand { get; set; }
 

@@ -6,7 +6,10 @@
     xmlns:local="clr-namespace:Tulsi;assembly=Tulsi"
     xmlns:t="clr-namespace:SlideOverKit">
 
-    <Grid RowSpacing="0" VerticalOptions="Start">
+    <Grid
+        BackgroundColor="Transparent"
+        RowSpacing="0"
+        VerticalOptions="Start">
         <Grid.RowDefinitions>
             <RowDefinition Height="130" />
             <RowDefinition Height="*" />
@@ -35,16 +38,16 @@
                     Grid.Column="0"
                     BackgroundColor="Transparent"
                     HorizontalOptions="Center"
+                    Spacing="0"
                     VerticalOptions="Center">
                     <Label
-                        x:Name="SideMenuHeaderTitleLabel"
+                        FontSize="22"
                         Text="Profitable"
                         TextColor="White"
                         VerticalTextAlignment="End" />
                     <Label
-                        x:Name="SideMenuDescriptionTitleLabel"
                         FontAttributes="Bold"
-                        FontSize="10"
+                        FontSize="12"
                         Text="20,000,000 Approx"
                         TextColor="White"
                         VerticalTextAlignment="Start" />
@@ -52,10 +55,10 @@
 
                 <Image
                     Grid.Column="1"
-                    HeightRequest="40"
+                    HeightRequest="50"
                     Source="{local:ImageResource Tulsi.Images.menu_profitability.png}"
                     VerticalOptions="Center"
-                    WidthRequest="40" />
+                    WidthRequest="50" />
             </Grid>
 
             <Image
@@ -67,14 +70,18 @@
                 HorizontalOptions="Center"
                 Source="{local:ImageResource Tulsi.Images.menu_close.png}"
                 VerticalOptions="Start"
-                WidthRequest="20" />
+                WidthRequest="20">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="CloseCommand" />
+                </Image.GestureRecognizers>
+            </Image>
         </Grid>
 
         <!--  Main content  -->
         <Grid
             Grid.Row="1"
             Margin="0,0,0,0"
-            BackgroundColor="White">
+            BackgroundColor="Transparent">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
                 <RowDefinition Height="auto" />
@@ -82,42 +89,42 @@
             </Grid.RowDefinitions>
 
             <ListView
+                x:Name="menuItems"
                 Grid.Row="0"
                 Margin="0,0,0,0"
-                BackgroundColor="Transparent"
+                ItemSelected="Handle_ItemSelected"
                 ItemsSource="{Binding SideMenuItems}"
                 SelectedItem="{Binding SelectedSideMenuItem, Mode=TwoWay}"
-                SeparatorColor="#fafafa"
                 SeparatorVisibility="None"
                 VerticalOptions="Center">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Grid VerticalOptions="Center">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-
-                                <StackLayout
-                                    Grid.Column="0"
-                                    Margin="17,0,0,0"
-                                    Orientation="Horizontal"
-                                    VerticalOptions="Center">
-                                    <Image
-                                        Margin="0,0,0,0"
-                                        HeightRequest="25"
-                                        Source="{Binding Image}"
-                                        VerticalOptions="Center"
-                                        WidthRequest="25" />
-                                    <Label
-                                        Margin="4,0,0,0"
-                                        FontSize="Medium"
-                                        Text="{Binding Title}"
-                                        TextColor="#9d9da3"
-                                        VerticalOptions="Center"
-                                        VerticalTextAlignment="Center" />
-                                </StackLayout>
-                            </Grid>
+                            <ContentView>
+                                <Grid BackgroundColor="Transparent" VerticalOptions="Center">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <StackLayout
+                                        Grid.Column="0"
+                                        Margin="20,0,0,0"
+                                        BackgroundColor="Transparent"
+                                        Orientation="Horizontal"
+                                        Spacing="20"
+                                        VerticalOptions="Center">
+                                        <Image
+                                            Margin="0,0,0,0"
+                                            HeightRequest="20"
+                                            Source="{Binding Image}"
+                                            VerticalOptions="Center"
+                                            WidthRequest="20" />
+                                        <Label
+                                            Margin="0,0,0,0"
+                                            Style="{StaticResource MenuItemStyleLabel}"
+                                            Text="{Binding Title}" />
+                                    </StackLayout>
+                                </Grid>
+                            </ContentView>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>

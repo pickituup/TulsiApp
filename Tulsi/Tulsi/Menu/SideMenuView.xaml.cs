@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Xamarin.Forms;
-using SlideOverKit;
+﻿using SlideOverKit;
+using System;
 using Tulsi.NavigationFramework;
 using Tulsi.ViewModels.Menu;
+using Xamarin.Forms;
 
 namespace Tulsi {
     public partial class SideMenuView : SlideMenuView, IView {
@@ -22,21 +17,19 @@ namespace Tulsi {
             WidthRequest = wd * 0.65;
             MenuOrientations = MenuOrientation.LeftToRight;
             IsFullScreen = true;
-            AnimationDurationMillisecond = 500;
+            AnimationDurationMillisecond = 250;
             BackgroundViewColor = GetPlatformColor();
             BackgroundColor = Color.FromHex("#ffffff");
 
             BindingContext = new SideMenuViewModel();
+        }
 
-            // DashboardPage
-            // BuyerPage
-            // GrowerPage
-            // AuditLogPage
-            // ReportsPage
-            // ChatPage
-            // SettingsPage
-            // ProfilePage
-            // ProfitPage
+        private void Handle_ItemSelected(object sender, SelectedItemChangedEventArgs e) {
+            menuItems.SelectedItem = null;
+        }
+
+        private void CloseCommand(object sender, EventArgs e) {
+            this.HideWithoutAnimations();
         }
 
         private Color GetPlatformColor() {

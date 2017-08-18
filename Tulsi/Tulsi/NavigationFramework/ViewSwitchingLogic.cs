@@ -7,21 +7,21 @@ namespace Tulsi.NavigationFramework {
         private readonly ViewContainer _viewContainer;
 
         /// <summary>
-        /// Public ctor
+        ///     Public ctor
         /// </summary>
         public ViewSwitchingLogic() {
             _viewContainer = new ViewContainer();
         }
 
         /// <summary>
-        /// Creates new navigation stack. Root element will be appropriate to the viewType.
+        ///     Creates new navigation stack. Root element will be appropriate to the viewType.
         /// </summary>
         public void BuildNavigationStack(ViewType viewType) {
             Application.Current.MainPage = GetViewInNavigationFrameByType(viewType);
         }
 
         /// <summary>
-        /// 
+        ///     Navigate by ViewType.
         /// </summary>
         public void NavigateTo(ViewType viewType) {
             Page pageToPush = (Page)_viewContainer.GetViewByType(viewType);
@@ -31,24 +31,24 @@ namespace Tulsi.NavigationFramework {
                 .FirstOrDefault(p => p.GetType() == pageToPush.GetType());
 
             if (relativePageFromNavigationStack != null) {
-                moveToTheExistingPageInNavigationStack(relativePageFromNavigationStack);
+                MoveToTheExistingPageInNavigationStack(relativePageFromNavigationStack);
             }
             else {
-                pushPage(pageToPush);
+                PushPage(pageToPush);
             }
         }
 
         /// <summary>
-        /// Get view of the appropriate type
+        ///     Get view of the appropriate type
         /// </summary>
         /// <param name="viewType"></param>
         /// <returns></returns>
-        private IView GetViewByType(ViewType viewType) {
+        public IView GetViewByType(ViewType viewType) {
             return _viewContainer.GetViewByType(viewType);
         }
 
         /// <summary>
-        /// Get view of the appropriate type wrapped by Xamarin.Forms.NavigationPage
+        ///     Get view of the appropriate type wrapped by Xamarin.Forms.NavigationPage
         /// </summary>
         /// <param name="viewType"></param>
         /// <returns></returns>
@@ -61,7 +61,7 @@ namespace Tulsi.NavigationFramework {
         /// Pages which goes after 'pageToGoTo' simply will be poped without animations.
         /// </summary>
         /// <param name="pageToGoTo"></param>
-        private async void moveToTheExistingPageInNavigationStack(Page pageToGoTo) {
+        private async void MoveToTheExistingPageInNavigationStack(Page pageToGoTo) {
             List<Page> pagesToLeaveInStack = new List<Page>();
 
             foreach (Page page in Application.Current.MainPage.Navigation.NavigationStack) {
@@ -84,7 +84,7 @@ namespace Tulsi.NavigationFramework {
         /// Pushes 'pageToPush' to the Navigation stack.
         /// </summary>
         /// <param name="targetPage"></param>
-        private async void pushPage(Page pageToPush) {
+        private async void PushPage(Page pageToPush) {
             await Application.Current.MainPage.Navigation.PushAsync(pageToPush);
         }
     }
