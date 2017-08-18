@@ -19,13 +19,10 @@ namespace Tulsi {
         public BuyerRankingsViewModel BuyerRankingsVM;
         public ExpensesViewModel ExpensesVM;
         public GrowerViewModel GrowerVM;
-        public LadaanViewModel LadaanVM;
         public LatePaymentsViewModel LatePaymentsVM;
         public ProfileViewModel ProfileVM;
         public ProfitViewModel ProfitVM;
-        public SearchViewModel SearchVM;
         public StockPendingDetailsViewModel StockPendingDetailsVM;
-        public TodayRatesViewModel TodayRatesVM;
         public SideMenuView SideMenu;
 
         public App() {
@@ -37,13 +34,10 @@ namespace Tulsi {
             BuyerRankingsVM = new BuyerRankingsViewModel();
             ExpensesVM = new ExpensesViewModel();
             GrowerVM = new GrowerViewModel();
-            LadaanVM = new LadaanViewModel();
             LatePaymentsVM = new LatePaymentsViewModel();
             ProfileVM = new ProfileViewModel();
             ProfitVM = new ProfitViewModel();
-            SearchVM = new SearchViewModel();
             StockPendingDetailsVM = new StockPendingDetailsViewModel();
-            TodayRatesVM = new TodayRatesViewModel();
 
             //Menu
             SideMenu = new SideMenuView();
