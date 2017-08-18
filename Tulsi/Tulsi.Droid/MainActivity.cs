@@ -10,6 +10,7 @@ using Android.Util;
 using Android.Content;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
+using Tulsi.SharedService;
 
 [assembly: Xamarin.Forms.Dependency(typeof(Tulsi.Droid.DisplaySizeOnAndroid))]
 

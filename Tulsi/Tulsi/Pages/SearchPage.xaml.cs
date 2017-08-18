@@ -13,6 +13,9 @@ namespace Tulsi {
 
         private readonly SearchViewModel _viewModel;
 
+        /// <summary>
+        ///     ctor().
+        /// </summary>
         public SearchPage() {
             InitializeComponent();
 

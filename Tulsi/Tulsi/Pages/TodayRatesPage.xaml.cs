@@ -11,41 +11,32 @@ using SlideOverKit;
 using Tulsi.NavigationFramework;
 using Tulsi.SharedService;
 
-namespace Tulsi
-{
-    public partial class TodayRatesPage : MenuContainerPage, IView
-    {
-        public TodayRatesPage()
-        {
+namespace Tulsi {
+    public partial class TodayRatesPage : MenuContainerPage, IView {
+
+        private readonly TodayRatesViewModel _viewModel;
+
+        public TodayRatesPage() {
             InitializeComponent();
 
-            TodayRatesViewModel trvm = ((App)Application.Current).TodayRatesVM;
-            TodayRatesListView1.ItemsSource = trvm.TodayRatesData;
-            TodayRatesListView2.ItemsSource = trvm.TodayRatesData;
-            TodayRatesListView3.ItemsSource = trvm.TodayRatesData;
+            SlideMenu = new SideMenuView();
+
+            BindingContext = _viewModel = new TodayRatesViewModel();
 
             int hd = DependencyService.Get<IDisplaySize>().GetHeightDiP();
             AbsoluteLayout.SetLayoutBounds(SideMenuOverlay, new Rectangle(0, 0, 0.9, hd - 20));
+        }
 
-            //Slide menu creating
-            SlideMenu = new SlideMenuView();
+        private void Handle_ItemSelected(object sender, SelectedItemChangedEventArgs e) {
+            todayMenuItems.SelectedItem = null;
 
-            //Toolbar taps
-            TapGestureRecognizer ToolbarTap1 = new TapGestureRecognizer();
-            ToolbarTap1.Tapped += (s, e) =>
-            {
-                this.ShowMenu();
-            };
-            Menu.GestureRecognizers.Add(ToolbarTap1);
+            if (todayMenuItems2.IsVisible) {
+                todayMenuItems2.SelectedItem = null;
+            }
+        }
 
-            TapGestureRecognizer ToolbarTap2 = new TapGestureRecognizer();
-            ToolbarTap2.Tapped += (s, e) =>
-            {
-                SearchPage sp = new SearchPage();
-                Application.Current.MainPage.Navigation.PushAsync(sp);
-            };
-            Search.GestureRecognizers.Add(ToolbarTap2);
-
+        private void ShowMenuCommand(object sender, EventArgs e) {
+            ShowMenu();
         }
     }
 }

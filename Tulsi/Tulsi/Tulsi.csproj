@@ -48,7 +48,9 @@
     <Compile Include="Model\DataContainers\SideMenuContainer.cs" />
     <Compile Include="Model\DataContainers\DataItems\SideMenuItem.cs" />
     <Compile Include="Model\ChartModel.cs" />
+    <Compile Include="Model\LadaanEntry.cs" />
     <Compile Include="Model\NewsModel.cs" />
+    <Compile Include="Model\TodayRatesEntry.cs" />
     <Compile Include="Model\Transaction.cs" />
     <Compile Include="MVVM.Core\IViewModel.cs" />
     <Compile Include="MVVM.Core\ViewModelBase.cs" />
