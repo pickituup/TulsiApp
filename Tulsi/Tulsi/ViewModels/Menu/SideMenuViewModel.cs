@@ -18,8 +18,8 @@ namespace Tulsi.ViewModels.Menu {
         /// <summary>
         ///     Side menu items
         /// </summary>
-        List<Tulsi.Menu.SideMenuItem> _sideMenuItems;
-        public List<Tulsi.Menu.SideMenuItem> SideMenuItems {
+        List<SideMenuItem> _sideMenuItems;
+        public List<SideMenuItem> SideMenuItems {
             get { return _sideMenuItems; }
             set { SetProperty(ref _sideMenuItems, value); }
         }
@@ -27,8 +27,8 @@ namespace Tulsi.ViewModels.Menu {
         /// <summary>
         ///     Selected menu item.
         /// </summary>
-        Tulsi.Menu.SideMenuItem _selectedSideMenuItem;
-        public Tulsi.Menu.SideMenuItem SelectedSideMenuItem {
+        SideMenuItem _selectedSideMenuItem;
+        public SideMenuItem SelectedSideMenuItem {
             get { return _selectedSideMenuItem; }
             set {
                 if (SetProperty(ref _selectedSideMenuItem, value) && value != null) {
@@ -47,9 +47,7 @@ namespace Tulsi.ViewModels.Menu {
 
             SideMenuItems = _sideMenuContainer.BuildSideMenuItems(); 
 
-            DisplayProfitPageCommand = new Command(() => {
-                BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.ProfitPage);
-            });
+            DisplayProfitPageCommand = new Command(() => BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.ProfitPage));
         }
 
         public void Dispose() {
