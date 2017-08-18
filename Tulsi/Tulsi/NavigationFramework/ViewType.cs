@@ -64,6 +64,16 @@ namespace Tulsi.NavigationFramework {
         /// <summary>
         /// SearchPage
         /// </summary>
-        SearchPage
+        SearchPage,
+
+        /// <summary>
+        /// BuyerRankingsPage
+        /// </summary>
+        BuyerRankingsPage,
+
+        /// <summary>
+        /// LatePaymentsPage
+        /// </summary>
+        LatePaymentsPage
     }
 }
