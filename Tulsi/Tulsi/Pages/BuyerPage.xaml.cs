@@ -75,7 +75,8 @@ namespace Tulsi {
             TransactionsListView.ItemsSource = bvm.TransactionsData;
 
             //Slide menu creating
-            SlideMenu = ((App)Application.Current).SideMenu;
+            //SlideMenu = ((App)Application.Current).SideMenu;
+            SlideMenu = new SideMenuView();
 
             //Toolbar taps
             TapGestureRecognizer ToolbarTap1 = new TapGestureRecognizer();

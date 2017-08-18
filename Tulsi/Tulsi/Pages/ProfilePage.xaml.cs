@@ -21,8 +21,6 @@ namespace Tulsi {
             };
             HeaderBackIcon.GestureRecognizers.Add(tapGestureRecognizer1);
             HeaderCloseIcon.GestureRecognizers.Add(tapGestureRecognizer1);
-
-
         }
     }
 }

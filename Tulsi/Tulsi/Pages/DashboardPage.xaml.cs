@@ -37,7 +37,8 @@ namespace Tulsi
             User3.Source = ImageSource.FromResource("Tulsi.Images.users.png");
 
             //Slide menu creating
-            SlideMenu = ((App)Application.Current).SideMenu;
+            //SlideMenu = ((App)Application.Current).SideMenu;
+            SlideMenu = new SideMenuView();
 
             //Toolbar taps
             TapGestureRecognizer ToolbarTap1 = new TapGestureRecognizer();

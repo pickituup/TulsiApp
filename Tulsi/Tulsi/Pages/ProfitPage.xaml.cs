@@ -21,7 +21,8 @@ namespace Tulsi {
             AbsoluteLayout.SetLayoutBounds(SideMenuOverlay, new Rectangle(0, 0, 0.9, hd - 20));
 
             //Slide menu creating
-            SlideMenu = ((App)Application.Current).SideMenu;
+            //SlideMenu = ((App)Application.Current).SideMenu;
+            SlideMenu = new SideMenuView();
 
             //Toolbar taps
             TapGestureRecognizer ToolbarTap1 = new TapGestureRecognizer();
