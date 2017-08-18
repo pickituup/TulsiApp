@@ -84,18 +84,14 @@ namespace Tulsi {
         }
 
         /// <summary>
-        /// 
+        /// Temporary
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void OnSelection(object sender, SelectedItemChangedEventArgs e) {
-            if (e.SelectedItem == null) {
-                return; 
-            }
-            
+        private void OnItemSelected(object sender, SelectedItemChangedEventArgs e) {
             BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.BuyerProfilePage);
 
-            ((ListView)sender).SelectedItem = null; 
+            ((ListView)sender).SelectedItem = null;
         }
     }
 }
