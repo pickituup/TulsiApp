@@ -17,5 +17,13 @@ namespace Tulsi.Pages {
         private void Button_Clicked(object sender, EventArgs e) {
             ShowMenu();
         }
+
+        private void TapGestureRecognizer_Tapped(object sender, EventArgs e) {
+
+        }
+
+        private void TapGestureRecognizer_Tapped_1(object sender, EventArgs e) {
+
+        }
     }
 }

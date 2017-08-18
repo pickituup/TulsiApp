@@ -2,8 +2,14 @@
 <pageBase:PageWithSideMenuBase xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:pageBase="clr-namespace:Tulsi.Pages"
-             x:Class="Tulsi.Pages.Demo">
+             x:Class="Tulsi.Pages.Demo"
+                               NavigationPage.HasNavigationBar="False">
 
+    <!--<Image>
+        <Image.GestureRecognizers>
+            <TapGestureRecognizer Command="{Binding Path=}"/>
+        </Image.GestureRecognizers>
+    </Image>-->
     <Button Clicked="Button_Clicked"
             Text="Click me to show side menu"/>
 </pageBase:PageWithSideMenuBase>

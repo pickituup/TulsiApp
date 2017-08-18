@@ -9,7 +9,7 @@
 
   <StackLayout x:Name="HeaderLayout" 
                BackgroundColor="#DCDCDC">
-    <Grid x:Name="ToolbarGrid">
+    <!--<Grid x:Name="ToolbarGrid">
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="10" />
         <ColumnDefinition Width="20" />
@@ -24,7 +24,57 @@
       <Image x:Name="Menu" Source="{local:ImageResource Tulsi.Images.menu.png}"  Grid.Column="1" WidthRequest="20" HeightRequest="17" HorizontalOptions="Center" VerticalOptions="Center" />
       <Label Grid.Column="2" x:Name="PageTitleLabel" Text="BUYER" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="White" />
       <Image Grid.Column="3"  x:Name="Search"  WidthRequest="20" HeightRequest="20" HorizontalOptions="Center" VerticalOptions="Center" Source="{local:ImageResource Tulsi.Images.magnifier.png}" />
+    </Grid>-->
+
+    <!--ActionBar-->
+    <Grid x:Name="ToolbarGrid" 
+          BackgroundColor="#2793F5">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="50" />
+      </Grid.RowDefinitions>
+      <Grid
+          Padding="15,0,0,0"
+          BackgroundColor="Transparent"
+          HorizontalOptions="Start">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="60" />
+        </Grid.ColumnDefinitions>
+        <Grid.GestureRecognizers>
+          <TapGestureRecognizer Tapped="ShowMenuTapped" />
+        </Grid.GestureRecognizers>
+        <Image
+            HorizontalOptions="Start"
+            Source="{local:ImageResource Tulsi.Images.menu.png}"
+            VerticalOptions="Center"
+            WidthRequest="20" />
+      </Grid>
+
+      <Label
+          x:Name="PageTitleLabel"
+          HorizontalOptions="Center"
+          Text="DASHBOARD"
+          TextColor="White"
+          VerticalOptions="Center" />
+
+      <Grid
+          Padding="0,0,15,0"
+          BackgroundColor="Transparent"
+          HorizontalOptions="End">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="60" />
+        </Grid.ColumnDefinitions>
+        <Grid.GestureRecognizers>
+          <TapGestureRecognizer Command="{Binding Path=DisplaySearchPageCommand}" />
+        </Grid.GestureRecognizers>
+        <Image
+            HeightRequest="20"
+            HorizontalOptions="End"
+            Source="{local:ImageResource Tulsi.Images.magnifier.png}"
+            VerticalOptions="Center"
+            WidthRequest="20" />
+      </Grid>
     </Grid>
+    
     <ScrollView>
       <AbsoluteLayout>
         <StackLayout x:Name="MainLayout" BackgroundColor="#DCDCDC">
@@ -34,24 +84,64 @@
               <ColumnDefinition Width="*" />
 
             </Grid.ColumnDefinitions>
-            <controls:CustomFrame BorderRadius="25"  BackgroundColor="White">
+            
+            <controls:CustomFrame BorderRadius="25"  
+                                  BackgroundColor="White">
+              
               <Grid BackgroundColor="White">
+
+                <Grid.GestureRecognizers>
+                  
+                  <TapGestureRecognizer Command="{Binding Path=DisplayBuyerRankingsPageCommand}"/>
+                </Grid.GestureRecognizers>
+                
                 <Grid.ColumnDefinitions>
+                  
                   <ColumnDefinition Width="*" />
+                  
                   <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <Image x:Name="Ranks"  WidthRequest="40" HeightRequest="38" HorizontalOptions="Center" VerticalOptions="Center" Source="{local:ImageResource Tulsi.Images.buyerranks.png}" />
-                <Label x:Name="RanksLabel" Grid.Column="1" Text="Buyer&#x0a;Ranks" TextColor="#2793F5" />
+
+                <Image WidthRequest="40"
+                       HeightRequest="38"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       Source="{local:ImageResource Tulsi.Images.buyerranks.png}"/>
+                
+                <Label Grid.Column="1"
+                       Text="Buyer&#x0a;Ranks"
+                       TextColor="#2793F5" />
               </Grid>
             </controls:CustomFrame>
-            <controls:CustomFrame BorderRadius="25" BackgroundColor="White" Grid.Column="1">
-              <Grid BackgroundColor="White" Grid.Column="1">
+            
+            <controls:CustomFrame BorderRadius="25" 
+                                  BackgroundColor="White" 
+                                  Grid.Column="1">
+              
+              <Grid BackgroundColor="White" 
+                    Grid.Column="1">
+
+                <Grid.GestureRecognizers>
+
+                  <TapGestureRecognizer Command="{Binding Path=DisplayLatePaymentsPageCommand}"/>
+                </Grid.GestureRecognizers>
+                
                 <Grid.ColumnDefinitions>
+                  
                   <ColumnDefinition Width="*" />
+                  
                   <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <Image x:Name="LatePayments"  WidthRequest="40" HeightRequest="40" HorizontalOptions="Center" VerticalOptions="Center" Source="{local:ImageResource Tulsi.Images.latepayments.png}" />
-                <Label x:Name="LatePaymentsLabel" Grid.Column="1" Text="Late&#x0a;Payments" TextColor="#2793F5" />
+
+                <Image WidthRequest="40"
+                       HeightRequest="40"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       Source="{local:ImageResource Tulsi.Images.latepayments.png}"/>
+                
+                <Label Grid.Column="1" 
+                       Text="Late&#x0a;Payments" 
+                       TextColor="#2793F5" />
               </Grid>
             </controls:CustomFrame>
           </Grid>

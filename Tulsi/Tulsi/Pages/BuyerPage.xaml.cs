@@ -11,13 +11,17 @@ using Tulsi.ViewModels;
 using SlideOverKit;
 
 namespace Tulsi {
+    /// <summary>
+    /// Can run to the: SearchPage, BuyerRankingsPage
+    /// </summary>
     public partial class BuyerPage : Pages.PageWithSideMenuBase, IView {
+        private BuyerViewModel _viewModel;
+
         public BuyerPage() {
             InitializeComponent();
 
             DashboardViewModel dvm = new DashboardViewModel();
-            BindingContext = dvm;
-
+            //BindingContext = dvm;
 
             int hd = DependencyService.Get<IDisplaySize>().GetHeightDiP();
             AbsoluteLayout.SetLayoutBounds(SideMenuOverlay, new Rectangle(0, 0, 0.9, hd - 20));
@@ -70,48 +74,26 @@ namespace Tulsi {
             MiddleStack.Children.Add(MiddleText2);
             ChartGrid.Children.Add(MiddleStack);
 
-            BuyerViewModel bvm = new BuyerViewModel();
-            this.BindingContext = bvm;
-            TransactionsListView.ItemsSource = bvm.TransactionsData;
+            _viewModel = new BuyerViewModel();
+            this.BindingContext = _viewModel;
 
-            //Slide menu creating
-            //SlideMenu = ((App)Application.Current).SideMenu;
-            //SlideMenu = new SideMenuView();
-
-            //Toolbar taps
-            TapGestureRecognizer ToolbarTap1 = new TapGestureRecognizer();
-            ToolbarTap1.Tapped += (s, e) => {
-                this.ShowMenu();
-            };
-            Menu.GestureRecognizers.Add(ToolbarTap1);
-
-            TapGestureRecognizer ToolbarTap2 = new TapGestureRecognizer();
-            ToolbarTap2.Tapped += (s, e) => {
-                SearchPage sp = new SearchPage();
-                Application.Current.MainPage.Navigation.PushAsync(sp);
-            };
-            Search.GestureRecognizers.Add(ToolbarTap2);
-
-            //In page navigation
-
-            TapGestureRecognizer InPageNavigationTap2 = new TapGestureRecognizer();
-            InPageNavigationTap2.Tapped += (s, e) => {
-                BuyerRankingsPage brp = new BuyerRankingsPage();
-                Application.Current.MainPage.Navigation.PushAsync(brp);
-            };
-            Ranks.GestureRecognizers.Add(InPageNavigationTap2);
-            //RanksLabel.GestureRecognizers.Add(InPageNavigationTap2);
-
-            TapGestureRecognizer InPageNavigationTap3 = new TapGestureRecognizer();
-            InPageNavigationTap3.Tapped += (s, e) => {
-                LatePaymentsPage lpp = new LatePaymentsPage();
-                Application.Current.MainPage.Navigation.PushAsync(lpp);
-            };
-            LatePayments.GestureRecognizers.Add(InPageNavigationTap3);
-            LatePaymentsLabel.GestureRecognizers.Add(InPageNavigationTap3);
-            RanksLabel.GestureRecognizers.Add(InPageNavigationTap2);
-
+            TransactionsListView.ItemsSource = _viewModel.TransactionsData;
         }
+
+        /// <summary>
+        /// Open side menu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ShowMenuTapped(object sender, EventArgs e) {
+            ShowMenu();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void OnSelection(object sender, SelectedItemChangedEventArgs e) {
             if (e.SelectedItem == null) {
                 return; //ItemSelected is called on deselection, which results in SelectedItem being set to null

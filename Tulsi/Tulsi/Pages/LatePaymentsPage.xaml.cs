@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Tulsi.NavigationFramework;
+using Tulsi.Helpers;
 using Xamarin.Forms;
 using Tulsi.ViewModels;
 using SlideOverKit;
 
 namespace Tulsi
 {
-    public partial class LatePaymentsPage : MenuContainerPage
+    public partial class LatePaymentsPage : MenuContainerPage, IView
     {
         public LatePaymentsPage()
         {

@@ -4,14 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Globalization;
-
+using Tulsi.NavigationFramework;
+using Tulsi.Helpers;
 using Xamarin.Forms;
 using Tulsi.ViewModels;
 using SlideOverKit;
 
 namespace Tulsi
 {
-    public partial class BuyerRankingsPage : MenuContainerPage
+    public partial class BuyerRankingsPage : MenuContainerPage, IView
     {
         public BuyerRankingsPage()
         {
@@ -28,7 +29,8 @@ namespace Tulsi
             AbsoluteLayout.SetLayoutBounds(SideMenuOverlay, new Rectangle(0, 0, 0.9, hd - 20));
 
             //Slide menu creating
-            SlideMenu = ((App)Application.Current).SideMenu;
+            //SlideMenu = ((App)Application.Current).SideMenu;
+            SlideMenu = new SideMenuView();
 
             //Toolbar taps
             TapGestureRecognizer ToolbarTap1 = new TapGestureRecognizer();
