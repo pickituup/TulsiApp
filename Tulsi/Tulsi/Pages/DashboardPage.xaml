@@ -1,11 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<m:MenuContainerPage xmlns="http://xamarin.com/schemas/2014/forms"
+<pageBase:PageWithSideMenuBase xmlns="http://xamarin.com/schemas/2014/forms"
                      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                      xmlns:local="clr-namespace:Tulsi;assembly=Tulsi"
                      xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
                      xmlns:listview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
                      xmlns:controls="clr-namespace:Tulsi.Controls"
                      xmlns:m="clr-namespace:SlideOverKit"
+                     xmlns:pageBase="clr-namespace:Tulsi.Pages"
                      x:Class="Tulsi.DashboardPage"
                      NavigationPage.HasNavigationBar="false">
 
@@ -384,4 +385,4 @@
 
     </ScrollView>
   </StackLayout>
-</m:MenuContainerPage>
+</pageBase:PageWithSideMenuBase>

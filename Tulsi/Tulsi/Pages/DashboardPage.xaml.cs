@@ -10,10 +10,11 @@ using Tulsi.ViewModels;
 using Syncfusion.SfChart.XForms;
 using SlideOverKit;
 using Tulsi.NavigationFramework;
+using Tulsi.Helpers;
 
 namespace Tulsi
 {
-    public partial class DashboardPage : MenuContainerPage, IView
+    public partial class DashboardPage : Pages.PageWithSideMenuBase, IView
     {
         public DashboardPage()
         {
@@ -25,7 +26,7 @@ namespace Tulsi
             //this.sli
 
             Photo1.Source = ImageSource.FromResource("Tulsi.Images.photo1.png");
-             Info1.Source = ImageSource.FromResource("Tulsi.Images.info.png");
+            Info1.Source = ImageSource.FromResource("Tulsi.Images.info.png");
             User.Source = ImageSource.FromResource("Tulsi.Images.users.png");
 
             Photo2.Source = ImageSource.FromResource("Tulsi.Images.photo1.png");
@@ -38,23 +39,25 @@ namespace Tulsi
 
             //Slide menu creating
             //SlideMenu = ((App)Application.Current).SideMenu;
-            SlideMenu = new SideMenuView();
+            //SlideMenu = new SideMenuView();
 
             //Toolbar taps
             TapGestureRecognizer ToolbarTap1 = new TapGestureRecognizer();
             ToolbarTap1.Tapped += (s, e) =>
             {
-                this.ShowMenu();
+                ShowMenu();
             };
             Menu.GestureRecognizers.Add(ToolbarTap1);
 
-            TapGestureRecognizer ToolbarTap2 = new TapGestureRecognizer();
-            ToolbarTap2.Tapped += (s, e) =>
+            TapGestureRecognizer searchToolbarTap2 = new TapGestureRecognizer();
+            searchToolbarTap2.Tapped += (s, e) =>
             {
-                SearchPage sp = new SearchPage();
-                Application.Current.MainPage.Navigation.PushAsync(sp);
+                //SearchPage sp = new SearchPage();
+                //Application.Current.MainPage.Navigation.PushAsync(sp);
+                BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.SearchPage);
+                //Application.Current.MainPage.Navigation.PushAsync(new Pages.Demo());
             };
-            Search.GestureRecognizers.Add(ToolbarTap2);
+            Search.GestureRecognizers.Add(searchToolbarTap2);
 
             //In page navigation
             TapGestureRecognizer InPageNavigationTap1 = new TapGestureRecognizer();
