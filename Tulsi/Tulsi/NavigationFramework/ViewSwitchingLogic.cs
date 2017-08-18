@@ -76,7 +76,7 @@ namespace Tulsi.NavigationFramework {
                 .Except(pagesToLeaveInStack).Count();
 
             for (int i = 0; i < timesToPop; i++) {
-                await Application.Current.MainPage.Navigation.PopAsync();
+                await Application.Current.MainPage.Navigation.PopAsync(false);
             }
         }
 
