@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
 using Tulsi.MVVM.Core;
 
 namespace Tulsi.ViewModels {
@@ -19,6 +14,16 @@ namespace Tulsi.ViewModels {
         public ObservableCollection<string> Result {
             get { return _result; }
             set { SetProperty(ref _result, value); }
+        }
+
+        string _selectedMenuItem;
+        public string SelectedMenuItem {
+            get { return _selectedMenuItem; }
+            set {
+                if (SetProperty(ref _selectedMenuItem, value) && string.IsNullOrEmpty(value)) {
+                    // Do something
+                }
+            }
         }
 
         /// <summary>

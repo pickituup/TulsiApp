@@ -20,9 +20,6 @@ namespace Tulsi {
 
             BindingContext = _viewModel = new SearchViewModel();
 
-
-
-
             //In page navigation
             TapGestureRecognizer BuyersTap = new TapGestureRecognizer();
             BuyersTap.Tapped += (s, e) => {
@@ -43,6 +40,10 @@ namespace Tulsi {
             };
             GrowersArea.GestureRecognizers.Add(GrowersTap);
 
+        }
+
+        private void Handle_ItemSelected(object sender, SelectedItemChangedEventArgs e) {
+            menuItems.SelectedItem = null;
         }
 
         private void ShowMenuCommand(object sender, EventArgs e) {

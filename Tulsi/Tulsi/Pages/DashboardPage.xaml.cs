@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xamarin.Forms;
-using Tulsi.Controls;
-using Tulsi.ViewModels;
+﻿using SlideOverKit;
 using Syncfusion.SfChart.XForms;
-using SlideOverKit;
+using System;
+using System.Collections.Generic;
 using Tulsi.NavigationFramework;
+using Tulsi.ViewModels;
+using Xamarin.Forms;
 
 namespace Tulsi {
     public partial class DashboardPage : MenuContainerPage, IView {

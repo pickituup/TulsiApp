@@ -144,17 +144,24 @@
                     CornerRadius="20"
                     VerticalOptions="FillAndExpand">
                     <ListView
-                        x:Name="SearchResultListView"
+                        x:Name="menuItems"
                         Grid.Column="1"
                         Grid.ColumnSpan="2"
                         BackgroundColor="White"
+                        ItemSelected="Handle_ItemSelected"
                         ItemsSource="{Binding Result}"
                         RowHeight="50"
+                        SelectedItem="{Binding SelectedMenuItem, Mode=TwoWay}"
                         SeparatorVisibility="None"
                         VerticalOptions="CenterAndExpand">
                         <DataTemplate>
                             <ViewCell>
-                                <Label TextColor="Green" />
+                                <ContentView>
+                                    <Label
+                                        FontSize="Micro"
+                                        Text="{Binding Result}"
+                                        TextColor="Green" />
+                                </ContentView>
                             </ViewCell>
                         </DataTemplate>
                     </ListView>
