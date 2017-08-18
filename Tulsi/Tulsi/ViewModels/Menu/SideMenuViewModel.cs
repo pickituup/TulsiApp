@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Tulsi.Helpers;
-using Tulsi.Menu;
 using Tulsi.MVVM.Core;
 using Tulsi.NavigationFramework;
 using Xamarin.Forms;
+using Tulsi.Model.DataContainers;
+using Tulsi.Model.DataContainers.DataItems;
 
 namespace Tulsi.ViewModels.Menu {
     public sealed class SideMenuViewModel : ViewModelBase, IViewModel {

@@ -1,7 +1,7 @@
 ﻿using Tulsi.NavigationFramework;
 using Xamarin.Forms;
 
-namespace Tulsi.Menu {
+namespace Tulsi.Model.DataContainers.DataItems {
     public sealed class SideMenuItem {
         /// <summary>
         ///     Menu item title.
