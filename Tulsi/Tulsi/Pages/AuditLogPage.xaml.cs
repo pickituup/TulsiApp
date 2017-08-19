@@ -11,42 +11,32 @@ using Tulsi.SharedService;
 
 namespace Tulsi {
     public partial class AuditLogPage : MenuContainerPage, IView {
+
+        private readonly AuditLogViewModel _viewModel;
+
         /// <summary>
-        /// Public ctor
+        ///     ctor().
         /// </summary>
         public AuditLogPage() {
             InitializeComponent();
 
             SlideMenu = new SideMenuView();
 
-            AuditLogViewModel avm = ((App)Application.Current).AuditLogVM;
-            AuditLogListView.ItemsSource = avm.AuditData;
-            AuditLogListView.ItemSelected += (sender, e) => {
-                ((ListView)sender).SelectedItem = null;
-            };
+            BindingContext = _viewModel = new AuditLogViewModel();
+        }
 
-            int hd = DependencyService.Get<IDisplaySize>().GetHeightDiP();
-            AbsoluteLayout.SetLayoutBounds(SideMenuOverlay, new Rectangle(0, 0, 0.9, hd - 20));
+        // Deselect item.
+        private void Handle_ItemSelected(object sender, SelectedItemChangedEventArgs e) {
+            menuItems.SelectedItem = null;
+        }
 
-
-
-            //Toolbar taps
-            TapGestureRecognizer ToolbarTap1 = new TapGestureRecognizer();
-            ToolbarTap1.Tapped += (s, e) => {
-                this.ShowMenu();
-            };
-            Menu.GestureRecognizers.Add(ToolbarTap1);
-
-            TapGestureRecognizer ToolbarTap2 = new TapGestureRecognizer();
-            ToolbarTap2.Tapped += (s, e) => {
-                SearchPage sp = new SearchPage();
-                Application.Current.MainPage.Navigation.PushAsync(sp);
-            };
-            Search.GestureRecognizers.Add(ToolbarTap2);
+        // Show side menu.
+        private void ShowMenuCommand(object sender, EventArgs e) {
+            ShowMenu();
         }
 
         /// <summary>
-        /// Make some visual changes of current page through navigating process (hide side menu or smt...)
+        ///     Make some visual changes of current page through navigating process (hide side menu or smt...)
         /// </summary>
         public void ApplyVisualChangesWhileNavigating() {
             SlideMenu.HideWithoutAnimations();

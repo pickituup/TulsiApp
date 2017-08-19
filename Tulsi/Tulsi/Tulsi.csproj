@@ -46,7 +46,10 @@
     <Compile Include="Menu\SideMenuView.xaml.cs">
       <DependentUpon>SideMenuView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\AuditEntry.cs" />
     <Compile Include="Model\BuyerRanking.cs" />
+    <Compile Include="Model\DataContainers\DataItems\ReportsMenuItem.cs" />
+    <Compile Include="Model\DataContainers\ReportsMenuContainer.cs" />
     <Compile Include="Model\DataContainers\SideMenuContainer.cs" />
     <Compile Include="Model\DataContainers\DataItems\SideMenuItem.cs" />
     <Compile Include="Model\ChartModel.cs" />
@@ -173,6 +176,7 @@
     <Compile Include="ViewModels\Menu\SideMenuViewModel.cs" />
     <Compile Include="ViewModels\ProfileViewModel.cs" />
     <Compile Include="ViewModels\ProfitViewModel.cs" />
+    <Compile Include="ViewModels\ReportsViewModel.cs" />
     <Compile Include="ViewModels\SearchViewModel.cs" />
     <Compile Include="ViewModels\StockPendingDetailsViewModel.cs" />
     <Compile Include="ViewModels\TodayRatesViewModel.cs" />

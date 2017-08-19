@@ -8,18 +8,19 @@ using Xamarin.Forms;
 using XamForms.Controls;
 using SlideOverKit;
 using Tulsi.SharedService;
+using Tulsi.NavigationFramework;
 
-namespace Tulsi
-{
-    public partial class ArrivalPage : MenuContainerPage
-    {
-        public ArrivalPage()
-        {
+namespace Tulsi {
+    public partial class ArrivalPage : MenuContainerPage, IView {
+        public ArrivalPage() {
             InitializeComponent();
+
+            //Slide menu creating
+            SlideMenu = new SideMenuView();
 
             int hd = DependencyService.Get<IDisplaySize>().GetHeightDiP();
             AbsoluteLayout.SetLayoutBounds(SideMenuOverlay, new Rectangle(0, 0, 0.9, hd - 20));
-            
+
             CalendarArea.Source = ImageSource.FromResource("Tulsi.Images.calendar_background.png");
             DatesArea.Source = ImageSource.FromResource("Tulsi.Images.dates_background.png");
             c1.Source = ImageSource.FromResource("Tulsi.Images.datesbluecircle.png");
@@ -56,20 +57,16 @@ namespace Tulsi
             ArrivalCalendar.DateClicked += ArrivalCalendar_DateClicked;
 
 
-            //Slide menu creating
-            SlideMenu = ((App)Application.Current).SideMenu;
 
             //Toolbar taps
             TapGestureRecognizer ToolbarTap1 = new TapGestureRecognizer();
-            ToolbarTap1.Tapped += (s, e) =>
-            {
+            ToolbarTap1.Tapped += (s, e) => {
                 this.ShowMenu();
             };
             Menu.GestureRecognizers.Add(ToolbarTap1);
 
             TapGestureRecognizer ToolbarTap2 = new TapGestureRecognizer();
-            ToolbarTap2.Tapped += (s, e) =>
-            {
+            ToolbarTap2.Tapped += (s, e) => {
                 SearchPage sp = new SearchPage();
                 Application.Current.MainPage.Navigation.PushAsync(sp);
             };
@@ -77,16 +74,19 @@ namespace Tulsi
 
             //In page navigation
             TapGestureRecognizer InPageNavigationTap1 = new TapGestureRecognizer();
-            InPageNavigationTap1.Tapped += (s, e) =>
-            {
+            InPageNavigationTap1.Tapped += (s, e) => {
                 ArrivalDetailsPage adp = new ArrivalDetailsPage();
                 Application.Current.MainPage.Navigation.PushAsync(adp);
             };
             DateArrivalsList.GestureRecognizers.Add(InPageNavigationTap1);
-            
+
         }
-        private void ArrivalCalendar_DateClicked(object sender, DateTimeEventArgs e)
-        {
+
+        public void ApplyVisualChangesWhileNavigating() {
+            SlideMenu.HideWithoutAnimations();
+        }
+
+        private void ArrivalCalendar_DateClicked(object sender, DateTimeEventArgs e) {
             DisplayAlert("Date", e.DateTime.Date.ToString() + " selected", "OK");
         }
 

@@ -150,6 +150,18 @@ namespace Tulsi.NavigationFramework {
                 {
                     ViewType.GrowerProfilePage,
                     () => new ViewBuider<GrowerProfilePage>().GetView()
+                },
+                {
+                    ViewType.BankAccountsPage,
+                    () => new ViewBuider<BankAccountsPage>().GetView()
+                },
+                {
+                    ViewType.ArrivalPage,
+                    () => new ViewBuider<ArrivalPage>().GetView()
+                },
+                {
+                    ViewType.ExpensesPage,
+                    () => new ViewBuider<ExpensesPage>().GetView()
                 }
             };
         }

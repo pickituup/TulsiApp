@@ -94,6 +94,21 @@ namespace Tulsi.NavigationFramework {
         /// <summary>
         ///     Grower profile page.
         /// </summary>
-        GrowerProfilePage
+        GrowerProfilePage,
+
+        /// <summary>
+        ///     Bank accounts page.
+        /// </summary>
+        BankAccountsPage,
+
+        /// <summary>
+        ///     Arrival page
+        /// </summary>
+        ArrivalPage,
+
+        /// <summary>
+        ///     Expenses page
+        /// </summary>
+        ExpensesPage
     }
 }
