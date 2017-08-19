@@ -7,8 +7,8 @@ using Xamarin.Forms;
 
 namespace Tulsi.NavigationFramework {
     public sealed class ViewContainer {
-        private static readonly string _ERROR_CANT_GET_VIEW_IN_NAVIGATION_FRAME_BY_TYPE = "Can't get view in navigation frame by it's type";
-        private static readonly string _ERROR_CANT_GET_VIEW_BY_TYPE = "Can't get view by it's type";
+        private static readonly string _ERROR_CANT_GET_VIEW_IN_NAVIGATION_FRAME_BY_TYPE = "Can't get view in navigation frame by it's type",
+            _ERROR_CANT_GET_VIEW_BY_TYPE = "Can't get view by it's type";
 
         /// <summary>
         /// Container for views wrapped by Xamarin.Forms.NavigationPage
