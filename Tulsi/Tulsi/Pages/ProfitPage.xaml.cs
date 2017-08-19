@@ -144,5 +144,12 @@ namespace Tulsi {
             ChartGrid.Children.Add(chart);
             Grid.SetColumn(chart, 1);
         }
+
+        /// <summary>
+        /// Make some visual changes of current page through navigating process (hide side menu or smt...)
+        /// </summary>
+        public void ApplyVisualChangesWhileNavigating() {
+            HideMenu();
+        }
     }
 }

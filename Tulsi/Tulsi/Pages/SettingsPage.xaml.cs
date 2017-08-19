@@ -42,5 +42,12 @@ namespace Tulsi {
             };
             GoToDashboard.GestureRecognizers.Add(InPageNavigationTap1);
         }
+
+        /// <summary>
+        /// Make some visual changes of current page through navigating process (hide side menu or smt...)
+        /// </summary>
+        public void ApplyVisualChangesWhileNavigating() {
+            HideMenu();
+        }
     }
 }

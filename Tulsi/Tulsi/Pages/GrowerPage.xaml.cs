@@ -114,5 +114,12 @@ namespace Tulsi {
             Application.Current.MainPage.Navigation.PushAsync(gpp);
             //((ListView)sender).SelectedItem = null; //uncomment line if you want to disable the visual selection state.
         }
+
+        /// <summary>
+        /// Make some visual changes of current page through navigating process (hide side menu or smt...)
+        /// </summary>
+        public void ApplyVisualChangesWhileNavigating() {
+            HideMenu();
+        }
     }
 }

@@ -46,56 +46,12 @@ namespace Tulsi
 
             ((ListView)sender).SelectedItem = null;
         }
+
+        /// <summary>
+        /// Make some visual changes of current page through navigating process (hide side menu or smt...)
+        /// </summary>
+        public void ApplyVisualChangesWhileNavigating() {
+            HideMenu();
+        }
     }
-
-    //public class RankingsLabel : IValueConverter {
-    //    public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
-    //        return "#" + value.ToString();
-    //    }
-
-    //    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) {
-    //        throw new NotImplementedException();
-    //    }
-    //}
-
-    //public class RankingsIcon : IValueConverter
-    //{
-    //    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-    //    {
-    //        if ((bool)value == true)
-    //        {
-    //            return ImageSource.FromResource("Tulsi.Images.ranking_up.png");
-    //        }
-    //        else
-    //        {
-    //            return ImageSource.FromResource("Tulsi.Images.ranking_down.png");
-    //        }
-
-    //    }
-
-    //    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-    //    {
-    //        throw new NotImplementedException();
-    //    }
-    //}
-    //public class RankingsColor : IValueConverter
-    //{
-    //    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-    //    {
-    //        if ((bool)value == true)
-    //        {
-    //            return Color.FromHex("#82DA69");
-    //        }
-    //        else
-    //        {
-    //            return Color.FromHex("#E57233");
-    //        }
-
-    //    }
-
-    //    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-    //    {
-    //        throw new NotImplementedException();
-    //    }
-    //}
 }

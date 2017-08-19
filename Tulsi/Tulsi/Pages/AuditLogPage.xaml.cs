@@ -13,6 +13,9 @@ namespace Tulsi
 {
     public partial class AuditLogPage : MenuContainerPage, IView
     {
+        /// <summary>
+        /// Public ctor
+        /// </summary>
         public AuditLogPage()
         {
             InitializeComponent();
@@ -48,5 +51,11 @@ namespace Tulsi
             Search.GestureRecognizers.Add(ToolbarTap2);
         }
 
+        /// <summary>
+        /// Make some visual changes of current page through navigating process (hide side menu or smt...)
+        /// </summary>
+        public void ApplyVisualChangesWhileNavigating() {
+            HideMenu();
+        }
     }
 }

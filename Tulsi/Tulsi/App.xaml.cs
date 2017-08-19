@@ -44,7 +44,6 @@ namespace Tulsi {
 
             DashboardPage dp = new DashboardPage();
 
-
             //LoginPage lp = new LoginPage();
             //MainPage = new NavigationPage(lp);
 
