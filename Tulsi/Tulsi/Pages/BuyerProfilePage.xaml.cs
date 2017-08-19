@@ -14,20 +14,7 @@ namespace Tulsi {
         public BuyerProfilePage() {
             InitializeComponent();
 
-            _viewModel = new BuyerProfileViewModel();
-            BindingContext = _viewModel;
-
-            //ProfileViewModel pvm = new ProfileViewModel();
-            //ProfileTransactionsListView.ItemsSource = pvm.TransactionsData;
-            //ProfileTransactionsListView.ItemSelected += (sender, e) => {
-            //    ((ListView)sender).SelectedItem = null;
-            //};
-
-            TapGestureRecognizer CloseTap = new TapGestureRecognizer();
-            CloseTap.Tapped += (s, e) => {
-                Application.Current.MainPage.Navigation.PopAsync();
-            };
-            Close.GestureRecognizers.Add(CloseTap);
+            BindingContext = _viewModel = new BuyerProfileViewModel();
         }
 
         /// <summary>
@@ -35,6 +22,15 @@ namespace Tulsi {
         /// </summary>
         public void ApplyVisualChangesWhileNavigating() {
             
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OnItemSelected(object sender, SelectedItemChangedEventArgs e) {
+            ((ListView)sender).SelectedItem = null;
         }
     }
 }
