@@ -12,9 +12,6 @@ using SlideOverKit;
 using Tulsi.SharedService;
 
 namespace Tulsi {
-    /// <summary>
-    /// Can run to the: SearchPage, BuyerRankingsPage
-    /// </summary>
     public partial class BuyerPage : Pages.PageWithSideMenuBase, IView {
         private BuyerViewModel _viewModel;
 

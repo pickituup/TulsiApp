@@ -163,6 +163,7 @@
     <Compile Include="ToolKit\BindingValueConverters\RankingsIconConverter.cs" />
     <Compile Include="ToolKit\BindingValueConverters\RankingsLabelConverter.cs" />
     <Compile Include="ViewModels\AuditLogViewModel.cs" />
+    <Compile Include="ViewModels\BuyerProfileViewModel.cs" />
     <Compile Include="ViewModels\BuyerRankingsViewModel.cs" />
     <Compile Include="ViewModels\BuyerViewModel.cs" />
     <Compile Include="ViewModels\DashboardViewModel.cs" />

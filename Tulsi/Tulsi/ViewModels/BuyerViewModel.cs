@@ -61,7 +61,7 @@ namespace Tulsi.ViewModels
         /// 
         /// </summary>
         public void Dispose() {
-            throw new NotImplementedException("BuyerViewModel.Dispose - not implemented");
+            
         }
     }
 }
