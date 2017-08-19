@@ -7,8 +7,8 @@
              x:Class="Tulsi.ArrivalDetailsPage"  NavigationPage.HasNavigationBar="false">
 
   <StackLayout x:Name="HeaderLayout" BackgroundColor="#DCDCDC">
-    <Grid x:Name="ToolbarGrid">
-      <Grid.ColumnDefinitions>
+        <Grid x:Name="ToolbarGrid">
+            <Grid.ColumnDefinitions>
         <ColumnDefinition Width="10" />
         <ColumnDefinition Width="20" />
         <ColumnDefinition Width="*" />

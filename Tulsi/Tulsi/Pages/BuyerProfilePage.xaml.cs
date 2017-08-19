@@ -24,5 +24,12 @@ namespace Tulsi {
             };
             Close.GestureRecognizers.Add(CloseTap);
         }
+
+        /// <summary>
+        /// Make some visual changes of current page through navigating process (hide side menu or smt...)
+        /// </summary>
+        public void ApplyVisualChangesWhileNavigating() {
+            
+        }
     }
 }

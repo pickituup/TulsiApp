@@ -38,5 +38,12 @@ namespace Tulsi {
         private void ShowMenuCommand(object sender, EventArgs e) {
             ShowMenu();
         }
+
+        /// <summary>
+        /// Make some visual changes of current page through navigating process (hide side menu or smt...)
+        /// </summary>
+        public void ApplyVisualChangesWhileNavigating() {
+            SlideMenu.HideWithoutAnimations();
+        }
     }
 }

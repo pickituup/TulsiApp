@@ -32,5 +32,12 @@ namespace Tulsi {
             Tick3.Source = ImageSource.FromResource("Tulsi.Images.chatgraytick.png");
             ChatAddImage.Source = ImageSource.FromResource("Tulsi.Images.camera.png");
         }
+
+        /// <summary>
+        /// Make some visual changes of current page through navigating process (hide side menu or smt...)
+        /// </summary>
+        public void ApplyVisualChangesWhileNavigating() {
+            
+        }
     }
 }

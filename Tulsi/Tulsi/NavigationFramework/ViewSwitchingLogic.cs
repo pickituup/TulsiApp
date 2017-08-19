@@ -1,9 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Xamarin.Forms;
+using System;
+using System.Threading.Tasks;
 
 namespace Tulsi.NavigationFramework {
     public sealed class ViewSwitchingLogic {
+        private static readonly string _ERROR_NAVIGATION_STACK_IS_EMPTY = "Make shure that the current navigation stack is not empty",
+            _ERROR_INVALID_PAGE_IN_NAVIGATION_STACK = "Page must implement Tulsi.NavigationFramework.IView interface.";
         private readonly ViewContainer _viewContainer;
 
         /// <summary>
@@ -34,8 +38,16 @@ namespace Tulsi.NavigationFramework {
                 MoveToTheExistingPageInNavigationStack(relativePageFromNavigationStack);
             }
             else {
+                ApplyVisualChangesWhileNavigating(Application.Current.MainPage.Navigation.NavigationStack.LastOrDefault());
                 PushPage(pageToPush);
             }
+        }
+
+        /// <summary>
+        /// Removes the last page from navigation stack. Root page will not be exclude from navigation stack. 
+        /// </summary>
+        public void NavigateOneStepBack() {
+            Application.Current.MainPage.Navigation.PopAsync(false);
         }
 
         /// <summary>
@@ -86,6 +98,23 @@ namespace Tulsi.NavigationFramework {
         /// <param name="targetPage"></param>
         private async void PushPage(Page pageToPush) {
             await Application.Current.MainPage.Navigation.PushAsync(pageToPush);
+        }
+
+        /// <summary>
+        /// Forse to make 'navigation' visual changes for target page.
+        /// </summary>
+        private void ApplyVisualChangesWhileNavigating(Page targetPage) {
+            try {
+                ((IView)targetPage).ApplyVisualChangesWhileNavigating();
+            }
+            catch (NullReferenceException exc) {
+                throw new InvalidOperationException(string.Format("ViewSwitchingLogic.ApplyVisualChangesWhileNavigating - {0}. Exception details - {1}",
+                    _ERROR_NAVIGATION_STACK_IS_EMPTY, exc.Message));
+            }
+            catch (Exception exc) {
+                throw new InvalidOperationException(string.Format("ViewSwitchingLogic.ApplyVisualChangesWhileNavigating - {0}, Exception details - {1}",
+                    _ERROR_INVALID_PAGE_IN_NAVIGATION_STACK, exc.Message));
+            }
         }
     }
 }

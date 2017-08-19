@@ -81,5 +81,12 @@ namespace Tulsi {
         private void Handle_ItemSelected(object sender, SelectedItemChangedEventArgs e) {
             menuItems.SelectedItem = null;
         }
+
+        /// <summary>
+        /// Make some visual changes of current page through navigating process (hide side menu or smt...)
+        /// </summary>
+        public void ApplyVisualChangesWhileNavigating() {
+            SlideMenu.HideWithoutAnimations();
+        }
     }
 }

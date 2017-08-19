@@ -46,5 +46,12 @@ namespace Tulsi {
             Grid.SetRow(EmailEntry, 4);
             Grid.SetColumn(EmailEntry, 1);
         }
+
+        /// <summary>
+        /// Make some visual changes of current page through navigating process (hide side menu or smt...)
+        /// </summary>
+        public void ApplyVisualChangesWhileNavigating() {
+            
+        }
     }
 }
