@@ -11,13 +11,11 @@ using Syncfusion.SfChart.XForms;
 using Tulsi.ViewModels;
 using SlideOverKit;
 using Tulsi.SharedService;
+using Tulsi.NavigationFramework;
 
-namespace Tulsi
-{
-    public partial class ExpensesPage : MenuContainerPage
-    {
-        public ExpensesPage()
-        {
+namespace Tulsi {
+    public partial class ExpensesPage : MenuContainerPage, IView {
+        public ExpensesPage() {
             InitializeComponent();
 
             ExpensesViewModel evm = new ExpensesViewModel();
@@ -51,8 +49,7 @@ namespace Tulsi
             More.Source = ImageSource.FromResource("Tulsi.Images.3whitecircles.png");
 
             SfChart chart = new SfChart();
-            DoughnutSeries doughnutSeries = new DoughnutSeries()
-            {
+            DoughnutSeries doughnutSeries = new DoughnutSeries() {
                 ItemsSource = evm.ChartData,
                 XBindingPath = "Name",
                 YBindingPath = "Value",
@@ -81,32 +78,28 @@ namespace Tulsi
             chart.WidthRequest = wd;
             ChartGrid.Children.Add(chart);
 
-            StackLayout MiddleStack = new StackLayout()
-            {
+            StackLayout MiddleStack = new StackLayout() {
                 VerticalOptions = LayoutOptions.Center,
                 HorizontalOptions = LayoutOptions.Center,
-                BackgroundColor=Color.White,
-                
+                BackgroundColor = Color.White,
+
             };
-            Label MiddleText0 = new Label()
-            {
+            Label MiddleText0 = new Label() {
                 Text = "100%",
                 FontSize = 14,
                 HorizontalOptions = LayoutOptions.Center,
                 FontAttributes = FontAttributes.Bold,
-                BackgroundColor=Color.White
+                BackgroundColor = Color.White
 
             };
-            Label MiddleText1 = new Label()
-            {
+            Label MiddleText1 = new Label() {
                 Text = "2,468.40",
                 FontSize = 25,
                 HorizontalOptions = LayoutOptions.Center,
                 FontAttributes = FontAttributes.Bold
 
             };
-            Label MiddleText2 = new Label()
-            {
+            Label MiddleText2 = new Label() {
                 Text = "USD",
                 FontSize = 14,
                 HorizontalOptions = LayoutOptions.Center,
@@ -116,29 +109,26 @@ namespace Tulsi
             MiddleStack.Children.Add(MiddleText0);
             MiddleStack.Children.Add(MiddleText1);
             MiddleStack.Children.Add(MiddleText2);
-           // MiddleStack.BackgroundColor = Color.Transparent;
+            // MiddleStack.BackgroundColor = Color.Transparent;
             ChartGrid.Children.Add(MiddleStack);
 
             //Toolbar taps
             TapGestureRecognizer tapGestureRecognizer1 = new TapGestureRecognizer();
-            tapGestureRecognizer1.Tapped += (s, e) =>
-            {
+            tapGestureRecognizer1.Tapped += (s, e) => {
                 SideMenuOverlay.IsVisible = true;
                 OutsideOverlay.IsVisible = true;
             };
             Menu.GestureRecognizers.Add(tapGestureRecognizer1);
 
             TapGestureRecognizer tapGestureRecognizer2 = new TapGestureRecognizer();
-            tapGestureRecognizer2.Tapped += (s, e) =>
-            {
+            tapGestureRecognizer2.Tapped += (s, e) => {
                 SideMenuOverlay.IsVisible = false;
                 OutsideOverlay.IsVisible = false;
             };
             OutsideOverlay.GestureRecognizers.Add(tapGestureRecognizer2);
 
             TapGestureRecognizer tapGestureRecognizer3 = new TapGestureRecognizer();
-            tapGestureRecognizer3.Tapped += (s, e) =>
-            {
+            tapGestureRecognizer3.Tapped += (s, e) => {
                 SideMenuOverlay.IsVisible = false;
                 OutsideOverlay.IsVisible = false;
             };
@@ -146,13 +136,16 @@ namespace Tulsi
 
             //In page navigation
             TapGestureRecognizer InPageNavigationTap1 = new TapGestureRecognizer();
-            InPageNavigationTap1.Tapped += (s, e) =>
-            {
+            InPageNavigationTap1.Tapped += (s, e) => {
                 ExpensesListPage elp = new ExpensesListPage();
                 Application.Current.MainPage.Navigation.PushAsync(elp);
             };
             ExpensesExtraIcon.GestureRecognizers.Add(InPageNavigationTap1);
 
+        }
+
+        public void ApplyVisualChangesWhileNavigating() {
+            SlideMenu.HideWithoutAnimations();
         }
     }
 }
