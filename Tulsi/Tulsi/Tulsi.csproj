@@ -52,6 +52,7 @@
     <Compile Include="Model\ChartModel.cs" />
     <Compile Include="Model\LadaanEntry.cs" />
     <Compile Include="Model\NewsModel.cs" />
+    <Compile Include="Model\ProfileTransaction.cs" />
     <Compile Include="Model\TodayRatesEntry.cs" />
     <Compile Include="Model\Transaction.cs" />
     <Compile Include="MVVM.Core\IViewModel.cs" />
@@ -163,6 +164,7 @@
     <Compile Include="ViewModels\BuyerViewModel.cs" />
     <Compile Include="ViewModels\DashboardViewModel.cs" />
     <Compile Include="ViewModels\ExpensesViewModel.cs" />
+    <Compile Include="ViewModels\GrowerProfileViewModel.cs" />
     <Compile Include="ViewModels\GrowerViewModel.cs" />
     <Compile Include="ViewModels\LadaanViewModel.cs" />
     <Compile Include="ViewModels\LatePaymentsViewModel.cs" />

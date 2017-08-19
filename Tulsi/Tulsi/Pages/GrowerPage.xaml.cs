@@ -12,51 +12,22 @@ using Tulsi.SharedService;
 
 namespace Tulsi {
     public partial class GrowerPage : MenuContainerPage, IView {
+
+        private readonly GrowerViewModel _viewModel;
+
+        /// <summary>
+        ///     ctor().
+        /// </summary>
         public GrowerPage() {
             InitializeComponent();
 
-            GrowerViewModel gvm = new GrowerViewModel();
-            DashboardViewModel dvm = new DashboardViewModel();
-            BindingContext = dvm;
-
-            int hd = DependencyService.Get<IDisplaySize>().GetHeightDiP();
-            int wd = DependencyService.Get<IDisplaySize>().GetWidthDiP();
-            AbsoluteLayout.SetLayoutBounds(SideMenuOverlay, new Rectangle(0, 0, 0.9, hd - 20));
-
-            BuyerViewModel bvm = new BuyerViewModel();
-            this.BindingContext = bvm;
-            TransactionsListView.ItemsSource = bvm.TransactionsData;
-            TransactionsListView.ItemSelected += (sender, e) => {
-                ((ListView)sender).SelectedItem = null;
-            };
-
-            //Slide menu creating
-            //SlideMenu = ((App)Application.Current).SideMenu;
             SlideMenu = new SideMenuView();
 
-            //Toolbar taps
-            TapGestureRecognizer ToolbarTap1 = new TapGestureRecognizer();
-            ToolbarTap1.Tapped += (s, e) => {
-                this.ShowMenu();
-            };
-            Menu.GestureRecognizers.Add(ToolbarTap1);
-
-            TapGestureRecognizer ToolbarTap2 = new TapGestureRecognizer();
-            ToolbarTap2.Tapped += (s, e) => {
-                SearchPage sp = new SearchPage();
-                Application.Current.MainPage.Navigation.PushAsync(sp);
-            };
-            Search.GestureRecognizers.Add(ToolbarTap2);
-
-            //In page navigation
-            TransactionsListView.ItemSelected += (sender, e) => {
-                GrowerProfilePage gpp = new GrowerProfilePage();
-                Application.Current.MainPage.Navigation.PushAsync(gpp);
-            };
+            BindingContext = _viewModel = new GrowerViewModel();
 
             SfChart chart = new SfChart();
             DoughnutSeries doughnutSeries = new DoughnutSeries() {
-                ItemsSource = gvm.ChartData,
+                ItemsSource = _viewModel.ChartData,
                 XBindingPath = "Name",
                 YBindingPath = "Value",
                 DoughnutCoefficient = 0.7,
@@ -100,19 +71,15 @@ namespace Tulsi {
             MiddleStack.Children.Add(MiddleText2);
             ChartGrid.Children.Add(MiddleStack);
 
-            TransactionsListView.ItemsSource = gvm.TransactionsData;
-            TransactionsListView.ItemSelected += (sender, e) => {
-                ((ListView)sender).SelectedItem = null;
-            };
+            
         }
 
-        void OnSelection(object sender, SelectedItemChangedEventArgs e) {
-            if (e.SelectedItem == null) {
-                return; //ItemSelected is called on deselection, which results in SelectedItem being set to null
-            }
-            GrowerProfilePage gpp = new GrowerProfilePage();
-            Application.Current.MainPage.Navigation.PushAsync(gpp);
-            //((ListView)sender).SelectedItem = null; //uncomment line if you want to disable the visual selection state.
+        private void ShowMenuCommand(object sender, EventArgs e) {
+            ShowMenu();
+        }
+
+        private void Handle_ItemSelected(object sender, SelectedItemChangedEventArgs e) {
+            menuItems.SelectedItem = null;
         }
     }
 }

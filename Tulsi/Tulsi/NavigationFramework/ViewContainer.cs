@@ -146,6 +146,10 @@ namespace Tulsi.NavigationFramework {
                 {
                     ViewType.BuyerProfilePage,
                     () => new ViewBuider<BuyerProfilePage>().GetView()
+                },
+                {
+                    ViewType.GrowerProfilePage,
+                    () => new ViewBuider<GrowerProfilePage>().GetView()
                 }
             };
         }
