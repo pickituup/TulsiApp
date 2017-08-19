@@ -43,6 +43,9 @@
     <Compile Include="Controls\RoundedContentView.cs" />
     <Compile Include="Controls\RoundedView.cs" />
     <Compile Include="Helpers\BaseSingleton.cs" />
+    <Compile Include="Menu\SideMenuView.xaml.cs">
+      <DependentUpon>SideMenuView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Model\BuyerRanking.cs" />
     <Compile Include="Model\DataContainers\SideMenuContainer.cs" />
     <Compile Include="Model\DataContainers\DataItems\SideMenuItem.cs" />
@@ -140,9 +143,6 @@
     </Compile>
     <Compile Include="Pages\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Menu\SideMenuView.xaml.cs">
-      <DependentUpon>SideMenuView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\StockPendingDetailsPage.xaml.cs">
       <DependentUpon>StockPendingDetailsPage.xaml</DependentUpon>
@@ -538,12 +538,6 @@
     <EmbeddedResource Include="Images\profile_logo.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Menu\SideMenuView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Images\magnifier.png" />
   </ItemGroup>
   <ItemGroup>
@@ -555,7 +549,12 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Menu\SideMenuView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.4.267\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.4.267\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
