@@ -3,15 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Tulsi.Model;
 using Xamarin.Forms;
 
-namespace Tulsi.ViewModels
-{
-    public class ProfileViewModel
-    {
+namespace Tulsi.ViewModels {
+    public class ProfileViewModel {
         public List<ProfileTransaction> TransactionsData { get; set; }
-        public ProfileViewModel()
-        {
+        public ProfileViewModel() {
             TransactionsData = new List<ProfileTransaction>()
             {
                 new ProfileTransaction { Code = "SKC", Number = "28", IsP=true, Quantity="8,200" },
@@ -20,12 +18,5 @@ namespace Tulsi.ViewModels
                 new ProfileTransaction { Code = "SKC", Number = "28", IsP=true, Quantity="8,200" },
             };
         }
-    }
-    public class ProfileTransaction
-    {
-        public string Code { get; set; }
-        public string Number { get; set; }
-        public bool IsP { get; set; }
-    public string Quantity { get; set; }
     }
 }

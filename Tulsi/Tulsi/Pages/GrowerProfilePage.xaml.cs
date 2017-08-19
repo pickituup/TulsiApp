@@ -6,29 +6,25 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Tulsi.ViewModels;
+using Tulsi.NavigationFramework;
 
-namespace Tulsi
-{
-    public partial class GrowerProfilePage : ContentPage
-    {
-        public GrowerProfilePage()
-        {
+namespace Tulsi {
+    public partial class GrowerProfilePage : ContentPage, IView {
+
+        private readonly GrowerProfileViewModel _viewModel;
+
+        public GrowerProfilePage() {
             InitializeComponent();
 
-            ProfileViewModel pvm = new ProfileViewModel();
-            ProfileTransactionsListView.ItemsSource = pvm.TransactionsData;
-            ProfileTransactionsListView.ItemSelected += (sender, e) =>
-            {
-                ((ListView)sender).SelectedItem = null;
-            };
+            BindingContext = _viewModel = new GrowerProfileViewModel();
+        }
 
-            TapGestureRecognizer CloseTap = new TapGestureRecognizer();
-            CloseTap.Tapped += (s, e) =>
-            {
-                Application.Current.MainPage.Navigation.PopAsync();
-            };
-            Close.GestureRecognizers.Add(CloseTap);
+        public void ApplyVisualChangesWhileNavigating() {
+            
+        }
 
+        private void Handle_ItemSelected(object sender, SelectedItemChangedEventArgs e) {
+            menuItems.SelectedItem = null;
         }
     }
 }

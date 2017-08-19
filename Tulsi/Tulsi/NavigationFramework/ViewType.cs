@@ -89,6 +89,11 @@ namespace Tulsi.NavigationFramework {
         /// <summary>
         /// BuyerProfilePage
         /// </summary>
-        BuyerProfilePage
+        BuyerProfilePage,
+
+        /// <summary>
+        ///     Grower profile page.
+        /// </summary>
+        GrowerProfilePage
     }
 }
