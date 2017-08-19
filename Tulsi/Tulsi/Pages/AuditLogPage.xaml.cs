@@ -9,42 +9,36 @@ using Tulsi.ViewModels;
 using SlideOverKit;
 using Tulsi.SharedService;
 
-namespace Tulsi
-{
-    public partial class AuditLogPage : MenuContainerPage, IView
-    {
+namespace Tulsi {
+    public partial class AuditLogPage : MenuContainerPage, IView {
         /// <summary>
         /// Public ctor
         /// </summary>
-        public AuditLogPage()
-        {
+        public AuditLogPage() {
             InitializeComponent();
+
+            SlideMenu = new SideMenuView();
 
             AuditLogViewModel avm = ((App)Application.Current).AuditLogVM;
             AuditLogListView.ItemsSource = avm.AuditData;
-            AuditLogListView.ItemSelected += (sender, e) =>
-            {
+            AuditLogListView.ItemSelected += (sender, e) => {
                 ((ListView)sender).SelectedItem = null;
             };
 
             int hd = DependencyService.Get<IDisplaySize>().GetHeightDiP();
             AbsoluteLayout.SetLayoutBounds(SideMenuOverlay, new Rectangle(0, 0, 0.9, hd - 20));
 
-            //Slide menu creating
-            //SlideMenu = ((App)Application.Current).SideMenu;
-            SlideMenu = new SideMenuView();
+
 
             //Toolbar taps
             TapGestureRecognizer ToolbarTap1 = new TapGestureRecognizer();
-            ToolbarTap1.Tapped += (s, e) =>
-            {
+            ToolbarTap1.Tapped += (s, e) => {
                 this.ShowMenu();
             };
             Menu.GestureRecognizers.Add(ToolbarTap1);
 
             TapGestureRecognizer ToolbarTap2 = new TapGestureRecognizer();
-            ToolbarTap2.Tapped += (s, e) =>
-            {
+            ToolbarTap2.Tapped += (s, e) => {
                 SearchPage sp = new SearchPage();
                 Application.Current.MainPage.Navigation.PushAsync(sp);
             };
