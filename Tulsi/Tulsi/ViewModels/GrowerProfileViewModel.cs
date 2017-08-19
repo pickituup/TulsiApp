@@ -5,8 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Tulsi.Helpers;
 using Tulsi.Model;
 using Tulsi.MVVM.Core;
+using Tulsi.NavigationFramework;
+using Xamarin.Forms;
 
 namespace Tulsi.ViewModels {
     public sealed class GrowerProfileViewModel : ViewModelBase, IViewModel {
@@ -41,7 +44,7 @@ namespace Tulsi.ViewModels {
                 new ProfileTransaction { Code = "SKC", Number = "28", IsP=true, Quantity="8,200" },
             };
 
-
+            CloseCommand = new Command(() => BaseSingleton<ViewSwitchingLogic>.Instance.NavigateOneStepBack());
         }
 
         public void Dispose() {

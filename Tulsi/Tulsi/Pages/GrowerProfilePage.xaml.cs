@@ -17,12 +17,10 @@ namespace Tulsi {
             InitializeComponent();
 
             BindingContext = _viewModel = new GrowerProfileViewModel();
+        }
 
-            TapGestureRecognizer CloseTap = new TapGestureRecognizer();
-            CloseTap.Tapped += (s, e) => {
-                Application.Current.MainPage.Navigation.PopAsync();
-            };
-            Close.GestureRecognizers.Add(CloseTap);
+        public void ApplyVisualChangesWhileNavigating() {
+            
         }
 
         private void Handle_ItemSelected(object sender, SelectedItemChangedEventArgs e) {
