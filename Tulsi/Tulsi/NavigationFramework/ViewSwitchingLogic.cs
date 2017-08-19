@@ -44,6 +44,13 @@ namespace Tulsi.NavigationFramework {
         }
 
         /// <summary>
+        /// Removes the last page from navigation stack. Root page will not be exclude from navigation stack. 
+        /// </summary>
+        public void NavigateOneStepBack() {
+            Application.Current.MainPage.Navigation.PopAsync(false);
+        }
+
+        /// <summary>
         ///     Get view of the appropriate type
         /// </summary>
         /// <param name="viewType"></param>
@@ -106,7 +113,7 @@ namespace Tulsi.NavigationFramework {
             }
             catch (Exception exc) {
                 throw new InvalidOperationException(string.Format("ViewSwitchingLogic.ApplyVisualChangesWhileNavigating - {0}, Exception details - {1}",
-                    exc.Message));
+                    _ERROR_INVALID_PAGE_IN_NAVIGATION_STACK, exc.Message));
             }
         }
     }
