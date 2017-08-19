@@ -51,6 +51,7 @@
     <Compile Include="Model\DataContainers\DataItems\SideMenuItem.cs" />
     <Compile Include="Model\ChartModel.cs" />
     <Compile Include="Model\LadaanEntry.cs" />
+    <Compile Include="Model\LatePayment.cs" />
     <Compile Include="Model\NewsModel.cs" />
     <Compile Include="Model\ProfileTransaction.cs" />
     <Compile Include="Model\TodayRatesEntry.cs" />
