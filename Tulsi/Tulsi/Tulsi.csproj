@@ -182,7 +182,7 @@
     <Compile Include="ViewModels\LadaanViewModel.cs" />
     <Compile Include="ViewModels\LatePaymentsViewModel.cs" />
     <Compile Include="ViewModels\Menu\SideMenuViewModel.cs" />
-    <Compile Include="ViewModels\ProfileViewModel.cs" />
+    <Compile Include="ViewModels\ProfilePageViewModel.cs" />
     <Compile Include="ViewModels\ProfitViewModel.cs" />
     <Compile Include="ViewModels\ReportsViewModel.cs" />
     <Compile Include="ViewModels\SearchViewModel.cs" />

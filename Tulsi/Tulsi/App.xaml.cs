@@ -16,7 +16,6 @@ namespace Tulsi {
     public partial class App : Application {
         public ExpensesViewModel ExpensesVM;
         public LatePaymentsViewModel LatePaymentsVM;
-        public ProfileViewModel ProfileVM;
         public ProfitViewModel ProfitVM;
         public StockPendingDetailsViewModel StockPendingDetailsVM;
         public SideMenuView SideMenu;
@@ -27,7 +26,6 @@ namespace Tulsi {
             //ViewModels
             ExpensesVM = new ExpensesViewModel();
             LatePaymentsVM = new LatePaymentsViewModel();
-            ProfileVM = new ProfileViewModel();
             ProfitVM = new ProfitViewModel();
             StockPendingDetailsVM = new StockPendingDetailsViewModel();
 
