@@ -57,31 +57,37 @@
         </Grid>
 
         <!--  MAIN CONTENT  -->
-        <ListView
-            x:Name="menuItems"
+        <Frame
+            Margin="5,0,5,0"
+            Padding="70,0,70,0"
             BackgroundColor="White"
-            ItemSelected="Handle_ItemSelected"
-            ItemsSource="{Binding MenuItems}"
-            RowHeight="50"
-            SelectedItem="{Binding SelectedMenuItem, Mode=TwoWay}"
-            SeparatorColor="AliceBlue"
-            SeparatorVisibility="Default"
-            VerticalOptions="StartAndExpand">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <ContentView>
-                            <StackLayout>
+            CornerRadius="10"
+            HasShadow="False">
+
+            <ListView
+                x:Name="menuItems"
+                BackgroundColor="White"
+                ItemsSource="{Binding MenuItems}"
+                RowHeight="70"
+                SelectedItem="{Binding SelectedMenuItem, Mode=TwoWay}"
+                SeparatorColor="#2793F5"
+                SeparatorVisibility="Default"
+                VerticalOptions="Center">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ContentView BackgroundColor="White">
                                 <Label
                                     HorizontalOptions="Center"
                                     HorizontalTextAlignment="Center"
                                     Text="{Binding Name}"
+                                    TextColor="#2793F5"
                                     VerticalOptions="Center" />
-                            </StackLayout>
-                        </ContentView>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+                            </ContentView>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Frame>
     </StackLayout>
 </m:MenuContainerPage>
