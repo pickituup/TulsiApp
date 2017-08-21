@@ -9,35 +9,19 @@ using Syncfusion.SfChart.XForms;
 using Tulsi.ViewModels;
 using SlideOverKit;
 using Tulsi.SharedService;
+using Tulsi.Model;
 
 namespace Tulsi {
     public partial class ProfitPage : MenuContainerPage, IView {
+
+        private readonly ProfitViewModel _viewModel;
+
         public ProfitPage() {
             InitializeComponent();
 
-            ProfitViewModel pvm = ((App)Application.Current).ProfitVM;
-            BindingContext = pvm;
-
-            int hd = DependencyService.Get<IDisplaySize>().GetHeightDiP();
-            AbsoluteLayout.SetLayoutBounds(SideMenuOverlay, new Rectangle(0, 0, 0.9, hd - 20));
-
-            //Slide menu creating
-            //SlideMenu = ((App)Application.Current).SideMenu;
             SlideMenu = new SideMenuView();
 
-            //Toolbar taps
-            TapGestureRecognizer ToolbarTap1 = new TapGestureRecognizer();
-            ToolbarTap1.Tapped += (s, e) => {
-                this.ShowMenu();
-            };
-            Menu.GestureRecognizers.Add(ToolbarTap1);
-
-            TapGestureRecognizer ToolbarTap2 = new TapGestureRecognizer();
-            ToolbarTap2.Tapped += (s, e) => {
-                SearchPage sp = new SearchPage();
-                Application.Current.MainPage.Navigation.PushAsync(sp);
-            };
-            Search.GestureRecognizers.Add(ToolbarTap2);
+            BindingContext = _viewModel = new ProfitViewModel(); ;
 
             //Tabs navigation
             TapGestureRecognizer TabTap1 = new TapGestureRecognizer();
@@ -49,7 +33,7 @@ namespace Tulsi {
                 WeeklyArea.BackgroundColor = Color.Transparent;
                 WeeklyLabel.TextColor = Color.FromHex("#B3B3B3");
 
-                pvm.ReportsPeriod = ProfitViewModel.Period.Quarterly;
+                _viewModel.ReportsPeriod = Period.Quarterly;
             };
             QuarterlyArea.GestureRecognizers.Add(TabTap1);
 
@@ -62,7 +46,7 @@ namespace Tulsi {
                 WeeklyArea.BackgroundColor = Color.Transparent;
                 WeeklyLabel.TextColor = Color.FromHex("#B3B3B3");
 
-                pvm.ReportsPeriod = ProfitViewModel.Period.Monthly;
+                _viewModel.ReportsPeriod = Period.Monthly;
             };
             MonthlyArea.GestureRecognizers.Add(TabTap2);
 
@@ -75,7 +59,7 @@ namespace Tulsi {
                 WeeklyArea.BackgroundColor = Color.FromHex("#2793F5");
                 WeeklyLabel.TextColor = Color.White;
 
-                pvm.ReportsPeriod = ProfitViewModel.Period.Quarterly;
+                _viewModel.ReportsPeriod = Period.Quarterly;
             };
             WeeklyLabel.GestureRecognizers.Add(TabTap3);
 
@@ -84,7 +68,7 @@ namespace Tulsi {
                 Year1.TextColor = Color.FromHex("#2793F5");
                 Year2.TextColor = Color.FromHex("#B3B3B3");
 
-                pvm.Year = 2013;
+                _viewModel.Year = 2013;
             };
             Year1.GestureRecognizers.Add(TabTap4);
 
@@ -93,7 +77,7 @@ namespace Tulsi {
                 Year1.TextColor = Color.FromHex("#B3B3B3");
                 Year2.TextColor = Color.FromHex("#2793F5");
 
-                pvm.Year = 2014;
+                _viewModel.Year = 2014;
             };
             Year2.GestureRecognizers.Add(TabTap5);
 
@@ -146,7 +130,16 @@ namespace Tulsi {
         }
 
         /// <summary>
-        /// Make some visual changes of current page through navigating process (hide side menu or smt...)
+        ///     Show side menu.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ShowMenuCommand(object sender, EventArgs e) {
+            ShowMenu();
+        }
+
+        /// <summary>
+        ///     Autohide side menu.
         /// </summary>
         public void ApplyVisualChangesWhileNavigating() {
             SlideMenu.HideWithoutAnimations();

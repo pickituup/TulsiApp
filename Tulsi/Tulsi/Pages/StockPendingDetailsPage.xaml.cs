@@ -17,7 +17,7 @@ namespace Tulsi
         {
             InitializeComponent();
 
-            StockPendingDetailsViewModel spdvm = ((App)Application.Current).StockPendingDetailsVM;
+            StockPendingDetailsViewModel spdvm = new StockPendingDetailsViewModel();
             BindingContext = spdvm;
             StockPendingDetailsListView.ItemsSource = spdvm.StockPendingDetails;
             StockPendingDetailsListView.ItemSelected += (sender, e) =>

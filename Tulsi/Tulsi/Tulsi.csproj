@@ -49,6 +49,7 @@
     <Compile Include="Model\AuditEntry.cs" />
     <Compile Include="Model\BankAccount.cs" />
     <Compile Include="Model\BuyerRanking.cs" />
+    <Compile Include="Model\Period.cs" />
     <Compile Include="Model\DataContainers\DataItems\ReportsMenuItem.cs" />
     <Compile Include="Model\DataContainers\ReportsMenuContainer.cs" />
     <Compile Include="Model\DataContainers\SideMenuContainer.cs" />
@@ -58,6 +59,7 @@
     <Compile Include="Model\LatePayment.cs" />
     <Compile Include="Model\NewsModel.cs" />
     <Compile Include="Model\ProfileTransaction.cs" />
+    <Compile Include="Model\ProfitChartModel.cs" />
     <Compile Include="Model\TodayRatesEntry.cs" />
     <Compile Include="Model\Transaction.cs" />
     <Compile Include="MVVM.Core\IViewModel.cs" />
@@ -185,6 +187,8 @@
     <Compile Include="ViewModels\ProfitViewModel.cs" />
     <Compile Include="ViewModels\ReportsViewModel.cs" />
     <Compile Include="ViewModels\SearchViewModel.cs" />
+    <Compile Include="ViewModels\SettingsViewModel.cs" />
+    <Compile Include="ViewModels\SetupDashboardViewModel.cs" />
     <Compile Include="ViewModels\StockPendingDetailsViewModel.cs" />
     <Compile Include="ViewModels\TodayRatesViewModel.cs" />
   </ItemGroup>

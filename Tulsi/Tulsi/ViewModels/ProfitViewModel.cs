@@ -3,18 +3,36 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
+using Tulsi.Helpers;
+using Tulsi.Model;
+using Tulsi.MVVM.Core;
+using Tulsi.NavigationFramework;
+using Xamarin.Forms;
 
-namespace Tulsi.ViewModels
-{
-    public class ProfitViewModel
-    {
+namespace Tulsi.ViewModels {
+    public class ProfitViewModel : ViewModelBase, IViewModel {
+
+        int _year;
+        public int Year {
+            get { return _year; }
+            set { SetProperty(ref _year, value); }
+        }
+
+        Period _reportsPeriod;
+        public Period ReportsPeriod {
+            get { return _reportsPeriod; }
+            set { SetProperty(ref _reportsPeriod, value); }
+        }
+
         public List<ProfitChartModel> ChartData { get; set; }
-        public Period ReportsPeriod { get; set; }
-        public enum Period { Monthly, Quarterly, Weekly };
-        public int Year { get; set; }
 
-        public ProfitViewModel()
-        {
+        public ICommand DisplaySearchPageCommand { get; private set; }
+
+        /// <summary>
+        ///     ctor().
+        /// </summary>
+        public ProfitViewModel() {
             ChartData = new List<ProfitChartModel>()
             {
                 new ProfitChartModel { Value = 420, Step = 1 },
@@ -29,12 +47,14 @@ namespace Tulsi.ViewModels
             };
 
             Year = 2013;
+
             ReportsPeriod = Period.Monthly;
+
+            DisplaySearchPageCommand = new Command(() => BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.SearchPage));
         }
-    }
-    public class ProfitChartModel
-    {
-        public double Value { get; set; }
-        public int Step { get; set; }
+
+        public void Dispose() {
+            
+        }
     }
 }
