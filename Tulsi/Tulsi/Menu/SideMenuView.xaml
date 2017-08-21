@@ -88,8 +88,6 @@
                 <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
 
-
-
             <ListView
                 x:Name="menuItems"
                 Grid.Row="0"
@@ -155,15 +153,15 @@
                 </Grid.RowDefinitions>
                 <Label
                     Grid.Row="1"
-                    HorizontalOptions="Center"
                     BackgroundColor="Transparent"
+                    HorizontalOptions="Center"
                     Style="{StaticResource MenuItemStyleLabel}"
                     Text="70L"
                     VerticalOptions="Center" />
                 <Label
                     Grid.Row="2"
-                    HorizontalOptions="Center"
                     BackgroundColor="Transparent"
+                    HorizontalOptions="Center"
                     Style="{StaticResource MenuItemStyleLabel}"
                     Text="2 Cr"
                     VerticalOptions="Center" />

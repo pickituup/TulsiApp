@@ -9,7 +9,10 @@
     NavigationPage.HasNavigationBar="false">
     <StackLayout x:Name="HeaderLayout" BackgroundColor="#DCDCDC">
         <!--  Tool bar  -->
-        <Grid x:Name="ToolbarGrid" BackgroundColor="#2793F5">
+        <Grid
+            x:Name="ToolbarGrid"
+            BackgroundColor="#2793F5"
+            VerticalOptions="Start">
             <Grid.RowDefinitions>
                 <RowDefinition Height="50" />
             </Grid.RowDefinitions>
@@ -62,11 +65,12 @@
             Padding="70,0,70,0"
             BackgroundColor="White"
             CornerRadius="10"
-            HasShadow="False">
-
+            HasShadow="False"
+            VerticalOptions="StartAndExpand">
             <ListView
                 x:Name="menuItems"
                 BackgroundColor="White"
+                HeightRequest="430"
                 ItemsSource="{Binding MenuItems}"
                 RowHeight="70"
                 SelectedItem="{Binding SelectedMenuItem, Mode=TwoWay}"
