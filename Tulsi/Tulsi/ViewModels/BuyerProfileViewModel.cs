@@ -11,7 +11,7 @@ using Tulsi.NavigationFramework;
 using Tulsi.Helpers;
 
 namespace Tulsi.ViewModels {
-    public sealed class BuyerProfileViewModel : ViewModelBase {
+    public sealed class BuyerProfileViewModel : ViewModelBase,IViewModel {
         private ProfileTransaction _selectedProfileTransaction;
 
         /// <summary>
@@ -49,6 +49,13 @@ namespace Tulsi.ViewModels {
             set {
                 SetProperty<ProfileTransaction>(ref _selectedProfileTransaction, value);
             }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Dispose() {
+            
         }
     }
 }

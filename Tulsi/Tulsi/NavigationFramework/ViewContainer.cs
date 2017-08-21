@@ -170,6 +170,10 @@ namespace Tulsi.NavigationFramework {
                 {
                     ViewType.BankAccountDetailsPage,
                     () => new ViewBuider<BankAccountDetailsPage>().GetView()
+                },
+                {
+                    ViewType.ExpensesListPage,
+                    () => new ViewBuider<ExpensesListPage>().GetView()
                 }
             };
         }

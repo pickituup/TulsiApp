@@ -3,40 +3,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Tulsi.NavigationFramework;
+using Tulsi.Helpers;
 using Xamarin.Forms;
 using SlideOverKit;
 using Tulsi.SharedService;
+using Tulsi.ViewModels;
 
-namespace Tulsi
-{
-    public partial class ExpensesListPage : MenuContainerPage
-    {
-        public ExpensesListPage()
-        {
+namespace Tulsi {
+    public partial class ExpensesListPage : MenuContainerPage, IView {
+        private ExpensesListViewModel _viewModel;
+
+        /// <summary>
+        /// Public ctor.
+        /// </summary>
+        public ExpensesListPage() {
             InitializeComponent();
 
-            int hd = DependencyService.Get<IDisplaySize>().GetHeightDiP();
-            AbsoluteLayout.SetLayoutBounds(SideMenuOverlay, new Rectangle(0, 0, 0.9, hd - 20));
-
             //Slide menu creating
-            SlideMenu = ((App)Application.Current).SideMenu;
+            SlideMenu = new SideMenuView();
 
-            //Toolbar taps
-            TapGestureRecognizer ToolbarTap1 = new TapGestureRecognizer();
-            ToolbarTap1.Tapped += (s, e) =>
-            {
-                this.ShowMenu();
-            };
-            Menu.GestureRecognizers.Add(ToolbarTap1);
-
-            TapGestureRecognizer ToolbarTap2 = new TapGestureRecognizer();
-            ToolbarTap2.Tapped += (s, e) =>
-            {
-                SearchPage sp = new SearchPage();
-                Application.Current.MainPage.Navigation.PushAsync(sp);
-            };
-            Search.GestureRecognizers.Add(ToolbarTap2);
+            BindingContext = _viewModel = new ExpensesListViewModel();
 
             More.Source = ImageSource.FromResource("Tulsi.Images.3whitecircles.png");
             ExpensesIcon.Source = ImageSource.FromResource("Tulsi.Images.expenses_group.png");
@@ -47,12 +34,22 @@ namespace Tulsi
             BonuslIcon.Source = ImageSource.FromResource("Tulsi.Images.expenses_bonus.png");
             UtilitiesIcon.Source = ImageSource.FromResource("Tulsi.Images.expenses_utilities.png");
             CarIcon.Source = ImageSource.FromResource("Tulsi.Images.expenses_car.png");
-            /*IconPlace1.Source = ImageSource.FromResource("Tulsi.Images.expenses_place_micro.png");
-            IconPlace2.Source = ImageSource.FromResource("Tulsi.Images.expenses_place_micro.png");
-            IconCamera1.Source = ImageSource.FromResource("Tulsi.Images.expenses_camera_micro.png");
-            IconRotate1.Source = ImageSource.FromResource("Tulsi.Images.expenses_rotate_micro.png");
-            IconBell1.Source = ImageSource.FromResource("Tulsi.Images.expenses_bell_micro.png");*/
+        }
 
+        /// <summary>
+        /// IView implementation
+        /// </summary>
+        public void ApplyVisualChangesWhileNavigating() {
+            SlideMenu.HideWithoutAnimations();
+        }
+
+        /// <summary>
+        /// Displays side menu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ShowMenuCommand(object sender, EventArgs e) {
+            ShowMenu();
         }
     }
 }

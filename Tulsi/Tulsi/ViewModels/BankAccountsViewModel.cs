@@ -11,7 +11,7 @@ using Tulsi.Helpers;
 using Tulsi.Model;
 
 namespace Tulsi.ViewModels {
-    public sealed class BankAccountsViewModel : ViewModelBase {
+    public sealed class BankAccountsViewModel : ViewModelBase,IViewModel {
         private BankAccount _selectedBankAccount;
 
         /// <summary>
@@ -67,6 +67,13 @@ namespace Tulsi.ViewModels {
                     SelectedBankAccount = null;
                 }
             }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Dispose() {
+
         }
     }
 }

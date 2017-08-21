@@ -119,6 +119,11 @@ namespace Tulsi.NavigationFramework {
         /// <summary>
         ///     BankAccountDetailsPage
         /// </summary>
-        BankAccountDetailsPage
+        BankAccountDetailsPage,
+
+        /// <summary>
+        ///     ExpensesListPage
+        /// </summary>
+        ExpensesListPage
     }
 }
