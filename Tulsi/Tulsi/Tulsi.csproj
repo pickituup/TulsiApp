@@ -165,6 +165,8 @@
     <Compile Include="ToolKit\BindingValueConverters\RankingsIconConverter.cs" />
     <Compile Include="ToolKit\BindingValueConverters\RankingsLabelConverter.cs" />
     <Compile Include="ToolKit\BindingValueConverters\StringToResourceImageSourceConverter.cs" />
+    <Compile Include="ViewModels\ArrivalDetailsViewModel.cs" />
+    <Compile Include="ViewModels\ArrivalViewModel.cs" />
     <Compile Include="ViewModels\AuditLogViewModel.cs" />
     <Compile Include="ViewModels\BankAccountDetailsViewModel.cs" />
     <Compile Include="ViewModels\BankAccountsViewModel.cs" />
