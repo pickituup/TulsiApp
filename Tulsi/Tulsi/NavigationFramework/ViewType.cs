@@ -124,6 +124,11 @@ namespace Tulsi.NavigationFramework {
         /// <summary>
         ///     SetupDashboard page.
         /// </summary>
-        SetupDashboardPage
+        SetupDashboardPage,
+
+        /// <summary>
+        ///     ExpensesListPage
+        /// </summary>
+        ExpensesListPage
     }
 }
