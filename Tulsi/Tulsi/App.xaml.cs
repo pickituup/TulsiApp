@@ -14,11 +14,7 @@ using Tulsi.Helpers;
 
 namespace Tulsi {
     public partial class App : Application {
-        public AuditLogViewModel AuditLogVM;
-        public BuyerViewModel BuyerVM;
-        public BuyerRankingsViewModel BuyerRankingsVM;
         public ExpensesViewModel ExpensesVM;
-        public GrowerViewModel GrowerVM;
         public LatePaymentsViewModel LatePaymentsVM;
         public ProfileViewModel ProfileVM;
         public ProfitViewModel ProfitVM;
@@ -29,11 +25,7 @@ namespace Tulsi {
             InitializeComponent();
 
             //ViewModels
-            AuditLogVM = new AuditLogViewModel();
-            BuyerVM = new BuyerViewModel();
-            BuyerRankingsVM = new BuyerRankingsViewModel();
             ExpensesVM = new ExpensesViewModel();
-            GrowerVM = new GrowerViewModel();
             LatePaymentsVM = new LatePaymentsViewModel();
             ProfileVM = new ProfileViewModel();
             ProfitVM = new ProfitViewModel();
@@ -41,11 +33,6 @@ namespace Tulsi {
 
             //Menu
             SideMenu = new SideMenuView();
-
-            DashboardPage dp = new DashboardPage();
-
-            //LoginPage lp = new LoginPage();
-            //MainPage = new NavigationPage(lp);
 
             BaseSingleton<ViewSwitchingLogic>.Instance.BuildNavigationStack(ViewType.LoginPage);
         }
