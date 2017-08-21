@@ -3,40 +3,39 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Tulsi.NavigationFramework;
+using Tulsi.Helpers;
 using Xamarin.Forms;
 using SlideOverKit;
 using Tulsi.SharedService;
+using Tulsi.ViewModels;
 
-namespace Tulsi
-{
-    public partial class BankAccountDetailsPage : MenuContainerPage
-    {
-        public BankAccountDetailsPage()
-        {
+namespace Tulsi {
+    public partial class BankAccountDetailsPage : MenuContainerPage, IView {
+        private BankAccountDetailsViewModel _viewModel;
+
+        public BankAccountDetailsPage() {
             InitializeComponent();
 
-            int hd = DependencyService.Get<IDisplaySize>().GetHeightDiP();
-            //AbsoluteLayout.SetLayoutBounds(SideMenuOverlay, new Rectangle(0, 0, 0.9, hd - 20));
+            BindingContext = _viewModel = new BankAccountDetailsViewModel();
 
-            //Slide menu creating
-            SlideMenu = ((App)Application.Current).SideMenu;
+            SlideMenu = new SideMenuView();
+        }
 
-            //Toolbar taps
-            TapGestureRecognizer ToolbarTap1 = new TapGestureRecognizer();
-            ToolbarTap1.Tapped += (s, e) =>
-            {
-                this.ShowMenu();
-            };
-            Menu.GestureRecognizers.Add(ToolbarTap1);
+        /// <summary>
+        /// IView imlementation
+        /// </summary>
+        public void ApplyVisualChangesWhileNavigating() {
+            SlideMenu.HideWithoutAnimations();
+        }
 
-            TapGestureRecognizer ToolbarTap2 = new TapGestureRecognizer();
-            ToolbarTap2.Tapped += (s, e) =>
-            {
-                SearchPage sp = new SearchPage();
-                Application.Current.MainPage.Navigation.PushAsync(sp);
-            };
-            Search.GestureRecognizers.Add(ToolbarTap2);
+        /// <summary>
+        /// Opens side menu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ShowMenuCommand(object sender, EventArgs e) {
+            ShowMenu();
         }
     }
 }

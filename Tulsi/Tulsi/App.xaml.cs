@@ -72,7 +72,7 @@ namespace Tulsi {
                 return null;
 
             // Do your translation lookup here, using whatever method you require
-            var imageSource = ImageSource.FromResource(Source);
+            ImageSource imageSource = ImageSource.FromResource(Source);
 
             return imageSource;
         }
