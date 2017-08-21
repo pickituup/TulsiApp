@@ -23,7 +23,6 @@ namespace Tulsi {
             SlideMenu = new SideMenuView();
 
             BindingContext = _viewModel = new ReportsViewModel();
-
         }
 
         // Show side menu.
