@@ -21,8 +21,7 @@ namespace Tulsi
         {
             InitializeComponent();
 
-            _viewModel = ((App)Application.Current).BuyerRankingsVM;
-            BindingContext = _viewModel;
+            BindingContext = _viewModel = new BuyerRankingsViewModel(); ;
 
             SlideMenu = new SideMenuView();
         }

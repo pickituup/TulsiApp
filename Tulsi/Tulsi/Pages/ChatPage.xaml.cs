@@ -3,41 +3,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Tulsi.Helpers;
 using Tulsi.NavigationFramework;
+using Tulsi.ViewModels;
 using Xamarin.Forms;
 
 namespace Tulsi {
     public partial class ChatPage : ContentPage, IView {
+
+        private readonly ChatViewModel _viewModel;
+
         public ChatPage() {
             InitializeComponent();
 
-            Photo.Source = ImageSource.FromResource("Tulsi.Images.chatphoto.png");
-
-            //Toolbar taps   //No menu for chat? Why?
-            TapGestureRecognizer tapGestureRecognizer2 = new TapGestureRecognizer();
-            tapGestureRecognizer2.Tapped += (s, e) => {
-                Application.Current.MainPage.Navigation.PopAsync();
-            };
-            Back.GestureRecognizers.Add(tapGestureRecognizer2);
-
-            //Menu taps
-            TapGestureRecognizer MenuTap1 = new TapGestureRecognizer();
-            MenuTap1.Tapped += (s, e) => {
-                Application.Current.MainPage.Navigation.PopAsync();
-            };
-            Back.GestureRecognizers.Add(MenuTap1);
-
-            Tick1.Source = ImageSource.FromResource("Tulsi.Images.chatgraytick.png");
-            Tick2.Source = ImageSource.FromResource("Tulsi.Images.chatbluetick.png");
-            Tick3.Source = ImageSource.FromResource("Tulsi.Images.chatgraytick.png");
-            ChatAddImage.Source = ImageSource.FromResource("Tulsi.Images.camera.png");
+            BindingContext = _viewModel = new ChatViewModel();
         }
 
         /// <summary>
-        /// Make some visual changes of current page through navigating process (hide side menu or smt...)
+        ///     Make some visual changes of current page through navigating process (hide side menu or smt...)
         /// </summary>
         public void ApplyVisualChangesWhileNavigating() {
             
+        }
+
+        private void BackButtonCommand(object sender, EventArgs e) {
+            BaseSingleton<ViewSwitchingLogic>.Instance.NavigateOneStepBack();
         }
     }
 }
