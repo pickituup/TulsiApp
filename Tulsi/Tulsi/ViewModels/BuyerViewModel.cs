@@ -10,12 +10,11 @@ using Tulsi.Helpers;
 using Tulsi.MVVM.Core;
 using Tulsi.Model;
 
-namespace Tulsi.ViewModels
-{
-    public class BuyerViewModel : ViewModelBase, IViewModel
-    {
-        public BuyerViewModel()
-        {
+namespace Tulsi.ViewModels {
+    public class BuyerViewModel : ViewModelBase, IViewModel {
+        private Transaction _selectedTransaction;
+
+        public BuyerViewModel() {
             TransactionsData = new List<Transaction>()
             {
                 new Transaction { Code = "SKC", Number = "28", Quantity="8,200" },
@@ -60,8 +59,23 @@ namespace Tulsi.ViewModels
         /// <summary>
         /// 
         /// </summary>
+        public Transaction SelectedTransaction {
+            get => _selectedTransaction;
+            set {
+                if (SetProperty<Transaction>(ref _selectedTransaction, value) && 
+                    value != null) {
+                    BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.BuyerProfilePage);
+
+                    SelectedTransaction = null;
+                }
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public void Dispose() {
-            
+
         }
     }
 }

@@ -4,82 +4,189 @@
              xmlns:local="clr-namespace:Tulsi;assembly=Tulsi"
              xmlns:controls="clr-namespace:Tulsi.Controls"
              xmlns:m="clr-namespace:SlideOverKit"
+                     xmlns:toolKitConverters="clr-namespace:Tulsi.ToolKit.BindingValueConverters"
              x:Class="Tulsi.BankAccountsPage" NavigationPage.HasNavigationBar="false">
 
-  <StackLayout x:Name="HeaderLayout" BackgroundColor="#DCDCDC">
-    <Grid x:Name="ToolbarGrid">
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="10" />
-        <ColumnDefinition Width="20" />
-        <ColumnDefinition Width="*" />
-        <ColumnDefinition Width="20" />
-        <ColumnDefinition Width="10" />
-      </Grid.ColumnDefinitions>
-      <Grid.RowDefinitions>
-        <RowDefinition Height="50" />
-      </Grid.RowDefinitions>
-      <BoxView Color="#2793F5" Grid.ColumnSpan="5" />
-      <Image x:Name="Menu" Source="{local:ImageResource Tulsi.Images.menu.png}"  Grid.Column="1" WidthRequest="20" HeightRequest="17" HorizontalOptions="Center" VerticalOptions="Center" />
-      <Label Grid.Column="2" x:Name="PageTitleLabel" Text="BANK ACCOUNTS" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="White" />
-      <Image Grid.Column="3"  x:Name="Search"  WidthRequest="20" HeightRequest="20" HorizontalOptions="Center" VerticalOptions="Center" Source="{local:ImageResource Tulsi.Images.magnifier.png}" />
-    </Grid>
-    <ScrollView>
+    <StackLayout x:Name="HeaderLayout" 
+                 BackgroundColor="#DCDCDC">
 
-      <StackLayout x:Name="MainLayout" BackgroundColor="#DCDCDC">
-        <Grid BackgroundColor="Transparent">
-          <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="10" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="10" />
-          </Grid.ColumnDefinitions>
-          <Grid.RowDefinitions>
-            <RowDefinition Height="35" />
-            <RowDefinition Height="3" />
-            <RowDefinition Height="40" />
-          </Grid.RowDefinitions>
-          <BoxView Color="#027CE9" Grid.Column="1" Grid.RowSpan="3" />
-          <Label Grid.Column="1" Grid.Row="0" Text="TOTAL" FontSize="14" FontAttributes="Bold" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="White" />
-          <BoxView Grid.Column="1" Grid.Row="1" Color="White" HeightRequest="1"  />
-          <Label Grid.Column="1" Grid.Row="2" Text="72,00,000" FontSize="20" FontAttributes="Bold" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="White" />
+        <!--Action Bar-->
+        <Grid x:Name="ToolbarGrid" BackgroundColor="#2793F5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+            </Grid.RowDefinitions>
+            <Grid
+          Padding="15,0,0,0"
+          BackgroundColor="Transparent"
+          HorizontalOptions="Start">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="60" />
+                </Grid.ColumnDefinitions>
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="ShowMenuCommand" />
+                </Grid.GestureRecognizers>
+                <Image
+            HorizontalOptions="Start"
+            Source="{local:ImageResource Tulsi.Images.menu.png}"
+            VerticalOptions="Center"
+            WidthRequest="20" />
+            </Grid>
+
+            <Label
+          x:Name="PageTitleLabel"
+          HorizontalOptions="Center"
+          Text="BANK ACCOUNTS"
+          TextColor="White"
+          VerticalOptions="Center" />
+
+            <Grid
+          Padding="0,0,15,0"
+          BackgroundColor="Transparent"
+          HorizontalOptions="End">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="60" />
+                </Grid.ColumnDefinitions>
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding DisplaySearchPageCommand}" />
+                </Grid.GestureRecognizers>
+                <Image
+            HeightRequest="20"
+            HorizontalOptions="End"
+            Source="{local:ImageResource Tulsi.Images.magnifier.png}"
+            VerticalOptions="Center"
+            WidthRequest="20" />
+            </Grid>
         </Grid>
-        <controls:CustomFrame BorderRadius="25" Margin="5,0,5,0" BackgroundColor="White" >
-          <Grid x:Name="Account1" BackgroundColor="White" >
-            <Grid.ColumnDefinitions>
-              <ColumnDefinition Width="auto" />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-              <RowDefinition Height="auto" />
-            </Grid.RowDefinitions>
 
-            <StackLayout Grid.Column="1" BackgroundColor="Transparent">
-              <Image x:Name="Icici" WidthRequest="150" HeightRequest="31" HorizontalOptions="Center" VerticalOptions="Center" Margin="0,15" />
-              <Label Text="32,00,000" FontSize="25" FontAttributes="Bold" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Margin="0,5" />
-              <Label Text="IN SOFTWARE" FontSize="18" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
-              <Label Text="last update 42 hours ago" FontSize="14" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+        <StackLayout Padding="10,0"
+                     VerticalOptions="FillAndExpand"
+                     BackgroundColor="Transparent">
+
+            <StackLayout>
+
+                <StackLayout.Resources>
+
+                    <ResourceDictionary>
+
+                        <Style TargetType="ContentView">
+
+                            <Setter Property="BackgroundColor"
+                                Value="#027CE9"/>
+
+                            <Setter Property="Padding"
+                                Value="0,7"/>
+                        </Style>
+
+                        <Style TargetType="Label">
+
+                            <Setter Property="FontSize"
+                                Value="20"/>
+
+                            <Setter Property="FontAttributes"
+                                Value="Bold"/>
+
+                            <Setter Property="VerticalTextAlignment"
+                                Value="Center"/>
+
+                            <Setter Property="HorizontalTextAlignment"
+                                Value="Center"/>
+
+                            <Setter Property="TextColor"
+                                Value="White"/>
+                        </Style>
+                    </ResourceDictionary>
+                </StackLayout.Resources>
+
+                <ContentView>
+
+                    <Label Text="TOTAL"/>
+                </ContentView>
+
+                <ContentView>
+
+                    <Label Text="72,00,000"/>
+                </ContentView>
             </StackLayout>
-          </Grid>
-        </controls:CustomFrame>
-        <controls:CustomFrame BorderRadius="25" Margin="5,0,5,0" BackgroundColor="White" >
-          <Grid x:Name="Account2" BackgroundColor="White">
-            <Grid.ColumnDefinitions>
-              <ColumnDefinition Width="auto" />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-              <RowDefinition Height="auto" />
-            </Grid.RowDefinitions>
 
-            <StackLayout Grid.Column="1" BackgroundColor="Transparent">
-              <Image x:Name="PNB" WidthRequest="61" HeightRequest="31" HorizontalOptions="Center" VerticalOptions="Center" Margin="0,15" />
-              <Label Text="40,00,000" FontSize="25" FontAttributes="Bold" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Margin="0,5" />
-              <Label Text="IN SOFTWARE" FontSize="18" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
-              <Label Text="last update 42 hours ago" FontSize="14" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
-            </StackLayout>
-          </Grid>
-        </controls:CustomFrame>
+            <ListView 
+                ItemsSource="{Binding Path=BankAccounts}"
+                VerticalOptions="FillAndExpand"
+                SeparatorVisibility="None"
+                HasUnevenRows="True"
+                SelectedItem="{Binding Path=SelectedBankAccount, 
+                    Mode=TwoWay}">
 
-      </StackLayout>
+                <ListView.Resources>
 
+                    <ResourceDictionary>
 
-    </ScrollView>
-  </StackLayout>
-  </m:MenuContainerPage>
+                        <toolKitConverters:StringToResourceImageSourceConverter x:Key="stringToResourceImageSourceConverter"/>
+                    </ResourceDictionary>
+                </ListView.Resources>
+
+                <ListView.ItemTemplate>
+
+                    <DataTemplate>
+
+                        <ViewCell>
+
+                            <ViewCell.View>
+
+                                <Frame 
+                                    CornerRadius="15"
+                                    BackgroundColor="White"
+                                    HasShadow="False"
+                                    Margin="0,4">
+
+                                    <Frame.Resources>
+
+                                        <ResourceDictionary>
+
+                                            <Style TargetType="Label">
+
+                                                <Setter Property="VerticalTextAlignment"
+                                                        Value="Center"/>
+
+                                                <Setter Property="HorizontalTextAlignment"
+                                                        Value="Center"/>
+                                            </Style>
+                                        </ResourceDictionary>
+                                    </Frame.Resources>
+
+                                    <StackLayout
+                                        Grid.Column="1" 
+                                        BackgroundColor="Transparent">
+
+                                        <Image 
+                                            Source="{Binding Path=LogoPath,
+                                                Converter={StaticResource Key=stringToResourceImageSourceConverter}}"
+                                            WidthRequest="150" 
+                                            HeightRequest="31"
+                                            HorizontalOptions="Center" 
+                                            VerticalOptions="Center" 
+                                            Margin="0,15" />
+
+                                        <Label 
+                                            Text="{Binding Path=Ammount}" 
+                                            FontSize="25" 
+                                            FontAttributes="Bold"
+                                            Margin="0,5" />
+
+                                        <Label 
+                                            Text="{Binding Path=SomeDescription,
+                                                StringFormat='{0:N}'}" 
+                                            FontSize="18" />
+
+                                        <Label 
+                                            Text="{Binding Path=LastUpdateInfo}" 
+                                            FontSize="14" />
+                                    </StackLayout>
+                                </Frame>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </StackLayout>
+</m:MenuContainerPage>

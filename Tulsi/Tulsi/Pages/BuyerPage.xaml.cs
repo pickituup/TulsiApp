@@ -81,16 +81,16 @@ namespace Tulsi {
             ShowMenu();
         }
 
-        /// <summary>
-        /// Temporary
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void OnItemSelected(object sender, SelectedItemChangedEventArgs e) {
-            BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.BuyerProfilePage);
+        ///// <summary>
+        ///// Temporary
+        ///// </summary>
+        ///// <param name="sender"></param>
+        ///// <param name="e"></param>
+        //private void OnItemSelected(object sender, SelectedItemChangedEventArgs e) {
+        //    BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.BuyerProfilePage);
 
-            ((ListView)sender).SelectedItem = null;
-        }
+        //    ((ListView)sender).SelectedItem = null;
+        //}
 
         /// <summary>
         /// Make some visual changes of current page through navigating process (hide side menu or smt...)

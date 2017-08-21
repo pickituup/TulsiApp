@@ -7,6 +7,8 @@ using Tulsi.Model;
 using Tulsi.MVVM.Core;
 using Tulsi.NavigationFramework;
 using Tulsi.Helpers;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace Tulsi.ViewModels {
     public class LatePaymentsViewModel : ViewModelBase {
@@ -25,12 +27,21 @@ namespace Tulsi.ViewModels {
                 new LatePayment { Name = "SF", Amount=78000 },
                 new LatePayment { Name = "PJB", Amount=78000 }
             };
+
+            DisplaySearchPageCommand = new Command(()=> {
+                BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.SearchPage);
+            });
         }
 
         /// <summary>
         /// 
         /// </summary>
         public List<LatePayment> LatePayments { get; private set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public ICommand DisplaySearchPageCommand { get; private set; }
 
         /// <summary>
         /// 
