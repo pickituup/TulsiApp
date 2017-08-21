@@ -23,11 +23,7 @@ namespace Tulsi {
             SlideMenu = new SideMenuView();
 
             BindingContext = _viewModel = new ReportsViewModel();
-        }
 
-        // Deselect item.
-        private void Handle_ItemSelected(object sender, SelectedItemChangedEventArgs e) {
-            menuItems.SelectedItem = null;
         }
 
         // Show side menu.

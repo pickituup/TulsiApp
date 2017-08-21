@@ -29,6 +29,8 @@ namespace Tulsi.ViewModels {
             set {
                 if (SetProperty(ref _selectedMenuItem, value) && value != null) {
                     BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(value.ViewType);
+
+                    SelectedMenuItem = null;
                 }
             }
         }
