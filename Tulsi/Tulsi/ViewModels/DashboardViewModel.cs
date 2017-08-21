@@ -13,27 +13,6 @@ using Xamarin.Forms;
 
 namespace Tulsi.ViewModels {
     public class DashboardViewModel : ViewModelBase, IViewModel {
-
-        ObservableCollection<ChartModel> _chartData;
-        public ObservableCollection<ChartModel> ChartData {
-            get { return _chartData; }
-            set { SetProperty(ref _chartData, value); }
-        }
-
-        ObservableCollection<NewsModel> _newsData;
-        public ObservableCollection<NewsModel> NewsData {
-            get { return _newsData; }
-            set { SetProperty(ref _newsData, value); }
-        }
-
-        public ICommand DisplaySearchPageCommand { get; private set; }
-
-        public ICommand DisplayLaddanPageCommand { get; private set; }
-
-        public ICommand DisplayTodayRatePageCommand { get; private set; }
-
-        public ICommand DisplayBuyerPageCommand { get; private set; }
-
         /// <summary>
         ///     ctor().
         /// </summary>
@@ -60,6 +39,26 @@ namespace Tulsi.ViewModels {
 
             DisplayBuyerPageCommand = new Command(() => BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.BuyerPage));
         }
+
+        ObservableCollection<ChartModel> _chartData;
+        public ObservableCollection<ChartModel> ChartData {
+            get { return _chartData; }
+            set { SetProperty(ref _chartData, value); }
+        }
+
+        ObservableCollection<NewsModel> _newsData;
+        public ObservableCollection<NewsModel> NewsData {
+            get { return _newsData; }
+            set { SetProperty(ref _newsData, value); }
+        }
+
+        public ICommand DisplaySearchPageCommand { get; private set; }
+
+        public ICommand DisplayLaddanPageCommand { get; private set; }
+
+        public ICommand DisplayTodayRatePageCommand { get; private set; }
+
+        public ICommand DisplayBuyerPageCommand { get; private set; }
 
         public void Dispose() {
 

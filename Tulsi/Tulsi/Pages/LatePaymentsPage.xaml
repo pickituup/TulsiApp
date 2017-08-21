@@ -89,34 +89,26 @@
                                 
                                 <ViewCell>
                                     
-                                    <Grid VerticalOptions="Center" 
-                                          BackgroundColor="White">
-                                        
+                                    <Grid BackgroundColor="White">
+
                                         <Grid.ColumnDefinitions>
-                                            
+
                                             <ColumnDefinition Width="*" />
-                                            
+
                                             <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
-                                        
-                                        <!--<Grid.RowDefinitions>
-                                            
-                                            <RowDefinition Height="auto" />
-                                        </Grid.RowDefinitions>-->
-                                        
+
                                         <Label Grid.Column="0" 
                                                Text="{Binding Name}" 
                                                HorizontalTextAlignment="Start" 
                                                VerticalTextAlignment="Center"
-                                               HorizontalOptions="Start"
-                                               VerticalOptions="Center" />
+                                               HorizontalOptions="Start"/>
                                         
                                         <Label Grid.Column="1" 
                                                Text="{Binding Amount}" 
                                                HorizontalTextAlignment="Center"
                                                VerticalTextAlignment="Center" 
-                                               HorizontalOptions="End" 
-                                               VerticalOptions="Center" />
+                                               HorizontalOptions="End"/>
                                     </Grid>
                                 </ViewCell>
                             </DataTemplate>

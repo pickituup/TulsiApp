@@ -7,284 +7,285 @@
                                x:Class="Tulsi.BuyerPage" 
                                NavigationPage.HasNavigationBar="false">
 
-  <StackLayout x:Name="HeaderLayout" 
+    <StackLayout x:Name="HeaderLayout" 
                BackgroundColor="#DCDCDC">
 
-    <!--ActionBar-->
-    <Grid x:Name="ToolbarGrid" 
+        <!--ActionBar-->
+        <Grid x:Name="ToolbarGrid" 
           BackgroundColor="#2793F5">
-      <Grid.RowDefinitions>
-        <RowDefinition Height="50" />
-      </Grid.RowDefinitions>
-      <Grid
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+            </Grid.RowDefinitions>
+            <Grid
           Padding="15,0,0,0"
           BackgroundColor="Transparent"
           HorizontalOptions="Start">
-        <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="60" />
-        </Grid.ColumnDefinitions>
-        <Grid.GestureRecognizers>
-          <TapGestureRecognizer Tapped="ShowMenuTapped" />
-        </Grid.GestureRecognizers>
-        <Image
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="60" />
+                </Grid.ColumnDefinitions>
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="ShowMenuTapped" />
+                </Grid.GestureRecognizers>
+                <Image
             HorizontalOptions="Start"
             Source="{local:ImageResource Tulsi.Images.menu.png}"
             VerticalOptions="Center"
             WidthRequest="20" />
-      </Grid>
+            </Grid>
 
-      <Label
+            <Label
           x:Name="PageTitleLabel"
           HorizontalOptions="Center"
           Text="BUYER"
           TextColor="White"
           VerticalOptions="Center" />
 
-      <Grid
+            <Grid
           Padding="0,0,15,0"
           BackgroundColor="Transparent"
           HorizontalOptions="End">
-        <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="60" />
-        </Grid.ColumnDefinitions>
-        <Grid.GestureRecognizers>
-          <TapGestureRecognizer Command="{Binding Path=DisplaySearchPageCommand}" />
-        </Grid.GestureRecognizers>
-        <Image
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="60" />
+                </Grid.ColumnDefinitions>
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding Path=DisplaySearchPageCommand}" />
+                </Grid.GestureRecognizers>
+                <Image
             HeightRequest="20"
             HorizontalOptions="End"
             Source="{local:ImageResource Tulsi.Images.magnifier.png}"
             VerticalOptions="Center"
             WidthRequest="20" />
-      </Grid>
-    </Grid>
-    
-    <ScrollView>
-      <AbsoluteLayout>
-        <StackLayout x:Name="MainLayout" BackgroundColor="#DCDCDC">
-          <Grid BackgroundColor="Transparent" Margin="5,0,5,0">
-            <Grid.ColumnDefinitions>
-              <ColumnDefinition Width="*" />
-              <ColumnDefinition Width="*" />
+            </Grid>
+        </Grid>
 
-            </Grid.ColumnDefinitions>
-            
-            <controls:CustomFrame BorderRadius="25"  
+        <ScrollView>
+            <AbsoluteLayout>
+                <StackLayout x:Name="MainLayout" BackgroundColor="#DCDCDC">
+                    <Grid BackgroundColor="Transparent" Margin="5,0,5,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+
+                        </Grid.ColumnDefinitions>
+
+                        <controls:CustomFrame BorderRadius="25"  
                                   BackgroundColor="White">
-              
-              <Grid BackgroundColor="White">
 
-                <Grid.GestureRecognizers>
-                  
-                  <TapGestureRecognizer Command="{Binding Path=DisplayBuyerRankingsPageCommand}"/>
-                </Grid.GestureRecognizers>
-                
-                <Grid.ColumnDefinitions>
-                  
-                  <ColumnDefinition Width="*" />
-                  
-                  <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
+                            <Grid BackgroundColor="White">
 
-                <Image WidthRequest="40"
+                                <Grid.GestureRecognizers>
+
+                                    <TapGestureRecognizer Command="{Binding Path=DisplayBuyerRankingsPageCommand}"/>
+                                </Grid.GestureRecognizers>
+
+                                <Grid.ColumnDefinitions>
+
+                                    <ColumnDefinition Width="*" />
+
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Image WidthRequest="40"
                        HeightRequest="38"
                        HorizontalOptions="Center"
                        VerticalOptions="Center"
                        Source="{local:ImageResource Tulsi.Images.buyerranks.png}"/>
-                
-                <Label Grid.Column="1"
+
+                                <Label Grid.Column="1"
                        Text="Buyer&#x0a;Ranks"
                        TextColor="#2793F5" />
-              </Grid>
-            </controls:CustomFrame>
-            
-            <controls:CustomFrame BorderRadius="25" 
+                            </Grid>
+                        </controls:CustomFrame>
+
+                        <controls:CustomFrame BorderRadius="25" 
                                   BackgroundColor="White" 
                                   Grid.Column="1">
-              
-              <Grid BackgroundColor="White" 
+
+                            <Grid BackgroundColor="White" 
                     Grid.Column="1">
 
-                <Grid.GestureRecognizers>
+                                <Grid.GestureRecognizers>
 
-                  <TapGestureRecognizer Command="{Binding Path=DisplayLatePaymentsPageCommand}"/>
-                </Grid.GestureRecognizers>
-                
-                <Grid.ColumnDefinitions>
-                  
-                  <ColumnDefinition Width="*" />
-                  
-                  <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
+                                    <TapGestureRecognizer Command="{Binding Path=DisplayLatePaymentsPageCommand}"/>
+                                </Grid.GestureRecognizers>
 
-                <Image WidthRequest="40"
+                                <Grid.ColumnDefinitions>
+
+                                    <ColumnDefinition Width="*" />
+
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Image WidthRequest="40"
                        HeightRequest="40"
                        HorizontalOptions="Center"
                        VerticalOptions="Center"
                        Source="{local:ImageResource Tulsi.Images.latepayments.png}"/>
-                
-                <Label Grid.Column="1" 
+
+                                <Label Grid.Column="1" 
                        Text="Late&#x0a;Payments" 
                        TextColor="#2793F5" />
-              </Grid>
-            </controls:CustomFrame>
-          </Grid>
+                            </Grid>
+                        </controls:CustomFrame>
+                    </Grid>
 
 
-          <controls:CustomFrame BorderRadius="25" Margin="5,0,5,0" BackgroundColor="White" >
-            <Grid HorizontalOptions="Center" BackgroundColor="White">
-              <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-              </Grid.ColumnDefinitions>
-              <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="10" />
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="auto" />
-              </Grid.RowDefinitions>
-              <Label Text="BUYER SUMMARY" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.ColumnSpan="2" />
-              <Grid Grid.RowSpan="4" Grid.Row="1" x:Name="ChartGrid"  VerticalOptions="Center" BackgroundColor="White">
-                <Grid.RowDefinitions>
-                  <RowDefinition Height="auto" />
-                </Grid.RowDefinitions>
-              </Grid>
-              <Grid Grid.Column="1" Grid.Row="2" BackgroundColor="White">
-                <Grid.ColumnDefinitions>
-                  <ColumnDefinition Width="10" />
-                  <ColumnDefinition Width="10" />
-                  <ColumnDefinition Width="auto" />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                  <RowDefinition Height="auto" />
-                  <RowDefinition Height="auto" />
-                </Grid.RowDefinitions>
-                <controls:RoundedContentView Grid.RowSpan="2" WidthRequest="2" HeightRequest="8" BackgroundColor="#82DA69" CornerRadius="5">
-                </controls:RoundedContentView>
-                <Label Grid.Column="2" Grid.Row="0" Text="Paid" FontSize="17" HorizontalOptions="Center" />
-                <Label Grid.Column="2" Grid.Row="1" Text="23%" FontSize="17" FontAttributes="Bold" HorizontalOptions="Center"  />
-              </Grid>
-              <Grid Grid.Column="1" Grid.Row="3" BackgroundColor="White">
-                <Grid.ColumnDefinitions>
-                  <ColumnDefinition Width="10" />
-                  <ColumnDefinition Width="10" />
-                  <ColumnDefinition Width="auto" />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                  <RowDefinition Height="auto" />
-                  <RowDefinition Height="auto" />
-                </Grid.RowDefinitions>
-                <controls:RoundedContentView Grid.RowSpan="2" WidthRequest="2" HeightRequest="8" BackgroundColor="#E47132" CornerRadius="5">
-                </controls:RoundedContentView>
-                <Label Grid.Column="2" Grid.Row="0" Text="Over Due" FontSize="17" />
-                <Label Grid.Column="2" Grid.Row="1" Text="5%" FontSize="17" FontAttributes="Bold" />
-              </Grid>
-              <Grid Grid.Column="1" Grid.Row="4" BackgroundColor="White">
-                <Grid.ColumnDefinitions>
-                  <ColumnDefinition Width="10" />
-                  <ColumnDefinition Width="10" />
-                  <ColumnDefinition Width="auto" />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                  <RowDefinition Height="auto" />
-                  <RowDefinition Height="auto" />
-                </Grid.RowDefinitions>
-                <controls:RoundedContentView Grid.RowSpan="2" WidthRequest="2" HeightRequest="8" BackgroundColor="#9EE5FC" CornerRadius="5">
-                </controls:RoundedContentView>
-                <Label Grid.Column="2" Grid.Row="0" Text="Due" FontSize="17" />
-                <Label Grid.Column="2" Grid.Row="1" Text="72%" FontSize="17" FontAttributes="Bold" />
-              </Grid>
-            </Grid>
-          </controls:CustomFrame>
+                    <controls:CustomFrame BorderRadius="25" Margin="5,0,5,0" BackgroundColor="White" >
+                        <Grid HorizontalOptions="Center" BackgroundColor="White">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="10" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
+                            <Label Text="BUYER SUMMARY" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Grid.ColumnSpan="2" />
+                            <Grid Grid.RowSpan="4" Grid.Row="1" x:Name="ChartGrid"  VerticalOptions="Center" BackgroundColor="White">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                            </Grid>
+                            <Grid Grid.Column="1" Grid.Row="2" BackgroundColor="White">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="10" />
+                                    <ColumnDefinition Width="10" />
+                                    <ColumnDefinition Width="auto" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <controls:RoundedContentView Grid.RowSpan="2" WidthRequest="2" HeightRequest="8" BackgroundColor="#82DA69" CornerRadius="5">
+                                </controls:RoundedContentView>
+                                <Label Grid.Column="2" Grid.Row="0" Text="Paid" FontSize="17" HorizontalOptions="Center" />
+                                <Label Grid.Column="2" Grid.Row="1" Text="23%" FontSize="17" FontAttributes="Bold" HorizontalOptions="Center"  />
+                            </Grid>
+                            <Grid Grid.Column="1" Grid.Row="3" BackgroundColor="White">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="10" />
+                                    <ColumnDefinition Width="10" />
+                                    <ColumnDefinition Width="auto" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <controls:RoundedContentView Grid.RowSpan="2" WidthRequest="2" HeightRequest="8" BackgroundColor="#E47132" CornerRadius="5">
+                                </controls:RoundedContentView>
+                                <Label Grid.Column="2" Grid.Row="0" Text="Over Due" FontSize="17" />
+                                <Label Grid.Column="2" Grid.Row="1" Text="5%" FontSize="17" FontAttributes="Bold" />
+                            </Grid>
+                            <Grid Grid.Column="1" Grid.Row="4" BackgroundColor="White">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="10" />
+                                    <ColumnDefinition Width="10" />
+                                    <ColumnDefinition Width="auto" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <controls:RoundedContentView Grid.RowSpan="2" WidthRequest="2" HeightRequest="8" BackgroundColor="#9EE5FC" CornerRadius="5">
+                                </controls:RoundedContentView>
+                                <Label Grid.Column="2" Grid.Row="0" Text="Due" FontSize="17" />
+                                <Label Grid.Column="2" Grid.Row="1" Text="72%" FontSize="17" FontAttributes="Bold" />
+                            </Grid>
+                        </Grid>
+                    </controls:CustomFrame>
 
-          <controls:CustomFrame BorderRadius="25" Margin="5,0,5,10" BackgroundColor="White" >
-            <Grid BackgroundColor="White">
-              <Grid.RowDefinitions>
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="*" />
-              </Grid.RowDefinitions>
-              
-              <Label Text="BUYER TRANSACTIONS" 
+                    <controls:CustomFrame BorderRadius="25" Margin="5,0,5,10" BackgroundColor="White" >
+                        <Grid BackgroundColor="White">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+
+                            <Label Text="BUYER TRANSACTIONS" 
                      HorizontalTextAlignment="Center"
                      VerticalTextAlignment="Center"  />
-              
-              <ListView SeparatorVisibility="None"
-                        ItemsSource="{Binding Path=TransactionsData}"
-                        RowHeight="50" 
-                        ItemTapped="OnItemSelected" 
-                        Grid.Row="1">
-                
-                <ListView.ItemTemplate>
-                  
-                  <DataTemplate>
-                    
-                    <ViewCell>
-                      
-                      <controls:RoundedContentView 
+
+                            <ListView SeparatorVisibility="None"
+                                      ItemsSource="{Binding Path=TransactionsData}"
+                                      SelectedItem="{Binding Path=SelectedTransaction, 
+                                Mode=TwoWay}"
+                                      RowHeight="50" 
+                                      Grid.Row="1">       
+
+                                <ListView.ItemTemplate>
+
+                                    <DataTemplate>
+
+                                        <ViewCell>
+
+                                            <controls:RoundedContentView 
                         BackgroundColor="#cccccc"
                         CornerRadius="20" 
                         Margin="20,10,10,10">
-                        
-                        <controls:RoundedContentView.Content>
-                          
-                          <Grid VerticalOptions="Center"
+
+                                                <controls:RoundedContentView.Content>
+
+                                                    <Grid VerticalOptions="Center"
                                 BackgroundColor="#cccccc">
-                            
-                            <Grid.ColumnDefinitions>
-                              
-                              <ColumnDefinition Width="20" />
-                              
-                              <ColumnDefinition Width="30" />
-                              
-                              <ColumnDefinition Width="*" />
-                              
-                              <ColumnDefinition Width="60" />
-                              
-                              <ColumnDefinition Width="20" />
-                            </Grid.ColumnDefinitions>
-                            
-                            <Grid.RowDefinitions>
-                              
-                              <RowDefinition Height="auto" />
-                            </Grid.RowDefinitions>
-                            
-                            <Label Grid.Column="1"
+
+                                                        <Grid.ColumnDefinitions>
+
+                                                            <ColumnDefinition Width="20" />
+
+                                                            <ColumnDefinition Width="30" />
+
+                                                            <ColumnDefinition Width="*" />
+
+                                                            <ColumnDefinition Width="60" />
+
+                                                            <ColumnDefinition Width="20" />
+                                                        </Grid.ColumnDefinitions>
+
+                                                        <Grid.RowDefinitions>
+
+                                                            <RowDefinition Height="auto" />
+                                                        </Grid.RowDefinitions>
+
+                                                        <Label Grid.Column="1"
                                    Text="{Binding Code}" 
                                    HorizontalTextAlignment="Start" 
                                    VerticalTextAlignment="Center" 
                                    HorizontalOptions="Center" 
                                    VerticalOptions="Center" 
                                    TextColor="White" />
-                            
-                            <Label Grid.Column="2" 
+
+                                                        <Label Grid.Column="2" 
                                    Text="{Binding Number}" 
                                    HorizontalTextAlignment="Center" 
                                    VerticalTextAlignment="Center" 
                                    HorizontalOptions="Center" 
                                    VerticalOptions="Center" 
                                    TextColor="White" />
-                            
-                            <Label Grid.Column="3"
+
+                                                        <Label Grid.Column="3"
                                    Text="{Binding Quantity}" 
                                    HorizontalTextAlignment="End"
                                    VerticalTextAlignment="Center"
                                    HorizontalOptions="Center" 
                                    VerticalOptions="Center" 
                                    TextColor="White" />
-                          </Grid>
-                        </controls:RoundedContentView.Content>
-                      </controls:RoundedContentView>
-                    </ViewCell>
-                  </DataTemplate>
-                </ListView.ItemTemplate>
-              </ListView>
-            </Grid>
-          </controls:CustomFrame>
-        </StackLayout>
-      </AbsoluteLayout>
-    </ScrollView>
-  </StackLayout>
+                                                    </Grid>
+                                                </controls:RoundedContentView.Content>
+                                            </controls:RoundedContentView>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </Grid>
+                    </controls:CustomFrame>
+                </StackLayout>
+            </AbsoluteLayout>
+        </ScrollView>
+    </StackLayout>
 </pageBase:PageWithSideMenuBase>
 
 <!--<pageBase:PageWithSideMenuBase xmlns="http://xamarin.com/schemas/2014/forms"
