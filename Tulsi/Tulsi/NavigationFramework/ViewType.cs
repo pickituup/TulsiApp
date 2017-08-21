@@ -109,6 +109,11 @@ namespace Tulsi.NavigationFramework {
         /// <summary>
         ///     Expenses page
         /// </summary>
-        ExpensesPage
+        ExpensesPage,
+
+        /// <summary>
+        ///     Arrival detail page.
+        /// </summary>
+        ArrivalDetailPage
     }
 }

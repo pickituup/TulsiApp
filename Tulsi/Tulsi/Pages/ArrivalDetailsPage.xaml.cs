@@ -6,14 +6,15 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using SlideOverKit;
+using Tulsi.NavigationFramework;
 
-namespace Tulsi
-{
-    public partial class ArrivalDetailsPage : MenuContainerPage
-    {
-        public ArrivalDetailsPage()
-        {
+namespace Tulsi {
+    public partial class ArrivalDetailsPage : MenuContainerPage, IView {
+        public ArrivalDetailsPage() {
             InitializeComponent();
+
+            SlideMenu = new SideMenuView();
+
 
             Background1.Source = ImageSource.FromResource("Tulsi.Images.arrivaldetails_background.png");
             Background2.Source = ImageSource.FromResource("Tulsi.Images.arrivaldetails_background.png");
@@ -26,23 +27,24 @@ namespace Tulsi
             c5.Source = ImageSource.FromResource("Tulsi.Images.bluecircle.png");
 
             //Slide menu creating
-            SlideMenu = ((App)Application.Current).SideMenu;
 
             //Toolbar taps
             TapGestureRecognizer ToolbarTap1 = new TapGestureRecognizer();
-            ToolbarTap1.Tapped += (s, e) =>
-            {
+            ToolbarTap1.Tapped += (s, e) => {
                 this.ShowMenu();
             };
             Menu.GestureRecognizers.Add(ToolbarTap1);
 
             TapGestureRecognizer ToolbarTap2 = new TapGestureRecognizer();
-            ToolbarTap2.Tapped += (s, e) =>
-            {
+            ToolbarTap2.Tapped += (s, e) => {
                 SearchPage sp = new SearchPage();
                 Application.Current.MainPage.Navigation.PushAsync(sp);
             };
             Search.GestureRecognizers.Add(ToolbarTap2);
+        }
+
+        public void ApplyVisualChangesWhileNavigating() {
+            SlideMenu.HideWithoutAnimations();
         }
     }
 }

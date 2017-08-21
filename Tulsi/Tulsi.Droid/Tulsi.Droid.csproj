@@ -176,6 +176,7 @@
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
     <Compile Include="Renderers\CustomFrameRenderer.cs" />
+    <Compile Include="Renderers\CustomListViewRenderer.cs" />
     <Compile Include="Renderers\EntryExRenderer.cs" />
     <Compile Include="Renderers\RoundedContentViewRenderer.cs" />
     <Compile Include="Renderers\RoundedViewRenderer.cs" />

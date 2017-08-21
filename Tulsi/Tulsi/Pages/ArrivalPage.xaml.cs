@@ -9,28 +9,21 @@ using XamForms.Controls;
 using SlideOverKit;
 using Tulsi.SharedService;
 using Tulsi.NavigationFramework;
+using Tulsi.Helpers;
+using Tulsi.ViewModels;
 
 namespace Tulsi {
     public partial class ArrivalPage : MenuContainerPage, IView {
+
+        private readonly ArrivalViewModel _viewModel;
+
         public ArrivalPage() {
             InitializeComponent();
 
             //Slide menu creating
             SlideMenu = new SideMenuView();
 
-            int hd = DependencyService.Get<IDisplaySize>().GetHeightDiP();
-            AbsoluteLayout.SetLayoutBounds(SideMenuOverlay, new Rectangle(0, 0, 0.9, hd - 20));
-
-            CalendarArea.Source = ImageSource.FromResource("Tulsi.Images.calendar_background.png");
-            DatesArea.Source = ImageSource.FromResource("Tulsi.Images.dates_background.png");
-            c1.Source = ImageSource.FromResource("Tulsi.Images.datesbluecircle.png");
-            c2.Source = ImageSource.FromResource("Tulsi.Images.datesbluecircle.png");
-            c3.Source = ImageSource.FromResource("Tulsi.Images.datesbluecircle.png");
-
-            cg.Source = ImageSource.FromResource("Tulsi.Images.greencircle.png");
-            cp1.Source = ImageSource.FromResource("Tulsi.Images.purplecircle.png");
-            cp2.Source = ImageSource.FromResource("Tulsi.Images.purplecircle.png");
-            cp3.Source = ImageSource.FromResource("Tulsi.Images.purplecircle.png");
+            BindingContext = _viewModel = new ArrivalViewModel();
 
             //Calendar initialization
             ArrivalCalendar.DatesBackgroundColor = Color.FromHex("#F3F3F3");
@@ -56,32 +49,22 @@ namespace Tulsi {
             ArrivalCalendar.SpecialDates = Dates;
             ArrivalCalendar.DateClicked += ArrivalCalendar_DateClicked;
 
-
-
-            //Toolbar taps
-            TapGestureRecognizer ToolbarTap1 = new TapGestureRecognizer();
-            ToolbarTap1.Tapped += (s, e) => {
-                this.ShowMenu();
-            };
-            Menu.GestureRecognizers.Add(ToolbarTap1);
-
-            TapGestureRecognizer ToolbarTap2 = new TapGestureRecognizer();
-            ToolbarTap2.Tapped += (s, e) => {
-                SearchPage sp = new SearchPage();
-                Application.Current.MainPage.Navigation.PushAsync(sp);
-            };
-            Search.GestureRecognizers.Add(ToolbarTap2);
-
             //In page navigation
             TapGestureRecognizer InPageNavigationTap1 = new TapGestureRecognizer();
             InPageNavigationTap1.Tapped += (s, e) => {
-                ArrivalDetailsPage adp = new ArrivalDetailsPage();
-                Application.Current.MainPage.Navigation.PushAsync(adp);
+                BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.ArrivalDetailPage);
             };
             DateArrivalsList.GestureRecognizers.Add(InPageNavigationTap1);
 
         }
 
+        // Show side menu.
+        private void ShowMenuCommand(object sender, EventArgs e) {
+            ShowMenu();
+        }
+
+
+        // Auto hide side menu when navigate back for this page.
         public void ApplyVisualChangesWhileNavigating() {
             SlideMenu.HideWithoutAnimations();
         }
@@ -89,6 +72,5 @@ namespace Tulsi {
         private void ArrivalCalendar_DateClicked(object sender, DateTimeEventArgs e) {
             DisplayAlert("Date", e.DateTime.Date.ToString() + " selected", "OK");
         }
-
     }
 }

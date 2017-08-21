@@ -70,7 +70,6 @@
             <ListView
                 x:Name="menuItems"
                 BackgroundColor="White"
-                HeightRequest="430"
                 ItemsSource="{Binding MenuItems}"
                 RowHeight="70"
                 SelectedItem="{Binding SelectedMenuItem, Mode=TwoWay}"

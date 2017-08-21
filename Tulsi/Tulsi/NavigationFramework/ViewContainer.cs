@@ -162,6 +162,10 @@ namespace Tulsi.NavigationFramework {
                 {
                     ViewType.ExpensesPage,
                     () => new ViewBuider<ExpensesPage>().GetView()
+                },
+                {
+                    ViewType.ArrivalDetailPage,
+                    () => new ViewBuider<ArrivalDetailsPage>().GetView()
                 }
             };
         }
