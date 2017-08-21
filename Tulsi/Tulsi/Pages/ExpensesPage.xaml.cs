@@ -15,15 +15,17 @@ using Tulsi.NavigationFramework;
 
 namespace Tulsi {
     public partial class ExpensesPage : MenuContainerPage, IView {
+        private ExpensesViewModel _viewModel;
+
+        /// <summary>
+        /// Public ctor.
+        /// </summary>
         public ExpensesPage() {
             InitializeComponent();
 
-            ExpensesViewModel evm = new ExpensesViewModel();
-            BindingContext = evm;
+            SlideMenu = new SideMenuView();
 
-            int hd = DependencyService.Get<IDisplaySize>().GetHeightDiP();
-            int wd = DependencyService.Get<IDisplaySize>().GetWidthDiP();
-            AbsoluteLayout.SetLayoutBounds(SideMenuOverlay, new Rectangle(0, 0, 0.9, hd - 20));
+            BindingContext = _viewModel = new ExpensesViewModel();
 
             Category1.Source = ImageSource.FromResource("Tulsi.Images.yellowcategory.png");
             Category2.Source = ImageSource.FromResource("Tulsi.Images.lightbluecategory.png");
@@ -50,7 +52,7 @@ namespace Tulsi {
 
             SfChart chart = new SfChart();
             DoughnutSeries doughnutSeries = new DoughnutSeries() {
-                ItemsSource = evm.ChartData,
+                ItemsSource = _viewModel.ChartData,
                 XBindingPath = "Name",
                 YBindingPath = "Value",
                 DoughnutCoefficient = 0.7,
@@ -75,14 +77,13 @@ namespace Tulsi {
             chart.HorizontalOptions = LayoutOptions.Center;
             chart.VerticalOptions = LayoutOptions.Center;
             //chart.BackgroundColor = Color.FromHex("#F3F3F3");
-            chart.WidthRequest = wd;
+            //chart.WidthRequest = wd;
             ChartGrid.Children.Add(chart);
 
             StackLayout MiddleStack = new StackLayout() {
                 VerticalOptions = LayoutOptions.Center,
                 HorizontalOptions = LayoutOptions.Center,
                 BackgroundColor = Color.White,
-
             };
             Label MiddleText0 = new Label() {
                 Text = "100%",
@@ -113,39 +114,30 @@ namespace Tulsi {
             ChartGrid.Children.Add(MiddleStack);
 
             //Toolbar taps
-            TapGestureRecognizer tapGestureRecognizer1 = new TapGestureRecognizer();
-            tapGestureRecognizer1.Tapped += (s, e) => {
-                SideMenuOverlay.IsVisible = true;
-                OutsideOverlay.IsVisible = true;
-            };
-            Menu.GestureRecognizers.Add(tapGestureRecognizer1);
-
-            TapGestureRecognizer tapGestureRecognizer2 = new TapGestureRecognizer();
-            tapGestureRecognizer2.Tapped += (s, e) => {
-                SideMenuOverlay.IsVisible = false;
-                OutsideOverlay.IsVisible = false;
-            };
-            OutsideOverlay.GestureRecognizers.Add(tapGestureRecognizer2);
-
-            TapGestureRecognizer tapGestureRecognizer3 = new TapGestureRecognizer();
-            tapGestureRecognizer3.Tapped += (s, e) => {
-                SideMenuOverlay.IsVisible = false;
-                OutsideOverlay.IsVisible = false;
-            };
-            SideMenuHeaderCloseIcon.GestureRecognizers.Add(tapGestureRecognizer3);
-
             //In page navigation
-            TapGestureRecognizer InPageNavigationTap1 = new TapGestureRecognizer();
-            InPageNavigationTap1.Tapped += (s, e) => {
-                ExpensesListPage elp = new ExpensesListPage();
-                Application.Current.MainPage.Navigation.PushAsync(elp);
-            };
-            ExpensesExtraIcon.GestureRecognizers.Add(InPageNavigationTap1);
+            //TapGestureRecognizer InPageNavigationTap1 = new TapGestureRecognizer();
+            //InPageNavigationTap1.Tapped += (s, e) => {
+            //    ExpensesListPage elp = new ExpensesListPage();
+            //    Application.Current.MainPage.Navigation.PushAsync(elp);
+            //};
+            //ExpensesExtraIcon.GestureRecognizers.Add(InPageNavigationTap1);
 
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public void ApplyVisualChangesWhileNavigating() {
             SlideMenu.HideWithoutAnimations();
+        }
+
+        /// <summary>
+        /// Shows side menu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ShowMenuCommand(object sender, EventArgs e) {
+            ShowMenu();
         }
     }
 }

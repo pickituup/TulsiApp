@@ -4,15 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Tulsi.Model;
+using Tulsi.MVVM.Core;
+using Tulsi.NavigationFramework;
+using Tulsi.Helpers;
+using System.Windows.Input;
+using Xamarin.Forms;
 
-namespace Tulsi.ViewModels
-{
-   public class ExpensesViewModel
-    {
-        public List<ChartModel> ChartData { get; set; }
-        public List<Transaction> TransactionsData { get; set; }
-        public ExpensesViewModel()
-        {
+namespace Tulsi.ViewModels {
+    public class ExpensesViewModel : ViewModelBase,IViewModel {
+        /// <summary>
+        /// Public ctor.
+        /// </summary>
+        public ExpensesViewModel() {
             ChartData = new List<ChartModel>()
             {
                 new ChartModel { Name = "Groceries", Value = 29 },
@@ -24,12 +27,27 @@ namespace Tulsi.ViewModels
                 new ChartModel { Name = "Wardrobe", Value = 6 },
                 new ChartModel { Name = "Food", Value = 5 },
             };
-        }
-    }
-    public class ExpensesChartModel
-    {
-        public string Name { get; set; }
 
-        public string Value { get; set; }
+            OpenExpensesListCommand = new Command(() => {
+                BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.ExpensesListPage);
+            });
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public List<ChartModel> ChartData { get; private set; }
+
+        /// <summary>
+        /// Opens ExpensesListPage.
+        /// </summary>
+        public ICommand OpenExpensesListCommand { get; private set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Dispose() {
+            
+        }
     }
 }

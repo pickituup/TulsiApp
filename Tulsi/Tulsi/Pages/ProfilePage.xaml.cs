@@ -9,25 +9,20 @@ using Tulsi.ViewModels;
 
 namespace Tulsi {
     public partial class ProfilePage : ContentPage, IView {
+        private ProfilePageViewModel _viewModel;
+
+        /// <summary>
+        /// Public ctor.
+        /// </summary>
         public ProfilePage() {
             InitializeComponent();
 
-            ProfileViewModel pvm = new ProfileViewModel();
-
-            //Toolbar taps
-            TapGestureRecognizer tapGestureRecognizer1 = new TapGestureRecognizer();
-            tapGestureRecognizer1.Tapped += (s, e) => {
-                Application.Current.MainPage.Navigation.PopAsync();
-            };
-            HeaderBackIcon.GestureRecognizers.Add(tapGestureRecognizer1);
-            HeaderCloseIcon.GestureRecognizers.Add(tapGestureRecognizer1);
+            BindingContext = _viewModel = new ProfilePageViewModel();
         }
 
         /// <summary>
         /// Make some visual changes of current page through navigating process (hide side menu or smt...)
         /// </summary>
-        public void ApplyVisualChangesWhileNavigating() {
-            
-        }
+        public void ApplyVisualChangesWhileNavigating() { }
     }
 }

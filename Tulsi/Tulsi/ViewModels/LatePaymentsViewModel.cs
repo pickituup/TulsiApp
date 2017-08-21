@@ -11,7 +11,7 @@ using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace Tulsi.ViewModels {
-    public class LatePaymentsViewModel : ViewModelBase {
+    public class LatePaymentsViewModel : ViewModelBase, IViewModel {
         private LatePayment _selectedLatePayment;
 
         /// <summary>
@@ -57,6 +57,13 @@ namespace Tulsi.ViewModels {
                     SelectedLatePayment = null;
                 }
             }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Dispose() {
+            
         }
     }
 }

@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Input;
+using Tulsi.NavigationFramework;
 using Tulsi.Helpers;
 using Tulsi.MVVM.Core;
-using Tulsi.NavigationFramework;
 using Xamarin.Forms;
+using System.Windows.Input;
 
 namespace Tulsi.ViewModels {
-    public sealed class BankAccountDetailsViewModel : ViewModelBase ,IViewModel{
+    public sealed class ExpensesListViewModel : ViewModelBase, IViewModel {
         /// <summary>
         /// Public ctor.
         /// </summary>
-        public BankAccountDetailsViewModel() {
+        public ExpensesListViewModel() {
             DisplaySearchPageCommand = new Command(() => {
                 BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.SearchPage);
             });
@@ -26,7 +26,7 @@ namespace Tulsi.ViewModels {
         public ICommand DisplaySearchPageCommand { get; private set; }
 
         /// <summary>
-        /// 
+        /// IViewModel implementation.
         /// </summary>
         public void Dispose() {
             
