@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Collections.Specialized;
 using Xamarin.Forms;
 using Tulsi.ViewModels;
 using Syncfusion.DataSource;
 using SlideOverKit;
 using Tulsi.NavigationFramework;
 using Tulsi.SharedService;
+using System.Collections;
+using Tulsi.Controls.TodayRatesControls;
 
 namespace Tulsi {
     public partial class TodayRatesPage : MenuContainerPage, IView {
@@ -18,23 +20,24 @@ namespace Tulsi {
 
         public TodayRatesPage() {
             InitializeComponent();
-
+            
             SlideMenu = new SideMenuView();
 
             BindingContext = _viewModel = new TodayRatesViewModel();
 
-            int hd = DependencyService.Get<IDisplaySize>().GetHeightDiP();
-            AbsoluteLayout.SetLayoutBounds(SideMenuOverlay, new Rectangle(0, 0, 0.9, hd - 20));
+            //
+            // TODO: unsubscribe from current event.
+            //
+            _viewModel.TodayRatesData.CollectionChanged += TodayRatesDataCollectionChanged;
+
+            InitialiseExpandedGroupItem(_viewModel.TodayRatesData);
         }
 
-        private void Handle_ItemSelected(object sender, SelectedItemChangedEventArgs e) {
-            todayMenuItems.SelectedItem = null;
-
-            if (todayMenuItems2.IsVisible) {
-                todayMenuItems2.SelectedItem = null;
-            }
-        }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ShowMenuCommand(object sender, EventArgs e) {
             ShowMenu();
         }
@@ -44,6 +47,33 @@ namespace Tulsi {
         /// </summary>
         public void ApplyVisualChangesWhileNavigating() {
             SlideMenu.HideWithoutAnimations();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TodayRatesDataCollectionChanged(object sender, NotifyCollectionChangedEventArgs e) {
+            //
+            // TODO: handle other observable collection Actions
+            //
+            if (e.Action == NotifyCollectionChangedAction.Add) {
+                InitialiseExpandedGroupItem(e.NewItems);
+            }
+        }
+
+        /// <summary>
+        /// TODO: define some factoy or ControlContainer that will create that ExpandedGroup...
+        /// </summary>
+        /// <param name="newItems"></param>
+        private void InitialiseExpandedGroupItem(IList newItems) {
+            foreach (object item in newItems) {
+                ExpandedGroup expandedGroup = new ExpandedGroup();
+                expandedGroup.BindingContext = item;
+
+                _ratesStack_StackLayout.Children.Add(expandedGroup);
+            }
         }
     }
 }

@@ -7,10 +7,13 @@
     xmlns:local="clr-namespace:Tulsi;assembly=Tulsi"
     xmlns:toolKitImageResourceExtension="clr-namespace:Tulsi.ToolKit.MarkupExtensions"
     xmlns:m="clr-namespace:SlideOverKit"
-    xmlns:sync="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
     NavigationPage.HasNavigationBar="false">
 
-    <StackLayout x:Name="HeaderLayout" BackgroundColor="#DCDCDC">
+    <!--BackgroundColor="#DCDCDC"-->
+    <StackLayout
+        Spacing="0">
+
+        <!--Action bar-->
         <!--  Tool bar  -->
         <Grid x:Name="ToolbarGrid" BackgroundColor="#2793F5">
             <Grid.RowDefinitions>
@@ -59,8 +62,47 @@
             </Grid>
         </Grid>
 
-        <!--  MAIN CONTENT  -->
-        <ScrollView>
+        <!--Stack with lists inside-->
+        <StackLayout
+            Padding="20,5">
+
+            <!--Lists shared 'Header'-->
+            <Frame
+                BackgroundColor="#027CE9"
+                CornerRadius="7"
+                Padding="0,12"
+                HasShadow="False">
+
+                <Label
+                    FontSize="Medium"
+                    Text="DD/MM/YY"
+                    TextColor="White"
+                    HorizontalTextAlignment="Center"
+                    VerticalTextAlignment="Center"/>
+            </Frame>
+
+            <ScrollView>
+
+                <StackLayout
+                    x:Name="_ratesStack_StackLayout"/>
+            </ScrollView>
+        </StackLayout>
+    </StackLayout>
+</m:MenuContainerPage>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+<!--  MAIN CONTENT  -->
+<!--<ScrollView>
             <AbsoluteLayout>
                 <StackLayout x:Name="MainLayout" Spacing="10">
                     <controls:RoundedContentView
@@ -106,16 +148,6 @@
                             <RowDefinition Height="40" />
                             <RowDefinition Height="auto" />
                         </Grid.RowDefinitions>
-                        <!-- <sync:SfListView x:Name="TodayRatesListView">
-            <sync:SfListView.ItemTemplate>
-              <DataTemplate>
-                <StackLayout>
-                        <Label Text="{Binding Code}" FontAttributes="Bold" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" HorizontalOptions="Start" VerticalOptions="Center" />
-                        <Label Text="{Binding Number}" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="End" VerticalOptions="Center" />
-                  </StackLayout>
-              </DataTemplate>
-            </sync:SfListView.ItemTemplate>
-          </sync:SfListView>-->
                         <controls:RoundedContentView
                             x:Name="Header1"
                             Grid.Column="1"
@@ -683,6 +715,4 @@
                     IsVisible="False"
                     Opacity="0.5" />
             </AbsoluteLayout>
-        </ScrollView>
-    </StackLayout>
-</m:MenuContainerPage>
+        </ScrollView>-->

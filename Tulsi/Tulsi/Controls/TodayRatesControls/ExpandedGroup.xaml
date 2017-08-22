@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Tulsi.Controls.TodayRatesControls.ExpandedGroup">
+
+    <ContentView.Resources>
+
+        <ResourceDictionary>
+            
+<!--Overrides default App styles BackgroundColor=Transparent-->
+            <Style TargetType="StackLayout">
+
+                <Setter Property="BackgroundColor"
+                        Value="Transparent"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentView.Resources>
+
+    <StackLayout>
+
+        <!--Group 'Header'-->
+        <Frame
+            BackgroundColor="#BBBBBB"
+            CornerRadius="7"
+            Padding="35,12"
+            HasShadow="False">
+
+            <Frame.GestureRecognizers>
+
+                <TapGestureRecognizer 
+                    Tapped="GroupHeaderTapped"/>
+            </Frame.GestureRecognizers>
+            
+<!--Overrides default App styles BackgroundColor=Transparent-->
+            <StackLayout 
+                Orientation="Horizontal">
+
+                <StackLayout.Resources>
+
+                    <ResourceDictionary>
+
+                        <Style 
+                            TargetType="Label">
+
+                            <Setter 
+                                Property="FontAttributes"
+                                Value="Bold"/>
+
+                            <Setter 
+                                Property="TextColor"
+                                Value="White"/>
+
+                            <Setter 
+                                Property="VerticalOptions"
+                                Value="Center"/>
+                        </Style>
+                    </ResourceDictionary>
+                </StackLayout.Resources>
+                
+                <Label
+                    Text="{Binding Path=GroupName}"
+                    HorizontalOptions="StartAndExpand"/>
+
+                <Label
+                    Text="{Binding Path=Sum}"
+                    HorizontalOptions="EndAndExpand"/>
+            </StackLayout>
+        </Frame>
+
+        <!--Underlying list of sub items  -->
+        <ListView 
+            x:Name="_itemsList_ListView"
+            BackgroundColor="White"
+            ItemsSource="{Binding Path=Items}"
+            ItemSelected="onItemSelected"
+            SeparatorVisibility="None"
+            IsVisible="False"
+            HasUnevenRows="False">
+
+            <ListView.ItemTemplate>
+
+                <DataTemplate>
+
+                    <ViewCell>
+
+                        <ViewCell.View>
+                            
+<!--Overrides default App styles BackgroundColor=Transparent-->
+                            <StackLayout
+                                Padding="35,7"
+                                Orientation="Horizontal">
+
+                                <StackLayout.Resources>
+
+                                    <ResourceDictionary>
+
+                                        <Style 
+                                            TargetType="Label">
+
+                                            <Setter 
+                                                Property="VerticalOptions"
+                                                Value="Center"/>
+
+                                            <Setter 
+                                                Property="TextColor"
+                                                Value="#AAAAAA"/>
+
+                                            <Setter 
+                                                Property="FontAttributes"
+                                                Value="Bold"/>
+                                        </Style>
+                                    </ResourceDictionary>
+                                </StackLayout.Resources>
+
+                                <Label 
+                                    Text="{Binding Path=Code}"
+                                   HorizontalOptions="StartAndExpand"/>
+
+                                <Label 
+                                    Text="{Binding Path=Number}"
+                                   HorizontalOptions="EndAndExpand"/>
+                            </StackLayout>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentView>

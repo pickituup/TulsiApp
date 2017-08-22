@@ -1,9 +1,27 @@
-﻿namespace Tulsi.Model {
+﻿using System.Collections.Generic;
+
+namespace Tulsi.Model {
     public class TodayRatesEntry {
+        /// <summary>
+        /// Public ctor.
+        /// </summary>
+        public TodayRatesEntry() {
+            Items = new List<TodayRatesSubItem>();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public string GroupName { get; set; }
 
-        public string Code { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public int Sum { get; set; }
 
-        public string Number { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public List<TodayRatesSubItem> Items { get; private set; }
     }
 }
