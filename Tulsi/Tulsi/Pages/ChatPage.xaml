@@ -5,6 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:controls="clr-namespace:Tulsi.Controls"
     xmlns:local="clr-namespace:Tulsi;assembly=Tulsi"
+    xmlns:toolKitImageResourceExtension="clr-namespace:Tulsi.ToolKit.MarkupExtensions"
     NavigationPage.HasNavigationBar="false">
 
     <Grid
@@ -37,7 +38,7 @@
                 <Image
                     HeightRequest="20"
                     HorizontalOptions="Start"
-                    Source="{local:ImageResource Tulsi.Images.back.png}"
+                    Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.back.png}"
                     VerticalOptions="Center"
                     WidthRequest="15" />
             </Grid>
@@ -46,7 +47,7 @@
                 Margin="40,0,0,0"
                 HeightRequest="40"
                 HorizontalOptions="Start"
-                Source="{local:ImageResource Tulsi.Images.chatphoto.png}"
+                Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.chatphoto.png}"
                 VerticalOptions="Center"
                 WidthRequest="40" />
             <Label
@@ -102,7 +103,7 @@
                             Grid.Column="3"
                             HeightRequest="10"
                             HorizontalOptions="Center"
-                            Source="{local:ImageResource Tulsi.Images.chatgraytick.png}"
+                            Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.chatgraytick.png}"
                             VerticalOptions="Center"
                             WidthRequest="12" />
                     </Grid>
@@ -150,7 +151,7 @@
                                 Grid.Column="3"
                                 HeightRequest="10"
                                 HorizontalOptions="Center"
-                                Source="{local:ImageResource Tulsi.Images.chatbluetick.png}"
+                                Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.chatbluetick.png}"
                                 VerticalOptions="Center"
                                 WidthRequest="12" />
                         </Grid>
@@ -198,7 +199,7 @@
                             Grid.Column="3"
                             HeightRequest="10"
                             HorizontalOptions="Center"
-                            Source="{local:ImageResource Tulsi.Images.chatgraytick.png}"
+                            Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.chatgraytick.png}"
                             VerticalOptions="Center"
                             WidthRequest="12" />
                     </Grid>
@@ -229,7 +230,7 @@
                     Grid.Column="1"
                     HeightRequest="30"
                     HorizontalOptions="Center"
-                    Source="{local:ImageResource Tulsi.Images.camera.png}"
+                    Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.camera.png}"
                     VerticalOptions="Center"
                     WidthRequest="30" />
             </Grid>

@@ -5,6 +5,7 @@
              xmlns:controls="clr-namespace:Tulsi.Controls"
              xmlns:m="clr-namespace:SlideOverKit"
              xmlns:toolKit="clr-namespace:Tulsi.ToolKit.BindingValueConverters"
+             xmlns:toolKitImageResourceExtension="clr-namespace:Tulsi.ToolKit.MarkupExtensions"
              x:Class="Tulsi.BuyerRankingsPage" NavigationPage.HasNavigationBar="false">
   
   <StackLayout x:Name="HeaderLayout" 
@@ -28,7 +29,7 @@
         </Grid.GestureRecognizers>
         <Image
             HorizontalOptions="Start"
-            Source="{local:ImageResource Tulsi.Images.menu.png}"
+            Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.menu.png}"
             VerticalOptions="Center"
             WidthRequest="20" />
       </Grid>
@@ -53,7 +54,7 @@
         <Image
             HeightRequest="20"
             HorizontalOptions="End"
-            Source="{local:ImageResource Tulsi.Images.magnifier.png}"
+            Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.magnifier.png}"
             VerticalOptions="Center"
             WidthRequest="20" />
       </Grid>
@@ -128,8 +129,8 @@
                           
                           <RowDefinition Height="40" />
                         </Grid.RowDefinitions>
-                        
-                        <Image Source="{local:ImageResource Tulsi.Images.bigbluecircle.png}" 
+
+                                                <Image Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.bigbluecircle.png}" 
                                WidthRequest="35" 
                                HeightRequest="35" 
                                HorizontalOptions="Center" />

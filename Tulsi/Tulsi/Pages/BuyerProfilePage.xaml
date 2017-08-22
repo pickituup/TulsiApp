@@ -3,6 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:Tulsi.Controls"
              xmlns:local="clr-namespace:Tulsi;assembly=Tulsi"
+             xmlns:toolKitConverters="clr-namespace:Tulsi.ToolKit.BindingValueConverters"
+             xmlns:toolKitImageResourceExtension="clr-namespace:Tulsi.ToolKit.MarkupExtensions"
              x:Class="Tulsi.BuyerProfilePage"  NavigationPage.HasNavigationBar="false">
     <ScrollView>
         <AbsoluteLayout>
@@ -15,7 +17,7 @@
                         </Grid.ColumnDefinitions>
 
                         <Image Grid.Column="1" 
-                               Source="{local:ImageResource Tulsi.Images.menu_close.png}" 
+                               Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.menu_close.png}" 
                                Grid.Row="0"
                                HorizontalOptions="End"
                                VerticalOptions="Start"
@@ -37,7 +39,7 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto" />
                         </Grid.RowDefinitions>
-                        <Image x:Name="Photo" Source="{local:ImageResource Tulsi.Images.profilephoto.png}" WidthRequest="150" HeightRequest="150" HorizontalOptions="Center" VerticalOptions="Center" />
+                        <Image x:Name="Photo" Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.profilephoto.png}" WidthRequest="150" HeightRequest="150" HorizontalOptions="Center" VerticalOptions="Center" />
                         <Grid BackgroundColor="Transparent" HorizontalOptions="End" VerticalOptions="End">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="40" />
@@ -45,7 +47,7 @@
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="40" />
                             </Grid.RowDefinitions>
-                            <Image Source="{local:ImageResource Tulsi.Images.yellowcircle.png}" WidthRequest="40" HeightRequest="40" HorizontalOptions="Center" VerticalOptions="Center" />
+                            <Image Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.yellowcircle.png}" WidthRequest="40" HeightRequest="40" HorizontalOptions="Center" VerticalOptions="Center" />
                             <Label Text="#12" FontAttributes="Bold" TextColor="#2793F5" HorizontalOptions="Center" VerticalOptions="Center" />
                         </Grid>
                     </Grid>
@@ -124,7 +126,7 @@
 
                                     <Image Grid.Column="3" 
                                    Source="{Binding Path=IsP, 
-                                Converter={local:ProfileTransactionImage}}" 
+                                   Converter={toolKitConverters:ProfileTransactionImageConverter}}" 
                                    WidthRequest="30" 
                                    HeightRequest="30" 
                                    HorizontalOptions="Center" 

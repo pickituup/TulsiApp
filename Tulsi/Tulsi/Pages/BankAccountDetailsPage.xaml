@@ -5,6 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:controls="clr-namespace:Tulsi.Controls"
     xmlns:local="clr-namespace:Tulsi;assembly=Tulsi"
+    xmlns:toolKitImageResourceExtension="clr-namespace:Tulsi.ToolKit.MarkupExtensions"
     xmlns:m="clr-namespace:SlideOverKit"
     NavigationPage.HasNavigationBar="false">
 
@@ -28,7 +29,7 @@
                 </Grid.GestureRecognizers>
                 <Image
             HorizontalOptions="Start"
-            Source="{local:ImageResource Tulsi.Images.menu.png}"
+            Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.menu.png}"
             VerticalOptions="Center"
             WidthRequest="20" />
             </Grid>
@@ -53,7 +54,7 @@
                 <Image
             HeightRequest="20"
             HorizontalOptions="End"
-            Source="{local:ImageResource Tulsi.Images.magnifier.png}"
+            Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.magnifier.png}"
             VerticalOptions="Center"
             WidthRequest="20" />
             </Grid>

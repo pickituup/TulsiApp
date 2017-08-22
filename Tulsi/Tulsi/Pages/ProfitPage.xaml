@@ -6,6 +6,7 @@
     xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
     xmlns:controls="clr-namespace:Tulsi.Controls"
     xmlns:local="clr-namespace:Tulsi;assembly=Tulsi"
+    xmlns:toolKitImageResourceExtension="clr-namespace:Tulsi.ToolKit.MarkupExtensions"
     xmlns:m="clr-namespace:SlideOverKit"
     NavigationPage.HasNavigationBar="false">
 
@@ -27,7 +28,7 @@
                 </Grid.GestureRecognizers>
                 <Image
                     HorizontalOptions="Start"
-                    Source="{local:ImageResource Tulsi.Images.menu.png}"
+                    Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.menu.png}"
                     VerticalOptions="Center"
                     WidthRequest="20" />
             </Grid>
@@ -52,7 +53,7 @@
                 <Image
                     HeightRequest="20"
                     HorizontalOptions="End"
-                    Source="{local:ImageResource Tulsi.Images.magnifier.png}"
+                    Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.magnifier.png}"
                     VerticalOptions="Center"
                     WidthRequest="20" />
             </Grid>
@@ -282,7 +283,7 @@
                             Grid.Column="1"
                             HeightRequest="30"
                             HorizontalOptions="Center"
-                            Source="{local:ImageResource Tulsi.Images.greenprofiticon.png}"
+                            Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.greenprofiticon.png}"
                             VerticalOptions="Center"
                             WidthRequest="30" />
                         <Image
@@ -290,7 +291,7 @@
                             Grid.Column="1"
                             HeightRequest="30"
                             HorizontalOptions="Center"
-                            Source="{local:ImageResource Tulsi.Images.orangeprofiticon.png}"
+                            Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.orangeprofiticon.png}"
                             VerticalOptions="Center"
                             WidthRequest="30" />
                         <Image
@@ -298,7 +299,7 @@
                             Grid.Column="1"
                             HeightRequest="30"
                             HorizontalOptions="Center"
-                            Source="{local:ImageResource Tulsi.Images.grayprofiticon.png}"
+                            Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.grayprofiticon.png}"
                             VerticalOptions="Center"
                             WidthRequest="30" />
                         <Label
@@ -406,7 +407,7 @@
                                 Grid.RowSpan="2"
                                 Grid.Column="3"
                                 HeightRequest="40"
-                                Source="{local:ImageResource Tulsi.Images.menu_profitability.png}"
+                                Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.menu_profitability.png}"
                                 WidthRequest="40" />
                             <Image
                                 x:Name="SideMenuHeaderCloseIcon"
@@ -415,7 +416,7 @@
                                 Margin="0,5,5,0"
                                 HeightRequest="20"
                                 HorizontalOptions="End"
-                                Source="{local:ImageResource Tulsi.Images.menu_close.png}"
+                                Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.menu_close.png}"
                                 VerticalOptions="Start"
                                 WidthRequest="20" />
                         </Grid>
@@ -425,7 +426,7 @@
                             Grid.Column="1"
                             HeightRequest="20"
                             HorizontalOptions="Center"
-                            Source="{local:ImageResource Tulsi.Images.menu_buyer.png}"
+                            Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.menu_buyer.png}"
                             VerticalOptions="Center"
                             WidthRequest="20" />
                         <Image
@@ -434,7 +435,7 @@
                             Grid.Column="1"
                             HeightRequest="20"
                             HorizontalOptions="Center"
-                            Source="{local:ImageResource Tulsi.Images.menu_grower.png}"
+                            Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.menu_grower.png}"
                             VerticalOptions="Center"
                             WidthRequest="20" />
                         <Image
@@ -443,7 +444,7 @@
                             Grid.Column="1"
                             HeightRequest="20"
                             HorizontalOptions="Center"
-                            Source="{local:ImageResource Tulsi.Images.menu_audit.png}"
+                            Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.menu_audit.png}"
                             VerticalOptions="Center"
                             WidthRequest="20" />
                         <Image
@@ -452,7 +453,7 @@
                             Grid.Column="1"
                             HeightRequest="20"
                             HorizontalOptions="Center"
-                            Source="{local:ImageResource Tulsi.Images.menu_report.png}"
+                            Source="{toolKitImageResourceExtension:ImageResourceExtension Source= Tulsi.Images.menu_report.png}"
                             VerticalOptions="Center"
                             WidthRequest="20" />
                         <Image
@@ -461,7 +462,7 @@
                             Grid.Column="1"
                             HeightRequest="20"
                             HorizontalOptions="Center"
-                            Source="{local:ImageResource Tulsi.Images.menu_chat.png}"
+                            Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.menu_chat.png}"
                             VerticalOptions="Center"
                             WidthRequest="20" />
                         <Image
@@ -470,7 +471,7 @@
                             Grid.Column="1"
                             HeightRequest="20"
                             HorizontalOptions="Center"
-                            Source="{local:ImageResource Tulsi.Images.menu_settings.png}"
+                            Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.menu_settings.png}"
                             VerticalOptions="Center"
                             WidthRequest="20" />
                         <Image
@@ -479,7 +480,7 @@
                             Grid.Column="1"
                             HeightRequest="20"
                             HorizontalOptions="Center"
-                            Source="{local:ImageResource Tulsi.Images.menu_me.png}"
+                            Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.menu_me.png}"
                             VerticalOptions="Center"
                             WidthRequest="20" />
                         <Label
@@ -550,7 +551,7 @@
                             Grid.Column="4"
                             HeightRequest="6"
                             HorizontalOptions="Center"
-                            Source="{local:ImageResource Tulsi.Images.bluecircle.png}"
+                            Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.bluecircle.png}"
                             VerticalOptions="Center"
                             WidthRequest="6" />
                         <Image
@@ -559,7 +560,7 @@
                             Grid.Column="4"
                             HeightRequest="6"
                             HorizontalOptions="Center"
-                            Source="{local:ImageResource Tulsi.Images.greencircle.png}"
+                            Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.greencircle.png}"
                             VerticalOptions="Center"
                             WidthRequest="6" />
                         <BoxView
@@ -627,7 +628,7 @@
                                 Grid.Row="0"
                                 HeightRequest="4"
                                 HorizontalOptions="Center"
-                                Source="{local:ImageResource Tulsi.Images.bluecircle.png}"
+                                Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.bluecircle.png}"
                                 VerticalOptions="Center"
                                 WidthRequest="4" />
                             <Image
@@ -635,7 +636,7 @@
                                 Grid.Row="1"
                                 HeightRequest="4"
                                 HorizontalOptions="Center"
-                                Source="{local:ImageResource Tulsi.Images.bluecircle.png}"
+                                Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.bluecircle.png}"
                                 VerticalOptions="Center"
                                 WidthRequest="4" />
                             <Label
