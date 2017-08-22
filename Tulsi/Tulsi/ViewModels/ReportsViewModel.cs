@@ -40,7 +40,7 @@ namespace Tulsi.ViewModels {
         public ReportsViewModel() {
             _menuContainer = new ReportsMenuContainer();
 
-            MenuItems = _menuContainer.BuldReportsMenuItem();
+            MenuItems = _menuContainer.BuildReportsMenuItems();
 
             DisplaySearchPageCommand = new Command(() => BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.SearchPage));
         }

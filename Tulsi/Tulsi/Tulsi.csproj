@@ -49,6 +49,8 @@
     <Compile Include="Model\AuditEntry.cs" />
     <Compile Include="Model\BankAccount.cs" />
     <Compile Include="Model\BuyerRanking.cs" />
+    <Compile Include="Model\DataContainers\DataItems\ProfitMenuItem.cs" />
+    <Compile Include="Model\DataContainers\ProfitMenuContainer.cs" />
     <Compile Include="Model\Period.cs" />
     <Compile Include="Model\DataContainers\DataItems\ReportsMenuItem.cs" />
     <Compile Include="Model\DataContainers\ReportsMenuContainer.cs" />
@@ -169,6 +171,7 @@
     <Compile Include="ToolKit\BindingValueConverters\RankingsLabelConverter.cs" />
     <Compile Include="ToolKit\BindingValueConverters\StringToResourceImageSourceConverter.cs" />
     <Compile Include="ToolKit\MarkupExtensions\ImageResourceExtension.cs" />
+    <Compile Include="ToolKit\Triggers\ChangeBackgroundColorTriggerAction.cs" />
     <Compile Include="ViewModels\ArrivalDetailsViewModel.cs" />
     <Compile Include="ViewModels\ArrivalViewModel.cs" />
     <Compile Include="ViewModels\AuditLogViewModel.cs" />
@@ -577,6 +580,7 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.4.267\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.4.267\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

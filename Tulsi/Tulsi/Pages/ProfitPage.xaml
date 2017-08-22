@@ -12,7 +12,7 @@
 
     <StackLayout
         x:Name="HeaderLayout"
-        BackgroundColor="Red"
+        BackgroundColor="#f3f3f3"
         Spacing="5">
         <!--  Tool bar  -->
         <Grid x:Name="ToolbarGrid" BackgroundColor="#2793F5">
@@ -161,19 +161,21 @@
                     </Grid>
                 </controls:RoundedContentView>
 
-                <Grid x:Name="Years" BackgroundColor="Transparent">
+                <!--  YEARS SELECTOR  -->
+                <Grid
+                    x:Name="Years"
+                    BackgroundColor="Transparent"
+                    HorizontalOptions="Center">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="40" />
                         <ColumnDefinition Width="40" />
-                        <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="20" />
                     </Grid.RowDefinitions>
                     <Label
                         x:Name="Year1"
-                        Grid.Column="1"
+                        Grid.Column="0"
                         FontSize="14"
                         HorizontalOptions="Center"
                         Text="2013"
@@ -181,163 +183,145 @@
                         VerticalOptions="Center" />
                     <Label
                         x:Name="Year2"
-                        Grid.Column="2"
+                        Grid.Column="1"
                         FontSize="14"
                         HorizontalOptions="Center"
                         Text="2014"
                         VerticalOptions="Center" />
                 </Grid>
 
-                <Grid
-                    x:Name="Stats"
-                    Margin="0,0"
-                    BackgroundColor="Transparent">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="40" />
-                        <ColumnDefinition Width="70" />
-                        <ColumnDefinition Width="30" />
-                        <ColumnDefinition Width="70" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="15" />
-                    </Grid.RowDefinitions>
-                    <Label
-                        x:Name="PaidStatsLabel"
-                        Grid.Column="1"
-                        FontSize="12"
-                        HorizontalOptions="Center"
-                        Text="Paid Stats"
-                        TextColor="#2793F5"
-                        VerticalOptions="Center" />
-                    <Label
-                        x:Name="AllStatsLabel"
-                        Grid.Column="3"
-                        FontSize="12"
-                        HorizontalOptions="Center"
-                        Text="All Stats"
-                        VerticalOptions="Center" />
-                </Grid>
+                <!--  CHART VIEW  -->
+                <controls:RoundedContentView BackgroundColor="White" CornerRadius="13">
+                    <StackLayout BackgroundColor="Transparent">
+                        <!--  STATS SELECTOR  -->
+                        <Grid
+                            x:Name="Stats"
+                            Margin="0,0"
+                            BackgroundColor="Transparent">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="40" />
+                                <ColumnDefinition Width="70" />
+                                <ColumnDefinition Width="30" />
+                                <ColumnDefinition Width="70" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40" />
+                            </Grid.RowDefinitions>
+                            <Label
+                                x:Name="PaidStatsLabel"
+                                Grid.Column="1"
+                                FontSize="12"
+                                HorizontalOptions="Center"
+                                Text="Paid Stats"
+                                TextColor="#2793F5"
+                                VerticalOptions="Center" />
+                            <Label
+                                x:Name="AllStatsLabel"
+                                Grid.Column="3"
+                                FontSize="12"
+                                HorizontalOptions="Center"
+                                Text="All Stats"
+                                VerticalOptions="Center" />
+                        </Grid>
 
-                <Grid x:Name="ChartGrid" BackgroundColor="Transparent">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="360" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="120" />
-                    </Grid.RowDefinitions>
-                </Grid>
+                        <!--  CHART  -->
+                        <Grid x:Name="ChartGrid" BackgroundColor="Transparent">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="360" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="120" />
+                            </Grid.RowDefinitions>
+                        </Grid>
 
-                <Grid BackgroundColor="Transparent">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="100" />
-                        <ColumnDefinition Width="120" />
-                        <ColumnDefinition Width="110" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto" />
-                    </Grid.RowDefinitions>
-                    <Label
-                        Grid.Column="1"
-                        HorizontalOptions="Start"
-                        Text="DEC 2013"
-                        VerticalOptions="Center" />
-                    <Label
-                        Grid.Column="2"
-                        FontAttributes="Bold"
-                        HorizontalOptions="Center"
-                        Text="Profit Chart"
-                        VerticalOptions="Center" />
-                    <Label
-                        Grid.Column="3"
-                        HorizontalOptions="End"
-                        Text="DEC 2014"
-                        VerticalOptions="Center" />
-                </Grid>
+                        <Grid BackgroundColor="Transparent">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40" />
+                            </Grid.RowDefinitions>
+                            <Label
+                                Grid.Column="0"
+                                FontSize="Micro"
+                                HorizontalOptions="Center"
+                                Text="DEC 2013"
+                                VerticalOptions="Center" />
+                            <Label
+                                Grid.Column="1"
+                                FontAttributes="Bold"
+                                FontSize="Micro"
+                                HorizontalOptions="Center"
+                                Text="Profit Chart"
+                                VerticalOptions="Center" />
+                            <Label
+                                Grid.Column="2"
+                                FontSize="Micro"
+                                HorizontalOptions="Center"
+                                Text="DEC 2014"
+                                VerticalOptions="Center" />
+                        </Grid>
+                    </StackLayout>
+                </controls:RoundedContentView>
 
-                <Grid BackgroundColor="Transparent">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="20" />
-                        <ColumnDefinition Width="30" />
-                        <ColumnDefinition Width="10" />
-                        <ColumnDefinition Width="100" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="60" />
-                        <ColumnDefinition Width="20" />
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="10" />
-                        <RowDefinition Height="auto" />
-                        <RowDefinition Height="10" />
-                        <RowDefinition Height="auto" />
-                        <RowDefinition Height="10" />
-                        <RowDefinition Height="auto" />
-                    </Grid.RowDefinitions>
-                    <Image
-                        Grid.Row="1"
-                        Grid.Column="1"
-                        HeightRequest="30"
-                        HorizontalOptions="Center"
-                        Source="{toolKitImageResourceExtension:ImageResource Tulsi.Images.greenprofiticon.png}"
-                        VerticalOptions="Center"
-                        WidthRequest="30" />
-                    <Image
-                        Grid.Row="3"
-                        Grid.Column="1"
-                        HeightRequest="30"
-                        HorizontalOptions="Center"
-                        Source="{toolKitImageResourceExtension:ImageResource Tulsi.Images.orangeprofiticon.png}"
-                        VerticalOptions="Center"
-                        WidthRequest="30" />
-                    <Image
-                        Grid.Row="5"
-                        Grid.Column="1"
-                        HeightRequest="30"
-                        HorizontalOptions="Center"
-                        Source="{toolKitImageResourceExtension:ImageResource Tulsi.Images.grayprofiticon.png}"
-                        VerticalOptions="Center"
-                        WidthRequest="30" />
-                    <Label
-                        Grid.Row="1"
-                        Grid.Column="3"
-                        HorizontalOptions="Start"
-                        Text="Income"
-                        VerticalOptions="Center" />
-                    <Label
-                        Grid.Row="3"
-                        Grid.Column="3"
-                        HorizontalOptions="Start"
-                        Text="Expense"
-                        VerticalOptions="Center" />
-                    <Label
-                        Grid.Row="5"
-                        Grid.Column="3"
-                        HorizontalOptions="Start"
-                        Text="Loss"
-                        VerticalOptions="Center" />
-                    <Label
-                        Grid.Row="1"
-                        Grid.Column="5"
-                        HorizontalOptions="End"
-                        Text="0.00"
-                        VerticalOptions="Center" />
-                    <Label
-                        Grid.Row="3"
-                        Grid.Column="5"
-                        HorizontalOptions="End"
-                        Text="163.89"
-                        VerticalOptions="Center" />
-                    <Label
-                        Grid.Row="5"
-                        Grid.Column="5"
-                        HorizontalOptions="End"
-                        Text="-163.89"
-                        VerticalOptions="Center" />
-                </Grid>
+                <!--  BOTTOM LIST  -->
+                <controls:RoundedContentView
+                    Padding="25,5"
+                    BackgroundColor="White"
+                    CornerRadius="13">
+                    <ListView
+                        x:Name="menuItems"
+                        BackgroundColor="White"
+                        ItemsSource="{Binding MenuItems}"
+                        RowHeight="40"
+                        SelectedItem="{Binding SelectedMenuItem, Mode=TwoWay}"
+                        SeparatorColor="#e6e6e6"
+                        SeparatorVisibility="Default"
+                        VerticalOptions="Center">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <ContentView BackgroundColor="White">
+                                        <Grid BackgroundColor="Transparent" ColumnSpacing="20">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="auto" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <Image
+                                                Grid.Column="0"
+                                                Margin="0,0,0,0"
+                                                HeightRequest="30"
+                                                Source="{Binding Image}"
+                                                VerticalOptions="Center"
+                                                WidthRequest="30" />
+                                            <StackLayout
+                                                Grid.Column="1"
+                                                BackgroundColor="Transparent"
+                                                Orientation="Horizontal"
+                                                VerticalOptions="Center">
+                                                <Label
+                                                    HorizontalOptions="StartAndExpand"
+                                                    Text="{Binding Status}"
+                                                    VerticalOptions="Center" />
+                                                <Label
+                                                    HorizontalOptions="EndAndExpand"
+                                                    HorizontalTextAlignment="End"
+                                                    Text="{Binding Value}"
+                                                    VerticalOptions="Center" />
+                                            </StackLayout>
+                                        </Grid>
+                                    </ContentView>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </controls:RoundedContentView>
             </StackLayout>
         </ScrollView>
     </StackLayout>
