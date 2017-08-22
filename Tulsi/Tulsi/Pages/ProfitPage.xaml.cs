@@ -23,7 +23,7 @@ namespace Tulsi {
 
             BindingContext = _viewModel = new ProfitViewModel(); ;
 
-            //Tabs navigation
+            //-------------------------------------
             TapGestureRecognizer TabTap1 = new TapGestureRecognizer();
             TabTap1.Tapped += (s, e) => {
                 QuarterlyArea.BackgroundColor = Color.FromHex("#2793F5");
@@ -63,6 +63,7 @@ namespace Tulsi {
             };
             WeeklyLabel.GestureRecognizers.Add(TabTap3);
 
+            //-----------------------------------
             TapGestureRecognizer TabTap4 = new TapGestureRecognizer();
             TabTap4.Tapped += (s, e) => {
                 Year1.TextColor = Color.FromHex("#2793F5");
@@ -81,6 +82,7 @@ namespace Tulsi {
             };
             Year2.GestureRecognizers.Add(TabTap5);
 
+            //-----------------------------------
             TapGestureRecognizer TabTap6 = new TapGestureRecognizer();
             TabTap6.Tapped += (s, e) => {
                 PaidStatsLabel.TextColor = Color.FromHex("#2793F5");
@@ -95,9 +97,10 @@ namespace Tulsi {
 
             };
             AllStatsLabel.GestureRecognizers.Add(TabTap7);
+            //-----------------------------------
 
             SfChart chart = new SfChart();
-            chart.BackgroundColor = Color.FromHex("#F3F3F3");
+            chart.BackgroundColor = Color.FromHex("#FFFFFF");
             //Initializing Primary Axis
             CategoryAxis primaryAxis = new CategoryAxis();
             primaryAxis.IsVisible = false;

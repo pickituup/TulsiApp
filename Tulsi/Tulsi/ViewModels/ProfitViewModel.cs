@@ -4,14 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Tulsi.Controls;
 using Tulsi.Helpers;
 using Tulsi.Model;
+using Tulsi.Model.DataContainers;
+using Tulsi.Model.DataContainers.DataItems;
 using Tulsi.MVVM.Core;
 using Tulsi.NavigationFramework;
 using Xamarin.Forms;
 
 namespace Tulsi.ViewModels {
     public class ProfitViewModel : ViewModelBase, IViewModel {
+
+        private readonly ProfitMenuContainer _container;
 
         int _year;
         public int Year {
@@ -27,12 +32,35 @@ namespace Tulsi.ViewModels {
 
         public List<ProfitChartModel> ChartData { get; set; }
 
+        List<ProfitMenuItem> _menuItems;
+        public List<ProfitMenuItem> MenuItems {
+            get { return _menuItems; }
+            set { SetProperty(ref _menuItems, value); }
+        }
+
+        ProfitMenuItem _selectedMenuItem;
+        public ProfitMenuItem SelectedMenuItem {
+            get { return _selectedMenuItem; }
+            set {
+                if (SetProperty(ref _selectedMenuItem, value) && value != null) {
+                    // Do something
+
+                    SelectedMenuItem = null;
+                }
+            }
+        }
+
         public ICommand DisplaySearchPageCommand { get; private set; }
+
 
         /// <summary>
         ///     ctor().
         /// </summary>
         public ProfitViewModel() {
+            _container = new ProfitMenuContainer();
+
+            MenuItems = _container.BuildProfitMenuItems();
+
             ChartData = new List<ProfitChartModel>()
             {
                 new ProfitChartModel { Value = 420, Step = 1 },
@@ -51,7 +79,10 @@ namespace Tulsi.ViewModels {
             ReportsPeriod = Period.Monthly;
 
             DisplaySearchPageCommand = new Command(() => BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.SearchPage));
+
         }
+
+        
 
         public void Dispose() {
             

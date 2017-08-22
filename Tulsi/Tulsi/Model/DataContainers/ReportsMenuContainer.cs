@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Tulsi.Model.DataContainers.DataItems;
 using Tulsi.NavigationFramework;
 
@@ -13,7 +9,7 @@ namespace Tulsi.Model.DataContainers {
         ///     Build reports menu.
         /// </summary>
         /// <returns></returns>
-        public List<ReportsMenuItem> BuldReportsMenuItem() {
+        public List<ReportsMenuItem> BuildReportsMenuItems() {
             return new List<ReportsMenuItem>() {
                 new ReportsMenuItem {
                     Name = "BANK",

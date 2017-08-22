@@ -10,20 +10,16 @@ using Tulsi.Controls;
 using Tulsi.Droid.Renderers;
 
 [assembly: ExportRenderer(typeof(RoundedContentView), typeof(RoundedContentViewRenderer))]
-namespace Tulsi.Droid.Renderers
-{
-    class RoundedContentViewRenderer : VisualElementRenderer<ContentView>
-    {
+namespace Tulsi.Droid.Renderers {
+    public class RoundedContentViewRenderer : VisualElementRenderer<ContentView> {
         private float _cornerRadius;
         private RectF _bounds;
         private Path _path;
 
-        protected override void OnElementChanged(ElementChangedEventArgs<ContentView> e)
-        {
+        protected override void OnElementChanged(ElementChangedEventArgs<ContentView> e) {
             base.OnElementChanged(e);
 
-            if (e.OldElement != null)
-            {
+            if (e.OldElement != null) {
                 return;
             }
 
@@ -33,11 +29,9 @@ namespace Tulsi.Droid.Renderers
                 Context.Resources.DisplayMetrics);
         }
 
-        protected override void OnSizeChanged(int w, int h, int oldw, int oldh)
-        {
+        protected override void OnSizeChanged(int w, int h, int oldw, int oldh) {
             base.OnSizeChanged(w, h, oldw, oldh);
-            if (w != oldw && h != oldh)
-            {
+            if (w != oldw && h != oldh) {
                 _bounds = new RectF(0, 0, w, h);
             }
 
@@ -47,8 +41,7 @@ namespace Tulsi.Droid.Renderers
             _path.Close();
         }
 
-        public override void Draw(Canvas canvas)
-        {
+        public override void Draw(Canvas canvas) {
             canvas.Save();
             canvas.ClipPath(_path);
             base.Draw(canvas);
