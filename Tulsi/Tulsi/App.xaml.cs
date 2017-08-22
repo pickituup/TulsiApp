@@ -28,34 +28,4 @@ namespace Tulsi {
             // Handle when your app resumes
         }
     }
-   
-    [ContentProperty("Source")]
-    public class ImageResourceExtension : IMarkupExtension {
-        public string Source { get; set; }
-
-        public object ProvideValue(IServiceProvider serviceProvider) {
-            if (Source == null)
-                return null;
-
-            // Do your translation lookup here, using whatever method you require
-            ImageSource imageSource = ImageSource.FromResource(Source);
-
-            return imageSource;
-        }
-    }
-
-    public class ProfileTransactionImage : IValueConverter {
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
-            if ((bool)value == true) {
-                return ImageSource.FromResource("Tulsi.Images.ptransaction.png");
-            }
-            else {
-                return ImageSource.FromResource("Tulsi.Images.dtransaction.png");
-            }
-        }
-
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) {
-            return value;
-        }
-    }
 }

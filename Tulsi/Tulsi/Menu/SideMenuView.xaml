@@ -4,6 +4,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Tulsi;assembly=Tulsi"
+    xmlns:toolKitImageResourceExtension="clr-namespace:Tulsi.ToolKit.MarkupExtensions"
     xmlns:t="clr-namespace:SlideOverKit">
 
     <Grid
@@ -56,7 +57,7 @@
                 <Image
                     Grid.Column="1"
                     HeightRequest="50"
-                    Source="{local:ImageResource Tulsi.Images.menu_profitability.png}"
+                    Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.menu_profitability.png}"
                     VerticalOptions="Center"
                     WidthRequest="50" />
             </Grid>
@@ -68,7 +69,7 @@
                 Margin="0,5,5,0"
                 HeightRequest="20"
                 HorizontalOptions="Center"
-                Source="{local:ImageResource Tulsi.Images.menu_close.png}"
+                Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.menu_close.png}"
                 VerticalOptions="Start"
                 WidthRequest="20">
                 <Image.GestureRecognizers>
@@ -169,14 +170,14 @@
                     Grid.Row="3"
                     HeightRequest="4"
                     HorizontalOptions="Center"
-                    Source="{local:ImageResource Tulsi.Images.bluecircle.png}"
+                    Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.bluecircle.png}"
                     VerticalOptions="Center"
                     WidthRequest="4" />
                 <Image
                     Grid.Row="5"
                     HeightRequest="4"
                     HorizontalOptions="Center"
-                    Source="{local:ImageResource Tulsi.Images.greencircle.png}"
+                    Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.greencircle.png}"
                     VerticalOptions="Center"
                     WidthRequest="4" />
             </Grid>
@@ -206,7 +207,7 @@
                     Grid.Row="0"
                     HeightRequest="4"
                     HorizontalOptions="Center"
-                    Source="{local:ImageResource Tulsi.Images.bluecircle.png}"
+                    Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.bluecircle.png}"
                     VerticalOptions="Center"
                     WidthRequest="4" />
                 <Image
@@ -214,7 +215,7 @@
                     Grid.Row="1"
                     HeightRequest="4"
                     HorizontalOptions="Center"
-                    Source="{local:ImageResource Tulsi.Images.bluecircle.png}"
+                    Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.bluecircle.png}"
                     VerticalOptions="Center"
                     WidthRequest="4" />
 

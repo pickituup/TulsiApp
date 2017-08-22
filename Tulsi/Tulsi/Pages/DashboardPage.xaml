@@ -7,6 +7,7 @@
     xmlns:controls="clr-namespace:Tulsi.Controls"
     xmlns:listview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
     xmlns:local="clr-namespace:Tulsi;assembly=Tulsi"
+    xmlns:toolKitImageResourceExtension="clr-namespace:Tulsi.ToolKit.MarkupExtensions"
     xmlns:m="clr-namespace:SlideOverKit"
     NavigationPage.HasNavigationBar="false">
 
@@ -29,7 +30,7 @@
                 </Grid.GestureRecognizers>
                 <Image
                     HorizontalOptions="Start"
-                    Source="{local:ImageResource Tulsi.Images.menu.png}"
+                    Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.menu.png}"
                     VerticalOptions="Center"
                     WidthRequest="20" />
             </Grid>
@@ -54,7 +55,7 @@
                 <Image
                     HeightRequest="20"
                     HorizontalOptions="End"
-                    Source="{local:ImageResource Tulsi.Images.magnifier.png}"
+                    Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.magnifier.png}"
                     VerticalOptions="Center"
                     WidthRequest="20" />
             </Grid>
@@ -258,7 +259,7 @@
                             Grid.Column="2"
                             HeightRequest="4"
                             HorizontalOptions="End"
-                            Source="{local:ImageResource Tulsi.Images.graycircle.png}"
+                            Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.graycircle.png}"
                             VerticalOptions="Center"
                             WidthRequest="4" />
                         <Image
@@ -267,7 +268,7 @@
                             Grid.Column="2"
                             HeightRequest="4"
                             HorizontalOptions="End"
-                            Source="{local:ImageResource Tulsi.Images.graycircle.png}"
+                            Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.graycircle.png}"
                             VerticalOptions="Center"
                             WidthRequest="4" />
                         <Image
@@ -276,7 +277,7 @@
                             Grid.Column="2"
                             HeightRequest="4"
                             HorizontalOptions="End"
-                            Source="{local:ImageResource Tulsi.Images.graycircle.png}"
+                            Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.graycircle.png}"
                             VerticalOptions="Center"
                             WidthRequest="4" />
                         <BoxView
@@ -358,7 +359,7 @@
                             Grid.Column="1"
                             HeightRequest="75"
                             HorizontalOptions="Center"
-                            Source="{local:ImageResource Tulsi.Images.border.png}"
+                            Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.border.png}"
                             VerticalOptions="Center"
                             WidthRequest="90" />
                         <Image
@@ -366,7 +367,7 @@
                             Grid.Column="3"
                             HeightRequest="75"
                             HorizontalOptions="Center"
-                            Source="{local:ImageResource Tulsi.Images.border.png}"
+                            Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.border.png}"
                             VerticalOptions="Center"
                             WidthRequest="90" />
                         <Image
@@ -374,7 +375,7 @@
                             Grid.Column="5"
                             HeightRequest="75"
                             HorizontalOptions="Center"
-                            Source="{local:ImageResource Tulsi.Images.border.png}"
+                            Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.border.png}"
                             VerticalOptions="Center"
                             WidthRequest="90" />
                         <Grid
@@ -486,7 +487,7 @@
                             Grid.Column="1"
                             HeightRequest="6"
                             HorizontalOptions="Center"
-                            Source="{local:ImageResource Tulsi.Images.graycircle.png}"
+                            Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.graycircle.png}"
                             VerticalOptions="Center"
                             WidthRequest="6" />
                         <Image
@@ -494,7 +495,7 @@
                             Grid.Column="1"
                             HeightRequest="6"
                             HorizontalOptions="Center"
-                            Source="{local:ImageResource Tulsi.Images.graycircle.png}"
+                            Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.graycircle.png}"
                             VerticalOptions="Center"
                             WidthRequest="6" />
                         <Image
@@ -502,7 +503,7 @@
                             Grid.Column="1"
                             HeightRequest="6"
                             HorizontalOptions="Center"
-                            Source="{local:ImageResource Tulsi.Images.graycircle.png}"
+                            Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.graycircle.png}"
                             VerticalOptions="Center"
                             WidthRequest="6" />
                         <Label
@@ -585,7 +586,7 @@
                                 </Grid.RowDefinitions>
                                 <Image
                                     HeightRequest="104"
-                                    Source="{local:ImageResource Tulsi.Images.photo1.png}"
+                                    Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.photo1.png}"
                                     WidthRequest="100" />
                                 <Grid
                                     Grid.Column="1"
@@ -614,7 +615,7 @@
                                         <Image
                                             HeightRequest="11"
                                             HorizontalOptions="Center"
-                                            Source="{local:ImageResource Tulsi.Images.users.png}"
+                                            Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.users.png}"
                                             VerticalOptions="Center"
                                             WidthRequest="14" />
                                     </StackLayout>
@@ -623,7 +624,7 @@
                                     Grid.Column="2"
                                     HeightRequest="25"
                                     HorizontalOptions="Center"
-                                    Source="{local:ImageResource Tulsi.Images.info.png}"
+                                    Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.info.png}"
                                     VerticalOptions="Center"
                                     WidthRequest="25" />
                             </Grid>
@@ -645,7 +646,7 @@
                                 </Grid.RowDefinitions>
                                 <Image
                                     HeightRequest="104"
-                                    Source="{local:ImageResource Tulsi.Images.photo1.png}"
+                                    Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.photo1.png}"
                                     WidthRequest="100" />
                                 <Grid
                                     Grid.Column="1"
@@ -674,7 +675,7 @@
                                         <Image
                                             HeightRequest="11"
                                             HorizontalOptions="Center"
-                                            Source="{local:ImageResource Tulsi.Images.users.png}"
+                                            Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.users.png}"
                                             VerticalOptions="Center"
                                             WidthRequest="14" />
                                     </StackLayout>
@@ -683,7 +684,7 @@
                                     Grid.Column="2"
                                     HeightRequest="25"
                                     HorizontalOptions="Center"
-                                    Source="{local:ImageResource Tulsi.Images.info.png}"
+                                    Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.info.png}"
                                     VerticalOptions="Center"
                                     WidthRequest="25" />
                             </Grid>
@@ -705,7 +706,7 @@
                                 </Grid.RowDefinitions>
                                 <Image
                                     HeightRequest="104"
-                                    Source="{local:ImageResource Tulsi.Images.photo1.png}"
+                                    Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.photo1.png}"
                                     WidthRequest="100" />
                                 <Grid
                                     Grid.Column="1"
@@ -734,7 +735,7 @@
                                         <Image
                                             HeightRequest="11"
                                             HorizontalOptions="Center"
-                                            Source="{local:ImageResource Tulsi.Images.users.png}"
+                                            Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.users.png}"
                                             VerticalOptions="Center"
                                             WidthRequest="14" />
                                     </StackLayout>
@@ -743,7 +744,7 @@
                                     Grid.Column="2"
                                     HeightRequest="25"
                                     HorizontalOptions="Center"
-                                    Source="{local:ImageResource Tulsi.Images.info.png}"
+                                    Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.info.png}"
                                     VerticalOptions="Center"
                                     WidthRequest="25" />
                             </Grid>

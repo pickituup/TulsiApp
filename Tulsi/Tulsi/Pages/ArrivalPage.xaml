@@ -6,6 +6,7 @@
     xmlns:cal="clr-namespace:Syncfusion.SfCalendar.XForms;assembly=Syncfusion.SfCalendar.XForms"
     xmlns:calendar="clr-namespace:XamForms.Controls;assembly=XamForms.Controls.Calendar"
     xmlns:local="clr-namespace:Tulsi;assembly=Tulsi"
+    xmlns:toolKitImageResourceExtension="clr-namespace:Tulsi.ToolKit.MarkupExtensions"
     xmlns:m="clr-namespace:SlideOverKit"
     NavigationPage.HasNavigationBar="false">
 
@@ -28,7 +29,7 @@
                 </Grid.GestureRecognizers>
                 <Image
                     HorizontalOptions="Start"
-                    Source="{local:ImageResource Tulsi.Images.menu.png}"
+                    Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.menu.png}"
                     VerticalOptions="Center"
                     WidthRequest="20" />
             </Grid>
@@ -63,7 +64,7 @@
                         Grid.Column="1"
                         HeightRequest="278"
                         HorizontalOptions="Center"
-                        Source="{local:ImageResource Tulsi.Images.calendar_background.png}"
+                        Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.calendar_background.png}"
                         VerticalOptions="Center"
                         WidthRequest="360" />
                     <Grid Grid.Column="1" BackgroundColor="Transparent">
@@ -96,7 +97,7 @@
                         Grid.Row="0"
                         HeightRequest="230"
                         HorizontalOptions="Start"
-                        Source="{local:ImageResource Tulsi.Images.dates_background.png}"
+                        Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.dates_background.png}"
                         VerticalOptions="Center"
                         WidthRequest="360" />
                     <Grid
@@ -140,21 +141,21 @@
                                     Grid.Column="0"
                                     HeightRequest="10"
                                     HorizontalOptions="Center"
-                                    Source="{local:ImageResource Tulsi.Images.datesbluecircle.png}"
+                                    Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.datesbluecircle.png}"
                                     VerticalOptions="Center"
                                     WidthRequest="10" />
                                 <Image
                                     Grid.Column="1"
                                     HeightRequest="10"
                                     HorizontalOptions="Center"
-                                    Source="{local:ImageResource Tulsi.Images.datesbluecircle.png}"
+                                    Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.datesbluecircle.png}"
                                     VerticalOptions="Center"
                                     WidthRequest="10" />
                                 <Image
                                     Grid.Column="2"
                                     HeightRequest="10"
                                     HorizontalOptions="Center"
-                                    Source="{local:ImageResource Tulsi.Images.datesbluecircle.png}"
+                                    Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.datesbluecircle.png}"
                                     VerticalOptions="Center"
                                     WidthRequest="10" />
                             </Grid>
@@ -188,7 +189,7 @@
                                 Grid.Column="1"
                                 HeightRequest="10"
                                 HorizontalOptions="Center"
-                                Source="{local:ImageResource Tulsi.Images.greencircle.png}"
+                                Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.greencircle.png}"
                                 VerticalOptions="Center"
                                 WidthRequest="10" />
                             <Label
@@ -212,7 +213,7 @@
                                 Grid.Column="1"
                                 HeightRequest="10"
                                 HorizontalOptions="Center"
-                                Source="{local:ImageResource Tulsi.Images.purplecircle.png}"
+                                Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.purplecircle.png}"
                                 VerticalOptions="Center"
                                 WidthRequest="10" />
                             <Label
@@ -239,7 +240,7 @@
                                 Grid.Column="1"
                                 HeightRequest="10"
                                 HorizontalOptions="Center"
-                                Source="{local:ImageResource Tulsi.Images.purplecircle.png}"
+                                Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.purplecircle.png}"
                                 VerticalOptions="Center"
                                 WidthRequest="10" />
                             <Label
@@ -266,7 +267,7 @@
                                 Grid.Column="1"
                                 HeightRequest="10"
                                 HorizontalOptions="Center"
-                                Source="{local:ImageResource Tulsi.Images.purplecircle.png}"
+                                Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.purplecircle.png}"
                                 VerticalOptions="Center"
                                 WidthRequest="10" />
                             <Label

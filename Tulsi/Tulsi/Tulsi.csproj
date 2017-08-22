@@ -163,10 +163,12 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SharedService\IDisplaySize.cs" />
+    <Compile Include="ToolKit\BindingValueConverters\ProfileTransactionImageConverter.cs" />
     <Compile Include="ToolKit\BindingValueConverters\RankingsColorConverter.cs" />
     <Compile Include="ToolKit\BindingValueConverters\RankingsIconConverter.cs" />
     <Compile Include="ToolKit\BindingValueConverters\RankingsLabelConverter.cs" />
     <Compile Include="ToolKit\BindingValueConverters\StringToResourceImageSourceConverter.cs" />
+    <Compile Include="ToolKit\MarkupExtensions\ImageResourceExtension.cs" />
     <Compile Include="ViewModels\ArrivalDetailsViewModel.cs" />
     <Compile Include="ViewModels\ArrivalViewModel.cs" />
     <Compile Include="ViewModels\AuditLogViewModel.cs" />
