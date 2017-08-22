@@ -31,7 +31,7 @@ namespace Tulsi {
         }
 
         /// <summary>
-        /// Make some visual changes of current page through navigating process (hide side menu or smt...)
+        ///     Autohide side menu.
         /// </summary>
         public void ApplyVisualChangesWhileNavigating() {
             SlideMenu.HideWithoutAnimations();

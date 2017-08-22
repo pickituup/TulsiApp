@@ -23,7 +23,7 @@ namespace Tulsi
             BindingContext = _viewModel = new LatePaymentsViewModel();
 
             //Slide menu creating
-            SlideMenu = ((App)Application.Current).SideMenu;
+            SlideMenu = new SideMenuView();
         }
 
         /// <summary>

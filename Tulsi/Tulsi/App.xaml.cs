@@ -1,32 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
+using System.Globalization;
+using Tulsi.Helpers;
+using Tulsi.NavigationFramework;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using System.Globalization;
-using Tulsi.ViewModels;
-using Tulsi.NavigationFramework;
-using Tulsi.Helpers;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 
 namespace Tulsi {
     public partial class App : Application {
-        public ExpensesViewModel ExpensesVM;
-        public LatePaymentsViewModel LatePaymentsVM;
-        public SideMenuView SideMenu;
 
         public App() {
             InitializeComponent();
-
-            //ViewModels
-            ExpensesVM = new ExpensesViewModel();
-            LatePaymentsVM = new LatePaymentsViewModel();
-
-            //Menu
-            SideMenu = new SideMenuView();
 
             BaseSingleton<ViewSwitchingLogic>.Instance.BuildNavigationStack(ViewType.LoginPage);
         }
@@ -58,6 +43,7 @@ namespace Tulsi {
             return imageSource;
         }
     }
+
     public class ProfileTransactionImage : IValueConverter {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
             if ((bool)value == true) {

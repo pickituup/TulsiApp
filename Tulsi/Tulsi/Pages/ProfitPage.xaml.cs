@@ -96,10 +96,6 @@ namespace Tulsi {
             };
             AllStatsLabel.GestureRecognizers.Add(TabTap7);
 
-            IncomeIcon.Source = ImageSource.FromResource("Tulsi.Images.greenprofiticon.png");
-            ExpenseIcon.Source = ImageSource.FromResource("Tulsi.Images.orangeprofiticon.png");
-            LossIcon.Source = ImageSource.FromResource("Tulsi.Images.grayprofiticon.png");
-
             SfChart chart = new SfChart();
             chart.BackgroundColor = Color.FromHex("#F3F3F3");
             //Initializing Primary Axis
