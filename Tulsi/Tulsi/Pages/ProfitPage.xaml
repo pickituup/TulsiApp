@@ -7,6 +7,7 @@
     xmlns:controls="clr-namespace:Tulsi.Controls"
     xmlns:local="clr-namespace:Tulsi;assembly=Tulsi"
     xmlns:m="clr-namespace:SlideOverKit"
+    xmlns:toolKitImageResourceExtension="clr-namespace:Tulsi.ToolKit.MarkupExtensions"
     NavigationPage.HasNavigationBar="false">
 
     <StackLayout
@@ -30,7 +31,7 @@
                 </Grid.GestureRecognizers>
                 <Image
                     HorizontalOptions="Start"
-                    Source="{local:ImageResource Tulsi.Images.menu.png}"
+                    Source="{toolKitImageResourceExtension:ImageResource Tulsi.Images.menu.png}"
                     VerticalOptions="Center"
                     WidthRequest="20" />
             </Grid>
@@ -55,7 +56,7 @@
                 <Image
                     HeightRequest="20"
                     HorizontalOptions="End"
-                    Source="{local:ImageResource Tulsi.Images.magnifier.png}"
+                    Source="{toolKitImageResourceExtension:ImageResource Tulsi.Images.magnifier.png}"
                     VerticalOptions="Center"
                     WidthRequest="20" />
             </Grid>
@@ -281,7 +282,7 @@
                         Grid.Column="1"
                         HeightRequest="30"
                         HorizontalOptions="Center"
-                        Source="{local:ImageResource Tulsi.Images.greenprofiticon.png}"
+                        Source="{toolKitImageResourceExtension:ImageResource Tulsi.Images.greenprofiticon.png}"
                         VerticalOptions="Center"
                         WidthRequest="30" />
                     <Image
@@ -289,7 +290,7 @@
                         Grid.Column="1"
                         HeightRequest="30"
                         HorizontalOptions="Center"
-                        Source="{local:ImageResource Tulsi.Images.orangeprofiticon.png}"
+                        Source="{toolKitImageResourceExtension:ImageResource Tulsi.Images.orangeprofiticon.png}"
                         VerticalOptions="Center"
                         WidthRequest="30" />
                     <Image
@@ -297,7 +298,7 @@
                         Grid.Column="1"
                         HeightRequest="30"
                         HorizontalOptions="Center"
-                        Source="{local:ImageResource Tulsi.Images.grayprofiticon.png}"
+                        Source="{toolKitImageResourceExtension:ImageResource Tulsi.Images.grayprofiticon.png}"
                         VerticalOptions="Center"
                         WidthRequest="30" />
                     <Label
