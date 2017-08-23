@@ -20,10 +20,10 @@ namespace Tulsi.ViewModels {
         public BuyerProfileViewModel() {
             TransactionsData = new List<ProfileTransaction>()
             {
-                new ProfileTransaction { Code = "SKC", Number = "28", IsP=true, Quantity="8,200" },
-                new ProfileTransaction { Code = "SKC", Number = "28", IsP=false, Quantity="8,200" },
-                new ProfileTransaction{ Code = "SKC", Number = "28", IsP=true, Quantity="8,200" },
-                new ProfileTransaction { Code = "SKC", Number = "28", IsP=true, Quantity="8,200" },
+                new ProfileTransaction { Date = DateTime.Today, Number = "", IsP=true, Quantity="8,200" },
+                new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=false, Quantity="8,200" },
+                new ProfileTransaction{ Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
+                new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=true, Quantity="8,200" },
             };
 
             CloseCommand = new Command(() => {

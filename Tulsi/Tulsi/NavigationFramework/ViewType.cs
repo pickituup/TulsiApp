@@ -129,6 +129,11 @@ namespace Tulsi.NavigationFramework {
         /// <summary>
         ///     ExpensesListPage
         /// </summary>
-        ExpensesListPage
+        ExpensesListPage,
+
+        /// <summary>
+        ///     Buyer profile view.
+        /// </summary>
+        BuyerProfile
     }
 }
