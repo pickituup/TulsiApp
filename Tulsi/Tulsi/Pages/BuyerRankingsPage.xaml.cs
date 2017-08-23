@@ -17,11 +17,16 @@ namespace Tulsi
     {
         private BuyerRankingsViewModel _viewModel;
 
+        /// <summary>
+        /// Public ctor
+        /// </summary>
         public BuyerRankingsPage()
         {
             InitializeComponent();
 
-            BindingContext = _viewModel = new BuyerRankingsViewModel(); ;
+            BindingContext = _viewModel = new BuyerRankingsViewModel();
+
+            _viewModel.MovableSpot = _spot_ConentView;
 
             SlideMenu = new SideMenuView();
         }
@@ -34,23 +39,28 @@ namespace Tulsi
         private void ShowMenuTapped(object sender, EventArgs e) {
             ShowMenu();
         }
-        
-        /// <summary>
-        /// Temporary
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void OnItemSelected(object sender, SelectedItemChangedEventArgs e) {
-            BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.BuyerProfilePage);
-
-            ((ListView)sender).SelectedItem = null;
-        }
 
         /// <summary>
         /// Make some visual changes of current page through navigating process (hide side menu or smt...)
         /// </summary>
         public void ApplyVisualChangesWhileNavigating() {
             SlideMenu.HideWithoutAnimations();
+        }
+
+        /// <summary>
+        /// Occurs only for Android (not for iOS).
+        /// False navigate out from page, true - keep staing in this page.
+        /// </summary>
+        /// <returns></returns>
+        protected override bool OnBackButtonPressed() {
+            if (_viewModel.SelectedBuyerRank == null) {
+                return false;
+            }
+            else {
+                _viewModel.SelectedBuyerRank = null;
+
+                return true;
+            }
         }
     }
 }

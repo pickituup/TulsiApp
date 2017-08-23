@@ -30,7 +30,7 @@
                 VerticalOptions="Start"
                 WidthRequest="20">
                 <Image.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding Path=LooseTransactionSelectionCommand}" />
+                    <TapGestureRecognizer Command="{Binding Path=LooseSelectionCommand}" />
                 </Image.GestureRecognizers>
             </Image>
 

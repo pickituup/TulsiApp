@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<m:MenuContainerPage xmlns="http://xamarin.com/schemas/2014/forms"
+<m:MenuContainerPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Tulsi;assembly=Tulsi"
              xmlns:controls="clr-namespace:Tulsi.Controls"
@@ -7,167 +8,182 @@
              xmlns:toolKit="clr-namespace:Tulsi.ToolKit.BindingValueConverters"
              xmlns:toolKitImageResourceExtension="clr-namespace:Tulsi.ToolKit.MarkupExtensions"
              x:Class="Tulsi.BuyerRankingsPage" NavigationPage.HasNavigationBar="false">
-  
-  <StackLayout x:Name="HeaderLayout" 
-               BackgroundColor="#DCDCDC">
 
-    <!--ActionBar-->
-    <Grid x:Name="ToolbarGrid"
+    <AbsoluteLayout>
+
+        <StackLayout  
+        BackgroundColor="#DCDCDC">
+            
+            <!--ActionBar-->
+            <Grid x:Name="ToolbarGrid"
           BackgroundColor="#2793F5">
-      <Grid.RowDefinitions>
-        <RowDefinition Height="50" />
-      </Grid.RowDefinitions>
-      <Grid
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                </Grid.RowDefinitions>
+                <Grid
           Padding="15,0,0,0"
           BackgroundColor="Transparent"
           HorizontalOptions="Start">
-        <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="60" />
-        </Grid.ColumnDefinitions>
-        <Grid.GestureRecognizers>
-          <TapGestureRecognizer Tapped="ShowMenuTapped" />
-        </Grid.GestureRecognizers>
-        <Image
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="60" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="ShowMenuTapped" />
+                    </Grid.GestureRecognizers>
+                    <Image
             HorizontalOptions="Start"
             Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.menu.png}"
             VerticalOptions="Center"
             WidthRequest="20" />
-      </Grid>
+                </Grid>
 
-      <Label
+                <Label
           x:Name="PageTitleLabel"
           HorizontalOptions="Center"
           Text="BUYER RANKINGS"
           TextColor="White"
           VerticalOptions="Center" />
 
-      <Grid
+                <Grid
           Padding="0,0,15,0"
           BackgroundColor="Transparent"
           HorizontalOptions="End">
-        <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="60" />
-        </Grid.ColumnDefinitions>
-        <Grid.GestureRecognizers>
-          <TapGestureRecognizer Command="{Binding Path=DisplaySearchPageCommand}" />
-        </Grid.GestureRecognizers>
-        <Image
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="60" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding Path=DisplaySearchPageCommand}" />
+                    </Grid.GestureRecognizers>
+                    <Image
             HeightRequest="20"
             HorizontalOptions="End"
             Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.magnifier.png}"
             VerticalOptions="Center"
             WidthRequest="20" />
-      </Grid>
-    </Grid>
-    
-    <StackLayout x:Name="MainLayout" Spacing="10" BackgroundColor="#DCDCDC">
-      <controls:CustomFrame BorderRadius="25"  BackgroundColor="White" Margin="5,0,5,0">
-        <Label Grid.Column="2" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="#2793F5" >
-          <Label.FormattedText>
-            <FormattedString>
-              <FormattedString.Spans>
-                <Span Text="Note: " FontAttributes="Bold" />
-                <Span Text="The ranks are based upon who pays back faster within there credit limit."  />
-              </FormattedString.Spans>
-            </FormattedString>
-          </Label.FormattedText>
-        </Label>
-      </controls:CustomFrame>
-      <controls:CustomFrame BorderRadius="25"  BackgroundColor="White" Margin="5,0,5,0" >
-        <Grid  BackgroundColor="White">
-          <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="5" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="5" />
-          </Grid.ColumnDefinitions>
-          
-          <ListView Grid.Column="1"
-                    SeparatorVisibility="None"
-                    RowHeight="50"
-                    ItemTapped="OnItemSelected"
-                    ItemsSource="{Binding Path=BuyerRankings}">
-            
-            <ListView.ItemTemplate>
-              
-              <DataTemplate>
-                
-                <ViewCell>
-                  
-                  <controls:CustomFrame BorderRadius="45" 
+                </Grid>
+            </Grid>
+
+            <StackLayout Spacing="10" BackgroundColor="#DCDCDC">
+                <controls:CustomFrame BorderRadius="25"  BackgroundColor="White" Margin="5,0,5,0">
+                    <Label Grid.Column="2" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="#2793F5" >
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <FormattedString.Spans>
+                                    <Span Text="Note: " FontAttributes="Bold" />
+                                    <Span Text="The ranks are based upon who pays back faster within there credit limit."  />
+                                </FormattedString.Spans>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </controls:CustomFrame>
+                <controls:CustomFrame BorderRadius="25"  BackgroundColor="White" Margin="5,0,5,0" >
+                    <Grid  BackgroundColor="White">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="5" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="5" />
+                        </Grid.ColumnDefinitions>
+
+                        <ListView 
+                            ItemsSource="{Binding Path=BuyerRankings}"
+                            SelectedItem="{Binding Path=SelectedBuyerRank,
+                                Mode=TwoWay}"
+                            Grid.Column="1"
+                            SeparatorVisibility="None"
+                            RowHeight="50">
+
+                            <ListView.ItemTemplate>
+
+                                <DataTemplate>
+
+                                    <ViewCell>
+
+                                        <controls:CustomFrame 
+                                        BorderRadius="45" 
                                         OutlineColor="#cccccc"
                                         BackgroundColor="White"
                                         Margin="0,5,0,0">
-                    
-                    <Grid BackgroundColor="White" 
-                          Margin="0,-5,0,0">
-                      
-                      <Grid.ColumnDefinitions>
-                        
-                        <ColumnDefinition Width="40" />
-                        
-                        <ColumnDefinition Width="*" />
-                        
-                        <ColumnDefinition Width="10" />
-                        
-                        <ColumnDefinition Width="10" />
-                      </Grid.ColumnDefinitions>
-                      
-                      <Grid.RowDefinitions>
-                        
-                        <RowDefinition Height="auto" />
-                      </Grid.RowDefinitions>
-                      
-                      <Grid Grid.Column="0" 
-                            BackgroundColor="Transparent">
-                        
-                        <Grid.ColumnDefinitions>
-                          
-                          <ColumnDefinition Width="40" />
-                        </Grid.ColumnDefinitions>
-                        
-                        <Grid.RowDefinitions>
-                          
-                          <RowDefinition Height="40" />
-                        </Grid.RowDefinitions>
 
-                                                <Image Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.bigbluecircle.png}" 
+                                            <Grid 
+                                            BackgroundColor="White" 
+                                            Margin="0,-5,0,0">
+
+                                                <Grid.ColumnDefinitions>
+
+                                                    <ColumnDefinition Width="40" />
+
+                                                    <ColumnDefinition Width="*" />
+
+                                                    <ColumnDefinition Width="10" />
+
+                                                    <ColumnDefinition Width="10" />
+                                                </Grid.ColumnDefinitions>
+
+                                                <Grid.RowDefinitions>
+
+                                                    <RowDefinition Height="auto" />
+                                                </Grid.RowDefinitions>
+
+                                                <Grid Grid.Column="0" 
+                            BackgroundColor="Transparent">
+
+                                                    <Grid.ColumnDefinitions>
+
+                                                        <ColumnDefinition Width="40" />
+                                                    </Grid.ColumnDefinitions>
+
+                                                    <Grid.RowDefinitions>
+
+                                                        <RowDefinition Height="40" />
+                                                    </Grid.RowDefinitions>
+
+                                                    <Image Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.bigbluecircle.png}" 
                                WidthRequest="35" 
                                HeightRequest="35" 
                                HorizontalOptions="Center" />
-                        
-                        <Label Text="{Binding Rank, Converter={toolKit:RankingsLabelConverter}}" 
+
+                                                    <Label Text="{Binding Rank, Converter={toolKit:RankingsLabelConverter}}" 
                                FontAttributes="Bold"
                                HorizontalOptions="Center"  
                                TextColor="White" />
-                      </Grid>
-                      
-                      <Label Grid.Column="1" 
+                                                </Grid>
+
+                                                <Label Grid.Column="1" 
                              Text="{Binding Name}" 
                              HorizontalTextAlignment="Start" 
                              VerticalTextAlignment="Center" 
                              HorizontalOptions="Start"  />
-                      
-                      <Image Grid.Column="2" 
+
+                                                <Image Grid.Column="2" 
                              Source="{Binding IsUp, 
                               Converter={toolKit:RankingsIconConverter}}"
                              WidthRequest="10" 
                              HeightRequest="8" 
                              HorizontalOptions="Center"/>
-                      
-                      <Label Grid.Column="3" 
+
+                                                <Label Grid.Column="3" 
                              Text="{Binding Change}" 
                              TextColor="{Binding IsUp, Converter={toolKit:RankingsColorConverter}}"
                              HorizontalTextAlignment="Center" 
                              VerticalTextAlignment="Center"
                              HorizontalOptions="End"  />
+                                            </Grid>
+                                        </controls:CustomFrame>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
                     </Grid>
-                  </controls:CustomFrame>
-                </ViewCell>
-              </DataTemplate>
-            </ListView.ItemTemplate>
-          </ListView>
-        </Grid>
-      </controls:CustomFrame>
-    </StackLayout>
-  </StackLayout>
+                </controls:CustomFrame>
+            </StackLayout>
+        </StackLayout>
+
+        <!--Show/Hide content view spot.-->
+        <ContentView
+            x:Name="_spot_ConentView"
+            Content="{Binding Path=BuyerProfileDetailView}"
+            BackgroundColor="Red"
+            AbsoluteLayout.LayoutFlags="All"
+            AbsoluteLayout.LayoutBounds="1,1,1,1"/>
+    </AbsoluteLayout>
 </m:MenuContainerPage>

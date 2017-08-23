@@ -38,7 +38,7 @@ namespace Tulsi.ViewModels {
                 BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.LatePaymentsPage);
             });
 
-            LooseTransactionSelectionCommand = new Command(()=> {
+            LooseSelectionCommand = new Command(()=> {
                 SelectedTransaction = null;
             });
 
@@ -65,7 +65,7 @@ namespace Tulsi.ViewModels {
         /// <summary>
         /// Loose selection of prev selected transaction command
         /// </summary>
-        public ICommand LooseTransactionSelectionCommand { get; private set; }
+        public ICommand LooseSelectionCommand { get; private set; }
 
         /// <summary>
         /// Values are hard coded...
