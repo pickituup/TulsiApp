@@ -106,9 +106,6 @@
     <Compile Include="Pages\DashboardPage.xaml.cs">
       <DependentUpon>DashboardPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Demo.xaml.cs">
-      <DependentUpon>Demo.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\ExpensesListPage.xaml.cs">
       <DependentUpon>ExpensesListPage.xaml</DependentUpon>
     </Compile>
@@ -133,7 +130,6 @@
     <Compile Include="Pages\NewsPage.xaml.cs">
       <DependentUpon>NewsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\PageWithSideMenuBase.cs" />
     <Compile Include="Pages\PasscodePage.xaml.cs">
       <DependentUpon>PasscodePage.xaml</DependentUpon>
     </Compile>
@@ -573,12 +569,6 @@
     <EmbeddedResource Include="Images\photo1.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Pages\Demo.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Menu\SideMenuView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
@@ -590,6 +580,7 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.4.267\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.4.267\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

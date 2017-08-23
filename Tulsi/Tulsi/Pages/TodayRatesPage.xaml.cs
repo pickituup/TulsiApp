@@ -15,9 +15,11 @@ using Tulsi.Controls.TodayRatesControls;
 
 namespace Tulsi {
     public partial class TodayRatesPage : MenuContainerPage, IView {
-
         private readonly TodayRatesViewModel _viewModel;
 
+        /// <summary>
+        /// Public ctor.
+        /// </summary>
         public TodayRatesPage() {
             InitializeComponent();
             

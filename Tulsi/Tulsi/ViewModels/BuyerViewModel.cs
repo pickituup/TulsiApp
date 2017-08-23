@@ -14,15 +14,10 @@ namespace Tulsi.ViewModels {
     public class BuyerViewModel : ViewModelBase, IViewModel {
         private Transaction _selectedTransaction;
 
+        /// <summary>
+        /// Public ctor.
+        /// </summary>
         public BuyerViewModel() {
-            TransactionsData = new List<Transaction>()
-            {
-                new Transaction { Code = "SKC", Number = "28", Quantity="8,200" },
-                new Transaction { Code = "SKC", Number = "28", Quantity="8,200" },
-                new Transaction { Code = "SKC", Number = "28", Quantity="8,200" },
-                new Transaction { Code = "SKC", Number = "28", Quantity="8,200" }
-            };
-
             DisplaySearchPageCommand = new Command(() => {
                 BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.SearchPage);
             });
@@ -34,6 +29,8 @@ namespace Tulsi.ViewModels {
             DisplayLatePaymentsPageCommand = new Command(() => {
                 BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.LatePaymentsPage);
             });
+
+            HARDCODED_DATA_INSERT();
         }
 
         /// <summary>
@@ -76,6 +73,19 @@ namespace Tulsi.ViewModels {
         /// </summary>
         public void Dispose() {
 
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void HARDCODED_DATA_INSERT() {
+            TransactionsData = new List<Transaction>()
+            {
+                new Transaction { Code = "SKC", Number = "28", Quantity="8,200" },
+                new Transaction { Code = "SKC", Number = "28", Quantity="8,200" },
+                new Transaction { Code = "SKC", Number = "28", Quantity="8,200" },
+                new Transaction { Code = "SKC", Number = "28", Quantity="8,200" }
+            };
         }
     }
 }
