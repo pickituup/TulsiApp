@@ -241,7 +241,7 @@
                                             FontAttributes="Bold"
                                             HorizontalOptions="Center"
                                             HorizontalTextAlignment="Center"
-                                            Text="{Binding Path=Code}"
+                                            Text="{Binding Date}"
                                             TextColor="#cccccc"
                                             VerticalTextAlignment="Center" />
                                         <Label
