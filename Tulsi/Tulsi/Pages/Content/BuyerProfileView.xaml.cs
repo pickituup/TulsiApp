@@ -11,14 +11,16 @@ using Xamarin.Forms.Xaml;
 namespace Tulsi.Pages.Content {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class BuyerProfileView : ContentView, IView {
+        /// <summary>
+        /// 
+        /// </summary>
         public BuyerProfileView() {
             InitializeComponent();
-
-            BindingContext =  new BuyerProfileViewModel();
         }
 
-        public void ApplyVisualChangesWhileNavigating() {
-
-        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public void ApplyVisualChangesWhileNavigating() { }
     }
 }

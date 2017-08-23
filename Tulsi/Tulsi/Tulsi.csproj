@@ -185,7 +185,7 @@
     <Compile Include="ViewModels\BankAccountsViewModel.cs" />
     <Compile Include="ViewModels\BuyerProfileViewModel.cs" />
     <Compile Include="ViewModels\BuyerRankingsViewModel.cs" />
-    <Compile Include="ViewModels\BuyerViewModel.cs" />
+    <Compile Include="ViewModels\BuyerPageViewModel.cs" />
     <Compile Include="ViewModels\ChatViewModel.cs" />
     <Compile Include="ViewModels\DashboardViewModel.cs" />
     <Compile Include="ViewModels\ExpensesListViewModel.cs" />

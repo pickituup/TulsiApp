@@ -13,7 +13,7 @@ using Tulsi.SharedService;
 
 namespace Tulsi {
     public partial class BuyerPage : MenuContainerPage, IView {
-        private BuyerViewModel _viewModel;
+        private BuyerPageViewModel _viewModel;
 
         public BuyerPage() {
             InitializeComponent();
@@ -70,8 +70,9 @@ namespace Tulsi {
             MiddleStack.Children.Add(MiddleText2);
             ChartGrid.Children.Add(MiddleStack);
 
-            _viewModel = new BuyerViewModel();
-            this.BindingContext = _viewModel;
+            BindingContext = _viewModel = new BuyerPageViewModel();
+
+            _viewModel.MovableSpot = _spot_ConentView;
         }
 
         /// <summary>
@@ -83,22 +84,27 @@ namespace Tulsi {
             ShowMenu();
         }
 
-        ///// <summary>
-        ///// Temporary
-        ///// </summary>
-        ///// <param name="sender"></param>
-        ///// <param name="e"></param>
-        //private void OnItemSelected(object sender, SelectedItemChangedEventArgs e) {
-        //    BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.BuyerProfilePage);
-
-        //    ((ListView)sender).SelectedItem = null;
-        //}
-
         /// <summary>
         /// Make some visual changes of current page through navigating process (hide side menu or smt...)
         /// </summary>
         public void ApplyVisualChangesWhileNavigating() {
             SlideMenu.HideWithoutAnimations();
+        }
+
+        /// <summary>
+        /// Occurs only for Android (not for iOS).
+        /// False navigate out from page, true - keep staing in this page.
+        /// </summary>
+        /// <returns></returns>
+        protected override bool OnBackButtonPressed() {
+            if (_viewModel.SelectedTransaction == null) {
+                return false;
+            }
+            else {
+                _viewModel.SelectedTransaction = null;
+
+                return true;
+            }
         }
     }
 }

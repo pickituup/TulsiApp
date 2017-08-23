@@ -20,6 +20,7 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
+            <!--Close button-->
             <Image
                 Grid.Row="0"
                 Margin="0,20,20,0"
@@ -29,7 +30,7 @@
                 VerticalOptions="Start"
                 WidthRequest="20">
                 <Image.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding Path=CloseCommand}" />
+                    <TapGestureRecognizer Command="{Binding Path=LooseTransactionSelectionCommand}" />
                 </Image.GestureRecognizers>
             </Image>
 
@@ -166,8 +167,8 @@
         </Grid>
 
         <!--  BOTTOM CONTENT  -->
-        <ScrollView Padding="5,0">
-            <controls:RoundedContentView BackgroundColor="White" CornerRadius="5">
+        <!--<ScrollView Padding="5,0">-->
+        <controls:RoundedContentView BackgroundColor="White" CornerRadius="5" Margin="5,0">
                 <StackLayout BackgroundColor="Transparent" Spacing="0">
 
                     <!--  HEADER LIST  -->
@@ -215,13 +216,12 @@
                         </StackLayout>
                     </controls:RoundedContentView>
 
-                    <!--  LIST  -->
+                    <!--  LIST  SelectedItem="{Binding Path=SelectedProfileTransaction, Mode=TwoWay}" -->
                     <ListView
                         Margin="5,0"
                         BackgroundColor="White"
-                        ItemsSource="{Binding Path=TransactionsData}"
+                        ItemsSource="{Binding Path=SelectedTransaction.ProfileTransactions}"
                         RowHeight="40"
-                        SelectedItem="{Binding Path=SelectedProfileTransaction, Mode=TwoWay}"
                         SeparatorColor="#e6e6e6"
                         SeparatorVisibility="Default"
                         VerticalOptions="Center">
@@ -236,6 +236,7 @@
                                             <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
 
+                                        <!--HARDCODED Text="{Binding Date}"-->
                                         <Label
                                             Grid.Column="0"
                                             FontAttributes="Bold"
@@ -244,6 +245,8 @@
                                             Text="{Binding Date}"
                                             TextColor="#cccccc"
                                             VerticalTextAlignment="Center" />
+
+                                        <!--HARDCODED Text="{Binding Path=Number}"-->
                                         <Label
                                             Grid.Column="1"
                                             FontAttributes="Bold"
@@ -252,6 +255,8 @@
                                             Text="{Binding Path=Number}"
                                             TextColor="#cccccc"
                                             VerticalTextAlignment="Center" />
+
+                                        <!--HARDCODED -->
                                         <Image
                                             Grid.Column="2"
                                             HeightRequest="30"
@@ -259,12 +264,14 @@
                                             Source="{Binding Path=IsP, Converter={toolKitConverters:ProfileTransactionImageConverter}}"
                                             VerticalOptions="Center"
                                             WidthRequest="30" />
+
+                                        <!--HARDCODED -->
                                         <Label
                                             Grid.Column="3"
                                             FontAttributes="Bold"
                                             HorizontalOptions="Center"
                                             HorizontalTextAlignment="Center"
-                                            Text="{Binding Quantity}"
+                                            Text="{Binding Path=Quantity}"
                                             TextColor="#cccccc"
                                             VerticalTextAlignment="Center" />
                                     </Grid>
@@ -274,6 +281,6 @@
                     </ListView>
                 </StackLayout>
             </controls:RoundedContentView>
-        </ScrollView>
+        <!--</ScrollView>-->
     </StackLayout>
 </ContentView>

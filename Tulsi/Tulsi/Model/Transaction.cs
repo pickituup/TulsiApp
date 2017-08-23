@@ -10,7 +10,7 @@ namespace Tulsi.Model {
         /// 
         /// </summary>
         public string Code { get; set; }
-        
+
         /// <summary>
         /// 
         /// </summary>
@@ -20,5 +20,10 @@ namespace Tulsi.Model {
         /// 
         /// </summary>
         public string Quantity { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public List<ProfileTransaction> ProfileTransactions { get; set; }
     }
 }

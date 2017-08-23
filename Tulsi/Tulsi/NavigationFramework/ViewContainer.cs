@@ -181,7 +181,7 @@ namespace Tulsi.NavigationFramework {
                     () => new ViewBuider<ExpensesListPage>().GetView()
                 },
                 {
-                    ViewType.BuyerProfile,
+                    ViewType.BuyerProfileView,
                     () => new ViewBuider<BuyerProfileView>().GetView()
                 }
             };

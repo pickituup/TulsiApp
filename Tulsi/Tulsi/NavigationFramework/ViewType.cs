@@ -132,8 +132,9 @@ namespace Tulsi.NavigationFramework {
         ExpensesListPage,
 
         /// <summary>
+        ///     TODO: maby define separated enum of IView views.
         ///     Buyer profile view.
         /// </summary>
-        BuyerProfile
+        BuyerProfileView
     }
 }
