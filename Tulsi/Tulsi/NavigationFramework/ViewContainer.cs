@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Tulsi.Pages.Content;
 using Xamarin.Forms;
 
 namespace Tulsi.NavigationFramework {
@@ -178,6 +179,10 @@ namespace Tulsi.NavigationFramework {
                 {
                     ViewType.ExpensesListPage,
                     () => new ViewBuider<ExpensesListPage>().GetView()
+                },
+                {
+                    ViewType.BuyerProfile,
+                    () => new ViewBuider<BuyerProfileView>().GetView()
                 }
             };
         }

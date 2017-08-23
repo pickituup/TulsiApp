@@ -1,0 +1,17 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+
+namespace Tulsi.Pages.temp {
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class TempPage : ContentPage {
+        public TempPage() {
+            InitializeComponent();
+        }
+    }
+}

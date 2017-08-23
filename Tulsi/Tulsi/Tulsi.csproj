@@ -103,11 +103,11 @@
     <Compile Include="Pages\ChatPage.xaml.cs">
       <DependentUpon>ChatPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Content\BuyerProfileView.xaml.cs">
+      <DependentUpon>BuyerProfileView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\DashboardPage.xaml.cs">
       <DependentUpon>DashboardPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Demo.xaml.cs">
-      <DependentUpon>Demo.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\ExpensesListPage.xaml.cs">
       <DependentUpon>ExpensesListPage.xaml</DependentUpon>
@@ -133,7 +133,6 @@
     <Compile Include="Pages\NewsPage.xaml.cs">
       <DependentUpon>NewsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\PageWithSideMenuBase.cs" />
     <Compile Include="Pages\PasscodePage.xaml.cs">
       <DependentUpon>PasscodePage.xaml</DependentUpon>
     </Compile>
@@ -163,6 +162,9 @@
     </Compile>
     <Compile Include="Pages\StockPendingPage.xaml.cs">
       <DependentUpon>StockPendingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\temp\TempPage.xaml.cs">
+      <DependentUpon>TempPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\TodayRatesPage.xaml.cs">
       <DependentUpon>TodayRatesPage.xaml</DependentUpon>
@@ -573,12 +575,6 @@
     <EmbeddedResource Include="Images\photo1.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Pages\Demo.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Menu\SideMenuView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
@@ -587,6 +583,18 @@
   <ItemGroup>
     <EmbeddedResource Include="Controls\TodayRatesControls\ExpandedGroup.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\Content\BuyerProfileView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\temp\TempPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>

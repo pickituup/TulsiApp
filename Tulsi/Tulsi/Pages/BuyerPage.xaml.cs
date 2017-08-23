@@ -12,11 +12,13 @@ using SlideOverKit;
 using Tulsi.SharedService;
 
 namespace Tulsi {
-    public partial class BuyerPage : Pages.PageWithSideMenuBase, IView {
+    public partial class BuyerPage : MenuContainerPage, IView {
         private BuyerViewModel _viewModel;
 
         public BuyerPage() {
             InitializeComponent();
+
+            SlideMenu = new SideMenuView();
 
             DashboardViewModel dvm = new DashboardViewModel();
 

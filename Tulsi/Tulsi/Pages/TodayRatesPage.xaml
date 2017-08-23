@@ -5,15 +5,14 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:controls="clr-namespace:Tulsi.Controls"
     xmlns:local="clr-namespace:Tulsi;assembly=Tulsi"
-    xmlns:toolKitImageResourceExtension="clr-namespace:Tulsi.ToolKit.MarkupExtensions"
     xmlns:m="clr-namespace:SlideOverKit"
+    xmlns:toolKitImageResourceExtension="clr-namespace:Tulsi.ToolKit.MarkupExtensions"
     NavigationPage.HasNavigationBar="false">
 
-    <!--BackgroundColor="#DCDCDC"-->
-    <StackLayout
-        Spacing="0">
+    <!--  BackgroundColor="#DCDCDC"  -->
+    <StackLayout Spacing="0">
 
-        <!--Action bar-->
+        <!--  Action bar  -->
         <!--  Tool bar  -->
         <Grid x:Name="ToolbarGrid" BackgroundColor="#2793F5">
             <Grid.RowDefinitions>
@@ -62,45 +61,43 @@
             </Grid>
         </Grid>
 
-        <!--Stack with lists inside-->
-        <StackLayout
-            Padding="20,5">
+        <!--  Stack with lists inside  -->
+        <StackLayout Padding="20,5">
 
-            <!--Lists shared 'Header'-->
+            <!--  Lists shared 'Header'  -->
             <Frame
+                Padding="0,12"
                 BackgroundColor="#027CE9"
                 CornerRadius="7"
-                Padding="0,12"
                 HasShadow="False">
 
                 <Label
                     FontSize="Medium"
+                    HorizontalTextAlignment="Center"
                     Text="DD/MM/YY"
                     TextColor="White"
-                    HorizontalTextAlignment="Center"
-                    VerticalTextAlignment="Center"/>
+                    VerticalTextAlignment="Center" />
             </Frame>
 
             <ScrollView>
 
-                <StackLayout
-                    x:Name="_ratesStack_StackLayout"/>
+                <StackLayout x:Name="_ratesStack_StackLayout" />
             </ScrollView>
         </StackLayout>
     </StackLayout>
 </m:MenuContainerPage>
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
+
+
+
+
 <!--  MAIN CONTENT  -->
 <!--<ScrollView>
             <AbsoluteLayout>

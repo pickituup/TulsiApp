@@ -2,6 +2,7 @@
 using System.Globalization;
 using Tulsi.Helpers;
 using Tulsi.NavigationFramework;
+using Tulsi.Pages.temp;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -12,6 +13,8 @@ namespace Tulsi {
 
         public App() {
             InitializeComponent();
+
+            //MainPage = new TempPage();
 
             BaseSingleton<ViewSwitchingLogic>.Instance.BuildNavigationStack(ViewType.LoginPage);
         }
