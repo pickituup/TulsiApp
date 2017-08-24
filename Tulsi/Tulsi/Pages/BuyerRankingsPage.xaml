@@ -9,7 +9,7 @@
              xmlns:toolKitImageResourceExtension="clr-namespace:Tulsi.ToolKit.MarkupExtensions"
              x:Class="Tulsi.BuyerRankingsPage" NavigationPage.HasNavigationBar="false">
 
-    <AbsoluteLayout>
+    <Grid>
 
         <StackLayout  
         BackgroundColor="#DCDCDC">
@@ -86,7 +86,7 @@
 
                         <ListView 
                             ItemsSource="{Binding Path=BuyerRankings}"
-                            SelectedItem="{Binding Path=SelectedBuyerRank,
+                            SelectedItem="{Binding Path=SelectedItem,
                                 Mode=TwoWay}"
                             Grid.Column="1"
                             SeparatorVisibility="None"
@@ -181,9 +181,6 @@
         <!--Show/Hide content view spot.-->
         <ContentView
             x:Name="_spot_ConentView"
-            Content="{Binding Path=BuyerProfileDetailView}"
-            BackgroundColor="Red"
-            AbsoluteLayout.LayoutFlags="All"
-            AbsoluteLayout.LayoutBounds="1,1,1,1"/>
-    </AbsoluteLayout>
+            Content="{Binding Path=BuyerProfileDetailView}"/>
+    </Grid>
 </m:MenuContainerPage>

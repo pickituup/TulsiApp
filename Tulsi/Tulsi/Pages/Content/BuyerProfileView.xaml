@@ -239,7 +239,7 @@
                     <ListView
                         Margin="5,0"
                         BackgroundColor="White"
-                        ItemsSource="{Binding Path=SelectedTransaction.ProfileTransactions}"
+                        ItemsSource="{Binding Path=SelectedItem.ProfileTransactions}"
                         RowHeight="40"
                         SeparatorColor="#e6e6e6"
                         SeparatorVisibility="Default"

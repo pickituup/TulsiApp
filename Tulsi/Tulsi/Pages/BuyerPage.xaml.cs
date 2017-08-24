@@ -12,9 +12,16 @@ using SlideOverKit;
 using Tulsi.SharedService;
 
 namespace Tulsi {
+    /// <summary>
+    /// TODO: BuyerPage use similar 'hide/show behavior' as in BuyerRankingsPage, LatePaymentsPage. Try
+    /// to define abstract core of that behavior
+    /// </summary>
     public partial class BuyerPage : MenuContainerPage, IView {
         private BuyerPageViewModel _viewModel;
 
+        /// <summary>
+        /// Public ctor.
+        /// </summary>
         public BuyerPage() {
             InitializeComponent();
 
@@ -97,11 +104,11 @@ namespace Tulsi {
         /// </summary>
         /// <returns></returns>
         protected override bool OnBackButtonPressed() {
-            if (_viewModel.SelectedTransaction == null) {
+            if (_viewModel.SelectedItem == null) {
                 return false;
             }
             else {
-                _viewModel.SelectedTransaction = null;
+                _viewModel.SelectedItem = null;
 
                 return true;
             }

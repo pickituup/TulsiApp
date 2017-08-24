@@ -13,6 +13,10 @@ using Tulsi.SharedService;
 
 namespace Tulsi
 {
+    /// <summary>
+    /// TODO: BuyerRankingsPage use similar 'hide/show behavior' as in LatePaymentsPage, BuyerPage. Try
+    /// to define abstract core of that behavior
+    /// </summary>
     public partial class BuyerRankingsPage : MenuContainerPage, IView
     {
         private BuyerRankingsViewModel _viewModel;
@@ -53,11 +57,11 @@ namespace Tulsi
         /// </summary>
         /// <returns></returns>
         protected override bool OnBackButtonPressed() {
-            if (_viewModel.SelectedBuyerRank == null) {
+            if (_viewModel.SelectedItem == null) {
                 return false;
             }
             else {
-                _viewModel.SelectedBuyerRank = null;
+                _viewModel.SelectedItem = null;
 
                 return true;
             }
