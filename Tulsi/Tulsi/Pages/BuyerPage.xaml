@@ -272,7 +272,7 @@
                                 Grid.Row="1"
                                 ItemsSource="{Binding Path=TransactionsData}"
                                 RowHeight="50"
-                                SelectedItem="{Binding Path=SelectedTransaction, Mode=TwoWay}"
+                                SelectedItem="{Binding Path=SelectedItem, Mode=TwoWay}"
                                 SeparatorVisibility="None">
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
