@@ -10,8 +10,7 @@
     x:Class="Tulsi.BuyerPage" 
     NavigationPage.HasNavigationBar="false">
 
-    <AbsoluteLayout>
-
+    <Grid>
         <StackLayout 
             AbsoluteLayout.LayoutFlags="All"
             AbsoluteLayout.LayoutBounds="1,1,1,1"
@@ -70,13 +69,13 @@
             <ScrollView>
                 <StackLayout 
                     BackgroundColor="#DCDCDC">
-                    
+
                     <Grid 
                         BackgroundColor="Transparent" 
                         Margin="5,0,5,0">
-                        
+
                         <Grid.ColumnDefinitions>
-                            
+
                             <ColumnDefinition 
                                 Width="*" />
                             <ColumnDefinition 
@@ -303,13 +302,9 @@
                 </StackLayout>
             </ScrollView>
         </StackLayout>
-
-        <!--Show/Hide content view spot.-->
+<!--Show/Hide content view spot.-->
         <ContentView
             x:Name="_spot_ConentView"
-            Content="{Binding Path=BuyerProfileDetailView}"
-            BackgroundColor="Red"
-            AbsoluteLayout.LayoutFlags="All"
-            AbsoluteLayout.LayoutBounds="1,1,1,1"/>
-    </AbsoluteLayout>
+            Content="{Binding Path=BuyerProfileDetailView}"/>
+    </Grid>
 </m:MenuContainerPage>

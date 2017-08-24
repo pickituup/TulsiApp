@@ -7,117 +7,113 @@
              xmlns:m="clr-namespace:SlideOverKit"
              x:Class="Tulsi.LatePaymentsPage" NavigationPage.HasNavigationBar="false">
 
-    <StackLayout x:Name="HeaderLayout" BackgroundColor="#DCDCDC">
-
-        <!--  Tool bar  -->
-        <Grid x:Name="ToolbarGrid" BackgroundColor="#2793F5">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="50" />
-            </Grid.RowDefinitions>
-            <Grid
+    <Grid>
+        <StackLayout 
+            BackgroundColor="#DCDCDC">
+<!-- Tool bar-->
+            <Grid x:Name="ToolbarGrid" BackgroundColor="#2793F5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                </Grid.RowDefinitions>
+                <Grid
           Padding="15,0,0,0"
           BackgroundColor="Transparent"
           HorizontalOptions="Start">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="60" />
-                </Grid.ColumnDefinitions>
-                <Grid.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="ShowMenuCommand" />
-                </Grid.GestureRecognizers>
-                <Image
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="60" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="ShowMenuCommand" />
+                    </Grid.GestureRecognizers>
+                    <Image
             HorizontalOptions="Start"
             Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.menu.png}"
             VerticalOptions="Center"
             WidthRequest="20" />
-            </Grid>
+                </Grid>
 
-            <Label
+                <Label
           x:Name="PageTitleLabel"
           HorizontalOptions="Center"
           Text="LATE PAYMENTS"
           TextColor="White"
           VerticalOptions="Center" />
 
-            <Grid
+                <Grid
           Padding="0,0,15,0"
           BackgroundColor="Transparent"
           HorizontalOptions="End">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="60" />
-                </Grid.ColumnDefinitions>
-                <Grid.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding DisplaySearchPageCommand}" />
-                </Grid.GestureRecognizers>
-                <Image
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="60" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding DisplaySearchPageCommand}" />
+                    </Grid.GestureRecognizers>
+                    <Image
             HeightRequest="20"
             HorizontalOptions="End"
             Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.magnifier.png}"
             VerticalOptions="Center"
             WidthRequest="20" />
+                </Grid>
             </Grid>
-        </Grid>
 
-        <StackLayout x:Name="MainLayout" Spacing="10" BackgroundColor="#DCDCDC" >
-            <controls:CustomFrame BorderRadius="25"  BackgroundColor="White" Margin="5,0,5,0">
-                <Label Grid.Column="2" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="#2793F5">
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <FormattedString.Spans>
-                                <Span Text="Note: " FontAttributes="Bold" />
-                                <Span Text="These are the buyers who have surpassed there credit limit."  />
-                            </FormattedString.Spans>
-                        </FormattedString>
-                    </Label.FormattedText>
-                </Label>
-            </controls:CustomFrame>
-            <controls:CustomFrame BorderRadius="25"  BackgroundColor="White" Margin="5,0,5,0">
-                <Grid BackgroundColor="White">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="30" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="30" />
-                    </Grid.ColumnDefinitions>
-                    
-                    <ListView Grid.Column="1"  
-                              RowHeight="50"
-                              ItemsSource="{Binding Path=LatePayments}"
-                              SelectedItem="{Binding Path=SelectedLatePayment, 
-                        Mode=TwoWay}">
-                        
-                        <ListView.ItemTemplate>
-                            
-                            <DataTemplate>
-                                
-                                <ViewCell>
-                                    
-                                    <Grid BackgroundColor="White">
+            <StackLayout x:Name="MainLayout" Spacing="10" BackgroundColor="#DCDCDC" >
+                <controls:CustomFrame BorderRadius="25"  BackgroundColor="White" Margin="5,0,5,0">
+                    <Label Grid.Column="2" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="#2793F5">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <FormattedString.Spans>
+                                    <Span Text="Note: " FontAttributes="Bold" />
+                                    <Span Text="These are the buyers who have surpassed there credit limit."  />
+                                </FormattedString.Spans>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </controls:CustomFrame>
+                <controls:CustomFrame BorderRadius="25"  BackgroundColor="White" Margin="5,0,5,0">
+                    <Grid BackgroundColor="White">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="30" />
+                        </Grid.ColumnDefinitions>
 
-                                        <Grid.ColumnDefinitions>
-
-                                            <ColumnDefinition Width="*" />
-
-                                            <ColumnDefinition Width="*" />
-                                        </Grid.ColumnDefinitions>
-
-                                        <Label Grid.Column="0" 
+                        <ListView Grid.Column="1"  
+                            RowHeight="50"
+                            ItemsSource="{Binding Path=LatePayments}"
+                            SelectedItem="{Binding Path=SelectedItem, 
+                                Mode=TwoWay}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Grid BackgroundColor="White">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Label Grid.Column="0" 
                                                Text="{Binding Name}" 
                                                HorizontalTextAlignment="Start" 
                                                VerticalTextAlignment="Center"
                                                HorizontalOptions="Start"/>
-                                        
-                                        <Label Grid.Column="1" 
+                                            <Label Grid.Column="1" 
                                                Text="{Binding Amount}" 
                                                HorizontalTextAlignment="Center"
                                                VerticalTextAlignment="Center" 
                                                HorizontalOptions="End"/>
-                                    </Grid>
-                                </ViewCell>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </Grid>
-            </controls:CustomFrame>
+                                        </Grid>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Grid>
+                </controls:CustomFrame>
+            </StackLayout>
         </StackLayout>
-
-    </StackLayout>
+<!--Show/Hide content view spot.-->
+        <ContentView
+            x:Name="_spot_ConentView"
+            Content="{Binding Path=BuyerProfileDetailView}"/>
+    </Grid>
 </m:MenuContainerPage>
