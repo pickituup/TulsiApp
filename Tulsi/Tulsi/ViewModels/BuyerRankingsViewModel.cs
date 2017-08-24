@@ -18,7 +18,7 @@ namespace Tulsi.ViewModels {
         private ViewContainer _viewContainer;
         private IView _buyerProfileDetailView;
         private VisualElement _movableSpot;
-        private BuyerRanking _selectedBuyerRank;
+        private BuyerRanking _selectedItem;
 
         /// <summary>
         /// Public ctor.
@@ -32,7 +32,7 @@ namespace Tulsi.ViewModels {
             });
 
             LooseSelectionCommand = new Command(() => {
-                SelectedBuyerRank = null;
+                SelectedItem = null;
             });
 
             HARDCODED_DATA_INSERT();
@@ -64,10 +64,10 @@ namespace Tulsi.ViewModels {
         /// <summary>
         /// 
         /// </summary>
-        public BuyerRanking SelectedBuyerRank {
-            get=> _selectedBuyerRank;
+        public BuyerRanking SelectedItem {
+            get=> _selectedItem;
             set {
-                if (SetProperty<BuyerRanking>(ref _selectedBuyerRank, value)) {
+                if (SetProperty<BuyerRanking>(ref _selectedItem, value)) {
                     ToogleSpotVisibility(value == null ? false : true);
                 }
             }
@@ -117,14 +117,68 @@ namespace Tulsi.ViewModels {
         /// </summary>
         private void HARDCODED_DATA_INSERT() {
             BuyerRankings = new List<BuyerRanking>() {
-                new BuyerRanking { Name = "DFC Mickey", Rank=1, IsUp=true, Change=1 },
-                new BuyerRanking { Name = "DFC Mickey", Rank=2, IsUp=true, Change=1 },
-                new BuyerRanking { Name = "DFC Mickey", Rank=3, IsUp=false, Change=1 },
-                new BuyerRanking { Name = "DFC Mickey", Rank=4, IsUp=false, Change=1 },
-                new BuyerRanking { Name = "DFC Mickey", Rank=5, IsUp=true, Change=1 },
-                new BuyerRanking { Name = "DFC Mickey", Rank=6, IsUp=true, Change=1 },
-                new BuyerRanking { Name = "DFC Mickey", Rank=7, IsUp=true, Change=1 },
-                new BuyerRanking { Name = "DFC Mickey", Rank=8, IsUp=true, Change=1 }
+                new BuyerRanking { Name = "DFC Mickey", Rank=1, IsUp=true, Change=1,
+                    ProfileTransactions = new List<ProfileTransaction>() {
+                        new ProfileTransaction { Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
+                        new ProfileTransaction { Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
+                        new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=false, Quantity="8,200" },
+                        new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=false, Quantity="8,200" },
+                        new ProfileTransaction{ Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" }
+                    }},
+                new BuyerRanking { Name = "DFC Mickey", Rank=2, IsUp=true, Change=1,
+                    ProfileTransactions = new List<ProfileTransaction>() {
+                        new ProfileTransaction { Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
+                        new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=false, Quantity="8,200" },
+                        new ProfileTransaction{ Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" }
+                    }},
+                new BuyerRanking { Name = "DFC Mickey", Rank=3, IsUp=false, Change=1,
+                    ProfileTransactions = new List<ProfileTransaction>() {
+                        new ProfileTransaction { Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
+                        new ProfileTransaction { Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
+                        new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=false, Quantity="8,200" },
+                        new ProfileTransaction { Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
+                        new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=false, Quantity="8,200" },
+                        new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=false, Quantity="8,200" },
+                        new ProfileTransaction{ Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" }
+                    } },
+                new BuyerRanking { Name = "DFC Mickey", Rank=4, IsUp=false, Change=1,
+                    ProfileTransactions = new List<ProfileTransaction>() {
+                        new ProfileTransaction { Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
+                        new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=false, Quantity="8,200" },
+                        new ProfileTransaction{ Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" }
+                    } },
+                new BuyerRanking { Name = "DFC Mickey", Rank=5, IsUp=true, Change=1,
+                    ProfileTransactions = new List<ProfileTransaction>() {
+                        new ProfileTransaction { Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
+                        new ProfileTransaction { Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
+                        new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=false, Quantity="8,200" },
+                        new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=false, Quantity="8,200" },
+                        new ProfileTransaction{ Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" }
+                    } },
+                new BuyerRanking { Name = "DFC Mickey", Rank=6, IsUp=true, Change=1,
+                    ProfileTransactions = new List<ProfileTransaction>() {
+                        new ProfileTransaction { Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
+                        new ProfileTransaction { Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
+                        new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=false, Quantity="8,200" },
+                        new ProfileTransaction { Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
+                        new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=false, Quantity="8,200" },
+                        new ProfileTransaction { Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
+                        new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=false, Quantity="8,200" },
+                        new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=false, Quantity="8,200" },
+                        new ProfileTransaction{ Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" }
+                    } },
+                new BuyerRanking { Name = "DFC Mickey", Rank=7, IsUp=true, Change=1,
+                    ProfileTransactions = new List<ProfileTransaction>() {
+                        new ProfileTransaction { Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
+                        new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=false, Quantity="8,200" },
+                        new ProfileTransaction{ Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" }
+                    } },
+                new BuyerRanking { Name = "DFC Mickey", Rank=8, IsUp=true, Change=1,
+                    ProfileTransactions = new List<ProfileTransaction>() {
+                        new ProfileTransaction { Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
+                        new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=false, Quantity="8,200" },
+                        new ProfileTransaction{ Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" }
+                    } }
             };
         }
     }

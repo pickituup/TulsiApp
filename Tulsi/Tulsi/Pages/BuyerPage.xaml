@@ -229,7 +229,7 @@
 
                             <ListView SeparatorVisibility="None"
                                       ItemsSource="{Binding Path=TransactionsData}"
-                                      SelectedItem="{Binding Path=SelectedTransaction, 
+                                      SelectedItem="{Binding Path=SelectedItem, 
                                 Mode=TwoWay}"
                                       RowHeight="50" 
                                       Grid.Row="1">

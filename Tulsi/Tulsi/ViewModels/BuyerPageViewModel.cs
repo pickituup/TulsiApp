@@ -16,7 +16,7 @@ namespace Tulsi.ViewModels {
         /// TODO: maby define one shared ViewContainer builder for all 'users'
         /// </summary>
         private ViewContainer _viewContainer;
-        private Transaction _selectedTransaction;
+        private Transaction _selectedItem;
         private IView _buyerProfileDetailView;
         private VisualElement _movableSpot;
 
@@ -39,7 +39,7 @@ namespace Tulsi.ViewModels {
             });
 
             LooseSelectionCommand = new Command(()=> {
-                SelectedTransaction = null;
+                SelectedItem = null;
             });
 
             BuyerProfileDetailView = _viewContainer.GetViewByType(ViewType.BuyerProfileView);
@@ -75,10 +75,10 @@ namespace Tulsi.ViewModels {
         /// <summary>
         /// 
         /// </summary>
-        public Transaction SelectedTransaction {
-            get => _selectedTransaction;
+        public Transaction SelectedItem {
+            get => _selectedItem;
             set {
-                if (SetProperty<Transaction>(ref _selectedTransaction, value)) {
+                if (SetProperty<Transaction>(ref _selectedItem, value)) {
                     ToogleSpotVisibility(value == null ? false : true);
                 }
             }

@@ -25,5 +25,10 @@ namespace Tulsi.Model {
         /// 
         /// </summary>
         public int Change { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public List<ProfileTransaction> ProfileTransactions { get; set; }
     }
 }

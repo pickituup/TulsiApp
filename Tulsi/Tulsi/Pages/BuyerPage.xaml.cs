@@ -97,11 +97,11 @@ namespace Tulsi {
         /// </summary>
         /// <returns></returns>
         protected override bool OnBackButtonPressed() {
-            if (_viewModel.SelectedTransaction == null) {
+            if (_viewModel.SelectedItem == null) {
                 return false;
             }
             else {
-                _viewModel.SelectedTransaction = null;
+                _viewModel.SelectedItem = null;
 
                 return true;
             }

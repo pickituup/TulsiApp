@@ -86,7 +86,7 @@
 
                         <ListView 
                             ItemsSource="{Binding Path=BuyerRankings}"
-                            SelectedItem="{Binding Path=SelectedBuyerRank,
+                            SelectedItem="{Binding Path=SelectedItem,
                                 Mode=TwoWay}"
                             Grid.Column="1"
                             SeparatorVisibility="None"
