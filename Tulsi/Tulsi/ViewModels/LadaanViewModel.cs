@@ -30,7 +30,11 @@ namespace Tulsi.ViewModels {
             }
         }
 
+        //  Navigate to SearchPage.
         public ICommand DisplaySearchPageCommand { get; private set; }
+
+        // Navigate back.
+        public ICommand NavigateBackCommand { get; private set; }
 
         /// <summary>
         ///     ctor().
@@ -50,6 +54,8 @@ namespace Tulsi.ViewModels {
             };
 
             DisplaySearchPageCommand = new Command(() => BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.SearchPage));
+
+            NavigateBackCommand = new Command(() => BaseSingleton<ViewSwitchingLogic>.Instance.NavigateOneStepBack());
         }
 
         public void Dispose() {

@@ -8,18 +8,7 @@
     xmlns:toolKitImageResourceExtension="clr-namespace:Tulsi.ToolKit.MarkupExtensions"
     NavigationPage.HasNavigationBar="false">
 
-    <Grid
-        x:Name="MainLayout"
-        BackgroundColor="#DCDCDC"
-        VerticalOptions="FillAndExpand">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="10" />
-        </Grid.RowDefinitions>
-
+    <StackLayout x:Name="MainLayout" BackgroundColor="#DCDCDC">
         <!--  Tool bar  -->
         <Grid x:Name="ToolbarGrid" BackgroundColor="#2793F5">
             <Grid.RowDefinitions>
@@ -57,65 +46,40 @@
                 Text="ACCOUNTANT&#x0a;Inderjeet Delhi Office"
                 TextColor="White"
                 VerticalOptions="Center" />
+            <Grid
+                Padding="0,0,15,0"
+                BackgroundColor="Transparent"
+                HorizontalOptions="End">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="60" />
+                </Grid.ColumnDefinitions>
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ClosePageCommand}" />
+                </Grid.GestureRecognizers>
+                <Image
+                    HeightRequest="20"
+                    HorizontalOptions="End"
+                    Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.menu_close.png}"
+                    VerticalOptions="Center"
+                    WidthRequest="20" />
+            </Grid>
         </Grid>
 
         <!--  MAIN CONTENT  -->
-        <ScrollView Grid.Row="1">
-            <StackLayout>
-                <controls:CustomFrame
-                    Margin="5,10,10,0"
-                    BackgroundColor="White"
-                    BorderRadius="25">
-                    <Grid
+        <StackLayout
+            Padding="5,0"
+            BackgroundColor="Transparent"
+            VerticalOptions="FillAndExpand">
+            <ScrollView Grid.Row="1">
+                <StackLayout>
+                    <controls:CustomFrame
+                        Margin="5,10,10,0"
                         BackgroundColor="White"
-                        HorizontalOptions="End"
-                        VerticalOptions="Center">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="70" />
-                            <ColumnDefinition Width="50" />
-                            <ColumnDefinition Width="160" />
-                            <ColumnDefinition Width="20" />
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
-                        </Grid.RowDefinitions>
-                        <Label
-                            Grid.ColumnSpan="4"
-                            FontSize="12"
-                            HorizontalOptions="Start"
-                            Text="Hey Ivanka, What's new? Did you move to new apartment? I am in city right now, we should go for some drink..."
-                            TextColor="#2793F5"
-                            VerticalOptions="Center" />
-                        <Label
-                            Grid.Row="2"
-                            Grid.Column="0"
-                            FontSize="10"
-                            Text="May 20, 2016" />
-                        <Label
-                            Grid.Row="2"
-                            Grid.Column="1"
-                            FontSize="10"
-                            Text="4:50 pm" />
-                        <Image
-                            Grid.Row="2"
-                            Grid.Column="3"
-                            HeightRequest="10"
-                            HorizontalOptions="Center"
-                            Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.chatgraytick.png}"
-                            VerticalOptions="Center"
-                            WidthRequest="12" />
-                    </Grid>
-                </controls:CustomFrame>
-                <controls:RoundedContentView
-                    Margin="20,20,0,0"
-                    BackgroundColor="#2793F5"
-                    CornerRadius="5"
-                    HorizontalOptions="Start"
-                    VerticalOptions="Center">
-                    <controls:RoundedContentView.Content>
-                        <Grid Margin="10" BackgroundColor="#2793F5">
+                        BorderRadius="25">
+                        <Grid
+                            BackgroundColor="White"
+                            HorizontalOptions="End"
+                            VerticalOptions="Center">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="70" />
                                 <ColumnDefinition Width="50" />
@@ -131,109 +95,158 @@
                                 Grid.ColumnSpan="4"
                                 FontSize="12"
                                 HorizontalOptions="Start"
-                                Text="Hi Jakub, yes, I did finally. How are you? That is great idea, We should go!"
-                                TextColor="White"
+                                Text="Hey Ivanka, What's new? Did you move to new apartment? I am in city right now, we should go for some drink..."
+                                TextColor="#2793F5"
                                 VerticalOptions="Center" />
                             <Label
                                 Grid.Row="2"
                                 Grid.Column="0"
                                 FontSize="10"
-                                Text="May 20, 2016"
-                                TextColor="#81C1FA" />
+                                Text="May 20, 2016" />
                             <Label
                                 Grid.Row="2"
                                 Grid.Column="1"
                                 FontSize="10"
-                                Text="4:50 pm"
-                                TextColor="#81C1FA" />
+                                Text="4:50 pm" />
                             <Image
                                 Grid.Row="2"
                                 Grid.Column="3"
                                 HeightRequest="10"
                                 HorizontalOptions="Center"
-                                Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.chatbluetick.png}"
+                                Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.chatgraytick.png}"
                                 VerticalOptions="Center"
                                 WidthRequest="12" />
                         </Grid>
-                    </controls:RoundedContentView.Content>
-                </controls:RoundedContentView>
+                    </controls:CustomFrame>
 
-                <controls:CustomFrame
-                    Margin="5,10,10,0"
-                    BackgroundColor="White"
-                    BorderRadius="25">
-                    <Grid
-                        BackgroundColor="White"
-                        HorizontalOptions="End"
+                    <controls:RoundedContentView
+                        Margin="20,20,0,0"
+                        BackgroundColor="#2793F5"
+                        CornerRadius="5"
+                        HorizontalOptions="Start"
                         VerticalOptions="Center">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="70" />
-                            <ColumnDefinition Width="50" />
-                            <ColumnDefinition Width="160" />
-                            <ColumnDefinition Width="20" />
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
-                        </Grid.RowDefinitions>
-                        <Label
-                            Grid.ColumnSpan="4"
-                            FontSize="12"
-                            HorizontalOptions="Start"
-                            Text="Perfect. I'm fine, thanks. When do you have a time?"
-                            TextColor="#2793F5"
-                            VerticalOptions="Center" />
-                        <Label
-                            Grid.Row="2"
-                            Grid.Column="0"
-                            FontSize="10"
-                            Text="May 20, 2016" />
-                        <Label
-                            Grid.Row="2"
-                            Grid.Column="1"
-                            FontSize="10"
-                            Text="4:50 pm" />
-                        <Image
-                            Grid.Row="2"
-                            Grid.Column="3"
-                            HeightRequest="10"
-                            HorizontalOptions="Center"
-                            Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.chatgraytick.png}"
-                            VerticalOptions="Center"
-                            WidthRequest="12" />
-                    </Grid>
-                </controls:CustomFrame>
-            </StackLayout>
-        </ScrollView>
+                        <controls:RoundedContentView.Content>
+                            <Grid Margin="10" BackgroundColor="#2793F5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="70" />
+                                    <ColumnDefinition Width="50" />
+                                    <ColumnDefinition Width="160" />
+                                    <ColumnDefinition Width="20" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <Label
+                                    Grid.ColumnSpan="4"
+                                    FontSize="12"
+                                    HorizontalOptions="Start"
+                                    Text="Hi Jakub, yes, I did finally. How are you? That is great idea, We should go!"
+                                    TextColor="White"
+                                    VerticalOptions="Center" />
+                                <Label
+                                    Grid.Row="2"
+                                    Grid.Column="0"
+                                    FontSize="10"
+                                    Text="May 20, 2016"
+                                    TextColor="#81C1FA" />
+                                <Label
+                                    Grid.Row="2"
+                                    Grid.Column="1"
+                                    FontSize="10"
+                                    Text="4:50 pm"
+                                    TextColor="#81C1FA" />
+                                <Image
+                                    Grid.Row="2"
+                                    Grid.Column="3"
+                                    HeightRequest="10"
+                                    HorizontalOptions="Center"
+                                    Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.chatbluetick.png}"
+                                    VerticalOptions="Center"
+                                    WidthRequest="12" />
+                            </Grid>
+                        </controls:RoundedContentView.Content>
+                    </controls:RoundedContentView>
 
-        <Label
-            Grid.Row="2"
-            Margin="25,0,0,0"
-            Text="Ivanka is Typing..." />
+                    <controls:CustomFrame
+                        Margin="5,10,10,0"
+                        BackgroundColor="White"
+                        BorderRadius="25">
+                        <Grid
+                            BackgroundColor="White"
+                            HorizontalOptions="End"
+                            VerticalOptions="Center">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="70" />
+                                <ColumnDefinition Width="50" />
+                                <ColumnDefinition Width="160" />
+                                <ColumnDefinition Width="20" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
+                            <Label
+                                Grid.ColumnSpan="4"
+                                FontSize="12"
+                                HorizontalOptions="Start"
+                                Text="Perfect. I'm fine, thanks. When do you have a time?"
+                                TextColor="#2793F5"
+                                VerticalOptions="Center" />
+                            <Label
+                                Grid.Row="2"
+                                Grid.Column="0"
+                                FontSize="10"
+                                Text="May 20, 2016" />
+                            <Label
+                                Grid.Row="2"
+                                Grid.Column="1"
+                                FontSize="10"
+                                Text="4:50 pm" />
+                            <Image
+                                Grid.Row="2"
+                                Grid.Column="3"
+                                HeightRequest="10"
+                                HorizontalOptions="Center"
+                                Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.chatgraytick.png}"
+                                VerticalOptions="Center"
+                                WidthRequest="12" />
+                        </Grid>
+                    </controls:CustomFrame>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
 
-        <controls:CustomFrame
-            Grid.Row="3"
-            Margin="15,0,10,0"
-            BackgroundColor="White"
-            BorderRadius="85">
-            <Grid BackgroundColor="White">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="50" />
-                </Grid.ColumnDefinitions>
-                <Entry
-                    FontSize="15"
-                    Placeholder="Your Message"
-                    PlaceholderColor="#B3B3B3" />
-                <Image
-                    Grid.Column="1"
-                    HeightRequest="30"
-                    HorizontalOptions="Center"
-                    Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.camera.png}"
-                    VerticalOptions="Center"
-                    WidthRequest="30" />
-            </Grid>
-        </controls:CustomFrame>
-    </Grid>
+        <StackLayout
+            Margin="5,0,5,5"
+            BackgroundColor="Transparent"
+            VerticalOptions="End">
+            <Label Margin="25,0,0,0" Text="Ivanka is Typing..." />
+            <controls:RoundedContentView
+                BackgroundColor="White"
+                CornerRadius="20"
+                VerticalOptions="End">
+                <Grid BackgroundColor="Transparent">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="50" />
+                    </Grid.ColumnDefinitions>
+                    <Entry
+                        Margin="20,0,0,0"
+                        FontSize="15"
+                        Placeholder="Your Message"
+                        PlaceholderColor="#B3B3B3" />
+                    <Image
+                        Grid.Column="1"
+                        HeightRequest="30"
+                        HorizontalOptions="Center"
+                        Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.camera.png}"
+                        VerticalOptions="Center"
+                        WidthRequest="30" />
+                </Grid>
+            </controls:RoundedContentView>
+        </StackLayout>
+    </StackLayout>
 </ContentPage>

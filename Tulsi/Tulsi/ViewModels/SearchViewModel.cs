@@ -1,5 +1,9 @@
 ﻿using System.Collections.ObjectModel;
+using System.Windows.Input;
+using Tulsi.Helpers;
 using Tulsi.MVVM.Core;
+using Tulsi.NavigationFramework;
+using Xamarin.Forms;
 
 namespace Tulsi.ViewModels {
     public class SearchViewModel : ViewModelBase, IViewModel {
@@ -26,6 +30,8 @@ namespace Tulsi.ViewModels {
             }
         }
 
+        public ICommand ClosePageCommand { get; private set; }
+
         /// <summary>
         ///     ctor().
         /// </summary>
@@ -35,6 +41,8 @@ namespace Tulsi.ViewModels {
             Result.Add("MCK Irfan");
             Result.Add("VB Bitto");
             Result.Add("MFC Vickey");
+
+            ClosePageCommand = new Command(() => BaseSingleton<ViewSwitchingLogic>.Instance.NavigateOneStepBack());
         }
 
         public void Dispose() {

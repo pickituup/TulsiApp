@@ -12,13 +12,19 @@ using Xamarin.Forms;
 namespace Tulsi.ViewModels {
     public sealed class SetupDashboardViewModel : ViewModelBase, IViewModel {
 
+        // Navigate to Search page.
         public ICommand DisplaySearchPageCommand { get; private set; }
+
+        // Navigate back.
+        public ICommand NavigateBackCommand { get; private set; }
 
         /// <summary>
         ///     ctor().
         /// </summary>
         public SetupDashboardViewModel() {
             DisplaySearchPageCommand = new Command(() => BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.SearchPage));
+
+            NavigateBackCommand = new Command(() => BaseSingleton<ViewSwitchingLogic>.Instance.NavigateOneStepBack());
         }
 
         public void Dispose() {

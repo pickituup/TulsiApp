@@ -12,6 +12,10 @@ using Xamarin.Forms;
 namespace Tulsi.ViewModels {
     public sealed class ArrivalDetailsViewModel : ViewModelBase, IViewModel {
 
+        // Navigate back.
+        public ICommand NavigateBackCommand { get; private set; }
+
+        // Navigate to SearchPage.
         public ICommand DisplaySearchPageCommand { get; private set; }
 
         /// <summary>
@@ -19,6 +23,8 @@ namespace Tulsi.ViewModels {
         /// </summary>
         public ArrivalDetailsViewModel() {
             DisplaySearchPageCommand = new Command(() => BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.SearchPage));
+
+            NavigateBackCommand = new Command(() => BaseSingleton<ViewSwitchingLogic>.Instance.NavigateOneStepBack());
         }
 
         public void Dispose() {

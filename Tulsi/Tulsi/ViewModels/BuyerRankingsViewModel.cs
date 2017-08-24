@@ -20,8 +20,11 @@ namespace Tulsi.ViewModels {
         private VisualElement _movableSpot;
         private BuyerRanking _selectedItem;
 
+        // Navigate back.
+        public ICommand NavigateBackCommand { get; private set; }
+
         /// <summary>
-        /// Public ctor.
+        ///     ctor().
         /// </summary>
         public BuyerRankingsViewModel() {
             _viewContainer = new ViewContainer();
@@ -34,6 +37,8 @@ namespace Tulsi.ViewModels {
             LooseSelectionCommand = new Command(() => {
                 SelectedItem = null;
             });
+
+            NavigateBackCommand = new Command(() => BaseSingleton<ViewSwitchingLogic>.Instance.NavigateOneStepBack());
 
             HARDCODED_DATA_INSERT();
         }
@@ -65,7 +70,7 @@ namespace Tulsi.ViewModels {
         /// 
         /// </summary>
         public BuyerRanking SelectedItem {
-            get=> _selectedItem;
+            get => _selectedItem;
             set {
                 if (SetProperty<BuyerRanking>(ref _selectedItem, value)) {
                     ToogleSpotVisibility(value == null ? false : true);
@@ -93,7 +98,7 @@ namespace Tulsi.ViewModels {
         /// 
         /// </summary>
         public void Dispose() {
-            
+
         }
 
         /// <summary>
@@ -103,8 +108,7 @@ namespace Tulsi.ViewModels {
         private void ToogleSpotVisibility(bool isVisible) {
             if (isVisible) {
                 MovableSpot.TranslateTo(0, 0);
-            }
-            else {
+            } else {
                 //
                 // TODO: get screen heigh dynamicaly
                 //

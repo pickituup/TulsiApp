@@ -9,7 +9,7 @@ using Tulsi.ViewModels;
 using SlideOverKit;
 
 namespace Tulsi {
-    public partial class SearchPage : MenuContainerPage, IView {
+    public partial class SearchPage : ContentPage, IView {
 
         private readonly SearchViewModel _viewModel;
 
@@ -18,8 +18,6 @@ namespace Tulsi {
         /// </summary>
         public SearchPage() {
             InitializeComponent();
-
-            SlideMenu = new SideMenuView();
 
             BindingContext = _viewModel = new SearchViewModel();
 
@@ -42,22 +40,17 @@ namespace Tulsi {
                 GrowersAreaLabel.TextColor = Color.White;
             };
             GrowersArea.GestureRecognizers.Add(GrowersTap);
-
         }
 
         private void Handle_ItemSelected(object sender, SelectedItemChangedEventArgs e) {
             menuItems.SelectedItem = null;
         }
 
-        private void ShowMenuCommand(object sender, EventArgs e) {
-            ShowMenu();
-        }
-
         /// <summary>
-        /// Make some visual changes of current page through navigating process (hide side menu or smt...)
+        ///     Make some visual changes of current page through navigating process (hide side menu or smt...)
         /// </summary>
         public void ApplyVisualChangesWhileNavigating() {
-            SlideMenu.HideWithoutAnimations();
+            
         }
     }
 }

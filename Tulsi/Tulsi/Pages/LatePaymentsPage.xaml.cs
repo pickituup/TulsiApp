@@ -10,60 +10,41 @@ using Tulsi.ViewModels;
 using SlideOverKit;
 using Tulsi.SharedService;
 
-namespace Tulsi
-{
+namespace Tulsi {
     /// <summary>
     /// TODO: LatePaymentsPage use similar 'hide/show behavior' as in BuyerRankingsPage, BuyerPage. Try
     /// to define abstract core of that behavior
     /// </summary>
-    public partial class LatePaymentsPage : MenuContainerPage, IView
-    {
+    public partial class LatePaymentsPage : ContentPage, IView {
+
         private LatePaymentsViewModel _viewModel;
 
         /// <summary>
-        /// Public ctor.
+        ///     ctor().
         /// </summary>
-        public LatePaymentsPage()
-        {
+        public LatePaymentsPage() {
             InitializeComponent();
 
             BindingContext = _viewModel = new LatePaymentsViewModel();
             _viewModel.MovableSpot = _spot_ConentView;
-
-            //Slide menu creating
-            SlideMenu = new SideMenuView();
         }
 
-        /// <summary>
-        /// Make some visual changes of current page through navigating process (hide side menu or smt...)
-        /// </summary>
         public void ApplyVisualChangesWhileNavigating() {
-            SlideMenu.HideWithoutAnimations();
+
         }
 
         /// <summary>
-        /// Occurs only for Android (not for iOS).
-        /// False navigate out from page, true - keep staing in this page.
+        ///     Occurs only for Android (not for iOS).
+        ///     False navigate out from page, true - keep staing in this page.
         /// </summary>
         /// <returns></returns>
         protected override bool OnBackButtonPressed() {
             if (_viewModel.SelectedItem == null) {
                 return false;
-            }
-            else {
+            } else {
                 _viewModel.SelectedItem = null;
-
                 return true;
             }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ShowMenuCommand(object sender, EventArgs e) {
-            ShowMenu();
         }
     }
 }
