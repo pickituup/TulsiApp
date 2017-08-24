@@ -106,6 +106,9 @@
     <Compile Include="Pages\Content\BuyerProfileView.xaml.cs">
       <DependentUpon>BuyerProfileView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Content\GrowerProfileView.xaml.cs">
+      <DependentUpon>GrowerProfileView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\DashboardPage.xaml.cs">
       <DependentUpon>DashboardPage.xaml</DependentUpon>
     </Compile>
@@ -594,6 +597,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pages\temp\TempPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\Content\GrowerProfileView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

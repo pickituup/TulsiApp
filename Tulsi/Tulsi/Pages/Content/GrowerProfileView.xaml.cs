@@ -4,15 +4,17 @@ using Xamarin.Forms.Xaml;
 
 namespace Tulsi.Pages.Content {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class BuyerProfileView : ContentView, IView {
-        
+    public partial class GrowerProfileView : ContentView, IView {
+
         /// <summary>
         ///     ctor().
         /// </summary>
-        public BuyerProfileView() {
+        public GrowerProfileView() {
             InitializeComponent();
         }
 
-        public void ApplyVisualChangesWhileNavigating() { }
+        public void ApplyVisualChangesWhileNavigating() {
+            
+        }
     }
 }

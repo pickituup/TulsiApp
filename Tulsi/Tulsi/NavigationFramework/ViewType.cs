@@ -135,6 +135,11 @@ namespace Tulsi.NavigationFramework {
         ///     TODO: maby define separated enum of IView views.
         ///     Buyer profile view.
         /// </summary>
-        BuyerProfileView
+        BuyerProfileView,
+
+        /// <summary>
+        ///     Grower profile view.
+        /// </summary>
+        GrowerProfileView
     }
 }
