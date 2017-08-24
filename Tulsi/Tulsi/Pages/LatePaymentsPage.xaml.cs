@@ -12,6 +12,10 @@ using Tulsi.SharedService;
 
 namespace Tulsi
 {
+    /// <summary>
+    /// TODO: LatePaymentsPage use similar 'hide/show behavior' as in BuyerRankingsPage, BuyerPage. Try
+    /// to define abstract core of that behavior
+    /// </summary>
     public partial class LatePaymentsPage : MenuContainerPage, IView
     {
         private LatePaymentsViewModel _viewModel;

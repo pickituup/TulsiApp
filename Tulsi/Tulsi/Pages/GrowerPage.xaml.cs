@@ -12,11 +12,10 @@ using Tulsi.SharedService;
 
 namespace Tulsi {
     public partial class GrowerPage : MenuContainerPage, IView {
-
         private readonly GrowerViewModel _viewModel;
 
         /// <summary>
-        ///     ctor().
+        ///     Public ctor().
         /// </summary>
         public GrowerPage() {
             InitializeComponent();
@@ -24,6 +23,8 @@ namespace Tulsi {
             SlideMenu = new SideMenuView();
 
             BindingContext = _viewModel = new GrowerViewModel();
+
+            _viewModel.MovableSpot = _spot_ConentView;
 
             SfChart chart = new SfChart();
             DoughnutSeries doughnutSeries = new DoughnutSeries() {
@@ -70,16 +71,15 @@ namespace Tulsi {
             MiddleStack.Children.Add(MiddleText1);
             MiddleStack.Children.Add(MiddleText2);
             ChartGrid.Children.Add(MiddleStack);
-
-            
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ShowMenuCommand(object sender, EventArgs e) {
             ShowMenu();
-        }
-
-        private void Handle_ItemSelected(object sender, SelectedItemChangedEventArgs e) {
-            menuItems.SelectedItem = null;
         }
 
         /// <summary>
@@ -87,6 +87,22 @@ namespace Tulsi {
         /// </summary>
         public void ApplyVisualChangesWhileNavigating() {
             SlideMenu.HideWithoutAnimations();
+        }
+
+        /// <summary>
+        /// Occurs only for Android (not for iOS).
+        /// False navigate out from page, true - keep staing in this page.
+        /// </summary>
+        /// <returns></returns>
+        protected override bool OnBackButtonPressed() {
+            if (_viewModel.SelectedItem == null) {
+                return false;
+            }
+            else {
+                _viewModel.SelectedItem = null;
+
+                return true;
+            }
         }
     }
 }
