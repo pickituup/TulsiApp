@@ -27,7 +27,7 @@ namespace Tulsi {
             BindingContext = _viewModel = new TodayRatesViewModel();
 
             //
-            // TODO: unsubscribe from current event.
+            // TODO: remove that evnet subscription and use Controls.StackList
             //
             _viewModel.TodayRatesData.CollectionChanged += TodayRatesDataCollectionChanged;
 
