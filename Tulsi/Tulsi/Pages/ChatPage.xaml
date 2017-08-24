@@ -225,7 +225,7 @@
             VerticalOptions="End">
             <Label Margin="25,0,0,0" Text="Ivanka is Typing..." />
             <controls:RoundedContentView
-                BackgroundColor="Yellow"
+                BackgroundColor="White"
                 CornerRadius="20"
                 VerticalOptions="End">
                 <Grid BackgroundColor="Transparent">
