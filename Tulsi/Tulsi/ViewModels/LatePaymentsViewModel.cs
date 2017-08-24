@@ -20,6 +20,9 @@ namespace Tulsi.ViewModels {
         private VisualElement _movableSpot;
         private IView _buyerProfileDetailView;
 
+        // Navigate back.
+        public ICommand NavigateBackCommand { get; private set; }
+
         /// <summary>
         /// Public ctor.
         /// </summary>
@@ -34,6 +37,8 @@ namespace Tulsi.ViewModels {
             LooseSelectionCommand = new Command(() => {
                 SelectedItem = null;
             });
+
+            NavigateBackCommand = new Command(() => BaseSingleton<ViewSwitchingLogic>.Instance.NavigateOneStepBack());
 
             HARDCODED_DATA_INSERT();
         }

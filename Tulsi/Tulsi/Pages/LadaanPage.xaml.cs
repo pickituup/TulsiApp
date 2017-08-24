@@ -1,17 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Xamarin.Forms;
+﻿using Tulsi.NavigationFramework;
 using Tulsi.ViewModels;
-using SlideOverKit;
-using Tulsi.NavigationFramework;
-using Tulsi.SharedService;
+using Xamarin.Forms;
 
 namespace Tulsi {
-    public partial class LadaanPage : MenuContainerPage, IView {
+    public partial class LadaanPage : ContentPage, IView {
 
         private readonly LadaanViewModel _viewModel;
 
@@ -21,27 +13,15 @@ namespace Tulsi {
         public LadaanPage() {
             InitializeComponent();
 
-            SlideMenu = new SideMenuView();
-
             BindingContext = _viewModel = new LadaanViewModel();
-
-            int hd = DependencyService.Get<IDisplaySize>().GetHeightDiP();
-            AbsoluteLayout.SetLayoutBounds(SideMenuOverlay, new Rectangle(0, 0, 0.9, hd - 20));
         }
 
         private void Handle_ItemSelected(object sender, SelectedItemChangedEventArgs e) {
             menuItems.SelectedItem = null;
         }
 
-        private void ShowMenuCommand(object sender, EventArgs e) {
-            ShowMenu();
-        }
-
-        /// <summary>
-        /// Make some visual changes of current page through navigating process (hide side menu or smt...)
-        /// </summary>
         public void ApplyVisualChangesWhileNavigating() {
-            SlideMenu.HideWithoutAnimations();
+            
         }
     }
 }
