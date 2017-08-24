@@ -148,17 +148,17 @@ namespace Tulsi.ViewModels {
                         new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=false, Quantity="8,200" },
                         new ProfileTransaction{ Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
                         new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=true, Quantity="8,200" }
-                    }},
+                }},
                 new Transaction { Code = "SKC", Number = "28", Quantity="8,200",
                     ProfileTransactions = new List<ProfileTransaction>() {
                         new ProfileTransaction { Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
                         new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=false, Quantity="8,200" },
                         new ProfileTransaction{ Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" }
-                    } },
+                }},
                 new Transaction { Code = "SKC", Number = "28", Quantity="8,200",
                     ProfileTransactions = new List<ProfileTransaction>() {
                         new ProfileTransaction { Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" }
-                    }},
+                }},
                 new Transaction { Code = "SKC", Number = "28", Quantity="8,200",
                     ProfileTransactions = new List<ProfileTransaction>() {
                         new ProfileTransaction { Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
@@ -169,12 +169,12 @@ namespace Tulsi.ViewModels {
                         new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=false, Quantity="8,200" },
                         new ProfileTransaction{ Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
                         new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=true, Quantity="8,200" }
-                    }},
+                }},
                 new Transaction { Code = "SKC", Number = "28", Quantity="8,200" ,
                     ProfileTransactions = new List<ProfileTransaction>() {
                         new ProfileTransaction { Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
                         new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=false, Quantity="8,200" },
-                    }},
+                }},
                 new Transaction { Code = "SKC", Number = "28", Quantity="8,200",
                     ProfileTransactions = new List<ProfileTransaction>() {
                         new ProfileTransaction { Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
@@ -185,7 +185,7 @@ namespace Tulsi.ViewModels {
                         new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=false, Quantity="8,200" },
                         new ProfileTransaction{ Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
                         new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=true, Quantity="8,200" }
-                    }},
+                }},
                 new Transaction { Code = "SKC", Number = "28", Quantity="8,200",
                     ProfileTransactions = new List<ProfileTransaction>() {
                         new ProfileTransaction { Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
@@ -193,7 +193,7 @@ namespace Tulsi.ViewModels {
                         new ProfileTransaction{ Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
                         new ProfileTransaction{ Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
                         new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=true, Quantity="8,200" }
-                    }}
+                }}
             };
         }
     }

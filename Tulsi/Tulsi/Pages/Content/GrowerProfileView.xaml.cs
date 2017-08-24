@@ -13,6 +13,9 @@ namespace Tulsi.Pages.Content {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public void ApplyVisualChangesWhileNavigating() {
             
         }

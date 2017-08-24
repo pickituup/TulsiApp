@@ -20,7 +20,7 @@ namespace Tulsi.ViewModels {
         /// </summary>
         private ViewContainer _viewContainer;
         private IView _groverProfileDetailView;
-        Transaction _selectedItem;
+        private Transaction _selectedItem;
         private VisualElement _movableSpot;
 
         /// <summary>
@@ -32,7 +32,7 @@ namespace Tulsi.ViewModels {
             // TODO: change ViewType.BuyerProfileView to the GroverProfileView, and configure 
             // bindings inside BuyerProfileView.
             //
-            GroverProfileDetailView = _viewContainer.GetViewByType(ViewType.BuyerProfileView);
+            GroverProfileDetailView = _viewContainer.GetViewByType(ViewType.GrowerProfileView);
 
             DisplaySearchPageCommand = new Command(() => {
                 BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.SearchPage);
@@ -136,12 +136,62 @@ namespace Tulsi.ViewModels {
         private void HARDCODED_DATA_INSERT() {
             TransactionsData = new ObservableCollection<Transaction>()
             {
-                new Transaction { Code = "SKC", Number = "28", Quantity="8,200" },
-                new Transaction { Code = "SKC", Number = "28", Quantity="8,200" },
-                new Transaction { Code = "SKC", Number = "28", Quantity="8,200" },
-                new Transaction { Code = "SKC", Number = "28", Quantity="8,200" },
-                new Transaction { Code = "SKC", Number = "28", Quantity="8,200" },
-                new Transaction { Code = "SKC", Number = "28", Quantity="8,200" }
+                new Transaction { Code = "SKC", Number = "28", Quantity="8,200",
+                    ProfileTransactions = new List<ProfileTransaction>() {
+                        new ProfileTransaction { Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
+                        new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=false, Quantity="8,200" },
+                        new ProfileTransaction{ Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
+                        new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=true, Quantity="8,200" },
+                        new ProfileTransaction { Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
+                        new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=false, Quantity="8,200" },
+                        new ProfileTransaction{ Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
+                        new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=true, Quantity="8,200" }
+                }},
+                new Transaction { Code = "SKC", Number = "28", Quantity="8,200",
+                    ProfileTransactions = new List<ProfileTransaction>() {
+                        new ProfileTransaction { Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
+                        new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=false, Quantity="8,200" },
+                        new ProfileTransaction{ Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" }
+                }},
+                new Transaction { Code = "SKC", Number = "28", Quantity="8,200",
+                    ProfileTransactions = new List<ProfileTransaction>() {
+                        new ProfileTransaction { Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" }
+                }},
+                new Transaction { Code = "SKC", Number = "28", Quantity="8,200",
+                    ProfileTransactions = new List<ProfileTransaction>() {
+                        new ProfileTransaction { Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
+                        new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=false, Quantity="8,200" },
+                        new ProfileTransaction{ Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
+                        new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=true, Quantity="8,200" },
+                        new ProfileTransaction { Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
+                        new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=false, Quantity="8,200" },
+                        new ProfileTransaction{ Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
+                        new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=true, Quantity="8,200" }
+                }},
+                new Transaction { Code = "SKC", Number = "28", Quantity="8,200" ,
+                    ProfileTransactions = new List<ProfileTransaction>() {
+                        new ProfileTransaction { Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
+                        new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=false, Quantity="8,200" },
+                }},
+                new Transaction { Code = "SKC", Number = "28", Quantity="8,200",
+                    ProfileTransactions = new List<ProfileTransaction>() {
+                        new ProfileTransaction { Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
+                        new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=false, Quantity="8,200" },
+                        new ProfileTransaction{ Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
+                        new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=true, Quantity="8,200" },
+                        new ProfileTransaction { Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
+                        new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=false, Quantity="8,200" },
+                        new ProfileTransaction{ Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
+                        new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=true, Quantity="8,200" }
+                }},
+                new Transaction { Code = "SKC", Number = "28", Quantity="8,200",
+                    ProfileTransactions = new List<ProfileTransaction>() {
+                        new ProfileTransaction { Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
+                        new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=false, Quantity="8,200" },
+                        new ProfileTransaction{ Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
+                        new ProfileTransaction{ Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
+                        new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=true, Quantity="8,200" }
+                }}
             };
 
             ChartData = new ObservableCollection<ChartModel>()
