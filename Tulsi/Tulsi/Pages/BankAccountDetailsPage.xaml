@@ -1,50 +1,50 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<m:MenuContainerPage
+<ContentPage
     x:Class="Tulsi.BankAccountDetailsPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:controls="clr-namespace:Tulsi.Controls"
     xmlns:local="clr-namespace:Tulsi;assembly=Tulsi"
-    xmlns:toolKitImageResourceExtension="clr-namespace:Tulsi.ToolKit.MarkupExtensions"
     xmlns:m="clr-namespace:SlideOverKit"
+    xmlns:toolKitImageResourceExtension="clr-namespace:Tulsi.ToolKit.MarkupExtensions"
     NavigationPage.HasNavigationBar="false">
 
     <StackLayout x:Name="HeaderLayout" BackgroundColor="#DCDCDC">
-        
-        <!--Action bar-->
-        <Grid x:Name="ToolbarGrid" 
-              BackgroundColor="#2793F5">
+
+        <!--  Action bar  -->
+        <Grid x:Name="ToolbarGrid" BackgroundColor="#2793F5">
             <Grid.RowDefinitions>
                 <RowDefinition Height="50" />
             </Grid.RowDefinitions>
             <Grid
-          Padding="15,0,0,0"
-          BackgroundColor="Transparent"
-          HorizontalOptions="Start">
+                Padding="15,0,0,0"
+                BackgroundColor="Transparent"
+                HorizontalOptions="Start">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="60" />
+                    <ColumnDefinition Width="40" />
                 </Grid.ColumnDefinitions>
                 <Grid.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="ShowMenuCommand" />
+                    <TapGestureRecognizer Command="{Binding NavigateBackCommand}" />
                 </Grid.GestureRecognizers>
                 <Image
-            HorizontalOptions="Start"
-            Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.menu.png}"
-            VerticalOptions="Center"
-            WidthRequest="20" />
+                    HeightRequest="20"
+                    HorizontalOptions="Start"
+                    Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.back.png}"
+                    VerticalOptions="Center"
+                    WidthRequest="15" />
             </Grid>
 
             <Label
-          x:Name="PageTitleLabel"
-          HorizontalOptions="Center"
-          Text="ICICI BANK"
-          TextColor="White"
-          VerticalOptions="Center" />
+                x:Name="PageTitleLabel"
+                HorizontalOptions="Center"
+                Text="ICICI BANK"
+                TextColor="White"
+                VerticalOptions="Center" />
 
             <Grid
-          Padding="0,0,15,0"
-          BackgroundColor="Transparent"
-          HorizontalOptions="End">
+                Padding="0,0,15,0"
+                BackgroundColor="Transparent"
+                HorizontalOptions="End">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="60" />
                 </Grid.ColumnDefinitions>
@@ -52,11 +52,11 @@
                     <TapGestureRecognizer Command="{Binding DisplaySearchPageCommand}" />
                 </Grid.GestureRecognizers>
                 <Image
-            HeightRequest="20"
-            HorizontalOptions="End"
-            Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.magnifier.png}"
-            VerticalOptions="Center"
-            WidthRequest="20" />
+                    HeightRequest="20"
+                    HorizontalOptions="End"
+                    Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.magnifier.png}"
+                    VerticalOptions="Center"
+                    WidthRequest="20" />
             </Grid>
         </Grid>
 
@@ -276,4 +276,4 @@
 
         </ScrollView>
     </StackLayout>
-</m:MenuContainerPage>
+</ContentPage>

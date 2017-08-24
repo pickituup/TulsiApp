@@ -57,6 +57,23 @@
                 Text="ACCOUNTANT&#x0a;Inderjeet Delhi Office"
                 TextColor="White"
                 VerticalOptions="Center" />
+            <Grid
+                    Padding="0,0,15,0"
+                    BackgroundColor="Transparent"
+                    HorizontalOptions="End">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="60" />
+                </Grid.ColumnDefinitions>
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ClosePageCommand}" />
+                </Grid.GestureRecognizers>
+                <Image
+                        HeightRequest="20"
+                        HorizontalOptions="End"
+                        Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.menu_close.png}"
+                        VerticalOptions="Center"
+                        WidthRequest="20" />
+            </Grid>
         </Grid>
 
         <!--  MAIN CONTENT  -->

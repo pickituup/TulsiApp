@@ -10,26 +10,25 @@ using Tulsi.NavigationFramework;
 using Xamarin.Forms;
 
 namespace Tulsi.ViewModels {
-    public sealed class BankAccountDetailsViewModel : ViewModelBase ,IViewModel{
-        /// <summary>
-        /// Public ctor.
-        /// </summary>
-        public BankAccountDetailsViewModel() {
-            DisplaySearchPageCommand = new Command(() => {
-                BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.SearchPage);
-            });
-        }
+    public sealed class BankAccountDetailsViewModel : ViewModelBase, IViewModel {
 
-        /// <summary>
-        /// 
-        /// </summary>
+        // Navigate back.
+        public ICommand NavigateBackCommand { get; private set; }
+
+        //  Navigate to Search Page.
         public ICommand DisplaySearchPageCommand { get; private set; }
 
         /// <summary>
-        /// 
+        ///     ctor().
         /// </summary>
+        public BankAccountDetailsViewModel() {
+            DisplaySearchPageCommand = new Command(() => BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.SearchPage));
+
+            NavigateBackCommand = new Command(() => BaseSingleton<ViewSwitchingLogic>.Instance.NavigateOneStepBack());
+        }
+
         public void Dispose() {
-            
+
         }
     }
 }
