@@ -15,7 +15,7 @@ namespace Tulsi {
         private readonly AuditLogViewModel _viewModel;
 
         /// <summary>
-        ///     ctor().
+        ///     Public ctor().
         /// </summary>
         public AuditLogPage() {
             InitializeComponent();
@@ -25,12 +25,11 @@ namespace Tulsi {
             BindingContext = _viewModel = new AuditLogViewModel();
         }
 
-        // Deselect item.
-        private void Handle_ItemSelected(object sender, SelectedItemChangedEventArgs e) {
-            menuItems.SelectedItem = null;
-        }
-
-        // Show side menu.
+        /// <summary>
+        /// Show side menu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ShowMenuCommand(object sender, EventArgs e) {
             ShowMenu();
         }

@@ -3,13 +3,14 @@
     x:Class="Tulsi.AuditLogPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:m="clr-namespace:SlideOverKit"
     xmlns:controls="clr-namespace:Tulsi.Controls"
     xmlns:local="clr-namespace:Tulsi;assembly=Tulsi"
     xmlns:toolKitImageResourceExtension="clr-namespace:Tulsi.ToolKit.MarkupExtensions"
-    xmlns:m="clr-namespace:SlideOverKit"
     NavigationPage.HasNavigationBar="false">
 
-    <StackLayout x:Name="HeaderLayout" BackgroundColor="#DCDCDC">
+    <StackLayout
+        BackgroundColor="#DCDCDC">
         <!--  Tool bar  -->
         <Grid x:Name="ToolbarGrid" BackgroundColor="#2793F5">
             <Grid.RowDefinitions>
@@ -59,93 +60,105 @@
         </Grid>
 
         <!--  MAIN CONTENT  -->
-        <ScrollView>
-            <StackLayout
-                x:Name="MainLayout"
-                BackgroundColor="#DCDCDC"
-                Spacing="10">
+        <StackLayout
+            BackgroundColor="Transparent"
+            Padding="5,0">
 
-                <controls:CustomFrame
-                    Margin="5,0,5,0"
-                    BackgroundColor="White"
-                    BorderRadius="25">
-                    <Label
-                        BackgroundColor="White"
-                        HorizontalTextAlignment="Center"
-                        TextColor="#2793F5"
-                        VerticalTextAlignment="Center">
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <FormattedString.Spans>
-                                    <Span FontAttributes="Bold" Text="Note: " />
-                                    <Span Text="These are the latest changes your accountant made made within the system." />
-                                </FormattedString.Spans>
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
-                </controls:CustomFrame>
-                <controls:CustomFrame
-                    Margin="5,0,5,0"
-                    BackgroundColor="White"
-                    BorderRadius="25">
-                    <Grid BackgroundColor="White">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="20" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="20" />
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*" />
-                        </Grid.RowDefinitions>
+            <!--Note-->
+            <Frame
+                BackgroundColor="White"
+                CornerRadius="7"
+                Padding="5"
+                HasShadow="False">
+                <Label
+                    HorizontalTextAlignment="Center"
+                    TextColor="#2793F5"
+                    VerticalTextAlignment="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span 
+                                    FontAttributes="Bold" 
+                                    Text="Note: " />
+                                <Span 
+                                    Text="These are the latest changes your accountant made made within the system." />
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </Frame>
 
-                        <ListView
-                            x:Name="menuItems"
-                            Grid.Column="1"
-                            ItemSelected="Handle_ItemSelected"
-                            ItemsSource="{Binding AuditData}"
-                            RowHeight="50"
-                            SelectedItem="{Binding SelectedMenuItem, Mode=TwoWay}"
-                            SeparatorVisibility="None">
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <ViewCell>
-                                        <controls:RoundedContentView
-                                            Margin="5"
-                                            BackgroundColor="#cccccc"
-                                            CornerRadius="20"
-                                            HeightRequest="40">
-                                            <controls:RoundedContentView.Content>
-                                                <Grid BackgroundColor="#cccccc">
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="*" />
-                                                        <ColumnDefinition Width="8*" />
-                                                        <ColumnDefinition Width="8*" />
-                                                        <ColumnDefinition Width="*" />
-                                                    </Grid.ColumnDefinitions>
-                                                    <Label
-                                                        Grid.Column="1"
-                                                        FontAttributes="Bold"
-                                                        HorizontalTextAlignment="Start"
-                                                        Text="{Binding Action}"
-                                                        TextColor="White"
-                                                        VerticalTextAlignment="Center" />
-                                                    <Label
-                                                        Grid.Column="2"
-                                                        FontAttributes="Bold"
-                                                        HorizontalTextAlignment="End"
-                                                        Text="{Binding Code}"
-                                                        TextColor="White"
-                                                        VerticalTextAlignment="Center" />
-                                                </Grid>
-                                            </controls:RoundedContentView.Content>
-                                        </controls:RoundedContentView>
-                                    </ViewCell>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                    </Grid>
-                </controls:CustomFrame>
-            </StackLayout>
-        </ScrollView>
+            <!--List of logs-->
+            <ScrollView>
+                <controls:StackList
+                    BackgroundColor="Transparent"
+                    ItemsSource="{Binding Path=AuditData}">
+                    <controls:StackList.ItemTemplate>
+                        <DataTemplate>
+                            <Frame
+                                BackgroundColor="White"
+                                CornerRadius="7"
+                                Padding="18,12"
+                                HasShadow="False">
+
+                                <StackLayout
+                                    BackgroundColor="Transparent"
+                                    Spacing="12">
+
+                                    <Label
+                                        Text="{Binding Path=Date,
+                                            StringFormat='{0:dd/MM/yyyy}'}"
+                                        HorizontalTextAlignment="Center"
+                                        FontAttributes="Bold"
+                                        TextColor="#2793F5"
+                                        FontSize="Medium"/>
+
+                                    <controls:StackList
+                                        BackgroundColor="Transparent"
+                                        ItemsSource="{Binding Path=AuditActions}">
+                                        <controls:StackList.ItemTemplate>
+                                            <DataTemplate>
+                                                <Frame
+                                                    BackgroundColor="#cccccc"
+                                                    CornerRadius="13"
+                                                    Padding="18,8"
+                                                    HasShadow="False">
+
+                                                    <StackLayout
+                                                        BackgroundColor="Transparent"
+                                                        Orientation="Horizontal">
+                                                        <StackLayout.Resources>
+                                                            <ResourceDictionary>
+                                                                <Style 
+                                                                    TargetType="Label">
+                                                                    <Setter
+                                                                        Property="TextColor"
+                                                                        Value="White"/>
+                                                                    <Setter
+                                                                        Property="FontAttributes"
+                                                                        Value="Bold"/>
+                                                                </Style>
+                                                            </ResourceDictionary>
+                                                        </StackLayout.Resources>
+
+                                                        <Label
+                                                            Text="{Binding Path=Action}"
+                                                            HorizontalOptions="StartAndExpand"/>
+
+                                                        <Label
+                                                            Text="{Binding Path=Code}"
+                                                            HorizontalOptions="EndAndExpand"/>
+                                                    </StackLayout>
+                                                </Frame>
+                                            </DataTemplate>
+                                        </controls:StackList.ItemTemplate>
+                                    </controls:StackList>
+                                </StackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </controls:StackList.ItemTemplate>
+                </controls:StackList>
+            </ScrollView>
+        </StackLayout>
     </StackLayout>
 </m:MenuContainerPage>

@@ -11,6 +11,9 @@ using SlideOverKit;
 using Tulsi.SharedService;
 
 namespace Tulsi {
+    /// <summary>
+    /// TODO: BuyerPage use similar 'hide/show behavior' as in BuyerRankingsPage, LatePaymentsPage. Try
+    /// to define abstract core of that behavior</summary>
     public partial class GrowerPage : MenuContainerPage, IView {
         private readonly GrowerViewModel _viewModel;
 

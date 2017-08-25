@@ -1,7 +1,16 @@
-﻿namespace Tulsi.Model {
-    public  class AuditEntry {
-        public string Action { get; set; }
+﻿using System;
+using System.Collections.Generic;
 
-        public string Code { get; set; }
+namespace Tulsi.Model {
+    public  class AuditEntry {
+        /// <summary>
+        /// 
+        /// </summary>
+        public DateTime Date { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public List<AuditAction> AuditActions { get; set; }
     }
 }

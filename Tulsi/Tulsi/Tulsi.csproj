@@ -42,6 +42,7 @@
     <Compile Include="Controls\EntryEx.cs" />
     <Compile Include="Controls\RoundedContentView.cs" />
     <Compile Include="Controls\RoundedView.cs" />
+    <Compile Include="Controls\StackList.cs" />
     <Compile Include="Controls\TodayRatesControls\ExpandedGroup.xaml.cs">
       <DependentUpon>ExpandedGroup.xaml</DependentUpon>
     </Compile>
@@ -49,6 +50,7 @@
     <Compile Include="Menu\SideMenuView.xaml.cs">
       <DependentUpon>SideMenuView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\AuditAction.cs" />
     <Compile Include="Model\AuditEntry.cs" />
     <Compile Include="Model\BankAccount.cs" />
     <Compile Include="Model\BuyerRanking.cs" />
