@@ -11,31 +11,52 @@ using Tulsi.SharedService;
 using Tulsi.NavigationFramework;
 using Tulsi.Helpers;
 using Tulsi.ViewModels;
+using System.Reflection;
+using System.IO;
 
 namespace Tulsi {
-    public partial class ArrivalPage : MenuContainerPage, IView {
+    public partial class ArrivalPage : ContentPage, IView {
 
         private readonly ArrivalViewModel _viewModel;
 
         public ArrivalPage() {
             InitializeComponent();
 
-            //Slide menu creating
-            SlideMenu = new SideMenuView();
-
             BindingContext = _viewModel = new ArrivalViewModel();
 
-            //Calendar initialization
-            ArrivalCalendar.DatesBackgroundColor = Color.FromHex("#F3F3F3");
-            ArrivalCalendar.DatesFontSize = 12;
-            ArrivalCalendar.WeekdaysFontSize = 12;
-            ArrivalCalendar.BorderWidth = 0;
-            ArrivalCalendar.DisabledBorderWidth = 0;
-            ArrivalCalendar.OuterBorderWidth = 0;
-            ArrivalCalendar.SelectedBorderWidth = 1;
-            ArrivalCalendar.WeekdaysShow = false;
+            CalendarInitialization();
+        }
 
-            List<SpecialDate> Dates = new List<SpecialDate>();
+        private void CalendarInitialization() {
+            arrivalCalendar.StartDay = DayOfWeek.Sunday;
+            // title
+            arrivalCalendar.TitleLabelTextColor = Color.FromHex("#2793F5");
+            // dates
+            arrivalCalendar.DatesBackgroundColor = Color.White;
+            arrivalCalendar.DatesBackgroundColorOutsideMonth = Color.White;
+            arrivalCalendar.DatesTextColor = Color.FromHex("#999999");
+            arrivalCalendar.DatesFontSize = 12;
+            arrivalCalendar.DatesTextColorOutsideMonth = Color.White;
+            // weekdays
+            arrivalCalendar.WeekdaysFontSize = 14;
+            arrivalCalendar.WeekdaysFontAttributes = FontAttributes.Bold;
+            arrivalCalendar.WeekdaysTextColor = Color.FromHex("#999999");
+            arrivalCalendar.WeekdaysShow = true;
+            arrivalCalendar.WeekdaysBackgroundColor = Color.White;
+            // left arrow
+            arrivalCalendar.TitleLeftArrowTextColor = Color.FromHex("#2793F5");
+
+            //right arrow
+            arrivalCalendar.TitleRightArrowTextColor = Color.FromHex("#2793F5");
+            //  borders
+            arrivalCalendar.BorderWidth = 0;
+            arrivalCalendar.OuterBorderWidth = 0;
+            arrivalCalendar.SelectedBorderWidth = 0;
+            arrivalCalendar.SelectedTextColor = Color.White;
+            arrivalCalendar.SelectedBackgroundColor = Color.FromHex("#2793F5");
+            
+
+            List<SpecialDate> specialDates = new List<SpecialDate>();
             SpecialDate event1 = new SpecialDate(new DateTime(2017, 1, 24));
             event1.BackgroundColor = Color.FromHex("#82DA69");
             event1.Selectable = true;
@@ -44,29 +65,14 @@ namespace Tulsi {
             event2.BackgroundColor = Color.FromHex("#9E7AE6");
             event2.Selectable = true;
 
-            Dates.Add(event1);
-            Dates.Add(event2);
-            ArrivalCalendar.SpecialDates = Dates;
-            ArrivalCalendar.DateClicked += ArrivalCalendar_DateClicked;
-
-            //In page navigation
-            TapGestureRecognizer InPageNavigationTap1 = new TapGestureRecognizer();
-            InPageNavigationTap1.Tapped += (s, e) => {
-                BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.ArrivalDetailPage);
-            };
-            DateArrivalsList.GestureRecognizers.Add(InPageNavigationTap1);
-
+            specialDates.Add(event1);
+            specialDates.Add(event2);
+            arrivalCalendar.SpecialDates = specialDates;
+            arrivalCalendar.DateClicked += ArrivalCalendar_DateClicked;
         }
 
-        // Show side menu.
-        private void ShowMenuCommand(object sender, EventArgs e) {
-            ShowMenu();
-        }
-
-
-        // Auto hide side menu when navigate back for this page.
         public void ApplyVisualChangesWhileNavigating() {
-            SlideMenu.HideWithoutAnimations();
+
         }
 
         private void ArrivalCalendar_DateClicked(object sender, DateTimeEventArgs e) {
