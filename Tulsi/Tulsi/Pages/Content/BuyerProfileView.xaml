@@ -261,7 +261,7 @@
                                             FontAttributes="Bold"
                                             HorizontalOptions="Center"
                                             HorizontalTextAlignment="Center"
-                                            Text="{Binding Date}"
+                                            Text="{Binding Date, StringFormat='{0:MM/dd/yyyy hh:mm tt}'}"
                                             TextColor="#cccccc"
                                             VerticalTextAlignment="Center" />
 
