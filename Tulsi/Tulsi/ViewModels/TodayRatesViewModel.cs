@@ -16,6 +16,10 @@ namespace Tulsi.ViewModels {
     public class TodayRatesViewModel : ViewModelBase, IViewModel {
 
         ObservableCollection<TodayRatesEntry> _todayRatesData;
+
+        /// <summary>
+        /// 
+        /// </summary>
         public ObservableCollection<TodayRatesEntry> TodayRatesData {
             get { return _todayRatesData; }
             set { SetProperty(ref _todayRatesData, value); }
@@ -40,29 +44,29 @@ namespace Tulsi.ViewModels {
             HARDCODED_DATA_INSERT();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void HARDCODED_DATA_INSERT() {
+            Random random = new Random();
+
             for (int i = 0; i < 4; i++) {
                 TodayRatesEntry todayRatesEntry = new TodayRatesEntry() {
                     GroupName = "Wahe Guru",
                     Sum = 667
                 };
 
-                todayRatesEntry.Items.Add(new TodayRatesSubItem() { Code = "24D", Number = 160 });
-                todayRatesEntry.Items.Add(new TodayRatesSubItem() { Code = "24D", Number = 160 });
-                todayRatesEntry.Items.Add(new TodayRatesSubItem() { Code = "44D", Number = 160 });
-                todayRatesEntry.Items.Add(new TodayRatesSubItem() { Code = "24D", Number = 160 });
-                todayRatesEntry.Items.Add(new TodayRatesSubItem() { Code = "24D", Number = 160 });
-                todayRatesEntry.Items.Add(new TodayRatesSubItem() { Code = "24D", Number = 160 });
-                todayRatesEntry.Items.Add(new TodayRatesSubItem() { Code = "24D", Number = 160 });
-                todayRatesEntry.Items.Add(new TodayRatesSubItem() { Code = "24D", Number = 160 });
-                todayRatesEntry.Items.Add(new TodayRatesSubItem() { Code = "24D", Number = 160 });
+                int randomNumber = random.Next(1, 9);
+                for (int y = 0; y < randomNumber; y++) {
+                    todayRatesEntry.Items.Add(new TodayRatesSubItem() { Code = "24D", Number = 160 });
+                }
 
                 TodayRatesData.Add(todayRatesEntry);
             }
         }
 
         public void Dispose() {
-
+            
         }
     }
 }

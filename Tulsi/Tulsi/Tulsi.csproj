@@ -40,6 +40,11 @@
     </Compile>
     <Compile Include="Controls\CustomFrame.cs" />
     <Compile Include="Controls\EntryEx.cs" />
+    <Compile Include="Controls\PrimitiveSegmentControl\FramedLabelSegmentItem.xaml.cs">
+      <DependentUpon>FramedLabelSegmentItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\PrimitiveSegmentControl\PrimitiveSegment.cs" />
+    <Compile Include="Controls\PrimitiveSegmentControl\PrimitiveSegmentItemBase.cs" />
     <Compile Include="Controls\RoundedContentView.cs" />
     <Compile Include="Controls\RoundedView.cs" />
     <Compile Include="Controls\StackList.cs" />
@@ -176,6 +181,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SharedService\IDisplaySize.cs" />
+    <Compile Include="ToolKit\BindingValueConverters\BoolToGenericObjectConverter.cs" />
     <Compile Include="ToolKit\BindingValueConverters\ProfileTransactionImageConverter.cs" />
     <Compile Include="ToolKit\BindingValueConverters\RankingsColorConverter.cs" />
     <Compile Include="ToolKit\BindingValueConverters\RankingsIconConverter.cs" />
@@ -605,6 +611,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pages\Content\GrowerProfileView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Controls\PrimitiveSegmentControl\FramedLabelSegmentItem.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

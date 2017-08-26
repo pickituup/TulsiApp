@@ -4,14 +4,27 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:controls="clr-namespace:Tulsi.Controls"
+    xmlns:primitiveSegmentControls="clr-namespace:Tulsi.Controls.PrimitiveSegmentControl"
     xmlns:local="clr-namespace:Tulsi;assembly=Tulsi"
     xmlns:m="clr-namespace:SlideOverKit"
-    xmlns:toolKitImageResourceExtension="clr-namespace:Tulsi.ToolKit.MarkupExtensions"
+    xmlns:toolKitMarkupExtensions="clr-namespace:Tulsi.ToolKit.MarkupExtensions"
+    xmlns:toolKitBindingValueConverters="clr-namespace:Tulsi.ToolKit.BindingValueConverters"
     NavigationPage.HasNavigationBar="false">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <toolKitBindingValueConverters:BoolToGenericObjectConverter 
+                x:Key="_converter"
+                x:TypeArguments="Color"
+                TrueObject="Red"
+                FalseObject="Black"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
-    <StackLayout x:Name="HeaderLayout" BackgroundColor="#DCDCDC">
+    <StackLayout 
+        BackgroundColor="#DCDCDC">
         <!--  Tool bar  -->
-        <Grid x:Name="ToolbarGrid" BackgroundColor="#2793F5">
+        <Grid x:Name="ToolbarGrid" 
+              BackgroundColor="#2793F5">
             <Grid.RowDefinitions>
                 <RowDefinition Height="50" />
             </Grid.RowDefinitions>
@@ -35,14 +48,148 @@
                 <Image
                     HeightRequest="20"
                     HorizontalOptions="End"
-                    Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.menu_close.png}"
+                    Source="{toolKitMarkupExtensions:ImageResourceExtension Source=Tulsi.Images.menu_close.png}"
                     VerticalOptions="Center"
                     WidthRequest="20" />
             </Grid>
         </Grid>
 
+
+        <StackLayout
+            BackgroundColor="Transparent"
+            VerticalOptions="FillAndExpand"
+            Padding="5,0">
+            <!--Search entry with magnifier image-->
+            <Frame
+                CornerRadius="27"
+                HasShadow="False"
+                Padding="25,6">
+
+                <Grid
+                    BackgroundColor="Transparent">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Entry
+                        Placeholder="Search..."
+                        BackgroundColor="White"/>
+
+                    <Image
+                        Grid.Column="1"
+                        HeightRequest="18"
+                        WidthRequest="20"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        Source="{toolKitMarkupExtensions:ImageResourceExtension Source=Tulsi.Images.search.png}"/>
+                </Grid>
+            </Frame>
+
+            <primitiveSegmentControls:PrimitiveSegment
+                Orientation="Horizontal"
+                BackgroundColor="Transparent">
+                <primitiveSegmentControls:PrimitiveSegment.Segments>
+                    
+                    <primitiveSegmentControls:FramedLabelSegmentItem
+                        HorizontalOptions="FillAndExpand"
+                        Label="First segment"/>
+                    
+                    <primitiveSegmentControls:FramedLabelSegmentItem
+                        HorizontalOptions="FillAndExpand"
+                        ItemCommand="{Binding Path=CommandForSegments}"/>
+                    
+                    <primitiveSegmentControls:FramedLabelSegmentItem
+                        HorizontalOptions="FillAndExpand"
+                        Label="Third segment"
+                        ItemCommand="{Binding Path=CommandForSegments}"/>
+                </primitiveSegmentControls:PrimitiveSegment.Segments>
+            </primitiveSegmentControls:PrimitiveSegment>
+
+            <ListView
+                VerticalOptions="FillAndExpand"
+                ItemsSource="{Binding Path=ContactsGroupsResult}"
+                GroupDisplayBinding="{Binding Path=FirstLetter}"
+                ItemSelected="OnItemSelected"
+                IsGroupingEnabled="True"
+                SeparatorVisibility="None"
+                SeparatorColor="Transparent"
+                HasUnevenRows="True">
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <Frame
+                                    BackgroundColor="White"
+                                    Padding="10"
+                                    HasShadow="False"
+                                    Margin="0,5">
+
+                                    <StackLayout
+                                        BackgroundColor="Transparent">
+
+                                        <StackLayout
+                                            BackgroundColor="Transparent"
+                                            Orientation="Horizontal">
+                                            <Label
+                                                Text="{Binding Path=Name}"
+                                                HorizontalOptions="StartAndExpand"
+                                                FontSize="Medium"/>
+                                            <Label
+                                                Text="{Binding Path=Number,
+                                                    StringFormat='${0}'}"
+                                                TextColor="{Binding Path=IsOverDue,
+                                                    Converter={StaticResource Key=_converter}}"
+                                                HorizontalOptions="EndAndExpand"
+                                                FontSize="Medium"/>
+                                        </StackLayout>
+                                        <Label
+                                            Text="{Binding Path=Company}"
+                                            FontSize="Medium"
+                                            TextColor="#AAAAAA"/>
+                                        <Frame
+                                            HorizontalOptions="Start"
+                                            HasShadow="False"
+                                            Padding="13,0"
+                                            BackgroundColor="Red"
+                                            IsVisible="{Binding Path=IsOverDue}">
+
+                                            <StackLayout
+                                                BackgroundColor="Transparent"
+                                                Orientation="Horizontal">
+                                                
+                                                <Label
+                                                    TextColor="White"
+                                                    FontSize="Medium"
+                                                    Text="{Binding Path=OverdueDays,
+                                                        StringFormat='{0} Days OverDue'}"/>
+                                            </StackLayout>
+                                        </Frame>
+                                    </StackLayout>
+                                </Frame>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <ListView.GroupHeaderTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <Label
+                                    Margin="10,0,0,0"
+                                    Text="{Binding Path=FirstLetter}"
+                                    FontSize="Large"
+                                    TextColor="#AAAAAA"/>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.GroupHeaderTemplate>
+            </ListView>
+        </StackLayout>
+
         <!--  MAIN CONTENT  -->
-        <ScrollView>
+        <!--<ScrollView>
             <StackLayout x:Name="MainLayout" BackgroundColor="Transparent">
                 <Grid BackgroundColor="Transparent">
                     <Grid.ColumnDefinitions>
@@ -170,6 +317,6 @@
                     </ListView>
                 </Frame>
             </StackLayout>
-        </ScrollView>
+        </ScrollView>-->
     </StackLayout>
 </ContentPage>

@@ -2,13 +2,14 @@
 <ContentView 
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:Tulsi.Controls"
     x:Class="Tulsi.Controls.TodayRatesControls.ExpandedGroup">
 
     <ContentView.Resources>
 
         <ResourceDictionary>
-            
-<!--Overrides default App styles BackgroundColor=Transparent-->
+
+            <!--Overrides default App styles BackgroundColor=Transparent-->
             <Style TargetType="StackLayout">
 
                 <Setter Property="BackgroundColor"
@@ -31,8 +32,8 @@
                 <TapGestureRecognizer 
                     Tapped="GroupHeaderTapped"/>
             </Frame.GestureRecognizers>
-            
-<!--Overrides default App styles BackgroundColor=Transparent-->
+
+            <!--Overrides default App styles BackgroundColor=Transparent-->
             <StackLayout 
                 Orientation="Horizontal">
 
@@ -57,7 +58,7 @@
                         </Style>
                     </ResourceDictionary>
                 </StackLayout.Resources>
-                
+
                 <Label
                     Text="{Binding Path=GroupName}"
                     HorizontalOptions="StartAndExpand"/>
@@ -69,62 +70,43 @@
         </Frame>
 
         <!--Underlying list of sub items  -->
-        <ListView 
+        <controls:StackList
             x:Name="_itemsList_ListView"
             BackgroundColor="White"
             ItemsSource="{Binding Path=Items}"
-            ItemSelected="onItemSelected"
-            SeparatorVisibility="None"
-            IsVisible="False"
-            HasUnevenRows="False">
-
-            <ListView.ItemTemplate>
-
+            IsVisible="False">
+            <controls:StackList.ItemTemplate>
                 <DataTemplate>
+                    <StackLayout
+                        Padding="35,7"
+                        Orientation="Horizontal">
+                        <StackLayout.Resources>
+                            <ResourceDictionary>
+                                <Style 
+                                    TargetType="Label">
+                                    <Setter 
+                                        Property="VerticalOptions"
+                                        Value="Center"/>
+                                    <Setter 
+                                        Property="TextColor"
+                                        Value="#AAAAAA"/>
+                                    <Setter 
+                                        Property="FontAttributes"
+                                        Value="Bold"/>
+                                </Style>
+                            </ResourceDictionary>
+                        </StackLayout.Resources>
 
-                    <ViewCell>
+                        <Label 
+                            Text="{Binding Path=Code}"
+                            HorizontalOptions="StartAndExpand"/>
 
-                        <ViewCell.View>
-                            
-<!--Overrides default App styles BackgroundColor=Transparent-->
-                            <StackLayout
-                                Padding="35,7"
-                                Orientation="Horizontal">
-
-                                <StackLayout.Resources>
-
-                                    <ResourceDictionary>
-
-                                        <Style 
-                                            TargetType="Label">
-
-                                            <Setter 
-                                                Property="VerticalOptions"
-                                                Value="Center"/>
-
-                                            <Setter 
-                                                Property="TextColor"
-                                                Value="#AAAAAA"/>
-
-                                            <Setter 
-                                                Property="FontAttributes"
-                                                Value="Bold"/>
-                                        </Style>
-                                    </ResourceDictionary>
-                                </StackLayout.Resources>
-
-                                <Label 
-                                    Text="{Binding Path=Code}"
-                                   HorizontalOptions="StartAndExpand"/>
-
-                                <Label 
-                                    Text="{Binding Path=Number}"
-                                   HorizontalOptions="EndAndExpand"/>
-                            </StackLayout>
-                        </ViewCell.View>
-                    </ViewCell>
+                        <Label 
+                            Text="{Binding Path=Number}"
+                            HorizontalOptions="EndAndExpand"/>
+                    </StackLayout>
                 </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+            </controls:StackList.ItemTemplate>
+        </controls:StackList>
     </StackLayout>
 </ContentView>

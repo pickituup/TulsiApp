@@ -29,9 +29,9 @@ namespace Tulsi {
             //
             // TODO: remove that evnet subscription and use Controls.StackList
             //
-            _viewModel.TodayRatesData.CollectionChanged += TodayRatesDataCollectionChanged;
+            //_viewModel.TodayRatesData.CollectionChanged += TodayRatesDataCollectionChanged;
 
-            InitialiseExpandedGroupItem(_viewModel.TodayRatesData);
+            //InitialiseExpandedGroupItem(_viewModel.TodayRatesData);
         }
 
         /// <summary>
@@ -41,26 +41,26 @@ namespace Tulsi {
             
         }
 
-        private void TodayRatesDataCollectionChanged(object sender, NotifyCollectionChangedEventArgs e) {
-            //
-            // TODO: handle other observable collection Actions
-            //
-            if (e.Action == NotifyCollectionChangedAction.Add) {
-                InitialiseExpandedGroupItem(e.NewItems);
-            }
-        }
+        //private void TodayRatesDataCollectionChanged(object sender, NotifyCollectionChangedEventArgs e) {
+        //    //
+        //    // TODO: handle other observable collection Actions
+        //    //
+        //    if (e.Action == NotifyCollectionChangedAction.Add) {
+        //        InitialiseExpandedGroupItem(e.NewItems);
+        //    }
+        //}
 
         /// <summary>
         ///     TODO: define some factoy or ControlContainer that will create that ExpandedGroup...
         /// </summary>
         /// <param name="newItems"></param>
-        private void InitialiseExpandedGroupItem(IList newItems) {
-            foreach (object item in newItems) {
-                ExpandedGroup expandedGroup = new ExpandedGroup();
-                expandedGroup.BindingContext = item;
+        //private void InitialiseExpandedGroupItem(IList newItems) {
+        //    foreach (object item in newItems) {
+        //        ExpandedGroup expandedGroup = new ExpandedGroup();
+        //        expandedGroup.BindingContext = item;
 
-                _ratesStack_StackLayout.Children.Add(expandedGroup);
-            }
-        }
+        //        _ratesStack_StackLayout.Children.Add(expandedGroup);
+        //    }
+        //}
     }
 }
