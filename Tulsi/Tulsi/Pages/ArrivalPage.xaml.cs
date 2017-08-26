@@ -22,6 +22,7 @@ namespace Tulsi {
         public ArrivalPage() {
             InitializeComponent();
 
+
             BindingContext = _viewModel = new ArrivalViewModel();
 
             CalendarInitialization();
@@ -45,10 +46,9 @@ namespace Tulsi {
             arrivalCalendar.WeekdaysBackgroundColor = Color.White;
             // left arrow
             arrivalCalendar.TitleLeftArrowTextColor = Color.FromHex("#2793F5");
-
-            //right arrow
+            // right arrow
             arrivalCalendar.TitleRightArrowTextColor = Color.FromHex("#2793F5");
-            //  borders
+            // borders
             arrivalCalendar.BorderWidth = 0;
             arrivalCalendar.OuterBorderWidth = 0;
             arrivalCalendar.SelectedBorderWidth = 0;
