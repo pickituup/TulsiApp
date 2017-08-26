@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 
 namespace Tulsi.Controls.TodayRatesControls {
@@ -29,7 +24,7 @@ namespace Tulsi.Controls.TodayRatesControls {
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void onItemSelected(object sender, SelectedItemChangedEventArgs e) {
+        private void OnItemSelected(object sender, SelectedItemChangedEventArgs e) {
             ((ListView)sender).SelectedItem = null;
         }
     }

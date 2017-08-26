@@ -1,63 +1,40 @@
-﻿<!--<?xml version="1.0" encoding="utf-8" ?>-->
-<m:MenuContainerPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:controls="clr-namespace:Tulsi.Controls"
-             xmlns:local="clr-namespace:Tulsi;assembly=Tulsi"
-             xmlns:toolKitImageResourceExtension="clr-namespace:Tulsi.ToolKit.MarkupExtensions"
-             xmlns:m="clr-namespace:SlideOverKit"
-             x:Class="Tulsi.ExpensesPage" NavigationPage.HasNavigationBar="false">
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Tulsi.ExpensesPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:Tulsi.Controls"
+    xmlns:local="clr-namespace:Tulsi;assembly=Tulsi"
+    xmlns:m="clr-namespace:SlideOverKit"
+    xmlns:toolKitImageResourceExtension="clr-namespace:Tulsi.ToolKit.MarkupExtensions"
+    NavigationPage.HasNavigationBar="false">
 
     <StackLayout
         x:Name="MainLayout"
-        BackgroundColor="#DCDCDC">
-
-        <!--<Grid x:Name="ToolbarGrid">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="10" />
-                        <ColumnDefinition Width="20" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="20" />
-                        <ColumnDefinition Width="10" />
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="50" />
-                    </Grid.RowDefinitions>
-                    <BoxView Color="#2793F5" Grid.ColumnSpan="5" />
-                    <Image x:Name="Menu" Grid.Column="1" WidthRequest="20" HeightRequest="17" HorizontalOptions="Center" VerticalOptions="Center" Source="{local:ImageResource Tulsi.Images.menu.png}" />
-                    <Label Grid.Column="2" x:Name="PageTitleLabel" Text="EXPENSES" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" />
-                    <Image x:Name="ExpensesExtraIcon" Grid.Column="3" WidthRequest="20" HeightRequest="17" HorizontalOptions="Center" VerticalOptions="Center" Source="{local:ImageResource Tulsi.Images.back.png}" />
-                </Grid>-->
-        <!--Action bar-->
-        <Grid 
-            BackgroundColor="#2793F5">
-
+        BackgroundColor="#f3f3f3"
+        Spacing="10">
+        <!--  TOOL BAR  -->
+        <Grid BackgroundColor="{StaticResource MainColor}" VerticalOptions="Start">
             <Grid.RowDefinitions>
-
-                <RowDefinition
-                    Height="50" />
+                <RowDefinition Height="50" />
             </Grid.RowDefinitions>
 
             <Grid
                 Padding="15,0,0,0"
                 BackgroundColor="Transparent"
                 HorizontalOptions="Start">
-
                 <Grid.ColumnDefinitions>
-
-                    <ColumnDefinition 
-                        Width="60" />
+                    <ColumnDefinition Width="40" />
                 </Grid.ColumnDefinitions>
-
                 <Grid.GestureRecognizers>
-
-                    <TapGestureRecognizer 
-                        Tapped="ShowMenuCommand" />
+                    <TapGestureRecognizer Command="{Binding NavigateBackCommand}" />
                 </Grid.GestureRecognizers>
                 <Image
+                    HeightRequest="20"
                     HorizontalOptions="Start"
-                    Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.menu.png}"
+                    Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.back.png}"
                     VerticalOptions="Center"
-                    WidthRequest="20" />
+                    WidthRequest="15" />
             </Grid>
 
             <Label
@@ -70,122 +47,356 @@
                 Padding="0,0,15,0"
                 BackgroundColor="Transparent"
                 HorizontalOptions="End">
-
                 <Grid.ColumnDefinitions>
-
-                    <ColumnDefinition 
-                        Width="60" />
+                    <ColumnDefinition Width="60" />
                 </Grid.ColumnDefinitions>
 
                 <Grid.GestureRecognizers>
-                            
-                    <TapGestureRecognizer 
-                        Command="{Binding Path=OpenExpensesListCommand}" />
+                    <TapGestureRecognizer Command="{Binding Path=OpenExpensesListCommand}" />
                 </Grid.GestureRecognizers>
 
                 <Image
                     HeightRequest="20"
                     HorizontalOptions="End"
-                    Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.back.png}"
+                    Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.humburger.png}"
                     VerticalOptions="Center"
                     WidthRequest="20" />
             </Grid>
         </Grid>
 
-        <StackLayout BackgroundColor="White" >
-            <controls:RoundedContentView  BackgroundColor="#2793F5" CornerRadius="10" HeightRequest="40" >
-                <controls:RoundedContentView.Content>
-                    <Grid BackgroundColor="#2793F5">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="30" />
-                        </Grid.ColumnDefinitions>
-                        <Label Text="May 2016" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="White" />
-                        <Image x:Name="More" Grid.Column="1" WidthRequest="6" HeightRequest="20" HorizontalOptions="Center" VerticalOptions="Center" />
+        <!--  MAIN CONTENT  -->
+        <StackLayout
+            Padding="5,0"
+            BackgroundColor="Transparent"
+            Spacing="0"
+            VerticalOptions="FillAndExpand">
+
+            <controls:RoundedContentView
+                Margin="0,0,0,5"
+                BackgroundColor="White"
+                CornerRadius="15"
+                VerticalOptions="FillAndExpand">
+                <!--  CONTENT  -->
+                <StackLayout BackgroundColor="Transparent" Spacing="0">
+                    <controls:RoundedContentView
+                        BackgroundColor="{StaticResource MainColor}"
+                        CornerRadius="15"
+                        HeightRequest="40"
+                        VerticalOptions="Start">
+                        <Grid BackgroundColor="{StaticResource MainColor}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Label
+                                Grid.Row="0"
+                                FontAttributes="Bold"
+                                FontSize="Medium"
+                                HorizontalOptions="Center"
+                                HorizontalTextAlignment="Center"
+                                Text="May 2016"
+                                TextColor="White"
+                                VerticalTextAlignment="Center" />
+                        </Grid>
+                    </controls:RoundedContentView>
+
+                    <Grid
+                        x:Name="ChartGrid"
+                        BackgroundColor="Transparent"
+                        VerticalOptions="CenterAndExpand">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="240" />
+                        </Grid.RowDefinitions>
                     </Grid>
-                </controls:RoundedContentView.Content>
+
+                    <StackLayout
+                        BackgroundColor="Transparent"
+                        Spacing="0"
+                        VerticalOptions="FillAndExpand">
+
+                        <controls:RoundedContentView
+                            Margin="10,0"
+                            BackgroundColor="{StaticResource MainColor}"
+                            CornerRadius="20"
+                            HeightRequest="40"
+                            VerticalOptions="Start">
+                            <controls:RoundedContentView.Content>
+                                <Label
+                                    HorizontalTextAlignment="Center"
+                                    Text="45 Expenses, 8 Categories"
+                                    TextColor="White" />
+                            </controls:RoundedContentView.Content>
+                        </controls:RoundedContentView>
+
+                        <Grid
+                            x:Name="Categories"
+                            BackgroundColor="Transparent"
+                            VerticalOptions="CenterAndExpand">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="10" />
+                                <ColumnDefinition Width="80" />
+                                <ColumnDefinition Width="15" />
+                                <ColumnDefinition Width="10" />
+                                <ColumnDefinition Width="80" />
+                                <ColumnDefinition Width="15" />
+                                <ColumnDefinition Width="10" />
+                                <ColumnDefinition Width="80" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="22" />
+                                <RowDefinition Height="22" />
+                                <RowDefinition Height="22" />
+                                <RowDefinition Height="22" />
+                                <RowDefinition Height="22" />
+                            </Grid.RowDefinitions>
+                            <Image
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                HeightRequest="5"
+                                HorizontalOptions="Center"
+                                Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.yellowcategory.png}"
+                                VerticalOptions="Center"
+                                WidthRequest="8" />
+                            <Label
+                                x:Name="Category1Label"
+                                Grid.Row="0"
+                                Grid.Column="2"
+                                FontSize="12"
+                                Text="Groceries" />
+                            <Image
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                HeightRequest="5"
+                                HorizontalOptions="Center"
+                                Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.lightbluecategory.png}"
+                                VerticalOptions="Center"
+                                WidthRequest="8" />
+                            <Label
+                                x:Name="Category2Label"
+                                Grid.Row="1"
+                                Grid.Column="2"
+                                FontSize="12"
+                                Text="Utilities"
+                                VerticalOptions="Center" />
+                            <Image
+                                Grid.Row="2"
+                                Grid.Column="1"
+                                HeightRequest="5"
+                                HorizontalOptions="Center"
+                                Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.bluecategory.png}"
+                                VerticalOptions="Center"
+                                WidthRequest="8" />
+                            <Label
+                                x:Name="Category3Label"
+                                Grid.Row="2"
+                                Grid.Column="2"
+                                FontSize="12"
+                                Text="Car"
+                                VerticalTextAlignment="Center" />
+                            <Image
+                                Grid.Row="3"
+                                Grid.Column="1"
+                                HeightRequest="5"
+                                HorizontalOptions="Center"
+                                Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.magentacategory.png}"
+                                VerticalOptions="Center"
+                                WidthRequest="8" />
+                            <Label
+                                x:Name="Category4Label"
+                                Grid.Row="3"
+                                Grid.Column="2"
+                                FontSize="12"
+                                Text="Payments" />
+                            <Image
+                                Grid.Row="4"
+                                Grid.Column="1"
+                                HeightRequest="5"
+                                HorizontalOptions="Center"
+                                Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.pinkcategory.png}"
+                                VerticalOptions="Center"
+                                WidthRequest="8" />
+                            <Label
+                                x:Name="Category5Label"
+                                Grid.Row="4"
+                                Grid.Column="2"
+                                FontSize="12"
+                                Text="iTunes" />
+
+                            <Image
+                                Grid.Row="0"
+                                Grid.Column="4"
+                                HeightRequest="5"
+                                HorizontalOptions="Center"
+                                Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.lightgreencategory.png}"
+                                VerticalOptions="Center"
+                                WidthRequest="8" />
+                            <Label
+                                x:Name="Category6Label"
+                                Grid.Row="0"
+                                Grid.Column="5"
+                                FontSize="12"
+                                Text="House" />
+                            <Image
+                                Grid.Row="1"
+                                Grid.Column="4"
+                                HeightRequest="5"
+                                HorizontalOptions="Center"
+                                Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.greencategory.png}"
+                                VerticalOptions="Center"
+                                WidthRequest="8" />
+                            <Label
+                                x:Name="Category7Label"
+                                Grid.Row="1"
+                                Grid.Column="5"
+                                FontSize="12"
+                                Text="Wardrobe"
+                                VerticalOptions="Center" />
+                            <Image
+                                Grid.Row="2"
+                                Grid.Column="4"
+                                HeightRequest="5"
+                                HorizontalOptions="Center"
+                                Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.browncategory.png}"
+                                VerticalOptions="Center"
+                                WidthRequest="8" />
+                            <Label
+                                x:Name="Category8Label"
+                                Grid.Row="2"
+                                Grid.Column="5"
+                                FontSize="12"
+                                Text="Food"
+                                VerticalTextAlignment="Center" />
+                            <Image
+                                Grid.Row="3"
+                                Grid.Column="4"
+                                HeightRequest="5"
+                                HorizontalOptions="Center"
+                                Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.graycategory.png}"
+                                VerticalOptions="Center"
+                                WidthRequest="8" />
+                            <Label
+                                x:Name="Category9Label"
+                                Grid.Row="3"
+                                Grid.Column="5"
+                                FontSize="12"
+                                Text="Amusement" />
+                            <Image
+                                Grid.Row="4"
+                                Grid.Column="4"
+                                HeightRequest="5"
+                                HorizontalOptions="Center"
+                                Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.graycategory.png}"
+                                VerticalOptions="Center"
+                                WidthRequest="8" />
+                            <Label
+                                x:Name="Category10Label"
+                                Grid.Row="4"
+                                Grid.Column="5"
+                                FontSize="12"
+                                Text="General" />
+
+                            <Image
+                                Grid.Row="0"
+                                Grid.Column="7"
+                                HeightRequest="5"
+                                HorizontalOptions="Center"
+                                Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.graycategory.png}"
+                                VerticalOptions="Center"
+                                WidthRequest="8" />
+                            <Label
+                                x:Name="Category11Label"
+                                Grid.Row="0"
+                                Grid.Column="8"
+                                FontSize="12"
+                                Text="Kids" />
+                            <Image
+                                Grid.Row="1"
+                                Grid.Column="7"
+                                HeightRequest="5"
+                                HorizontalOptions="Center"
+                                Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.graycategory.png}"
+                                VerticalOptions="Center"
+                                WidthRequest="8" />
+                            <Label
+                                x:Name="Category12Label"
+                                Grid.Row="1"
+                                Grid.Column="8"
+                                FontSize="12"
+                                Text="Misc"
+                                VerticalOptions="Center" />
+                            <Image
+                                Grid.Row="2"
+                                Grid.Column="7"
+                                HeightRequest="5"
+                                HorizontalOptions="Center"
+                                Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.graycategory.png}"
+                                VerticalOptions="Center"
+                                WidthRequest="8" />
+                            <Label
+                                x:Name="Category13Label"
+                                Grid.Row="2"
+                                Grid.Column="8"
+                                FontSize="12"
+                                Text="Personal"
+                                VerticalTextAlignment="Center" />
+                            <Image
+                                Grid.Row="3"
+                                Grid.Column="7"
+                                HeightRequest="5"
+                                HorizontalOptions="Center"
+                                Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.graycategory.png}"
+                                VerticalOptions="Center"
+                                WidthRequest="8" />
+                            <Label
+                                x:Name="Category14Label"
+                                Grid.Row="3"
+                                Grid.Column="8"
+                                FontSize="12"
+                                Text="Transport" />
+                            <Image
+                                Grid.Row="4"
+                                Grid.Column="7"
+                                HeightRequest="5"
+                                HorizontalOptions="Center"
+                                Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.graycategory.png}"
+                                VerticalOptions="Center"
+                                WidthRequest="8" />
+                            <Label
+                                x:Name="Category15Label"
+                                Grid.Row="4"
+                                Grid.Column="8"
+                                FontSize="12"
+                                Text="Vacation" />
+                        </Grid>
+                    </StackLayout>
+
+                    <Grid
+                        x:Name="TabsGrid"
+                        Margin="0,10"
+                        BackgroundColor="Transparent"
+                        HorizontalOptions="Center"
+                        VerticalOptions="End">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="10" />
+                            <ColumnDefinition Width="10" />
+                        </Grid.ColumnDefinitions>
+                        <Image
+                            HeightRequest="8"
+                            HorizontalOptions="Center"
+                            Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.tabbluecircle.png}"
+                            VerticalOptions="Center"
+                            WidthRequest="8" />
+                        <Image
+                            Grid.Column="1"
+                            HeightRequest="8"
+                            HorizontalOptions="Center"
+                            Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.emptycircle.png}"
+                            VerticalOptions="Center"
+                            WidthRequest="8" />
+                    </Grid>
+                </StackLayout>
             </controls:RoundedContentView>
-            <Grid x:Name="ChartGrid" BackgroundColor="White" >
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="240" />
-                </Grid.RowDefinitions>
-            </Grid>
-            <Grid BackgroundColor="White" >
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="32*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <controls:RoundedContentView Grid.Column="1" BackgroundColor="#2793F5" CornerRadius="20" Margin="10" HeightRequest="40">
-                    <controls:RoundedContentView.Content>
-                        <Label Text="45 Expenses, 8 Categories" HorizontalTextAlignment="Center" TextColor="White" />
-                    </controls:RoundedContentView.Content>
-                </controls:RoundedContentView>
-            </Grid>
-            <Grid x:Name="Categories" BackgroundColor="White">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="10" />
-                    <ColumnDefinition Width="80" />
-                    <ColumnDefinition Width="15" />
-                    <ColumnDefinition Width="10" />
-                    <ColumnDefinition Width="80" />
-                    <ColumnDefinition Width="15" />
-                    <ColumnDefinition Width="10" />
-                    <ColumnDefinition Width="80" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="22" />
-                    <RowDefinition Height="22" />
-                    <RowDefinition Height="22" />
-                    <RowDefinition Height="22" />
-                    <RowDefinition Height="22" />
-                </Grid.RowDefinitions>
-                <Image x:Name="Category1" Grid.Column="1" Grid.Row="0" WidthRequest="8" HeightRequest="5" HorizontalOptions="Center" VerticalOptions="Center" />
-                <Label x:Name="Category1Label" Grid.Column="2" Grid.Row="0" Text="Groceries" FontSize="12" />
-                <Image x:Name="Category2" Grid.Column="1" Grid.Row="1" WidthRequest="8" HeightRequest="5" HorizontalOptions="Center" VerticalOptions="Center" />
-                <Label x:Name="Category2Label" Grid.Column="2" Grid.Row="1" Text="Utilities" FontSize="12" VerticalOptions="Center" />
-                <Image x:Name="Category3" Grid.Column="1" Grid.Row="2" WidthRequest="8" HeightRequest="5" HorizontalOptions="Center" VerticalOptions="Center" />
-                <Label x:Name="Category3Label" Grid.Column="2" Grid.Row="2" Text="Car" FontSize="12" VerticalTextAlignment="Center" />
-                <Image x:Name="Category4" Grid.Column="1" Grid.Row="3" WidthRequest="8" HeightRequest="5" HorizontalOptions="Center" VerticalOptions="Center" />
-                <Label x:Name="Category4Label" Grid.Column="2" Grid.Row="3" Text="Payments" FontSize="12" />
-                <Image x:Name="Category5" Grid.Column="1" Grid.Row="4" WidthRequest="8" HeightRequest="5" HorizontalOptions="Center" VerticalOptions="Center" />
-                <Label x:Name="Category5Label" Grid.Column="2" Grid.Row="4" Text="iTunes" FontSize="12" />
-
-                <Image x:Name="Category6" Grid.Column="4" Grid.Row="0" WidthRequest="8" HeightRequest="5" HorizontalOptions="Center" VerticalOptions="Center" />
-                <Label x:Name="Category6Label" Grid.Column="5" Grid.Row="0" Text="House" FontSize="12" />
-                <Image x:Name="Category7" Grid.Column="4" Grid.Row="1" WidthRequest="8" HeightRequest="5" HorizontalOptions="Center" VerticalOptions="Center" />
-                <Label x:Name="Category7Label" Grid.Column="5" Grid.Row="1" Text="Wardrobe" FontSize="12" VerticalOptions="Center" />
-                <Image x:Name="Category8" Grid.Column="4" Grid.Row="2" WidthRequest="8" HeightRequest="5" HorizontalOptions="Center" VerticalOptions="Center" />
-                <Label x:Name="Category8Label" Grid.Column="5" Grid.Row="2" Text="Food" FontSize="12" VerticalTextAlignment="Center" />
-                <Image x:Name="Category9" Grid.Column="4" Grid.Row="3" WidthRequest="8" HeightRequest="5" HorizontalOptions="Center" VerticalOptions="Center" />
-                <Label x:Name="Category9Label" Grid.Column="5" Grid.Row="3" Text="Amusement" FontSize="12" />
-                <Image x:Name="Category10" Grid.Column="4" Grid.Row="4" WidthRequest="8" HeightRequest="5" HorizontalOptions="Center" VerticalOptions="Center" />
-                <Label x:Name="Category10Label" Grid.Column="5" Grid.Row="4" Text="General" FontSize="12" />
-
-                <Image x:Name="Category11" Grid.Column="7" Grid.Row="0" WidthRequest="8" HeightRequest="5" HorizontalOptions="Center" VerticalOptions="Center" />
-                <Label x:Name="Category11Label" Grid.Column="8" Grid.Row="0" Text="Kids" FontSize="12" />
-                <Image x:Name="Category12" Grid.Column="7" Grid.Row="1" WidthRequest="8" HeightRequest="5" HorizontalOptions="Center" VerticalOptions="Center" />
-                <Label x:Name="Category12Label" Grid.Column="8" Grid.Row="1" Text="Misc" FontSize="12" VerticalOptions="Center" />
-                <Image x:Name="Category13" Grid.Column="7" Grid.Row="2" WidthRequest="8" HeightRequest="5" HorizontalOptions="Center" VerticalOptions="Center" />
-                <Label x:Name="Category13Label" Grid.Column="8" Grid.Row="2" Text="Personal" FontSize="12" VerticalTextAlignment="Center" />
-                <Image x:Name="Category14" Grid.Column="7" Grid.Row="3" WidthRequest="8" HeightRequest="5" HorizontalOptions="Center" VerticalOptions="Center" />
-                <Label x:Name="Category14Label" Grid.Column="8" Grid.Row="3" Text="Transport" FontSize="12" />
-                <Image x:Name="Category15" Grid.Column="7" Grid.Row="4" WidthRequest="8" HeightRequest="5" HorizontalOptions="Center" VerticalOptions="Center" />
-                <Label x:Name="Category15Label" Grid.Column="8" Grid.Row="4" Text="Vacation" FontSize="12" />
-            </Grid>
         </StackLayout>
-
-
-
-        <Grid x:Name="TabsGrid" BackgroundColor="Transparent" HorizontalOptions="Center" Margin="0,5">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="10" />
-                <ColumnDefinition Width="10" />
-            </Grid.ColumnDefinitions>
-            <Image x:Name="BlueCircleTab" WidthRequest="8" HeightRequest="8" HorizontalOptions="Center" VerticalOptions="Center" />
-            <Image x:Name="EmptyCircleTab" Grid.Column="1" WidthRequest="8" HeightRequest="8" HorizontalOptions="Center" VerticalOptions="Center" />
-        </Grid>
     </StackLayout>
-</m:MenuContainerPage>
+</ContentPage>

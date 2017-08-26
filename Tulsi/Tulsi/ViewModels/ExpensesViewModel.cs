@@ -11,7 +11,18 @@ using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace Tulsi.ViewModels {
-    public class ExpensesViewModel : ViewModelBase,IViewModel {
+    public class ExpensesViewModel : ViewModelBase, IViewModel {
+
+        public List<ChartModel> ChartData { get; private set; }
+
+        // Navigate back.
+        public ICommand NavigateBackCommand { get; private set; }
+
+        /// <summary>
+        /// Opens ExpensesListPage.
+        /// </summary>
+        public ICommand OpenExpensesListCommand { get; private set; }
+
         /// <summary>
         /// Public ctor.
         /// </summary>
@@ -31,23 +42,12 @@ namespace Tulsi.ViewModels {
             OpenExpensesListCommand = new Command(() => {
                 BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.ExpensesListPage);
             });
+
+            NavigateBackCommand = new Command(() => BaseSingleton<ViewSwitchingLogic>.Instance.NavigateOneStepBack());
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public List<ChartModel> ChartData { get; private set; }
-
-        /// <summary>
-        /// Opens ExpensesListPage.
-        /// </summary>
-        public ICommand OpenExpensesListCommand { get; private set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
         public void Dispose() {
-            
+
         }
     }
 }
