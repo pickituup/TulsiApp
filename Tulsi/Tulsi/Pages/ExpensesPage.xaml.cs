@@ -32,7 +32,7 @@ namespace Tulsi {
                     Margin = new Thickness(5),
                     TextColor = Color.FromHex("#B3B3B3"),
                     LabelPosition = DataMarkerLabelPosition.Outer
-                },
+                }
             };
 
             DoughnutSeries doughnutSeries = new DoughnutSeries() {
