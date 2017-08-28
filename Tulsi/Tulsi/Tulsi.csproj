@@ -40,6 +40,11 @@
     </Compile>
     <Compile Include="Controls\CustomFrame.cs" />
     <Compile Include="Controls\EntryEx.cs" />
+    <Compile Include="Controls\PrimitiveSegmentControl\FramedLabelSegmentItem.xaml.cs">
+      <DependentUpon>FramedLabelSegmentItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\PrimitiveSegmentControl\PrimitiveSegment.cs" />
+    <Compile Include="Controls\PrimitiveSegmentControl\PrimitiveSegmentItemBase.cs" />
     <Compile Include="Controls\RoundedContentView.cs" />
     <Compile Include="Controls\RoundedView.cs" />
     <Compile Include="Controls\StackList.cs" />
@@ -54,6 +59,8 @@
     <Compile Include="Model\AuditEntry.cs" />
     <Compile Include="Model\BankAccount.cs" />
     <Compile Include="Model\BuyerRanking.cs" />
+    <Compile Include="Model\Contact.cs" />
+    <Compile Include="Model\ContactGroup.cs" />
     <Compile Include="Model\DataContainers\ArrivalsContainer.cs" />
     <Compile Include="Model\DataContainers\DataItems\ArrivalItem.cs" />
     <Compile Include="Model\DataContainers\DataItems\ProfitMenuItem.cs" />
@@ -178,6 +185,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SharedService\IDisplaySize.cs" />
+    <Compile Include="ToolKit\BindingValueConverters\BoolToGenericObjectConverter.cs" />
     <Compile Include="ToolKit\BindingValueConverters\ProfileTransactionImageConverter.cs" />
     <Compile Include="ToolKit\BindingValueConverters\RankingsColorConverter.cs" />
     <Compile Include="ToolKit\BindingValueConverters\RankingsIconConverter.cs" />
@@ -616,6 +624,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Images\humburger.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Controls\PrimitiveSegmentControl\FramedLabelSegmentItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.4.267\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.4.267\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />

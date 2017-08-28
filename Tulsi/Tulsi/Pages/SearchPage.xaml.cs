@@ -20,30 +20,6 @@ namespace Tulsi {
             InitializeComponent();
 
             BindingContext = _viewModel = new SearchViewModel();
-
-            //In page navigation
-            TapGestureRecognizer BuyersTap = new TapGestureRecognizer();
-            BuyersTap.Tapped += (s, e) => {
-                BuyersArea.BackgroundColor = Color.FromHex("#027CE9");
-                BuyersAreaLabel.TextColor = Color.White;
-                GrowersArea.BackgroundColor = Color.FromHex("#FFFFFF");
-                GrowersAreaLabel.TextColor = Color.FromHex("#CCCCCC");
-            };
-            BuyersArea.GestureRecognizers.Add(BuyersTap);
-            BuyersAreaLabel.GestureRecognizers.Add(BuyersTap);
-
-            TapGestureRecognizer GrowersTap = new TapGestureRecognizer();
-            GrowersTap.Tapped += (s, e) => {
-                BuyersArea.BackgroundColor = Color.FromHex("#FFFFFF");
-                BuyersAreaLabel.TextColor = Color.FromHex("#CCCCCC");
-                GrowersArea.BackgroundColor = Color.FromHex("#027CE9");
-                GrowersAreaLabel.TextColor = Color.White;
-            };
-            GrowersArea.GestureRecognizers.Add(GrowersTap);
-        }
-
-        private void Handle_ItemSelected(object sender, SelectedItemChangedEventArgs e) {
-            menuItems.SelectedItem = null;
         }
 
         /// <summary>
@@ -51,6 +27,15 @@ namespace Tulsi {
         /// </summary>
         public void ApplyVisualChangesWhileNavigating() {
             
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OnItemSelected(object sender, SelectedItemChangedEventArgs e) {
+            ((ListView)sender).SelectedItem = null;
         }
     }
 }

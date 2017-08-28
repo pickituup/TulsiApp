@@ -4,13 +4,14 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:controls="clr-namespace:Tulsi.Controls"
+    xmlns:controlsForTodayRates="clr-namespace:Tulsi.Controls.TodayRatesControls"
     xmlns:local="clr-namespace:Tulsi;assembly=Tulsi"
     xmlns:m="clr-namespace:SlideOverKit"
     xmlns:toolKitImageResourceExtension="clr-namespace:Tulsi.ToolKit.MarkupExtensions"
     NavigationPage.HasNavigationBar="false">
 
     <!--  BackgroundColor="#DCDCDC"  -->
-    <StackLayout Spacing="0">
+    <StackLayout>
 
         <!--  Tool bar  -->
         <Grid x:Name="ToolbarGrid" BackgroundColor="#2793F5">
@@ -62,7 +63,7 @@
         </Grid>
 
         <!--  MAIN CONTENT  -->
-        <StackLayout Padding="20,5">
+        <StackLayout Padding="5,0">
 
             <!--  Lists shared 'Header'  -->
             <Frame
@@ -78,9 +79,16 @@
                     TextColor="White"
                     VerticalTextAlignment="Center" />
             </Frame>
-
             <ScrollView>
-                <StackLayout x:Name="_ratesStack_StackLayout" />
+                <!--<StackLayout x:Name="_ratesStack_StackLayout" />-->
+                <controls:StackList
+                    ItemsSource="{Binding Path=TodayRatesData}">
+                    <controls:StackList.ItemTemplate>
+                        <DataTemplate>
+                            <controlsForTodayRates:ExpandedGroup/>
+                        </DataTemplate>
+                    </controls:StackList.ItemTemplate>
+                </controls:StackList>
             </ScrollView>
         </StackLayout>
     </StackLayout>
