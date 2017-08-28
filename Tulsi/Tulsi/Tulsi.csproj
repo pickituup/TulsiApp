@@ -59,6 +59,8 @@
     <Compile Include="Model\AuditEntry.cs" />
     <Compile Include="Model\BankAccount.cs" />
     <Compile Include="Model\BuyerRanking.cs" />
+    <Compile Include="Model\Contact.cs" />
+    <Compile Include="Model\ContactGroup.cs" />
     <Compile Include="Model\DataContainers\ArrivalsContainer.cs" />
     <Compile Include="Model\DataContainers\DataItems\ArrivalItem.cs" />
     <Compile Include="Model\DataContainers\DataItems\ProfitMenuItem.cs" />

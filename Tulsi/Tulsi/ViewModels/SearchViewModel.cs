@@ -6,6 +6,7 @@ using System.Linq;
 using Tulsi.MVVM.Core;
 using Tulsi.NavigationFramework;
 using Xamarin.Forms;
+using Tulsi.Model;
 
 namespace Tulsi.ViewModels {
     public class SearchViewModel : ViewModelBase, IViewModel {
@@ -87,27 +88,5 @@ namespace Tulsi.ViewModels {
                     groups.OrderBy<ContactGroup, string>((c) => c.FirstLetter)
                     .ToList<ContactGroup>());
         }
-    }
-
-    /// <summary>
-    /// TODO
-    /// </summary>
-    public class ContactGroup : List<Contact> {
-        public string FirstLetter { get; set; }
-    }
-
-    /// <summary>
-    /// TODO
-    /// </summary>
-    public class Contact {
-        public string Name { get; set; }
-
-        public string Company { get; set; }
-
-        public int Number { get; set; }
-
-        public bool IsOverDue { get; set; }
-
-        public int OverdueDays { get; set; }
     }
 }
