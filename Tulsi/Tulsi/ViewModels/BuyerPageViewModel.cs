@@ -14,7 +14,7 @@ using Tulsi.SharedService;
 
 namespace Tulsi.ViewModels {
     public class BuyerPageViewModel : ViewModelBase, IViewModel {
-        
+
         IView _importedView;
         public IView ImportedView {
             get { return _importedView; }
@@ -37,7 +37,7 @@ namespace Tulsi.ViewModels {
         public Transaction SelectedItem {
             get => _selectedItem;
             set {
-                if (SetProperty<Transaction>(ref _selectedItem, value)) {
+                if (SetProperty<Transaction>(ref _selectedItem, value) && value != null) {
                     BaseSingleton<NavigationObserver>.Instance.OnImportedSpot(ViewType.BuyerProfileView);
                     BaseSingleton<NavigationObserver>.Instance.OnSendProfileTransAction(value.ProfileTransactions);
                 }
@@ -90,7 +90,7 @@ namespace Tulsi.ViewModels {
                 BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.LatePaymentsPage);
             });
 
-            LooseSelectionCommand = new Command(()=> {
+            LooseSelectionCommand = new Command(() => {
                 SelectedItem = null;
             });
 

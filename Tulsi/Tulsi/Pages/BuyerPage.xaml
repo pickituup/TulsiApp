@@ -64,7 +64,7 @@
                 </Grid>
             </Grid>
 
-            <!--  Main page content  -->
+            <!--  MAIN CONTENT  -->
             <ScrollView>
                 <StackLayout BackgroundColor="#DCDCDC">
                     <Grid Margin="5,0,5,0" BackgroundColor="Transparent">
