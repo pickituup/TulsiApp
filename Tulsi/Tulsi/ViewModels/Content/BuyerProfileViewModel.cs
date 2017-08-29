@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Tulsi.Helpers;
 using Tulsi.Model;
 using Tulsi.MVVM.Core;
-using Xamarin.Forms;
 using Tulsi.NavigationFramework;
-using Tulsi.Helpers;
-using System.Collections.ObjectModel;
+using Xamarin.Forms;
 
-namespace Tulsi.ViewModels {
-    public sealed class BuyerProfileViewModel : ViewModelBase,IViewModel {
+namespace Tulsi.ViewModels.Content {
+    public sealed class BuyerProfileViewModel : ViewModelBase, IViewModel {
 
         ObservableCollection<ProfileTransaction> _transactionsData = new ObservableCollection<ProfileTransaction>();
         public ObservableCollection<ProfileTransaction> TransactionsData {

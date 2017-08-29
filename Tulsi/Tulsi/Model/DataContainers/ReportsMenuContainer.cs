@@ -13,27 +13,27 @@ namespace Tulsi.Model.DataContainers {
             return new List<ReportsMenuItem>() {
                 new ReportsMenuItem {
                     Name = "BANK",
-                    ViewType = ViewType.BankAccountsPage
+                    ViewType = ViewType.BankAccountsView
                 },
                 new ReportsMenuItem {
                     Name = "GROWER",
-                    ViewType = ViewType.GrowerPage
+                    ViewType = ViewType.GrowerView
                 },
                 new ReportsMenuItem {
                     Name = "BUYER",
-                    ViewType = ViewType.BuyerPage
+                    ViewType = ViewType.BuyerView
                 },
                 new ReportsMenuItem {
                     Name = "ARRIVAL",
-                    ViewType = ViewType.ArrivalPage
+                    ViewType = ViewType.ArrivalView
                 },
                 new ReportsMenuItem {
                     Name = "EXPENSES",
-                    ViewType = ViewType.ExpensesPage
+                    ViewType = ViewType.ExpensesView
                 },
                 new ReportsMenuItem {
                     Name = "AUDIT LOG",
-                    ViewType = ViewType.AuditLogPage
+                    ViewType = ViewType.AuditLogView
                 }
             };
         }

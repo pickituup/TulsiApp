@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +11,7 @@ using Tulsi.MVVM.Core;
 using Tulsi.NavigationFramework;
 using Xamarin.Forms;
 
-namespace Tulsi.ViewModels {
+namespace Tulsi.ViewModels.Content {
     public sealed class ArrivalViewModel : ViewModelBase, IViewModel {
 
         private readonly ArrivalsContainer _arrivalsContainer;
@@ -48,6 +47,12 @@ namespace Tulsi.ViewModels {
         }
 
         public void Dispose() {
+            
+        }
+
+        internal void DisplayMessage(string title, string message, string value) {
+            DisplayAlert(title, message, value);
         }
     }
 }
+

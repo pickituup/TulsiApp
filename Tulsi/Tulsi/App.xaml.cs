@@ -14,7 +14,7 @@ namespace Tulsi {
         public App() {
             InitializeComponent();
 
-            //MainPage = new SearchPage();
+            //MainPage = new TempPage();
 
             BaseSingleton<ViewSwitchingLogic>.Instance.BuildNavigationStack(ViewType.LoginPage);
         }

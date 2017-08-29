@@ -11,7 +11,7 @@ using SlideOverKit;
 namespace Tulsi {
     public partial class SearchPage : ContentPage, IView {
 
-        private readonly SearchViewModel _viewModel;
+        private readonly SearchPageViewModel _viewModel;
 
         /// <summary>
         ///     ctor().
@@ -19,7 +19,7 @@ namespace Tulsi {
         public SearchPage() {
             InitializeComponent();
 
-            BindingContext = _viewModel = new SearchViewModel();
+            BindingContext = _viewModel = new SearchPageViewModel();
         }
 
         /// <summary>

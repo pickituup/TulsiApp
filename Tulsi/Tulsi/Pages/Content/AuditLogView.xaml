@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="Tulsi.Pages.Content.AuditLogView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:Tulsi.Controls"
+    xmlns:local="clr-namespace:Tulsi;assembly=Tulsi"
+    xmlns:m="clr-namespace:SlideOverKit"
+    xmlns:toolKitImageResourceExtension="clr-namespace:Tulsi.ToolKit.MarkupExtensions">
+
+    <!--  MAIN CONTENT  -->
+    <StackLayout Padding="5,0" BackgroundColor="Transparent">
+
+        <!--  Note  -->
+        <Frame
+            Padding="5"
+            BackgroundColor="White"
+            CornerRadius="7"
+            HasShadow="False">
+            <Label
+                HorizontalTextAlignment="Center"
+                TextColor="#2793F5"
+                VerticalTextAlignment="Center">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <FormattedString.Spans>
+                            <Span FontAttributes="Bold" Text="Note: " />
+                            <Span Text="These are the latest changes your accountant made made within the system." />
+                        </FormattedString.Spans>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+        </Frame>
+
+        <!--  List of logs  -->
+        <ScrollView>
+            <controls:StackList BackgroundColor="Transparent" ItemsSource="{Binding Path=AuditData}">
+                <controls:StackList.ItemTemplate>
+                    <DataTemplate>
+                        <Frame
+                            Padding="18,12"
+                            BackgroundColor="White"
+                            CornerRadius="7"
+                            HasShadow="False">
+
+                            <StackLayout BackgroundColor="Transparent" Spacing="12">
+
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="Medium"
+                                    HorizontalTextAlignment="Center"
+                                    Text="{Binding Path=Date, StringFormat='{0:dd/MM/yyyy}'}"
+                                    TextColor="#2793F5" />
+
+                                <controls:StackList BackgroundColor="Transparent" ItemsSource="{Binding Path=AuditActions}">
+                                    <controls:StackList.ItemTemplate>
+                                        <DataTemplate>
+                                            <Frame
+                                                Padding="18,8"
+                                                BackgroundColor="#cccccc"
+                                                CornerRadius="13"
+                                                HasShadow="False">
+
+                                                <StackLayout BackgroundColor="Transparent" Orientation="Horizontal">
+                                                    <StackLayout.Resources>
+                                                        <ResourceDictionary>
+                                                            <Style TargetType="Label">
+                                                                <Setter Property="TextColor" Value="White" />
+                                                                <Setter Property="FontAttributes" Value="Bold" />
+                                                            </Style>
+                                                        </ResourceDictionary>
+                                                    </StackLayout.Resources>
+
+                                                    <Label HorizontalOptions="StartAndExpand" Text="{Binding Path=Action}" />
+
+                                                    <Label HorizontalOptions="EndAndExpand" Text="{Binding Path=Code}" />
+                                                </StackLayout>
+                                            </Frame>
+                                        </DataTemplate>
+                                    </controls:StackList.ItemTemplate>
+                                </controls:StackList>
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </controls:StackList.ItemTemplate>
+            </controls:StackList>
+        </ScrollView>
+    </StackLayout>
+</ContentView>

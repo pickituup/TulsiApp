@@ -334,8 +334,8 @@
 
         <!--  Show/Hide content view spot.  -->
         <ContentView
-            x:Name="_spot_ConentView"
+            x:Name="spot_ContentView"
             Grid.Row="0"
-            Content="{Binding Path=BuyerProfileDetailView}" />
+            Content="{Binding ImportedView}" />
     </Grid>
 </m:MenuContainerPage>

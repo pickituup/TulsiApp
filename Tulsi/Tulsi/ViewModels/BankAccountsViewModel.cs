@@ -11,11 +11,33 @@ using Tulsi.Helpers;
 using Tulsi.Model;
 
 namespace Tulsi.ViewModels {
-    public sealed class BankAccountsViewModel : ViewModelBase,IViewModel {
-        private BankAccount _selectedBankAccount;
+    public sealed class BankAccountsViewModel : ViewModelBase, IViewModel {
+
+        public List<BankAccount> BankAccounts { get; private set; }
+
+        BankAccount _selectedBankAccount;
+        public BankAccount SelectedBankAccount {
+            get => _selectedBankAccount;
+            set {
+                if (SetProperty<BankAccount>(ref _selectedBankAccount, value) && value != null) {
+                    //
+                    // TODO: BankAccountDetailsPage must know which BankAccount we select, and dynamicaly
+                    // work out that selected object. So current implementation is temporary.
+                    //
+                    BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.BankAccountDetailsPage);
+
+                    //
+                    // Also deselect last selected BankAccount.
+                    //
+                    SelectedBankAccount = null;
+                }
+            }
+        }
+
+        public ICommand DisplaySearchPageCommand { get; private set; }
 
         /// <summary>
-        /// Public ctor.
+        ///     ctor().
         /// </summary>
         public BankAccountsViewModel() {
             BankAccounts = new List<BankAccount>() {
@@ -38,40 +60,6 @@ namespace Tulsi.ViewModels {
             });
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public ICommand DisplaySearchPageCommand { get; private set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public List<BankAccount> BankAccounts { get; private set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public BankAccount SelectedBankAccount {
-            get => _selectedBankAccount;
-            set {
-                if (SetProperty<BankAccount>(ref _selectedBankAccount, value) && value != null) {
-                    //
-                    // TODO: BankAccountDetailsPage must know which BankAccount we select, and dynamicaly
-                    // work out that selected object. So current implementation is temporary.
-                    //
-                    BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.BankAccountDetailsPage);
-
-                    //
-                    // Also deselect last selected BankAccount.
-                    //
-                    SelectedBankAccount = null;
-                }
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
         public void Dispose() {
 
         }

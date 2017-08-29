@@ -11,12 +11,12 @@ using Tulsi.NavigationFramework;
 namespace Tulsi {
     public partial class GrowerProfilePage : ContentPage, IView {
 
-        private readonly GrowerProfileViewModel _viewModel;
+        private readonly GrowerProfilePageViewModel _viewModel;
 
         public GrowerProfilePage() {
             InitializeComponent();
 
-            BindingContext = _viewModel = new GrowerProfileViewModel();
+            BindingContext = _viewModel = new GrowerProfilePageViewModel();
         }
 
         public void ApplyVisualChangesWhileNavigating() {

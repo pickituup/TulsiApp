@@ -11,13 +11,19 @@ using Tulsi.MVVM.Core;
 using Tulsi.NavigationFramework;
 using Xamarin.Forms;
 
-namespace Tulsi.ViewModels {
-    public class AuditLogViewModel : ViewModelBase, IViewModel {
+namespace Tulsi.ViewModels.Content {
+    public sealed class AuditLogViewModel : ViewModelBase, IViewModel {
 
         private ObservableCollection<AuditEntry> _auditData;
+        public ObservableCollection<AuditEntry> AuditData {
+            get { return _auditData; }
+            set { SetProperty(ref _auditData, value); }
+        }
+
+        public ICommand DisplaySearchPageCommand { get; private set; }
 
         /// <summary>
-        ///     Public ctor().
+        ///     ctor().
         /// </summary>
         public AuditLogViewModel() {
             DisplaySearchPageCommand = new Command(() => {
@@ -27,29 +33,6 @@ namespace Tulsi.ViewModels {
             HARDCODED_DATA_INSERT();
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public ICommand DisplaySearchPageCommand { get; private set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public ObservableCollection<AuditEntry> AuditData {
-            get { return _auditData; }
-            set { SetProperty(ref _auditData, value); }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public void Dispose() {
-
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
         private void HARDCODED_DATA_INSERT() {
             AuditData = new ObservableCollection<AuditEntry>() {
                 new AuditEntry() { Date = DateTime.Now,
@@ -122,6 +105,10 @@ namespace Tulsi.ViewModels {
                     }
                 }
             };
+        }
+
+        public void Dispose() {
+            
         }
     }
 }

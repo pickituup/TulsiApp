@@ -1,34 +1,28 @@
-﻿using System;
+﻿using Syncfusion.SfChart.XForms;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Tulsi.NavigationFramework;
-using Xamarin.Forms;
-using Syncfusion.SfChart.XForms;
 using Tulsi.ViewModels;
-using SlideOverKit;
-using Tulsi.SharedService;
+using Tulsi.ViewModels.Content;
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
-namespace Tulsi {
-    /// <summary>
-    /// TODO: BuyerPage use similar 'hide/show behavior' as in BuyerRankingsPage, LatePaymentsPage. Try
-    /// to define abstract core of that behavior</summary>
-    public partial class GrowerPage : MenuContainerPage, IView {
+namespace Tulsi.Pages.Content {
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class GrowerView : ContentView, IView {
 
-        private readonly GrowerPageViewModel _viewModel;
+        private readonly GrowerViewModel _viewModel;
 
         /// <summary>
-        ///     Public ctor().
+        /// ctor().
         /// </summary>
-        public GrowerPage() {
+        public GrowerView() {
             InitializeComponent();
 
-            SlideMenu = new SideMenuView();
-
-            BindingContext = _viewModel = new GrowerPageViewModel();
-
-            _viewModel.Spot = spot_ContentView;
+            BindingContext = _viewModel = new GrowerViewModel();
 
             SfChart chart = new SfChart();
             DoughnutSeries doughnutSeries = new DoughnutSeries() {
@@ -77,42 +71,8 @@ namespace Tulsi {
             ChartGrid.Children.Add(MiddleStack);
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ShowMenuCommand(object sender, EventArgs e) {
-            ShowMenu();
-        }
-
-        /// <summary>
-        /// Make some visual changes of current page through navigating process (hide side menu or smt...)
-        /// </summary>
         public void ApplyVisualChangesWhileNavigating() {
-            SlideMenu.HideWithoutAnimations();
-        }
-
-        protected override void OnDisappearing() {
-            base.OnDisappearing();
-
             _viewModel.Dispose();
-        }
-
-        /// <summary>
-        /// Occurs only for Android (not for iOS).
-        /// False navigate out from page, true - keep staing in this page.
-        /// </summary>
-        /// <returns></returns>
-        protected override bool OnBackButtonPressed() {
-            if (_viewModel.SelectedItem == null) {
-                return false;
-            }
-            else {
-                _viewModel.SelectedItem = null;
-
-                return true;
-            }
         }
     }
 }

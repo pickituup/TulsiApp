@@ -35,7 +35,7 @@
                 VerticalOptions="Start"
                 WidthRequest="20">
                 <Image.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding Path=LooseSelectionCommand}" />
+                    <TapGestureRecognizer Command="{Binding CloseCommand}" />
                 </Image.GestureRecognizers>
             </Image>
 
@@ -237,7 +237,7 @@
                     <ListView
                         Margin="5,0"
                         BackgroundColor="White"
-                        ItemsSource="{Binding Path=SelectedItem.ProfileTransactions}"
+                        ItemsSource="{Binding TransactionsData, Mode=TwoWay}"
                         RowHeight="40"
                         SeparatorColor="#e6e6e6"
                         SeparatorVisibility="Default"

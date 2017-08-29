@@ -81,7 +81,11 @@
     <Compile Include="Model\Transaction.cs" />
     <Compile Include="MVVM.Core\IViewModel.cs" />
     <Compile Include="MVVM.Core\ViewModelBase.cs" />
+    <Compile Include="NavigationFramework\NavigationArgs\GrowerProfileTransactionEventArgs.cs" />
+    <Compile Include="NavigationFramework\NavigationArgs\NavigationImportedEventArgs.cs" />
     <Compile Include="NavigationFramework\IView.cs" />
+    <Compile Include="NavigationFramework\NavigationArgs\NavigationImportedContentEventArgs.cs" />
+    <Compile Include="NavigationFramework\NavigationObserver.cs" />
     <Compile Include="NavigationFramework\ViewBuider.cs" />
     <Compile Include="NavigationFramework\ViewBuilderBase.cs" />
     <Compile Include="NavigationFramework\ViewContainer.cs" />
@@ -114,11 +118,29 @@
     <Compile Include="Pages\ChatPage.xaml.cs">
       <DependentUpon>ChatPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Content\ArrivalView.xaml.cs">
+      <DependentUpon>ArrivalView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Content\AuditLogView.xaml.cs">
+      <DependentUpon>AuditLogView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Content\BankAccountsView.xaml.cs">
+      <DependentUpon>BankAccountsView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Content\BuyerProfileView.xaml.cs">
       <DependentUpon>BuyerProfileView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Content\BuyerView.xaml.cs">
+      <DependentUpon>BuyerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Content\ExpensesView.xaml.cs">
+      <DependentUpon>ExpensesView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Content\GrowerProfileView.xaml.cs">
       <DependentUpon>GrowerProfileView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Content\GrowerView.xaml.cs">
+      <DependentUpon>GrowerView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\DashboardPage.xaml.cs">
       <DependentUpon>DashboardPage.xaml</DependentUpon>
@@ -159,6 +181,9 @@
     <Compile Include="Pages\ProfitPage.xaml.cs">
       <DependentUpon>ProfitPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\ReportsIntermediatePage.xaml.cs">
+      <DependentUpon>ReportsIntermediatePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\ReportsPage.xaml.cs">
       <DependentUpon>ReportsPage.xaml</DependentUpon>
     </Compile>
@@ -194,26 +219,34 @@
     <Compile Include="ToolKit\MarkupExtensions\ImageResourceExtension.cs" />
     <Compile Include="ToolKit\Triggers\ChangeBackgroundColorTriggerAction.cs" />
     <Compile Include="ViewModels\ArrivalDetailsViewModel.cs" />
-    <Compile Include="ViewModels\ArrivalViewModel.cs" />
-    <Compile Include="ViewModels\AuditLogViewModel.cs" />
+    <Compile Include="ViewModels\ArrivalPageViewModel.cs" />
+    <Compile Include="ViewModels\AuditLogPageViewModel.cs" />
     <Compile Include="ViewModels\BankAccountDetailsViewModel.cs" />
     <Compile Include="ViewModels\BankAccountsViewModel.cs" />
     <Compile Include="ViewModels\BuyerProfileViewModel.cs" />
     <Compile Include="ViewModels\BuyerRankingsViewModel.cs" />
     <Compile Include="ViewModels\BuyerPageViewModel.cs" />
     <Compile Include="ViewModels\ChatViewModel.cs" />
+    <Compile Include="ViewModels\Content\ArrivalViewModel.cs" />
+    <Compile Include="ViewModels\Content\AuditLogViewModel.cs" />
+    <Compile Include="ViewModels\Content\BuyerProfileViewModel.cs" />
+    <Compile Include="ViewModels\Content\BuyerViewModel.cs" />
+    <Compile Include="ViewModels\Content\ExpensesViewModel.cs" />
+    <Compile Include="ViewModels\Content\GrowerProfileViewModel.cs" />
+    <Compile Include="ViewModels\Content\GrowerViewModel.cs" />
     <Compile Include="ViewModels\DashboardViewModel.cs" />
     <Compile Include="ViewModels\ExpensesListViewModel.cs" />
-    <Compile Include="ViewModels\ExpensesViewModel.cs" />
-    <Compile Include="ViewModels\GrowerProfileViewModel.cs" />
-    <Compile Include="ViewModels\GrowerViewModel.cs" />
+    <Compile Include="ViewModels\ExpensesPageViewModel.cs" />
+    <Compile Include="ViewModels\GrowerProfilePageViewModel.cs" />
+    <Compile Include="ViewModels\GrowerPageViewModel.cs" />
     <Compile Include="ViewModels\LadaanViewModel.cs" />
     <Compile Include="ViewModels\LatePaymentsViewModel.cs" />
     <Compile Include="ViewModels\Menu\SideMenuViewModel.cs" />
     <Compile Include="ViewModels\ProfilePageViewModel.cs" />
     <Compile Include="ViewModels\ProfitViewModel.cs" />
+    <Compile Include="ViewModels\ReportsIntermediatePageViewModel.cs" />
     <Compile Include="ViewModels\ReportsViewModel.cs" />
-    <Compile Include="ViewModels\SearchViewModel.cs" />
+    <Compile Include="ViewModels\SearchPageViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="ViewModels\SetupDashboardViewModel.cs" />
     <Compile Include="ViewModels\StockPendingDetailsViewModel.cs" />
@@ -628,6 +661,48 @@
   <ItemGroup>
     <EmbeddedResource Include="Controls\PrimitiveSegmentControl\FramedLabelSegmentItem.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\ReportsIntermediatePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\Content\BuyerView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\Content\BankAccountsView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\Content\GrowerView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\Content\ArrivalView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\Content\ExpensesView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\Content\AuditLogView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>

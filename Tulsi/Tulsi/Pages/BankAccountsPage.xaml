@@ -1,25 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<m:MenuContainerPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:Tulsi;assembly=Tulsi"
-             xmlns:controls="clr-namespace:Tulsi.Controls"
-             xmlns:m="clr-namespace:SlideOverKit"
-             xmlns:toolKitConverters="clr-namespace:Tulsi.ToolKit.BindingValueConverters"
-             xmlns:toolKitImageResourceExtension="clr-namespace:Tulsi.ToolKit.MarkupExtensions"
-             x:Class="Tulsi.BankAccountsPage" NavigationPage.HasNavigationBar="false">
+<m:MenuContainerPage
+    x:Class="Tulsi.BankAccountsPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:Tulsi.Controls"
+    xmlns:local="clr-namespace:Tulsi;assembly=Tulsi"
+    xmlns:m="clr-namespace:SlideOverKit"
+    xmlns:toolKitConverters="clr-namespace:Tulsi.ToolKit.BindingValueConverters"
+    xmlns:toolKitImageResourceExtension="clr-namespace:Tulsi.ToolKit.MarkupExtensions"
+    NavigationPage.HasNavigationBar="false">
 
-    <StackLayout x:Name="HeaderLayout" 
-                 BackgroundColor="#DCDCDC">
+    <StackLayout x:Name="HeaderLayout" BackgroundColor="#DCDCDC">
 
-        <!--Action Bar-->
+        <!--  Action Bar  -->
         <Grid x:Name="ToolbarGrid" BackgroundColor="#2793F5">
             <Grid.RowDefinitions>
                 <RowDefinition Height="50" />
             </Grid.RowDefinitions>
             <Grid
-          Padding="15,0,0,0"
-          BackgroundColor="Transparent"
-          HorizontalOptions="Start">
+                Padding="15,0,0,0"
+                BackgroundColor="Transparent"
+                HorizontalOptions="Start">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="60" />
                 </Grid.ColumnDefinitions>
@@ -27,23 +28,23 @@
                     <TapGestureRecognizer Tapped="ShowMenuCommand" />
                 </Grid.GestureRecognizers>
                 <Image
-            HorizontalOptions="Start"
-            Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.menu.png}"
-            VerticalOptions="Center"
-            WidthRequest="20" />
+                    HorizontalOptions="Start"
+                    Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.menu.png}"
+                    VerticalOptions="Center"
+                    WidthRequest="20" />
             </Grid>
 
             <Label
-          x:Name="PageTitleLabel"
-          HorizontalOptions="Center"
-          Text="BANK ACCOUNTS"
-          TextColor="White"
-          VerticalOptions="Center" />
+                x:Name="PageTitleLabel"
+                HorizontalOptions="Center"
+                Text="BANK ACCOUNTS"
+                TextColor="White"
+                VerticalOptions="Center" />
 
             <Grid
-          Padding="0,0,15,0"
-          BackgroundColor="Transparent"
-          HorizontalOptions="End">
+                Padding="0,0,15,0"
+                BackgroundColor="Transparent"
+                HorizontalOptions="End">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="60" />
                 </Grid.ColumnDefinitions>
@@ -51,139 +52,95 @@
                     <TapGestureRecognizer Command="{Binding DisplaySearchPageCommand}" />
                 </Grid.GestureRecognizers>
                 <Image
-            HeightRequest="20"
-            HorizontalOptions="End"
-            Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.magnifier.png}"
-            VerticalOptions="Center"
-            WidthRequest="20" />
+                    HeightRequest="20"
+                    HorizontalOptions="End"
+                    Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.magnifier.png}"
+                    VerticalOptions="Center"
+                    WidthRequest="20" />
             </Grid>
         </Grid>
 
-        <StackLayout Padding="10,0"
-                     VerticalOptions="FillAndExpand"
-                     BackgroundColor="Transparent">
+        <!--  MAIN CONTENT  -->
+        <StackLayout
+            Padding="10,0"
+            BackgroundColor="Transparent"
+            VerticalOptions="FillAndExpand">
 
             <StackLayout>
-
                 <StackLayout.Resources>
-
                     <ResourceDictionary>
-
                         <Style TargetType="ContentView">
-
-                            <Setter Property="BackgroundColor"
-                                Value="#027CE9"/>
-
-                            <Setter Property="Padding"
-                                Value="0,7"/>
+                            <Setter Property="BackgroundColor" Value="#027CE9" />
+                            <Setter Property="Padding" Value="0,7" />
                         </Style>
 
                         <Style TargetType="Label">
-
-                            <Setter Property="FontSize"
-                                Value="20"/>
-
-                            <Setter Property="FontAttributes"
-                                Value="Bold"/>
-
-                            <Setter Property="VerticalTextAlignment"
-                                Value="Center"/>
-
-                            <Setter Property="HorizontalTextAlignment"
-                                Value="Center"/>
-
-                            <Setter Property="TextColor"
-                                Value="White"/>
+                            <Setter Property="FontSize" Value="20" />
+                            <Setter Property="FontAttributes" Value="Bold" />
+                            <Setter Property="VerticalTextAlignment" Value="Center" />
+                            <Setter Property="HorizontalTextAlignment" Value="Center" />
+                            <Setter Property="TextColor" Value="White" />
                         </Style>
                     </ResourceDictionary>
                 </StackLayout.Resources>
 
                 <ContentView>
-
-                    <Label Text="TOTAL"/>
+                    <Label Text="TOTAL" />
                 </ContentView>
 
                 <ContentView>
-
-                    <Label Text="72,00,000"/>
+                    <Label Text="72,00,000" />
                 </ContentView>
             </StackLayout>
 
-            <ListView 
-                ItemsSource="{Binding Path=BankAccounts}"
-                VerticalOptions="FillAndExpand"
-                SeparatorVisibility="None"
+            <ListView
                 HasUnevenRows="True"
-                SelectedItem="{Binding Path=SelectedBankAccount, 
-                    Mode=TwoWay}">
-
+                ItemsSource="{Binding Path=BankAccounts}"
+                SelectedItem="{Binding Path=SelectedBankAccount, Mode=TwoWay}"
+                SeparatorVisibility="None"
+                VerticalOptions="FillAndExpand">
                 <ListView.Resources>
-
                     <ResourceDictionary>
-
-                        <toolKitConverters:StringToResourceImageSourceConverter x:Key="stringToResourceImageSourceConverter"/>
+                        <toolKitConverters:StringToResourceImageSourceConverter x:Key="stringToResourceImageSourceConverter" />
                     </ResourceDictionary>
                 </ListView.Resources>
-
                 <ListView.ItemTemplate>
-
                     <DataTemplate>
-
                         <ViewCell>
+                            <Frame
+                                Margin="0,4"
+                                BackgroundColor="White"
+                                CornerRadius="15"
+                                HasShadow="False">
+                                <Frame.Resources>
+                                    <ResourceDictionary>
+                                        <Style TargetType="Label">
+                                            <Setter Property="VerticalTextAlignment" Value="Center" />
+                                            <Setter Property="HorizontalTextAlignment" Value="Center" />
+                                        </Style>
+                                    </ResourceDictionary>
+                                </Frame.Resources>
 
-                            <ViewCell.View>
+                                <StackLayout Grid.Column="1" BackgroundColor="Transparent">
+                                    <Image
+                                        Margin="0,15"
+                                        HeightRequest="31"
+                                        HorizontalOptions="Center"
+                                        Source="{Binding Path=LogoPath, Converter={StaticResource Key=stringToResourceImageSourceConverter}}"
+                                        VerticalOptions="Center"
+                                        WidthRequest="150" />
 
-                                <Frame 
-                                    CornerRadius="15"
-                                    BackgroundColor="White"
-                                    HasShadow="False"
-                                    Margin="0,4">
+                                    <Label
+                                        Margin="0,5"
+                                        FontAttributes="Bold"
+                                        FontSize="25"
+                                        Text="{Binding Path=Ammount}" />
 
-                                    <Frame.Resources>
+                                    <Label FontSize="18" Text="{Binding Path=SomeDescription, StringFormat='{0:N}'}" />
 
-                                        <ResourceDictionary>
-
-                                            <Style TargetType="Label">
-
-                                                <Setter Property="VerticalTextAlignment"
-                                                        Value="Center"/>
-
-                                                <Setter Property="HorizontalTextAlignment"
-                                                        Value="Center"/>
-                                            </Style>
-                                        </ResourceDictionary>
-                                    </Frame.Resources>
-
-                                    <StackLayout
-                                        Grid.Column="1" 
-                                        BackgroundColor="Transparent">
-
-                                        <Image 
-                                            Source="{Binding Path=LogoPath,
-                                                Converter={StaticResource Key=stringToResourceImageSourceConverter}}"
-                                            WidthRequest="150" 
-                                            HeightRequest="31"
-                                            HorizontalOptions="Center" 
-                                            VerticalOptions="Center" 
-                                            Margin="0,15" />
-
-                                        <Label 
-                                            Text="{Binding Path=Ammount}" 
-                                            FontSize="25" 
-                                            FontAttributes="Bold"
-                                            Margin="0,5" />
-
-                                        <Label 
-                                            Text="{Binding Path=SomeDescription,
-                                                StringFormat='{0:N}'}" 
-                                            FontSize="18" />
-
-                                        <Label 
-                                            Text="{Binding Path=LastUpdateInfo}" 
-                                            FontSize="14" />
-                                    </StackLayout>
-                                </Frame>
-                            </ViewCell.View>
+                                    <Label FontSize="14" Text="{Binding Path=LastUpdateInfo}" />
+                                </StackLayout>
+                            </Frame>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>

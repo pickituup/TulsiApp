@@ -3,26 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-using Xamarin.Forms;
-using XamForms.Controls;
-using SlideOverKit;
-using Tulsi.SharedService;
 using Tulsi.NavigationFramework;
-using Tulsi.Helpers;
 using Tulsi.ViewModels;
-using System.Reflection;
-using System.IO;
+using Tulsi.ViewModels.Content;
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+using XamForms.Controls;
 
-namespace Tulsi {
-    public partial class ArrivalPage : ContentPage, IView {
+namespace Tulsi.Pages.Content {
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class ArrivalView : ContentView, IView {
 
-        private readonly ArrivalPageViewModel _viewModel;
+        private readonly ArrivalViewModel _viewModel;
 
-        public ArrivalPage() {
+        public ArrivalView() {
             InitializeComponent();
 
-            BindingContext = _viewModel = new ArrivalPageViewModel();
+            BindingContext = _viewModel = new ArrivalViewModel();
 
             CalendarInitialization();
         }
@@ -53,7 +50,7 @@ namespace Tulsi {
             arrivalCalendar.SelectedBorderWidth = 0;
             arrivalCalendar.SelectedTextColor = Color.White;
             arrivalCalendar.SelectedBackgroundColor = Color.FromHex("#2793F5");
-            
+
 
             List<SpecialDate> specialDates = new List<SpecialDate>();
             SpecialDate event1 = new SpecialDate(new DateTime(2017, 1, 24));
@@ -70,12 +67,12 @@ namespace Tulsi {
             arrivalCalendar.DateClicked += ArrivalCalendar_DateClicked;
         }
 
-        public void ApplyVisualChangesWhileNavigating() {
-
+        private void ArrivalCalendar_DateClicked(object sender, DateTimeEventArgs e) {
+            _viewModel.DisplayMessage("Date", e.DateTime.Date.ToString() + " selected", "OK");
         }
 
-        private void ArrivalCalendar_DateClicked(object sender, DateTimeEventArgs e) {
-            DisplayAlert("Date", e.DateTime.Date.ToString() + " selected", "OK");
+        public void ApplyVisualChangesWhileNavigating() {
+            _viewModel.Dispose();
         }
     }
 }

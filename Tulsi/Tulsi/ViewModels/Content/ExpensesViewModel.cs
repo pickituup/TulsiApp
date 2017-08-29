@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
+using Tulsi.Helpers;
 using Tulsi.Model;
 using Tulsi.MVVM.Core;
 using Tulsi.NavigationFramework;
-using Tulsi.Helpers;
-using System.Windows.Input;
 using Xamarin.Forms;
 
-namespace Tulsi.ViewModels {
-    public class ExpensesViewModel : ViewModelBase, IViewModel {
+namespace Tulsi.ViewModels.Content {
+    public sealed class ExpensesViewModel : ViewModelBase, IViewModel {
 
         public List<ChartModel> ChartData { get; private set; }
 
@@ -24,7 +24,7 @@ namespace Tulsi.ViewModels {
         public ICommand OpenExpensesListCommand { get; private set; }
 
         /// <summary>
-        /// Public ctor.
+        ///     ctor().
         /// </summary>
         public ExpensesViewModel() {
             ChartData = new List<ChartModel>()
@@ -47,7 +47,7 @@ namespace Tulsi.ViewModels {
         }
 
         public void Dispose() {
-
+            
         }
     }
 }

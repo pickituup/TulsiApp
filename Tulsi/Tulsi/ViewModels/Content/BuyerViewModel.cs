@@ -4,33 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Xamarin.Forms;
-using Tulsi.NavigationFramework;
 using Tulsi.Helpers;
-using Tulsi.MVVM.Core;
 using Tulsi.Model;
-using Tulsi.NavigationFramework.NavigationArgs;
-using Tulsi.SharedService;
+using Tulsi.MVVM.Core;
+using Tulsi.NavigationFramework;
+using Xamarin.Forms;
 
-namespace Tulsi.ViewModels {
-    public class BuyerPageViewModel : ViewModelBase, IViewModel {
-        
-        IView _importedView;
-        public IView ImportedView {
-            get { return _importedView; }
-            set {
-                if (SetProperty(ref _importedView, value) && value != null)
-                    Spot.TranslateTo(0, 0);
-            }
-        }
+namespace Tulsi.ViewModels.Content {
+    public sealed class BuyerViewModel : ViewModelBase, IViewModel {
 
-        ContentView _spot;
-        public ContentView Spot {
-            get { return _spot; }
-            set {
-                if (SetProperty(ref _spot, value) && value != null)
-                    HideSpotView();
-            }
+        private IView _buyerProfileDetailView;
+        public IView BuyerProfileDetailView {
+            get => _buyerProfileDetailView;
+            private set => SetProperty<IView>(ref _buyerProfileDetailView, value);
         }
 
         private Transaction _selectedItem;
@@ -72,12 +58,7 @@ namespace Tulsi.ViewModels {
         /// <summary>
         ///     ctor().
         /// </summary>
-        public BuyerPageViewModel() {
-
-            BaseSingleton<NavigationObserver>.Instance.ImportedSpot += ImportingSpot;
-
-            BaseSingleton<NavigationObserver>.Instance.CloseView += OnCloseView;
-
+        public BuyerViewModel() {
             DisplaySearchPageCommand = new Command(() => {
                 BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.SearchPage);
             });
@@ -90,26 +71,14 @@ namespace Tulsi.ViewModels {
                 BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.LatePaymentsPage);
             });
 
-            LooseSelectionCommand = new Command(()=> {
+            LooseSelectionCommand = new Command(() => {
                 SelectedItem = null;
             });
 
+            BuyerProfileDetailView = BaseSingleton<ViewSwitchingLogic>.Instance.GetViewByType(ViewType.BuyerProfileView);
+
             HARDCODED_DATA_INSERT();
-        }
 
-        private void ImportingSpot(object sender, NavigationImportedEventArgs e) {
-            ImportedView = BaseSingleton<ViewSwitchingLogic>.Instance.GetViewByType(e.ViewType);
-        }
-
-        private void OnCloseView(object sender, EventArgs e) {
-            HideSpotView();
-            ImportedView.ApplyVisualChangesWhileNavigating();
-            ImportedView = null;
-        }
-
-        private void HideSpotView() {
-            int displayHeight = DependencyService.Get<IDisplaySize>().GetHeight();
-            Spot.TranslationY = displayHeight;
         }
 
         private void HARDCODED_DATA_INSERT() {
@@ -175,13 +144,7 @@ namespace Tulsi.ViewModels {
         }
 
         public void Dispose() {
-            if (ImportedView != null) {
-                ImportedView.ApplyVisualChangesWhileNavigating();
-            }
-
-            BaseSingleton<NavigationObserver>.Instance.CloseView -= OnCloseView;
-
-            BaseSingleton<NavigationObserver>.Instance.ImportedSpot -= ImportingSpot;
+            
         }
     }
 }

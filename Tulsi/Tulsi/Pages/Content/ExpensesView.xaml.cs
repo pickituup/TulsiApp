@@ -1,23 +1,24 @@
-﻿using SlideOverKit;
-using Syncfusion.SfChart.XForms;
+﻿using Syncfusion.SfChart.XForms;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Tulsi.NavigationFramework;
-using Tulsi.ViewModels;
+using Tulsi.ViewModels.Content;
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
-namespace Tulsi {
-    public partial class ExpensesPage : ContentPage, IView {
+namespace Tulsi.Pages.Content {
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class ExpensesView : ContentView, IView {
 
-        private ExpensesPageViewModel _viewModel;
+        private readonly ExpensesViewModel _viewModel;
 
-        /// <summary>
-        /// Public ctor.
-        /// </summary>
-        public ExpensesPage() {
+        public ExpensesView() {
             InitializeComponent();
 
-            BindingContext = _viewModel = new ExpensesPageViewModel();
+            BindingContext = _viewModel = new ExpensesViewModel();
 
             InitilizeChart();
         }
@@ -107,6 +108,7 @@ namespace Tulsi {
         }
 
         public void ApplyVisualChangesWhileNavigating() {
+            _viewModel.Dispose();
         }
     }
 }

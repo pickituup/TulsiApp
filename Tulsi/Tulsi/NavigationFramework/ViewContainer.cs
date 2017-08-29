@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Tulsi.Pages;
 using Tulsi.Pages.Content;
 using Xamarin.Forms;
 
@@ -187,6 +188,34 @@ namespace Tulsi.NavigationFramework {
                 {
                     ViewType.GrowerProfileView,
                     () => new ViewBuider<GrowerProfileView>().GetView()
+                },
+                {
+                    ViewType.ReportsIntermediatePage,
+                    ()=> new ViewBuider<ReportsIntermediatePage>().GetView()
+                },
+                {
+                    ViewType.BankAccountsView,
+                    ()=> new ViewBuider<BankAccountsView>().GetView()
+                },
+                {
+                    ViewType.GrowerView,
+                    ()=> new ViewBuider<GrowerView>().GetView()
+                },
+                {
+                    ViewType.BuyerView,
+                    ()=> new ViewBuider<BuyerView>().GetView()
+                },
+                {
+                    ViewType.ArrivalView,
+                    ()=> new ViewBuider<ArrivalView>().GetView()
+                },
+                {
+                    ViewType.ExpensesView,
+                    ()=> new ViewBuider<ExpensesView>().GetView()
+                },
+                {
+                    ViewType.AuditLogView,
+                    ()=> new ViewBuider<AuditLogView>().GetView()
                 }
             };
         }

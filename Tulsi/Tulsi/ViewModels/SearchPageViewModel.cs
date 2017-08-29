@@ -9,14 +9,14 @@ using Xamarin.Forms;
 using Tulsi.Model;
 
 namespace Tulsi.ViewModels {
-    public class SearchViewModel : ViewModelBase, IViewModel {
+    public class SearchPageViewModel : ViewModelBase, IViewModel {
 
         private ObservableCollection<ContactGroup> _contactsGroupsResult;
 
         /// <summary>
         ///     Public ctor().
         /// </summary>
-        public SearchViewModel() {
+        public SearchPageViewModel() {
             ClosePageCommand = new Command(() => BaseSingleton<ViewSwitchingLogic>.Instance.NavigateOneStepBack());
 
             ContactsGroupsResult = new ObservableCollection<ContactGroup>();

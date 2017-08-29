@@ -140,6 +140,14 @@ namespace Tulsi.NavigationFramework {
         /// <summary>
         ///     Grower profile view.
         /// </summary>
-        GrowerProfileView
+        GrowerProfileView,
+
+        ReportsIntermediatePage,
+        BankAccountsView,
+        GrowerView,
+        BuyerView,
+        ArrivalView,
+        ExpensesView,
+        AuditLogView
     }
 }

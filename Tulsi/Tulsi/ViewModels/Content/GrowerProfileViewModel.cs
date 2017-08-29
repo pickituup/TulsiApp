@@ -11,10 +11,10 @@ using Tulsi.MVVM.Core;
 using Tulsi.NavigationFramework;
 using Xamarin.Forms;
 
-namespace Tulsi.ViewModels {
+namespace Tulsi.ViewModels.Content {
     public sealed class GrowerProfileViewModel : ViewModelBase, IViewModel {
 
-       ObservableCollection<ProfileTransaction> _transactionsData;
+        ObservableCollection<ProfileTransaction> _transactionsData = new ObservableCollection<ProfileTransaction>();
         public ObservableCollection<ProfileTransaction> TransactionsData {
             get { return _transactionsData; }
             set { SetProperty(ref _transactionsData, value); }
@@ -30,25 +30,28 @@ namespace Tulsi.ViewModels {
             }
         }
 
-        public ICommand  CloseCommand { get; private set; }
+        public ICommand CloseCommand { get; private set; }
 
         /// <summary>
         ///     ctor().
         /// </summary>
         public GrowerProfileViewModel() {
-            TransactionsData = new ObservableCollection<ProfileTransaction>()
-            {
-                new ProfileTransaction { Code = "SKC", Number = "28", IsP=true, Quantity="8,200" },
-                new ProfileTransaction { Code = "SKC", Number = "28", IsP=false, Quantity="8,200" },
-                new ProfileTransaction{ Code = "SKC", Number = "28", IsP=true, Quantity="8,200" },
-                new ProfileTransaction { Code = "SKC", Number = "28", IsP=true, Quantity="8,200" },
-            };
+            BaseSingleton<NavigationObserver>.Instance.SendProfileTransAction += OnSendProfileTransAction;
 
-            CloseCommand = new Command(() => BaseSingleton<ViewSwitchingLogic>.Instance.NavigateOneStepBack());
+            CloseCommand = new Command(() => {
+                TransactionsData.Clear();
+                BaseSingleton<NavigationObserver>.Instance.OnCloseView();
+            });
+        }
+
+        private void OnSendProfileTransAction(object sender, NavigationFramework.NavigationArgs.GrowerProfileTransactionEventArgs e) {
+            foreach (var item in e.Data) {
+                TransactionsData.Add(item);
+            }
         }
 
         public void Dispose() {
-            
+            BaseSingleton<NavigationObserver>.Instance.SendProfileTransAction -= OnSendProfileTransAction;
         }
     }
 }

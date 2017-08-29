@@ -12,7 +12,7 @@ using Tulsi.SharedService;
 namespace Tulsi {
     public partial class AuditLogPage : MenuContainerPage, IView {
 
-        private readonly AuditLogViewModel _viewModel;
+        private readonly AuditLogPageViewModel _viewModel;
 
         /// <summary>
         ///     Public ctor().
@@ -22,7 +22,7 @@ namespace Tulsi {
 
             SlideMenu = new SideMenuView();
 
-            BindingContext = _viewModel = new AuditLogViewModel();
+            BindingContext = _viewModel = new AuditLogPageViewModel();
         }
 
         /// <summary>
