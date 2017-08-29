@@ -110,15 +110,15 @@ namespace Tulsi {
         /// False navigate out from page, true - keep staing in this page.
         /// </summary>
         /// <returns></returns>
-        protected override bool OnBackButtonPressed() {
-            if (_viewModel.SelectedItem == null) {
-                return false;
-            }
-            else {
-                _viewModel.SelectedItem = null;
+        //protected override bool OnBackButtonPressed() {
+        //    if (_viewModel.SelectedItem == null) {
+        //        return false;
+        //    }
+        //    else {
+        //        _viewModel.SelectedItem = null;
 
-                return true;
-            }
-        }
+        //        return true;
+        //    }
+        //}
     }
 }

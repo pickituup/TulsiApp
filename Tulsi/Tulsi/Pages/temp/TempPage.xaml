@@ -4,5 +4,14 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:temp="clr-namespace:Tulsi.Pages.Content">
-    <temp:ArrivalView />
+    <!--<temp:ArrivalView />-->
+
+    <Grid RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <ContentView BackgroundColor="Red" HeightRequest="40" />
+        <ContentView Grid.Row="1" BackgroundColor="Pink" />
+    </Grid>
 </ContentPage>

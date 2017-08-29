@@ -137,44 +137,42 @@
                                     Margin="0,5,0,5"
                                     BackgroundColor="#cccccc"
                                     CornerRadius="20">
-                                    <controls:RoundedContentView.Content>
-                                        <Grid BackgroundColor="#cccccc" VerticalOptions="Center">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="20" />
-                                                <ColumnDefinition Width="30" />
-                                                <ColumnDefinition Width="*" />
-                                                <ColumnDefinition Width="60" />
-                                                <ColumnDefinition Width="20" />
-                                            </Grid.ColumnDefinitions>
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="auto" />
-                                            </Grid.RowDefinitions>
-                                            <Label
-                                                Grid.Column="1"
-                                                HorizontalOptions="Center"
-                                                HorizontalTextAlignment="Start"
-                                                Text="{Binding Code}"
-                                                TextColor="White"
-                                                VerticalOptions="Center"
-                                                VerticalTextAlignment="Center" />
-                                            <Label
-                                                Grid.Column="2"
-                                                HorizontalOptions="Center"
-                                                HorizontalTextAlignment="Center"
-                                                Text="{Binding Number}"
-                                                TextColor="White"
-                                                VerticalOptions="Center"
-                                                VerticalTextAlignment="Center" />
-                                            <Label
-                                                Grid.Column="3"
-                                                HorizontalOptions="Center"
-                                                HorizontalTextAlignment="End"
-                                                Text="{Binding Quantity}"
-                                                TextColor="White"
-                                                VerticalOptions="Center"
-                                                VerticalTextAlignment="Center" />
-                                        </Grid>
-                                    </controls:RoundedContentView.Content>
+                                    <Grid BackgroundColor="Transparent" VerticalOptions="Center">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="20" />
+                                            <ColumnDefinition Width="30" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="60" />
+                                            <ColumnDefinition Width="20" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto" />
+                                        </Grid.RowDefinitions>
+                                        <Label
+                                            Grid.Column="1"
+                                            HorizontalOptions="Center"
+                                            HorizontalTextAlignment="Start"
+                                            Text="{Binding Code}"
+                                            TextColor="White"
+                                            VerticalOptions="Center"
+                                            VerticalTextAlignment="Center" />
+                                        <Label
+                                            Grid.Column="2"
+                                            HorizontalOptions="Center"
+                                            HorizontalTextAlignment="Center"
+                                            Text="{Binding Number}"
+                                            TextColor="White"
+                                            VerticalOptions="Center"
+                                            VerticalTextAlignment="Center" />
+                                        <Label
+                                            Grid.Column="3"
+                                            HorizontalOptions="Center"
+                                            HorizontalTextAlignment="End"
+                                            Text="{Binding Quantity}"
+                                            TextColor="White"
+                                            VerticalOptions="Center"
+                                            VerticalTextAlignment="Center" />
+                                    </Grid>
                                 </controls:RoundedContentView>
                             </ViewCell>
                         </DataTemplate>
