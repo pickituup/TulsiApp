@@ -83,10 +83,11 @@ namespace Tulsi {
             _viewModel.Spot = spot_ContentView;
         }
 
-        protected override void OnDisappearing() {
-            base.OnDisappearing();
+        protected override void OnAppearing() {
+        }
 
-            _viewModel.Dispose();
+        protected override void OnDisappearing() {
+            
         }
 
         /// <summary>
@@ -110,15 +111,21 @@ namespace Tulsi {
         /// False navigate out from page, true - keep staing in this page.
         /// </summary>
         /// <returns></returns>
-        //protected override bool OnBackButtonPressed() {
-        //    if (_viewModel.SelectedItem == null) {
-        //        return false;
-        //    }
-        //    else {
-        //        _viewModel.SelectedItem = null;
+        protected override bool OnBackButtonPressed() {
+            if (_viewModel.SelectedItem == null) {
+                return false;
+            } else {
+                _viewModel.NativeSenderCloseView();
+                return true;
+            }
+        }
 
-        //        return true;
-        //    }
-        //}
+        public void Dispose() {
+            //_viewModel.Dispose();
+        }
+
+        public void ReSubscribe() {
+            //_viewModel.ReSubscribe();
+        }
     }
 }

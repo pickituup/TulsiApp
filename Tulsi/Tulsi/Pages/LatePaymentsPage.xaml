@@ -10,7 +10,7 @@
     NavigationPage.HasNavigationBar="false">
 
     <Grid>
-        <StackLayout BackgroundColor="#DCDCDC">
+        <StackLayout Grid.Row="0" BackgroundColor="#DCDCDC">
             <!--  Tool bar  -->
             <Grid x:Name="ToolbarGrid" BackgroundColor="#2793F5">
                 <Grid.RowDefinitions>
@@ -129,6 +129,9 @@
             </StackLayout>
         </StackLayout>
         <!--  Show/Hide content view spot.  -->
-        <ContentView x:Name="_spot_ConentView" Content="{Binding Path=BuyerProfileDetailView}" />
+        <ContentView
+            x:Name="spot_ContentView"
+            Grid.Row="0"
+            Content="{Binding ImportedView}" />
     </Grid>
 </ContentPage>

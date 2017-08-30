@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Collections.Specialized;
-using Xamarin.Forms;
+﻿using Tulsi.NavigationFramework;
 using Tulsi.ViewModels;
-using Syncfusion.DataSource;
-using SlideOverKit;
-using Tulsi.NavigationFramework;
-using Tulsi.SharedService;
-using System.Collections;
-using Tulsi.Controls.TodayRatesControls;
+using Xamarin.Forms;
 
 namespace Tulsi {
     public partial class TodayRatesPage : ContentPage, IView {
@@ -38,6 +27,14 @@ namespace Tulsi {
         ///     Make some visual changes of current page through navigating process (hide side menu or smt...)
         /// </summary>
         public void ApplyVisualChangesWhileNavigating() {
+            
+        }
+
+        public void Dispose() {
+            
+        }
+
+        public void ReSubscribe() {
             
         }
 

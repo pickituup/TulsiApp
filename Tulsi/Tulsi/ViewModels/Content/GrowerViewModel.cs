@@ -24,9 +24,10 @@ namespace Tulsi.ViewModels.Content {
         public Transaction SelectedItem {
             get { return _selectedItem; }
             set {
-                if (SetProperty(ref _selectedItem, value)) {
+                if (SetProperty(ref _selectedItem, value) && value != null) {
                     BaseSingleton<NavigationObserver>.Instance.OnImportedSpot(ViewType.GrowerProfileView);
                     BaseSingleton<NavigationObserver>.Instance.OnSendProfileTransAction(value.ProfileTransactions);
+                    SelectedItem = null;
                 }
             }
         }
@@ -40,6 +41,16 @@ namespace Tulsi.ViewModels.Content {
         public ICommand DisplaySearchPageCommand { get; private set; }
 
         /// <summary>
+        ///     Display Aggregate items.
+        /// </summary>
+        public ICommand AggregateCommand { get; private set; }
+
+        /// <summary>
+        ///     Display TimeLine items.
+        /// </summary>
+        public ICommand TimeLineCommand { get; private set; }
+
+        /// <summary>
         ///     ctor().
         /// </summary>
         public GrowerViewModel() {
@@ -47,16 +58,30 @@ namespace Tulsi.ViewModels.Content {
                 BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.SearchPage);
             });
 
-            HARDCODED_DATA_INSERT();
+            AggregateCommand = new Command(() => {
+                TransactionsData = GetAggregateTransactions();
+            });
+
+            TimeLineCommand = new Command(() => {
+                TransactionsData = GetTimeLineTransactions();
+            });
+
+            ChartData = GetChartData();
+
+            TransactionsData = GetAggregateTransactions();
         }
 
-        private void HARDCODED_DATA_INSERT() {
-            TransactionsData = new ObservableCollection<Transaction>()
+        private ObservableCollection<ChartModel> GetChartData() {
+            return new ObservableCollection<ChartModel>()
             {
-                new Transaction {
-                    Code = "SKC",
-                    Number = "28",
-                    Quantity ="8,200",
+                new ChartModel { Name = "Paid", Value = 23 },
+                new ChartModel { Name = "Due", Value = 77 }
+            };
+        }
+        private ObservableCollection<Transaction> GetAggregateTransactions() {
+            return new ObservableCollection<Transaction>()
+            {
+                new Transaction { Date = DateTime.Now, TCases = 230, Name = "JohnSn", Amount=110.341m,
                     ProfileTransactions = new List<ProfileTransaction>() {
                         new ProfileTransaction { Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
                         new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=false, Quantity="8,200" },
@@ -67,26 +92,17 @@ namespace Tulsi.ViewModels.Content {
                         new ProfileTransaction{ Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
                         new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=true, Quantity="8,200" }
                 }},
-                new Transaction {
-                    Code = "SKC",
-                    Number = "28",
-                    Quantity ="8,200",
+                new Transaction { Date = DateTime.Now, TCases = 230, Name = "JohnSn", Amount=110.341m,
                     ProfileTransactions = new List<ProfileTransaction>() {
                         new ProfileTransaction { Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
                         new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=false, Quantity="8,200" },
                         new ProfileTransaction{ Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" }
                 }},
-                new Transaction {
-                    Code = "SKC",
-                    Number = "28",
-                    Quantity ="8,200",
+                new Transaction { Date = DateTime.Now, TCases = 230, Name = "JohnSn", Amount=110.341m,
                     ProfileTransactions = new List<ProfileTransaction>() {
                         new ProfileTransaction { Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" }
                 }},
-                new Transaction {
-                    Code = "SKC",
-                    Number = "28",
-                    Quantity ="8,200",
+                new Transaction { Date = DateTime.Now, TCases = 230, Name = "JohnSn", Amount=110.341m,
                     ProfileTransactions = new List<ProfileTransaction>() {
                         new ProfileTransaction { Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
                         new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=false, Quantity="8,200" },
@@ -97,18 +113,12 @@ namespace Tulsi.ViewModels.Content {
                         new ProfileTransaction{ Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
                         new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=true, Quantity="8,200" }
                 }},
-                new Transaction {
-                    Code = "SKC",
-                    Number = "28",
-                    Quantity ="8,200" ,
+                new Transaction { Date = DateTime.Now, TCases = 230, Name = "JohnSn", Amount=110.341m,
                     ProfileTransactions = new List<ProfileTransaction>() {
                         new ProfileTransaction { Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
                         new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=false, Quantity="8,200" },
                 }},
-                new Transaction {
-                    Code = "SKC",
-                    Number = "28",
-                    Quantity ="8,200",
+                new Transaction { Date = DateTime.Now, TCases = 230, Name = "JohnSn", Amount=110.341m,
                     ProfileTransactions = new List<ProfileTransaction>() {
                         new ProfileTransaction { Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
                         new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=false, Quantity="8,200" },
@@ -119,10 +129,7 @@ namespace Tulsi.ViewModels.Content {
                         new ProfileTransaction{ Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
                         new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=true, Quantity="8,200" }
                 }},
-                new Transaction {
-                    Code = "SKC",
-                    Number = "28",
-                    Quantity ="8,200",
+                new Transaction { Date = DateTime.Now, TCases = 230, Name = "JohnSn", Amount=110.341m,
                     ProfileTransactions = new List<ProfileTransaction>() {
                         new ProfileTransaction { Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
                         new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=false, Quantity="8,200" },
@@ -131,15 +138,38 @@ namespace Tulsi.ViewModels.Content {
                         new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=true, Quantity="8,200" }
                 }}
             };
+        }
 
-            ChartData = new ObservableCollection<ChartModel>()
+        private ObservableCollection<Transaction> GetTimeLineTransactions() {
+            return new ObservableCollection<Transaction>()
             {
-                new ChartModel { Name = "Paid", Value = 23 },
-                new ChartModel { Name = "Due", Value = 77 }
+                new Transaction { Date = DateTime.Now, TCases = 230, Name = "JohnSn", Amount=110.341m,
+                    ProfileTransactions = new List<ProfileTransaction>() {
+                        new ProfileTransaction { Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
+                        new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=false, Quantity="8,200" },
+                        new ProfileTransaction{ Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
+                        new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=true, Quantity="8,200" },
+                        new ProfileTransaction { Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
+                        new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=false, Quantity="8,200" },
+                        new ProfileTransaction{ Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
+                        new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=true, Quantity="8,200" }
+                }},
+                new Transaction {Date = DateTime.Now, TCases = 230, Name = "JohnSn", Amount=110.341m,
+                    ProfileTransactions = new List<ProfileTransaction>() {
+                        new ProfileTransaction { Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
+                        new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=false, Quantity="8,200" },
+                        new ProfileTransaction{ Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
+                        new ProfileTransaction{ Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
+                        new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=true, Quantity="8,200" }
+                }}
             };
         }
 
         public void Dispose() {
+        }
+
+        public void ReSubscribe() {
+            
         }
     }
 }

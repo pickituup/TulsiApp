@@ -29,6 +29,14 @@ namespace Tulsi {
             
         }
 
+        public void Dispose() {
+            
+        }
+
+        public void ReSubscribe() {
+            throw new NotImplementedException();
+        }
+
         /// <summary>
         /// 
         /// </summary>

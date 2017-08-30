@@ -9,38 +9,46 @@ using Xamarin.Forms;
 using Tulsi.NavigationFramework;
 using Tulsi.Helpers;
 using Tulsi.Model;
+using System.Collections.ObjectModel;
+using Tulsi.NavigationFramework.NavigationArgs;
+using Tulsi.SharedService;
 
 namespace Tulsi.ViewModels {
-    public class BuyerRankingsViewModel : ViewModelBase, IViewModel {
-        /// <summary>
-        /// TODO: maby define one shared ViewContainer builder for all 'users'
-        /// </summary>
-        private ViewContainer _viewContainer;
-        private IView _buyerProfileDetailView;
-        private VisualElement _movableSpot;
-        private BuyerRanking _selectedItem;
+    public class BuyerRankingsPageViewModel : ViewModelBase, IViewModel {
 
-        // Navigate back.
-        public ICommand NavigateBackCommand { get; private set; }
+        ObservableCollection<BuyerRanking> _buyerRankings;
+        public ObservableCollection<BuyerRanking> BuyerRankings {
+            get { return _buyerRankings; }
+            set { SetProperty(ref _buyerRankings, value); }
+        }
 
-        /// <summary>
-        ///     ctor().
-        /// </summary>
-        public BuyerRankingsViewModel() {
-            _viewContainer = new ViewContainer();
-            BuyerProfileDetailView = _viewContainer.GetViewByType(ViewType.BuyerProfileView);
+        IView _importedView;
+        public IView ImportedView {
+            get { return _importedView; }
+            set {
+                if (SetProperty(ref _importedView, value) && value != null)
+                    Spot.TranslateTo(0, 0);
+            }
+        }
 
-            DisplaySearchPageCommand = new Command(() => {
-                BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.SearchPage);
-            });
+        ContentView _spot;
+        public ContentView Spot {
+            get { return _spot; }
+            set {
+                if (SetProperty(ref _spot, value) && value != null)
+                    HideSpotView();
+            }
+        }
 
-            LooseSelectionCommand = new Command(() => {
-                SelectedItem = null;
-            });
-
-            NavigateBackCommand = new Command(() => BaseSingleton<ViewSwitchingLogic>.Instance.NavigateOneStepBack());
-
-            HARDCODED_DATA_INSERT();
+        BuyerRanking _selectedItem;
+        public BuyerRanking SelectedItem {
+            get => _selectedItem;
+            set {
+                if (SetProperty(ref _selectedItem, value) && value != null) {
+                    BaseSingleton<NavigationObserver>.Instance.OnImportedSpot(ViewType.BuyerProfileView);
+                    BaseSingleton<NavigationObserver>.Instance.OnSendProfileTransAction(value.ProfileTransactions);
+                }
+            }
         }
 
         /// <summary>
@@ -48,79 +56,53 @@ namespace Tulsi.ViewModels {
         /// </summary>
         public ICommand DisplaySearchPageCommand { get; private set; }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public List<BuyerRanking> BuyerRankings { get; private set; }
+        // Navigate back.
+        public ICommand NavigateBackCommand { get; private set; }
 
         /// <summary>
-        /// Loose selection of prev selected rate command
+        ///     ctor().
         /// </summary>
-        public ICommand LooseSelectionCommand { get; private set; }
+        public BuyerRankingsPageViewModel() {
+            BaseSingleton<NavigationObserver>.Instance.ImportedSpot += ImportingSpot;
 
-        /// <summary>
-        /// Buyer profile detail view representation.
-        /// </summary>
-        public IView BuyerProfileDetailView {
-            get => _buyerProfileDetailView;
-            private set => SetProperty<IView>(ref _buyerProfileDetailView, value);
+            BaseSingleton<NavigationObserver>.Instance.CloseView += OnCloseView;
+
+            DisplaySearchPageCommand = new Command(() => {
+                BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.SearchPage);
+            });
+
+            NavigateBackCommand = new Command(() => BaseSingleton<ViewSwitchingLogic>.Instance.NavigateOneStepBack());
+
+            BuyerRankings = GetBuyerRankings();
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public BuyerRanking SelectedItem {
-            get => _selectedItem;
-            set {
-                if (SetProperty<BuyerRanking>(ref _selectedItem, value)) {
-                    ToogleSpotVisibility(value == null ? false : true);
-                }
+        private void ImportingSpot(object sender, NavigationImportedEventArgs e) {
+            ImportedView = BaseSingleton<ViewSwitchingLogic>.Instance.GetViewByType(e.ViewType);
+        }
+
+        private void OnCloseView(object sender, EventArgs e) {
+            if (ImportedView != null) {
+                SelectedItem = null;
+                HideSpotView();
+                ImportedView.Dispose();
+                ImportedView = null;
             }
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public VisualElement MovableSpot {
-            get => _movableSpot;
-            set {
-                if (SetProperty<VisualElement>(ref _movableSpot, value) &&
-                    value != null) {
-                    //
-                    // We will hide spot only if it's another spot instanse and it's not null.
-                    //
-                    ToogleSpotVisibility(false);
-                }
-            }
+        public void NativeSenderCloseView() {
+            SelectedItem = null;
+            HideSpotView();
+            ImportedView.Dispose();
+            ImportedView = null;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public void Dispose() {
-
+        private void HideSpotView() {
+            int displayHeight = DependencyService.Get<IDisplaySize>().GetHeight();
+            Spot.TranslationY = displayHeight;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="isVisible"></param>
-        private void ToogleSpotVisibility(bool isVisible) {
-            if (isVisible) {
-                MovableSpot.TranslateTo(0, 0);
-            } else {
-                //
-                // TODO: get screen heigh dynamicaly
-                //
-                MovableSpot.TranslationY = 1000;
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        private void HARDCODED_DATA_INSERT() {
-            BuyerRankings = new List<BuyerRanking>() {
+        private ObservableCollection<BuyerRanking> GetBuyerRankings() {
+            return new ObservableCollection<BuyerRanking>() {
                 new BuyerRanking { Name = "DFC Mickey", Rank=1, IsUp=true, Change=1,
                     ProfileTransactions = new List<ProfileTransaction>() {
                         new ProfileTransaction { Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
@@ -184,6 +166,18 @@ namespace Tulsi.ViewModels {
                         new ProfileTransaction{ Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" }
                     } }
             };
+        }
+
+        public void Dispose() {
+            BaseSingleton<NavigationObserver>.Instance.ImportedSpot -= ImportingSpot;
+
+            BaseSingleton<NavigationObserver>.Instance.CloseView -= OnCloseView;
+        }
+
+        public void ReSubscribe() {
+            //BaseSingleton<NavigationObserver>.Instance.ImportedSpot += ImportingSpot;
+
+            //BaseSingleton<NavigationObserver>.Instance.CloseView += OnCloseView;
         }
     }
 }

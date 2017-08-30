@@ -9,12 +9,12 @@ using Tulsi.ViewModels;
 
 namespace Tulsi {
     public partial class BuyerProfilePage : ContentPage, IView {
-        private BuyerProfileViewModel _viewModel;
+        private BuyerProfilePageViewModel _viewModel;
 
         public BuyerProfilePage() {
             InitializeComponent();
 
-            BindingContext = _viewModel = new BuyerProfileViewModel();
+            BindingContext = _viewModel = new BuyerProfilePageViewModel();
         }
 
         /// <summary>
@@ -22,6 +22,14 @@ namespace Tulsi {
         /// </summary>
         public void ApplyVisualChangesWhileNavigating() {
             
+        }
+
+        public void Dispose() {
+
+        }
+
+        public void ReSubscribe() {
+            throw new NotImplementedException();
         }
 
         /// <summary>

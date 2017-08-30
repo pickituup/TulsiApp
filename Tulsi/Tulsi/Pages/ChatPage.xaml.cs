@@ -26,6 +26,14 @@ namespace Tulsi {
             
         }
 
+        public void Dispose() {
+            
+        }
+
+        public void ReSubscribe() {
+            
+        }
+
         private void BackButtonCommand(object sender, EventArgs e) {
             BaseSingleton<ViewSwitchingLogic>.Instance.NavigateOneStepBack();
         }

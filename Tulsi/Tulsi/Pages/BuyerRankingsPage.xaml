@@ -11,7 +11,7 @@
     NavigationPage.HasNavigationBar="false">
 
     <Grid>
-        <StackLayout BackgroundColor="#DCDCDC">
+        <StackLayout Grid.Row="0" BackgroundColor="#DCDCDC">
             <!--  ActionBar  -->
             <Grid x:Name="ToolbarGrid" BackgroundColor="#2793F5">
                 <Grid.RowDefinitions>
@@ -61,6 +61,7 @@
                 </Grid>
             </Grid>
 
+            <!--  MAIN CONTENT  -->
             <StackLayout BackgroundColor="#DCDCDC" Spacing="10">
                 <controls:CustomFrame
                     Margin="5,0,5,0"
@@ -81,6 +82,7 @@
                         </Label.FormattedText>
                     </Label>
                 </controls:CustomFrame>
+
                 <controls:CustomFrame
                     Margin="5,0,5,0"
                     BackgroundColor="White"
@@ -94,17 +96,13 @@
 
                         <ListView
                             Grid.Column="1"
-                            ItemsSource="{Binding Path=BuyerRankings}"
+                            ItemsSource="{Binding BuyerRankings}"
                             RowHeight="50"
-                            SelectedItem="{Binding Path=SelectedItem, Mode=TwoWay}"
+                            SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
                             SeparatorVisibility="None">
-
                             <ListView.ItemTemplate>
-
                                 <DataTemplate>
-
                                     <ViewCell>
-
                                         <controls:CustomFrame
                                             Margin="0,5,0,0"
                                             BackgroundColor="White"
@@ -112,32 +110,22 @@
                                             OutlineColor="#cccccc">
 
                                             <Grid Margin="0,-5,0,0" BackgroundColor="White">
-
                                                 <Grid.ColumnDefinitions>
-
                                                     <ColumnDefinition Width="40" />
-
                                                     <ColumnDefinition Width="*" />
-
                                                     <ColumnDefinition Width="10" />
-
                                                     <ColumnDefinition Width="10" />
                                                 </Grid.ColumnDefinitions>
-
                                                 <Grid.RowDefinitions>
-
                                                     <RowDefinition Height="auto" />
                                                 </Grid.RowDefinitions>
 
                                                 <Grid Grid.Column="0" BackgroundColor="Transparent">
-
                                                     <Grid.ColumnDefinitions>
-
                                                         <ColumnDefinition Width="40" />
                                                     </Grid.ColumnDefinitions>
 
                                                     <Grid.RowDefinitions>
-
                                                         <RowDefinition Height="40" />
                                                     </Grid.RowDefinitions>
 
@@ -146,7 +134,6 @@
                                                         HorizontalOptions="Center"
                                                         Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.bigbluecircle.png}"
                                                         WidthRequest="35" />
-
                                                     <Label
                                                         FontAttributes="Bold"
                                                         HorizontalOptions="Center"
@@ -187,6 +174,9 @@
         </StackLayout>
 
         <!--  Show/Hide content view spot.  -->
-        <ContentView x:Name="_spot_ConentView" Content="{Binding Path=BuyerProfileDetailView}" />
+        <ContentView
+            x:Name="spot_ContentView"
+            Grid.Row="0"
+            Content="{Binding ImportedView}" />
     </Grid>
 </ContentPage>

@@ -52,6 +52,11 @@ namespace Tulsi.ViewModels.Content {
 
         public void Dispose() {
             BaseSingleton<NavigationObserver>.Instance.SendProfileTransAction -= OnSendProfileTransAction;
+            TransactionsData = null;
+        }
+
+        public void ReSubscribe() {
+            
         }
     }
 }

@@ -9,44 +9,50 @@ using Tulsi.NavigationFramework;
 using Tulsi.Helpers;
 using System.Windows.Input;
 using Xamarin.Forms;
+using System.Collections.ObjectModel;
+using Tulsi.SharedService;
+using Tulsi.NavigationFramework.NavigationArgs;
 
 namespace Tulsi.ViewModels {
-    public class LatePaymentsViewModel : ViewModelBase, IViewModel {
-        /// <summary>
-        /// TODO: maby define one shared ViewContainer builder for all 'users'
-        /// </summary>
-        private ViewContainer _viewContainer;
+    public class LatePaymentsPageViewModel : ViewModelBase, IViewModel {
+
         private LatePayment _selectedLatePayment;
-        private VisualElement _movableSpot;
-        private IView _buyerProfileDetailView;
+        public LatePayment SelectedItem {
+            get => _selectedLatePayment;
+            set {
+                if (SetProperty<LatePayment>(ref _selectedLatePayment, value) && value != null) {
+                    BaseSingleton<NavigationObserver>.Instance.OnImportedSpot(ViewType.BuyerProfileView);
+                    BaseSingleton<NavigationObserver>.Instance.OnSendProfileTransAction(value.ProfileTransactions);
+                }
+            }
+        }
+
+        ObservableCollection<LatePayment> _latePayments;
+        public ObservableCollection<LatePayment> LatePayments {
+            get { return _latePayments; }
+            set { SetProperty(ref _latePayments, value); }
+        }
+
+        IView _importedView;
+        public IView ImportedView {
+            get { return _importedView; }
+            set {
+                if (SetProperty(ref _importedView, value) && value != null)
+                    Spot.TranslateTo(0, 0);
+            }
+        }
+
+        ContentView _spot;
+        public ContentView Spot {
+            get { return _spot; }
+            set {
+                if (SetProperty(ref _spot, value) && value != null)
+                    HideSpotView();
+            }
+        }
 
         // Navigate back.
         public ICommand NavigateBackCommand { get; private set; }
-
-        /// <summary>
-        /// Public ctor.
-        /// </summary>
-        public LatePaymentsViewModel() {
-            _viewContainer = new ViewContainer();
-            BuyerProfileDetailView = _viewContainer.GetViewByType(ViewType.BuyerProfileView);
-
-            DisplaySearchPageCommand = new Command(()=> {
-                BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.SearchPage);
-            });
-
-            LooseSelectionCommand = new Command(() => {
-                SelectedItem = null;
-            });
-
-            NavigateBackCommand = new Command(() => BaseSingleton<ViewSwitchingLogic>.Instance.NavigateOneStepBack());
-
-            HARDCODED_DATA_INSERT();
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public List<LatePayment> LatePayments { get; private set; }
 
         /// <summary>
         /// 
@@ -54,74 +60,52 @@ namespace Tulsi.ViewModels {
         public ICommand DisplaySearchPageCommand { get; private set; }
 
         /// <summary>
-        /// Loose selection of prev selected rate command
+        /// Public ctor.
         /// </summary>
-        public ICommand LooseSelectionCommand { get; private set; }
+        public LatePaymentsPageViewModel() {
 
-        /// <summary>
-        /// Buyer profile detail view representation.
-        /// </summary>
-        public IView BuyerProfileDetailView {
-            get => _buyerProfileDetailView;
-            private set => SetProperty<IView>(ref _buyerProfileDetailView, value);
+            BaseSingleton<NavigationObserver>.Instance.ImportedSpot += ImportingSpot;
+
+            BaseSingleton<NavigationObserver>.Instance.CloseView += OnCloseView;
+
+            DisplaySearchPageCommand = new Command(() => {
+                BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.SearchPage);
+            });
+
+
+            NavigateBackCommand = new Command(() => BaseSingleton<ViewSwitchingLogic>.Instance.NavigateOneStepBack());
+
+
+            LatePayments = GetLatePayments();
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public LatePayment SelectedItem {
-            get => _selectedLatePayment;
-            set {
-                if (SetProperty<LatePayment>(ref _selectedLatePayment, value)) {
-                    ToogleSpotVisibility(value == null ? false : true);
-                }
+        private void ImportingSpot(object sender, NavigationImportedEventArgs e) {
+            ImportedView = BaseSingleton<ViewSwitchingLogic>.Instance.GetViewByType(e.ViewType);
+        }
+
+        private void OnCloseView(object sender, EventArgs e) {
+            if (this.ImportedView != null) {
+                SelectedItem = null;
+                HideSpotView();
+                ImportedView.Dispose();
+                ImportedView = null;
             }
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public VisualElement MovableSpot {
-            get => _movableSpot;
-            set {
-                if (SetProperty<VisualElement>(ref _movableSpot, value) &&
-                    value != null) {
-                    //
-                    // We will hide spot only if it's another spot instanse and it's not null.
-                    //
-                    ToogleSpotVisibility(false);
-                }
-            }
+        public void NativeSenderCloseView() {
+            SelectedItem = null;
+            HideSpotView();
+            ImportedView.Dispose();
+            ImportedView = null;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public void Dispose() {
-            
+        private void HideSpotView() {
+            int displayHeight = DependencyService.Get<IDisplaySize>().GetHeight();
+            Spot.TranslationY = displayHeight;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="isVisible"></param>
-        private void ToogleSpotVisibility(bool isVisible) {
-            if (isVisible) {
-                MovableSpot.TranslateTo(0, 0);
-            }
-            else {
-                //
-                // TODO: get screen heigh dynamicaly
-                //
-                MovableSpot.TranslationY = 1000;
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        private void HARDCODED_DATA_INSERT() {
-            LatePayments = new List<LatePayment>()
+        private ObservableCollection<LatePayment> GetLatePayments() {
+            return new ObservableCollection<LatePayment>()
             {
                 new LatePayment { Name = "SKC Arjun", Amount=78000,
                     ProfileTransactions = new List<ProfileTransaction>() {
@@ -172,6 +156,17 @@ namespace Tulsi.ViewModels {
                         new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=false, Quantity="8,200" }
                     } }
             };
+        }
+
+
+        public void Dispose() {
+            BaseSingleton<NavigationObserver>.Instance.ImportedSpot -= ImportingSpot;
+
+            BaseSingleton<NavigationObserver>.Instance.CloseView -= OnCloseView;
+        }
+
+        public void ReSubscribe() {
+
         }
     }
 }

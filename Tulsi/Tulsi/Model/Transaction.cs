@@ -1,29 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Tulsi.Model {
     public sealed class Transaction {
-        /// <summary>
-        /// 
-        /// </summary>
-        public string Code { get; set; }
+        public string Name { get; set; }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public string Number { get; set; }
+        public int TCases { get; set; }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public string Quantity { get; set; }
+        public decimal Amount { get; set; }
 
-        /// <summary>
-        /// 
-        /// </summary>
+        public DateTime Date { get; set; }
+
         public List<ProfileTransaction> ProfileTransactions { get; set; }
     }
 }

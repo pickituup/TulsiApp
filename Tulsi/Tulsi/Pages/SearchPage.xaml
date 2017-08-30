@@ -10,6 +10,7 @@
     xmlns:toolKitBindingValueConverters="clr-namespace:Tulsi.ToolKit.BindingValueConverters"
     xmlns:toolKitMarkupExtensions="clr-namespace:Tulsi.ToolKit.MarkupExtensions"
     NavigationPage.HasNavigationBar="false">
+
     <ContentPage.Resources>
         <ResourceDictionary>
             <toolKitBindingValueConverters:BoolToGenericObjectConverter
@@ -90,7 +91,7 @@
 
                     <primitiveSegmentControls:FramedLabelSegmentItem
                         HorizontalOptions="FillAndExpand"
-                        ItemCommand="{Binding Path=CommandForSegments}"
+                        ItemCommand="{Binding CommandForSegments}"
                         Label="Third segment" />
                 </primitiveSegmentControls:PrimitiveSegment.Segments>
             </primitiveSegmentControls:PrimitiveSegment>
@@ -100,7 +101,7 @@
                 HasUnevenRows="True"
                 IsGroupingEnabled="True"
                 ItemSelected="OnItemSelected"
-                ItemsSource="{Binding Path=ContactsGroupsResult}"
+                ItemsSource="{Binding ContactsGroupsResult}"
                 SeparatorColor="Transparent"
                 SeparatorVisibility="None"
                 VerticalOptions="FillAndExpand">
@@ -108,51 +109,50 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <ViewCell.View>
-                                <Frame
-                                    Margin="0,5"
-                                    Padding="10"
-                                    BackgroundColor="White"
-                                    HasShadow="False">
 
-                                    <StackLayout BackgroundColor="Transparent">
+                            <Frame
+                                Margin="0,5"
+                                Padding="10"
+                                BackgroundColor="White"
+                                HasShadow="False">
 
-                                        <StackLayout BackgroundColor="Transparent" Orientation="Horizontal">
-                                            <Label
-                                                FontSize="Medium"
-                                                HorizontalOptions="StartAndExpand"
-                                                Text="{Binding Path=Name}" />
-                                            <Label
-                                                FontSize="Medium"
-                                                HorizontalOptions="EndAndExpand"
-                                                Text="{Binding Path=Number, StringFormat='${0}'}"
-                                                TextColor="{Binding Path=IsOverDue, Converter={StaticResource Key=_converter}}" />
-                                        </StackLayout>
+                                <StackLayout BackgroundColor="Transparent">
+                                    <StackLayout BackgroundColor="Transparent" Orientation="Horizontal">
                                         <Label
                                             FontSize="Medium"
-                                            Text="{Binding Path=Company}"
-                                            TextColor="#AAAAAA" />
-                                        <Frame
-                                            Padding="13,0"
-                                            BackgroundColor="Red"
-                                            HasShadow="False"
-                                            HorizontalOptions="Start"
-                                            IsVisible="{Binding Path=IsOverDue}">
-
-                                            <StackLayout BackgroundColor="Transparent" Orientation="Horizontal">
-
-                                                <Label
-                                                    FontSize="Medium"
-                                                    Text="{Binding Path=OverdueDays, StringFormat='{0} Days OverDue'}"
-                                                    TextColor="White" />
-                                            </StackLayout>
-                                        </Frame>
+                                            HorizontalOptions="StartAndExpand"
+                                            Text="{Binding Path=Name}" />
+                                        <Label
+                                            FontSize="Medium"
+                                            HorizontalOptions="EndAndExpand"
+                                            Text="{Binding Path=Number, StringFormat='${0}'}"
+                                            TextColor="{Binding Path=IsOverDue, Converter={StaticResource Key=_converter}}" />
                                     </StackLayout>
-                                </Frame>
-                            </ViewCell.View>
+                                    <Label
+                                        FontSize="Medium"
+                                        Text="{Binding Path=Company}"
+                                        TextColor="#AAAAAA" />
+                                    <Frame
+                                        Padding="13,0"
+                                        BackgroundColor="Red"
+                                        HasShadow="False"
+                                        HorizontalOptions="Start"
+                                        IsVisible="{Binding Path=IsOverDue}">
+
+                                        <StackLayout BackgroundColor="Transparent" Orientation="Horizontal">
+
+                                            <Label
+                                                FontSize="Medium"
+                                                Text="{Binding Path=OverdueDays, StringFormat='{0} Days OverDue'}"
+                                                TextColor="White" />
+                                        </StackLayout>
+                                    </Frame>
+                                </StackLayout>
+                            </Frame>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
+
                 <ListView.GroupHeaderTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -168,136 +168,5 @@
                 </ListView.GroupHeaderTemplate>
             </ListView>
         </StackLayout>
-
-        <!--  MAIN CONTENT  -->
-        <!--<ScrollView>
-            <StackLayout x:Name="MainLayout" BackgroundColor="Transparent">
-                <Grid BackgroundColor="Transparent">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="170" />
-                        <ColumnDefinition Width="170" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto" />
-                        <RowDefinition Height="auto" />
-                        <RowDefinition Height="auto" />
-                    </Grid.RowDefinitions>
-                    <Grid
-                        x:Name="SearchBoxGrid"
-                        Grid.Column="1"
-                        Grid.ColumnSpan="2"
-                        BackgroundColor="Transparent">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="340" />
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="auto" />
-                        </Grid.RowDefinitions>
-                        <Frame
-                            CornerRadius="30"
-                            HorizontalOptions="FillAndExpand"
-                            VerticalOptions="FillAndExpand">
-                            <controls:EntryEx
-                                BackgroundColor="White"
-                                BorderColor="#cccccc"
-                                BorderRadius="50"
-                                BorderWidth="2"
-                                HeightRequest="50"
-                                HorizontalOptions="CenterAndExpand"
-                                Placeholder="Search..."
-                                PlaceholderColor="#cccccc"
-                                VerticalOptions="CenterAndExpand"
-                                WidthRequest="320" />
-                            <Image
-                                HeightRequest="18"
-                                HorizontalOptions="EndAndExpand"
-                                Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.search.png}"
-                                VerticalOptions="CenterAndExpand"
-                                WidthRequest="20" />
-                        </Frame>
-                    </Grid>
-                    <controls:RoundedContentView
-                        x:Name="BuyersArea"
-                        Grid.Row="1"
-                        Grid.Column="1"
-                        Margin="0,20"
-                        BackgroundColor="#027CE9"
-                        CornerRadius="30"
-                        HorizontalOptions="Center">
-                        <controls:RoundedContentView.Content>
-                            <Grid BackgroundColor="Transparent">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150" />
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="60" />
-                                </Grid.RowDefinitions>
-                                <Label
-                                    x:Name="BuyersAreaLabel"
-                                    HorizontalOptions="Center"
-                                    Text="Buyers"
-                                    TextColor="White"
-                                    VerticalOptions="Center" />
-                            </Grid>
-                        </controls:RoundedContentView.Content>
-                    </controls:RoundedContentView>
-                    <controls:RoundedContentView
-                        x:Name="GrowersArea"
-                        Grid.Row="1"
-                        Grid.Column="2"
-                        Margin="0,20"
-                        BackgroundColor="#FFFFFF"
-                        CornerRadius="30"
-                        HorizontalOptions="Center">
-                        <controls:RoundedContentView.Content>
-                            <Grid BackgroundColor="Transparent">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150" />
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="60" />
-                                </Grid.RowDefinitions>
-                                <Label
-                                    x:Name="GrowersAreaLabel"
-                                    HorizontalOptions="Center"
-                                    Text="Growers"
-                                    TextColor="#CCCCCC"
-                                    VerticalOptions="Center" />
-                            </Grid>
-                        </controls:RoundedContentView.Content>
-                    </controls:RoundedContentView>
-                </Grid>
-                <Frame
-                    Grid.RowSpan="2"
-                    Margin="30,0"
-                    CornerRadius="20"
-                    VerticalOptions="FillAndExpand">
-                    <ListView
-                        x:Name="menuItems"
-                        Grid.Column="1"
-                        Grid.ColumnSpan="2"
-                        BackgroundColor="White"
-                        ItemSelected="Handle_ItemSelected"
-                        ItemsSource="{Binding Result}"
-                        RowHeight="50"
-                        SelectedItem="{Binding SelectedMenuItem, Mode=TwoWay}"
-                        SeparatorVisibility="None"
-                        VerticalOptions="CenterAndExpand">
-                        <DataTemplate>
-                            <ViewCell>
-                                <ContentView>
-                                    <Label
-                                        FontSize="Micro"
-                                        Text="{Binding Result}"
-                                        TextColor="Green" />
-                                </ContentView>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView>
-                </Frame>
-            </StackLayout>
-        </ScrollView>-->
     </StackLayout>
 </ContentPage>

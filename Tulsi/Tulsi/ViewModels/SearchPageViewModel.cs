@@ -44,6 +44,10 @@ namespace Tulsi.ViewModels {
 
         }
 
+        public void ReSubscribe() {
+            
+        }
+
         /// <summary>
         /// 
         /// </summary>

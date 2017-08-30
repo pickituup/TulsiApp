@@ -15,7 +15,7 @@ namespace Tulsi.Controls.PrimitiveSegmentControl {
         private PrimitiveSegmentItemBase _selectedItem;
 
         /// <summary>
-        /// Public ctor.
+        ///     ctor().
         /// </summary>
         public PrimitiveSegment() {
             Segments = new ObservableCollection<PrimitiveSegmentItemBase>();
@@ -26,33 +26,23 @@ namespace Tulsi.Controls.PrimitiveSegmentControl {
         }
 
         /// <summary>
-        /// 
+        ///     Segment items.
         /// </summary>
         public ObservableCollection<PrimitiveSegmentItemBase> Segments {
             get => _items;
             private set => _items = value;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void OnSegmentsCollectionChanged(object sender, NotifyCollectionChangedEventArgs e) {
             if (e.Action == NotifyCollectionChangedAction.Add) {
                 BuildLayout(e.NewItems);
             }
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="newItems"></param>
         private void BuildLayout(IList itemsToAdd) {
             foreach (PrimitiveSegmentItemBase segmentItem in itemsToAdd) {
-                TapGestureRecognizer tapGesture = new TapGestureRecognizer(OnTap);
-                //tapGesture.Command = new Command(OnTap);
-
+                TapGestureRecognizer tapGesture = new TapGestureRecognizer();
+                tapGesture.Tapped += (s, e) => OnTap(segmentItem);
                 segmentItem.BaseViewForTap.GestureRecognizers.Add(tapGesture);
 
                 Children.Add(segmentItem);
@@ -64,16 +54,12 @@ namespace Tulsi.Controls.PrimitiveSegmentControl {
             }
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="tappedSegment"></param>
-        private void OnTap(View tappedSegmentsView) {
+        private void OnTap(PrimitiveSegmentItemBase tappedSegmentsView) {
             if (_selectedItem != null) {
                 _selectedItem.Deselect();
             }
 
-            _selectedItem = (PrimitiveSegmentItemBase)((View)tappedSegmentsView).Parent;
+            _selectedItem = tappedSegmentsView; 
             _selectedItem.Select();
 
             if (_selectedItem.ItemCommand != null) {

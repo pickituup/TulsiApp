@@ -68,7 +68,13 @@ namespace Tulsi.ViewModels {
 
         private void OnCloseView(object sender, EventArgs e) {
             HideSpotView();
-            ImportedView.ApplyVisualChangesWhileNavigating();
+            ImportedView.Dispose();
+            ImportedView = null;
+        }
+
+        public void NativeSenderCloseView() {
+            HideSpotView();
+            ImportedView.Dispose();
             ImportedView = null;
         }
 
@@ -88,7 +94,7 @@ namespace Tulsi.ViewModels {
 
         public void Dispose() {
             if (ImportedView != null) {
-                ImportedView.ApplyVisualChangesWhileNavigating();
+                ImportedView.Dispose();
             }
 
             BaseSingleton<NavigationObserver>.Instance.NavigatedContent -= ImportingContent;
@@ -96,6 +102,10 @@ namespace Tulsi.ViewModels {
             BaseSingleton<NavigationObserver>.Instance.ImportedSpot -= ImportingSpot;
 
             BaseSingleton<NavigationObserver>.Instance.CloseView -= OnCloseView;
+        }
+
+        public void ReSubscribe() {
+            
         }
     }
 }

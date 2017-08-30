@@ -38,5 +38,22 @@ namespace Tulsi.Pages {
 
             _viewModel.Dispose();
         }
+
+        protected override bool OnBackButtonPressed() {
+            if (_viewModel.ImportedView == null) {
+                return false;
+            } else {
+                _viewModel.NativeSenderCloseView();
+                return true;
+            }
+        }
+
+        public void Dispose() {
+            
+        }
+
+        public void ReSubscribe() {
+            
+        }
     }
 }

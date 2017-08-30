@@ -23,6 +23,14 @@ namespace Tulsi {
             
         }
 
+        public void Dispose() {
+            
+        }
+
+        public void ReSubscribe() {
+            
+        }
+
         private void Handle_ItemSelected(object sender, SelectedItemChangedEventArgs e) {
             menuItems.SelectedItem = null;
         }

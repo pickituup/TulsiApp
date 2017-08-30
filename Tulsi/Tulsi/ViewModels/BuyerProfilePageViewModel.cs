@@ -12,7 +12,7 @@ using Tulsi.Helpers;
 using System.Collections.ObjectModel;
 
 namespace Tulsi.ViewModels {
-    public sealed class BuyerProfileViewModel : ViewModelBase,IViewModel {
+    public sealed class BuyerProfilePageViewModel : ViewModelBase, IViewModel {
 
         ObservableCollection<ProfileTransaction> _transactionsData = new ObservableCollection<ProfileTransaction>();
         public ObservableCollection<ProfileTransaction> TransactionsData {
@@ -35,7 +35,7 @@ namespace Tulsi.ViewModels {
         /// <summary>
         ///     ctor().
         /// </summary>
-        public BuyerProfileViewModel() {
+        public BuyerProfilePageViewModel() {
             BaseSingleton<NavigationObserver>.Instance.SendProfileTransAction += OnSendProfileTransAction;
 
             CloseCommand = new Command(() => {
@@ -52,6 +52,10 @@ namespace Tulsi.ViewModels {
 
         public void Dispose() {
             BaseSingleton<NavigationObserver>.Instance.SendProfileTransAction -= OnSendProfileTransAction;
+        }
+
+        public void ReSubscribe() {
+            
         }
     }
 }

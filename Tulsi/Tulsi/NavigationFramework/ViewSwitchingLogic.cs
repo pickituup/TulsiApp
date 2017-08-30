@@ -6,12 +6,15 @@ using System.Threading.Tasks;
 
 namespace Tulsi.NavigationFramework {
     public sealed class ViewSwitchingLogic {
-        private static readonly string _ERROR_NAVIGATION_STACK_IS_EMPTY = "Make shure that the current navigation stack is not empty",
-            _ERROR_INVALID_PAGE_IN_NAVIGATION_STACK = "Page must implement Tulsi.NavigationFramework.IView interface.";
+
+        private static readonly string ERROR_NAVIGATION_STACK_IS_EMPTY = "Make shure that the current navigation stack is not empty";
+
+        private static readonly string ERROR_INVALID_PAGE_IN_NAVIGATION_STACK = "Page must implement Tulsi.NavigationFramework.IView interface.";
+
         private readonly ViewContainer _viewContainer;
 
         /// <summary>
-        ///     Public ctor
+        ///     ctor().
         /// </summary>
         public ViewSwitchingLogic() {
             _viewContainer = new ViewContainer();
@@ -36,18 +39,25 @@ namespace Tulsi.NavigationFramework {
 
             if (relativePageFromNavigationStack != null) {
                 MoveToTheExistingPageInNavigationStack(relativePageFromNavigationStack);
-            }
-            else {
+            } else {
                 ApplyVisualChangesWhileNavigating(Application.Current.MainPage.Navigation.NavigationStack.LastOrDefault());
                 PushPage(pageToPush);
             }
         }
 
         /// <summary>
-        /// Removes the last page from navigation stack. Root page will not be exclude from navigation stack. 
+        ///     Removes the last page from navigation stack. Root page will not be exclude from navigation stack. 
         /// </summary>
-        public void NavigateOneStepBack() {
-            Application.Current.MainPage.Navigation.PopAsync(false);
+        public async void NavigateOneStepBack() {
+            await Application.Current.MainPage.Navigation.PopAsync(false);
+
+            ActionAfterNavigatedBackAsync(Application.Current.MainPage.Navigation.NavigationStack.LastOrDefault());
+        }
+
+        private void ActionAfterNavigatedBackAsync(Page page) {
+            if (page is IView) {
+                ((IView)page).ReSubscribe();
+            }
         }
 
         /// <summary>
@@ -69,8 +79,8 @@ namespace Tulsi.NavigationFramework {
         }
 
         /// <summary>
-        /// PageToGoTo must be also setted in navigation stack.
-        /// Pages which goes after 'pageToGoTo' simply will be poped without animations.
+        ///     PageToGoTo must be also setted in navigation stack.
+        ///     Pages which goes after 'pageToGoTo' simply will be poped without animations.
         /// </summary>
         /// <param name="pageToGoTo"></param>
         private async void MoveToTheExistingPageInNavigationStack(Page pageToGoTo) {
@@ -93,7 +103,7 @@ namespace Tulsi.NavigationFramework {
         }
 
         /// <summary>
-        /// Pushes 'pageToPush' to the Navigation stack.
+        ///     Pushes 'pageToPush' to the Navigation stack.
         /// </summary>
         /// <param name="targetPage"></param>
         private async void PushPage(Page pageToPush) {
@@ -101,19 +111,18 @@ namespace Tulsi.NavigationFramework {
         }
 
         /// <summary>
-        /// Forse to make 'navigation' visual changes for target page.
+        ///     Force to make 'navigation' visual changes for target page.
         /// </summary>
         private void ApplyVisualChangesWhileNavigating(Page targetPage) {
             try {
                 ((IView)targetPage).ApplyVisualChangesWhileNavigating();
-            }
-            catch (NullReferenceException exc) {
+                ((IView)targetPage).Dispose();
+            } catch (NullReferenceException exc) {
                 throw new InvalidOperationException(string.Format("ViewSwitchingLogic.ApplyVisualChangesWhileNavigating - {0}. Exception details - {1}",
-                    _ERROR_NAVIGATION_STACK_IS_EMPTY, exc.Message));
-            }
-            catch (Exception exc) {
+                    ERROR_NAVIGATION_STACK_IS_EMPTY, exc.Message));
+            } catch (Exception exc) {
                 throw new InvalidOperationException(string.Format("ViewSwitchingLogic.ApplyVisualChangesWhileNavigating - {0}, Exception details - {1}",
-                    _ERROR_INVALID_PAGE_IN_NAVIGATION_STACK, exc.Message));
+                    ERROR_INVALID_PAGE_IN_NAVIGATION_STACK, exc.Message));
             }
         }
     }

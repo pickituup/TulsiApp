@@ -17,7 +17,7 @@ namespace Tulsi {
     /// </summary>
     public partial class LatePaymentsPage : ContentPage, IView {
 
-        private LatePaymentsViewModel _viewModel;
+        private LatePaymentsPageViewModel _viewModel;
 
         /// <summary>
         ///     ctor().
@@ -25,12 +25,28 @@ namespace Tulsi {
         public LatePaymentsPage() {
             InitializeComponent();
 
-            BindingContext = _viewModel = new LatePaymentsViewModel();
-            _viewModel.MovableSpot = _spot_ConentView;
+            BindingContext = _viewModel = new LatePaymentsPageViewModel();
+
+            _viewModel.Spot = spot_ContentView;
         }
 
         public void ApplyVisualChangesWhileNavigating() {
 
+        }
+
+        protected override void OnDisappearing() {
+            if (_viewModel.ImportedView != null) {
+                _viewModel.ImportedView.Dispose();
+            }
+            _viewModel.Dispose();
+        }
+
+        public void Dispose() {
+            _viewModel.Dispose();
+        }
+
+        public void ReSubscribe() {
+            
         }
 
         /// <summary>
@@ -42,7 +58,7 @@ namespace Tulsi {
             if (_viewModel.SelectedItem == null) {
                 return false;
             } else {
-                _viewModel.SelectedItem = null;
+                _viewModel.NativeSenderCloseView();
                 return true;
             }
         }

@@ -7,7 +7,7 @@ namespace Tulsi.Pages.Content {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class BuyerProfileView : ContentView, IView {
 
-        private readonly BuyerProfileViewModel _viewModel;
+        private readonly BuyerProfilePageViewModel _viewModel;
 
         /// <summary>
         ///     ctor().
@@ -15,11 +15,18 @@ namespace Tulsi.Pages.Content {
         public BuyerProfileView() {
             InitializeComponent();
 
-            BindingContext = _viewModel = new BuyerProfileViewModel();
+            BindingContext = _viewModel = new BuyerProfilePageViewModel();
         }
 
         public void ApplyVisualChangesWhileNavigating() {
+        }
+
+        public void Dispose() {
             _viewModel.Dispose();
+        }
+
+        public void ReSubscribe() {
+            
         }
     }
 }

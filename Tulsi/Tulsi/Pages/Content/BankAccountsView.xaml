@@ -58,6 +58,7 @@
                         <Frame
                             Margin="0,4"
                             BackgroundColor="White"
+                            OutlineColor="#999999"
                             CornerRadius="15"
                             HasShadow="False">
                             <Frame.Resources>

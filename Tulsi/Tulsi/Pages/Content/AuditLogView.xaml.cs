@@ -21,7 +21,14 @@ namespace Tulsi.Pages.Content {
         }
 
         public void ApplyVisualChangesWhileNavigating() {
+        }
+
+        public void Dispose() {
             _viewModel.Dispose();
+        }
+
+        public void ReSubscribe() {
+            
         }
     }
 }

@@ -1,15 +1,12 @@
-﻿using Tulsi.NavigationFramework;
+﻿using System;
+using Tulsi.NavigationFramework;
 using Tulsi.ViewModels;
 using Xamarin.Forms;
 
 namespace Tulsi {
-    /// <summary>
-    /// TODO: BuyerRankingsPage use similar 'hide/show behavior' as in LatePaymentsPage, BuyerPage. Try
-    /// to define abstract core of that behavior
-    /// </summary>
     public partial class BuyerRankingsPage : ContentPage, IView {
 
-        private BuyerRankingsViewModel _viewModel;
+        private BuyerRankingsPageViewModel _viewModel;
 
         /// <summary>
         ///     ctor().
@@ -17,13 +14,20 @@ namespace Tulsi {
         public BuyerRankingsPage() {
             InitializeComponent();
 
-            BindingContext = _viewModel = new BuyerRankingsViewModel();
+            BindingContext = _viewModel = new BuyerRankingsPageViewModel();
 
-            _viewModel.MovableSpot = _spot_ConentView;
+            _viewModel.Spot = spot_ContentView;
         }
 
         public void ApplyVisualChangesWhileNavigating() {
 
+        }
+
+        protected override void OnDisappearing() {
+            if (_viewModel.ImportedView != null) {
+                _viewModel.ImportedView.Dispose();
+            }
+            _viewModel.Dispose();
         }
 
         /// <summary>
@@ -35,9 +39,17 @@ namespace Tulsi {
             if (_viewModel.SelectedItem == null) {
                 return false;
             } else {
-                _viewModel.SelectedItem = null;
+                _viewModel.NativeSenderCloseView();
                 return true;
             }
+        }
+
+        public void Dispose() {
+            _viewModel.Dispose();
+        }
+
+        public void ReSubscribe() {
+            
         }
     }
 }

@@ -77,5 +77,13 @@ namespace Tulsi {
         public void ApplyVisualChangesWhileNavigating() {
             SlideMenu.HideWithoutAnimations();
         }
+
+        public void Dispose() {
+            
+        }
+
+        public void ReSubscribe() {
+            
+        }
     }
 }

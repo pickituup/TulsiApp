@@ -109,7 +109,7 @@
                         <ViewCell>
                             <Frame
                                 Margin="0,4"
-                                BackgroundColor="White"
+                                BackgroundColor="Transparent"
                                 CornerRadius="15"
                                 HasShadow="False">
                                 <Frame.Resources>

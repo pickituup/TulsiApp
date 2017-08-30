@@ -60,6 +60,16 @@ namespace Tulsi.ViewModels {
         public ICommand DisplaySearchPageCommand { get; private set; }
 
         /// <summary>
+        ///     Display Aggregate items.
+        /// </summary>
+        public ICommand AggregateCommand { get; private set; }
+
+        /// <summary>
+        ///     Display TimeLine items.
+        /// </summary>
+        public ICommand TimeLineCommand { get; private set; }
+
+        /// <summary>
         ///     ctor().
         /// </summary>
         public GrowerPageViewModel() {
@@ -71,7 +81,17 @@ namespace Tulsi.ViewModels {
                 BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.SearchPage);
             });
 
-            HARDCODED_DATA_INSERT();
+            AggregateCommand = new Command(() => {
+                TransactionsData = GetAggregateTransactions();
+            });
+
+            TimeLineCommand = new Command(() => {
+                TransactionsData = GetTimeLineTransactions();
+            });
+
+            ChartData = GetChartData();
+
+            TransactionsData = GetAggregateTransactions();
         }
 
         private void ImportingSpot(object sender, NavigationImportedEventArgs e) {
@@ -79,8 +99,16 @@ namespace Tulsi.ViewModels {
         }
 
         private void OnCloseView(object sender, EventArgs e) {
+            SelectedItem = null;
             HideSpotView();
-            ImportedView.ApplyVisualChangesWhileNavigating();
+            ImportedView.Dispose();
+            ImportedView = null;
+        }
+
+        public void NativeSenderCloseView() {
+            SelectedItem = null;
+            HideSpotView();
+            ImportedView.Dispose();
             ImportedView = null;
         }
 
@@ -89,26 +117,10 @@ namespace Tulsi.ViewModels {
             Spot.TranslationY = displayHeight;
         }
 
-        public void Dispose() {
-            if (ImportedView != null) {
-                ImportedView.ApplyVisualChangesWhileNavigating();
-            }
-
-            BaseSingleton<NavigationObserver>.Instance.CloseView -= OnCloseView;
-
-            BaseSingleton<NavigationObserver>.Instance.ImportedSpot -= ImportingSpot;
-        }
-
-        /// <summary>
-        ///     ctor() initilized.
-        /// </summary>
-        private void HARDCODED_DATA_INSERT() {
-            TransactionsData = new ObservableCollection<Transaction>()
+        private ObservableCollection<Transaction> GetAggregateTransactions() {
+            return new ObservableCollection<Transaction>()
             {
-                new Transaction {
-                    Code = "SKC",
-                    Number = "28",
-                    Quantity ="8,200",
+                new Transaction { Date = DateTime.Now, TCases = 230, Name = "JohnSn", Amount=110.341m,
                     ProfileTransactions = new List<ProfileTransaction>() {
                         new ProfileTransaction { Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
                         new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=false, Quantity="8,200" },
@@ -119,26 +131,17 @@ namespace Tulsi.ViewModels {
                         new ProfileTransaction{ Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
                         new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=true, Quantity="8,200" }
                 }},
-                new Transaction {
-                    Code = "SKC",
-                    Number = "28",
-                    Quantity ="8,200",
+                new Transaction { Date = DateTime.Now, TCases = 230, Name = "JohnSn", Amount=110.341m,
                     ProfileTransactions = new List<ProfileTransaction>() {
                         new ProfileTransaction { Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
                         new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=false, Quantity="8,200" },
                         new ProfileTransaction{ Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" }
                 }},
-                new Transaction {
-                    Code = "SKC",
-                    Number = "28",
-                    Quantity ="8,200",
+                new Transaction { Date = DateTime.Now, TCases = 230, Name = "JohnSn", Amount=110.341m,
                     ProfileTransactions = new List<ProfileTransaction>() {
                         new ProfileTransaction { Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" }
                 }},
-                new Transaction {
-                    Code = "SKC",
-                    Number = "28",
-                    Quantity ="8,200",
+                new Transaction { Date = DateTime.Now, TCases = 230, Name = "JohnSn", Amount=110.341m,
                     ProfileTransactions = new List<ProfileTransaction>() {
                         new ProfileTransaction { Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
                         new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=false, Quantity="8,200" },
@@ -149,18 +152,12 @@ namespace Tulsi.ViewModels {
                         new ProfileTransaction{ Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
                         new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=true, Quantity="8,200" }
                 }},
-                new Transaction {
-                    Code = "SKC",
-                    Number = "28",
-                    Quantity ="8,200" ,
+                new Transaction { Date = DateTime.Now, TCases = 230, Name = "JohnSn", Amount=110.341m,
                     ProfileTransactions = new List<ProfileTransaction>() {
                         new ProfileTransaction { Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
                         new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=false, Quantity="8,200" },
                 }},
-                new Transaction {
-                    Code = "SKC",
-                    Number = "28",
-                    Quantity ="8,200",
+                new Transaction { Date = DateTime.Now, TCases = 230, Name = "JohnSn", Amount=110.341m,
                     ProfileTransactions = new List<ProfileTransaction>() {
                         new ProfileTransaction { Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
                         new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=false, Quantity="8,200" },
@@ -171,10 +168,7 @@ namespace Tulsi.ViewModels {
                         new ProfileTransaction{ Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
                         new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=true, Quantity="8,200" }
                 }},
-                new Transaction {
-                    Code = "SKC",
-                    Number = "28",
-                    Quantity ="8,200",
+                new Transaction { Date = DateTime.Now, TCases = 230, Name = "JohnSn", Amount=110.341m,
                     ProfileTransactions = new List<ProfileTransaction>() {
                         new ProfileTransaction { Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
                         new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=false, Quantity="8,200" },
@@ -183,12 +177,53 @@ namespace Tulsi.ViewModels {
                         new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=true, Quantity="8,200" }
                 }}
             };
+        }
 
-            ChartData = new ObservableCollection<ChartModel>()
+        private ObservableCollection<Transaction> GetTimeLineTransactions() {
+            return new ObservableCollection<Transaction>()
+            {
+                new Transaction { Date = DateTime.Now, TCases = 230, Name = "JohnSn", Amount=110.341m,
+                    ProfileTransactions = new List<ProfileTransaction>() {
+                        new ProfileTransaction { Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
+                        new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=false, Quantity="8,200" },
+                        new ProfileTransaction{ Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
+                        new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=true, Quantity="8,200" },
+                        new ProfileTransaction { Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
+                        new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=false, Quantity="8,200" },
+                        new ProfileTransaction{ Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
+                        new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=true, Quantity="8,200" }
+                }},
+                new Transaction {Date = DateTime.Now, TCases = 230, Name = "JohnSn", Amount=110.341m,
+                    ProfileTransactions = new List<ProfileTransaction>() {
+                        new ProfileTransaction { Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
+                        new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=false, Quantity="8,200" },
+                        new ProfileTransaction{ Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
+                        new ProfileTransaction{ Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
+                        new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=true, Quantity="8,200" }
+                }}
+            };
+        }
+        private ObservableCollection<ChartModel> GetChartData() {
+            return new ObservableCollection<ChartModel>()
             {
                 new ChartModel { Name = "Paid", Value = 23 },
                 new ChartModel { Name = "Due", Value = 77 }
             };
+        }
+
+
+        public void Dispose() {
+            if (ImportedView != null) {
+                ImportedView.Dispose();
+            }
+
+            BaseSingleton<NavigationObserver>.Instance.CloseView -= OnCloseView;
+
+            BaseSingleton<NavigationObserver>.Instance.ImportedSpot -= ImportingSpot;
+        }
+
+        public void ReSubscribe() {
+            
         }
     }
 }

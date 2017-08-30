@@ -53,6 +53,10 @@ namespace Tulsi.ViewModels.Content {
         internal void DisplayMessage(string title, string message, string value) {
             DisplayAlert(title, message, value);
         }
+
+        public void ReSubscribe() {
+            
+        }
     }
 }
 

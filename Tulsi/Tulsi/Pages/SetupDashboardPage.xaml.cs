@@ -16,5 +16,13 @@ namespace Tulsi {
         public void ApplyVisualChangesWhileNavigating() {
             
         }
+
+        public void Dispose() {
+            
+        }
+
+        public void ReSubscribe() {
+            
+        }
     }
 }

@@ -32,6 +32,14 @@ namespace Tulsi {
             SlideMenu.HideWithoutAnimations();
         }
 
+        public void Dispose() {
+            _viewModel.Dispose();
+        }
+
+        public void ReSubscribe() {
+            
+        }
+
         /// <summary>
         /// Opens side menu
         /// </summary>

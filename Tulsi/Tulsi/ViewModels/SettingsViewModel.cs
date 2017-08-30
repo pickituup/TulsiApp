@@ -27,5 +27,9 @@ namespace Tulsi.ViewModels {
 
         public void Dispose() {
         }
+
+        public void ReSubscribe() {
+            
+        }
     }
 }

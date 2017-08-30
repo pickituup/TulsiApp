@@ -6,6 +6,7 @@
     xmlns:controls="clr-namespace:Tulsi.Controls"
     xmlns:local="clr-namespace:Tulsi;assembly=Tulsi"
     xmlns:m="clr-namespace:SlideOverKit"
+    xmlns:segmentControls="clr-namespace:Tulsi.Controls.PrimitiveSegmentControl"
     xmlns:toolKitImageResourceExtension="clr-namespace:Tulsi.ToolKit.MarkupExtensions"
     NavigationPage.HasNavigationBar="false">
 
@@ -158,81 +159,149 @@
                         </Grid>
                     </Grid>
                 </controls:CustomFrame>
+
                 <controls:CustomFrame
-                    Margin="5,0,5,0"
+                    Margin="5,0,5,10"
                     BackgroundColor="White"
                     BorderRadius="25">
                     <Grid BackgroundColor="White">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="20" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="20" />
-                        </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
                             <RowDefinition Height="auto" />
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
                         <Label
-                            Grid.ColumnSpan="3"
+                            Grid.Row="0"
                             HorizontalTextAlignment="Center"
                             Text="GROWER TRANSACTIONS"
                             VerticalTextAlignment="Center" />
-                        <ListView
-                            x:Name="menuItems"
+
+                        <!--  SEGMENT CONTROL  -->
+                        <segmentControls:PrimitiveSegment
                             Grid.Row="1"
-                            Grid.Column="1"
-                            ItemsSource="{Binding TransactionsData}"
-                            RowHeight="50"
-                            SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
-                            SeparatorVisibility="None">
+                            Orientation="Horizontal"
+                            Spacing="20">
+                            <segmentControls:PrimitiveSegment.Segments>
+                                <segmentControls:WithoutFrameSegmentItem
+                                    HorizontalOptions="EndAndExpand"
+                                    ItemCommand="{Binding AggregateCommand}"
+                                    Label="Aggregate" />
+                                <segmentControls:WithoutFrameSegmentItem
+                                    HorizontalOptions="StartAndExpand"
+                                    ItemCommand="{Binding TimeLineCommand}"
+                                    Label="TimeLine" />
+                            </segmentControls:PrimitiveSegment.Segments>
+                        </segmentControls:PrimitiveSegment>
+
+                      <controls:RoundedContentView
+                              Grid.Row="2"
+                              BackgroundColor="White"
+                              CornerRadius="10">
+                        <StackLayout BackgroundColor="Transparent" Spacing="0">
+                          <!--  HEADER LIST  -->
+                          <controls:RoundedContentView
+                              BackgroundColor="#8B8A86"
+                              CornerRadius="10"
+                              HeightRequest="40">
+                            <StackLayout
+                                Padding="0"
+                                BackgroundColor="Transparent"
+                                Orientation="Horizontal"
+                                Spacing="0">
+                              <Label
+                                  Margin="15,0,0,0"
+                                  FontSize="Medium"
+                                  HorizontalOptions="CenterAndExpand"
+                                  HorizontalTextAlignment="Center"
+                                  Text="Date"
+                                  TextColor="White"
+                                  VerticalTextAlignment="Center" />
+                              <Label
+                                  Margin="15,0,0,0"
+                                  FontSize="Medium"
+                                  HorizontalOptions="CenterAndExpand"
+                                  HorizontalTextAlignment="Center"
+                                  Text="TCases"
+                                  TextColor="White"
+                                  VerticalTextAlignment="Center" />
+                              <Label
+                                  Margin="10,0,0,0"
+                                  FontSize="Medium"
+                                  HorizontalOptions="CenterAndExpand"
+                                  HorizontalTextAlignment="Center"
+                                  Text="Buyer"
+                                  TextColor="White"
+                                  VerticalTextAlignment="Center" />
+                              <Label
+                                  Margin="5,0,0,0"
+                                  FontSize="Medium"
+                                  HorizontalOptions="CenterAndExpand"
+                                  HorizontalTextAlignment="Center"
+                                  Text="TNetAmt"
+                                  TextColor="White"
+                                  VerticalTextAlignment="Center" />
+                            </StackLayout>
+                          </controls:RoundedContentView>
+
+                          <ListView
+                              ItemsSource="{Binding TransactionsData, Mode=TwoWay}"
+                              RowHeight="45"
+                              SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+                              SeparatorVisibility="None">
                             <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <ViewCell>
-                                        <controls:RoundedContentView
-                                            Margin="0,5,0,5"
-                                            BackgroundColor="#cccccc"
-                                            CornerRadius="20">
-                                            <Grid BackgroundColor="Transparent" VerticalOptions="Center">
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="20" />
-                                                    <ColumnDefinition Width="30" />
-                                                    <ColumnDefinition Width="*" />
-                                                    <ColumnDefinition Width="60" />
-                                                    <ColumnDefinition Width="20" />
-                                                </Grid.ColumnDefinitions>
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="auto" />
-                                                </Grid.RowDefinitions>
-                                                <Label
-                                                    Grid.Column="1"
-                                                    HorizontalOptions="Center"
-                                                    HorizontalTextAlignment="Start"
-                                                    Text="{Binding Code}"
-                                                    TextColor="White"
-                                                    VerticalOptions="Center"
-                                                    VerticalTextAlignment="Center" />
-                                                <Label
-                                                    Grid.Column="2"
-                                                    HorizontalOptions="Center"
-                                                    HorizontalTextAlignment="Center"
-                                                    Text="{Binding Number}"
-                                                    TextColor="White"
-                                                    VerticalOptions="Center"
-                                                    VerticalTextAlignment="Center" />
-                                                <Label
-                                                    Grid.Column="3"
-                                                    HorizontalOptions="Center"
-                                                    HorizontalTextAlignment="End"
-                                                    Text="{Binding Quantity}"
-                                                    TextColor="White"
-                                                    VerticalOptions="Center"
-                                                    VerticalTextAlignment="Center" />
-                                            </Grid>
-                                        </controls:RoundedContentView>
-                                    </ViewCell>
-                                </DataTemplate>
+                              <DataTemplate>
+                                <ViewCell>
+                                  <controls:RoundedContentView
+                                      Margin="5"
+                                      BackgroundColor="#EBECEE"
+                                      CornerRadius="10">
+                                    <Grid BackgroundColor="Transparent" VerticalOptions="Center" RowSpacing="0">
+                                      <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                      </Grid.ColumnDefinitions>
+
+                                      <Label
+                                          Grid.Column="0"
+                                          HorizontalOptions="Center"
+                                          HorizontalTextAlignment="Center"
+                                          Text="{Binding Date, StringFormat='{0:dd/MM}'}"
+                                          TextColor="#666668"
+                                          VerticalTextAlignment="Center" />
+                                      <Label
+                                          Grid.Column="1"
+                                          HorizontalOptions="Center"
+                                          HorizontalTextAlignment="Start"
+                                          Text="{Binding TCases}"
+                                          TextColor="#666668"
+                                          VerticalOptions="Center"
+                                          VerticalTextAlignment="Center" />
+                                      <Label
+                                          Grid.Column="2"
+                                          HorizontalOptions="Center"
+                                          HorizontalTextAlignment="Center"
+                                          Text="{Binding Name}"
+                                          TextColor="#666668"
+                                          VerticalOptions="Center"
+                                          VerticalTextAlignment="Center" />
+                                      <Label
+                                          Grid.Column="3"
+                                          HorizontalOptions="Center"
+                                          HorizontalTextAlignment="End"
+                                          Text="{Binding Amount}"
+                                          TextColor="#666668"
+                                          VerticalOptions="Center"
+                                          VerticalTextAlignment="Center" />
+                                    </Grid>
+                                  </controls:RoundedContentView>
+                                </ViewCell>
+                              </DataTemplate>
                             </ListView.ItemTemplate>
-                        </ListView>
+                          </ListView>
+                        </StackLayout>
+                      </controls:RoundedContentView>
                     </Grid>
                 </controls:CustomFrame>
             </StackLayout>

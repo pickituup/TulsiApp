@@ -54,5 +54,9 @@ namespace Tulsi.ViewModels.Menu {
         public void Dispose() {
 
         }
+
+        public void ReSubscribe() {
+            
+        }
     }
 }
