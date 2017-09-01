@@ -8,6 +8,7 @@ using Xamarin.Forms;
 using Tulsi.ViewModels;
 using SlideOverKit;
 using Tulsi.SharedService;
+using Tulsi.Helpers;
 
 namespace Tulsi {
     public partial class AuditLogPage : MenuContainerPage, IView {
@@ -26,7 +27,7 @@ namespace Tulsi {
         }
 
         /// <summary>
-        /// Show side menu
+        ///     Show side menu.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -35,18 +36,24 @@ namespace Tulsi {
         }
 
         /// <summary>
-        ///     Make some visual changes of current page through navigating process (hide side menu or smt...)
+        ///     Autohide side menu.
         /// </summary>
         public void ApplyVisualChangesWhileNavigating() {
             SlideMenu.HideWithoutAnimations();
         }
 
-        public void Dispose() {
-            
+        /// <summary>
+        ///     Occurs only for Android (not for iOS).
+        ///     False navigate out from page, true - stay on this page.
+        /// </summary>
+        /// <returns></returns>
+        protected override bool OnBackButtonPressed() {
+            BaseSingleton<ViewSwitchingLogic>.Instance.NavigateOneStepBack();
+            return true;
         }
 
-        public void ReSubscribe() {
-            
+        public void Dispose() {
+            _viewModel.Dispose();
         }
     }
 }

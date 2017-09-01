@@ -11,7 +11,20 @@ using Tulsi.MVVM.Core;
 
 namespace Tulsi.ViewModels {
     public sealed class ProfilePageViewModel : ViewModelBase, IViewModel {
-        
+
+        /// <summary>
+        ///     Navigate back.
+        /// </summary>
+        public ICommand ClosePageCommand { get; private set; }
+
+        /// <summary>
+        ///     Log out from current profile.
+        /// </summary>
+        public ICommand LogOutCommand { get; private set; }
+
+        /// <summary>
+        ///     ctor().
+        /// </summary>
         public ProfilePageViewModel() {
             ClosePageCommand = new Command(() => {
                 BaseSingleton<ViewSwitchingLogic>.Instance.NavigateOneStepBack();
@@ -22,21 +35,7 @@ namespace Tulsi.ViewModels {
             });
         }
 
-        /// <summary>
-        /// Close current page through Tulsi.NavigationFramework.NavigateOneStepBack().
-        /// </summary>
-        public ICommand ClosePageCommand { get; private set; }
-
-        /// <summary>
-        /// Logs out from current profile
-        /// </summary>
-        public ICommand LogOutCommand { get; private set; }
-
-       
-        public void Dispose() { }
-
-        public void ReSubscribe() {
-            
+        public void Dispose() {
         }
     }
 }

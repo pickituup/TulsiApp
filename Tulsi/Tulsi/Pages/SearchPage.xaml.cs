@@ -7,6 +7,7 @@ using Tulsi.NavigationFramework;
 using Xamarin.Forms;
 using Tulsi.ViewModels;
 using SlideOverKit;
+using Tulsi.Helpers;
 
 namespace Tulsi {
     public partial class SearchPage : ContentPage, IView {
@@ -26,24 +27,24 @@ namespace Tulsi {
         ///     Make some visual changes of current page through navigating process (hide side menu or smt...)
         /// </summary>
         public void ApplyVisualChangesWhileNavigating() {
-            
-        }
-
-        public void Dispose() {
-            
-        }
-
-        public void ReSubscribe() {
-            throw new NotImplementedException();
         }
 
         /// <summary>
-        /// 
+        ///     Occurs only for Android (not for iOS).
+        ///     False navigate out from page, true - staying in this page.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <returns></returns>
+        protected override bool OnBackButtonPressed() {
+            BaseSingleton<ViewSwitchingLogic>.Instance.NavigateOneStepBack();
+            return true;
+        }
+
         private void OnItemSelected(object sender, SelectedItemChangedEventArgs e) {
             ((ListView)sender).SelectedItem = null;
+        }
+
+        public void Dispose() {
+            _viewModel.Dispose();
         }
     }
 }

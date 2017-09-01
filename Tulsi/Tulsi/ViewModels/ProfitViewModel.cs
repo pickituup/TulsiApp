@@ -18,6 +18,18 @@ namespace Tulsi.ViewModels {
 
         private readonly ProfitMenuContainer _container;
 
+        string _title= "Profit & Loss";
+        public string Title {
+            get { return _title; }
+            set { SetProperty(ref _title, value); }
+        }
+
+        DateTime _date = DateTime.Now;
+        public DateTime Date {
+            get { return _date; }
+            set { SetProperty(ref _date, value); }
+        }
+
         int _year;
         public int Year {
             get { return _year; }
@@ -80,16 +92,11 @@ namespace Tulsi.ViewModels {
 
             DisplaySearchPageCommand = new Command(() => BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.SearchPage));
 
-        }
-
-        
+        }       
 
         public void Dispose() {
-            
-        }
-
-        public void ReSubscribe() {
-            
-        }
+            MenuItems.Clear();
+            ChartData.Clear();
+        }        
     }
 }

@@ -9,8 +9,8 @@ using Xamarin.Forms;
 
 namespace Tulsi.NavigationFramework {
     public sealed class ViewContainer {
-        private static readonly string _ERROR_CANT_GET_VIEW_IN_NAVIGATION_FRAME_BY_TYPE = "Can't get view in navigation frame by it's type",
-            _ERROR_CANT_GET_VIEW_BY_TYPE = "Can't get view by it's type";
+        private static readonly string ERROR_CANT_GET_VIEW_IN_NAVIGATION_FRAME_BY_TYPE = "Can't get view in navigation frame by it's type";
+        private static readonly string ERROR_CANT_GET_VIEW_BY_TYPE = "Can't get view by it's type";
 
         /// <summary>
         /// Container for views wrapped by Xamarin.Forms.NavigationPage
@@ -38,9 +38,8 @@ namespace Tulsi.NavigationFramework {
         public Page GetViewInNavigationFrameByType(ViewType viewType) {
             try {
                 return _viewsInNavigationFrame[viewType]();
-            }
-            catch (Exception) {
-                throw new InvalidOperationException(string.Format("ViewContainer.GetViewInNavigationFrameByType - {0}", _ERROR_CANT_GET_VIEW_IN_NAVIGATION_FRAME_BY_TYPE));
+            } catch (Exception) {
+                throw new InvalidOperationException(string.Format("ViewContainer.GetViewInNavigationFrameByType - {0}", ERROR_CANT_GET_VIEW_IN_NAVIGATION_FRAME_BY_TYPE));
             }
         }
 
@@ -52,9 +51,8 @@ namespace Tulsi.NavigationFramework {
         public IView GetViewByType(ViewType viewType) {
             try {
                 return _views[viewType]();
-            }
-            catch (Exception) {
-                throw new InvalidOperationException(string.Format("ViewContainer.GetViewByType - {0}", _ERROR_CANT_GET_VIEW_BY_TYPE));
+            } catch (Exception) {
+                throw new InvalidOperationException(string.Format($"ViewContainer.GetViewByType - {ERROR_CANT_GET_VIEW_BY_TYPE}"));
             }
         }
 

@@ -46,16 +46,13 @@ namespace Tulsi.ViewModels.Content {
             NavigateBackCommand = new Command(() => BaseSingleton<ViewSwitchingLogic>.Instance.NavigateOneStepBack());
         }
 
-        public void Dispose() {
-            
-        }
 
         internal void DisplayMessage(string title, string message, string value) {
             DisplayAlert(title, message, value);
         }
-
-        public void ReSubscribe() {
-            
+       
+        public void Dispose() {
+            ArrivalItems.Clear();
         }
     }
 }

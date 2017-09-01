@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using Tulsi.Helpers;
 using Tulsi.Model;
 using Tulsi.MVVM.Core;
 using Tulsi.NavigationFramework;
+using Tulsi.NavigationFramework.NavigationArgs;
 using Xamarin.Forms;
 
 namespace Tulsi.ViewModels.Content {
@@ -36,27 +33,31 @@ namespace Tulsi.ViewModels.Content {
         ///     ctor().
         /// </summary>
         public BuyerProfileViewModel() {
-            BaseSingleton<NavigationObserver>.Instance.SendProfileTransAction += OnSendProfileTransAction;
+            BaseSingleton<NavigationObserver>.Instance.SendToBuyerProfileTransAction += OnSendToBuyerProfileTransAction;
 
-            CloseCommand = new Command(() => {
-                TransactionsData.Clear();
-                BaseSingleton<NavigationObserver>.Instance.OnCloseView();
-            });
+            CloseCommand = new Command(OnCloseCommand);
         }
 
-        private void OnSendProfileTransAction(object sender, NavigationFramework.NavigationArgs.GrowerProfileTransactionEventArgs e) {
+        private void OnSendToBuyerProfileTransAction(object sender, ProfileTransactionEventArgs e) {
             foreach (var item in e.Data) {
                 TransactionsData.Add(item);
             }
         }
 
-        public void Dispose() {
-            BaseSingleton<NavigationObserver>.Instance.SendProfileTransAction -= OnSendProfileTransAction;
-            TransactionsData = null;
+        /// <summary>
+        ///     Close view, which binding with this viewModel.
+        /// </summary>
+        /// <param name="obj"></param>
+        private void OnCloseCommand(object obj) {
+            SelectedMenuItem = null;
+            TransactionsData.Clear();
+
+            BaseSingleton<NavigationObserver>.Instance.OnCloseView();
         }
 
-        public void ReSubscribe() {
-            
+        public void Dispose() {
+            BaseSingleton<NavigationObserver>.Instance.SendToBuyerProfileTransAction -= OnSendToBuyerProfileTransAction;
+            TransactionsData = null;
         }
     }
 }

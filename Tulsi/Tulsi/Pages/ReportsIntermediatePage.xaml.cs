@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Tulsi.Helpers;
 using Tulsi.NavigationFramework;
 using Tulsi.ViewModels;
 using Xamarin.Forms;
@@ -26,34 +27,26 @@ namespace Tulsi.Pages {
         }
 
         public void ApplyVisualChangesWhileNavigating() {
-            
         }
 
         protected override void OnAppearing() {
-            base.OnAppearing();
         }
 
         protected override void OnDisappearing() {
-            base.OnDisappearing();
-
-            _viewModel.Dispose();
         }
 
         protected override bool OnBackButtonPressed() {
-            if (_viewModel.ImportedView == null) {
-                return false;
-            } else {
+            if (_viewModel.ImportedView != null) {
                 _viewModel.NativeSenderCloseView();
+                return true;
+            } else {
+                BaseSingleton<ViewSwitchingLogic>.Instance.NavigateOneStepBack();
                 return true;
             }
         }
 
         public void Dispose() {
-            
-        }
-
-        public void ReSubscribe() {
-            
+            _viewModel.Dispose();
         }
     }
 }

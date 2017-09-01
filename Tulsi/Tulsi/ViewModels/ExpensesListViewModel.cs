@@ -12,7 +12,7 @@ using System.Windows.Input;
 namespace Tulsi.ViewModels {
     public sealed class ExpensesListViewModel : ViewModelBase, IViewModel {
         /// <summary>
-        /// Public ctor.
+        ///     ctor().
         /// </summary>
         public ExpensesListViewModel() {
             DisplaySearchPageCommand = new Command(() => {
@@ -25,14 +25,8 @@ namespace Tulsi.ViewModels {
         /// </summary>
         public ICommand DisplaySearchPageCommand { get; private set; }
 
-        /// <summary>
-        /// IViewModel implementation.
-        /// </summary>
+        
         public void Dispose() {
-            
-        }
-
-        public void ReSubscribe() {
             
         }
     }

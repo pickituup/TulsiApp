@@ -36,7 +36,7 @@ namespace Tulsi.ViewModels {
         ///     ctor().
         /// </summary>
         public BuyerProfilePageViewModel() {
-            BaseSingleton<NavigationObserver>.Instance.SendProfileTransAction += OnSendProfileTransAction;
+            BaseSingleton<NavigationObserver>.Instance.SendToBuyerProfileTransAction += OnSendToBuyerProfileTransAction;
 
             CloseCommand = new Command(() => {
                 TransactionsData.Clear();
@@ -44,14 +44,15 @@ namespace Tulsi.ViewModels {
             });
         }
 
-        private void OnSendProfileTransAction(object sender, NavigationFramework.NavigationArgs.GrowerProfileTransactionEventArgs e) {
+        private void OnSendToBuyerProfileTransAction(object sender, NavigationFramework.NavigationArgs.ProfileTransactionEventArgs e) {
             foreach (var item in e.Data) {
                 TransactionsData.Add(item);
             }
         }
 
         public void Dispose() {
-            BaseSingleton<NavigationObserver>.Instance.SendProfileTransAction -= OnSendProfileTransAction;
+            BaseSingleton<NavigationObserver>.Instance.SendToBuyerProfileTransAction -= OnSendToBuyerProfileTransAction;
+            //BaseSingleton<NavigationObserver>.Instance.SendToBuyerProfileTransAction -= OnSendProfileTransAction;
         }
 
         public void ReSubscribe() {

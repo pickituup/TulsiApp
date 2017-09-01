@@ -87,7 +87,6 @@ namespace Tulsi {
         }
 
         protected override void OnDisappearing() {
-            
         }
 
         /// <summary>
@@ -112,20 +111,17 @@ namespace Tulsi {
         /// </summary>
         /// <returns></returns>
         protected override bool OnBackButtonPressed() {
-            if (_viewModel.SelectedItem == null) {
-                return false;
-            } else {
+            if (_viewModel.ImportedView != null) {
                 _viewModel.NativeSenderCloseView();
+                return true;
+            } else {
+                BaseSingleton<ViewSwitchingLogic>.Instance.NavigateOneStepBack();
                 return true;
             }
         }
 
         public void Dispose() {
-            //_viewModel.Dispose();
-        }
-
-        public void ReSubscribe() {
-            //_viewModel.ReSubscribe();
+            _viewModel.Dispose();
         }
     }
 }

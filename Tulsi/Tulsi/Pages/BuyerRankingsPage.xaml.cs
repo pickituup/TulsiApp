@@ -1,4 +1,5 @@
 ﻿using System;
+using Tulsi.Helpers;
 using Tulsi.NavigationFramework;
 using Tulsi.ViewModels;
 using Xamarin.Forms;
@@ -20,14 +21,9 @@ namespace Tulsi {
         }
 
         public void ApplyVisualChangesWhileNavigating() {
-
         }
 
         protected override void OnDisappearing() {
-            if (_viewModel.ImportedView != null) {
-                _viewModel.ImportedView.Dispose();
-            }
-            _viewModel.Dispose();
         }
 
         /// <summary>
@@ -36,20 +32,17 @@ namespace Tulsi {
         /// </summary>
         /// <returns></returns>
         protected override bool OnBackButtonPressed() {
-            if (_viewModel.SelectedItem == null) {
-                return false;
-            } else {
+            if (_viewModel.ImportedView != null) {
                 _viewModel.NativeSenderCloseView();
+                return true;
+            } else {
+                BaseSingleton<ViewSwitchingLogic>.Instance.NavigateOneStepBack();
                 return true;
             }
         }
 
         public void Dispose() {
             _viewModel.Dispose();
-        }
-
-        public void ReSubscribe() {
-            
         }
     }
 }

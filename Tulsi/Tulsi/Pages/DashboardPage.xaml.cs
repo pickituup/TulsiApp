@@ -2,6 +2,7 @@
 using Syncfusion.SfChart.XForms;
 using System;
 using System.Collections.Generic;
+using Tulsi.Helpers;
 using Tulsi.NavigationFramework;
 using Tulsi.ViewModels;
 using Xamarin.Forms;
@@ -11,6 +12,9 @@ namespace Tulsi {
 
         private readonly DashboardViewModel _viewModel;
 
+        /// <summary>
+        ///     ctor().
+        /// </summary>
         public DashboardPage() {
 
             InitializeComponent();
@@ -78,12 +82,23 @@ namespace Tulsi {
             SlideMenu.HideWithoutAnimations();
         }
 
-        public void Dispose() {
-            
+        protected override void OnDisappearing() {
+            // TODO review this case
+            Dispose();
         }
 
-        public void ReSubscribe() {
-            
+        /// <summary>
+        ///     Occurs only for Android (not for iOS).
+        ///     False navigate out from page, true - staying in this page.
+        /// </summary>
+        /// <returns></returns>
+        protected override bool OnBackButtonPressed() {
+            //BaseSingleton<ViewSwitchingLogic>.Instance.NavigateOneStepBack();
+            return false;
+        }
+
+        public void Dispose() {
+            _viewModel.Dispose();
         }
     }
 }

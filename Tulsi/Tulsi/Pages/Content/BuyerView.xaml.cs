@@ -16,6 +16,9 @@ namespace Tulsi.Pages.Content {
 
         private readonly BuyerViewModel _viewModel;
 
+        /// <summary>
+        ///     ctor().
+        /// </summary>
         public BuyerView() {
             InitializeComponent();
 
@@ -77,10 +80,6 @@ namespace Tulsi.Pages.Content {
 
         public void Dispose() {
             _viewModel.Dispose();
-        }
-
-        public void ReSubscribe() {
-            
         }
     }
 }

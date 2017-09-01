@@ -9,6 +9,7 @@ using Syncfusion.SfChart.XForms;
 using Tulsi.ViewModels;
 using SlideOverKit;
 using Tulsi.SharedService;
+using Tulsi.Helpers;
 
 namespace Tulsi {
     /// <summary>
@@ -77,11 +78,6 @@ namespace Tulsi {
             ChartGrid.Children.Add(MiddleStack);
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void ShowMenuCommand(object sender, EventArgs e) {
             ShowMenu();
         }
@@ -94,9 +90,6 @@ namespace Tulsi {
         }
 
         protected override void OnDisappearing() {
-            base.OnDisappearing();
-
-            _viewModel.Dispose();
         }
 
         /// <summary>
@@ -105,20 +98,17 @@ namespace Tulsi {
         /// </summary>
         /// <returns></returns>
         protected override bool OnBackButtonPressed() {
-            if (_viewModel.SelectedItem == null) {
-                return false;
-            } else {
+            if (_viewModel.ImportedView != null) {
                 _viewModel.NativeSenderCloseView();
+                return true;
+            } else {
+                BaseSingleton<ViewSwitchingLogic>.Instance.NavigateOneStepBack();
                 return true;
             }
         }
 
         public void Dispose() {
-            
-        }
-
-        public void ReSubscribe() {
-            
+            _viewModel.Dispose();
         }
     }
 }

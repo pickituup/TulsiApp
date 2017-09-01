@@ -1,9 +1,5 @@
 ﻿using Syncfusion.SfChart.XForms;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Tulsi.NavigationFramework;
 using Tulsi.ViewModels.Content;
 using Xamarin.Forms;
@@ -15,6 +11,9 @@ namespace Tulsi.Pages.Content {
 
         private readonly ExpensesViewModel _viewModel;
 
+        /// <summary>
+        ///     ctor().
+        /// </summary>
         public ExpensesView() {
             InitializeComponent();
 
@@ -108,15 +107,10 @@ namespace Tulsi.Pages.Content {
         }
 
         public void ApplyVisualChangesWhileNavigating() {
-            
         }
 
         public void Dispose() {
             _viewModel.Dispose();
-        }
-
-        public void ReSubscribe() {
-            
         }
     }
 }

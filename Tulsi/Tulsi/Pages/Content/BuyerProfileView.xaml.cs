@@ -1,5 +1,9 @@
-﻿using Tulsi.NavigationFramework;
+﻿using System;
+using Tulsi.Helpers;
+using Tulsi.NavigationFramework;
+using Tulsi.SharedService;
 using Tulsi.ViewModels;
+using Tulsi.ViewModels.Content;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -7,7 +11,7 @@ namespace Tulsi.Pages.Content {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class BuyerProfileView : ContentView, IView {
 
-        private readonly BuyerProfilePageViewModel _viewModel;
+        private readonly BuyerProfileViewModel _viewModel;
 
         /// <summary>
         ///     ctor().
@@ -15,18 +19,24 @@ namespace Tulsi.Pages.Content {
         public BuyerProfileView() {
             InitializeComponent();
 
-            BindingContext = _viewModel = new BuyerProfilePageViewModel();
+            BindingContext = _viewModel = new BuyerProfileViewModel();
+
+            BaseSingleton<NavigationObserver>.Instance.CloseView += OnCloseView;
         }
 
         public void ApplyVisualChangesWhileNavigating() {
         }
 
-        public void Dispose() {
-            _viewModel.Dispose();
+        private void OnCloseView(object sender, EventArgs e) {
+            int displayHeight = DependencyService.Get<IDisplaySize>().GetHeight();
+            ((View)Parent).TranslationY = displayHeight;
+
+            Dispose();
         }
 
-        public void ReSubscribe() {
-            
+        public void Dispose() {
+            _viewModel.Dispose();
+            BaseSingleton<NavigationObserver>.Instance.CloseView -= OnCloseView;
         }
     }
 }

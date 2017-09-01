@@ -30,11 +30,11 @@ namespace Tulsi.ViewModels.Content {
                 BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.SearchPage);
             });
 
-            HARDCODED_DATA_INSERT();
+            AuditData = GetAuditData();
         }
 
-        private void HARDCODED_DATA_INSERT() {
-            AuditData = new ObservableCollection<AuditEntry>() {
+        private ObservableCollection<AuditEntry> GetAuditData() {
+            return new ObservableCollection<AuditEntry>() {
                 new AuditEntry() { Date = DateTime.Now,
                     AuditActions = new List<AuditAction>() {
                         new AuditAction() { Action = "Modified Buyer", Code = "SKC" },
@@ -108,11 +108,7 @@ namespace Tulsi.ViewModels.Content {
         }
 
         public void Dispose() {
-            
-        }
-
-        public void ReSubscribe() {
-            
+            AuditData.Clear();    
         }
     }
 }

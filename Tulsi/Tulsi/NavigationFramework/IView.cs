@@ -4,6 +4,6 @@
 
         void Dispose();
 
-        void ReSubscribe();
+        //void ReSubscribe();
     }
 }

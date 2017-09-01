@@ -78,12 +78,18 @@ namespace Tulsi {
             DisplayAlert("Date", e.DateTime.Date.ToString() + " selected", "OK");
         }
 
-        public void Dispose() {
-            _viewModel.Dispose();
+        /// <summary>
+        ///     Occurs only for Android (not for iOS).
+        ///     False navigate out from page, true - staying in this page.
+        /// </summary>
+        /// <returns></returns>
+        protected override bool OnBackButtonPressed() {
+            BaseSingleton<ViewSwitchingLogic>.Instance.NavigateOneStepBack();
+            return true;
         }
 
-        public void ReSubscribe() {
-            
+        public void Dispose() {
+            _viewModel.Dispose();
         }
     }
 }

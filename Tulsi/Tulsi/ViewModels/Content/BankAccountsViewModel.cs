@@ -1,19 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Tulsi.MVVM.Core;
-using Xamarin.Forms;
-using Tulsi.NavigationFramework;
 using Tulsi.Helpers;
 using Tulsi.Model;
+using Tulsi.MVVM.Core;
+using Tulsi.NavigationFramework;
+using Xamarin.Forms;
 
-namespace Tulsi.ViewModels {
+namespace Tulsi.ViewModels.Content {
     public sealed class BankAccountsViewModel : ViewModelBase, IViewModel {
 
-        public List<BankAccount> BankAccounts { get; private set; }
+        ObservableCollection<BankAccount> _bankAccounts;
+        public ObservableCollection<BankAccount> BankAccounts {
+            get { return _bankAccounts; }
+            set { SetProperty(ref _bankAccounts, value); }
+        }
 
         BankAccount _selectedBankAccount;
         public BankAccount SelectedBankAccount {
@@ -40,7 +45,15 @@ namespace Tulsi.ViewModels {
         ///     ctor().
         /// </summary>
         public BankAccountsViewModel() {
-            BankAccounts = new List<BankAccount>() {
+            BankAccounts = GetBankAccounts();
+
+            DisplaySearchPageCommand = new Command(() => {
+                BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.SearchPage);
+            });
+        }
+
+        public ObservableCollection<BankAccount> GetBankAccounts() {
+            return new ObservableCollection<BankAccount>() {
                 new BankAccount() {
                     LogoPath = "Tulsi.Images.icici_logo.png",
                     Ammount = 3200000,
@@ -54,18 +67,10 @@ namespace Tulsi.ViewModels {
                     LastUpdateInfo = "last update 42 hours ago"
                 }
             };
-
-            DisplaySearchPageCommand = new Command(() => {
-                BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.SearchPage);
-            });
         }
 
         public void Dispose() {
-
-        }
-
-        public void ReSubscribe() {
-            
+            BankAccounts.Clear();
         }
     }
 }

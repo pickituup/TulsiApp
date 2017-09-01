@@ -19,8 +19,8 @@ namespace Tulsi.ViewModels.Content {
             get => _selectedItem;
             set {
                 if (SetProperty(ref _selectedItem, value) && value != null) {
-                    BaseSingleton<NavigationObserver>.Instance.OnImportedSpot(ViewType.BuyerProfileView);
-                    BaseSingleton<NavigationObserver>.Instance.OnSendProfileTransAction(value.ProfileTransactions);
+                    BaseSingleton<NavigationObserver>.Instance.OnBayerViewImportedSpot(ViewType.BuyerProfileView);
+                    BaseSingleton<NavigationObserver>.Instance.OnSendToBuyerProfileTransAction(value.ProfileTransactions);
                     SelectedItem = null;
                 }
             }
@@ -172,11 +172,7 @@ namespace Tulsi.ViewModels.Content {
         }
 
         public void Dispose() {
-            
-        }
-
-        public void ReSubscribe() {
-            
+            TransactionsData.Clear();
         }
     }
 }

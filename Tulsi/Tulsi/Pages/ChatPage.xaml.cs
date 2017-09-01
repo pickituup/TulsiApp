@@ -13,6 +13,9 @@ namespace Tulsi {
 
         private readonly ChatViewModel _viewModel;
 
+        /// <summary>
+        ///     ctor().
+        /// </summary>
         public ChatPage() {
             InitializeComponent();
 
@@ -26,16 +29,22 @@ namespace Tulsi {
             
         }
 
-        public void Dispose() {
-            
-        }
-
-        public void ReSubscribe() {
-            
+        /// <summary>
+        ///     Occurs only for Android (not for iOS).
+        ///     False navigate out from page, true - stay on this page.
+        /// </summary>
+        /// <returns></returns>
+        protected override bool OnBackButtonPressed() {
+            BaseSingleton<ViewSwitchingLogic>.Instance.NavigateOneStepBack();
+            return true;
         }
 
         private void BackButtonCommand(object sender, EventArgs e) {
             BaseSingleton<ViewSwitchingLogic>.Instance.NavigateOneStepBack();
+        }
+
+        public void Dispose() {
+            _viewModel.Dispose();
         }
     }
 }

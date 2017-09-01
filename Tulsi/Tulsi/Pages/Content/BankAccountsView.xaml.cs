@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Tulsi.NavigationFramework;
 using Tulsi.ViewModels;
+using Tulsi.ViewModels.Content;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -25,10 +26,6 @@ namespace Tulsi.Pages.Content {
 
         public void Dispose() {
             _viewModel.Dispose();
-        }
-
-        public void ReSubscribe() {
-            
         }
     }
 }

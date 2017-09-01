@@ -77,9 +77,5 @@ namespace Tulsi.Pages.Content {
         public void Dispose() {
             _viewModel.Dispose();
         }
-
-        public void ReSubscribe() {
-            
-        }
     }
 }

@@ -18,7 +18,7 @@ namespace Tulsi.Model.DataContainers {
                     Status="Income",
                     Image =ImageSource.FromStream(()=> {
                             Assembly assembly = GetType().GetTypeInfo().Assembly;
-                            Stream stream = assembly.GetManifestResourceStream("Tulsi.Images.greenprofiticon.png");
+                            Stream stream = assembly.GetManifestResourceStream("Tulsi.Images.green_plus_icon.png");
                             return stream; })
                 },
                 new ProfitMenuItem {
@@ -26,17 +26,17 @@ namespace Tulsi.Model.DataContainers {
                     Status="Expense",
                     Image =ImageSource.FromStream(()=> {
                             Assembly assembly = GetType().GetTypeInfo().Assembly;
-                            Stream stream = assembly.GetManifestResourceStream("Tulsi.Images.orangeprofiticon.png");
-                            return stream; })
-                },
-                new ProfitMenuItem {
-                    Value =  -163.89m,
-                    Status="loss",
-                    Image =ImageSource.FromStream(()=> {
-                            Assembly assembly = GetType().GetTypeInfo().Assembly;
-                            Stream stream = assembly.GetManifestResourceStream("Tulsi.Images.grayprofiticon.png");
+                            Stream stream = assembly.GetManifestResourceStream("Tulsi.Images.red_minus_icon.png");
                             return stream; })
                 }
+                //new ProfitMenuItem {
+                //    Value =  -163.89m,
+                //    Status="loss",
+                //    Image =ImageSource.FromStream(()=> {
+                //            Assembly assembly = GetType().GetTypeInfo().Assembly;
+                //            Stream stream = assembly.GetManifestResourceStream("Tulsi.Images.grayprofiticon.png");
+                //            return stream; })
+                //}
             };
         }
     }

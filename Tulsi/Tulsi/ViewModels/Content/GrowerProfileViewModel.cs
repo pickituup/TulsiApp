@@ -36,26 +36,24 @@ namespace Tulsi.ViewModels.Content {
         ///     ctor().
         /// </summary>
         public GrowerProfileViewModel() {
-            BaseSingleton<NavigationObserver>.Instance.SendProfileTransAction += OnSendProfileTransAction;
+            BaseSingleton<NavigationObserver>.Instance.SendToGrowerProfileTransAction += OnSendToGrowerProfileTransAction;
 
             CloseCommand = new Command(() => {
+                SelectedMenuItem = null;
                 TransactionsData.Clear();
+
                 BaseSingleton<NavigationObserver>.Instance.OnCloseView();
             });
         }
 
-        private void OnSendProfileTransAction(object sender, NavigationFramework.NavigationArgs.GrowerProfileTransactionEventArgs e) {
+        private void OnSendToGrowerProfileTransAction(object sender, NavigationFramework.NavigationArgs.ProfileTransactionEventArgs e) {
             foreach (var item in e.Data) {
                 TransactionsData.Add(item);
             }
         }
 
         public void Dispose() {
-            BaseSingleton<NavigationObserver>.Instance.SendProfileTransAction -= OnSendProfileTransAction;
-        }
-
-        public void ReSubscribe() {
-            
+            BaseSingleton<NavigationObserver>.Instance.SendToGrowerProfileTransAction -= OnSendToGrowerProfileTransAction;
         }
     }
 }

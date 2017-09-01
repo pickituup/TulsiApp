@@ -11,10 +11,16 @@ using Tulsi.Model;
 namespace Tulsi.ViewModels {
     public class SearchPageViewModel : ViewModelBase, IViewModel {
 
-        private ObservableCollection<ContactGroup> _contactsGroupsResult;
+        ObservableCollection<ContactGroup> _contactsGroupsResult;
+        public ObservableCollection<ContactGroup> ContactsGroupsResult {
+            get => _contactsGroupsResult;
+            private set => SetProperty<ObservableCollection<ContactGroup>>(ref _contactsGroupsResult, value);
+        }
+
+        public ICommand ClosePageCommand { get; private set; }
 
         /// <summary>
-        ///     Public ctor().
+        ///     ctor().
         /// </summary>
         public SearchPageViewModel() {
             ClosePageCommand = new Command(() => BaseSingleton<ViewSwitchingLogic>.Instance.NavigateOneStepBack());
@@ -24,73 +30,50 @@ namespace Tulsi.ViewModels {
             HARDCODED_DATA_INSERT();
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public ICommand ClosePageCommand { get; private set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public ObservableCollection<ContactGroup> ContactsGroupsResult {
-            get => _contactsGroupsResult;
-            private set => SetProperty<ObservableCollection<ContactGroup>>(ref _contactsGroupsResult, value);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public void Dispose() {
-
-        }
-
-        public void ReSubscribe() {
-            
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
         private void HARDCODED_DATA_INSERT() {
             ContactGroup contactGroup = new ContactGroup();
             contactGroup.FirstLetter = "P";
-            contactGroup.Add(new Contact() { Name = "Petro", Number = 122, Company = "Rlrrlrll lrll", IsOverDue = true, OverdueDays = 7 });
-            contactGroup.Add(new Contact() { Name = "Phill", Number = 132, Company = "Rlrrlrll lrll" });
-            contactGroup.Add(new Contact() { Name = "Petruha", Number = 77, Company = "Rlrrlrll lrll", IsOverDue = true, OverdueDays = 2 });
+            contactGroup.Add(new Contact() { ContactProgress = .2, Name = "Petro", Number = 122, Company = "Rlrrlrll lrll", IsOverDue = true, OverdueDays = 7 });
+            contactGroup.Add(new Contact() { ContactProgress = .35, Name = "Phill", Number = 132, Company = "Rlrrlrll lrll" });
+            contactGroup.Add(new Contact() { ContactProgress = .7, Name = "Petruha", Number = 77, Company = "Rlrrlrll lrll", IsOverDue = true, OverdueDays = 2 });
 
             ContactGroup contactGroup2 = new ContactGroup();
             contactGroup2.FirstLetter = "M";
-            contactGroup2.Add(new Contact() { Name = "Mykola", Number = 234, Company = "Rlrrlrll lrll" });
-            contactGroup2.Add(new Contact() { Name = "Mitya", Number = 56, Company = "Rlrrlrll lrll", IsOverDue = true, OverdueDays = 13 });
-            contactGroup2.Add(new Contact() { Name = "Maha", Number = 788, Company = "Rlrrlrll lrll", IsOverDue = true, OverdueDays = 8 });
-            contactGroup2.Add(new Contact() { Name = "Misha", Number = 213, Company = "Rlrrlrll lrll" });
+            contactGroup2.Add(new Contact() { ContactProgress = .5, Name = "Mykola", Number = 234, Company = "Rlrrlrll lrll" });
+            contactGroup2.Add(new Contact() { ContactProgress = .8, Name = "Mitya", Number = 56, Company = "Rlrrlrll lrll", IsOverDue = true, OverdueDays = 13 });
+            contactGroup2.Add(new Contact() { ContactProgress = .1, Name = "Maha", Number = 788, Company = "Rlrrlrll lrll", IsOverDue = true, OverdueDays = 8 });
+            contactGroup2.Add(new Contact() { ContactProgress = .4, Name = "Misha", Number = 213, Company = "Rlrrlrll lrll" });
 
             ContactGroup contactGroup3 = new ContactGroup();
             contactGroup3.FirstLetter = "A";
-            contactGroup3.Add(new Contact() { Name = "Anzela", Number = 737, Company = "Rlrrlrll lrll" });
-            contactGroup3.Add(new Contact() { Name = "Arnold", Number = 7237, Company = "Rlrrlrll lrll", IsOverDue = true, OverdueDays = 7 });
-            contactGroup3.Add(new Contact() { Name = "Anatatoli", Number = 77, Company = "Rlrrlrll lrll" });
+            contactGroup3.Add(new Contact() { ContactProgress = .66, Name = "Anzela", Number = 737, Company = "Rlrrlrll lrll" });
+            contactGroup3.Add(new Contact() { ContactProgress = .95, Name = "Arnold", Number = 7237, Company = "Rlrrlrll lrll", IsOverDue = true, OverdueDays = 7 });
+            contactGroup3.Add(new Contact() { ContactProgress = .15, Name = "Anatatoli", Number = 77, Company = "Rlrrlrll lrll" });
 
             ContactGroup contactGroup4 = new ContactGroup();
             contactGroup4.FirstLetter = "B";
-            contactGroup4.Add(new Contact() { Name = "Bull", Number = 657, Company = "Rlrrlrll lrll" });
-            contactGroup4.Add(new Contact() { Name = "Bird", Number = 34, Company = "Rlrrlrll lrll" });
-            contactGroup4.Add(new Contact() { Name = "Baryg", Number = 87, Company = "Rlrrlrll lrll" });
-            contactGroup4.Add(new Contact() { Name = "Bif", Number = 77, Company = "Rlrrlrll lrll" });
+            contactGroup4.Add(new Contact() { ContactProgress = .25, Name = "Bull", Number = 657, Company = "Rlrrlrll lrll" });
+            contactGroup4.Add(new Contact() { ContactProgress = .75, Name = "Bird", Number = 34, Company = "Rlrrlrll lrll" });
+            contactGroup4.Add(new Contact() { ContactProgress = .44, Name = "Baryg", Number = 87, Company = "Rlrrlrll lrll" });
+            contactGroup4.Add(new Contact() { ContactProgress = .65, Name = "Bif", Number = 77, Company = "Rlrrlrll lrll" });
 
             List<ContactGroup> groups = new List<ContactGroup>();
             groups.Add(contactGroup);
             groups.Add(contactGroup2);
             groups.Add(contactGroup3);
             groups.Add(contactGroup4);
-            
+
             //
             // Bad ass hardcoded implementation
             //
-            ContactsGroupsResult = 
+            ContactsGroupsResult =
                 new ObservableCollection<ContactGroup>(
                     groups.OrderBy<ContactGroup, string>((c) => c.FirstLetter)
                     .ToList<ContactGroup>());
+        }
+
+        public void Dispose() {
+            ContactsGroupsResult.Clear();
         }
     }
 }

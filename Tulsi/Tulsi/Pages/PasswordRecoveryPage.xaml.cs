@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Tulsi.NavigationFramework;
 using Xamarin.Forms;
 using Tulsi.Controls;
+using Tulsi.Helpers;
 
 namespace Tulsi {
     public partial class PasswordRecoveryPage : ContentPage, IView {
@@ -58,8 +59,14 @@ namespace Tulsi {
             
         }
 
-        public void ReSubscribe() {
-            
+        /// <summary>
+        ///     Occurs only for Android (not for iOS).
+        ///     False navigate out from page, true - staying in this page.
+        /// </summary>
+        /// <returns></returns>
+        protected override bool OnBackButtonPressed() {
+            BaseSingleton<ViewSwitchingLogic>.Instance.NavigateOneStepBack();
+            return true;
         }
     }
 }

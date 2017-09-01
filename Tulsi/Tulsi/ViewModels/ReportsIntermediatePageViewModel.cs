@@ -41,7 +41,7 @@ namespace Tulsi.ViewModels {
             get { return _spot; }
             set {
                 if (SetProperty(ref _spot, value) && value != null)
-                    HideSpotView();
+                    HideView();
             }
         }
 
@@ -57,37 +57,43 @@ namespace Tulsi.ViewModels {
         public ReportsIntermediatePageViewModel() {
             BaseSingleton<NavigationObserver>.Instance.NavigatedContent += ImportingContent;
 
-            BaseSingleton<NavigationObserver>.Instance.ImportedSpot += ImportingSpot;
+            BaseSingleton<NavigationObserver>.Instance.GrowerViewImportedSpot += GrowerViewImportingSpot;
+
+            BaseSingleton<NavigationObserver>.Instance.BayerViewImportedSpot += OnBayerViewImportedSpot;
 
             DisplaySearchPageCommand = new Command(() => BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.SearchPage));
 
             NavigateBackCommand = new Command(() => BaseSingleton<ViewSwitchingLogic>.Instance.NavigateOneStepBack());
-
-            BaseSingleton<NavigationObserver>.Instance.CloseView += OnCloseView;
         }
 
-        private void OnCloseView(object sender, EventArgs e) {
-            HideSpotView();
-            ImportedView.Dispose();
-            ImportedView = null;
+        private void OnBayerViewImportedSpot(object sender, NavigationImportedEventArgs e) {
+            ImportedView = BaseSingleton<ViewSwitchingLogic>.Instance.GetViewByType(e.ViewType);
+        }
+
+        private void GrowerViewImportingSpot(object sender, NavigationImportedEventArgs e) {
+            ImportedView = BaseSingleton<ViewSwitchingLogic>.Instance.GetViewByType(e.ViewType);
+        }
+
+        public void CloseImportedView() {
+            if (this.ImportedView != null) {
+
+                ImportedView.Dispose();
+                ImportedView = null;
+                HideView();
+            }
         }
 
         public void NativeSenderCloseView() {
-            HideSpotView();
-            ImportedView.Dispose();
-            ImportedView = null;
+            CloseImportedView();
         }
 
-        private void ImportingSpot(object sender, NavigationImportedEventArgs e) {
-            ImportedView = BaseSingleton<ViewSwitchingLogic>.Instance.GetViewByType(e.ViewType);
-        }
 
         private void ImportingContent(object sender, NavigationImportedContentEventArgs e) {
             Title = e.Title;
             ImportedContent = BaseSingleton<ViewSwitchingLogic>.Instance.GetViewByType(e.ViewType) as View;
         }
 
-        private void HideSpotView() {
+        private void HideView() {
             int displayHeight = DependencyService.Get<IDisplaySize>().GetHeight();
             Spot.TranslationY = displayHeight;
         }
@@ -97,15 +103,13 @@ namespace Tulsi.ViewModels {
                 ImportedView.Dispose();
             }
 
+            if (ImportedContent !=null) {
+                ((IView)ImportedContent).Dispose();
+            }
+
             BaseSingleton<NavigationObserver>.Instance.NavigatedContent -= ImportingContent;
-
-            BaseSingleton<NavigationObserver>.Instance.ImportedSpot -= ImportingSpot;
-
-            BaseSingleton<NavigationObserver>.Instance.CloseView -= OnCloseView;
-        }
-
-        public void ReSubscribe() {
-            
+            BaseSingleton<NavigationObserver>.Instance.GrowerViewImportedSpot -= GrowerViewImportingSpot;
+            BaseSingleton<NavigationObserver>.Instance.BayerViewImportedSpot -= OnBayerViewImportedSpot;
         }
     }
 }

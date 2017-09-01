@@ -25,8 +25,8 @@ namespace Tulsi.ViewModels.Content {
             get { return _selectedItem; }
             set {
                 if (SetProperty(ref _selectedItem, value) && value != null) {
-                    BaseSingleton<NavigationObserver>.Instance.OnImportedSpot(ViewType.GrowerProfileView);
-                    BaseSingleton<NavigationObserver>.Instance.OnSendProfileTransAction(value.ProfileTransactions);
+                    BaseSingleton<NavigationObserver>.Instance.OnGrowerViewImportedSpot(ViewType.GrowerProfileView);
+                    BaseSingleton<NavigationObserver>.Instance.OnSendToGrowerProfileTransAction(value.ProfileTransactions);
                     SelectedItem = null;
                 }
             }
@@ -166,10 +166,6 @@ namespace Tulsi.ViewModels.Content {
         }
 
         public void Dispose() {
-        }
-
-        public void ReSubscribe() {
-            
         }
     }
 }

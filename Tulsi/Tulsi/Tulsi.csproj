@@ -45,6 +45,9 @@
     </Compile>
     <Compile Include="Controls\PrimitiveSegmentControl\PrimitiveSegment.cs" />
     <Compile Include="Controls\PrimitiveSegmentControl\PrimitiveSegmentItemBase.cs" />
+    <Compile Include="Controls\PrimitiveSegmentControl\SquareSegmentItem.xaml.cs">
+      <DependentUpon>SquareSegmentItem.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\PrimitiveSegmentControl\WithoutFrameSegmentItem.xaml.cs">
       <DependentUpon>WithoutFrameSegmentItem.xaml</DependentUpon>
     </Compile>
@@ -225,13 +228,14 @@
     <Compile Include="ViewModels\ArrivalPageViewModel.cs" />
     <Compile Include="ViewModels\AuditLogPageViewModel.cs" />
     <Compile Include="ViewModels\BankAccountDetailsViewModel.cs" />
-    <Compile Include="ViewModels\BankAccountsViewModel.cs" />
+    <Compile Include="ViewModels\BankAccountsPageViewModel.cs" />
     <Compile Include="ViewModels\BuyerProfilePageViewModel.cs" />
     <Compile Include="ViewModels\BuyerRankingsPageViewModel.cs" />
     <Compile Include="ViewModels\BuyerPageViewModel.cs" />
     <Compile Include="ViewModels\ChatViewModel.cs" />
     <Compile Include="ViewModels\Content\ArrivalViewModel.cs" />
     <Compile Include="ViewModels\Content\AuditLogViewModel.cs" />
+    <Compile Include="ViewModels\Content\BankAccountsViewModel.cs" />
     <Compile Include="ViewModels\Content\BuyerProfileViewModel.cs" />
     <Compile Include="ViewModels\Content\BuyerViewModel.cs" />
     <Compile Include="ViewModels\Content\ExpensesViewModel.cs" />
@@ -714,6 +718,17 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Controls\PrimitiveSegmentControl\SquareSegmentItem.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\green_plus_icon.png" />
+    <EmbeddedResource Include="Images\list_icon.png" />
+    <EmbeddedResource Include="Images\red_minus_icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.4.267\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.4.267\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />

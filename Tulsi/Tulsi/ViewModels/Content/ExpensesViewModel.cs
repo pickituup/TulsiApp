@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,7 +14,11 @@ using Xamarin.Forms;
 namespace Tulsi.ViewModels.Content {
     public sealed class ExpensesViewModel : ViewModelBase, IViewModel {
 
-        public List<ChartModel> ChartData { get; private set; }
+        ObservableCollection<ChartModel> _chartData;
+        public ObservableCollection<ChartModel> ChartData {
+            get { return _chartData; }
+            set { SetProperty(ref _chartData, value); }
+        }
 
         // Navigate back.
         public ICommand NavigateBackCommand { get; private set; }
@@ -27,7 +32,17 @@ namespace Tulsi.ViewModels.Content {
         ///     ctor().
         /// </summary>
         public ExpensesViewModel() {
-            ChartData = new List<ChartModel>()
+            ChartData = GetChartData();
+
+            OpenExpensesListCommand = new Command(() => {
+                BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.ExpensesListPage);
+            });
+
+            NavigateBackCommand = new Command(() => BaseSingleton<ViewSwitchingLogic>.Instance.NavigateOneStepBack());
+        }
+
+        private ObservableCollection<ChartModel> GetChartData() {
+             return new ObservableCollection<ChartModel>()
             {
                 new ChartModel { Name = "Groceries", Value = 29 },
                 new ChartModel { Name = "Utilities", Value = 16 },
@@ -38,20 +53,10 @@ namespace Tulsi.ViewModels.Content {
                 new ChartModel { Name = "Wardrobe", Value = 6 },
                 new ChartModel { Name = "Food", Value = 5 },
             };
-
-            OpenExpensesListCommand = new Command(() => {
-                BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.ExpensesListPage);
-            });
-
-            NavigateBackCommand = new Command(() => BaseSingleton<ViewSwitchingLogic>.Instance.NavigateOneStepBack());
         }
 
         public void Dispose() {
-            
-        }
-
-        public void ReSubscribe() {
-            
+            ChartData.Clear();
         }
     }
 }

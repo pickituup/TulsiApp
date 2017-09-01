@@ -7,6 +7,7 @@
     xmlns:controls="clr-namespace:Tulsi.Controls"
     xmlns:local="clr-namespace:Tulsi;assembly=Tulsi"
     xmlns:m="clr-namespace:SlideOverKit"
+    xmlns:segmentControls="clr-namespace:Tulsi.Controls.PrimitiveSegmentControl"
     xmlns:toolKitImageResourceExtension="clr-namespace:Tulsi.ToolKit.MarkupExtensions"
     NavigationPage.HasNavigationBar="false">
 
@@ -39,7 +40,7 @@
             <Label
                 x:Name="PageTitleLabel"
                 HorizontalOptions="Center"
-                Text="PROFITABILITY"
+                Text="{Binding Title}"
                 TextColor="White"
                 VerticalOptions="Center" />
 
@@ -86,27 +87,28 @@
                             FontSize="17"
                             HorizontalOptions="Center"
                             HorizontalTextAlignment="Start"
-                            Text="Profit"
+                            Text="NET INCOME"
                             TextColor="White"
                             VerticalOptions="Center"
                             VerticalTextAlignment="Center" />
                         <Label
                             Grid.Row="1"
-                            FontSize="12"
+                            FontAttributes="Bold"
+                            FontSize="24"
                             HorizontalOptions="Center"
                             HorizontalTextAlignment="Center"
-                            Text="Approx"
+                            Text="9,00,000"
                             TextColor="White"
                             VerticalOptions="Center"
                             VerticalTextAlignment="Center" />
                         <Label
                             Grid.Row="2"
                             FontAttributes="Bold"
-                            FontSize="22"
+                            FontSize="17"
                             HorizontalOptions="Center"
                             HorizontalTextAlignment="Center"
-                            Text="9,00,000"
-                            TextColor="White"
+                            Text="{Binding Date}"
+                            TextColor="Gray"
                             VerticalOptions="Center"
                             VerticalTextAlignment="Center" />
                     </Grid>
@@ -117,113 +119,64 @@
                     BackgroundColor="White"
                     CornerRadius="13"
                     HeightRequest="30">
-                    <Grid BackgroundColor="Transparent">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
 
-                        <controls:RoundedContentView
-                            x:Name="QuarterlyArea"
-                            Grid.Column="0"
-                            BackgroundColor="Transparent"
-                            CornerRadius="0">
-                            <Label
-                                x:Name="QuarterlyLabel"
-                                HorizontalOptions="Center"
-                                Text="Quarterly"
-                                VerticalOptions="Center" />
-                        </controls:RoundedContentView>
-                        <controls:RoundedContentView
-                            x:Name="MonthlyArea"
-                            Grid.Column="1"
-                            BackgroundColor="#2793F5"
-                            CornerRadius="0">
-                            <Label
-                                x:Name="MonthlyLabel"
-                                HorizontalOptions="Center"
-                                Text="Monthly"
-                                TextColor="White"
-                                VerticalOptions="Center" />
-                        </controls:RoundedContentView>
-                        <controls:RoundedContentView
-                            x:Name="WeeklyArea"
-                            Grid.Column="2"
-                            BackgroundColor="Transparent"
-                            CornerRadius="0">
-                            <Label
-                                x:Name="WeeklyLabel"
-                                HorizontalOptions="Center"
-                                Text="Weekly"
-                                VerticalOptions="Center" />
-                        </controls:RoundedContentView>
-                    </Grid>
+                    <!--  SEGMENT CONTROL  -->
+                    <segmentControls:PrimitiveSegment Orientation="Horizontal" Spacing="0">
+                        <segmentControls:PrimitiveSegment.Segments>
+                            <segmentControls:SquareSegmentItem
+                                HorizontalOptions="FillAndExpand"
+                                ItemCommand="{Binding TempCommand}"
+                                Label="Quarterly" />
+                            <segmentControls:SquareSegmentItem
+                                HorizontalOptions="FillAndExpand"
+                                ItemCommand="{Binding TempCommand}"
+                                Label="Monthly" />
+                            <segmentControls:SquareSegmentItem
+                                HorizontalOptions="FillAndExpand"
+                                ItemCommand="{Binding TempCommand}"
+                                Label="Weekly" />
+                        </segmentControls:PrimitiveSegment.Segments>
+                    </segmentControls:PrimitiveSegment>
                 </controls:RoundedContentView>
 
                 <!--  YEARS SELECTOR  -->
-                <Grid
-                    x:Name="Years"
-                    BackgroundColor="Transparent"
-                    HorizontalOptions="Center">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="40" />
-                        <ColumnDefinition Width="40" />
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="20" />
-                    </Grid.RowDefinitions>
-                    <Label
-                        x:Name="Year1"
-                        Grid.Column="0"
-                        FontSize="14"
-                        HorizontalOptions="Center"
-                        Text="2013"
-                        TextColor="#2793F5"
-                        VerticalOptions="Center" />
-                    <Label
-                        x:Name="Year2"
-                        Grid.Column="1"
-                        FontSize="14"
-                        HorizontalOptions="Center"
-                        Text="2014"
-                        VerticalOptions="Center" />
-                </Grid>
+                <segmentControls:PrimitiveSegment Orientation="Horizontal" Spacing="20">
+                    <segmentControls:PrimitiveSegment.Segments>
+                        <segmentControls:WithoutFrameSegmentItem
+                            HorizontalOptions="EndAndExpand"
+                            ItemCommand="{Binding TempCommand}"
+                            Label="2013" />
+                        <segmentControls:WithoutFrameSegmentItem
+                            HorizontalOptions="StartAndExpand"
+                            ItemCommand="{Binding TempCommand}"
+                            Label="2014" />
+                    </segmentControls:PrimitiveSegment.Segments>
+                </segmentControls:PrimitiveSegment>
 
                 <!--  CHART VIEW  -->
                 <controls:RoundedContentView BackgroundColor="White" CornerRadius="13">
                     <StackLayout BackgroundColor="Transparent">
-                        <!--  STATS SELECTOR  -->
-                        <Grid
-                            x:Name="Stats"
-                            Margin="0,0"
-                            BackgroundColor="Transparent">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="40" />
-                                <ColumnDefinition Width="70" />
-                                <ColumnDefinition Width="30" />
-                                <ColumnDefinition Width="70" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="40" />
-                            </Grid.RowDefinitions>
-                            <Label
-                                x:Name="PaidStatsLabel"
-                                Grid.Column="1"
-                                FontSize="12"
-                                HorizontalOptions="Center"
-                                Text="Paid Stats"
-                                TextColor="#2793F5"
-                                VerticalOptions="Center" />
-                            <Label
-                                x:Name="AllStatsLabel"
-                                Grid.Column="3"
-                                FontSize="12"
-                                HorizontalOptions="Center"
-                                Text="All Stats"
-                                VerticalOptions="Center" />
-                        </Grid>
+
+                        <!--  FTYPE SELECTOR  -->
+                        <segmentControls:PrimitiveSegment
+                            Margin="50,0,0,0"
+                            Orientation="Horizontal"
+                            Spacing="20">
+                            <segmentControls:PrimitiveSegment.Segments>
+                                <segmentControls:WithoutFrameSegmentItem
+                                    HorizontalOptions="Start"
+                                    ItemCommand="{Binding TempCommand}"
+                                    Label="FType1" />
+                                <segmentControls:WithoutFrameSegmentItem
+                                    HorizontalOptions="Start"
+                                    ItemCommand="{Binding TempCommand}"
+                                    Label="FType2" />
+                                <segmentControls:WithoutFrameSegmentItem
+                                    HorizontalOptions="Start"
+                                    ItemCommand="{Binding TempCommand}"
+                                    Label="FType3" />
+                            </segmentControls:PrimitiveSegment.Segments>
+                        </segmentControls:PrimitiveSegment>
 
                         <!--  CHART  -->
                         <Grid x:Name="ChartGrid" BackgroundColor="Transparent">
@@ -274,53 +227,81 @@
                     Padding="25,5"
                     BackgroundColor="White"
                     CornerRadius="13">
-                    <ListView
-                        x:Name="menuItems"
-                        BackgroundColor="White"
-                        ItemsSource="{Binding MenuItems}"
-                        RowHeight="40"
-                        SelectedItem="{Binding SelectedMenuItem, Mode=TwoWay}"
-                        SeparatorColor="#e6e6e6"
-                        SeparatorVisibility="Default"
-                        VerticalOptions="Center">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <ViewCell>
-                                    <ContentView BackgroundColor="White">
-                                        <Grid BackgroundColor="Transparent" ColumnSpacing="20">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="auto" />
-                                                <ColumnDefinition Width="*" />
-                                            </Grid.ColumnDefinitions>
 
-                                            <Image
-                                                Grid.Column="0"
-                                                Margin="0,0,0,0"
-                                                HeightRequest="30"
-                                                Source="{Binding Image}"
-                                                VerticalOptions="Center"
-                                                WidthRequest="30" />
-                                            <StackLayout
-                                                Grid.Column="1"
-                                                BackgroundColor="Transparent"
-                                                Orientation="Horizontal"
-                                                VerticalOptions="Center">
-                                                <Label
-                                                    HorizontalOptions="StartAndExpand"
-                                                    Text="{Binding Status}"
-                                                    VerticalOptions="Center" />
-                                                <Label
-                                                    HorizontalOptions="EndAndExpand"
-                                                    HorizontalTextAlignment="End"
-                                                    Text="{Binding Value}"
-                                                    VerticalOptions="Center" />
-                                            </StackLayout>
-                                        </Grid>
-                                    </ContentView>
-                                </ViewCell>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
+                    <Grid BackgroundColor="Transparent" RowSpacing="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+
+                        <ListView
+                            x:Name="menuItems"
+                            Grid.Row="0"
+                            BackgroundColor="White"
+                            ItemsSource="{Binding MenuItems}"
+                            RowHeight="40"
+                            SelectedItem="{Binding SelectedMenuItem, Mode=TwoWay}"
+                            SeparatorColor="#e6e6e6"
+                            SeparatorVisibility="Default"
+                            VerticalOptions="Center">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <ContentView BackgroundColor="White">
+                                            <Grid BackgroundColor="Transparent" ColumnSpacing="20">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="auto" />
+                                                    <ColumnDefinition Width="*" />
+                                                </Grid.ColumnDefinitions>
+
+                                                <Image
+                                                    Grid.Column="0"
+                                                    Margin="0,0,0,0"
+                                                    HeightRequest="30"
+                                                    Source="{Binding Image}"
+                                                    VerticalOptions="Center"
+                                                    WidthRequest="30" />
+                                                <StackLayout
+                                                    Grid.Column="1"
+                                                    BackgroundColor="Transparent"
+                                                    Orientation="Horizontal"
+                                                    VerticalOptions="Center">
+                                                    <Label
+                                                        HorizontalOptions="StartAndExpand"
+                                                        Text="{Binding Status}"
+                                                        VerticalOptions="Center" />
+                                                    <Label
+                                                        HorizontalOptions="EndAndExpand"
+                                                        HorizontalTextAlignment="End"
+                                                        Text="{Binding Value}"
+                                                        VerticalOptions="Center" />
+                                                </StackLayout>
+                                            </Grid>
+                                        </ContentView>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+
+                        <StackLayout
+                            Grid.Row="1"
+                            BackgroundColor="Transparent"
+                            HorizontalOptions="Center"
+                            Orientation="Horizontal"
+                            Spacing="20">
+                            <Image
+                                WidthRequest="30"
+                                HorizontalOptions="End"
+                                Source="{toolKitImageResourceExtension:ImageResource Tulsi.Images.list_icon.png}"
+                                VerticalOptions="Center" />
+                            <Label
+                                FontSize="22"
+                                VerticalTextAlignment="Center"
+                                HorizontalOptions="Start"
+                                Text="View Report"
+                                TextColor="Gray" />
+                        </StackLayout>
+                    </Grid>
                 </controls:RoundedContentView>
             </StackLayout>
         </ScrollView>

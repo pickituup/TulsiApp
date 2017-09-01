@@ -21,8 +21,10 @@ namespace Tulsi.ViewModels {
             get => _selectedLatePayment;
             set {
                 if (SetProperty<LatePayment>(ref _selectedLatePayment, value) && value != null) {
-                    BaseSingleton<NavigationObserver>.Instance.OnImportedSpot(ViewType.BuyerProfileView);
-                    BaseSingleton<NavigationObserver>.Instance.OnSendProfileTransAction(value.ProfileTransactions);
+                    BaseSingleton<NavigationObserver>.Instance.OnLatePaymentsImportedSpot(ViewType.BuyerProfileView);
+                    BaseSingleton<NavigationObserver>.Instance.OnSendToBuyerProfileTransAction(value.ProfileTransactions);
+
+                    SelectedItem = null;
                 }
             }
         }
@@ -47,7 +49,7 @@ namespace Tulsi.ViewModels {
             get { return _spot; }
             set {
                 if (SetProperty(ref _spot, value) && value != null)
-                    HideSpotView();
+                    HideView();
             }
         }
 
@@ -63,15 +65,11 @@ namespace Tulsi.ViewModels {
         /// Public ctor.
         /// </summary>
         public LatePaymentsPageViewModel() {
-
-            BaseSingleton<NavigationObserver>.Instance.ImportedSpot += ImportingSpot;
-
-            BaseSingleton<NavigationObserver>.Instance.CloseView += OnCloseView;
+            BaseSingleton<NavigationObserver>.Instance.LatePaymentsImportedSpot += ImportingSpot;
 
             DisplaySearchPageCommand = new Command(() => {
                 BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.SearchPage);
             });
-
 
             NavigateBackCommand = new Command(() => BaseSingleton<ViewSwitchingLogic>.Instance.NavigateOneStepBack());
 
@@ -83,23 +81,20 @@ namespace Tulsi.ViewModels {
             ImportedView = BaseSingleton<ViewSwitchingLogic>.Instance.GetViewByType(e.ViewType);
         }
 
-        private void OnCloseView(object sender, EventArgs e) {
+        public void CloseImportedView() {
             if (this.ImportedView != null) {
-                SelectedItem = null;
-                HideSpotView();
+                
                 ImportedView.Dispose();
                 ImportedView = null;
+                HideView();
             }
         }
 
         public void NativeSenderCloseView() {
-            SelectedItem = null;
-            HideSpotView();
-            ImportedView.Dispose();
-            ImportedView = null;
+            CloseImportedView();
         }
 
-        private void HideSpotView() {
+        private void HideView() {
             int displayHeight = DependencyService.Get<IDisplaySize>().GetHeight();
             Spot.TranslationY = displayHeight;
         }
@@ -160,13 +155,7 @@ namespace Tulsi.ViewModels {
 
 
         public void Dispose() {
-            BaseSingleton<NavigationObserver>.Instance.ImportedSpot -= ImportingSpot;
-
-            BaseSingleton<NavigationObserver>.Instance.CloseView -= OnCloseView;
-        }
-
-        public void ReSubscribe() {
-
+            BaseSingleton<NavigationObserver>.Instance.LatePaymentsImportedSpot -= ImportingSpot;
         }
     }
 }

@@ -12,7 +12,7 @@ using Tulsi.Helpers;
 
 namespace Tulsi {
     public partial class BankAccountsPage : MenuContainerPage, IView {
-        private BankAccountsViewModel _viewModel;
+        private BankAccountsPageViewModel _viewModel;
 
         /// <summary>
         /// Public ctor.
@@ -20,33 +20,39 @@ namespace Tulsi {
         public BankAccountsPage() {
             InitializeComponent();
 
-            BindingContext = _viewModel = new BankAccountsViewModel();
+            BindingContext = _viewModel = new BankAccountsPageViewModel();
 
             SlideMenu = new SideMenuView();
         }
 
         /// <summary>
-        /// 
+        ///     Autohide side menu.
         /// </summary>
         public void ApplyVisualChangesWhileNavigating() {
             SlideMenu.HideWithoutAnimations();
         }
 
-        public void Dispose() {
-            _viewModel.Dispose();
-        }
-
-        public void ReSubscribe() {
-            
-        }
-
         /// <summary>
-        /// Opens side menu
+        ///     Open side menu.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void ShowMenuCommand(object sender, EventArgs e) {
             ShowMenu();
+        }
+
+        /// <summary>
+        ///     Occurs only for Android (not for iOS).
+        ///     False navigate out from page, true - staying in this page.
+        /// </summary>
+        /// <returns></returns>
+        protected override bool OnBackButtonPressed() {
+            BaseSingleton<ViewSwitchingLogic>.Instance.NavigateOneStepBack();
+            return true;
+        }
+
+        public void Dispose() {
+            _viewModel.Dispose();
         }
     }
 }

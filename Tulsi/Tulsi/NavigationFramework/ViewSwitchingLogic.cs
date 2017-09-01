@@ -33,9 +33,8 @@ namespace Tulsi.NavigationFramework {
         public void NavigateTo(ViewType viewType) {
             Page pageToPush = (Page)_viewContainer.GetViewByType(viewType);
 
-            Page relativePageFromNavigationStack =
-                Application.Current.MainPage.Navigation.NavigationStack
-                .FirstOrDefault(p => p.GetType() == pageToPush.GetType());
+            Page relativePageFromNavigationStack = Application.Current.MainPage.Navigation.NavigationStack
+                                                  .FirstOrDefault(p => p.GetType() == pageToPush.GetType());
 
             if (relativePageFromNavigationStack != null) {
                 MoveToTheExistingPageInNavigationStack(relativePageFromNavigationStack);
@@ -49,14 +48,26 @@ namespace Tulsi.NavigationFramework {
         ///     Removes the last page from navigation stack. Root page will not be exclude from navigation stack. 
         /// </summary>
         public async void NavigateOneStepBack() {
-            await Application.Current.MainPage.Navigation.PopAsync(false);
+            DisposeBeforeNavigate(Application.Current.MainPage.Navigation.NavigationStack.LastOrDefault());
 
-            ActionAfterNavigatedBackAsync(Application.Current.MainPage.Navigation.NavigationStack.LastOrDefault());
+            await Application.Current.MainPage.Navigation.PopAsync(false);
         }
 
+        private void DisposeBeforeNavigate(Page page) {
+            if (page is IView) {
+                ((IView)page).Dispose();
+
+                GC.Collect();
+            }
+        }
+
+        /// <summary>
+        ///     After navigate back Can do something.
+        /// </summary>
+        /// <param name="page"></param>
         private void ActionAfterNavigatedBackAsync(Page page) {
             if (page is IView) {
-                ((IView)page).ReSubscribe();
+                // Can do something.
             }
         }
 
@@ -75,6 +86,10 @@ namespace Tulsi.NavigationFramework {
         /// <param name="viewType"></param>
         /// <returns></returns>
         private Page GetViewInNavigationFrameByType(ViewType viewType) {
+            if (Application.Current.MainPage != null) {
+                DisposeBeforeNavigate(Application.Current.MainPage.Navigation.NavigationStack.LastOrDefault());
+            }
+
             return _viewContainer.GetViewInNavigationFrameByType(viewType);
         }
 
@@ -98,6 +113,7 @@ namespace Tulsi.NavigationFramework {
                 .Except(pagesToLeaveInStack).Count();
 
             for (int i = 0; i < timesToPop; i++) {
+                DisposeBeforeNavigate(Application.Current.MainPage.Navigation.NavigationStack.LastOrDefault());
                 await Application.Current.MainPage.Navigation.PopAsync(false);
             }
         }
@@ -116,13 +132,10 @@ namespace Tulsi.NavigationFramework {
         private void ApplyVisualChangesWhileNavigating(Page targetPage) {
             try {
                 ((IView)targetPage).ApplyVisualChangesWhileNavigating();
-                ((IView)targetPage).Dispose();
             } catch (NullReferenceException exc) {
-                throw new InvalidOperationException(string.Format("ViewSwitchingLogic.ApplyVisualChangesWhileNavigating - {0}. Exception details - {1}",
-                    ERROR_NAVIGATION_STACK_IS_EMPTY, exc.Message));
+                throw new InvalidOperationException(string.Format($"ViewSwitchingLogic.ApplyVisualChangesWhileNavigating -                  {ERROR_NAVIGATION_STACK_IS_EMPTY}. Exception details - {exc.Message}"));
             } catch (Exception exc) {
-                throw new InvalidOperationException(string.Format("ViewSwitchingLogic.ApplyVisualChangesWhileNavigating - {0}, Exception details - {1}",
-                    ERROR_INVALID_PAGE_IN_NAVIGATION_STACK, exc.Message));
+                throw new InvalidOperationException(string.Format($"ViewSwitchingLogic.ApplyVisualChangesWhileNavigating - {ERROR_INVALID_PAGE_IN_NAVIGATION_STACK}, Exception details - {exc.Message}"));
             }
         }
     }

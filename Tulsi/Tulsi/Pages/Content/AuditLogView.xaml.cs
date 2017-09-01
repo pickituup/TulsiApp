@@ -14,6 +14,9 @@ namespace Tulsi.Pages.Content {
 
         private AuditLogViewModel _viewModel;
 
+        /// <summary>
+        ///     ctor().
+        /// </summary>
         public AuditLogView() {
             InitializeComponent();
 
@@ -25,10 +28,6 @@ namespace Tulsi.Pages.Content {
 
         public void Dispose() {
             _viewModel.Dispose();
-        }
-
-        public void ReSubscribe() {
-            
         }
     }
 }
