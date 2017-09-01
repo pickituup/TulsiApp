@@ -38,8 +38,14 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\AdvancedStackList.cs" />
+    <Compile Include="Controls\ColorProgressBar.cs" />
     <Compile Include="Controls\CustomFrame.cs" />
+    <Compile Include="Controls\CustomWebView.cs" />
     <Compile Include="Controls\EntryEx.cs" />
+    <Compile Include="Controls\MenuItemView.xaml.cs">
+      <DependentUpon>MenuItemView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\PrimitiveSegmentControl\FramedLabelSegmentItem.xaml.cs">
       <DependentUpon>FramedLabelSegmentItem.xaml</DependentUpon>
     </Compile>
@@ -54,6 +60,7 @@
     <Compile Include="Controls\RoundedContentView.cs" />
     <Compile Include="Controls\RoundedView.cs" />
     <Compile Include="Controls\StackList.cs" />
+    <Compile Include="Controls\StackListItemBase.cs" />
     <Compile Include="Controls\TodayRatesControls\ExpandedGroup.xaml.cs">
       <DependentUpon>ExpandedGroup.xaml</DependentUpon>
     </Compile>
@@ -102,6 +109,9 @@
     </Compile>
     <Compile Include="Pages\ArrivalPage.xaml.cs">
       <DependentUpon>ArrivalPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AuditLogDetailsPage.xaml.cs">
+      <DependentUpon>AuditLogDetailsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\AuditLogPage.xaml.cs">
       <DependentUpon>AuditLogPage.xaml</DependentUpon>
@@ -226,6 +236,7 @@
     <Compile Include="ToolKit\Triggers\ChangeBackgroundColorTriggerAction.cs" />
     <Compile Include="ViewModels\ArrivalDetailsViewModel.cs" />
     <Compile Include="ViewModels\ArrivalPageViewModel.cs" />
+    <Compile Include="ViewModels\AuditLogDetailsPageViewModel.cs" />
     <Compile Include="ViewModels\AuditLogPageViewModel.cs" />
     <Compile Include="ViewModels\BankAccountDetailsViewModel.cs" />
     <Compile Include="ViewModels\BankAccountsPageViewModel.cs" />
@@ -729,6 +740,18 @@
     <EmbeddedResource Include="Images\green_plus_icon.png" />
     <EmbeddedResource Include="Images\list_icon.png" />
     <EmbeddedResource Include="Images\red_minus_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\AuditLogDetailsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Controls\MenuItemView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.4.267\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.4.267\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />

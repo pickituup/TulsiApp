@@ -90,7 +90,9 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="Renderers\ColorProgressBar.cs" />
     <Compile Include="Renderers\CustomFrameRenderer.cs" />
+    <Compile Include="Renderers\CustomWebViewRenderer.cs" />
     <Compile Include="Services\DisplaySizeiOS.cs" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist">

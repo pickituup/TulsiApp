@@ -214,6 +214,10 @@ namespace Tulsi.NavigationFramework {
                 {
                     ViewType.AuditLogView,
                     ()=> new ViewBuider<AuditLogView>().GetView()
+                },
+                {
+                    ViewType.AuditLogDetailsPage,
+                    ()=> new ViewBuider<AuditLogDetailsPage>().GetView()
                 }
             };
         }

@@ -2,6 +2,7 @@
 using System.Globalization;
 using Tulsi.Helpers;
 using Tulsi.NavigationFramework;
+using Tulsi.Pages;
 using Tulsi.Pages.temp;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -15,6 +16,7 @@ namespace Tulsi {
             InitializeComponent();
 
             //MainPage = new TempPage();
+            //MainPage = new AuditLogDetailsPage();
 
             BaseSingleton<ViewSwitchingLogic>.Instance.BuildNavigationStack(ViewType.LoginPage);
         }

@@ -22,6 +22,8 @@ namespace Tulsi.ViewModels {
 
         public ICommand DisplaySearchPageCommand { get; private set; }
 
+        public ICommand SelectItemCommand { get; private set; }
+
         /// <summary>
         ///     ctor().
         /// </summary>
@@ -30,12 +32,15 @@ namespace Tulsi.ViewModels {
                 BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.SearchPage);
             });
 
+            SelectItemCommand = new Command(() => BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.AuditLogDetailsPage));
+
             HARDCODED_DATA_INSERT();
         }
 
         private void HARDCODED_DATA_INSERT() {
             AuditData = new ObservableCollection<AuditEntry>() {
-                new AuditEntry() { Date = DateTime.Now,
+                new AuditEntry() {
+                    Date = DateTime.Now,
                     AuditActions = new List<AuditAction>() {
                         new AuditAction() { Action = "Modified Buyer", Code = "SKC" },
                         new AuditAction() { Action = "Changed Rates", Code = "SKC"  },
@@ -43,7 +48,8 @@ namespace Tulsi.ViewModels {
                         new AuditAction() { Action = "Modified Buyer", Code = "SKC"  }
                     }
                 },
-                new AuditEntry() { Date = DateTime.Now,
+                new AuditEntry() {
+                    Date = DateTime.Now,
                     AuditActions = new List<AuditAction>() {
                         new AuditAction() { Action = "Modified Buyer", Code = "SKC" },
                         new AuditAction() { Action = "Changed Rates", Code = "SKC"  },
@@ -53,43 +59,18 @@ namespace Tulsi.ViewModels {
                         new AuditAction() { Action = "Deposit Received", Code = "MKC" }
                     }
                 },
-                new AuditEntry() { Date = DateTime.Now,
+                new AuditEntry() {
+                    Date = DateTime.Now,
                     AuditActions = new List<AuditAction>() {
                         new AuditAction() { Action = "Modified Buyer", Code = "SKC" },
                         new AuditAction() { Action = "Changed Rates", Code = "SKC"  },
                         new AuditAction() { Action = "Deposit Received", Code = "MKC" }
                     }
                 },
-                new AuditEntry() { Date = DateTime.Now,
+                new AuditEntry() {
+                    Date = DateTime.Now,
                     AuditActions = new List<AuditAction>() {
                         new AuditAction() { Action = "Modified Buyer", Code = "SKC" },
-                        new AuditAction() { Action = "Changed Rates", Code = "SKC"  },
-                        new AuditAction() { Action = "Deposit Received", Code = "MKC" },
-                        new AuditAction() { Action = "Modified Buyer", Code = "SKC"  },
-                        new AuditAction() { Action = "Changed Rates", Code = "SKC"  },
-                        new AuditAction() { Action = "Deposit Received", Code = "MKC" }
-                    }
-                },
-                new AuditEntry() { Date = DateTime.Now,
-                    AuditActions = new List<AuditAction>() {
-                        new AuditAction() { Action = "Modified Buyer", Code = "SKC"  },
-                        new AuditAction() { Action = "Changed Rates", Code = "SKC"  },
-                        new AuditAction() { Action = "Deposit Received", Code = "MKC" }
-                    }
-                },
-                new AuditEntry() { Date = DateTime.Now,
-                    AuditActions = new List<AuditAction>() {
-                        new AuditAction() { Action = "Modified Buyer", Code = "SKC" },
-                    }
-                },
-                new AuditEntry() { Date = DateTime.Now,
-                    AuditActions = new List<AuditAction>() {
-                        new AuditAction() { Action = "Modified Buyer", Code = "SKC" },
-                        new AuditAction() { Action = "Changed Rates", Code = "SKC"  },
-                        new AuditAction() { Action = "Deposit Received", Code = "MKC" },
-                        new AuditAction() { Action = "Modified Buyer", Code = "SKC"  },
-                        new AuditAction() { Action = "Changed Rates", Code = "SKC"  },
-                        new AuditAction() { Action = "Deposit Received", Code = "MKC" },
                         new AuditAction() { Action = "Changed Rates", Code = "SKC"  },
                         new AuditAction() { Action = "Deposit Received", Code = "MKC" },
                         new AuditAction() { Action = "Modified Buyer", Code = "SKC"  },
@@ -97,7 +78,38 @@ namespace Tulsi.ViewModels {
                         new AuditAction() { Action = "Deposit Received", Code = "MKC" }
                     }
                 },
-                new AuditEntry() { Date = DateTime.Now,
+                new AuditEntry() {
+                    Date = DateTime.Now,
+                    AuditActions = new List<AuditAction>() {
+                        new AuditAction() { Action = "Modified Buyer", Code = "SKC"  },
+                        new AuditAction() { Action = "Changed Rates", Code = "SKC"  },
+                        new AuditAction() { Action = "Deposit Received", Code = "MKC" }
+                    }
+                },
+                new AuditEntry() {
+                    Date = DateTime.Now,
+                    AuditActions = new List<AuditAction>() {
+                        new AuditAction() { Action = "Modified Buyer", Code = "SKC" },
+                    }
+                },
+                new AuditEntry() {
+                    Date = DateTime.Now,
+                    AuditActions = new List<AuditAction>() {
+                        new AuditAction() { Action = "Modified Buyer", Code = "SKC" },
+                        new AuditAction() { Action = "Changed Rates", Code = "SKC"  },
+                        new AuditAction() { Action = "Deposit Received", Code = "MKC" },
+                        new AuditAction() { Action = "Modified Buyer", Code = "SKC"  },
+                        new AuditAction() { Action = "Changed Rates", Code = "SKC"  },
+                        new AuditAction() { Action = "Deposit Received", Code = "MKC" },
+                        new AuditAction() { Action = "Changed Rates", Code = "SKC"  },
+                        new AuditAction() { Action = "Deposit Received", Code = "MKC" },
+                        new AuditAction() { Action = "Modified Buyer", Code = "SKC"  },
+                        new AuditAction() { Action = "Changed Rates", Code = "SKC"  },
+                        new AuditAction() { Action = "Deposit Received", Code = "MKC" }
+                    }
+                },
+                new AuditEntry() {
+                    Date = DateTime.Now,
                     AuditActions = new List<AuditAction>() {
                         new AuditAction() { Action = "Modified Buyer", Code = "SKC" },
                         new AuditAction() { Action = "Changed Rates", Code = "SKC"  },
@@ -106,7 +118,7 @@ namespace Tulsi.ViewModels {
                 }
             };
         }
-        
+
         public void Dispose() {
             AuditData.Clear();
         }

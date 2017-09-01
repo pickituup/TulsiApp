@@ -24,6 +24,8 @@ namespace Tulsi {
 
             BindingContext = _viewModel = new ArrivalPageViewModel();
 
+            
+
             CalendarInitialization();
         }
 

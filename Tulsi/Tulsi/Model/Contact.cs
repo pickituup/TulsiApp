@@ -1,5 +1,9 @@
-﻿namespace Tulsi.Model {
+﻿using Xamarin.Forms;
+
+namespace Tulsi.Model {
     public class Contact {
+        public Color ContactProgressColor { get; set; }
+
         public double ContactProgress { get; set; }
 
         public string Name { get; set; }

@@ -84,15 +84,22 @@
 
             <primitiveSegmentControls:PrimitiveSegment BackgroundColor="Transparent" Orientation="Horizontal">
                 <primitiveSegmentControls:PrimitiveSegment.Segments>
-
-                    <primitiveSegmentControls:FramedLabelSegmentItem HorizontalOptions="FillAndExpand" Label="First segment" />
-
-                    <primitiveSegmentControls:FramedLabelSegmentItem HorizontalOptions="FillAndExpand" ItemCommand="{Binding CommandForSegments}" />
-
+                    <primitiveSegmentControls:FramedLabelSegmentItem
+                        HorizontalOptions="FillAndExpand"
+                        ItemCommand="{Binding TempCommand}"
+                        Label="Buyer" />
                     <primitiveSegmentControls:FramedLabelSegmentItem
                         HorizontalOptions="FillAndExpand"
                         ItemCommand="{Binding CommandForSegments}"
-                        Label="Third segment" />
+                        Label="Supplier" />
+                    <primitiveSegmentControls:FramedLabelSegmentItem
+                        HorizontalOptions="FillAndExpand"
+                        ItemCommand="{Binding CommandForSegments}"
+                        Label="Ladaan" />
+                    <primitiveSegmentControls:FramedLabelSegmentItem
+                        HorizontalOptions="FillAndExpand"
+                        ItemCommand="{Binding TempCommand}"
+                        Label="Currency" />
                 </primitiveSegmentControls:PrimitiveSegment.Segments>
             </primitiveSegmentControls:PrimitiveSegment>
 
@@ -150,8 +157,9 @@
                                         </Frame>
                                     </StackLayout>
                                 </Frame>
-                                <ProgressBar
+                                <controls:ColorProgressBar
                                     BackgroundColor="#A6A6A6"
+                                    BarColor="{Binding ContactProgressColor}"
                                     HeightRequest="5"
                                     Progress="{Binding ContactProgress}"
                                     VerticalOptions="Center" />

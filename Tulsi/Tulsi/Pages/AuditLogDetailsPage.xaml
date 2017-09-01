@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Tulsi.Pages.AuditLogDetailsPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:Tulsi.Controls"
+    xmlns:local="clr-namespace:Tulsi;assembly=Tulsi"
+    xmlns:m="clr-namespace:SlideOverKit"
+    xmlns:toolKitImageResourceExtension="clr-namespace:Tulsi.ToolKit.MarkupExtensions"
+    NavigationPage.HasNavigationBar="false">
+
+    <StackLayout
+        x:Name="HeaderLayout"
+        BackgroundColor="#DCDCDC"
+        Spacing="0">
+        <!--  Tool bar  -->
+        <Grid
+            x:Name="ToolbarGrid"
+            BackgroundColor="#2793F5"
+            VerticalOptions="Start">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+            </Grid.RowDefinitions>
+            <Grid
+                Padding="15,0,0,0"
+                BackgroundColor="Transparent"
+                HorizontalOptions="Start">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="40" />
+                </Grid.ColumnDefinitions>
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NavigateBackCommand}" />
+                </Grid.GestureRecognizers>
+                <Image
+                    HeightRequest="20"
+                    HorizontalOptions="Start"
+                    Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.back.png}"
+                    VerticalOptions="Center"
+                    WidthRequest="15" />
+            </Grid>
+
+            <Label
+                x:Name="PageTitleLabel"
+                HorizontalOptions="Center"
+                Text="Audit Log Details"
+                TextColor="White"
+                VerticalOptions="Center" />
+
+
+        </Grid>
+
+        <!--  MAIN CONTENT  -->
+        <StackLayout
+            Margin="5"
+            BackgroundColor="Transparent"
+            Spacing="10"
+            VerticalOptions="FillAndExpand">
+
+            <controls:RoundedContentView BackgroundColor="White" CornerRadius="15">
+                <Label
+                    Margin="0,10"
+                    FontAttributes="Bold"
+                    HorizontalOptions="Center"
+                    Text="Modified Buyer Entry"
+                    TextColor="{StaticResource MainColor}"
+                    VerticalOptions="Center"
+                    VerticalTextAlignment="Center" />
+            </controls:RoundedContentView>
+
+            <controls:RoundedContentView
+                BackgroundColor="White"
+                CornerRadius="15"
+                VerticalOptions="FillAndExpand">
+                <Grid BackgroundColor="Transparent">
+                    <controls:CustomWebView
+                        HorizontalOptions="FillAndExpand"
+                        Uri="crafted.pdf"
+                        VerticalOptions="FillAndExpand" />
+                </Grid>
+            </controls:RoundedContentView>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>
