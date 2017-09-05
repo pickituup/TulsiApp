@@ -156,7 +156,10 @@ namespace Tulsi.NavigationFramework {
 
         AuditLogView,
 
-        AuditLogDetailsPage
+        AuditLogDetailsPage,
 
+        TutorialPage,
+
+        WelcomePage
     }
 }

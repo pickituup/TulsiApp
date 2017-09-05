@@ -64,6 +64,11 @@
     <Compile Include="Controls\TodayRatesControls\ExpandedGroup.xaml.cs">
       <DependentUpon>ExpandedGroup.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ForDeveloper\MemoryInfo.cs" />
+    <Compile Include="ForDeveloper\MemoryView.xaml.cs">
+      <DependentUpon>MemoryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ForDeveloper\Service\IMemoryService.cs" />
     <Compile Include="Helpers\BaseSingleton.cs" />
     <Compile Include="Menu\SideMenuView.xaml.cs">
       <DependentUpon>SideMenuView.xaml</DependentUpon>
@@ -77,7 +82,9 @@
     <Compile Include="Model\DataContainers\ArrivalsContainer.cs" />
     <Compile Include="Model\DataContainers\DataItems\ArrivalItem.cs" />
     <Compile Include="Model\DataContainers\DataItems\ProfitMenuItem.cs" />
+    <Compile Include="Model\DataContainers\DataItems\TutorialItem.cs" />
     <Compile Include="Model\DataContainers\ProfitMenuContainer.cs" />
+    <Compile Include="Model\DataContainers\TutorialsContainer.cs" />
     <Compile Include="Model\Period.cs" />
     <Compile Include="Model\DataContainers\DataItems\ReportsMenuItem.cs" />
     <Compile Include="Model\DataContainers\ReportsMenuContainer.cs" />
@@ -224,9 +231,16 @@
     <Compile Include="Pages\TodayRatesPage.xaml.cs">
       <DependentUpon>TodayRatesPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\TutorialPage.xaml.cs">
+      <DependentUpon>TutorialPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\WelcomePage.xaml.cs">
+      <DependentUpon>WelcomePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SharedService\IDisplaySize.cs" />
     <Compile Include="ToolKit\BindingValueConverters\BoolToGenericObjectConverter.cs" />
+    <Compile Include="ToolKit\BindingValueConverters\VisibilityViewConverter.cs" />
     <Compile Include="ToolKit\BindingValueConverters\ProfileTransactionImageConverter.cs" />
     <Compile Include="ToolKit\BindingValueConverters\RankingsColorConverter.cs" />
     <Compile Include="ToolKit\BindingValueConverters\RankingsIconConverter.cs" />
@@ -269,6 +283,8 @@
     <Compile Include="ViewModels\SetupDashboardViewModel.cs" />
     <Compile Include="ViewModels\StockPendingDetailsViewModel.cs" />
     <Compile Include="ViewModels\TodayRatesViewModel.cs" />
+    <Compile Include="ViewModels\TutorialPageViewModel.cs" />
+    <Compile Include="ViewModels\WelcomePageViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="App.xaml">
@@ -308,14 +324,17 @@
     <Reference Include="Syncfusion.SfListView.XForms, Version=15.2451.0.43, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Syncfusion.Xamarin.SfListView.15.2.0.43\lib\portable-win+net45+wp80+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Syncfusion.SfListView.XForms.dll</HintPath>
     </Reference>
+    <Reference Include="Xamarin.Forms.CarouselView, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.Forms.CarouselView.2.3.0-pre2\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.CarouselView.dll</HintPath>
+    </Reference>
     <Reference Include="Xamarin.Forms.Core, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xamarin.Forms.2.3.4.267\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.Core.dll</HintPath>
+      <HintPath>..\..\packages\Xamarin.Forms.2.3.4.270\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.Core.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Forms.Platform, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xamarin.Forms.2.3.4.267\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.Platform.dll</HintPath>
+      <HintPath>..\..\packages\Xamarin.Forms.2.3.4.270\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.Platform.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Forms.Xaml, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xamarin.Forms.2.3.4.267\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.Xaml.dll</HintPath>
+      <HintPath>..\..\packages\Xamarin.Forms.2.3.4.270\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.Xaml.dll</HintPath>
     </Reference>
     <Reference Include="XamForms.Controls.Calendar, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\XamForms.Controls.Calendar.1.1.0\lib\portable-net45+wp8+win8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10\XamForms.Controls.Calendar.dll</HintPath>
@@ -753,12 +772,41 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ForDeveloper\MemoryView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\TutorialPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\slide1.gif" />
+    <EmbeddedResource Include="Images\slide2.gif" />
+    <EmbeddedResource Include="Images\slide3.png" />
+    <EmbeddedResource Include="Images\slide4.gif" />
+    <EmbeddedResource Include="Images\slide5.png" />
+    <EmbeddedResource Include="Images\tulsi logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\WelcomePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\blue_arrow.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
-  <Import Project="..\..\packages\Xamarin.Forms.2.3.4.267\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.4.267\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />
+  <Import Project="..\..\packages\Xamarin.Forms.2.3.4.270\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.4.270\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\..\packages\Xamarin.Forms.2.3.4.267\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.Forms.2.3.4.267\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets'))" />
+    <Error Condition="!Exists('..\..\packages\Xamarin.Forms.2.3.4.270\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.Forms.2.3.4.270\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets'))" />
   </Target>
 </Project>

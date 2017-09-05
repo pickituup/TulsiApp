@@ -78,6 +78,18 @@
                         VerticalOptions="FillAndExpand" />
                 </Grid>
             </controls:RoundedContentView>
+
+            <controls:RoundedContentView
+                BackgroundColor="White"
+                CornerRadius="15"
+                VerticalOptions="FillAndExpand">
+                <Grid BackgroundColor="Transparent">
+                    <controls:CustomWebView
+                        HorizontalOptions="FillAndExpand"
+                        Uri="crafted.pdf"
+                        VerticalOptions="FillAndExpand" />
+                </Grid>
+            </controls:RoundedContentView>
         </StackLayout>
     </StackLayout>
 </ContentPage>

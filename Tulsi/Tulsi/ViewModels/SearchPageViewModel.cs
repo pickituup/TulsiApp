@@ -7,14 +7,53 @@ using Tulsi.MVVM.Core;
 using Tulsi.NavigationFramework;
 using Xamarin.Forms;
 using Tulsi.Model;
+using Tulsi.SharedService;
+using Tulsi.NavigationFramework.NavigationArgs;
 
 namespace Tulsi.ViewModels {
     public class SearchPageViewModel : ViewModelBase, IViewModel {
 
+        IView _importedView;
+        public IView ImportedView {
+            get { return _importedView; }
+            set {
+                if (SetProperty(ref _importedView, value) && value != null)
+                    Spot.TranslateTo(0, 0);
+            }
+        }
+
+        ContentView _spot;
+        public ContentView Spot {
+            get { return _spot; }
+            set {
+                if (SetProperty(ref _spot, value) && value != null)
+                    HideView();
+            }
+        }
+
+        Contact _selectedItem;
+        public Contact SelectedItem {
+            get => _selectedItem;
+            set {
+                if (SetProperty<Contact>(ref _selectedItem, value) && value != null) {
+                    BaseSingleton<NavigationObserver>.Instance.OnSearchImportedSpot(ViewType.BuyerProfileView);
+                    //BaseSingleton<NavigationObserver>.Instance.OnSendToBuyerProfileTransAction(value.ProfileTransactions);
+
+                    SelectedItem = null;
+                }
+            }
+        }
+
+        ObservableCollection<Contact> _testList;
+        public ObservableCollection<Contact> TestList {
+            get { return _testList; }
+            set { SetProperty(ref _testList, value); }
+        }
+
         ObservableCollection<ContactGroup> _contactsGroupsResult;
         public ObservableCollection<ContactGroup> ContactsGroupsResult {
             get => _contactsGroupsResult;
-            private set => SetProperty<ObservableCollection<ContactGroup>>(ref _contactsGroupsResult, value);
+            private set => SetProperty(ref _contactsGroupsResult, value);
         }
 
         public ICommand ClosePageCommand { get; private set; }
@@ -23,11 +62,35 @@ namespace Tulsi.ViewModels {
         ///     ctor().
         /// </summary>
         public SearchPageViewModel() {
+            BaseSingleton<NavigationObserver>.Instance.SearchImportedSpot += ImportingSpot;
+
             ClosePageCommand = new Command(() => BaseSingleton<ViewSwitchingLogic>.Instance.NavigateOneStepBack());
 
             ContactsGroupsResult = new ObservableCollection<ContactGroup>();
 
             HARDCODED_DATA_INSERT();
+        }
+
+        private void ImportingSpot(object sender, NavigationImportedEventArgs e) {
+            ImportedView = BaseSingleton<ViewSwitchingLogic>.Instance.GetViewByType(e.ViewType);
+        }
+
+        public void CloseImportedView() {
+            if (this.ImportedView != null) {
+
+                ImportedView.Dispose();
+                ImportedView = null;
+                HideView();
+            }
+        }
+
+        public void NativeSenderCloseView() {
+            CloseImportedView();
+        }
+
+        private void HideView() {
+            int displayHeight = DependencyService.Get<IDisplaySize>().GetHeight();
+            Spot.TranslationY = displayHeight;
         }
 
         private void HARDCODED_DATA_INSERT() {
@@ -160,10 +223,58 @@ namespace Tulsi.ViewModels {
                 new ObservableCollection<ContactGroup>(
                     groups.OrderBy<ContactGroup, string>((c) => c.FirstLetter)
                     .ToList<ContactGroup>());
+
+            //TestList = GetContactsGroupsResult();
+        }
+
+        private ObservableCollection<Contact> GetContactsGroupsResult() {
+            List<Contact> orederedList = new List<Contact>
+            {
+                new Contact() {
+                    ContactProgressColor = Color.Yellow,
+                    ContactProgress = .2,
+                    Name = "Petro",
+                    Number = 122,
+                    Company = "Rlrrlrll lrll",
+                    IsOverDue = true,
+                    OverdueDays = 7
+                },
+                new Contact() {
+                    ContactProgressColor = Color.FromHex("#2793F5"),
+                    ContactProgress = .35,
+                    Name = "Phill",
+                    Number = 132,
+                    Company = "Rlrrlrll lrll"
+                },
+                new Contact() {
+                    ContactProgressColor = Color.Red,
+                    ContactProgress = .7,
+                    Name = "Petruha",
+                    Number = 77,
+                    Company = "Rlrrlrll lrll",
+                    IsOverDue = true,
+                    OverdueDays = 2
+                },
+                new Contact {
+                    ContactProgressColor = Color.FromHex("#2793F5"),
+                    ContactProgress = .5,
+                    Name = "Mykola",
+                    Number = 234,
+                    Company = "Rlrrlrll lrll"
+                }
+            };
+
+            return new ObservableCollection<Contact>(orederedList.OrderBy((x)=> x.Name));
         }
 
         public void Dispose() {
+            if (ImportedView != null) {
+                ImportedView.Dispose();
+            }
+
             ContactsGroupsResult.Clear();
+
+            BaseSingleton<NavigationObserver>.Instance.SearchImportedSpot -= ImportingSpot;
         }
     }
 }

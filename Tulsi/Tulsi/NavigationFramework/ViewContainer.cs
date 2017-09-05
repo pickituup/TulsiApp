@@ -1,37 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Tulsi.Pages;
 using Tulsi.Pages.Content;
 using Xamarin.Forms;
 
 namespace Tulsi.NavigationFramework {
     public sealed class ViewContainer {
-        private static readonly string ERROR_CANT_GET_VIEW_IN_NAVIGATION_FRAME_BY_TYPE = "Can't get view in navigation frame by it's type";
-        private static readonly string ERROR_CANT_GET_VIEW_BY_TYPE = "Can't get view by it's type";
+        private const string ERROR_CANT_GET_VIEW_IN_NAVIGATION_FRAME_BY_TYPE = "Can't get view in navigation frame by it's type";
+
+        private const string ERROR_CANT_GET_VIEW_BY_TYPE = "Can't get view by it's type";
 
         /// <summary>
-        /// Container for views wrapped by Xamarin.Forms.NavigationPage
+        ///     Container for views wrapped by Xamarin.Forms.NavigationPage
         /// </summary>
         private readonly Dictionary<ViewType, Func<Page>> _viewsInNavigationFrame;
 
         /// <summary>
-        /// Container for views
+        ///     Container for views
         /// </summary>
         private readonly Dictionary<ViewType, Func<IView>> _views;
 
         /// <summary>
-        /// Public ctor
+        ///     ctor().
         /// </summary>
         public ViewContainer() {
-            _views = buildViews();
-            _viewsInNavigationFrame = buildViewsInNavigationFrames();
+            _views = BuildViews();
+
+            _viewsInNavigationFrame = BuildViewsInNavigationFrames();
         }
 
         /// <summary>
-        /// Get view in navigation frame by type.
+        ///     Get view in navigation frame by type.
         /// </summary>
         /// <param name="viewType"></param>
         /// <returns></returns>
@@ -44,7 +43,7 @@ namespace Tulsi.NavigationFramework {
         }
 
         /// <summary>
-        /// Get view by type
+        ///     Get view by type.
         /// </summary>
         /// <param name="viewType"></param>
         /// <returns></returns>
@@ -57,14 +56,14 @@ namespace Tulsi.NavigationFramework {
         }
 
         /// <summary>
-        /// Build views wrapped by Xamarin.Forms.NavigationPage
+        ///     Build views wrapped by Xamarin.Forms.NavigationPage.
         /// </summary>
         /// <returns></returns>
-        private Dictionary<ViewType, Func<Page>> buildViewsInNavigationFrames() {
+        private Dictionary<ViewType, Func<Page>> BuildViewsInNavigationFrames() {
             return new Dictionary<ViewType, Func<Page>>() {
                 {
-                    ViewType.LoginPage,
-                    () => new ViewBuider<LoginPage>().GetViewInNavigationFrame()
+                    ViewType.TutorialPage,
+                    ()=> new ViewBuider<TutorialPage>().GetViewInNavigationFrame()
                 },
                 {
                     ViewType.DashboardPage,
@@ -74,10 +73,10 @@ namespace Tulsi.NavigationFramework {
         }
 
         /// <summary>
-        /// Build views
+        ///     Build views.
         /// </summary>
         /// <returns></returns>
-        private Dictionary<ViewType, Func<IView>> buildViews() {
+        private Dictionary<ViewType, Func<IView>> BuildViews() {
             return new Dictionary<ViewType, Func<IView>>() {
                 {
                     ViewType.LoginPage,
@@ -218,7 +217,12 @@ namespace Tulsi.NavigationFramework {
                 {
                     ViewType.AuditLogDetailsPage,
                     ()=> new ViewBuider<AuditLogDetailsPage>().GetView()
+                },
+                {
+                    ViewType.WelcomePage,
+                    ()=> new ViewBuider<WelcomePage>().GetView()
                 }
+                
             };
         }
     }

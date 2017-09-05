@@ -20,6 +20,8 @@ namespace Tulsi.NavigationFramework {
 
         public event EventHandler<NavigationImportedEventArgs> LatePaymentsImportedSpot = delegate { };
 
+        public event EventHandler<NavigationImportedEventArgs> SearchImportedSpot = delegate { };
+
         public event EventHandler<NavigationImportedContentEventArgs> NavigatedContent = delegate { };
 
         public event EventHandler CloseView = delegate { };
@@ -45,6 +47,9 @@ namespace Tulsi.NavigationFramework {
         public void OnNavigatedContent(string title, ViewType viewType) {
             NavigatedContent(this, new NavigationImportedContentEventArgs() { Title = title, ViewType = viewType });
         }
+
+        public void OnSearchImportedSpot(ViewType viewType)
+            => SearchImportedSpot(this, new NavigationImportedEventArgs() { ViewType = viewType });
 
         public void OnReportsImportedSpot(ViewType viewType)
             => ReportsImportedSpot(this, new NavigationImportedEventArgs() { ViewType = viewType });

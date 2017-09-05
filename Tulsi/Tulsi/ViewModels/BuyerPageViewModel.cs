@@ -34,7 +34,7 @@ namespace Tulsi.ViewModels {
             }
         }
 
-        private Transaction _selectedItem;
+        Transaction _selectedItem;
         public Transaction SelectedItem {
             get => _selectedItem;
             set {

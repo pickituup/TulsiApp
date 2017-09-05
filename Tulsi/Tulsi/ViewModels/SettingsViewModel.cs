@@ -12,6 +12,31 @@ using Xamarin.Forms;
 namespace Tulsi.ViewModels {
     public sealed class SettingsViewModel : ViewModelBase, IViewModel {
 
+        List<string> _currencyItems;
+        public List<string> CurrencyItems {
+            get { return _currencyItems; }
+            set { SetProperty(ref _currencyItems, value); }
+        }
+
+        string _currentCurrency;
+        public string CurrentCurrency {
+            get { return _currentCurrency; }
+            set {
+                _currentCurrency = value;
+                OnPropertyChanged();
+            }
+        }
+
+        string _selectedCurrencyItem;
+        public string SelectedCurrencyItem {
+            get { return _selectedCurrencyItem; }
+            set {
+                SetProperty(ref _selectedCurrencyItem, value);
+
+                CurrentCurrency = value;
+            }
+        }
+
         public ICommand SetupDashboardPageCommand { get; private set; }
 
         public ICommand DisplaySearchPageCommand { get; private set; }
@@ -23,6 +48,19 @@ namespace Tulsi.ViewModels {
             DisplaySearchPageCommand = new Command(() => BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.SearchPage));
 
             SetupDashboardPageCommand = new Command(() => BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.SetupDashboardPage));
+
+            CurrencyItems = GetCurrencyItems();
+
+            SelectedCurrencyItem = CurrencyItems.FirstOrDefault();
+        }
+
+        private List<string> GetCurrencyItems() {
+            return new List<string>() {
+                "INR",
+                "USD",
+                "EUR",
+                "GBR"
+            };
         }
 
         public void Dispose() {

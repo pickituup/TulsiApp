@@ -21,6 +21,8 @@ namespace Tulsi {
             InitializeComponent();
 
             BindingContext = _viewModel = new SearchPageViewModel();
+
+            _viewModel.Spot = spot_ContentView;
         }
 
         /// <summary>
@@ -35,12 +37,13 @@ namespace Tulsi {
         /// </summary>
         /// <returns></returns>
         protected override bool OnBackButtonPressed() {
-            BaseSingleton<ViewSwitchingLogic>.Instance.NavigateOneStepBack();
-            return true;
-        }
-
-        private void OnItemSelected(object sender, SelectedItemChangedEventArgs e) {
-            ((ListView)sender).SelectedItem = null;
+            if (_viewModel.ImportedView != null) {
+                _viewModel.NativeSenderCloseView();
+                return true;
+            } else {
+                BaseSingleton<ViewSwitchingLogic>.Instance.NavigateOneStepBack();
+                return true;
+            }
         }
 
         public void Dispose() {

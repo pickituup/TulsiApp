@@ -17,8 +17,9 @@ namespace Tulsi {
 
             //MainPage = new TempPage();
             //MainPage = new AuditLogDetailsPage();
-
-            BaseSingleton<ViewSwitchingLogic>.Instance.BuildNavigationStack(ViewType.LoginPage);
+            //MainPage = new PasscodePage();
+            
+            BaseSingleton<ViewSwitchingLogic>.Instance.BuildNavigationStack(ViewType.TutorialPage);
         }
 
         protected override void OnStart() {

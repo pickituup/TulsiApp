@@ -6,6 +6,7 @@
     xmlns:controls="clr-namespace:Tulsi.Controls"
     xmlns:local="clr-namespace:Tulsi;assembly=Tulsi"
     xmlns:m="clr-namespace:SlideOverKit"
+    xmlns:menuItems="clr-namespace:Tulsi.Pages.Content.MenuItems"
     xmlns:toolKitImageResourceExtension="clr-namespace:Tulsi.ToolKit.MarkupExtensions"
     NavigationPage.HasNavigationBar="false">
 
@@ -94,7 +95,6 @@
                                 HasShadow="False">
 
                                 <StackLayout BackgroundColor="Transparent" Spacing="12">
-
                                     <Label
                                         FontAttributes="Bold"
                                         FontSize="Medium"
