@@ -5,11 +5,13 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:controls="clr-namespace:Tulsi.Controls"
     xmlns:forms="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.CarouselView"
+    xmlns:toolKitImageResourceExtension="clr-namespace:Tulsi.ToolKit.MarkupExtensions"
     xmlns:toolkitConverters="clr-namespace:Tulsi.ToolKit.BindingValueConverters"
     NavigationPage.HasNavigationBar="false">
     <ContentPage.Resources>
         <ResourceDictionary>
             <toolkitConverters:VisibilityViewConverter x:Key="visibility_converter" />
+            <toolkitConverters:ByteToImageSourceConverter x:Key="activityConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -17,19 +19,17 @@
         <forms:CarouselView
             BackgroundColor="Transparent"
             HorizontalOptions="FillAndExpand"
+            ItemSelected="OnSelectedItem"
             ItemsSource="{Binding Tutorials}"
             VerticalOptions="FillAndExpand">
             <forms:CarouselView.ItemTemplate>
                 <DataTemplate>
                     <StackLayout
-                        Padding="20,140,20,0"
+                        Padding="20,110,20,0"
                         BackgroundColor="Transparent"
                         Spacing="0"
                         VerticalOptions="Center">
 
-                        <!--<StackLayout BackgroundColor="AliceBlue" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-                            <WebView  Source="https://giphy.com/search/dog-gif"/>
-                        </StackLayout>-->
                         <Image HeightRequest="200" Source="{Binding Icon}" />
                         <Label
                             FontAttributes="Bold"
@@ -64,7 +64,7 @@
             </forms:CarouselView.ItemTemplate>
         </forms:CarouselView>
 
-        <BoxView HeightRequest="40" Color="GreenYellow" />
+        <Image x:Name="image" HeightRequest="40" HorizontalOptions="Center" />
 
         <ContentView BackgroundColor="{StaticResource MainColor}" VerticalOptions="End">
             <Button

@@ -36,7 +36,7 @@ namespace Tulsi.ViewModels {
         }
 
         public void Dispose() {
-
+            Tutorials.Clear();
         }
     }
 }

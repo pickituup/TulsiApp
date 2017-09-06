@@ -18,6 +18,7 @@ namespace Tulsi.Model.DataContainers {
         public List<TutorialItem> BuildProfitMenuItems() {
             return new List<TutorialItem>() {
                 new TutorialItem {
+                    Id = 1,
                     Title = "Tulsi",
                     SubTitle= string.Empty,
                     Icon = ImageSource.FromStream(()=> {
@@ -27,6 +28,7 @@ namespace Tulsi.Model.DataContainers {
                     Description="Have a god's eye on your business."
                 },
                 new TutorialItem {
+                    Id = 2,
                     Title = string.Empty,
                     SubTitle= "Keep a Check",
                     Icon = ImageSource.FromStream(()=> {
@@ -36,6 +38,7 @@ namespace Tulsi.Model.DataContainers {
                     Description="Get notified for suspicious entries."
                 },
                 new TutorialItem {
+                    Id = 3,
                     Title = string.Empty,
                     SubTitle= "Take Better Decisions",
                     Icon = ImageSource.FromStream(()=> {
@@ -45,6 +48,7 @@ namespace Tulsi.Model.DataContainers {
                     Description="Be better at your business with anytime reports."
                 },
                 new TutorialItem {
+                    Id = 4,
                     Title = string.Empty,
                     SubTitle= "Coordinate together",
                     Icon = ImageSource.FromStream(()=> {
@@ -54,6 +58,7 @@ namespace Tulsi.Model.DataContainers {
                     Description="Work with your whole team over quick chat."
                 },
                 new TutorialItem {
+                    Id = 5,
                     Title = string.Empty,
                     SubTitle= "Wherever you are",
                     Icon = ImageSource.FromStream(()=> {
