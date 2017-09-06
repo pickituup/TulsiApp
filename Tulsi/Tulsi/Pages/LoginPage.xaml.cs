@@ -95,6 +95,10 @@ namespace Tulsi {
             
         }
 
+        protected override void OnDisappearing() {
+            base.OnDisappearing();
+        }
+
         /// <summary>
         ///     Occurs only for Android (not for iOS).
         ///     False navigate out from page, true - staying in this page.

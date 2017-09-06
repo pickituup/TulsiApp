@@ -37,7 +37,11 @@
                 VerticalOptions="Center"
                 VerticalTextAlignment="Center" />
         </StackLayout>
-        <StackLayout BackgroundColor="Transparent" VerticalOptions="End" Spacing="0">
+        <StackLayout
+            Margin="0,20,0,0"
+            BackgroundColor="Transparent"
+            Spacing="0"
+            VerticalOptions="End">
             <StackLayout.GestureRecognizers>
                 <TapGestureRecognizer Command="{Binding StartCommand}" />
             </StackLayout.GestureRecognizers>

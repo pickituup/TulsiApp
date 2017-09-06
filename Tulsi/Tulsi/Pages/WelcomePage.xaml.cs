@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Tulsi.Helpers;
+﻿using Tulsi.Helpers;
 using Tulsi.NavigationFramework;
 using Tulsi.ViewModels;
 using Xamarin.Forms;

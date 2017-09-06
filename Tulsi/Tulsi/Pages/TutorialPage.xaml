@@ -3,6 +3,7 @@
     x:Class="Tulsi.Pages.TutorialPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:Tulsi.Controls"
     xmlns:forms="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.CarouselView"
     xmlns:toolkitConverters="clr-namespace:Tulsi.ToolKit.BindingValueConverters"
     NavigationPage.HasNavigationBar="false">
@@ -21,10 +22,14 @@
             <forms:CarouselView.ItemTemplate>
                 <DataTemplate>
                     <StackLayout
-                        Padding="0,150,0,0"
+                        Padding="20,140,20,0"
                         BackgroundColor="Transparent"
                         Spacing="0"
                         VerticalOptions="Center">
+
+                        <!--<StackLayout BackgroundColor="AliceBlue" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                            <WebView  Source="https://giphy.com/search/dog-gif"/>
+                        </StackLayout>-->
                         <Image HeightRequest="200" Source="{Binding Icon}" />
                         <Label
                             FontAttributes="Bold"
@@ -38,6 +43,7 @@
                         <Label
                             FontSize="Large"
                             HorizontalOptions="Center"
+                            HorizontalTextAlignment="Center"
                             IsVisible="{Binding SubTitle, Converter={StaticResource Key=visibility_converter}}"
                             LineBreakMode="WordWrap"
                             Text="{Binding SubTitle}"
@@ -47,6 +53,7 @@
                         <Label
                             FontSize="Medium"
                             HorizontalOptions="Center"
+                            HorizontalTextAlignment="Center"
                             LineBreakMode="WordWrap"
                             Text="{Binding Description}"
                             TextColor="#9E9E9E"
@@ -57,11 +64,13 @@
             </forms:CarouselView.ItemTemplate>
         </forms:CarouselView>
 
+        <BoxView HeightRequest="40" Color="GreenYellow" />
+
         <ContentView BackgroundColor="{StaticResource MainColor}" VerticalOptions="End">
             <Button
                 BackgroundColor="Transparent"
-                Text="Login"
                 Command="{Binding LoginCommand}"
+                Text="Login"
                 TextColor="White" />
         </ContentView>
     </StackLayout>
