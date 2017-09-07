@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using Tulsi.Helpers;
 using Tulsi.NavigationFramework;
+using Tulsi.SharedService;
 using Tulsi.ViewModels;
 using Xamarin.Forms;
 
@@ -73,6 +74,11 @@ namespace Tulsi {
 
         private void ShowMenuCommand(object sender, EventArgs e) {
             ShowMenu();
+        }
+
+        private void TranslateViewTapped(object sender, EventArgs e) {
+            int displayHeight = DependencyService.Get<IDisplaySize>().GetHeight();
+            welcome.TranslateTo(0, -displayHeight);
         }
 
         /// <summary>

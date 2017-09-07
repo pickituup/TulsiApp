@@ -29,7 +29,7 @@ namespace Tulsi {
                 //DashboardPage dp = new DashboardPage();
                 //Application.Current.MainPage = new NavigationPage(dp);
 
-                BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.WelcomePage);
+                BaseSingleton<ViewSwitchingLogic>.Instance.BuildNavigationStack(ViewType.DashboardPage);
             };
             LoginLink.GestureRecognizers.Add(loginTapGestureRecognizer);
 

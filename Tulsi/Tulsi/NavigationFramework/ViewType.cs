@@ -160,6 +160,10 @@ namespace Tulsi.NavigationFramework {
 
         TutorialPage,
 
-        WelcomePage
+        WelcomePage,
+
+        ExpensesCarouselView,
+
+        ExpensesListView
     }
 }

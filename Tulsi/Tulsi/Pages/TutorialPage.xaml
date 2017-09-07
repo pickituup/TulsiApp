@@ -24,16 +24,23 @@
             VerticalOptions="FillAndExpand">
             <forms:CarouselView.ItemTemplate>
                 <DataTemplate>
-                    <StackLayout
-                        Padding="20,110,20,0"
+                    <Grid
+                        Padding="20,0,20,0"
                         BackgroundColor="Transparent"
-                        Spacing="0"
+                        RowSpacing="0"
                         VerticalOptions="Center">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="120"/>
+                        </Grid.RowDefinitions>
 
-                        <controls:GifImage HeightRequest="200" Source="{Binding Icon}" />
+                        <controls:GifImage Grid.Row="0" HeightRequest="240" Source="{Binding Icon}" VerticalOptions="End" />
                         <Label
+                            Grid.Row="1"
                             FontAttributes="Bold"
-                            FontSize="60"
+                            FontSize="48"
                             HorizontalOptions="Center"
                             IsVisible="{Binding Title, Converter={StaticResource Key=visibility_converter}}"
                             Text="{Binding Title}"
@@ -41,6 +48,7 @@
                             VerticalOptions="Center"
                             VerticalTextAlignment="Center" />
                         <Label
+                            Grid.Row="2"
                             FontSize="Large"
                             HorizontalOptions="Center"
                             HorizontalTextAlignment="Center"
@@ -51,15 +59,16 @@
                             VerticalOptions="Center"
                             VerticalTextAlignment="Center" />
                         <Label
+                            Grid.Row="3"
                             FontSize="Medium"
                             HorizontalOptions="Center"
                             HorizontalTextAlignment="Center"
                             LineBreakMode="WordWrap"
                             Text="{Binding Description}"
                             TextColor="#9E9E9E"
-                            VerticalOptions="Center"
+                            VerticalOptions="Start"
                             VerticalTextAlignment="Center" />
-                    </StackLayout>
+                    </Grid>
                 </DataTemplate>
             </forms:CarouselView.ItemTemplate>
         </forms:CarouselView>

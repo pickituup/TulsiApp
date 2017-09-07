@@ -29,7 +29,7 @@ namespace Tulsi.Model.DataContainers {
                 },
                 new ReportsMenuItem {
                     Name = "EXPENSES",
-                    ViewType = ViewType.ExpensesView
+                    ViewType = ViewType.ExpensesCarouselView
                 },
                 new ReportsMenuItem {
                     Name = "AUDIT LOG",

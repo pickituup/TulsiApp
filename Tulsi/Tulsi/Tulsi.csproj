@@ -78,6 +78,7 @@
     <Compile Include="Model\AuditEntry.cs" />
     <Compile Include="Model\BankAccount.cs" />
     <Compile Include="Model\BuyerRanking.cs" />
+    <Compile Include="Model\CarouselContent.cs" />
     <Compile Include="Model\Contact.cs" />
     <Compile Include="Model\ContactGroup.cs" />
     <Compile Include="Model\DataContainers\ArrivalsContainer.cs" />
@@ -156,6 +157,12 @@
     </Compile>
     <Compile Include="Pages\Content\BuyerView.xaml.cs">
       <DependentUpon>BuyerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Content\ExpensesCarouselView.xaml.cs">
+      <DependentUpon>ExpensesCarouselView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Content\ExpensesListView.xaml.cs">
+      <DependentUpon>ExpensesListView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Content\ExpensesView.xaml.cs">
       <DependentUpon>ExpensesView.xaml</DependentUpon>
@@ -265,11 +272,13 @@
     <Compile Include="ViewModels\Content\BankAccountsViewModel.cs" />
     <Compile Include="ViewModels\Content\BuyerProfileViewModel.cs" />
     <Compile Include="ViewModels\Content\BuyerViewModel.cs" />
+    <Compile Include="ViewModels\Content\ExpensesCarouselViewModel.cs" />
+    <Compile Include="ViewModels\Content\ExpensesListViewModel.cs" />
     <Compile Include="ViewModels\Content\ExpensesViewModel.cs" />
     <Compile Include="ViewModels\Content\GrowerProfileViewModel.cs" />
     <Compile Include="ViewModels\Content\GrowerViewModel.cs" />
     <Compile Include="ViewModels\DashboardViewModel.cs" />
-    <Compile Include="ViewModels\ExpensesListViewModel.cs" />
+    <Compile Include="ViewModels\ExpensesListPageViewModel.cs" />
     <Compile Include="ViewModels\ExpensesPageViewModel.cs" />
     <Compile Include="ViewModels\GrowerProfilePageViewModel.cs" />
     <Compile Include="ViewModels\GrowerPageViewModel.cs" />
@@ -812,6 +821,22 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Pages\Content\AuditLogControls\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\Content\ExpensesCarouselView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\selectContent1.png" />
+    <EmbeddedResource Include="Images\selectContent2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\Content\ExpensesListView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.4.270\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.4.270\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />

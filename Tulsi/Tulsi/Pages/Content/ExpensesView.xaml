@@ -10,13 +10,13 @@
 
     <!--  MAIN CONTENT  -->
     <StackLayout
-        Padding="5,0"
+        Padding="0"
         BackgroundColor="Transparent"
         Spacing="0"
         VerticalOptions="FillAndExpand">
 
         <controls:RoundedContentView
-            Margin="0,0,0,5"
+            Margin="0,0,0,0"
             BackgroundColor="White"
             CornerRadius="15"
             VerticalOptions="FillAndExpand">
@@ -314,31 +314,6 @@
                             Text="Vacation" />
                     </Grid>
                 </StackLayout>
-
-                <Grid
-                    x:Name="TabsGrid"
-                    Margin="0,10"
-                    BackgroundColor="Transparent"
-                    HorizontalOptions="Center"
-                    VerticalOptions="End">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="10" />
-                        <ColumnDefinition Width="10" />
-                    </Grid.ColumnDefinitions>
-                    <Image
-                        HeightRequest="8"
-                        HorizontalOptions="Center"
-                        Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.tabbluecircle.png}"
-                        VerticalOptions="Center"
-                        WidthRequest="8" />
-                    <Image
-                        Grid.Column="1"
-                        HeightRequest="8"
-                        HorizontalOptions="Center"
-                        Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.emptycircle.png}"
-                        VerticalOptions="Center"
-                        WidthRequest="8" />
-                </Grid>
             </StackLayout>
         </controls:RoundedContentView>
     </StackLayout>

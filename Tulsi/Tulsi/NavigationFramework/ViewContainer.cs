@@ -221,8 +221,15 @@ namespace Tulsi.NavigationFramework {
                 {
                     ViewType.WelcomePage,
                     ()=> new ViewBuider<WelcomePage>().GetView()
+                },
+                {
+                    ViewType.ExpensesCarouselView,
+                    ()=> new ViewBuider<ExpensesCarouselView>().GetView()
+                },
+                {
+                    ViewType.ExpensesListView,
+                    ()=> new ViewBuider<ExpensesListView>().GetView()
                 }
-                
             };
         }
     }

@@ -52,7 +52,6 @@ namespace Tulsi.ViewModels {
 
         public void Dispose() {
             BaseSingleton<NavigationObserver>.Instance.SendToBuyerProfileTransAction -= OnSendToBuyerProfileTransAction;
-            //BaseSingleton<NavigationObserver>.Instance.SendToBuyerProfileTransAction -= OnSendProfileTransAction;
         }
 
         public void ReSubscribe() {

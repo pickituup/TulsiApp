@@ -13,7 +13,7 @@ using Tulsi.ViewModels;
 namespace Tulsi {
     public partial class ExpensesListPage : MenuContainerPage, IView {
 
-        private ExpensesListViewModel _viewModel;
+        private ExpensesListPageViewModel _viewModel;
 
         /// <summary>
         ///     ctor().
@@ -24,7 +24,7 @@ namespace Tulsi {
             //Slide menu creating
             SlideMenu = new SideMenuView();
 
-            BindingContext = _viewModel = new ExpensesListViewModel();
+            BindingContext = _viewModel = new ExpensesListPageViewModel();
 
             More.Source = ImageSource.FromResource("Tulsi.Images.3whitecircles.png");
             ExpensesIcon.Source = ImageSource.FromResource("Tulsi.Images.expenses_group.png");
