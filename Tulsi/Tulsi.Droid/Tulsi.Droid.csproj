@@ -506,9 +506,6 @@
     <AndroidResource Include="Resources\drawable\ViewCellBackground.xml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="Assets\Content\slide1.gif" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidAsset Include="Assets\pdfjs\build\pdf.js" />
   </ItemGroup>
   <ItemGroup>

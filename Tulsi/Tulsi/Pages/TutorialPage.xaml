@@ -30,7 +30,7 @@
                         Spacing="0"
                         VerticalOptions="Center">
 
-                        <Image HeightRequest="200" Source="{Binding Icon}" />
+                        <controls:GifImage HeightRequest="200" Source="{Binding Icon}" />
                         <Label
                             FontAttributes="Bold"
                             FontSize="60"
@@ -64,7 +64,10 @@
             </forms:CarouselView.ItemTemplate>
         </forms:CarouselView>
 
-        <Image x:Name="image" HeightRequest="40" HorizontalOptions="Center" />
+        <Image
+            x:Name="image"
+            HeightRequest="40"
+            HorizontalOptions="Center" />
 
         <ContentView BackgroundColor="{StaticResource MainColor}" VerticalOptions="End">
             <Button

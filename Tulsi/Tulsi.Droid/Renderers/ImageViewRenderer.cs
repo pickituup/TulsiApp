@@ -18,8 +18,9 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Threading;
 using Felipecsl.GifImageViewLibrary;
+using Tulsi.Controls;
 
-[assembly: ExportRenderer(typeof(Image), typeof(ImageViewRenderer))]
+[assembly: ExportRenderer(typeof(GifImage), typeof(ImageViewRenderer))]
 namespace Tulsi.Droid.Renderers {
     public class ImageViewRenderer : ImageRenderer {
 
