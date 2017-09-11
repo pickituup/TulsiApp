@@ -30,13 +30,18 @@
                         RowSpacing="0"
                         VerticalOptions="Center">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="120"/>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="120" />
                         </Grid.RowDefinitions>
 
-                        <controls:GifImage Grid.Row="0" HeightRequest="240" Source="{Binding Icon}" VerticalOptions="End" />
+                        <controls:GifImage
+                            Grid.Row="0"
+                            HeightRequest="260"
+                            Source="{Binding Icon}"
+                            VerticalOptions="End" />
+
                         <Label
                             Grid.Row="1"
                             FontAttributes="Bold"

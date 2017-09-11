@@ -68,10 +68,24 @@
                         Margin="5,0,5,0"
                         BackgroundColor="White"
                         BorderRadius="25">
-                        <Label
-                            HorizontalTextAlignment="Center"
-                            Text="Thought of the Day&#x0a;Lack of money is the root of&#x0a;all evil"
-                            VerticalTextAlignment="Center" />
+                        <Grid BackgroundColor="Transparent">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Label
+                                HorizontalTextAlignment="Center"
+                                Text="Thought of the Day&#x0a;Lack of money is the root of&#x0a;all evil"
+                                VerticalTextAlignment="Center" />
+                            <Label
+                                x:Name="tempLabel"
+                                BackgroundColor="White"
+                                FontSize="Large"
+                                HorizontalOptions="Fill"
+                                HorizontalTextAlignment="Center"
+                                Text="Hello UserName"
+                                VerticalOptions="Fill"
+                                VerticalTextAlignment="Center" />
+                        </Grid>
                     </controls:CustomFrame>
 
                     <!--  BUYER SUMMARY  -->

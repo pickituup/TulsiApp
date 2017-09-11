@@ -78,7 +78,14 @@ namespace Tulsi {
 
         private void TranslateViewTapped(object sender, EventArgs e) {
             int displayHeight = DependencyService.Get<IDisplaySize>().GetHeight();
-            welcome.TranslateTo(0, -displayHeight);
+            welcome.TranslateTo(0, -displayHeight, 700);
+
+            Device.StartTimer(TimeSpan.FromSeconds(2), () => {
+
+                tempLabel.IsVisible = false;
+
+                return true;
+            });
         }
 
         /// <summary>

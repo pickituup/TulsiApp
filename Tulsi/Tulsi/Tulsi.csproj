@@ -44,9 +44,6 @@
     <Compile Include="Controls\CustomWebView.cs" />
     <Compile Include="Controls\EntryEx.cs" />
     <Compile Include="Controls\GifImage.cs" />
-    <Compile Include="Controls\MenuItemView.xaml.cs">
-      <DependentUpon>MenuItemView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Controls\PrimitiveSegmentControl\FramedLabelSegmentItem.xaml.cs">
       <DependentUpon>FramedLabelSegmentItem.xaml</DependentUpon>
     </Compile>
@@ -145,6 +142,9 @@
     </Compile>
     <Compile Include="Pages\Content\ArrivalView.xaml.cs">
       <DependentUpon>ArrivalView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Content\AuditLogControls\AuditLogMenuItem.xaml.cs">
+      <DependentUpon>AuditLogMenuItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Content\AuditLogView.xaml.cs">
       <DependentUpon>AuditLogView.xaml</DependentUpon>
@@ -778,12 +778,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Controls\MenuItemView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="ForDeveloper\MemoryView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
@@ -819,9 +813,7 @@
     <EmbeddedResource Include="Images\selection4.png" />
     <EmbeddedResource Include="Images\selection5.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Pages\Content\AuditLogControls\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Pages\Content\ExpensesCarouselView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
@@ -834,6 +826,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pages\Content\ExpensesListView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\Content\AuditLogControls\AuditLogMenuItem.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

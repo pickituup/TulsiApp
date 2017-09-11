@@ -3,10 +3,8 @@
     x:Class="Tulsi.Pages.Content.AuditLogView"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:controls="clr-namespace:Tulsi.Controls"
-    xmlns:local="clr-namespace:Tulsi;assembly=Tulsi"
-    xmlns:m="clr-namespace:SlideOverKit"
-    xmlns:toolKitImageResourceExtension="clr-namespace:Tulsi.ToolKit.MarkupExtensions">
+    xmlns:auditLogItem="clr-namespace:Tulsi.Pages.Content.AuditLogControls"
+    xmlns:controls="clr-namespace:Tulsi.Controls">
 
     <!--  MAIN CONTENT  -->
     <StackLayout Padding="5,0" BackgroundColor="Transparent">
@@ -55,7 +53,7 @@
                                 <controls:AdvancedStackList BackgroundColor="Transparent" ItemsSource="{Binding AuditActions}">
                                     <controls:AdvancedStackList.ItemTemplate>
                                         <DataTemplate>
-                                            <controls:MenuItemView />
+                                            <auditLogItem:AuditLogMenuItem />
                                         </DataTemplate>
                                     </controls:AdvancedStackList.ItemTemplate>
                                 </controls:AdvancedStackList>

@@ -24,8 +24,6 @@ namespace Tulsi {
 
             BindingContext = _viewModel = new ArrivalPageViewModel();
 
-            
-
             CalendarInitialization();
         }
 
@@ -56,7 +54,6 @@ namespace Tulsi {
             arrivalCalendar.SelectedTextColor = Color.White;
             arrivalCalendar.SelectedBackgroundColor = Color.FromHex("#2793F5");
             
-
             List<SpecialDate> specialDates = new List<SpecialDate>();
             SpecialDate event1 = new SpecialDate(new DateTime(2017, 1, 24));
             event1.BackgroundColor = Color.FromHex("#82DA69");

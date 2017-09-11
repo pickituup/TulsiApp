@@ -1,16 +1,16 @@
-﻿using Tulsi.Helpers;
+﻿using Tulsi.Controls;
+using Tulsi.Helpers;
 using Tulsi.NavigationFramework;
 using Xamarin.Forms.Xaml;
 
-namespace Tulsi.Controls {
+namespace Tulsi.Pages.Content.AuditLogControls {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MenuItemView : StackListItemBase {
-        public MenuItemView() {
+    public partial class AuditLogMenuItem : StackListItemBase {
+        public AuditLogMenuItem() {
             InitializeComponent();
         }
 
         public override void Deselected() {
-            
         }
 
         public override void Selected() {
