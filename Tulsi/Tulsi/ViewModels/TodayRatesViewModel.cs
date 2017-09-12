@@ -15,11 +15,7 @@ using Xamarin.Forms;
 namespace Tulsi.ViewModels {
     public class TodayRatesViewModel : ViewModelBase, IViewModel {
 
-        ObservableCollection<TodayRatesEntry> _todayRatesData;
-
-        /// <summary>
-        /// 
-        /// </summary>
+        ObservableCollection<TodayRatesEntry> _todayRatesData = new ObservableCollection<TodayRatesEntry>();
         public ObservableCollection<TodayRatesEntry> TodayRatesData {
             get { return _todayRatesData; }
             set { SetProperty(ref _todayRatesData, value); }
@@ -35,7 +31,6 @@ namespace Tulsi.ViewModels {
         ///     ctor().
         /// </summary>
         public TodayRatesViewModel() {
-            _todayRatesData = new ObservableCollection<TodayRatesEntry>();
 
             DisplaySearchPageCommand = new Command(() => BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.SearchPage));
 
@@ -44,9 +39,6 @@ namespace Tulsi.ViewModels {
             HARDCODED_DATA_INSERT();
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         private void HARDCODED_DATA_INSERT() {
             Random random = new Random();
 

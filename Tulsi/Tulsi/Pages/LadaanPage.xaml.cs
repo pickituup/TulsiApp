@@ -17,10 +17,6 @@ namespace Tulsi {
             BindingContext = _viewModel = new LadaanViewModel();
         }
 
-        private void Handle_ItemSelected(object sender, SelectedItemChangedEventArgs e) {
-            menuItems.SelectedItem = null;
-        }
-
         public void ApplyVisualChangesWhileNavigating() {
             
         }

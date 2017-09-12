@@ -14,10 +14,10 @@ using Xamarin.Forms;
 namespace Tulsi.ViewModels {
     public class LadaanViewModel : ViewModelBase, IViewModel {
 
-        ObservableCollection<LadaanEntry> _ladaanData;
-        public ObservableCollection<LadaanEntry> LadaanData {
-            get { return _ladaanData; }
-            set { SetProperty(ref _ladaanData, value); }
+        ObservableCollection<LaddanData> _ladaanSource;
+        public ObservableCollection<LaddanData> LadaanSource {
+            get { return _ladaanSource; }
+            set { SetProperty(ref _ladaanSource, value); }
         }
 
         LadaanEntry _selectedMenuItem;
@@ -40,17 +40,43 @@ namespace Tulsi.ViewModels {
         ///     ctor().
         /// </summary>
         public LadaanViewModel() {
-            LadaanData = new ObservableCollection<LadaanEntry>()
-            {
-                new LadaanEntry { Code = "NS Cuttack", Number = "285 Cases" },
-                new LadaanEntry { Code = "SFT Bharampur", Number = "285 Cases" },
-                new LadaanEntry { Code = "AR Cuttack", Number = "285 Cases" },
-                new LadaanEntry { Code = "NS Cuttack", Number = "285 Cases" },
-                new LadaanEntry { Code = "SFT Bharampur", Number = "285 Cases" },
-                new LadaanEntry { Code = "AR Cuttack", Number = "285 Cases" },
-                new LadaanEntry { Code = "SFT Bharampur", Number = "285 Cases" },
-                new LadaanEntry { Code = "AR Cuttack", Number = "285 Cases" },
-                new LadaanEntry { Code = "SFT Bharampur", Number = "285 Cases" },
+
+            LadaanSource = new ObservableCollection<LaddanData>() {
+                new LaddanData{
+                    Date =DateTime.Now,
+                    Data = new List<LadaanEntry>{
+                        new LadaanEntry { Code = "NS Cuttack", Number = "29" },
+                        new LadaanEntry { Code = "SFT Bharampur", Number = "28" },
+                        new LadaanEntry { Code = "AR Cuttack", Number = "28" },
+                        new LadaanEntry { Code = "NS Cuttack", Number = "28" }
+                }},
+                new LaddanData{
+                    Date =DateTime.Now,
+                    Data = new List<LadaanEntry>{
+                        new LadaanEntry { Code = "NS Cuttack", Number = "28" },
+                        new LadaanEntry { Code = "SFT Bharampur", Number = "28" },
+                        new LadaanEntry { Code = "AR Cuttack", Number = "28" },
+                        new LadaanEntry { Code = "AR Cuttack", Number = "28" },
+                        new LadaanEntry { Code = "SFT Bharampur", Number = "28" },
+                        new LadaanEntry { Code = "AR Cuttack", Number = "28" },
+                        new LadaanEntry { Code = "SFT Bharampur", Number = "28" }
+                }},
+                new LaddanData{
+                    Date =DateTime.Now,
+                    Data = new List<LadaanEntry>{
+                        new LadaanEntry { Code = "NS Cuttack", Number = "28" },
+                        new LadaanEntry { Code = "SFT Bharampur", Number = "28" },
+                        new LadaanEntry { Code = "SFT Bharampur", Number = "28" },
+                        new LadaanEntry { Code = "AR Cuttack", Number = "28" },
+                        new LadaanEntry { Code = "SFT Bharampur", Number = "28" }
+                }},
+                new LaddanData{
+                    Date =DateTime.Now,
+                    Data = new List<LadaanEntry>{
+                        new LadaanEntry { Code = "NS Cuttack", Number = "28" },
+                        new LadaanEntry { Code = "SFT Bharampur", Number = "28" },
+                        new LadaanEntry { Code = "AR Cuttack", Number = "28" }
+                }}
             };
 
             DisplaySearchPageCommand = new Command(() => BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.SearchPage));
@@ -59,7 +85,7 @@ namespace Tulsi.ViewModels {
         }
 
         public void Dispose() {
-
+            LadaanSource.Clear();
         }
     }
 }

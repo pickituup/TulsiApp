@@ -84,6 +84,7 @@
     <Compile Include="Model\DataContainers\DataItems\TutorialItem.cs" />
     <Compile Include="Model\DataContainers\ProfitMenuContainer.cs" />
     <Compile Include="Model\DataContainers\TutorialsContainer.cs" />
+    <Compile Include="Model\LaddanData.cs" />
     <Compile Include="Model\Period.cs" />
     <Compile Include="Model\DataContainers\DataItems\ReportsMenuItem.cs" />
     <Compile Include="Model\DataContainers\ReportsMenuContainer.cs" />
@@ -172,6 +173,9 @@
     </Compile>
     <Compile Include="Pages\Content\GrowerView.xaml.cs">
       <DependentUpon>GrowerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Content\LaddanControl\LaddanMenuItem.xaml.cs">
+      <DependentUpon>LaddanMenuItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\DashboardPage.xaml.cs">
       <DependentUpon>DashboardPage.xaml</DependentUpon>
@@ -813,7 +817,12 @@
     <EmbeddedResource Include="Images\selection4.png" />
     <EmbeddedResource Include="Images\selection5.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\Content\LaddanControl\LaddanMenuItem.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pages\Content\ExpensesCarouselView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>

@@ -4,12 +4,16 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:controls="clr-namespace:Tulsi.Controls"
+    xmlns:laddanMenuItem="clr-namespace:Tulsi.Pages.Content.LaddanControl"
     xmlns:local="clr-namespace:Tulsi;assembly=Tulsi"
     xmlns:m="clr-namespace:SlideOverKit"
     xmlns:toolKitImageResourceExtension="clr-namespace:Tulsi.ToolKit.MarkupExtensions"
     NavigationPage.HasNavigationBar="false">
-    <StackLayout x:Name="HeaderLayout" BackgroundColor="#DCDCDC">
 
+    <StackLayout
+        x:Name="HeaderLayout"
+        BackgroundColor="#DCDCDC"
+        Spacing="5">
         <!--  Tool bar  -->
         <Grid x:Name="ToolbarGrid" BackgroundColor="#2793F5">
             <Grid.RowDefinitions>
@@ -60,10 +64,19 @@
         </Grid>
 
         <!--  MAIN CONTENT  -->
-        <ScrollView>
-            <StackLayout x:Name="MainLayout" Spacing="10">
+        <StackLayout
+            Padding="5,0"
+            BackgroundColor="Transparent"
+            Spacing="10">
+
+            <Frame
+                Padding="5"
+                BackgroundColor="White"
+                CornerRadius="7"
+                HasShadow="False"
+                HeightRequest="40"
+                VerticalOptions="Start">
                 <Label
-                    Grid.Column="2"
                     HorizontalTextAlignment="Center"
                     TextColor="#2793F5"
                     VerticalTextAlignment="Center">
@@ -76,65 +89,63 @@
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
-                <Grid Margin="0,30">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="20" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="20" />
-                    </Grid.ColumnDefinitions>
-                    <ListView
-                        x:Name="menuItems"
-                        Grid.Column="1"
-                        ItemSelected="Handle_ItemSelected"
-                        ItemsSource="{Binding LadaanData}"
-                        RowHeight="50"
-                        SelectedItem="{Binding SelectedMenuItem, Mode=TwoWay}"
-                        SeparatorVisibility="None">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <ViewCell>
-                                    <controls:RoundedContentView
-                                        Margin="20,5,20,5"
-                                        BackgroundColor="#cccccc"
-                                        CornerRadius="20">
-                                        <controls:RoundedContentView.Content>
-                                            <Grid BackgroundColor="#cccccc" VerticalOptions="Center">
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="*" />
-                                                    <ColumnDefinition Width="4*" />
-                                                    <ColumnDefinition Width="4*" />
-                                                    <ColumnDefinition Width="*" />
-                                                </Grid.ColumnDefinitions>
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="auto" />
-                                                </Grid.RowDefinitions>
-                                                <Label
-                                                    Grid.Column="1"
-                                                    FontAttributes="Bold"
-                                                    HorizontalOptions="Start"
-                                                    HorizontalTextAlignment="Start"
-                                                    Text="{Binding Code}"
-                                                    TextColor="White"
-                                                    VerticalOptions="Center"
-                                                    VerticalTextAlignment="Center" />
-                                                <Label
-                                                    Grid.Column="2"
-                                                    FontAttributes="Bold"
-                                                    HorizontalOptions="End"
-                                                    HorizontalTextAlignment="Center"
-                                                    Text="{Binding Number}"
-                                                    TextColor="White"
-                                                    VerticalOptions="Center"
-                                                    VerticalTextAlignment="Center" />
-                                            </Grid>
-                                        </controls:RoundedContentView.Content>
-                                    </controls:RoundedContentView>
-                                </ViewCell>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </Grid>
-            </StackLayout>
-        </ScrollView>
+            </Frame>
+
+            <ScrollView>
+                <controls:StackList BackgroundColor="Transparent" ItemsSource="{Binding LadaanSource}">
+                    <controls:StackList.ItemTemplate>
+                        <DataTemplate>
+                            <Frame
+                                Padding="10"
+                                BackgroundColor="White"
+                                CornerRadius="7"
+                                HasShadow="False">
+
+                                <StackLayout BackgroundColor="Transparent" Spacing="10">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="Medium"
+                                        HorizontalTextAlignment="Center"
+                                        Text="{Binding Date, StringFormat='{0:dd/MM/yyyy}'}"
+                                        TextColor="{StaticResource MainColor}" />
+                                    <Frame
+                                        Padding="7"
+                                        BackgroundColor="{StaticResource MainColor}"
+                                        CornerRadius="7"
+                                        HasShadow="False">
+
+                                        <StackLayout
+                                            Padding="15,0"
+                                            BackgroundColor="Transparent"
+                                            Orientation="Horizontal">
+                                            <Label
+                                                FontAttributes="Bold"
+                                                FontSize="Large"
+                                                HorizontalOptions="StartAndExpand"
+                                                Text="Name"
+                                                TextColor="White" />
+                                            <Label
+                                                FontAttributes="Bold"
+                                                FontSize="Large"
+                                                HorizontalOptions="EndAndExpand"
+                                                Text="Cases"
+                                                TextColor="White" />
+                                        </StackLayout>
+                                    </Frame>
+
+                                    <controls:AdvancedStackList BackgroundColor="Transparent" ItemsSource="{Binding Data}">
+                                        <controls:AdvancedStackList.ItemTemplate>
+                                            <DataTemplate>
+                                                <laddanMenuItem:LaddanMenuItem />
+                                            </DataTemplate>
+                                        </controls:AdvancedStackList.ItemTemplate>
+                                    </controls:AdvancedStackList>
+                                </StackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </controls:StackList.ItemTemplate>
+                </controls:StackList>
+            </ScrollView>
+        </StackLayout>
     </StackLayout>
 </ContentPage>

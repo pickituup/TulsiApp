@@ -54,7 +54,7 @@ namespace Tulsi {
             StackLayout MiddleStack = new StackLayout() {
                 VerticalOptions = LayoutOptions.Center,
                 HorizontalOptions = LayoutOptions.Center,
-                BackgroundColor = Color.White
+                BackgroundColor = Color.Transparent
             };
             Label MiddleText1 = new Label() {
                 Text = "23%",

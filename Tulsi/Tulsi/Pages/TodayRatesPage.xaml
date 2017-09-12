@@ -81,11 +81,10 @@
             </Frame>
             <ScrollView>
                 <!--<StackLayout x:Name="_ratesStack_StackLayout" />-->
-                <controls:StackList
-                    ItemsSource="{Binding Path=TodayRatesData}">
+                <controls:StackList ItemsSource="{Binding Path=TodayRatesData}">
                     <controls:StackList.ItemTemplate>
                         <DataTemplate>
-                            <controlsForTodayRates:ExpandedGroup/>
+                            <controlsForTodayRates:ExpandedGroup />
                         </DataTemplate>
                     </controls:StackList.ItemTemplate>
                 </controls:StackList>

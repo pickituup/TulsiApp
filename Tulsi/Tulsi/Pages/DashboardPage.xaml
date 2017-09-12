@@ -93,7 +93,11 @@
                         Margin="5,0,5,0"
                         BackgroundColor="White"
                         BorderRadius="25">
-                        <Grid BackgroundColor="White" HorizontalOptions="Center">
+                        <controls:CustomFrame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding DisplayBuyerPageCommand}" />
+                        </controls:CustomFrame.GestureRecognizers>
+
+                        <Grid BackgroundColor="Transparent" HorizontalOptions="Center">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
@@ -105,9 +109,6 @@
                                 <RowDefinition Height="auto" />
                                 <RowDefinition Height="auto" />
                             </Grid.RowDefinitions>
-                            <Grid.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding DisplayBuyerPageCommand}" />
-                            </Grid.GestureRecognizers>
                             <Label
                                 Grid.ColumnSpan="2"
                                 HorizontalTextAlignment="Center"
@@ -119,7 +120,7 @@
                                 x:Name="ChartGrid"
                                 Grid.Row="1"
                                 Grid.RowSpan="4"
-                                BackgroundColor="White"
+                                BackgroundColor="Transparent"
                                 VerticalOptions="Center">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="auto" />
@@ -128,7 +129,7 @@
                             <Grid
                                 Grid.Row="2"
                                 Grid.Column="1"
-                                BackgroundColor="White">
+                                BackgroundColor="Transparent">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="10" />
                                     <ColumnDefinition Width="10" />
@@ -161,7 +162,7 @@
                             <Grid
                                 Grid.Row="3"
                                 Grid.Column="1"
-                                BackgroundColor="White">
+                                BackgroundColor="Transparent">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="10" />
                                     <ColumnDefinition Width="10" />
@@ -192,7 +193,7 @@
                             <Grid
                                 Grid.Row="4"
                                 Grid.Column="1"
-                                BackgroundColor="White">
+                                BackgroundColor="Transparent">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="10" />
                                     <ColumnDefinition Width="10" />
@@ -228,7 +229,10 @@
                         Margin="5,0,5,0"
                         BackgroundColor="White"
                         BorderRadius="25">
-                        <Grid BackgroundColor="White">
+                        <controls:CustomFrame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding DisplayTodayRatePageCommand}" />
+                        </controls:CustomFrame.GestureRecognizers>
+                        <Grid BackgroundColor="Transparent">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="5*" />
@@ -243,9 +247,6 @@
                                 <RowDefinition Height="auto" />
                                 <RowDefinition Height="auto" />
                             </Grid.RowDefinitions>
-                            <Grid.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding DisplayTodayRatePageCommand}" />
-                            </Grid.GestureRecognizers>
 
                             <Label
                                 Grid.ColumnSpan="5"
@@ -348,128 +349,122 @@
                         </Grid>
                     </controls:CustomFrame>
 
+                    <!--  LADDAN/COLD STOIRE/TODAYS BALANCE  -->
                     <controls:CustomFrame
-                        Margin="5,0,5,0"
+                        Margin="5,0"
                         BackgroundColor="White"
                         BorderRadius="25">
-                        <Grid BackgroundColor="White">
+                        <Grid BackgroundColor="Transparent">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="90" />
-                                <ColumnDefinition Width="10" />
-                                <ColumnDefinition Width="90" />
-                                <ColumnDefinition Width="10" />
-                                <ColumnDefinition Width="90" />
+                                <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="80" />
                             </Grid.RowDefinitions>
-                            <Grid.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding DisplayLaddanPageCommand}" />
-                            </Grid.GestureRecognizers>
-                            <Image
-                                x:Name="LaddanBackground"
+
+                            <!--  LADDAN FRAME  -->
+                            <controls:CustomFrame
+                                Grid.Column="0"
+                                BorderRadius="10"
+                                BorderWidth="2"
+                                OutlineColor="#CCCCCC">
+                                <controls:CustomFrame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding DisplayLaddanPageCommand}" />
+                                </controls:CustomFrame.GestureRecognizers>
+                                <Grid
+                                    BackgroundColor="Transparent"
+                                    HorizontalOptions="Center"
+                                    RowSpacing="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="90" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="20" />
+                                        <RowDefinition Height="40" />
+                                    </Grid.RowDefinitions>
+                                    <Label
+                                        Grid.Row="0"
+                                        FontAttributes="Bold"
+                                        FontSize="12"
+                                        HorizontalOptions="Center"
+                                        Text="Laddan/Bijak"
+                                        VerticalOptions="End" />
+                                    <Label
+                                        Grid.Row="1"
+                                        FontSize="30"
+                                        HorizontalOptions="Center"
+                                        Text="5"
+                                        VerticalOptions="Start" />
+                                </Grid>
+                            </controls:CustomFrame>
+
+                            <!--  COLD STOIRE FRAME  -->
+                            <controls:CustomFrame
                                 Grid.Column="1"
-                                HeightRequest="75"
-                                HorizontalOptions="Center"
-                                Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.border.png}"
-                                VerticalOptions="Center"
-                                WidthRequest="90" />
-                            <Image
-                                x:Name="ColdStoireBackground"
-                                Grid.Column="3"
-                                HeightRequest="75"
-                                HorizontalOptions="Center"
-                                Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.border.png}"
-                                VerticalOptions="Center"
-                                WidthRequest="90" />
-                            <Image
-                                x:Name="TodaysBalBackground"
-                                Grid.Column="5"
-                                HeightRequest="75"
-                                HorizontalOptions="Center"
-                                Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.border.png}"
-                                VerticalOptions="Center"
-                                WidthRequest="90" />
-                            <Grid
-                                Grid.Column="1"
-                                Margin="0,10"
-                                BackgroundColor="Transparent"
-                                RowSpacing="0">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="90" />
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="20" />
-                                    <RowDefinition Height="40" />
-                                </Grid.RowDefinitions>
-                                <Label
-                                    Grid.Row="0"
-                                    FontAttributes="Bold"
-                                    FontSize="12"
+                                BorderRadius="10"
+                                BorderWidth="2"
+                                OutlineColor="#CCCCCC">
+                                <Grid
+                                    BackgroundColor="Transparent"
                                     HorizontalOptions="Center"
-                                    Text="Laddan/Bijak"
-                                    VerticalOptions="End" />
-                                <Label
-                                    Grid.Row="1"
-                                    FontSize="30"
+                                    RowSpacing="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="90" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="20" />
+                                        <RowDefinition Height="40" />
+                                    </Grid.RowDefinitions>
+                                    <Label
+                                        Grid.Row="0"
+                                        FontAttributes="Bold"
+                                        FontSize="12"
+                                        HorizontalOptions="Center"
+                                        Text="ColdStoire"
+                                        VerticalOptions="End" />
+                                    <Label
+                                        Grid.Row="1"
+                                        FontSize="30"
+                                        HorizontalOptions="Center"
+                                        Text="2450"
+                                        VerticalOptions="Start" />
+                                </Grid>
+                            </controls:CustomFrame>
+
+                            <!--  TODAYS BALANCE FRAME  -->
+                            <controls:CustomFrame
+                                Grid.Column="2"
+                                BorderRadius="10"
+                                BorderWidth="2"
+                                OutlineColor="#CCCCCC">
+                                <Grid
+                                    BackgroundColor="Transparent"
                                     HorizontalOptions="Center"
-                                    Text="5"
-                                    VerticalOptions="Start" />
-                            </Grid>
-                            <Grid
-                                Grid.Column="3"
-                                Margin="0,10"
-                                BackgroundColor="Transparent"
-                                RowSpacing="0">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="90" />
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="20" />
-                                    <RowDefinition Height="40" />
-                                </Grid.RowDefinitions>
-                                <Label
-                                    Grid.Row="0"
-                                    FontAttributes="Bold"
-                                    FontSize="12"
-                                    HorizontalOptions="Center"
-                                    Text="ColdStoire"
-                                    VerticalOptions="End" />
-                                <Label
-                                    Grid.Row="1"
-                                    FontSize="30"
-                                    HorizontalOptions="Center"
-                                    Text="2450"
-                                    VerticalOptions="Start" />
-                            </Grid>
-                            <Grid
-                                Grid.Column="5"
-                                Margin="0,10"
-                                BackgroundColor="Transparent"
-                                RowSpacing="0">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="90" />
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="20" />
-                                    <RowDefinition Height="40" />
-                                </Grid.RowDefinitions>
-                                <Label
-                                    Grid.Row="0"
-                                    FontAttributes="Bold"
-                                    FontSize="12"
-                                    HorizontalOptions="Center"
-                                    Text="Today's Bal"
-                                    VerticalOptions="End" />
-                                <Label
-                                    Grid.Row="1"
-                                    FontSize="30"
-                                    HorizontalOptions="Center"
-                                    Text="200"
-                                    VerticalOptions="Start" />
-                            </Grid>
+                                    RowSpacing="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="90" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="20" />
+                                        <RowDefinition Height="40" />
+                                    </Grid.RowDefinitions>
+                                    <Label
+                                        Grid.Row="0"
+                                        FontAttributes="Bold"
+                                        FontSize="12"
+                                        HorizontalOptions="Center"
+                                        Text="Today's Bal"
+                                        VerticalOptions="End" />
+                                    <Label
+                                        Grid.Row="1"
+                                        FontSize="30"
+                                        HorizontalOptions="Center"
+                                        Text="200"
+                                        VerticalOptions="Start" />
+                                </Grid>
+                            </controls:CustomFrame>
                         </Grid>
                     </controls:CustomFrame>
 
