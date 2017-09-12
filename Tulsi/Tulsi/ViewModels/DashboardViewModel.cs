@@ -34,6 +34,10 @@ namespace Tulsi.ViewModels {
 
         public ICommand DisplayBuyerPageCommand { get; private set; }
 
+        public ICommand DisplayColdStorePageCommand { get; private set; }
+
+        public ICommand DisplayGodownPageCommand { get; private set; }
+
         /// <summary>
         ///     ctor().
         /// </summary>
@@ -59,10 +63,15 @@ namespace Tulsi.ViewModels {
             DisplayTodayRatePageCommand = new Command(() => BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.TodayRatePage));
 
             DisplayBuyerPageCommand = new Command(() => BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.BuyerPage));
+
+            DisplayColdStorePageCommand = new Command(() => BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.ColdStorePage));
+
+            DisplayGodownPageCommand = new Command(() => BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.GodownPage));
         }
 
         public void Dispose() {
-
+            ChartData.Clear();
+            NewsData.Clear();
         }
     }
 }

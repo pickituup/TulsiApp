@@ -16,6 +16,18 @@ using Xamarin.Forms;
 namespace Tulsi.ViewModels {
     public class GrowerPageViewModel : ViewModelBase, IViewModel {
 
+        string _secondColumn;
+        public string SecondColumn {
+            get { return _secondColumn; }
+            set { SetProperty(ref _secondColumn, value); }
+        }
+
+        string _lastColumn;
+        public string LastColumn {
+            get { return _lastColumn; }
+            set { SetProperty(ref _lastColumn, value); }
+        }
+
         ObservableCollection<ChartModel> _chartData;
         public ObservableCollection<ChartModel> ChartData {
             get { return _chartData; }
@@ -75,6 +87,8 @@ namespace Tulsi.ViewModels {
         ///     ctor().
         /// </summary>
         public GrowerPageViewModel() {
+            SetAggregateHeader();
+
             BaseSingleton<NavigationObserver>.Instance.GrowerImportedSpot += ImportingSpot;
 
             DisplaySearchPageCommand = new Command(() => {
@@ -83,15 +97,27 @@ namespace Tulsi.ViewModels {
 
             AggregateCommand = new Command(() => {
                 TransactionsData = GetAggregateTransactions();
+                SetAggregateHeader();
             });
 
             TimeLineCommand = new Command(() => {
                 TransactionsData = GetTimeLineTransactions();
+                SetTimeLineHeader();
             });
 
             ChartData = GetChartData();
 
             TransactionsData = GetAggregateTransactions();
+        }
+
+        private void SetAggregateHeader() {
+            SecondColumn = "TCases";
+            LastColumn = "TNetAmt";
+        }
+
+        private void SetTimeLineHeader() {
+            SecondColumn = "Cases";
+            LastColumn = "NetAmt";
         }
 
         private void ImportingSpot(object sender, NavigationImportedEventArgs e) {

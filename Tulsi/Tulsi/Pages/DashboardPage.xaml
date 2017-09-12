@@ -406,6 +406,9 @@
                                 BorderRadius="10"
                                 BorderWidth="2"
                                 OutlineColor="#CCCCCC">
+                                <controls:CustomFrame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding DisplayColdStorePageCommand}" />
+                                </controls:CustomFrame.GestureRecognizers>
                                 <Grid
                                     BackgroundColor="Transparent"
                                     HorizontalOptions="Center"
@@ -439,6 +442,9 @@
                                 BorderRadius="10"
                                 BorderWidth="2"
                                 OutlineColor="#CCCCCC">
+                                <controls:CustomFrame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding DisplayGodownPageCommand}" />
+                                </controls:CustomFrame.GestureRecognizers>
                                 <Grid
                                     BackgroundColor="Transparent"
                                     HorizontalOptions="Center"

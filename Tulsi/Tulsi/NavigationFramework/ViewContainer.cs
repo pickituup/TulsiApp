@@ -229,6 +229,14 @@ namespace Tulsi.NavigationFramework {
                 {
                     ViewType.ExpensesListView,
                     ()=> new ViewBuider<ExpensesListView>().GetView()
+                },
+                {
+                    ViewType.ColdStorePage,
+                    ()=> new ViewBuider<ColdStorePage>().GetView()
+                },
+                {
+                    ViewType.GodownPage,
+                    ()=> new ViewBuider<GodownPage>().GetView()
                 }
             };
         }

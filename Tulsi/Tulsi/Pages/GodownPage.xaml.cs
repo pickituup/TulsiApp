@@ -1,20 +1,27 @@
-﻿using Tulsi.Helpers;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Tulsi.Helpers;
 using Tulsi.NavigationFramework;
 using Tulsi.ViewModels;
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
-namespace Tulsi {
-    public partial class LadaanPage : ContentPage, IView {
+namespace Tulsi.Pages {
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class GodownPage : ContentPage, IView {
 
-        private readonly LadaanPageViewModel _viewModel;
+        private readonly GodownPageViewModel _viewModel;
 
         /// <summary>
         ///     ctor().
         /// </summary>
-        public LadaanPage() {
+        public GodownPage() {
             InitializeComponent();
 
-            BindingContext = _viewModel = new LadaanPageViewModel();
+            BindingContext = _viewModel = new GodownPageViewModel();
         }
 
         public void ApplyVisualChangesWhileNavigating() {

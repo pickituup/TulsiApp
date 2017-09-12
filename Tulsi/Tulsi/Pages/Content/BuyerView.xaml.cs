@@ -1,11 +1,6 @@
 ﻿using Syncfusion.SfChart.XForms;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Tulsi.NavigationFramework;
-using Tulsi.ViewModels;
 using Tulsi.ViewModels.Content;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -22,11 +17,11 @@ namespace Tulsi.Pages.Content {
         public BuyerView() {
             InitializeComponent();
 
-            DashboardViewModel dvm = new DashboardViewModel();
+            BindingContext = _viewModel = new BuyerViewModel();
 
             SfChart chart = new SfChart();
             DoughnutSeries doughnutSeries = new DoughnutSeries() {
-                ItemsSource = dvm.ChartData,
+                ItemsSource = _viewModel.ChartData,
                 XBindingPath = "Name",
                 YBindingPath = "Value",
                 DoughnutCoefficient = 0.7,
@@ -72,7 +67,6 @@ namespace Tulsi.Pages.Content {
             MiddleStack.Children.Add(MiddleText2);
             ChartGrid.Children.Add(MiddleStack);
 
-            BindingContext = _viewModel = new BuyerViewModel();
         }
 
         public void ApplyVisualChangesWhileNavigating() {

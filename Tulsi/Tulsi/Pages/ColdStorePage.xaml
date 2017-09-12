@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
-    x:Class="Tulsi.LadaanPage"
+    x:Class="Tulsi.Pages.ColdStorePage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:coldstoreMenuItem="clr-namespace:Tulsi.Pages.Content.ColdStoreControl"
     xmlns:controls="clr-namespace:Tulsi.Controls"
-    xmlns:laddanMenuItem="clr-namespace:Tulsi.Pages.Content.LaddanControl"
     xmlns:toolKitImageResourceExtension="clr-namespace:Tulsi.ToolKit.MarkupExtensions"
     NavigationPage.HasNavigationBar="false">
 
@@ -38,7 +38,7 @@
             <Label
                 x:Name="PageTitleLabel"
                 HorizontalOptions="Center"
-                Text="LADAAN/BIJAK"
+                Text="Coldstore"
                 TextColor="White"
                 VerticalOptions="Center" />
 
@@ -82,7 +82,7 @@
                         <FormattedString>
                             <FormattedString.Spans>
                                 <Span FontAttributes="Bold" Text="Note: " />
-                                <Span Text="These are the pending ladaan/bijak cases to look into." />
+                                <Span Text="These are the pending boxes/cases available in Coldstores." />
                             </FormattedString.Spans>
                         </FormattedString>
                     </Label.FormattedText>
@@ -90,7 +90,7 @@
             </Frame>
 
             <ScrollView>
-                <controls:StackList BackgroundColor="Transparent" ItemsSource="{Binding LadaanSource}">
+                <controls:StackList BackgroundColor="Transparent" ItemsSource="{Binding ColdStoreSource}">
                     <controls:StackList.ItemTemplate>
                         <DataTemplate>
                             <Frame
@@ -134,7 +134,7 @@
                                     <controls:AdvancedStackList BackgroundColor="Transparent" ItemsSource="{Binding Data}">
                                         <controls:AdvancedStackList.ItemTemplate>
                                             <DataTemplate>
-                                                <laddanMenuItem:LaddanMenuItem />
+                                                <coldstoreMenuItem:ColdStoreMenuItem />
                                             </DataTemplate>
                                         </controls:AdvancedStackList.ItemTemplate>
                                     </controls:AdvancedStackList>

@@ -14,6 +14,24 @@ using Xamarin.Forms;
 namespace Tulsi.ViewModels.Content {
     public sealed class BuyerViewModel : ViewModelBase, IViewModel {
 
+        string _secondColumn;
+        public string SecondColumn {
+            get { return _secondColumn; }
+            set { SetProperty(ref _secondColumn, value); }
+        }
+
+        string _lastColumn;
+        public string LastColumn {
+            get { return _lastColumn; }
+            set { SetProperty(ref _lastColumn, value); }
+        }
+
+        ObservableCollection<ChartModel> _chartData;
+        public ObservableCollection<ChartModel> ChartData {
+            get { return _chartData; }
+            set { SetProperty(ref _chartData, value); }
+        }
+
         private Transaction _selectedItem;
         public Transaction SelectedItem {
             get => _selectedItem;
@@ -61,6 +79,8 @@ namespace Tulsi.ViewModels.Content {
         ///     ctor().
         /// </summary>
         public BuyerViewModel() {
+            SetAggregateHeader();
+
             DisplaySearchPageCommand = new Command(() => {
                 BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.SearchPage);
             });
@@ -75,13 +95,32 @@ namespace Tulsi.ViewModels.Content {
 
             AggregateCommand = new Command(() => {
                 TransactionsData = GetAggregateTransactions();
+                SetAggregateHeader();
             });
 
             TimeLineCommand = new Command(() => {
                 TransactionsData = GetTimeLineTransactions();
+                SetTimeLineHeader();
             });
 
             TransactionsData = GetAggregateTransactions();
+
+            ChartData = new ObservableCollection<ChartModel>()
+            {
+                new ChartModel { Name = "Paid", Value = 23 },
+                new ChartModel { Name = "Over Due", Value = 5 },
+                new ChartModel { Name = "Due", Value = 72 }
+            };
+        }
+
+        private void SetAggregateHeader() {
+            SecondColumn = "TCases";
+            LastColumn = "TNetAmt";
+        }
+
+        private void SetTimeLineHeader() {
+            SecondColumn = "Cases";
+            LastColumn = "NetAmt";
         }
 
         private ObservableCollection<Transaction> GetAggregateTransactions() {

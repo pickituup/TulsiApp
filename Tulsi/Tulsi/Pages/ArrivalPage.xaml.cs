@@ -74,7 +74,7 @@ namespace Tulsi {
         }
 
         private void ArrivalCalendar_DateClicked(object sender, DateTimeEventArgs e) {
-            DisplayAlert("Date", e.DateTime.Date.ToString() + " selected", "OK");
+            //DisplayAlert("Date", e.DateTime.Date.ToString() + " selected", "OK");
         }
 
         /// <summary>

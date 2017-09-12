@@ -97,7 +97,7 @@ namespace Tulsi {
 
         protected override void OnDisappearing() {
             // TODO review this case
-            Dispose();
+            //Dispose();
         }
 
         /// <summary>

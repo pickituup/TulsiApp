@@ -1,12 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
-    x:Class="Tulsi.LadaanPage"
+    x:Class="Tulsi.Pages.GodownPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:controls="clr-namespace:Tulsi.Controls"
-    xmlns:laddanMenuItem="clr-namespace:Tulsi.Pages.Content.LaddanControl"
+    xmlns:godownMenuItem="clr-namespace:Tulsi.Pages.Content.GodownControl"
     xmlns:toolKitImageResourceExtension="clr-namespace:Tulsi.ToolKit.MarkupExtensions"
     NavigationPage.HasNavigationBar="false">
+
 
     <StackLayout
         x:Name="HeaderLayout"
@@ -38,7 +39,7 @@
             <Label
                 x:Name="PageTitleLabel"
                 HorizontalOptions="Center"
-                Text="LADAAN/BIJAK"
+                Text="Godown"
                 TextColor="White"
                 VerticalOptions="Center" />
 
@@ -82,7 +83,7 @@
                         <FormattedString>
                             <FormattedString.Spans>
                                 <Span FontAttributes="Bold" Text="Note: " />
-                                <Span Text="These are the pending ladaan/bijak cases to look into." />
+                                <Span Text="These are the pending boxes/cases available in Godown. Need Urgent Attention" />
                             </FormattedString.Spans>
                         </FormattedString>
                     </Label.FormattedText>
@@ -90,7 +91,7 @@
             </Frame>
 
             <ScrollView>
-                <controls:StackList BackgroundColor="Transparent" ItemsSource="{Binding LadaanSource}">
+                <controls:StackList BackgroundColor="Transparent" ItemsSource="{Binding GodownSource}">
                     <controls:StackList.ItemTemplate>
                         <DataTemplate>
                             <Frame
@@ -134,7 +135,7 @@
                                     <controls:AdvancedStackList BackgroundColor="Transparent" ItemsSource="{Binding Data}">
                                         <controls:AdvancedStackList.ItemTemplate>
                                             <DataTemplate>
-                                                <laddanMenuItem:LaddanMenuItem />
+                                                <godownMenuItem:GodownMenuItem />
                                             </DataTemplate>
                                         </controls:AdvancedStackList.ItemTemplate>
                                     </controls:AdvancedStackList>

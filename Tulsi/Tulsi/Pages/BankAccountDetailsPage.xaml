@@ -3,6 +3,7 @@
     x:Class="Tulsi.BankAccountDetailsPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:bankaccountDetailMenuItem="clr-namespace:Tulsi.Pages.Content.BankAccountDetailControl"
     xmlns:controls="clr-namespace:Tulsi.Controls"
     xmlns:local="clr-namespace:Tulsi;assembly=Tulsi"
     xmlns:m="clr-namespace:SlideOverKit"
@@ -60,7 +61,93 @@
             </Grid>
         </Grid>
 
-        <ScrollView>
+        <!--  MAIN CONTENT  -->
+        <StackLayout
+            Padding="5,0"
+            BackgroundColor="Transparent"
+            Spacing="10">
+
+            <Frame
+                Padding="5"
+                BackgroundColor="White"
+                CornerRadius="7"
+                HasShadow="False"
+                HeightRequest="40"
+                VerticalOptions="Start">
+                <Label
+                    HorizontalTextAlignment="Center"
+                    TextColor="#2793F5"
+                    VerticalTextAlignment="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span FontAttributes="Bold" Text="Note: " />
+                                <Span Text="These are the bank account transactions that are synced with the system." />
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </Frame>
+
+            <ScrollView>
+                <controls:StackList BackgroundColor="Transparent" ItemsSource="{Binding BankAccountSource}">
+                    <controls:StackList.ItemTemplate>
+                        <DataTemplate>
+                            <Frame
+                                Padding="10"
+                                BackgroundColor="White"
+                                CornerRadius="7"
+                                HasShadow="False">
+
+                                <StackLayout BackgroundColor="Transparent" Spacing="10">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="Medium"
+                                        HorizontalTextAlignment="Center"
+                                        Text="{Binding Date, StringFormat='{0:dd/MM/yyyy}'}"
+                                        TextColor="{StaticResource MainColor}" />
+                                    <Frame
+                                        Padding="7"
+                                        BackgroundColor="{StaticResource MainColor}"
+                                        CornerRadius="7"
+                                        HasShadow="False">
+
+                                        <StackLayout
+                                            Padding="15,0"
+                                            BackgroundColor="Transparent"
+                                            Orientation="Horizontal">
+                                            <Label
+                                                FontAttributes="Bold"
+                                                FontSize="Large"
+                                                HorizontalOptions="StartAndExpand"
+                                                Text="{Binding Title}"
+                                                TextColor="White" />
+                                            <Label
+                                                FontAttributes="Bold"
+                                                FontSize="Large"
+                                                HorizontalOptions="EndAndExpand"
+                                                Text="{Binding Description}"
+                                                TextColor="White" />
+                                        </StackLayout>
+                                    </Frame>
+
+                                    <controls:AdvancedStackList BackgroundColor="Transparent" ItemsSource="{Binding Data}">
+                                        <controls:AdvancedStackList.ItemTemplate>
+                                            <DataTemplate>
+                                                <bankaccountDetailMenuItem:BankAccauntDetailMenuItem />
+                                            </DataTemplate>
+                                        </controls:AdvancedStackList.ItemTemplate>
+                                    </controls:AdvancedStackList>
+                                </StackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </controls:StackList.ItemTemplate>
+                </controls:StackList>
+            </ScrollView>
+        </StackLayout>
+
+
+        <!--<ScrollView>
             <StackLayout x:Name="MainLayout" BackgroundColor="#DCDCDC">
                 <controls:RoundedContentView
                     Grid.Column="1"
@@ -274,6 +361,6 @@
 
 
 
-        </ScrollView>
+        </ScrollView>-->
     </StackLayout>
 </ContentPage>

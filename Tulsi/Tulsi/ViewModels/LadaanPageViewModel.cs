@@ -12,7 +12,7 @@ using Tulsi.NavigationFramework;
 using Xamarin.Forms;
 
 namespace Tulsi.ViewModels {
-    public class LadaanViewModel : ViewModelBase, IViewModel {
+    public class LadaanPageViewModel : ViewModelBase, IViewModel {
 
         ObservableCollection<LaddanData> _ladaanSource;
         public ObservableCollection<LaddanData> LadaanSource {
@@ -39,7 +39,7 @@ namespace Tulsi.ViewModels {
         /// <summary>
         ///     ctor().
         /// </summary>
-        public LadaanViewModel() {
+        public LadaanPageViewModel() {
 
             LadaanSource = new ObservableCollection<LaddanData>() {
                 new LaddanData{

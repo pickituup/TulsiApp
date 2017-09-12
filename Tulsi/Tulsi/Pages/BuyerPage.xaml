@@ -104,7 +104,7 @@
                             BorderRadius="25">
                             <Grid Grid.Column="1" BackgroundColor="White">
                                 <Grid.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding Path=DisplayLatePaymentsPageCommand}" />
+                                    <TapGestureRecognizer Command="{Binding DisplayLatePaymentsPageCommand}" />
                                 </Grid.GestureRecognizers>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
@@ -317,7 +317,7 @@
                                                 FontSize="Medium"
                                                 HorizontalOptions="CenterAndExpand"
                                                 HorizontalTextAlignment="Center"
-                                                Text="TCases"
+                                                Text="{Binding SecondColumn}"
                                                 TextColor="White"
                                                 VerticalTextAlignment="Center" />
                                             <Label
@@ -333,7 +333,7 @@
                                                 FontSize="Medium"
                                                 HorizontalOptions="CenterAndExpand"
                                                 HorizontalTextAlignment="Center"
-                                                Text="TNetAmt"
+                                                Text="{Binding LastColumn}"
                                                 TextColor="White"
                                                 VerticalTextAlignment="Center" />
                                         </StackLayout>
@@ -351,7 +351,10 @@
                                                         Margin="5"
                                                         BackgroundColor="#EBECEE"
                                                         CornerRadius="10">
-                                                        <Grid BackgroundColor="Transparent" VerticalOptions="Center" RowSpacing="0">
+                                                        <Grid
+                                                            BackgroundColor="Transparent"
+                                                            RowSpacing="0"
+                                                            VerticalOptions="Center">
                                                             <Grid.ColumnDefinitions>
                                                                 <ColumnDefinition Width="*" />
                                                                 <ColumnDefinition Width="*" />

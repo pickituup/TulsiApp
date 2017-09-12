@@ -68,7 +68,7 @@ namespace Tulsi.Pages.Content {
         }
 
         private void ArrivalCalendar_DateClicked(object sender, DateTimeEventArgs e) {
-            _viewModel.DisplayMessage("Date", e.DateTime.Date.ToString() + " selected", "OK");
+            //_viewModel.DisplayMessage("Date", e.DateTime.Date.ToString() + " selected", "OK");
         }
 
         public void ApplyVisualChangesWhileNavigating() {

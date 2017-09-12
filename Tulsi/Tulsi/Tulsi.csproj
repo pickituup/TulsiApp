@@ -44,6 +44,7 @@
     <Compile Include="Controls\CustomWebView.cs" />
     <Compile Include="Controls\EntryEx.cs" />
     <Compile Include="Controls\GifImage.cs" />
+    <Compile Include="Controls\PdfWebView.cs" />
     <Compile Include="Controls\PrimitiveSegmentControl\FramedLabelSegmentItem.xaml.cs">
       <DependentUpon>FramedLabelSegmentItem.xaml</DependentUpon>
     </Compile>
@@ -74,8 +75,12 @@
     <Compile Include="Model\AuditAction.cs" />
     <Compile Include="Model\AuditEntry.cs" />
     <Compile Include="Model\BankAccount.cs" />
+    <Compile Include="Model\BankAccountData.cs" />
+    <Compile Include="Model\BankAccountEntry.cs" />
     <Compile Include="Model\BuyerRanking.cs" />
     <Compile Include="Model\CarouselContent.cs" />
+    <Compile Include="Model\ColdStoreData.cs" />
+    <Compile Include="Model\ColdStoreEntry.cs" />
     <Compile Include="Model\Contact.cs" />
     <Compile Include="Model\ContactGroup.cs" />
     <Compile Include="Model\DataContainers\ArrivalsContainer.cs" />
@@ -84,6 +89,8 @@
     <Compile Include="Model\DataContainers\DataItems\TutorialItem.cs" />
     <Compile Include="Model\DataContainers\ProfitMenuContainer.cs" />
     <Compile Include="Model\DataContainers\TutorialsContainer.cs" />
+    <Compile Include="Model\GodownData.cs" />
+    <Compile Include="Model\GodownEntry.cs" />
     <Compile Include="Model\LaddanData.cs" />
     <Compile Include="Model\Period.cs" />
     <Compile Include="Model\DataContainers\DataItems\ReportsMenuItem.cs" />
@@ -141,6 +148,9 @@
     <Compile Include="Pages\ChatPage.xaml.cs">
       <DependentUpon>ChatPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\ColdStorePage.xaml.cs">
+      <DependentUpon>ColdStorePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Content\ArrivalView.xaml.cs">
       <DependentUpon>ArrivalView.xaml</DependentUpon>
     </Compile>
@@ -149,6 +159,9 @@
     </Compile>
     <Compile Include="Pages\Content\AuditLogView.xaml.cs">
       <DependentUpon>AuditLogView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Content\BankAccountDetailControl\BankAccauntDetailMenuItem.xaml.cs">
+      <DependentUpon>BankAccauntDetailMenuItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Content\BankAccountsView.xaml.cs">
       <DependentUpon>BankAccountsView.xaml</DependentUpon>
@@ -159,6 +172,9 @@
     <Compile Include="Pages\Content\BuyerView.xaml.cs">
       <DependentUpon>BuyerView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Content\ColdStoreControl\ColdStoreMenuItem.xaml.cs">
+      <DependentUpon>ColdStoreMenuItem.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Content\ExpensesCarouselView.xaml.cs">
       <DependentUpon>ExpensesCarouselView.xaml</DependentUpon>
     </Compile>
@@ -167,6 +183,9 @@
     </Compile>
     <Compile Include="Pages\Content\ExpensesView.xaml.cs">
       <DependentUpon>ExpensesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Content\GodownControl\GodownMenuItem.xaml.cs">
+      <DependentUpon>GodownMenuItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Content\GrowerProfileView.xaml.cs">
       <DependentUpon>GrowerProfileView.xaml</DependentUpon>
@@ -185,6 +204,9 @@
     </Compile>
     <Compile Include="Pages\ExpensesPage.xaml.cs">
       <DependentUpon>ExpensesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\GodownPage.xaml.cs">
+      <DependentUpon>GodownPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\GrowerPage.xaml.cs">
       <DependentUpon>GrowerPage.xaml</DependentUpon>
@@ -271,6 +293,7 @@
     <Compile Include="ViewModels\BuyerRankingsPageViewModel.cs" />
     <Compile Include="ViewModels\BuyerPageViewModel.cs" />
     <Compile Include="ViewModels\ChatViewModel.cs" />
+    <Compile Include="ViewModels\ColdStorePageViewModel.cs" />
     <Compile Include="ViewModels\Content\ArrivalViewModel.cs" />
     <Compile Include="ViewModels\Content\AuditLogViewModel.cs" />
     <Compile Include="ViewModels\Content\BankAccountsViewModel.cs" />
@@ -284,9 +307,10 @@
     <Compile Include="ViewModels\DashboardViewModel.cs" />
     <Compile Include="ViewModels\ExpensesListPageViewModel.cs" />
     <Compile Include="ViewModels\ExpensesPageViewModel.cs" />
+    <Compile Include="ViewModels\GodownPageViewModel.cs" />
     <Compile Include="ViewModels\GrowerProfilePageViewModel.cs" />
     <Compile Include="ViewModels\GrowerPageViewModel.cs" />
-    <Compile Include="ViewModels\LadaanViewModel.cs" />
+    <Compile Include="ViewModels\LadaanPageViewModel.cs" />
     <Compile Include="ViewModels\LatePaymentsPageViewModel.cs" />
     <Compile Include="ViewModels\Menu\SideMenuViewModel.cs" />
     <Compile Include="ViewModels\ProfilePageViewModel.cs" />
@@ -841,6 +865,36 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pages\Content\AuditLogControls\AuditLogMenuItem.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\ColdStorePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\Content\ColdStoreControl\ColdStoreMenuItem.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\GodownPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\Content\GodownControl\GodownMenuItem.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\Content\BankAccountDetailControl\BankAccauntDetailMenuItem.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

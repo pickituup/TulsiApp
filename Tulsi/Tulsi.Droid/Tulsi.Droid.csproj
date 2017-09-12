@@ -192,6 +192,7 @@
     <Compile Include="Renderers\EntryExRenderer.cs" />
     <Compile Include="Renderers\EntryRendererBase.cs" />
     <Compile Include="Renderers\ImageViewRenderer.cs" />
+    <Compile Include="Renderers\PdfWebViewRenderer.cs" />
     <Compile Include="Renderers\RoundedContentViewRenderer.cs" />
     <Compile Include="Renderers\RoundedViewRenderer.cs" />
     <Compile Include="Renderers\ViewCellItemSelectedCustomRenderer.cs" />
@@ -476,6 +477,7 @@
     <AndroidAsset Include="Assets\pdfjs\web\locale\zh-TW\viewer.properties" />
     <AndroidAsset Include="Assets\pdfjs\web\locale\zu\viewer.properties" />
     <AndroidAsset Include="Assets\Content\crafted.pdf" />
+    <AndroidAsset Include="Assets\pdfviewer\data.json" />
     <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
@@ -762,6 +764,27 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\pdfjs\web\images\toolbarButton-zoomOut%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\pdfviewer\compatibility.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\pdfviewer\customview.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\pdfviewer\index.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\pdfviewer\minimal.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\pdfviewer\pdf.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\pdfviewer\pdf.worker.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\pdfviewer\pdffile.js" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

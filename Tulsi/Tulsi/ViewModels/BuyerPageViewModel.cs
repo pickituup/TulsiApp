@@ -16,6 +16,24 @@ using System.Collections.ObjectModel;
 namespace Tulsi.ViewModels {
     public class BuyerPageViewModel : ViewModelBase, IViewModel {
 
+        string _secondColumn;
+        public string SecondColumn {
+            get { return _secondColumn; }
+            set { SetProperty(ref _secondColumn, value); }
+        }
+
+        string _lastColumn;
+        public string LastColumn {
+            get { return _lastColumn; }
+            set { SetProperty(ref _lastColumn, value); }
+        }
+
+        ObservableCollection<ChartModel> _chartData;
+        public ObservableCollection<ChartModel> ChartData {
+            get { return _chartData; }
+            set { SetProperty(ref _chartData, value); }
+        }
+
         IView _importedView;
         public IView ImportedView {
             get { return _importedView; }
@@ -82,6 +100,7 @@ namespace Tulsi.ViewModels {
         ///     ctor().
         /// </summary>
         public BuyerPageViewModel() {
+            SetAggregateHeader();
 
             BaseSingleton<NavigationObserver>.Instance.BayerImportedSpot += ImportingSpot;
 
@@ -99,13 +118,32 @@ namespace Tulsi.ViewModels {
 
             AggregateCommand = new Command(() => {
                 TransactionsData = GetAggregateTransactions();
+                SetAggregateHeader();
             });
 
             TimeLineCommand = new Command(() => {
                 TransactionsData = GetTimeLineTransactions();
+                SetTimeLineHeader();
             });
 
             TransactionsData = GetAggregateTransactions();
+
+            ChartData = new ObservableCollection<ChartModel>()
+            {
+                new ChartModel { Name = "Paid", Value = 23 },
+                new ChartModel { Name = "Over Due", Value = 5 },
+                new ChartModel { Name = "Due", Value = 72 }
+            };
+        }
+
+        private void SetAggregateHeader() {
+            SecondColumn = "TCases";
+            LastColumn = "TNetAmt";
+        }
+
+        private void SetTimeLineHeader() {
+            SecondColumn = "Cases";
+            LastColumn = "NetAmt";
         }
 
         private void ImportingSpot(object sender, NavigationImportedEventArgs e) {

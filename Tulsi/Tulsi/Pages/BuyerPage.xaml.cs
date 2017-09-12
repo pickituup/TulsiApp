@@ -1,38 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Tulsi.NavigationFramework;
-using Tulsi.Helpers;
-using Xamarin.Forms;
+﻿using SlideOverKit;
 using Syncfusion.SfChart.XForms;
+using System;
+using System.Collections.Generic;
+using Tulsi.Helpers;
+using Tulsi.NavigationFramework;
 using Tulsi.ViewModels;
-using SlideOverKit;
-using Tulsi.SharedService;
+using Xamarin.Forms;
 
 namespace Tulsi {
-    /// <summary>
-    /// TODO: BuyerPage use similar 'hide/show behavior' as in BuyerRankingsPage, LatePaymentsPage. Try
-    /// to define abstract core of that behavior
-    /// </summary>
     public partial class BuyerPage : MenuContainerPage, IView {
 
         private BuyerPageViewModel _viewModel;
 
         /// <summary>
-        /// Public ctor.
+        ///     ctor().
         /// </summary>
         public BuyerPage() {
             InitializeComponent();
 
             SlideMenu = new SideMenuView();
 
-            DashboardViewModel dvm = new DashboardViewModel();
+            BindingContext = _viewModel = new BuyerPageViewModel();
 
             SfChart chart = new SfChart();
             DoughnutSeries doughnutSeries = new DoughnutSeries() {
-                ItemsSource = dvm.ChartData,
+                ItemsSource = _viewModel.ChartData,
                 XBindingPath = "Name",
                 YBindingPath = "Value",
                 DoughnutCoefficient = 0.7,
@@ -49,7 +41,6 @@ namespace Tulsi {
             doughnutSeries.ColorModel.CustomBrushes = colors;
             chart.WidthRequest = 180;
             chart.HeightRequest = 180;
-            //chart.BackgroundColor = Color.FromHex("#F3F3F3");
             chart.Series.Add(doughnutSeries);
 
             chart.Title.TextColor = Color.FromHex("#cccccc");
@@ -77,8 +68,6 @@ namespace Tulsi {
             MiddleStack.Children.Add(MiddleText1);
             MiddleStack.Children.Add(MiddleText2);
             ChartGrid.Children.Add(MiddleStack);
-
-            BindingContext = _viewModel = new BuyerPageViewModel();
 
             _viewModel.Spot = spot_ContentView;
         }

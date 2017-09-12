@@ -164,6 +164,10 @@ namespace Tulsi.NavigationFramework {
 
         ExpensesCarouselView,
 
-        ExpensesListView
+        ExpensesListView,
+
+        ColdStorePage,
+
+        GodownPage
     }
 }
