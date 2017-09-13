@@ -11,7 +11,7 @@ using Tulsi.Helpers;
 namespace Tulsi {
     public partial class ProfilePage : ContentPage, IView {
 
-        private ProfilePageViewModel _viewModel;
+        private readonly ProfilePageViewModel _viewModel;
 
         /// <summary>
         ///     ctor().

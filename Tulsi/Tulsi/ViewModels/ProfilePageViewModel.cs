@@ -15,7 +15,7 @@ namespace Tulsi.ViewModels {
         /// <summary>
         ///     Navigate back.
         /// </summary>
-        public ICommand ClosePageCommand { get; private set; }
+        public ICommand CloseCommand { get; private set; }
 
         /// <summary>
         ///     Log out from current profile.
@@ -26,7 +26,7 @@ namespace Tulsi.ViewModels {
         ///     ctor().
         /// </summary>
         public ProfilePageViewModel() {
-            ClosePageCommand = new Command(() => {
+            CloseCommand = new Command(() => {
                 BaseSingleton<ViewSwitchingLogic>.Instance.NavigateOneStepBack();
             });
 

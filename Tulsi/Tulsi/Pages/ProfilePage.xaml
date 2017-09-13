@@ -1,104 +1,141 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:controls="clr-namespace:Tulsi.Controls"
-             xmlns:local="clr-namespace:Tulsi;assembly=Tulsi"
-             xmlns:toolKitImageResourceExtension="clr-namespace:Tulsi.ToolKit.MarkupExtensions"
-             x:Class="Tulsi.ProfilePage" NavigationPage.HasNavigationBar="false">
+<ContentPage
+    x:Class="Tulsi.ProfilePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:Tulsi.Controls"
+    xmlns:local="clr-namespace:Tulsi;assembly=Tulsi"
+    xmlns:toolKitImageResourceExtension="clr-namespace:Tulsi.ToolKit.MarkupExtensions"
+    NavigationPage.HasNavigationBar="false">
 
-    <StackLayout 
-        BackgroundColor="#DDDDDD">
-        
-        <Grid 
-            BackgroundColor="#2793F5">
-            
-            <Grid.ColumnDefinitions>
-                
-                <ColumnDefinition Width="40" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="40" />
-            </Grid.ColumnDefinitions>
+    <Grid BackgroundColor="#f3f3f3" RowSpacing="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.4*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!--  PROFILE INFORMATIOM  -->
+        <Grid
+            Grid.Row="0"
+            Padding="0,0,0,0"
+            BackgroundColor="{StaticResource MainColor}"
+            VerticalOptions="Fill">
             <Grid.RowDefinitions>
-                <RowDefinition Height="50" />
-                <RowDefinition Height="150" />
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="10" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <Image 
-                        HorizontalOptions="Start" 
-                        VerticalOptions="Start" 
-                        WidthRequest="11" 
-                        HeightRequest="20" 
-                        Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.profile_back.png}" 
-                        Margin="15,15">
-
+            <!--  Close button  -->
+            <Image
+                Grid.Row="0"
+                Margin="0,20,20,0"
+                HeightRequest="20"
+                HorizontalOptions="End"
+                Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.menu_close.png}"
+                VerticalOptions="Start"
+                WidthRequest="20">
                 <Image.GestureRecognizers>
-
-                    <TapGestureRecognizer Command="{Binding Path=ClosePageCommand}"/>
+                    <TapGestureRecognizer Command="{Binding CloseCommand}" />
                 </Image.GestureRecognizers>
             </Image>
 
-            <Image Grid.Column="2"
-                           HorizontalOptions="End" 
-                           VerticalOptions="Start" 
-                           WidthRequest="20" 
-                           HeightRequest="20" 
-                           Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.menu_close.png}" 
-                           Margin="0,15,15,0">
+            <StackLayout
+                Grid.Row="1"
+                BackgroundColor="Transparent"
+                Spacing="0">
 
-                <Image.GestureRecognizers>
+                <!--  CONTAINER PROFILE PHOTO  -->
+                <Grid BackgroundColor="Transparent" VerticalOptions="Start">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
 
-                    <TapGestureRecognizer Command="{Binding Path=ClosePageCommand}"/>
-                </Image.GestureRecognizers>
-            </Image>
+                    <!--  PROFILE PHOTO  -->
+                    <Image
+                        x:Name="Photo"
+                        HeightRequest="200"
+                        HorizontalOptions="Center"
+                        Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.profile_empty_photo.png}"
+                        VerticalOptions="Center"
+                        WidthRequest="200" />
+                </Grid>
 
-            <Image Grid.Column="1" Grid.Row="1" x:Name="Logo" Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.profile_logo.png}" WidthRequest="150" HeightRequest="150" HorizontalOptions="Center" VerticalOptions="Center" />
-            <StackLayout Grid.Column="1" Grid.Row="2" BackgroundColor="Transparent">
-                <Label Text="Super Sales" FontSize="30" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="White" />
-                <Label Text="John Doe" FontSize="20" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="White" />
+                <!--  PROFILE INFORMATION  -->
+                <StackLayout
+                    BackgroundColor="Transparent"
+                    Spacing="5"
+                    VerticalOptions="CenterAndExpand">
+                    <Label
+                        Margin="0,0,0,0"
+                        FontAttributes="Bold"
+                        FontSize="36"
+                        HorizontalTextAlignment="Center"
+                        Text="Super Sales"
+                        TextColor="White"
+                        VerticalOptions="Center"
+                        VerticalTextAlignment="Center" />
+                    <Label
+                        Margin="0,0,0,0"
+                        FontSize="24"
+                        HorizontalTextAlignment="Center"
+                        Text="John Doe"
+                        TextColor="White"
+                        VerticalOptions="Center"
+                        VerticalTextAlignment="Center" />
+                </StackLayout>
             </StackLayout>
         </Grid>
 
-        <Grid BackgroundColor="#DDDDDD">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="20" />
-                <ColumnDefinition Width="auto" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="20" />
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="120" />
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="auto" />
-            </Grid.RowDefinitions>
-            <Label Grid.Column="1" Grid.Row="1" Text="About"  FontSize="20" TextColor="#222222" />
-            <Label Grid.Column="1" Grid.Row="3" Text="How to use"  FontSize="20" TextColor="#222222" />
-        </Grid>
-
-        <controls:RoundedContentView 
-                    BackgroundColor="#FFFFFF" 
-                    Grid.Column="1"
-                    Grid.Row="5"
-                    CornerRadius="10"
-                    Margin="50,5,50,5">
-
-            <controls:RoundedContentView.GestureRecognizers>
-
-                <TapGestureRecognizer Command="{Binding Path=LogOutCommand}"/>
-            </controls:RoundedContentView.GestureRecognizers>
-            <controls:RoundedContentView.Content>
-                <Label 
-                        Text="Log Out"  
-                        FontSize="20" 
-                        HorizontalOptions="Center" 
-                        VerticalOptions="Center" 
-                        TextColor="#222222" 
-                        Margin="0,5,0,5" />
-            </controls:RoundedContentView.Content>
-        </controls:RoundedContentView>
-    </StackLayout>
+        <!--  BOTTOM CONTENT  -->
+        <StackLayout
+            Grid.Row="1"
+            Padding="20,0"
+            BackgroundColor="Transparent"
+            Spacing="20">
+            <controls:RoundedContentView
+                Margin="0,5,0,0"
+                BackgroundColor="White"
+                CornerRadius="5">
+                <Label
+                    Margin="20,5"
+                    FontSize="Medium"
+                    Text="About"
+                    TextColor="#AAA6AB"
+                    VerticalOptions="Center" />
+            </controls:RoundedContentView>
+            <controls:RoundedContentView
+                BackgroundColor="White"
+                CornerRadius="5">
+                <Label
+                    Margin="20,5"
+                    FontSize="Medium"
+                    Text="How to Use"
+                    TextColor="#AAA6AB"
+                    VerticalOptions="Center" />
+            </controls:RoundedContentView>
+            <controls:RoundedContentView
+                BackgroundColor="White"
+                CornerRadius="5">
+                <Label
+                    Margin="20,5"
+                    FontSize="Medium"
+                    Text="Rate the App"
+                    TextColor="#AAA6AB"
+                    VerticalOptions="Center" />
+            </controls:RoundedContentView>
+            <controls:RoundedContentView
+                BackgroundColor="White"
+                CornerRadius="5">
+                <controls:RoundedContentView.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding LogOutCommand}" />
+                </controls:RoundedContentView.GestureRecognizers>
+                <Label
+                    Margin="20,5"
+                    FontSize="Medium"
+                    Text="Logout"
+                    TextColor="#AAA6AB"
+                    VerticalOptions="Center" />
+            </controls:RoundedContentView>
+        </StackLayout>
+    </Grid>
 </ContentPage>

@@ -240,8 +240,8 @@
                         Margin="5,0"
                         BackgroundColor="White"
                         ItemsSource="{Binding TransactionsData}"
-                        SelectedItem="{Binding SelectedMenuItem}"
                         RowHeight="40"
+                        SelectedItem="{Binding SelectedMenuItem}"
                         SeparatorColor="#e6e6e6"
                         SeparatorVisibility="Default"
                         VerticalOptions="Center">

@@ -68,6 +68,10 @@ namespace Tulsi.NavigationFramework {
                 {
                     ViewType.DashboardPage,
                     () => new ViewBuider<DashboardPage>().GetViewInNavigationFrame()
+                },
+                {
+                    ViewType.LoginPage,
+                    () => new ViewBuider<LoginPage>().GetViewInNavigationFrame()
                 }
             };
         }

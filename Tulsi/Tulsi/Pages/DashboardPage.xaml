@@ -355,22 +355,17 @@
                     <controls:CustomFrame
                         Margin="5,0"
                         BackgroundColor="White"
-                        BorderRadius="25">
-                        <Grid BackgroundColor="Transparent">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="80" />
-                            </Grid.RowDefinitions>
-
+                        BorderRadius="25"
+                        HeightRequest="80">
+                        <StackLayout
+                            BackgroundColor="Transparent"
+                            Orientation="Horizontal"
+                            Spacing="0">
                             <!--  LADAAN FRAME  -->
                             <controls:CustomFrame
-                                Grid.Column="0"
                                 BorderRadius="10"
                                 BorderWidth="2"
+                                HorizontalOptions="CenterAndExpand"
                                 IsVisible="{Binding HasLadaan}"
                                 OutlineColor="#CCCCCC">
                                 <controls:CustomFrame.GestureRecognizers>
@@ -405,9 +400,9 @@
 
                             <!--  COLD STOIRE FRAME  -->
                             <controls:CustomFrame
-                                Grid.Column="1"
                                 BorderRadius="10"
                                 BorderWidth="2"
+                                HorizontalOptions="CenterAndExpand"
                                 IsVisible="{Binding HasColdStoire}"
                                 OutlineColor="#CCCCCC">
                                 <controls:CustomFrame.GestureRecognizers>
@@ -442,9 +437,9 @@
 
                             <!--  TODAY'S BALANCE FRAME  -->
                             <controls:CustomFrame
-                                Grid.Column="2"
                                 BorderRadius="10"
                                 BorderWidth="2"
+                                HorizontalOptions="CenterAndExpand"
                                 IsVisible="{Binding HasTodayBalance}"
                                 OutlineColor="#CCCCCC">
                                 <controls:CustomFrame.GestureRecognizers>
@@ -476,7 +471,7 @@
                                         VerticalOptions="Start" />
                                 </Grid>
                             </controls:CustomFrame>
-                        </Grid>
+                        </StackLayout>
                     </controls:CustomFrame>
 
                     <!--  Weather today  -->
