@@ -7,10 +7,22 @@ using System.Windows.Input;
 using Tulsi.Helpers;
 using Tulsi.MVVM.Core;
 using Tulsi.NavigationFramework;
+using Tulsi.Observers;
 using Xamarin.Forms;
 
 namespace Tulsi.ViewModels {
     public sealed class SettingsViewModel : ViewModelBase, IViewModel {
+
+        bool _isVisibleAmount;
+        public bool IsVisibleAmount {
+            get { return _isVisibleAmount; }
+            set {
+                if (SetProperty(ref _isVisibleAmount, value)) {
+                    BaseSingleton<DashboardObserver>.Instance.OnHideAmount(value);
+                    BaseSingleton<DashboardHelper>.Instance.HasSideMenuAmount = value;
+                }
+            }
+        }
 
         List<string> _currencyItems;
         public List<string> CurrencyItems {
@@ -45,6 +57,8 @@ namespace Tulsi.ViewModels {
         ///     ctor().
         /// </summary>
         public SettingsViewModel() {
+            IsVisibleAmount = BaseSingleton<DashboardHelper>.Instance.HasSideMenuAmount;
+
             DisplaySearchPageCommand = new Command(() => BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.SearchPage));
 
             SetupDashboardPageCommand = new Command(() => BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.SetupDashboardPage));

@@ -4,8 +4,8 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Tulsi;assembly=Tulsi"
-    xmlns:toolKitImageResourceExtension="clr-namespace:Tulsi.ToolKit.MarkupExtensions"
-    xmlns:t="clr-namespace:SlideOverKit">
+    xmlns:t="clr-namespace:SlideOverKit"
+    xmlns:toolKitImageResourceExtension="clr-namespace:Tulsi.ToolKit.MarkupExtensions">
 
     <Grid
         BackgroundColor="Transparent"
@@ -156,6 +156,7 @@
                     Grid.Row="1"
                     BackgroundColor="Transparent"
                     HorizontalOptions="Center"
+                    IsVisible="{Binding AmountVisible}"
                     Style="{StaticResource MenuItemStyleLabel}"
                     Text="70L"
                     VerticalOptions="Center" />
@@ -163,6 +164,7 @@
                     Grid.Row="2"
                     BackgroundColor="Transparent"
                     HorizontalOptions="Center"
+                    IsVisible="{Binding AmountVisible}"
                     Style="{StaticResource MenuItemStyleLabel}"
                     Text="2 Cr"
                     VerticalOptions="Center" />

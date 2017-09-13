@@ -122,6 +122,7 @@
                             Grid.Row="1"
                             Grid.Column="1"
                             HorizontalOptions="Center"
+                            IsToggled="{Binding IsVisibleAmount}"
                             VerticalOptions="Center" />
                         <Label
                             Grid.Row="2"
@@ -185,11 +186,11 @@
                             Title="{Binding CurrentCurrency}"
                             Grid.Row="7"
                             Grid.Column="1"
-                            WidthRequest="45"
                             HorizontalOptions="Center"
                             ItemsSource="{Binding CurrencyItems}"
                             SelectedItem="{Binding SelectedCurrencyItem, Mode=TwoWay}"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"
+                            WidthRequest="45" />
                     </Grid>
                 </controls:CustomFrame>
             </StackLayout>

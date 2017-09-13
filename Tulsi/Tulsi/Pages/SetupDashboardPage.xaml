@@ -61,14 +61,13 @@
 
         <!--  MAIN CONTENT  -->
         <ScrollView>
-            <StackLayout x:Name="MainLayout" BackgroundColor="#DCDCDC">
-
-                <controls:CustomFrame
-                    Margin="5,0,5,0"
-                    BackgroundColor="White"
-                    BorderRadius="25">
+            <StackLayout
+                Padding="5,0"
+                BackgroundColor="Transparent"
+                Spacing="5">
+                <controls:CustomFrame BackgroundColor="White" BorderRadius="25">
                     <Label
-                        Margin="10,15,10,15"
+                        Margin="10,15"
                         BackgroundColor="White"
                         HorizontalTextAlignment="Center"
                         TextColor="#2793F5"
@@ -83,133 +82,117 @@
                         </Label.FormattedText>
                     </Label>
                 </controls:CustomFrame>
-                <controls:CustomFrame
-                    Margin="5"
-                    BackgroundColor="White"
-                    BorderRadius="25">
-                    <Grid x:Name="Settings1" BackgroundColor="White">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="20" />
-                            <ColumnDefinition Width="auto" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="80" />
-                            <ColumnDefinition Width="20" />
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="20" />
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="20" />
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="20" />
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="20" />
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="20" />
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="20" />
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="20" />
-                            <RowDefinition Height="auto" />
-                        </Grid.RowDefinitions>
-                        <Label
-                            Grid.Row="1"
-                            Grid.Column="1"
-                            FontAttributes="Bold"
-                            Text="Buyer Summary" />
-                        <Switch
-                            Grid.Row="1"
-                            Grid.RowSpan="2"
-                            Grid.Column="3"
-                            HorizontalOptions="End"
-                            IsToggled="True"
-                            VerticalOptions="Center" />
-                        <Label
-                            Grid.Row="3"
-                            Grid.Column="1"
-                            FontAttributes="Bold"
-                            Text="Ladaan" />
-                        <Switch
-                            Grid.Row="3"
-                            Grid.Column="3"
-                            HorizontalOptions="End"
-                            VerticalOptions="Center" />
 
-                        <Label
-                            Grid.Row="5"
-                            Grid.Column="1"
-                            FontAttributes="Bold"
-                            Text="Cold Store" />
-                        <Switch
-                            Grid.Row="5"
-                            Grid.RowSpan="2"
-                            Grid.Column="3"
-                            HorizontalOptions="End"
-                            IsToggled="True"
-                            VerticalOptions="Center" />
-                        <Label
-                            Grid.Row="7"
-                            Grid.Column="1"
-                            FontAttributes="Bold"
-                            Text="Today's Balance" />
-                        <Switch
-                            Grid.Row="7"
-                            Grid.RowSpan="2"
-                            Grid.Column="3"
-                            HorizontalOptions="End"
-                            IsToggled="True"
-                            VerticalOptions="Center" />
-                        <Label
-                            Grid.Row="9"
-                            Grid.Column="1"
-                            FontAttributes="Bold"
-                            Text="Today's Rates" />
-                        <Switch
-                            Grid.Row="9"
-                            Grid.RowSpan="2"
-                            Grid.Column="3"
-                            HorizontalOptions="End"
-                            IsToggled="True"
-                            VerticalOptions="Center" />
+                <controls:CustomFrame BackgroundColor="White" BorderRadius="25">
+                    <StackLayout BackgroundColor="Transparent" Spacing="20">
+                        <StackLayout
+                            Padding="20,0"
+                            BackgroundColor="Transparent"
+                            Orientation="Horizontal">
+                            <Label
+                                FontAttributes="Bold"
+                                HorizontalOptions="StartAndExpand"
+                                Text="Buyer Summary" />
+                            
+                            <Switch
+                                HorizontalOptions="EndAndExpand"
+                                IsToggled="{Binding HasBuyerSummary}"
+                                VerticalOptions="Center" />
+                        </StackLayout>
 
-                        <Label
-                            Grid.Row="11"
-                            Grid.Column="1"
-                            FontAttributes="Bold"
-                            Text="Advance Payment List" />
-                        <Switch
-                            Grid.Row="11"
-                            Grid.Column="3"
-                            HorizontalOptions="End"
-                            VerticalOptions="Center" />
-                        <Label
-                            Grid.Row="13"
-                            Grid.Column="1"
-                            FontAttributes="Bold"
-                            Text="Cost vs Sale" />
-                        <Label
-                            Grid.Row="14"
-                            Grid.Column="1"
-                            Text="( Kinnow/Mango )" />
-                        <Switch
-                            Grid.Row="13"
-                            Grid.RowSpan="2"
-                            Grid.Column="3"
-                            HorizontalOptions="End"
-                            VerticalOptions="Center" />
-                        <Label
-                            Grid.Row="16"
-                            Grid.Column="1"
-                            FontAttributes="Bold"
-                            Text="Farm Purchase List" />
-                        <Switch
-                            Grid.Row="16"
-                            Grid.Column="3"
-                            HorizontalOptions="End"
-                            VerticalOptions="Center" />
-                    </Grid>
+                        <StackLayout
+                            Padding="20,0"
+                            BackgroundColor="Transparent"
+                            Orientation="Horizontal">
+                            <Label
+                                FontAttributes="Bold"
+                                HorizontalOptions="StartAndExpand"
+                                Text="Ladaan" />
+                            
+                            <Switch IsToggled="{Binding HasLadaan}" HorizontalOptions="EndAndExpand" VerticalOptions="Center" />
+                        </StackLayout>
+
+                        <StackLayout
+                            Padding="20,0"
+                            BackgroundColor="Transparent"
+                            Orientation="Horizontal">
+                            <Label
+                                FontAttributes="Bold"
+                                HorizontalOptions="StartAndExpand"
+                                Text="Cold Store" />
+                            
+                            <Switch
+                                HorizontalOptions="EndAndExpand"
+                                IsToggled="{Binding HasColdStoire}"
+                                VerticalOptions="Center" />
+                        </StackLayout>
+
+                        <StackLayout
+                            Padding="20,0"
+                            BackgroundColor="Transparent"
+                            Orientation="Horizontal">
+                            <Label
+                                FontAttributes="Bold"
+                                HorizontalOptions="StartAndExpand"
+                                Text="Today's Balance" />
+                            
+                            <Switch
+                                HorizontalOptions="EndAndExpand"
+                                IsToggled="{Binding HasTodayBalance}"
+                                VerticalOptions="Center" />
+                        </StackLayout>
+
+                        <StackLayout
+                            Padding="20,0"
+                            BackgroundColor="Transparent"
+                            Orientation="Horizontal">
+                            <Label
+                                FontAttributes="Bold"
+                                HorizontalOptions="StartAndExpand"
+                                Text="Today's Rates" />
+
+                            <Switch
+                                HorizontalOptions="EndAndExpand"
+                                IsToggled="{Binding HasTodayRates}"
+                                VerticalOptions="Center" />
+                        </StackLayout>
+
+                        <StackLayout
+                            Padding="20,0"
+                            BackgroundColor="Transparent"
+                            Orientation="Horizontal">
+                            <Label
+                                FontAttributes="Bold"
+                                HorizontalOptions="StartAndExpand"
+                                Text="Advance Payment List" />
+
+                            <Switch HorizontalOptions="EndAndExpand" VerticalOptions="Center" />
+                        </StackLayout>
+
+                        <StackLayout
+                            Padding="20,0"
+                            BackgroundColor="Transparent"
+                            Orientation="Horizontal">
+                            <StackLayout BackgroundColor="Transparent" HorizontalOptions="StartAndExpand">
+                                <Label FontAttributes="Bold" Text="Cost vs Sale" />
+                                <Label Text="( Kinnow/Mango )" />
+                            </StackLayout>
+
+                            <Switch HorizontalOptions="EndAndExpand" VerticalOptions="Center" />
+                        </StackLayout>
+
+                        <StackLayout
+                            Padding="20,0"
+                            BackgroundColor="Transparent"
+                            Orientation="Horizontal">
+                            <Label
+                                FontAttributes="Bold"
+                                HorizontalOptions="StartAndExpand"
+                                Text="Farm Purchase List" />
+
+                            <Switch HorizontalOptions="EndAndExpand" VerticalOptions="Center" />
+                        </StackLayout>
+                    </StackLayout>
                 </controls:CustomFrame>
             </StackLayout>
         </ScrollView>

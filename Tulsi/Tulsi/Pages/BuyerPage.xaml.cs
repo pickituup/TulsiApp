@@ -111,6 +111,7 @@ namespace Tulsi {
 
         public void Dispose() {
             _viewModel.Dispose();
+            ((IView)(SlideMenu)).Dispose();
         }
     }
 }

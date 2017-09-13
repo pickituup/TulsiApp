@@ -8,6 +8,8 @@ using Xamarin.Forms;
 namespace Tulsi {
     public partial class SideMenuView : SlideMenuView, IView {
 
+        private readonly SideMenuViewModel _viewModel;
+
         /// <summary>
         ///     ctor().
         /// </summary>
@@ -16,13 +18,16 @@ namespace Tulsi {
 
             int wd = DependencyService.Get<IDisplaySize>().GetWidthDiP();
             WidthRequest = wd * 0.65;
+
             MenuOrientations = MenuOrientation.LeftToRight;
+
             IsFullScreen = true;
             AnimationDurationMillisecond = 250;
+
             BackgroundViewColor = GetPlatformColor();
             BackgroundColor = Color.FromHex("#ffffff");
 
-            BindingContext = new SideMenuViewModel();
+            BindingContext = _viewModel = new SideMenuViewModel();
         }
 
         private void Handle_ItemSelected(object sender, SelectedItemChangedEventArgs e) {
@@ -48,15 +53,11 @@ namespace Tulsi {
         /// Make some visual changes of current page through navigating process (hide side menu or smt...)
         /// </summary>
         public void ApplyVisualChangesWhileNavigating() {
-            
+
         }
 
         public void Dispose() {
-            
-        }
-
-        public void ReSubscribe() {
-            
+            _viewModel.Dispose();
         }
     }
 }

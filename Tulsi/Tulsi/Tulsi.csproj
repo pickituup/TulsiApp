@@ -69,6 +69,7 @@
     </Compile>
     <Compile Include="ForDeveloper\Service\IMemoryService.cs" />
     <Compile Include="Helpers\BaseSingleton.cs" />
+    <Compile Include="Helpers\DashboardHelper.cs" />
     <Compile Include="Menu\SideMenuView.xaml.cs">
       <DependentUpon>SideMenuView.xaml</DependentUpon>
     </Compile>
@@ -118,6 +119,13 @@
     <Compile Include="NavigationFramework\ViewContainer.cs" />
     <Compile Include="NavigationFramework\ViewSwitchingLogic.cs" />
     <Compile Include="NavigationFramework\ViewType.cs" />
+    <Compile Include="Observers\DashboardArgs\HideAmountArgs.cs" />
+    <Compile Include="Observers\DashboardArgs\VisibleBuyerSummaryArgs.cs" />
+    <Compile Include="Observers\DashboardArgs\VisibleColdStoireArgs.cs" />
+    <Compile Include="Observers\DashboardArgs\VisibleLadaanArgs.cs" />
+    <Compile Include="Observers\DashboardArgs\VisibleTodayBalanceArgs.cs" />
+    <Compile Include="Observers\DashboardArgs\VisibleTodayRatesArgs.cs" />
+    <Compile Include="Observers\DashboardObserver.cs" />
     <Compile Include="Pages\ArrivalDetailsPage.xaml.cs">
       <DependentUpon>ArrivalDetailsPage.xaml</DependentUpon>
     </Compile>
@@ -304,7 +312,7 @@
     <Compile Include="ViewModels\Content\ExpensesViewModel.cs" />
     <Compile Include="ViewModels\Content\GrowerProfileViewModel.cs" />
     <Compile Include="ViewModels\Content\GrowerViewModel.cs" />
-    <Compile Include="ViewModels\DashboardViewModel.cs" />
+    <Compile Include="ViewModels\DashboardPageViewModel.cs" />
     <Compile Include="ViewModels\ExpensesListPageViewModel.cs" />
     <Compile Include="ViewModels\ExpensesPageViewModel.cs" />
     <Compile Include="ViewModels\GodownPageViewModel.cs" />

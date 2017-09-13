@@ -92,7 +92,8 @@
                     <controls:CustomFrame
                         Margin="5,0,5,0"
                         BackgroundColor="White"
-                        BorderRadius="25">
+                        BorderRadius="25"
+                        IsVisible="{Binding HasBuyerSummary}">
                         <controls:CustomFrame.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding DisplayBuyerPageCommand}" />
                         </controls:CustomFrame.GestureRecognizers>
@@ -228,7 +229,8 @@
                     <controls:CustomFrame
                         Margin="5,0,5,0"
                         BackgroundColor="White"
-                        BorderRadius="25">
+                        BorderRadius="25"
+                        IsVisible="{Binding HasTodayRates}">
                         <controls:CustomFrame.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding DisplayTodayRatePageCommand}" />
                         </controls:CustomFrame.GestureRecognizers>
@@ -364,11 +366,12 @@
                                 <RowDefinition Height="80" />
                             </Grid.RowDefinitions>
 
-                            <!--  LADDAN FRAME  -->
+                            <!--  LADAAN FRAME  -->
                             <controls:CustomFrame
                                 Grid.Column="0"
                                 BorderRadius="10"
                                 BorderWidth="2"
+                                IsVisible="{Binding HasLadaan}"
                                 OutlineColor="#CCCCCC">
                                 <controls:CustomFrame.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding DisplayLaddanPageCommand}" />
@@ -405,6 +408,7 @@
                                 Grid.Column="1"
                                 BorderRadius="10"
                                 BorderWidth="2"
+                                IsVisible="{Binding HasColdStoire}"
                                 OutlineColor="#CCCCCC">
                                 <controls:CustomFrame.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding DisplayColdStorePageCommand}" />
@@ -436,11 +440,12 @@
                                 </Grid>
                             </controls:CustomFrame>
 
-                            <!--  TODAYS BALANCE FRAME  -->
+                            <!--  TODAY'S BALANCE FRAME  -->
                             <controls:CustomFrame
                                 Grid.Column="2"
                                 BorderRadius="10"
                                 BorderWidth="2"
+                                IsVisible="{Binding HasTodayBalance}"
                                 OutlineColor="#CCCCCC">
                                 <controls:CustomFrame.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding DisplayGodownPageCommand}" />

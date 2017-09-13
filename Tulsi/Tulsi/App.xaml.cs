@@ -15,7 +15,7 @@ namespace Tulsi {
         public App() {
             InitializeComponent();
 
-            //MainPage = new ArrivalDetailsPage();
+            //MainPage = new SetupDashboardPage();
 
             BaseSingleton<ViewSwitchingLogic>.Instance.BuildNavigationStack(ViewType.TutorialPage);
         }

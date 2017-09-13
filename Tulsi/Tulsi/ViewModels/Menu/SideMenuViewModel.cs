@@ -10,11 +10,16 @@ using Tulsi.NavigationFramework;
 using Xamarin.Forms;
 using Tulsi.Model.DataContainers;
 using Tulsi.Model.DataContainers.DataItems;
+using Tulsi.Observers;
 
 namespace Tulsi.ViewModels.Menu {
     public sealed class SideMenuViewModel : ViewModelBase, IViewModel {
 
-        private readonly SideMenuContainer _sideMenuContainer;
+        bool _amountVisible;
+        public bool AmountVisible {
+            get { return _amountVisible; }
+            set { SetProperty(ref _amountVisible, value); }
+        }
 
         /// <summary>
         ///     Side menu items
@@ -44,19 +49,23 @@ namespace Tulsi.ViewModels.Menu {
         ///     ctor().
         /// </summary>
         public SideMenuViewModel() {
-            _sideMenuContainer = new SideMenuContainer();
+            AmountVisible = BaseSingleton<DashboardHelper>.Instance.HasSideMenuAmount;
 
-            SideMenuItems = _sideMenuContainer.BuildSideMenuItems(); 
+            BaseSingleton<DashboardObserver>.Instance.HideAmount += OnHideAmount;
+
+            SideMenuItems = BaseSingleton<SideMenuContainer>.Instance.BuildSideMenuItems();
 
             DisplayProfitPageCommand = new Command(() => BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.ProfitPage));
         }
 
-        public void Dispose() {
-
+        private void OnHideAmount(object sender, Observers.DashboardArgs.HideAmountArgs e) {
+            if (!AmountVisible.Equals(e.IsHide)) {
+                AmountVisible = e.IsHide;
+            }
         }
 
-        public void ReSubscribe() {
-            
+        public void Dispose() {
+            BaseSingleton<DashboardObserver>.Instance.HideAmount -= OnHideAmount;
         }
     }
 }

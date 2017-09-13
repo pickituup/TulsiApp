@@ -11,7 +11,7 @@ using Xamarin.Forms;
 namespace Tulsi {
     public partial class DashboardPage : MenuContainerPage, IView {
 
-        private readonly DashboardViewModel _viewModel;
+        private readonly DashboardPageViewModel _viewModel;
 
         /// <summary>
         ///     ctor().
@@ -22,7 +22,7 @@ namespace Tulsi {
 
             SlideMenu = new SideMenuView();
 
-            BindingContext = _viewModel = new DashboardViewModel();
+            BindingContext = _viewModel = new DashboardPageViewModel();
 
             SfChart chart = new SfChart();
             DoughnutSeries doughnutSeries = new DoughnutSeries() {
@@ -96,8 +96,6 @@ namespace Tulsi {
         }
 
         protected override void OnDisappearing() {
-            // TODO review this case
-            //Dispose();
         }
 
         /// <summary>
@@ -106,12 +104,13 @@ namespace Tulsi {
         /// </summary>
         /// <returns></returns>
         protected override bool OnBackButtonPressed() {
-            //BaseSingleton<ViewSwitchingLogic>.Instance.NavigateOneStepBack();
+            Dispose();
             return false;
         }
 
         public void Dispose() {
             _viewModel.Dispose();
+            ((IView)(SlideMenu)).Dispose();
         }
     }
 }
