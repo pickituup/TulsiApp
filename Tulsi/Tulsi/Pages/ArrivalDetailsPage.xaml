@@ -9,7 +9,9 @@
     xmlns:toolKitImageResourceExtension="clr-namespace:Tulsi.ToolKit.MarkupExtensions"
     NavigationPage.HasNavigationBar="false">
 
-    <StackLayout x:Name="HeaderLayout" BackgroundColor="#DCDCDC">
+    <StackLayout
+        BackgroundColor="#DCDCDC"
+        Spacing="5">
         <!--  Tool bar  -->
         <Grid
             x:Name="ToolbarGrid"
@@ -39,32 +41,14 @@
             <Label
                 x:Name="PageTitleLabel"
                 HorizontalOptions="Center"
-                Text="ARRIVAL DETAILS"
+                Text="ARRIVAL"
                 TextColor="White"
                 VerticalOptions="Center" />
-
-            <Grid
-                Padding="0,0,15,0"
-                BackgroundColor="Transparent"
-                HorizontalOptions="End">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="60" />
-                </Grid.ColumnDefinitions>
-                <Grid.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding DisplaySearchPageCommand}" />
-                </Grid.GestureRecognizers>
-                <Image
-                    HeightRequest="20"
-                    HorizontalOptions="End"
-                    Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.magnifier.png}"
-                    VerticalOptions="Center"
-                    WidthRequest="20" />
-            </Grid>
         </Grid>
 
         <!--  MAIN CONTENT  -->
         <ScrollView>
-            <StackLayout x:Name="MainLayout">
+            <StackLayout Padding="0,0,0,5" x:Name="MainLayout" Spacing="10" VerticalOptions="StartAndExpand">
                 <StackLayout Margin="0,20" HorizontalOptions="Center">
                     <Label
                         FontAttributes="Bold"
@@ -194,7 +178,13 @@
                     </Grid>
                 </Grid>
 
-                <Grid Margin="0,30">
+                <Label
+                    FontSize="Medium"
+                    HorizontalOptions="Center"
+                    Text="Net amount excludes all expenses"
+                    TextColor="{StaticResource MainColor}" />
+
+                <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="30" />
                         <ColumnDefinition Width="10" />
@@ -282,6 +272,87 @@
                         Text="F/W Agent: Shiva F/W"
                         VerticalTextAlignment="Center" />
                 </Grid>
+
+                <controls:RoundedContentView
+                    Margin="20,10"
+                    BackgroundColor="White"
+                    CornerRadius="5">
+                    <StackLayout
+                        Padding="20,5"
+                        BackgroundColor="Transparent"
+                        Spacing="0"
+                        VerticalOptions="Center">
+                        <Label
+                            FontSize="Large"
+                            Text="ANNOTATE"
+                            TextColor="#DCDCDC" />
+                    </StackLayout>
+                </controls:RoundedContentView>
+
+                <StackLayout
+                    Margin="20,0"
+                    BackgroundColor="Transparent"
+                    Spacing="10">
+                    <controls:RoundedContentView BackgroundColor="{StaticResource MainColor}" CornerRadius="5">
+                        <StackLayout
+                            Padding="20,5"
+                            BackgroundColor="Transparent"
+                            Orientation="Horizontal"
+                            Spacing="0"
+                            VerticalOptions="Center">
+                            <Label
+                                FontSize="Large"
+                                HorizontalOptions="StartAndExpand"
+                                Text="Supplier Invoice"
+                                TextColor="White" />
+                            <Image
+                                HeightRequest="20"
+                                HorizontalOptions="EndAndExpand"
+                                Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.white_arrow.png}"
+                                VerticalOptions="Center" />
+                        </StackLayout>
+                    </controls:RoundedContentView>
+
+                    <controls:RoundedContentView BackgroundColor="{StaticResource MainColor}" CornerRadius="5">
+                        <StackLayout
+                            Padding="20,5"
+                            BackgroundColor="Transparent"
+                            Orientation="Horizontal"
+                            Spacing="0"
+                            VerticalOptions="Center">
+                            <Label
+                                FontSize="Large"
+                                HorizontalOptions="StartAndExpand"
+                                Text="Buyer Invoices"
+                                TextColor="White" />
+                            <Image
+                                HeightRequest="20"
+                                HorizontalOptions="EndAndExpand"
+                                Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.white_arrow.png}"
+                                VerticalOptions="Center" />
+                        </StackLayout>
+                    </controls:RoundedContentView>
+
+                    <controls:RoundedContentView BackgroundColor="#B6B6B6" CornerRadius="5">
+                        <StackLayout
+                            Padding="20,5"
+                            BackgroundColor="Transparent"
+                            Orientation="Horizontal"
+                            Spacing="0"
+                            VerticalOptions="Center">
+                            <Label
+                                FontSize="Large"
+                                HorizontalOptions="StartAndExpand"
+                                Text="View Challan (Scanned)"
+                                TextColor="White" />
+                            <Image
+                                HeightRequest="20"
+                                HorizontalOptions="EndAndExpand"
+                                Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.white_arrow.png}"
+                                VerticalOptions="Center" />
+                        </StackLayout>
+                    </controls:RoundedContentView>
+                </StackLayout>
             </StackLayout>
         </ScrollView>
     </StackLayout>
