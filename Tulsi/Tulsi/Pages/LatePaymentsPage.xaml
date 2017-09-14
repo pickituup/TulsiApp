@@ -101,26 +101,28 @@
                             SelectedItem="{Binding Path=SelectedItem, Mode=TwoWay}">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
-                                    <ViewCell>
-                                        <Grid BackgroundColor="White">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*" />
-                                                <ColumnDefinition Width="*" />
-                                            </Grid.ColumnDefinitions>
-                                            <Label
-                                                Grid.Column="0"
-                                                HorizontalOptions="Start"
-                                                HorizontalTextAlignment="Start"
-                                                Text="{Binding Name}"
-                                                VerticalTextAlignment="Center" />
-                                            <Label
-                                                Grid.Column="1"
-                                                HorizontalOptions="End"
-                                                HorizontalTextAlignment="Center"
-                                                Text="{Binding Amount}"
-                                                VerticalTextAlignment="Center" />
-                                        </Grid>
-                                    </ViewCell>
+                                    <controls:WhiteViewCell>
+                                        <ContentView BackgroundColor="White">
+                                            <Grid BackgroundColor="White">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="*" />
+                                                </Grid.ColumnDefinitions>
+                                                <Label
+                                                    Grid.Column="0"
+                                                    HorizontalOptions="Start"
+                                                    HorizontalTextAlignment="Start"
+                                                    Text="{Binding Name}"
+                                                    VerticalTextAlignment="Center" />
+                                                <Label
+                                                    Grid.Column="1"
+                                                    HorizontalOptions="End"
+                                                    HorizontalTextAlignment="Center"
+                                                    Text="{Binding Amount}"
+                                                    VerticalTextAlignment="Center" />
+                                            </Grid>
+                                        </ContentView>
+                                    </controls:WhiteViewCell>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>

@@ -102,7 +102,7 @@
                             SeparatorVisibility="None">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
-                                    <ViewCell>
+                                    <controls:WhiteViewCell>
                                         <controls:CustomFrame
                                             Margin="0,5,0,0"
                                             BackgroundColor="White"
@@ -164,7 +164,7 @@
                                                     VerticalTextAlignment="Center" />
                                             </Grid>
                                         </controls:CustomFrame>
-                                    </ViewCell>
+                                    </controls:WhiteViewCell>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
