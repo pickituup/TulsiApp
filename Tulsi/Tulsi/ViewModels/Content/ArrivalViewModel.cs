@@ -27,7 +27,7 @@ namespace Tulsi.ViewModels.Content {
             get { return _selectedMenuItem; }
             set {
                 if (SetProperty(ref _selectedMenuItem, value) && value != null) {
-                    BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.ArrivalDetailPage);
+                    BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.ArrivalDetailsPage);
                 }
             }
         }

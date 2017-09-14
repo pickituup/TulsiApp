@@ -135,7 +135,7 @@ namespace Tulsi.NavigationFramework {
                     () => new ViewBuider<LadaanPage>().GetView()
                 },
                 {
-                    ViewType.TodayRatePage,
+                    ViewType.TodayRatesPage,
                     () => new ViewBuider<TodayRatesPage>().GetView()
                 },
                 {
@@ -167,7 +167,7 @@ namespace Tulsi.NavigationFramework {
                     () => new ViewBuider<ExpensesPage>().GetView()
                 },
                 {
-                    ViewType.ArrivalDetailPage,
+                    ViewType.ArrivalDetailsPage,
                     () => new ViewBuider<ArrivalDetailsPage>().GetView()
                 },
                 {

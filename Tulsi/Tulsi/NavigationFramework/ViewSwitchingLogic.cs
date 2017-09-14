@@ -31,16 +31,15 @@ namespace Tulsi.NavigationFramework {
         ///     Navigate by ViewType.
         /// </summary>
         public void NavigateTo(ViewType viewType) {
-            Page pageToPush = (Page)_viewContainer.GetViewByType(viewType);
-
-            Page relativePageFromNavigationStack = Application.Current.MainPage.Navigation.NavigationStack
-                                                  .FirstOrDefault(p => p.GetType() == pageToPush.GetType());
+            Page relativePageFromNavigationStack =
+                Application.Current.MainPage.Navigation.NavigationStack.FirstOrDefault(p =>
+                    p.GetType().Name == viewType.ToString());
 
             if (relativePageFromNavigationStack != null) {
                 MoveToTheExistingPageInNavigationStack(relativePageFromNavigationStack);
             } else {
                 ApplyVisualChangesWhileNavigating(Application.Current.MainPage.Navigation.NavigationStack.LastOrDefault());
-                PushPage(pageToPush);
+                PushPage((Page)_viewContainer.GetViewByType(viewType));
             }
         }
 

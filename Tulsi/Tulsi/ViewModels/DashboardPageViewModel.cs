@@ -112,7 +112,7 @@ namespace Tulsi.ViewModels {
 
             DisplayLaddanPageCommand = new Command(() => BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.LadaanPage));
 
-            DisplayTodayRatePageCommand = new Command(() => BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.TodayRatePage));
+            DisplayTodayRatePageCommand = new Command(() => BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.TodayRatesPage));
 
             DisplayBuyerPageCommand = new Command(() => BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.BuyerPage));
 
