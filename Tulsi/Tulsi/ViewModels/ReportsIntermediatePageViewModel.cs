@@ -32,7 +32,7 @@ namespace Tulsi.ViewModels {
             get { return _importedView; }
             set {
                 if (SetProperty(ref _importedView, value) && value != null)
-                    Spot.TranslateTo(0, 0);
+                    Spot.TranslateTo(0, 0, 500);
             }
         }
 
@@ -74,12 +74,16 @@ namespace Tulsi.ViewModels {
             ImportedView = BaseSingleton<ViewSwitchingLogic>.Instance.GetViewByType(e.ViewType);
         }
 
-        public void CloseImportedView() {
-            if (this.ImportedView != null) {
+        private void ImportingContent(object sender, NavigationImportedContentEventArgs e) {
+            Title = e.Title;
+            ImportedContent = BaseSingleton<ViewSwitchingLogic>.Instance.GetViewByType(e.ViewType) as View;
+        }
 
+        public async void CloseImportedView() {
+            if (this.ImportedView != null) {
+                await HideViewAsync();
                 ImportedView.Dispose();
                 ImportedView = null;
-                HideView();
             }
         }
 
@@ -87,15 +91,11 @@ namespace Tulsi.ViewModels {
             CloseImportedView();
         }
 
+        private async void HideView() => await HideViewAsync();
 
-        private void ImportingContent(object sender, NavigationImportedContentEventArgs e) {
-            Title = e.Title;
-            ImportedContent = BaseSingleton<ViewSwitchingLogic>.Instance.GetViewByType(e.ViewType) as View;
-        }
-
-        private void HideView() {
+        private async Task HideViewAsync() {
             int displayHeight = DependencyService.Get<IDisplaySize>().GetHeight();
-            Spot.TranslationY = displayHeight;
+            await Spot.TranslateTo(0, displayHeight, 700);
         }
 
         public void Dispose() {

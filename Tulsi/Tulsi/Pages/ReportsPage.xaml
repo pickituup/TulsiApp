@@ -70,7 +70,7 @@
             VerticalOptions="StartAndExpand">
             <ListView
                 x:Name="menuItems"
-                BackgroundColor="White"
+                BackgroundColor="Transparent"
                 ItemsSource="{Binding MenuItems}"
                 RowHeight="70"
                 SelectedItem="{Binding SelectedMenuItem, Mode=TwoWay}"

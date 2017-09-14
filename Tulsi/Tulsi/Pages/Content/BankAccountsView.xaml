@@ -14,7 +14,7 @@
         BackgroundColor="Transparent"
         VerticalOptions="Start">
 
-        <StackLayout>
+        <StackLayout VerticalOptions="Start">
             <StackLayout.Resources>
                 <ResourceDictionary>
                     <Style TargetType="ContentView">
@@ -42,6 +42,7 @@
         </StackLayout>
 
         <ListView
+            BackgroundColor="Red"
             HasUnevenRows="True"
             ItemsSource="{Binding Path=BankAccounts}"
             SelectedItem="{Binding Path=SelectedBankAccount, Mode=TwoWay}"
@@ -55,41 +56,43 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <Frame
-                            Margin="0,4"
-                            BackgroundColor="White"
-                            OutlineColor="#999999"
-                            CornerRadius="15"
-                            HasShadow="False">
-                            <Frame.Resources>
-                                <ResourceDictionary>
-                                    <Style TargetType="Label">
-                                        <Setter Property="VerticalTextAlignment" Value="Center" />
-                                        <Setter Property="HorizontalTextAlignment" Value="Center" />
-                                    </Style>
-                                </ResourceDictionary>
-                            </Frame.Resources>
+                        <ContentView BackgroundColor="#DCDCDC">
+                            <Frame
+                                Margin="0,4"
+                                BackgroundColor="White"
+                                CornerRadius="15"
+                                HasShadow="False"
+                                OutlineColor="#999999">
+                                <Frame.Resources>
+                                    <ResourceDictionary>
+                                        <Style TargetType="Label">
+                                            <Setter Property="VerticalTextAlignment" Value="Center" />
+                                            <Setter Property="HorizontalTextAlignment" Value="Center" />
+                                        </Style>
+                                    </ResourceDictionary>
+                                </Frame.Resources>
 
-                            <StackLayout BackgroundColor="Transparent">
-                                <Image
-                                    Margin="0,15"
-                                    HeightRequest="31"
-                                    HorizontalOptions="Center"
-                                    Source="{Binding LogoPath, Converter={StaticResource Key=stringToResourceImageSourceConverter}}"
-                                    VerticalOptions="Center"
-                                    WidthRequest="150" />
+                                <StackLayout BackgroundColor="Transparent">
+                                    <Image
+                                        Margin="0,15"
+                                        HeightRequest="31"
+                                        HorizontalOptions="Center"
+                                        Source="{Binding LogoPath, Converter={StaticResource Key=stringToResourceImageSourceConverter}}"
+                                        VerticalOptions="Center"
+                                        WidthRequest="150" />
 
-                                <Label
-                                    Margin="0,5"
-                                    FontAttributes="Bold"
-                                    FontSize="25"
-                                    Text="{Binding Path=Ammount}" />
+                                    <Label
+                                        Margin="0,5"
+                                        FontAttributes="Bold"
+                                        FontSize="25"
+                                        Text="{Binding Path=Ammount}" />
 
-                                <Label FontSize="18" Text="{Binding SomeDescription, StringFormat='{0:N}'}" />
+                                    <Label FontSize="18" Text="{Binding SomeDescription, StringFormat='{0:N}'}" />
 
-                                <Label FontSize="14" Text="{Binding LastUpdateInfo}" />
-                            </StackLayout>
-                        </Frame>
+                                    <Label FontSize="14" Text="{Binding LastUpdateInfo}" />
+                                </StackLayout>
+                            </Frame>
+                        </ContentView>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>

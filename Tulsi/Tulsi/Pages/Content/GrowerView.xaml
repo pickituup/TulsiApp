@@ -195,7 +195,7 @@
                             SeparatorVisibility="None">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
-                                    <ViewCell>
+                                    <controls:WhiteViewCell>
                                         <controls:RoundedContentView
                                             Margin="5"
                                             BackgroundColor="#EBECEE"
@@ -244,7 +244,7 @@
                                                     VerticalTextAlignment="Center" />
                                             </Grid>
                                         </controls:RoundedContentView>
-                                    </ViewCell>
+                                    </controls:WhiteViewCell>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>

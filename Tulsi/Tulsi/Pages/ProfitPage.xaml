@@ -107,7 +107,7 @@
                             FontSize="17"
                             HorizontalOptions="Center"
                             HorizontalTextAlignment="Center"
-                            Text="{Binding Date}"
+                            Text="1st Apr 2016 - 31st Mar 2017"
                             TextColor="Gray"
                             VerticalOptions="Center"
                             VerticalTextAlignment="Center" />
@@ -286,20 +286,20 @@
                         <StackLayout
                             Grid.Row="1"
                             BackgroundColor="Transparent"
-                            HorizontalOptions="Center"
+                            HorizontalOptions="End"
                             Orientation="Horizontal"
-                            Spacing="20">
-                            <Image
-                                WidthRequest="30"
-                                HorizontalOptions="End"
-                                Source="{toolKitImageResourceExtension:ImageResource Tulsi.Images.list_icon.png}"
-                                VerticalOptions="Center" />
+                            Spacing="10">
                             <Label
-                                FontSize="22"
-                                VerticalTextAlignment="Center"
+                                FontSize="18"
                                 HorizontalOptions="Start"
                                 Text="View Report"
-                                TextColor="Gray" />
+                                TextColor="{StaticResource MainColor}"
+                                VerticalTextAlignment="Center" />
+                            <Image
+                                HeightRequest="22"
+                                HorizontalOptions="Start"
+                                Source="{toolKitImageResourceExtension:ImageResource Tulsi.Images.list_icon_2.png}"
+                                VerticalOptions="Center" />
                         </StackLayout>
                     </Grid>
                 </controls:RoundedContentView>

@@ -22,6 +22,8 @@ namespace Tulsi {
 
             BindingContext = _viewModel = new BuyerPageViewModel();
 
+            _viewModel.Spot = spot_ContentView;
+
             SfChart chart = new SfChart();
             DoughnutSeries doughnutSeries = new DoughnutSeries() {
                 ItemsSource = _viewModel.ChartData,
@@ -68,8 +70,6 @@ namespace Tulsi {
             MiddleStack.Children.Add(MiddleText1);
             MiddleStack.Children.Add(MiddleText2);
             ChartGrid.Children.Add(MiddleStack);
-
-            _viewModel.Spot = spot_ContentView;
         }
 
         protected override void OnAppearing() {

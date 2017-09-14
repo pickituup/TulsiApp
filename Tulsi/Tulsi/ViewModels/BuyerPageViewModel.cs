@@ -39,7 +39,7 @@ namespace Tulsi.ViewModels {
             get { return _importedView; }
             set {
                 if (SetProperty(ref _importedView, value) && value != null)
-                    Spot.TranslateTo(0, 0);
+                    Spot.TranslateTo(0, 0, 500);
             }
         }
 
@@ -51,6 +51,8 @@ namespace Tulsi.ViewModels {
                     HideView();
             }
         }
+
+        
 
         Transaction _selectedItem;
         public Transaction SelectedItem {
@@ -150,12 +152,11 @@ namespace Tulsi.ViewModels {
             ImportedView = BaseSingleton<ViewSwitchingLogic>.Instance.GetViewByType(e.ViewType);
         }
 
-        public void CloseImportedView() {
+        public async void CloseImportedView() {
             if (this.ImportedView != null) {
-
+                await HideViewAsync();
                 ImportedView.Dispose();
                 ImportedView = null;
-                HideView();
             }
         }
 
@@ -163,9 +164,11 @@ namespace Tulsi.ViewModels {
             CloseImportedView();
         }
 
-        private void HideView() {
+        private async void HideView() => await HideViewAsync();
+
+        private async Task HideViewAsync() {
             int displayHeight = DependencyService.Get<IDisplaySize>().GetHeight();
-            Spot.TranslationY = displayHeight;
+            await Spot.TranslateTo(0, displayHeight, 700);
         }
 
         private ObservableCollection<Transaction> GetAggregateTransactions() {
@@ -173,59 +176,59 @@ namespace Tulsi.ViewModels {
             {
                 new Transaction { Date = DateTime.Now, TCases = 230, Name = "JohnSn", Amount=110.341m,
                     ProfileTransactions = new List<ProfileTransaction>() {
-                        new ProfileTransaction { Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
+                        new ProfileTransaction { Date=DateTime.Now, Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
+                        new ProfileTransaction { Date=DateTime.Now, Code = "DD/MM", Number = "28", IsP=false, Quantity="8,200" },
+                        new ProfileTransaction{ Date=DateTime.Now, Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
+                        new ProfileTransaction { Date=DateTime.Now, Code = "DD/MM", Number = "28", IsP=true, Quantity="8,200" },
+                        new ProfileTransaction { Date=DateTime.Now, Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
+                        new ProfileTransaction { Date=DateTime.Now, Code = "DD/MM", Number = "28", IsP=false, Quantity="8,200" },
+                        new ProfileTransaction{ Date=DateTime.Now, Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
+                        new ProfileTransaction { Date=DateTime.Now, Code = "DD/MM", Number = "28", IsP=true, Quantity="8,200" }
+                }},
+                new Transaction { Date = DateTime.Now, TCases = 230, Name = "JohnSn", Amount=110.341m,
+                    ProfileTransactions = new List<ProfileTransaction>() {
+                        new ProfileTransaction { Date=DateTime.Now, Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
+                        new ProfileTransaction { Date=DateTime.Now, Code = "DD/MM", Number = "28", IsP=false, Quantity="8,200" },
+                        new ProfileTransaction{ Date=DateTime.Now, Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" }
+                }},
+                new Transaction { Date = DateTime.Now, TCases = 230, Name = "JohnSn", Amount=110.341m,
+                    ProfileTransactions = new List<ProfileTransaction>() {
+                        new ProfileTransaction { Date=DateTime.Now, Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" }
+                }},
+                new Transaction { Date = DateTime.Now, TCases = 230, Name = "JohnSn", Amount=110.341m,
+                    ProfileTransactions = new List<ProfileTransaction>() {
+                        new ProfileTransaction { Date=DateTime.Now, Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
+                        new ProfileTransaction { Date=DateTime.Now, Code = "DD/MM", Number = "28", IsP=false, Quantity="8,200" },
+                        new ProfileTransaction{ Date=DateTime.Now, Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
+                        new ProfileTransaction { Date=DateTime.Now, Code = "DD/MM", Number = "28", IsP=true, Quantity="8,200" },
+                        new ProfileTransaction { Date=DateTime.Now, Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
+                        new ProfileTransaction { Date=DateTime.Now, Code = "DD/MM", Number = "28", IsP=false, Quantity="8,200" },
+                        new ProfileTransaction{ Date=DateTime.Now, Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
+                        new ProfileTransaction { Date=DateTime.Now, Code = "DD/MM", Number = "28", IsP=true, Quantity="8,200" }
+                }},
+                new Transaction { Date = DateTime.Now, TCases = 230, Name = "JohnSn", Amount=110.341m,
+                    ProfileTransactions = new List<ProfileTransaction>() {
+                        new ProfileTransaction { Date=DateTime.Now, Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
                         new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=false, Quantity="8,200" },
-                        new ProfileTransaction{ Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
+                }},
+                new Transaction { Date = DateTime.Now, TCases = 230, Name = "JohnSn", Amount=110.341m,
+                    ProfileTransactions = new List<ProfileTransaction>() {
+                        new ProfileTransaction { Date=DateTime.Now, Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
+                        new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=false, Quantity="8,200" },
+                        new ProfileTransaction{ Date=DateTime.Now, Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
                         new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=true, Quantity="8,200" },
-                        new ProfileTransaction { Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
-                        new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=false, Quantity="8,200" },
-                        new ProfileTransaction{ Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
+                        new ProfileTransaction { Date=DateTime.Now, Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
+                        new ProfileTransaction { Date=DateTime.Now, Code = "DD/MM", Number = "28", IsP=false, Quantity="8,200" },
+                        new ProfileTransaction{ Date=DateTime.Now, Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
                         new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=true, Quantity="8,200" }
                 }},
                 new Transaction { Date = DateTime.Now, TCases = 230, Name = "JohnSn", Amount=110.341m,
                     ProfileTransactions = new List<ProfileTransaction>() {
-                        new ProfileTransaction { Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
-                        new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=false, Quantity="8,200" },
-                        new ProfileTransaction{ Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" }
-                }},
-                new Transaction { Date = DateTime.Now, TCases = 230, Name = "JohnSn", Amount=110.341m,
-                    ProfileTransactions = new List<ProfileTransaction>() {
-                        new ProfileTransaction { Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" }
-                }},
-                new Transaction { Date = DateTime.Now, TCases = 230, Name = "JohnSn", Amount=110.341m,
-                    ProfileTransactions = new List<ProfileTransaction>() {
-                        new ProfileTransaction { Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
-                        new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=false, Quantity="8,200" },
+                        new ProfileTransaction { Date=DateTime.Now, Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
+                        new ProfileTransaction { Date=DateTime.Now, Code = "DD/MM", Number = "28", IsP=false, Quantity="8,200" },
                         new ProfileTransaction{ Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
-                        new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=true, Quantity="8,200" },
-                        new ProfileTransaction { Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
-                        new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=false, Quantity="8,200" },
-                        new ProfileTransaction{ Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
-                        new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=true, Quantity="8,200" }
-                }},
-                new Transaction { Date = DateTime.Now, TCases = 230, Name = "JohnSn", Amount=110.341m,
-                    ProfileTransactions = new List<ProfileTransaction>() {
-                        new ProfileTransaction { Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
-                        new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=false, Quantity="8,200" },
-                }},
-                new Transaction { Date = DateTime.Now, TCases = 230, Name = "JohnSn", Amount=110.341m,
-                    ProfileTransactions = new List<ProfileTransaction>() {
-                        new ProfileTransaction { Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
-                        new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=false, Quantity="8,200" },
-                        new ProfileTransaction{ Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
-                        new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=true, Quantity="8,200" },
-                        new ProfileTransaction { Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
-                        new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=false, Quantity="8,200" },
-                        new ProfileTransaction{ Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
-                        new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=true, Quantity="8,200" }
-                }},
-                new Transaction { Date = DateTime.Now, TCases = 230, Name = "JohnSn", Amount=110.341m,
-                    ProfileTransactions = new List<ProfileTransaction>() {
-                        new ProfileTransaction { Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
-                        new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=false, Quantity="8,200" },
-                        new ProfileTransaction{ Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
-                        new ProfileTransaction{ Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
-                        new ProfileTransaction { Code = "DD/MM", Number = "28", IsP=true, Quantity="8,200" }
+                        new ProfileTransaction{ Date=DateTime.Now, Code = "DD/MM", Number = "", IsP=true, Quantity="8,200" },
+                        new ProfileTransaction { Date=DateTime.Now, Code = "DD/MM", Number = "28", IsP=true, Quantity="8,200" }
                 }}
             };
         }
@@ -258,6 +261,7 @@ namespace Tulsi.ViewModels {
         public void Dispose() {
             if (ImportedView != null) {
                 ImportedView.Dispose();
+                ImportedView = null;
             }
 
             BaseSingleton<NavigationObserver>.Instance.BayerImportedSpot -= ImportingSpot;

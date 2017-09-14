@@ -29,7 +29,7 @@ namespace Tulsi.Pages.Content {
 
         private void OnCloseView(object sender, EventArgs e) {
             int displayHeight = DependencyService.Get<IDisplaySize>().GetHeight();
-            ((View)Parent).TranslationY = displayHeight;
+            ((View)Parent).TranslateTo(0, displayHeight, 700);
 
             Dispose();
         }
