@@ -9,6 +9,7 @@ using Tulsi.Helpers;
 using Tulsi.Model;
 using Tulsi.MVVM.Core;
 using Tulsi.NavigationFramework;
+using Tulsi.NavigationFramework.NavigationArgs;
 using Xamarin.Forms;
 
 namespace Tulsi.ViewModels.Content {
@@ -39,6 +40,7 @@ namespace Tulsi.ViewModels.Content {
                 if (SetProperty(ref _selectedItem, value) && value != null) {
                     BaseSingleton<NavigationObserver>.Instance.OnBayerViewImportedSpot(ViewType.BuyerProfileView);
                     BaseSingleton<NavigationObserver>.Instance.OnSendToBuyerProfileTransAction(value.ProfileTransactions);
+
                     SelectedItem = null;
                 }
             }
