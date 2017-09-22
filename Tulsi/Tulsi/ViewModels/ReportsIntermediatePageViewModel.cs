@@ -10,6 +10,7 @@ using Tulsi.MVVM.Core;
 using Tulsi.NavigationFramework;
 using Tulsi.NavigationFramework.NavigationArgs;
 using Tulsi.SharedService;
+using Tulsi.ViewModels.Content;
 using Xamarin.Forms;
 
 namespace Tulsi.ViewModels {
