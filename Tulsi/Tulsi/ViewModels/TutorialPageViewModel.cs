@@ -9,6 +9,7 @@ using Tulsi.Model.DataContainers;
 using Tulsi.Model.DataContainers.DataItems;
 using Tulsi.MVVM.Core;
 using Tulsi.NavigationFramework;
+using Tulsi.SharedService;
 using Xamarin.Forms;
 
 namespace Tulsi.ViewModels {
@@ -30,13 +31,25 @@ namespace Tulsi.ViewModels {
         public TutorialPageViewModel() {
             _tutorialsContainer = new TutorialsContainer();
 
-            LoginCommand = new Command(() => BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.LoginPage));
+            LoginCommand = new Command(() => {
+                BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.LoginPage);
+            });
 
             Tutorials = _tutorialsContainer.BuildProfitMenuItems();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public void Dispose() {
             Tutorials.Clear();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void ChangeStatusBarColor(string hexColor) {
+            DependencyService.Get<IDeviceServices>().ChangeStatusBarColor(hexColor);
         }
     }
 }

@@ -64,6 +64,7 @@
       <DependentUpon>ExpandedGroup.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\WhiteViewCell.cs" />
+    <Compile Include="SharedService\IDeviceServices.cs" />
     <Compile Include="ForDeveloper\MemoryInfo.cs" />
     <Compile Include="ForDeveloper\MemoryView.xaml.cs">
       <DependentUpon>MemoryView.xaml</DependentUpon>

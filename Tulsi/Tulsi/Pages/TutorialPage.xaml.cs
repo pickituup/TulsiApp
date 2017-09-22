@@ -25,9 +25,25 @@ namespace Tulsi.Pages {
             BindingContext = _viewModel = new TutorialPageViewModel();
         }
 
-        public void ApplyVisualChangesWhileNavigating() {
+        /// <summary>
+        /// 
+        /// </summary>
+        protected override void OnAppearing() {
+            base.OnAppearing();
 
+            _viewModel.ChangeStatusBarColor("#ffffff");
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        protected override void OnDisappearing() {
+            base.OnDisappearing();
+
+            _viewModel.ChangeStatusBarColor(null);
+        }
+
+        public void ApplyVisualChangesWhileNavigating() { }
 
         public void Dispose() {
             _viewModel.Dispose();

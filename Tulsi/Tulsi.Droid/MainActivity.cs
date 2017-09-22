@@ -29,7 +29,7 @@ namespace Tulsi.Droid {
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
             XamForms.Controls.Droid.Calendar.Init();
-            LoadApplication(new App());
+            LoadApplication(new App()); 
         }
     }
 
