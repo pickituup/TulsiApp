@@ -122,8 +122,10 @@
                                         <Label
                                             Margin="0,0,0,0"
                                             BackgroundColor="Transparent"
+                                            FontSize="Medium"
                                             Style="{StaticResource MenuItemStyleLabel}"
-                                            Text="{Binding Title}" />
+                                            Text="{Binding Title}"
+                                            VerticalTextAlignment="Center" />
                                     </StackLayout>
                                 </Grid>
                             </ContentView>
@@ -134,54 +136,57 @@
 
             <Grid
                 Grid.Row="0"
-                Margin="40,0,0,0"
+                Margin="100,0,0,0"
                 BackgroundColor="Transparent"
-                HorizontalOptions="Center"
+                HorizontalOptions="Fill"
                 RowSpacing="0"
                 VerticalOptions="Start">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="20" />
-                </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="44" />
-                    <RowDefinition Height="44" />
-                    <RowDefinition Height="44" />
-                    <RowDefinition Height="44" />
-                    <RowDefinition Height="44" />
-                    <RowDefinition Height="44" />
-                    <RowDefinition Height="44" />
-                    <RowDefinition Height="44" />
+                    <RowDefinition Height="45" />
+                    <RowDefinition Height="45" />
+                    <RowDefinition Height="45" />
+                    <RowDefinition Height="45" />
+                    <RowDefinition Height="45" />
+                    <RowDefinition Height="45" />
+                    <RowDefinition Height="45" />
+                    <RowDefinition Height="45" />
                 </Grid.RowDefinitions>
                 <Label
                     Grid.Row="1"
+                    Margin="17,1,0,0"
                     BackgroundColor="Transparent"
-                    HorizontalOptions="Center"
+                    FontSize="Small"
+                    HorizontalOptions="Start"
                     IsVisible="{Binding AmountVisible}"
                     Style="{StaticResource MenuItemStyleLabel}"
                     Text="70L"
                     VerticalOptions="Center" />
                 <Label
                     Grid.Row="2"
+                    Margin="30,0,0,0"
                     BackgroundColor="Transparent"
-                    HorizontalOptions="Center"
+                    FontSize="Small"
+                    HorizontalOptions="Start"
                     IsVisible="{Binding AmountVisible}"
                     Style="{StaticResource MenuItemStyleLabel}"
                     Text="2 Cr"
                     VerticalOptions="Center" />
                 <Image
                     Grid.Row="3"
-                    HeightRequest="4"
-                    HorizontalOptions="Center"
+                    Margin="48,0,0,2"
+                    HeightRequest="7"
+                    HorizontalOptions="Start"
                     Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.bluecircle.png}"
                     VerticalOptions="Center"
-                    WidthRequest="4" />
+                    WidthRequest="7" />
                 <Image
                     Grid.Row="5"
-                    HeightRequest="4"
-                    HorizontalOptions="Center"
+                    Margin="8,0,0,4"
+                    HeightRequest="7"
+                    HorizontalOptions="Start"
                     Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.greencircle.png}"
                     VerticalOptions="Center"
-                    WidthRequest="4" />
+                    WidthRequest="7" />
             </Grid>
 
             <BoxView
