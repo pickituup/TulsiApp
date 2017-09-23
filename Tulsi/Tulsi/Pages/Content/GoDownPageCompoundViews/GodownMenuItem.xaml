@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <t:StackListItemBase
-    x:Class="Tulsi.Pages.Content.GodownControl.GodownMenuItem"
+    x:Class="Tulsi.Pages.Content.GoDownPageCompoundViews.GodownMenuItem"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:t="clr-namespace:Tulsi.Controls"
@@ -29,11 +29,11 @@
             <Label
                 FontSize="Medium"
                 HorizontalOptions="StartAndExpand"
-                Text="{Binding Owner}" />
+                Text="{Binding Path=Name}" />
             <Label
                 FontSize="Medium"
                 HorizontalOptions="EndAndExpand"
-                Text="{Binding Cases}" />
+                Text="{Binding Path=Boxes}" />
         </StackLayout>
     </Frame>
 </t:StackListItemBase>
