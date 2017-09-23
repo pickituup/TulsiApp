@@ -1,6 +1,6 @@
 ﻿namespace Tulsi.Helpers {
     public class DashboardHelper {
-        public bool HasSideMenuAmount { get; set; } = true;
+        public bool HasSideMenuAmount { get; set; } 
 
         public bool HasBuyerSummary { get; set; } = true;
 

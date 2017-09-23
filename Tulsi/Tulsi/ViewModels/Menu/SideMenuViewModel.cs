@@ -49,7 +49,7 @@ namespace Tulsi.ViewModels.Menu {
         ///     ctor().
         /// </summary>
         public SideMenuViewModel() {
-            AmountVisible = BaseSingleton<DashboardHelper>.Instance.HasSideMenuAmount;
+            AmountVisible = true;
 
             BaseSingleton<DashboardObserver>.Instance.HideAmount += OnHideAmount;
 
