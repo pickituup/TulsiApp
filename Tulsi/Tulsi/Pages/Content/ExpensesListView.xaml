@@ -15,32 +15,18 @@
                 x:Name="MainLayout"
                 BackgroundColor="#DCDCDC"
                 Spacing="10">
+
                 <controls:RoundedContentView
-                    Grid.Column="1"
-                    Margin="5,0,5,0"
+                    Margin="0,0,0,0"
                     BackgroundColor="#2793F5"
                     CornerRadius="10"
                     HeightRequest="40">
-                    <controls:RoundedContentView.Content>
-                        <Grid BackgroundColor="#2793F5">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="30" />
-                            </Grid.ColumnDefinitions>
-                            <Label
-                                HorizontalTextAlignment="Center"
-                                Text="Balance"
-                                TextColor="White"
-                                VerticalTextAlignment="Center" />
-                            <Image
-                                x:Name="More"
-                                Grid.Column="1"
-                                HeightRequest="20"
-                                HorizontalOptions="Center"
-                                VerticalOptions="Center"
-                                WidthRequest="6" />
-                        </Grid>
-                    </controls:RoundedContentView.Content>
+                    <Label
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        Text="Balance"
+                        TextColor="White"
+                        VerticalTextAlignment="Center" />
                 </controls:RoundedContentView>
 
                 <controls:CustomFrame
