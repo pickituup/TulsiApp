@@ -6,7 +6,7 @@ using Xamarin.Forms;
 namespace Tulsi {
     public partial class TodayRatesPage : ContentPage, IView {
 
-        private readonly TodayRatesViewModel _viewModel;
+        private readonly TodayRatesPageViewModel _viewModel;
 
         /// <summary>
         ///     ctor().
@@ -14,14 +14,7 @@ namespace Tulsi {
         public TodayRatesPage() {
             InitializeComponent();
             
-            BindingContext = _viewModel = new TodayRatesViewModel();
-
-            //
-            // TODO: remove that evnet subscription and use Controls.StackList
-            //
-            //_viewModel.TodayRatesData.CollectionChanged += TodayRatesDataCollectionChanged;
-
-            //InitialiseExpandedGroupItem(_viewModel.TodayRatesData);
+            BindingContext = _viewModel = new TodayRatesPageViewModel();
         }
 
         /// <summary>
@@ -44,27 +37,5 @@ namespace Tulsi {
             BaseSingleton<ViewSwitchingLogic>.Instance.NavigateOneStepBack();
             return true;
         }
-
-        //private void TodayRatesDataCollectionChanged(object sender, NotifyCollectionChangedEventArgs e) {
-        //    //
-        //    // TODO: handle other observable collection Actions
-        //    //
-        //    if (e.Action == NotifyCollectionChangedAction.Add) {
-        //        InitialiseExpandedGroupItem(e.NewItems);
-        //    }
-        //}
-
-        /// <summary>
-        ///     TODO: define some factoy or ControlContainer that will create that ExpandedGroup...
-        /// </summary>
-        /// <param name="newItems"></param>
-        //private void InitialiseExpandedGroupItem(IList newItems) {
-        //    foreach (object item in newItems) {
-        //        ExpandedGroup expandedGroup = new ExpandedGroup();
-        //        expandedGroup.BindingContext = item;
-
-        //        _ratesStack_StackLayout.Children.Add(expandedGroup);
-        //    }
-        //}
     }
 }
