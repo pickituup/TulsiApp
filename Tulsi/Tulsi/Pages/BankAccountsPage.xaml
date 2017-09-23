@@ -66,7 +66,7 @@
             BackgroundColor="Transparent"
             VerticalOptions="FillAndExpand">
 
-            <StackLayout>
+            <StackLayout VerticalOptions="Start">
                 <StackLayout.Resources>
                     <ResourceDictionary>
                         <Style TargetType="ContentView">
@@ -93,15 +93,17 @@
                 </ContentView>
             </StackLayout>
 
-            <Grid Padding="0,0,0,10" BackgroundColor="Transparent">
+            <Grid
+                Padding="0,0,0,0"
+                BackgroundColor="Transparent"
+                VerticalOptions="CenterAndExpand">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
                 <ListView
-                    HasUnevenRows="True"
-                    ItemsSource="{Binding Path=BankAccounts}"
-                    SelectedItem="{Binding Path=SelectedBankAccount, Mode=TwoWay}"
+                    ItemsSource="{Binding BankAccounts}"
+                    SelectedItem="{Binding SelectedBankAccount, Mode=TwoWay}"
                     SeparatorVisibility="None"
                     VerticalOptions="FillAndExpand">
                     <ListView.Resources>
@@ -113,7 +115,7 @@
                         <DataTemplate>
                             <ViewCell>
                                 <Frame
-                                    Margin="0,4"
+                                    Margin="10,4"
                                     BackgroundColor="Transparent"
                                     CornerRadius="15"
                                     HasShadow="False">
@@ -131,7 +133,7 @@
                                             Margin="0,15"
                                             HeightRequest="31"
                                             HorizontalOptions="Center"
-                                            Source="{Binding Path=LogoPath, Converter={StaticResource Key=stringToResourceImageSourceConverter}}"
+                                            Source="{Binding LogoPath, Converter={StaticResource Key=stringToResourceImageSourceConverter}}"
                                             VerticalOptions="Center"
                                             WidthRequest="150" />
 
@@ -139,11 +141,11 @@
                                             Margin="0,5"
                                             FontAttributes="Bold"
                                             FontSize="25"
-                                            Text="{Binding Path=Ammount}" />
+                                            Text="{Binding Ammount}" />
 
-                                        <Label FontSize="18" Text="{Binding Path=SomeDescription, StringFormat='{0:N}'}" />
+                                        <Label FontSize="18" Text="{Binding SomeDescription, StringFormat='{0:N}'}" />
 
-                                        <Label FontSize="14" Text="{Binding Path=LastUpdateInfo}" />
+                                        <Label FontSize="14" Text="{Binding LastUpdateInfo}" />
                                     </StackLayout>
                                 </Frame>
                             </ViewCell>
