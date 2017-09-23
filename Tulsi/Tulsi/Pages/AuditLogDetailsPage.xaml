@@ -72,7 +72,7 @@
                 CornerRadius="15"
                 VerticalOptions="FillAndExpand">
                 <Grid BackgroundColor="Transparent">
-                    <controls:CustomWebView
+                    <controls:PdfWebView
                         HorizontalOptions="FillAndExpand"
                         Uri="crafted.pdf"
                         VerticalOptions="FillAndExpand" />
