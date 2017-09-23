@@ -5,6 +5,6 @@ namespace Tulsi.Model {
     public class LaddanData {
         public DateTime Date { get; set; }
 
-        public List<LadaanEntry> Data { get; set; }
+        public List<LadaanEntryTransaction> Data { get; set; }
     }
 }

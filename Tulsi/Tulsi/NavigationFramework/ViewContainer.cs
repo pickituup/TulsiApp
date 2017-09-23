@@ -50,7 +50,7 @@ namespace Tulsi.NavigationFramework {
         public IView GetViewByType(ViewType viewType) {
             try {
                 return _views[viewType]();
-            } catch (Exception) {
+            } catch (Exception e) {
                 throw new InvalidOperationException(string.Format($"ViewContainer.GetViewByType - {ERROR_CANT_GET_VIEW_BY_TYPE}"));
             }
         }

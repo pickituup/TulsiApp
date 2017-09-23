@@ -27,7 +27,13 @@ namespace Tulsi {
         /// </summary>
         /// <returns></returns>
         protected override bool OnBackButtonPressed() {
+            if (_viewModel.SelectedLadaanTransaction != null) {
+                _viewModel.SelectedLadaanTransaction = null;
+                return true;
+            }
+
             BaseSingleton<ViewSwitchingLogic>.Instance.NavigateOneStepBack();
+            
             return true;
         }
 

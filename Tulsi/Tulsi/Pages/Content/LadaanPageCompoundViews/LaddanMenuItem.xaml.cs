@@ -1,7 +1,7 @@
 ﻿using Tulsi.Controls;
 using Xamarin.Forms.Xaml;
 
-namespace Tulsi.Pages.Content.LaddanControl {
+namespace Tulsi.Pages.Content.LadaanPageCompoundViews {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LaddanMenuItem : StackListItemBase {
 
