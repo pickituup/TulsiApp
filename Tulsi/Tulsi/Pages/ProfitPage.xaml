@@ -108,7 +108,7 @@
                             HorizontalOptions="Center"
                             HorizontalTextAlignment="Center"
                             Text="1st Apr 2016 - 31st Mar 2017"
-                            TextColor="Gray"
+                            TextColor="#e4e3d8"
                             VerticalOptions="Center"
                             VerticalTextAlignment="Center" />
                     </Grid>
@@ -231,7 +231,6 @@
                     <Grid BackgroundColor="Transparent" RowSpacing="0">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*" />
-                            <RowDefinition Height="auto" />
                         </Grid.RowDefinitions>
 
                         <ListView
@@ -283,26 +282,15 @@
                             </ListView.ItemTemplate>
                         </ListView>
 
-                        <StackLayout
-                            Grid.Row="1"
-                            BackgroundColor="Transparent"
-                            HorizontalOptions="End"
-                            Orientation="Horizontal"
-                            Spacing="10">
-                            <Label
-                                FontSize="18"
-                                HorizontalOptions="Start"
-                                Text="View Report"
-                                TextColor="{StaticResource MainColor}"
-                                VerticalTextAlignment="Center" />
-                            <Image
-                                HeightRequest="22"
-                                HorizontalOptions="Start"
-                                Source="{toolKitImageResourceExtension:ImageResource Tulsi.Images.list_icon_2.png}"
-                                VerticalOptions="Center" />
-                        </StackLayout>
+
                     </Grid>
                 </controls:RoundedContentView>
+
+                <Label
+                    FontSize="18"
+                    HorizontalOptions="Center"
+                    Text="View Report"
+                    VerticalTextAlignment="Center" />
             </StackLayout>
         </ScrollView>
     </StackLayout>
