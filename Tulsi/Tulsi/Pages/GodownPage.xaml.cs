@@ -34,10 +34,18 @@ namespace Tulsi.Pages {
         /// </summary>
         /// <returns></returns>
         protected override bool OnBackButtonPressed() {
+            if (_viewModel.SelectedGoDownTransaction != null) {
+                _viewModel.SelectedGoDownTransaction = null;
+                return true;
+            }
+
             BaseSingleton<ViewSwitchingLogic>.Instance.NavigateOneStepBack();
             return true;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public void Dispose() {
             _viewModel.Dispose();
         }

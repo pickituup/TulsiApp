@@ -65,6 +65,9 @@
     </Compile>
     <Compile Include="Controls\WhiteViewCell.cs" />
     <Compile Include="Model\TodayRatesDataCollection.cs" />
+    <Compile Include="Pages\Content\GoDownPageCompoundViews\TransactionPopup.xaml.cs">
+      <DependentUpon>TransactionPopup.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Content\LadaanPageCompoundViews\LaddanMenuItem.xaml.cs">
       <DependentUpon>LaddanMenuItem.xaml</DependentUpon>
     </Compile>
@@ -201,7 +204,7 @@
     <Compile Include="Pages\Content\ExpensesView.xaml.cs">
       <DependentUpon>ExpensesView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Content\GodownControl\GodownMenuItem.xaml.cs">
+    <Compile Include="Pages\Content\GoDownPageCompoundViews\GodownMenuItem.xaml.cs">
       <DependentUpon>GodownMenuItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Content\GrowerProfileView.xaml.cs">
@@ -897,7 +900,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Pages\Content\GodownControl\GodownMenuItem.xaml">
+    <EmbeddedResource Include="Pages\Content\GoDownPageCompoundViews\GodownMenuItem.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -928,6 +931,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\Content\LadaanPageCompoundViews\TransactionPopup.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\Content\GoDownPageCompoundViews\TransactionPopup.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
