@@ -33,7 +33,7 @@ namespace Tulsi.ViewModels {
             get { return _importedView; }
             set {
                 if (SetProperty(ref _importedView, value) && value != null)
-                    Spot.TranslateTo(0, 0, 500);
+                    Spot.TranslateTo(0, 0, 700);
             }
         }
 

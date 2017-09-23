@@ -64,9 +64,7 @@
       <DependentUpon>ExpandedGroup.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\WhiteViewCell.cs" />
-    <Compile Include="Pages\Content\LadaanPageCompoundViews\TransactionPopup.xaml.cs">
-      <DependentUpon>TransactionPopup.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="Model\TodayRatesDataCollection.cs" />
     <Compile Include="SharedService\IDeviceServices.cs" />
     <Compile Include="ForDeveloper\MemoryInfo.cs" />
     <Compile Include="ForDeveloper\MemoryView.xaml.cs">
@@ -206,7 +204,7 @@
     <Compile Include="Pages\Content\GrowerView.xaml.cs">
       <DependentUpon>GrowerView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Content\LadaanPageCompoundViews\LaddanMenuItem.xaml.cs">
+    <Compile Include="Pages\Content\LaddanControl\LaddanMenuItem.xaml.cs">
       <DependentUpon>LaddanMenuItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\DashboardPage.xaml.cs">
@@ -288,7 +286,6 @@
     <Compile Include="SharedService\IDisplaySize.cs" />
     <Compile Include="ToolKit\BindingValueConverters\BoolToGenericObjectConverter.cs" />
     <Compile Include="ToolKit\BindingValueConverters\ByteToImageSourceConverter.cs" />
-    <Compile Include="ToolKit\BindingValueConverters\IsNullToBoolConverter.cs" />
     <Compile Include="ToolKit\BindingValueConverters\VisibilityViewConverter.cs" />
     <Compile Include="ToolKit\BindingValueConverters\ProfileTransactionImageConverter.cs" />
     <Compile Include="ToolKit\BindingValueConverters\RankingsColorConverter.cs" />
@@ -335,7 +332,7 @@
     <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="ViewModels\SetupDashboardViewModel.cs" />
     <Compile Include="ViewModels\StockPendingDetailsViewModel.cs" />
-    <Compile Include="ViewModels\TodayRatesViewModel.cs" />
+    <Compile Include="ViewModels\TodayRatesPageViewModel.cs" />
     <Compile Include="ViewModels\TutorialPageViewModel.cs" />
     <Compile Include="ViewModels\WelcomePageViewModel.cs" />
   </ItemGroup>
@@ -856,7 +853,7 @@
     <EmbeddedResource Include="Images\selection5.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Pages\Content\LadaanPageCompoundViews\LaddanMenuItem.xaml">
+    <EmbeddedResource Include="Pages\Content\LaddanControl\LaddanMenuItem.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -923,10 +920,8 @@
     <EmbeddedResource Include="Images\list_icon_2.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Pages\Content\LadaanPageCompoundViews\TransactionPopup.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
+    <EmbeddedResource Include="Images\blue_arrow_left.png" />
+    <EmbeddedResource Include="Images\blue_arrow_right.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.4.270\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.4.270\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />

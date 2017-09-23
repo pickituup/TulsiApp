@@ -10,11 +10,9 @@
     xmlns:toolKitImageResourceExtension="clr-namespace:Tulsi.ToolKit.MarkupExtensions"
     NavigationPage.HasNavigationBar="false">
 
-    <!--  BackgroundColor="#DCDCDC"  -->
     <StackLayout>
-
         <!--  Tool bar  -->
-        <Grid x:Name="ToolbarGrid" BackgroundColor="#2793F5">
+        <Grid x:Name="ToolbarGrid" BackgroundColor="{StaticResource MainColor}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="50" />
             </Grid.RowDefinitions>
@@ -64,24 +62,46 @@
 
         <!--  MAIN CONTENT  -->
         <StackLayout Padding="5,0">
-
             <!--  Lists shared 'Header'  -->
             <Frame
                 Padding="0,12"
                 BackgroundColor="#027CE9"
                 CornerRadius="7"
                 HasShadow="False">
-
-                <Label
-                    FontSize="Medium"
-                    HorizontalTextAlignment="Center"
-                    Text="DD/MM/YY"
-                    TextColor="White"
-                    VerticalTextAlignment="Center" />
+                <StackLayout
+                    Padding="10,0"
+                    BackgroundColor="Transparent"
+                    Orientation="Horizontal"
+                    Spacing="0">
+                    <Image
+                        HeightRequest="20"
+                        HorizontalOptions="Start"
+                        Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.blue_arrow_left.png}"
+                        WidthRequest="60">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding PreviousListCommand}" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Label
+                        FontSize="Medium"
+                        HorizontalOptions="CenterAndExpand"
+                        HorizontalTextAlignment="Center"
+                        Text="{Binding CurrentDate, StringFormat='{0:dd/MM/yy}'}"
+                        TextColor="White"
+                        VerticalTextAlignment="Center" />
+                    <Image
+                        HeightRequest="20"
+                        HorizontalOptions="End"
+                        Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.blue_arrow_right.png}"
+                        WidthRequest="60">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding NextListCommand}" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                </StackLayout>
             </Frame>
             <ScrollView>
-                <!--<StackLayout x:Name="_ratesStack_StackLayout" />-->
-                <controls:StackList ItemsSource="{Binding Path=TodayRatesData}">
+                <controls:StackList ItemsSource="{Binding TodayRatesData}">
                     <controls:StackList.ItemTemplate>
                         <DataTemplate>
                             <controlsForTodayRates:ExpandedGroup />
