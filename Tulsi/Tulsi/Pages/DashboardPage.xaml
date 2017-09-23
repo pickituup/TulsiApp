@@ -74,7 +74,7 @@
                             </Grid.RowDefinitions>
                             <Label
                                 HorizontalTextAlignment="Center"
-                                Text="Thought of the Day&#x0a;Lack of money is the root of&#x0a;all evil"
+                                Text="Thought of the Day&#x0a;&quot; Lack of money is the root of all evil &quot;"
                                 VerticalTextAlignment="Center" />
                             <Label
                                 x:Name="tempLabel"
