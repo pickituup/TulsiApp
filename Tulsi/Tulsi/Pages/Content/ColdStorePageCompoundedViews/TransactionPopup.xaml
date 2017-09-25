@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:toolKitBindingValueConverters="clr-namespace:Tulsi.ToolKit.BindingValueConverters"
+    x:Class="Tulsi.Pages.Content.ColdStorePageCompoundedViews.TransactionPopup"
+    BackgroundColor="Transparent">
+
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <Color
+                x:Key="semiTransparentBackground_Color">#60000000</Color>
+
+            <toolKitBindingValueConverters:BoolToGenericObjectConverter
+                x:Key="BoolToGreenOrBlackColorConverter"
+                x:TypeArguments="Color"
+                FalseObject="DarkGreen"
+                TrueObject="Red" />
+        </ResourceDictionary>
+    </ContentView.Resources>
+
+    <Grid
+        RowSpacing="0"
+        ColumnSpacing="0"
+        BackgroundColor="{StaticResource Key=semiTransparentBackground_Color}">
+        <Grid.RowDefinitions>
+            <RowDefinition
+                Height="*"/>
+            <RowDefinition
+                Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <ContentView>
+            <ContentView.GestureRecognizers>
+                <TapGestureRecognizer
+                    Command="{Binding Path=LooseTransactionSelectionCommand}"/>
+            </ContentView.GestureRecognizers>
+        </ContentView>
+
+        <ContentView
+            x:Name="_movableContentSpot_ContentView"
+            Grid.Row="1">
+            <StackLayout
+                Grid.Row="1"
+                Padding="15,13"
+                Spacing="13">
+                <StackLayout.Resources>
+                    <ResourceDictionary>
+                        <Style
+                            TargetType="Label">
+                            <Setter
+                                Property="FontSize"
+                                Value="Medium"/>
+                        </Style>
+                    </ResourceDictionary>
+                </StackLayout.Resources>
+                <Label
+                    Text="Transaction Detail"
+                    HorizontalTextAlignment="Center"
+                    TextColor="DarkGray"/>
+
+                <StackLayout
+                    Orientation="Vertical">
+                    <StackLayout.Resources>
+                        <ResourceDictionary>
+                            <Style
+                                TargetType="Label">
+                                <Setter
+                                    Property="TextColor"
+                                    Value="Black"/>
+                                <!--<Setter
+                                    Property="FontSize"
+                                    Value="Medium"/>-->
+                            </Style>
+
+                            <Style
+                                TargetType="StackLayout">
+                                <Setter
+                                    Property="Orientation"
+                                    Value="Horizontal"/>
+                            </Style>
+                        </ResourceDictionary>
+                    </StackLayout.Resources>
+
+                    <StackLayout>
+                        <Label
+                            Text="&#8226; Invoice no:"/>
+                        <Label
+                            Text="{Binding Path=Path=SelectedColdStoreTransaction.InvoiceNumber}"/>
+                    </StackLayout>
+                    <StackLayout>
+                        <Label
+                            Text="&#8226; Name:"/>
+                        <Label
+                            Text="{Binding Path=Path=SelectedColdStoreTransaction.Name}"/>
+                    </StackLayout>
+                    <StackLayout>
+                        <Label
+                            Text="&#8226; City:"/>
+                        <Label
+                            Text="{Binding Path=Path=SelectedColdStoreTransaction.City}"/>
+                    </StackLayout>
+                    <StackLayout>
+                        <Label
+                            Text="&#8226; Boxes:"/>
+                        <Label
+                            Text="{Binding Path=Path=SelectedColdStoreTransaction.Boxes}"/>
+                    </StackLayout>
+                    <StackLayout>
+                        <Label
+                            Text="&#8226; Date"/>
+                        <Label
+                            Text="{Binding Path=Path=SelectedColdStoreTransaction.Date,
+                                StringFormat='{0:d/MM/yy}'}}"/>
+                    </StackLayout>
+                    <StackLayout>
+                        <Label
+                            Text="&#8226; Type:"/>
+                        <Label
+                            Text="{Binding Path=Path=SelectedColdStoreTransaction.Type}"/>
+                    </StackLayout>
+                    <StackLayout>
+                        <Label
+                            Text="&#8226; Status"/>
+                        <Label
+                            Text="{Binding Path=Path=SelectedColdStoreTransaction.Status}"
+                            TextColor="{Binding Path=SelectedColdStoreTransaction.IsPendingRates,
+                                Converter={StaticResource Key=BoolToGreenOrBlackColorConverter}}"/>
+                    </StackLayout>
+                    <StackLayout>
+                        <Label
+                            Text="&#8226; Ammounted:"/>
+                        <Label
+                            Text="{Binding StringFormat='{0:n0}',
+                                Path=Path=SelectedColdStoreTransaction.Ammounted}"/>
+                    </StackLayout>
+                </StackLayout>
+
+                <Frame
+                    Padding="35,5"
+                    BackgroundColor="#2793F5"
+                    HasShadow="False"
+                    HorizontalOptions="Center">
+                    <Label
+                        Text="View in Ledger"
+                        TextColor="White"/>
+                </Frame>
+            </StackLayout>
+        </ContentView>
+    </Grid>
+</ContentView>

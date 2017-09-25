@@ -2,6 +2,7 @@
 
 namespace Tulsi.Model {
     public class GodownEntry {
+        
         /// <summary>
         /// 
         /// </summary>
@@ -46,6 +47,5 @@ namespace Tulsi.Model {
         /// 
         /// </summary>
         public bool IsPendingRates { get; set; }
-
     }
 }

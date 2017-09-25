@@ -65,6 +65,9 @@
     </Compile>
     <Compile Include="Controls\WhiteViewCell.cs" />
     <Compile Include="Model\TodayRatesDataCollection.cs" />
+    <Compile Include="Pages\Content\ColdStorePageCompoundedViews\TransactionPopup.xaml.cs">
+      <DependentUpon>TransactionPopup.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Content\GoDownPageCompoundViews\TransactionPopup.xaml.cs">
       <DependentUpon>TransactionPopup.xaml</DependentUpon>
     </Compile>
@@ -192,7 +195,7 @@
     <Compile Include="Pages\Content\BuyerView.xaml.cs">
       <DependentUpon>BuyerView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Content\ColdStoreControl\ColdStoreMenuItem.xaml.cs">
+    <Compile Include="Pages\Content\ColdStorePageCompoundedViews\ColdStoreMenuItem.xaml.cs">
       <DependentUpon>ColdStoreMenuItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Content\ExpensesCarouselView.xaml.cs">
@@ -888,7 +891,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Pages\Content\ColdStoreControl\ColdStoreMenuItem.xaml">
+    <EmbeddedResource Include="Pages\Content\ColdStorePageCompoundedViews\ColdStoreMenuItem.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -936,6 +939,15 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pages\Content\GoDownPageCompoundViews\TransactionPopup.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Pages\Content\ColdStoreControl\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\Content\ColdStorePageCompoundedViews\TransactionPopup.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
