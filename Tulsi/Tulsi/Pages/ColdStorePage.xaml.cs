@@ -24,9 +24,7 @@ namespace Tulsi.Pages {
             BindingContext = _viewModel = new ColdStorePageViewModel();
         }
 
-        public void ApplyVisualChangesWhileNavigating() {
-            
-        }
+        public void ApplyVisualChangesWhileNavigating() { }
 
         /// <summary>
         ///     Occurs only for Android (not for iOS).
@@ -34,7 +32,13 @@ namespace Tulsi.Pages {
         /// </summary>
         /// <returns></returns>
         protected override bool OnBackButtonPressed() {
+            if (_viewModel.SelectedColdStoreTransaction != null) {
+                _viewModel.SelectedColdStoreTransaction = null;
+                return true;
+            }
+
             BaseSingleton<ViewSwitchingLogic>.Instance.NavigateOneStepBack();
+
             return true;
         }
 
