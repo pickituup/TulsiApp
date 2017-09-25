@@ -241,6 +241,10 @@ namespace Tulsi.NavigationFramework {
                 {
                     ViewType.GodownPage,
                     ()=> new ViewBuider<GodownPage>().GetView()
+                },
+                {
+                    ViewType.AddReportAccessPage,
+                    ()=>new ViewBuider<AddReportAccessPage>().GetView()
                 }
             };
         }

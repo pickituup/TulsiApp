@@ -65,6 +65,9 @@
     </Compile>
     <Compile Include="Controls\WhiteViewCell.cs" />
     <Compile Include="Model\TodayRatesDataCollection.cs" />
+    <Compile Include="Pages\AddReportAccessPage.xaml.cs">
+      <DependentUpon>AddReportAccessPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Content\BankAccountDetailsPageCompoundViews\TransactionPopup.xaml.cs">
       <DependentUpon>TransactionPopup.xaml</DependentUpon>
     </Compile>
@@ -308,6 +311,7 @@
     <Compile Include="ToolKit\BindingValueConverters\StringToResourceImageSourceConverter.cs" />
     <Compile Include="ToolKit\MarkupExtensions\ImageResourceExtension.cs" />
     <Compile Include="ToolKit\Triggers\ChangeBackgroundColorTriggerAction.cs" />
+    <Compile Include="ViewModels\AddReportAccessPageViewModel.cs" />
     <Compile Include="ViewModels\ArrivalDetailsViewModel.cs" />
     <Compile Include="ViewModels\ArrivalPageViewModel.cs" />
     <Compile Include="ViewModels\AuditLogDetailsPageViewModel.cs" />
@@ -958,6 +962,15 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\AddReportAccessPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\ic_decline_white_no_border.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.4.270\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.4.270\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />

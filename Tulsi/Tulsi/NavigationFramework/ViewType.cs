@@ -168,6 +168,11 @@ namespace Tulsi.NavigationFramework {
 
         ColdStorePage,
 
-        GodownPage
+        GodownPage,
+
+        /// <summary>
+        /// AddReportsAccess page
+        /// </summary>
+        AddReportAccessPage
     }
 }

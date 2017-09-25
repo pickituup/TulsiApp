@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:toolKitImageResourceExtension="clr-namespace:Tulsi.ToolKit.MarkupExtensions"
+    x:Class="Tulsi.Pages.AddReportAccessPage"
+    NavigationPage.HasNavigationBar="false">
+
+    <StackLayout
+        BackgroundColor="#DCDCDC"
+        Spacing="5">
+        
+        <!--  Tool bar  -->
+        <Grid x:Name="ToolbarGrid" BackgroundColor="#2793F5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+            </Grid.RowDefinitions>
+
+            <Label
+                x:Name="PageTitleLabel"
+                HorizontalOptions="Center"
+                Text="Add Report Access"
+                TextColor="White"
+                VerticalOptions="Center" />
+
+            <Grid
+                Padding="0,0,15,0"
+                BackgroundColor="Transparent"
+                HorizontalOptions="End">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="60" />
+                </Grid.ColumnDefinitions>
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding DisplaySearchPageCommand}" />
+                </Grid.GestureRecognizers>
+                <Image
+                    HeightRequest="40"
+                    HorizontalOptions="End"
+                    Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.ic_decline_white_no_border.png}"
+                    VerticalOptions="Center"
+                    WidthRequest="40" >
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Command="{Binding Path=ClosePageCommand}"/>
+                    </Image.GestureRecognizers>
+                </Image>
+            </Grid>
+        </Grid>
+
+        <Frame
+            Margin="4,0"
+            Padding="7,25"
+            BackgroundColor="White">
+
+            <StackLayout
+                Spacing="25"
+                BackgroundColor="Transparent">
+                <StackLayout
+                Spacing="4"
+                BackgroundColor="Transparent">
+                    <StackLayout.Resources>
+                        <ResourceDictionary>
+                            <Style
+                            TargetType="Label">
+                                <Setter
+                                Property="FontSize"
+                                Value="Medium"/>
+                                <Setter
+                                Property="Margin"
+                                Value="7,0,0,0"/>
+                                <Setter
+                                Property="TextColor"
+                                Value="#616161"/>
+                            </Style>
+                            <Style
+                            TargetType="Frame">
+                                <Setter
+                                Property="HasShadow"
+                                Value="False"/>
+                                <Setter
+                                Property="BackgroundColor"
+                                Value="#F3F3F3"/>
+                            </Style>
+                        </ResourceDictionary>
+                    </StackLayout.Resources>
+                    <Label
+                        Text="Report name"/>
+                    <Frame
+                    Padding="0">
+                        <Entry
+                        Placeholder="Enter report name"/>
+                    </Frame>
+
+                    <Label
+                    Text="Report Access key"/>
+                    <Frame
+                    Padding="0">
+                        <Entry
+                        Placeholder="Enter report access key"/>
+                    </Frame>
+
+                    <Label
+                    Text="Encription key"/>
+                    <Frame
+                    Padding="0">
+                        <Entry
+                        Placeholder="Enter encription key"/>
+                    </Frame>
+                </StackLayout>
+
+                <Label
+                    FontSize="Medium"
+                    Text="Note: you can get access to the report if you are registered user in the system."/>
+
+                <Frame
+                    HorizontalOptions="Center"
+                    BackgroundColor="#2793F5"
+                    Padding="17,5"
+                    HasShadow="False">
+                    <Label
+                        FontSize="Medium"
+                        TextColor="White"
+                        Text="Add Report"/>
+                </Frame>
+            </StackLayout>
+        </Frame>
+    </StackLayout>
+</ContentPage>

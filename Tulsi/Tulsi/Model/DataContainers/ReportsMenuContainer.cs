@@ -34,6 +34,10 @@ namespace Tulsi.Model.DataContainers {
                 new ReportsMenuItem {
                     Name = "AUDIT LOG",
                     ViewType = ViewType.AuditLogView
+                },
+                new ReportsMenuItem {
+                    Name = "ADD REPORT",
+                    ViewType = ViewType.AddReportAccessPage
                 }
             };
         }
