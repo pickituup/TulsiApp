@@ -49,7 +49,7 @@ namespace Tulsi.ViewModels.Menu {
         ///     ctor().
         /// </summary>
         public SideMenuViewModel() {
-            AmountVisible = BaseSingleton<DashboardHelper>.Instance.HasSideMenuAmount;
+            AmountVisible = BaseSingleton<DashboardHelper>.Instance.IsAmountVisible;
 
             BaseSingleton<DashboardObserver>.Instance.HideAmount += OnHideAmount;
 
@@ -59,9 +59,8 @@ namespace Tulsi.ViewModels.Menu {
         }
 
         private void OnHideAmount(object sender, Observers.DashboardArgs.HideAmountArgs e) {
-            if (!AmountVisible.Equals(e.IsHide)) {
-                AmountVisible = e.IsHide;
-            }
+            AmountVisible = !(e.IsHide);
+            BaseSingleton<DashboardHelper>.Instance.IsAmountVisible = !(e.IsHide);
         }
 
         public void Dispose() {
