@@ -24,6 +24,9 @@ namespace Tulsi {
 
             BindingContext = _viewModel = new DashboardPageViewModel();
 
+            scrolView.Scrolled += ScrolView_Scrolled;
+            scrolView.LayoutChanged += ScrolView_LayoutChanged;
+
             SfChart chart = new SfChart();
             DoughnutSeries doughnutSeries = new DoughnutSeries() {
                 ItemsSource = _viewModel.ChartData,
@@ -70,6 +73,14 @@ namespace Tulsi {
             MiddleStack.Children.Add(MiddleText1);
             MiddleStack.Children.Add(MiddleText2);
             ChartGrid.Children.Add(MiddleStack);
+        }
+
+        private void ScrolView_LayoutChanged(object sender, EventArgs e) {
+            
+        }
+
+        private void ScrolView_Scrolled(object sender, ScrolledEventArgs e) {
+            
         }
 
         private void ShowMenuCommand(object sender, EventArgs e) {

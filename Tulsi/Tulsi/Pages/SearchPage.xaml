@@ -18,6 +18,7 @@
                 x:TypeArguments="Color"
                 FalseObject="Black"
                 TrueObject="Red" />
+            <toolKitBindingValueConverters:ProgressBarColorConverter x:Key="colorConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
     <Grid>
@@ -123,58 +124,59 @@
                     SeparatorColor="Transparent"
                     SeparatorVisibility="None"
                     VerticalOptions="FillAndExpand">
-
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <StackLayout
-                                    Margin="0,5"
-                                    BackgroundColor="Transparent"
-                                    Spacing="0">
-                                    <Frame
-                                        Padding="10"
+                                <ContentView BackgroundColor="#DCDCDC">
+                                    <StackLayout
+                                        Margin="0,5"
                                         BackgroundColor="White"
-                                        HasShadow="False">
-                                        <StackLayout BackgroundColor="Transparent">
-                                            <StackLayout BackgroundColor="Transparent" Orientation="Horizontal">
-                                                <Label
-                                                    FontSize="Medium"
-                                                    HorizontalOptions="StartAndExpand"
-                                                    Text="{Binding Name}"
-                                                    TextColor="#000000" />
-                                                <Label
-                                                    FontSize="Medium"
-                                                    HorizontalOptions="EndAndExpand"
-                                                    Text="{Binding Number, StringFormat='${0}'}"
-                                                    TextColor="{Binding IsOverDue, Converter={StaticResource Key=_converter}}" />
-                                            </StackLayout>
-                                            <Label
-                                                FontSize="Medium"
-                                                Text="{Binding Company}"
-                                                TextColor="#AAAAAA" />
-                                            <Frame
-                                                Padding="13,0"
-                                                BackgroundColor="Red"
-                                                HasShadow="False"
-                                                HorizontalOptions="Start"
-                                                IsVisible="{Binding IsOverDue}">
-
+                                        Spacing="0">
+                                        <Frame
+                                            Padding="10"
+                                            BackgroundColor="White"
+                                            HasShadow="False">
+                                            <StackLayout BackgroundColor="Transparent">
                                                 <StackLayout BackgroundColor="Transparent" Orientation="Horizontal">
                                                     <Label
                                                         FontSize="Medium"
-                                                        Text="{Binding OverdueDays, StringFormat='{0} Days OverDue'}"
-                                                        TextColor="White" />
+                                                        HorizontalOptions="StartAndExpand"
+                                                        Text="{Binding Name}"
+                                                        TextColor="#000000" />
+                                                    <Label
+                                                        FontSize="Medium"
+                                                        HorizontalOptions="EndAndExpand"
+                                                        Text="{Binding Number, StringFormat='${0}'}"
+                                                        TextColor="{Binding IsOverDue, Converter={StaticResource Key=_converter}}" />
                                                 </StackLayout>
-                                            </Frame>
-                                        </StackLayout>
-                                    </Frame>
-                                    <controls:ColorProgressBar
-                                        BackgroundColor="#A6A6A6"
-                                        BarColor="{Binding ContactProgressColor}"
-                                        HeightRequest="5"
-                                        Progress="{Binding ContactProgress}"
-                                        VerticalOptions="Center" />
-                                </StackLayout>
+                                                <Label
+                                                    FontSize="Medium"
+                                                    Text="{Binding Company}"
+                                                    TextColor="#AAAAAA" />
+                                                <Frame
+                                                    Padding="13,0"
+                                                    BackgroundColor="Red"
+                                                    HasShadow="False"
+                                                    HorizontalOptions="Start"
+                                                    IsVisible="{Binding IsOverDue}">
+
+                                                    <StackLayout BackgroundColor="Transparent" Orientation="Horizontal">
+                                                        <Label
+                                                            FontSize="Medium"
+                                                            Text="{Binding OverdueDays, StringFormat='{0} Days OverDue'}"
+                                                            TextColor="White" />
+                                                    </StackLayout>
+                                                </Frame>
+                                            </StackLayout>
+                                        </Frame>
+                                        <controls:ColorProgressBar
+                                            BackgroundColor="#A6A6A6"
+                                            BarColor="{Binding Path=ContactProgress, Converter={StaticResource colorConverter}}"
+                                            HeightRequest="5"
+                                            Progress="{Binding ContactProgress}"
+                                            VerticalOptions="Center" />
+                                    </StackLayout>
+                                </ContentView>
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>

@@ -9,6 +9,8 @@ using Xamarin.Forms;
 using Tulsi.Model;
 using Tulsi.SharedService;
 using Tulsi.NavigationFramework.NavigationArgs;
+using System;
+using System.Threading.Tasks;
 
 namespace Tulsi.ViewModels {
     public class SearchPageViewModel : ViewModelBase, IViewModel {
@@ -18,7 +20,7 @@ namespace Tulsi.ViewModels {
             get { return _importedView; }
             set {
                 if (SetProperty(ref _importedView, value) && value != null)
-                    Spot.TranslateTo(0, 0);
+                    Spot.TranslateTo(0, 0, 700);
             }
         }
 
@@ -75,12 +77,11 @@ namespace Tulsi.ViewModels {
             ImportedView = BaseSingleton<ViewSwitchingLogic>.Instance.GetViewByType(e.ViewType);
         }
 
-        public void CloseImportedView() {
+        public async void CloseImportedView() {
             if (this.ImportedView != null) {
-
+                await HideViewAsync();
                 ImportedView.Dispose();
                 ImportedView = null;
-                HideView();
             }
         }
 
@@ -88,16 +89,17 @@ namespace Tulsi.ViewModels {
             CloseImportedView();
         }
 
-        private void HideView() {
+        private async void HideView() => await HideViewAsync();
+
+        private async Task HideViewAsync() {
             int displayHeight = DependencyService.Get<IDisplaySize>().GetHeight();
-            Spot.TranslationY = displayHeight;
+            await Spot.TranslateTo(0, displayHeight, 700);
         }
 
         private void HARDCODED_DATA_INSERT() {
             ContactGroup contactGroup = new ContactGroup();
             contactGroup.FirstLetter = "P";
             contactGroup.Add(new Contact() {
-                ContactProgressColor = Color.Yellow,
                 ContactProgress = .2,
                 Name = "Petro",
                 Number = 122,
@@ -106,14 +108,12 @@ namespace Tulsi.ViewModels {
                 OverdueDays = 7
             });
             contactGroup.Add(new Contact() {
-                ContactProgressColor = Color.FromHex("#2793F5"),
                 ContactProgress = .35,
                 Name = "Phill",
                 Number = 132,
                 Company = "Rlrrlrll lrll"
             });
             contactGroup.Add(new Contact() {
-                ContactProgressColor = Color.Red,
                 ContactProgress = .7,
                 Name = "Petruha",
                 Number = 77,
@@ -125,7 +125,6 @@ namespace Tulsi.ViewModels {
             ContactGroup contactGroup2 = new ContactGroup();
             contactGroup2.FirstLetter = "M";
             contactGroup2.Add(new Contact() {
-                ContactProgressColor = Color.FromHex("#2793F5"),
                 ContactProgress = .5,
                 Name = "Mykola",
                 Number = 234,
@@ -140,7 +139,6 @@ namespace Tulsi.ViewModels {
                 OverdueDays = 13
             });
             contactGroup2.Add(new Contact() {
-                ContactProgressColor = Color.Red,
                 ContactProgress = .1,
                 Name = "Maha",
                 Number = 788,
@@ -149,7 +147,6 @@ namespace Tulsi.ViewModels {
                 OverdueDays = 8
             });
             contactGroup2.Add(new Contact() {
-                ContactProgressColor = Color.Yellow,
                 ContactProgress = .4,
                 Name = "Misha",
                 Number = 213,
@@ -159,14 +156,12 @@ namespace Tulsi.ViewModels {
             ContactGroup contactGroup3 = new ContactGroup();
             contactGroup3.FirstLetter = "A";
             contactGroup3.Add(new Contact() {
-                ContactProgressColor = Color.FromHex("#2793F5"),
                 ContactProgress = .66,
                 Name = "Anzela",
                 Number = 737,
                 Company = "Rlrrlrll lrll"
             });
             contactGroup3.Add(new Contact() {
-                ContactProgressColor = Color.FromHex("#2793F5"),
                 ContactProgress = .95,
                 Name = "Arnold",
                 Number = 7237,
@@ -175,7 +170,6 @@ namespace Tulsi.ViewModels {
                 OverdueDays = 7
             });
             contactGroup3.Add(new Contact() {
-                ContactProgressColor = Color.FromHex("#2793F5"),
                 ContactProgress = .15,
                 Name = "Anatatoli",
                 Number = 77,
@@ -197,7 +191,6 @@ namespace Tulsi.ViewModels {
                 Company = "Rlrrlrll lrll"
             });
             contactGroup4.Add(new Contact() {
-                ContactProgressColor = Color.Yellow,
                 ContactProgress = .44,
                 Name = "Baryg",
                 Number = 87,
@@ -221,8 +214,8 @@ namespace Tulsi.ViewModels {
             //
             ContactsGroupsResult =
                 new ObservableCollection<ContactGroup>(
-                    groups.OrderBy<ContactGroup, string>((c) => c.FirstLetter)
-                    .ToList<ContactGroup>());
+                    groups.OrderBy((c) => c.FirstLetter)
+                    .ToList());
 
             //TestList = GetContactsGroupsResult();
         }
@@ -264,7 +257,7 @@ namespace Tulsi.ViewModels {
                 }
             };
 
-            return new ObservableCollection<Contact>(orederedList.OrderBy((x)=> x.Name));
+            return new ObservableCollection<Contact>(orederedList.OrderBy((x) => x.Name));
         }
 
         public void Dispose() {

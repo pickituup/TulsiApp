@@ -299,6 +299,7 @@
     <Compile Include="ToolKit\BindingValueConverters\BoolToGenericObjectConverter.cs" />
     <Compile Include="ToolKit\BindingValueConverters\ByteToImageSourceConverter.cs" />
     <Compile Include="ToolKit\BindingValueConverters\IsNullToBoolConverter.cs" />
+    <Compile Include="ToolKit\BindingValueConverters\ProgressBarColorConverter.cs" />
     <Compile Include="ToolKit\BindingValueConverters\VisibilityViewConverter.cs" />
     <Compile Include="ToolKit\BindingValueConverters\ProfileTransactionImageConverter.cs" />
     <Compile Include="ToolKit\BindingValueConverters\RankingsColorConverter.cs" />
