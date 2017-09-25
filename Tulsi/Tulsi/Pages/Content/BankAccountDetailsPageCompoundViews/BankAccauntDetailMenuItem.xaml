@@ -1,15 +1,27 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <t:StackListItemBase
-    x:Class="Tulsi.Pages.Content.BankAccountDetailControl.BankAccauntDetailMenuItem"
+    x:Class="Tulsi.Pages.Content.BankAccountDetailsPageCompoundViews.BankAccauntDetailMenuItem"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:t="clr-namespace:Tulsi.Controls"
+    xmlns:toolKitBindingValueConverters="clr-namespace:Tulsi.ToolKit.BindingValueConverters"
     x:Name="_root_StackListItem">
+
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <toolKitBindingValueConverters:BoolToGenericObjectConverter
+                x:Key="BoolToGreenOrBlackColorConverter"
+                x:TypeArguments="Color"
+                FalseObject="DarkGreen"
+                TrueObject="Red" />
+        </ResourceDictionary>
+    </ContentView.Resources>
 
     <Frame
         Margin="0,5"
         Padding="20,8,30,8"
-        BackgroundColor="{Binding ColorFrame}"
+        BackgroundColor="{Binding Path=IsPendingRates,
+            Converter={StaticResource Key=BoolToGreenOrBlackColorConverter}}"
         CornerRadius="10"
         HasShadow="False">
         <Frame.GestureRecognizers>
@@ -29,11 +41,11 @@
             <Label
                 FontSize="Medium"
                 HorizontalOptions="StartAndExpand"
-                Text="{Binding Owner}" />
+                Text="{Binding Path=Name}" />
             <Label
                 FontSize="Medium"
                 HorizontalOptions="EndAndExpand"
-                Text="{Binding Cases}" />
+                Text="{Binding Path=Boxes}" />
         </StackLayout>
     </Frame>
 </t:StackListItemBase>

@@ -65,6 +65,9 @@
     </Compile>
     <Compile Include="Controls\WhiteViewCell.cs" />
     <Compile Include="Model\TodayRatesDataCollection.cs" />
+    <Compile Include="Pages\Content\BankAccountDetailsPageCompoundViews\TransactionPopup.xaml.cs">
+      <DependentUpon>TransactionPopup.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Content\ColdStorePageCompoundedViews\TransactionPopup.xaml.cs">
       <DependentUpon>TransactionPopup.xaml</DependentUpon>
     </Compile>
@@ -183,7 +186,7 @@
     <Compile Include="Pages\Content\AuditLogView.xaml.cs">
       <DependentUpon>AuditLogView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Content\BankAccountDetailControl\BankAccauntDetailMenuItem.xaml.cs">
+    <Compile Include="Pages\Content\BankAccountDetailsPageCompoundViews\BankAccauntDetailMenuItem.xaml.cs">
       <DependentUpon>BankAccauntDetailMenuItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Content\BankAccountsView.xaml.cs">
@@ -909,7 +912,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Pages\Content\BankAccountDetailControl\BankAccauntDetailMenuItem.xaml">
+    <EmbeddedResource Include="Pages\Content\BankAccountDetailsPageCompoundViews\BankAccauntDetailMenuItem.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -944,7 +947,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Pages\Content\ColdStoreControl\" />
+    <EmbeddedResource Include="Pages\Content\BankAccountDetailsPageCompoundViews\TransactionPopup.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pages\Content\ColdStorePageCompoundedViews\TransactionPopup.xaml">
