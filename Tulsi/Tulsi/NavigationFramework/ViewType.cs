@@ -177,6 +177,8 @@ namespace Tulsi.NavigationFramework {
 
         PasscodePage,
 
-        PasscodeView
+        PasscodeView,
+
+        ForgotPasscodePage
     }
 }

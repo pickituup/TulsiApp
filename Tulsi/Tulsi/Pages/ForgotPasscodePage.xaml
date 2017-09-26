@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Tulsi.Pages.ForgotPasscodePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:Tulsi.Controls"
+    xmlns:toolKitImageResourceExtension="clr-namespace:Tulsi.ToolKit.MarkupExtensions"
+    NavigationPage.HasNavigationBar="false">
+
+    <StackLayout
+        x:Name="HeaderLayout"
+        BackgroundColor="#DCDCDC"
+        Spacing="0"
+        VerticalOptions="Fill">
+        <!--  Tool bar  -->
+        <Grid x:Name="ToolbarGrid" BackgroundColor="#2793F5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+            </Grid.RowDefinitions>
+            <Grid
+                Padding="15,0,0,0"
+                BackgroundColor="Transparent"
+                HorizontalOptions="Start">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="40" />
+                </Grid.ColumnDefinitions>
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NavigateBackCommand}" />
+                </Grid.GestureRecognizers>
+                <Image
+                    HeightRequest="20"
+                    HorizontalOptions="Start"
+                    Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.back.png}"
+                    VerticalOptions="Center"
+                    WidthRequest="15" />
+            </Grid>
+
+            <Label
+                x:Name="PageTitleLabel"
+                HorizontalOptions="Center"
+                Text="FORGOT PIN"
+                TextColor="White"
+                VerticalOptions="Center" />
+        </Grid>
+
+        <!--  MAIN CONTENT  -->
+        <StackLayout
+            BackgroundColor="White"
+            Spacing="0"
+            VerticalOptions="FillAndExpand">
+            <controls:GifImage
+                x:Name="gifImage"
+                Aspect="AspectFill"
+                BackgroundColor="#2A92ED"
+                HorizontalOptions="Fill"
+                Source="{Binding Icon}" />
+            
+            <StackLayout
+                Padding="20,0"
+                BackgroundColor="Transparent"
+                Spacing="25"
+                VerticalOptions="CenterAndExpand">
+                <Label
+                    FontSize="30"
+                    TextColor="#3F4C5E"
+                    FontAttributes="Bold"
+                    HorizontalOptions="Center"
+                    Text="Did you forget pin ?" />
+                <Label
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    FontSize="Medium"
+                    LineBreakMode="WordWrap"
+                    Text="No Problem, Login again by clicking the button bellow, we will reset it for you." />
+                <controls:RoundedContentView
+                    BackgroundColor="{StaticResource MainColor}"
+                    CornerRadius="10"
+                    HorizontalOptions="Center"
+                    WidthRequest="200"
+                    HeightRequest="40">
+                    <controls:RoundedContentView.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ResetCommand}"/>
+                    </controls:RoundedContentView.GestureRecognizers>
+                    <Label
+                        FontSize="Large"
+                        HorizontalOptions="Center"
+                        Text="Reset Pin"
+                        TextColor="White" />
+                </controls:RoundedContentView>
+                <controls:RoundedContentView>
+                    <controls:RoundedContentView.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding CancelCommand}"/>
+                    </controls:RoundedContentView.GestureRecognizers>
+                    <Label
+                        FontSize="Large"
+                        HorizontalOptions="Center"
+                        Text="cancel"
+                        TextColor="#949096" />
+                </controls:RoundedContentView>
+            </StackLayout>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

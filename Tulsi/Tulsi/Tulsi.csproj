@@ -88,6 +88,9 @@
     <Compile Include="Pages\Content\PasscodeView.xaml.cs">
       <DependentUpon>PasscodeView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\ForgotPasscodePage.xaml.cs">
+      <DependentUpon>ForgotPasscodePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SharedService\IDeviceServices.cs" />
     <Compile Include="ForDeveloper\MemoryInfo.cs" />
     <Compile Include="ForDeveloper\MemoryView.xaml.cs">
@@ -343,6 +346,7 @@
     <Compile Include="ViewModels\DashboardPageViewModel.cs" />
     <Compile Include="ViewModels\ExpensesListPageViewModel.cs" />
     <Compile Include="ViewModels\ExpensesPageViewModel.cs" />
+    <Compile Include="ViewModels\ForgotPasscodePageViewModel.cs" />
     <Compile Include="ViewModels\GodownPageViewModel.cs" />
     <Compile Include="ViewModels\GrowerProfilePageViewModel.cs" />
     <Compile Include="ViewModels\GrowerPageViewModel.cs" />
@@ -991,6 +995,21 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Images\black_bullet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\info_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\ForgotPasscodePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\backspace.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\doctor2_800.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.4.270\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.4.270\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />

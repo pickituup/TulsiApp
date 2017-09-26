@@ -13,9 +13,47 @@ using Xamarin.Forms;
 namespace Tulsi.ViewModels {
     public sealed class PasscodePageViewModel : ViewModelBase, IViewModel {
 
+        private const string TITLE = "SECURITY PIN";
+
         private const int PASSCODE_LENGTH = 4;
 
         private Stack<string> _stackDigits = new Stack<string>();
+
+        bool _visibilityBullets;
+        public bool VisibilityBullets {
+            get { return _visibilityBullets; }
+            set { SetProperty(ref _visibilityBullets, value); }
+        }
+
+        bool _firstIcon;
+        public bool FirstIcon {
+            get { return _firstIcon; }
+            set { SetProperty(ref _firstIcon, value); }
+        }
+
+        bool _secondIcon;
+        public bool SecondIcon {
+            get { return _secondIcon; }
+            set { SetProperty(ref _secondIcon, value); }
+        }
+
+        bool _thirdIcon;
+        public bool ThirdIcon {
+            get { return _thirdIcon; }
+            set { SetProperty(ref _thirdIcon, value); }
+        }
+
+        bool _fourthIcon;
+        public bool FourthIcon {
+            get { return _fourthIcon; }
+            set { SetProperty(ref _fourthIcon, value); }
+        }
+
+        string _title;
+        public string Title {
+            get { return _title; }
+            set { SetProperty(ref _title, value); }
+        }
 
         string _firstEntry;
         public string FirstEntry {
@@ -53,10 +91,18 @@ namespace Tulsi.ViewModels {
 
         public ICommand CleanDigitCommand { get; private set; }
 
+        public ICommand DisplayForgotPasscodePageCommand { get; private set; }
+
         /// <summary>
         ///     ctor().
         /// </summary>
         public PasscodePageViewModel() {
+            Title = TITLE;
+
+            VisibilityBullets = true;
+
+            DisplayForgotPasscodePageCommand = new Command(() => BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.ForgotPasscodePage));
+
             ButtonInputCommand = new Command(OnInputedDigit);
 
             CleanDigitCommand = new Command(OnCleanDigit);
@@ -69,24 +115,32 @@ namespace Tulsi.ViewModels {
             if (!string.IsNullOrEmpty(FourthEntry)) {
                 _stackDigits.Pop();
                 FourthEntry = string.Empty;
+                if (VisibilityBullets)
+                    FourthIcon = false;
                 return;
             }
 
             if (!string.IsNullOrEmpty(ThirdEntry)) {
                 _stackDigits.Pop();
                 ThirdEntry = string.Empty;
+                if (VisibilityBullets)
+                    ThirdIcon = false;
                 return;
             }
 
             if (!string.IsNullOrEmpty(SecondEntry)) {
                 _stackDigits.Pop();
                 SecondEntry = string.Empty;
+                if (VisibilityBullets)
+                    SecondIcon = false;
                 return;
             }
 
             if (!string.IsNullOrEmpty(FirstEntry)) {
                 _stackDigits.Pop();
                 FirstEntry = string.Empty;
+                if (VisibilityBullets)
+                    FirstIcon = false;
                 return;
             }
         }
@@ -126,24 +180,32 @@ namespace Tulsi.ViewModels {
             if (string.IsNullOrEmpty(FirstEntry)) {
                 _stackDigits.Push(digit);
                 FirstEntry = digit;
+                if (VisibilityBullets)
+                    FirstIcon = true;
                 return;
             }
 
             if (string.IsNullOrEmpty(SecondEntry)) {
                 _stackDigits.Push(digit);
                 SecondEntry = digit;
+                if (VisibilityBullets)
+                    SecondIcon = true;
                 return;
             }
 
             if (string.IsNullOrEmpty(ThirdEntry)) {
                 _stackDigits.Push(digit);
                 ThirdEntry = digit;
+                if (VisibilityBullets)
+                    ThirdIcon = true;
                 return;
             }
 
             if (string.IsNullOrEmpty(FourthEntry)) {
                 _stackDigits.Push(digit);
                 FourthEntry = digit;
+                if (VisibilityBullets)
+                    FourthIcon = true;
                 return;
             }
         }

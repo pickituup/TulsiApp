@@ -258,6 +258,10 @@ namespace Tulsi.NavigationFramework {
                     ViewType.PasscodeView,
                     ()=> new ViewBuider<PasscodeView>().GetView()
                 },
+                {
+                    ViewType.ForgotPasscodePage,
+                    ()=> new ViewBuider<ForgotPasscodePage>().GetView()
+                }
             };
         }
     }

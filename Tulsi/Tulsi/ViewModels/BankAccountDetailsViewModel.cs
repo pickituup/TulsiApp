@@ -24,7 +24,9 @@ namespace Tulsi.ViewModels {
             HARDCODED_DATA_INSERT();
 
             DisplaySearchPageCommand = new Command(() => BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.SearchPage));
+
             NavigateBackCommand = new Command(() => BaseSingleton<ViewSwitchingLogic>.Instance.NavigateOneStepBack());
+
             LooseTransactionSelectionCommand = new Command(() => {
                 SelectedBankAccountTransaction = null;
             });
