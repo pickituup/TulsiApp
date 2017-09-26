@@ -21,6 +21,8 @@ namespace Tulsi {
             SlideMenu = new SideMenuView();
 
             BindingContext = _viewModel = new SettingsViewModel();
+
+            _viewModel.Spot = spot_ConentView;
         }
 
         /// <summary>
@@ -45,8 +47,13 @@ namespace Tulsi {
         /// </summary>
         /// <returns></returns>
         protected override bool OnBackButtonPressed() {
-            BaseSingleton<ViewSwitchingLogic>.Instance.NavigateOneStepBack();
-            return true;
+            if (_viewModel.IsImportedViewVisible) {
+                _viewModel.NativeSenderCloseView();
+                return true;
+            } else {
+                BaseSingleton<ViewSwitchingLogic>.Instance.NavigateOneStepBack();
+                return true;
+            }
         }
 
         public void Dispose() {

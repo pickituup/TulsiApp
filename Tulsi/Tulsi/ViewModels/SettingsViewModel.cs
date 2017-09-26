@@ -8,10 +8,13 @@ using Tulsi.Helpers;
 using Tulsi.MVVM.Core;
 using Tulsi.NavigationFramework;
 using Tulsi.Observers;
+using Tulsi.SharedService;
 using Xamarin.Forms;
 
 namespace Tulsi.ViewModels {
     public sealed class SettingsViewModel : ViewModelBase, IViewModel {
+
+        public bool IsImportedViewVisible { get; set; }
 
         bool _isVisibleAmount;
         public bool IsVisibleAmount {
@@ -21,6 +24,38 @@ namespace Tulsi.ViewModels {
                     BaseSingleton<DashboardObserver>.Instance.OnHideAmount(value);
                     BaseSingleton<DashboardHelper>.Instance.HasSideMenuAmount = value;
                 }
+            }
+        }
+
+        bool _hasPasscode;
+        public bool HasPasscode {
+            get { return _hasPasscode; }
+            set {
+                if (SetProperty(ref _hasPasscode, value))
+
+                    if (Spot != null) {
+                        if (value) {
+                            Spot.TranslateTo(0, 0, 700);
+                            IsImportedViewVisible = value;
+                        } else {
+                            DependencyService.Get<ISQLiteService>().ClearPasscode();
+                        }
+                    }
+            }
+        }
+
+        IView _importedView;
+        public IView ImportedView {
+            get { return _importedView; }
+            set { SetProperty(ref _importedView, value); }
+        }
+
+        ContentView _spot;
+        public ContentView Spot {
+            get { return _spot; }
+            set {
+                if (SetProperty(ref _spot, value) && value != null)
+                    HideView();
             }
         }
 
@@ -57,6 +92,10 @@ namespace Tulsi.ViewModels {
         ///     ctor().
         /// </summary>
         public SettingsViewModel() {
+            HasPasscode = DependencyService.Get<ISQLiteService>().IsPasscodeExist();
+
+            ImportedView = BaseSingleton<ViewSwitchingLogic>.Instance.GetViewByType(ViewType.PasscodeView);
+
             IsVisibleAmount = BaseSingleton<DashboardHelper>.Instance.HasSideMenuAmount;
 
             DisplaySearchPageCommand = new Command(() => BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.SearchPage));
@@ -66,6 +105,32 @@ namespace Tulsi.ViewModels {
             CurrencyItems = GetCurrencyItems();
 
             SelectedCurrencyItem = CurrencyItems.FirstOrDefault();
+
+            MessagingCenter.Subscribe<string>(this, "exitView", AutoHideView);
+        }
+
+        private void AutoHideView(string obj) {
+            HideView();
+        }
+
+        public async void CloseImportedView() {
+            if (this.ImportedView != null) {
+                await HideViewAsync();
+                ImportedView.Dispose();
+                ImportedView = null;
+            }
+        }
+
+        public void NativeSenderCloseView() {
+            HideView();
+        }
+
+        private async void HideView() => await HideViewAsync();
+
+        private async Task HideViewAsync() {
+            IsImportedViewVisible = false;
+            int displayHeight = DependencyService.Get<IDisplaySize>().GetHeight();
+            await Spot.TranslateTo(0, displayHeight, 700);
         }
 
         private List<string> GetCurrencyItems() {
@@ -78,6 +143,11 @@ namespace Tulsi.ViewModels {
         }
 
         public void Dispose() {
+            if (ImportedView != null) {
+                ImportedView.Dispose();
+            }
+
+            MessagingCenter.Unsubscribe<string>(this, "exitView");
         }
     }
 }
