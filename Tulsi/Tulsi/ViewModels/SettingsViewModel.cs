@@ -105,6 +105,12 @@ namespace Tulsi.ViewModels {
             CurrencyItems = GetCurrencyItems();
 
             SelectedCurrencyItem = CurrencyItems.FirstOrDefault();
+
+            MessagingCenter.Subscribe<string>(this, "exitView", AutoHideView);
+        }
+
+        private void AutoHideView(string obj) {
+            HideView();
         }
 
         public async void CloseImportedView() {
@@ -140,6 +146,8 @@ namespace Tulsi.ViewModels {
             if (ImportedView != null) {
                 ImportedView.Dispose();
             }
+
+            MessagingCenter.Unsubscribe<string>(this, "exitView");
         }
     }
 }

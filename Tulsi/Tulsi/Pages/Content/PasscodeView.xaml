@@ -12,7 +12,7 @@
             </Grid.RowDefinitions>
             <Label
                 HorizontalOptions="Center"
-                Text="ENTER NEW PASSCODE"
+                Text="{Binding Title}"
                 TextColor="White"
                 VerticalOptions="Center" />
 
@@ -48,30 +48,96 @@
                 VerticalOptions="FillAndExpand"
                 WidthRequest="120" />
 
-            <StackLayout
-                Margin="0,0,0,20"
-                BackgroundColor="Transparent"
-                Orientation="Horizontal">
-                <StackLayout.Resources>
-                    <ResourceDictionary>
-                        <Style x:Key="stackLabel" TargetType="Label">
-                            <Setter Property="HeightRequest" Value="60" />
-                            <Setter Property="WidthRequest" Value="60" />
-                            <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
-                            <Setter Property="VerticalOptions" Value="Center" />
-                            <Setter Property="FontSize" Value="36" />
-                            <Setter Property="TextColor" Value="#2E2A2F" />
-                            <Setter Property="HorizontalTextAlignment" Value="Center" />
-                            <Setter Property="VerticalTextAlignment" Value="Center" />
-                            <Setter Property="BackgroundColor" Value="#F7F3F8" />
-                        </Style>
-                    </ResourceDictionary>
-                </StackLayout.Resources>
-                <Label Style="{StaticResource stackLabel}" Text="{Binding FirstEntry}" />
-                <Label Style="{StaticResource stackLabel}" Text="{Binding SecondEntry}" />
-                <Label Style="{StaticResource stackLabel}" Text="{Binding ThirdEntry}" />
-                <Label Style="{StaticResource stackLabel}" Text="{Binding FourthEntry}" />
-            </StackLayout>
+            <Grid Margin="0,0,0,20" BackgroundColor="Transparent">
+                <StackLayout BackgroundColor="Transparent" Orientation="Horizontal">
+                    <StackLayout.Resources>
+                        <ResourceDictionary>
+                            <Style x:Key="stackLabel" TargetType="Label">
+                                <Setter Property="HeightRequest" Value="60" />
+                                <Setter Property="WidthRequest" Value="60" />
+                                <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+                                <Setter Property="VerticalOptions" Value="Center" />
+                                <Setter Property="FontSize" Value="36" />
+                                <Setter Property="TextColor" Value="#2E2A2F" />
+                                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                                <Setter Property="VerticalTextAlignment" Value="Center" />
+                                <Setter Property="BackgroundColor" Value="#F7F3F8" />
+                            </Style>
+                        </ResourceDictionary>
+                    </StackLayout.Resources>
+                    <Label Style="{StaticResource stackLabel}" Text="{Binding FirstEntry}" />
+                    <Label Style="{StaticResource stackLabel}" Text="{Binding SecondEntry}" />
+                    <Label Style="{StaticResource stackLabel}" Text="{Binding ThirdEntry}" />
+                    <Label Style="{StaticResource stackLabel}" Text="{Binding FourthEntry}" />
+                </StackLayout>
+
+                <StackLayout
+                    BackgroundColor="Transparent"
+                    IsVisible="{Binding VisibilityBullets}"
+                    Orientation="Horizontal">
+                    <ContentView
+                        BackgroundColor="#F7F3F8"
+                        HeightRequest="60"
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="Center"
+                        WidthRequest="60">
+                        <Image
+                            BackgroundColor="#F7F3F8"
+                            HeightRequest="10"
+                            HorizontalOptions="Center"
+                            IsVisible="{Binding FirstIcon}"
+                            Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.black_bullet.png}"
+                            VerticalOptions="Center"
+                            WidthRequest="10" />
+                    </ContentView>
+                    <ContentView
+                        BackgroundColor="#F7F3F8"
+                        HeightRequest="60"
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="Center"
+                        WidthRequest="60">
+                        <Image
+                            BackgroundColor="#F7F3F8"
+                            HeightRequest="10"
+                            HorizontalOptions="Center"
+                            IsVisible="{Binding SecondIcon}"
+                            Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.black_bullet.png}"
+                            VerticalOptions="Center"
+                            WidthRequest="10" />
+                    </ContentView>
+                    <ContentView
+                        BackgroundColor="#F7F3F8"
+                        HeightRequest="60"
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="Center"
+                        WidthRequest="60">
+                        <Image
+                            BackgroundColor="#F7F3F8"
+                            HeightRequest="10"
+                            HorizontalOptions="Center"
+                            IsVisible="{Binding ThirdIcon}"
+                            Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.black_bullet.png}"
+                            VerticalOptions="Center"
+                            WidthRequest="10" />
+                    </ContentView>
+                    <ContentView
+                        BackgroundColor="#F7F3F8"
+                        HeightRequest="60"
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="Center"
+                        WidthRequest="60">
+                        <Image
+                            BackgroundColor="#F7F3F8"
+                            HeightRequest="10"
+                            HorizontalOptions="Center"
+                            IsVisible="{Binding FourthIcon}"
+                            Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.black_bullet.png}"
+                            VerticalOptions="Center"
+                            WidthRequest="10" />
+                    </ContentView>
+
+                </StackLayout>
+            </Grid>
 
             <Grid
                 Margin="5"

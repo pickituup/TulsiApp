@@ -11,9 +11,49 @@ using Xamarin.Forms;
 namespace Tulsi.ViewModels.Content {
     public sealed class PasscodeViewModel : ViewModelBase, IViewModel {
 
+        private const string RE_ENTER_PIN = "RE-ENTER PIN";
+
+        private const string NEW_PIN = "ENTER NEW PASSCODE";
+
         private const int PASSCODE_LENGTH = 4;
 
         private Stack<string> _stackDigits = new Stack<string>();
+
+        bool _visibilityBullets;
+        public bool VisibilityBullets {
+            get { return _visibilityBullets; }
+            set { SetProperty(ref _visibilityBullets, value); }
+        }
+
+        bool _firstIcon;
+        public bool FirstIcon {
+            get { return _firstIcon; }
+            set { SetProperty(ref _firstIcon, value); }
+        }
+
+        bool _secondIcon;
+        public bool SecondIcon {
+            get { return _secondIcon; }
+            set { SetProperty(ref _secondIcon, value); }
+        }
+
+        bool _thirdIcon;
+        public bool ThirdIcon {
+            get { return _thirdIcon; }
+            set { SetProperty(ref _thirdIcon, value); }
+        }
+
+        bool _fourthIcon;
+        public bool FourthIcon {
+            get { return _fourthIcon; }
+            set { SetProperty(ref _fourthIcon, value); }
+        }
+
+        string _title;
+        public string Title {
+            get { return _title; }
+            set { SetProperty(ref _title, value); }
+        }
 
         string _firstEntry;
         public string FirstEntry {
@@ -55,6 +95,8 @@ namespace Tulsi.ViewModels.Content {
         ///     ctor().
         /// </summary>
         public PasscodeViewModel() {
+            Title = NEW_PIN;
+
             ButtonInputCommand = new Command(OnInputedDigit);
 
             CleanDigitCommand = new Command(OnCleanDigit);
@@ -67,24 +109,32 @@ namespace Tulsi.ViewModels.Content {
             if (!string.IsNullOrEmpty(FourthEntry)) {
                 _stackDigits.Pop();
                 FourthEntry = string.Empty;
+                if (VisibilityBullets)
+                    FourthIcon = false;
                 return;
             }
 
             if (!string.IsNullOrEmpty(ThirdEntry)) {
                 _stackDigits.Pop();
                 ThirdEntry = string.Empty;
+                if (VisibilityBullets)
+                    ThirdIcon = false;
                 return;
             }
 
             if (!string.IsNullOrEmpty(SecondEntry)) {
                 _stackDigits.Pop();
                 SecondEntry = string.Empty;
+                if (VisibilityBullets)
+                    SecondIcon = false;
                 return;
             }
 
             if (!string.IsNullOrEmpty(FirstEntry)) {
                 _stackDigits.Pop();
                 FirstEntry = string.Empty;
+                if (VisibilityBullets)
+                    FirstIcon = false;
                 return;
             }
         }
@@ -92,8 +142,50 @@ namespace Tulsi.ViewModels.Content {
         private void OnInputedDigit(object obj) {
             SetPasscode((string)obj);
 
-            if (_stackDigits.Count == PASSCODE_LENGTH)
-                SavePasscode();
+            if (!DependencyService.Get<ISQLiteService>().IsPasscodeExist()) {
+                if (_stackDigits.Count == PASSCODE_LENGTH)
+                    SavePasscode();
+            } else {
+                if (_stackDigits.Count == PASSCODE_LENGTH) {
+                    ConfirmPasscode();
+                }
+            }
+        }
+
+        private void ConfirmPasscode() {
+            string result = string.Empty;
+            foreach (var item in _stackDigits) {
+                result = item + result;
+            }
+
+            int.TryParse(result, out int pin);
+            bool valid = DependencyService.Get<ISQLiteService>().CheckPin(pin);
+
+            AutoExitView(valid);
+        }
+
+        private async void AutoExitView(bool valid) {
+            if (valid) {
+                MessagingCenter.Send("autohide", "exitView");
+                ClearViewData();
+            } else {
+                await DisplayAlert("WARNING", "Please re-enter passcode", "ok");
+            }
+        }
+
+        private void ClearViewData() {
+            Title = NEW_PIN;
+            _stackDigits.Clear();
+            VisibilityBullets = false;
+            ClearImputCell();
+            ClearIconCell();
+        }
+
+        private void ClearIconCell() {
+            FirstIcon = false;
+            SecondIcon = false;
+            ThirdIcon = false;
+            FourthIcon = false;
         }
 
         private async void SavePasscode() {
@@ -111,7 +203,10 @@ namespace Tulsi.ViewModels.Content {
         }
 
         private void ReEnterPasscode() {
+            Title = RE_ENTER_PIN;
+            _stackDigits.Clear();
             ClearImputCell();
+            VisibilityBullets = true;
         }
 
         private void ClearImputCell() {
@@ -128,29 +223,38 @@ namespace Tulsi.ViewModels.Content {
             if (string.IsNullOrEmpty(FirstEntry)) {
                 _stackDigits.Push(digit);
                 FirstEntry = digit;
+                if (VisibilityBullets)
+                    FirstIcon = true;
                 return;
             }
 
             if (string.IsNullOrEmpty(SecondEntry)) {
                 _stackDigits.Push(digit);
                 SecondEntry = digit;
+                if (VisibilityBullets)
+                    SecondIcon = true;
                 return;
             }
 
             if (string.IsNullOrEmpty(ThirdEntry)) {
                 _stackDigits.Push(digit);
                 ThirdEntry = digit;
+                if (VisibilityBullets)
+                    ThirdIcon = true;
                 return;
             }
 
             if (string.IsNullOrEmpty(FourthEntry)) {
                 _stackDigits.Push(digit);
                 FourthEntry = digit;
+                if (VisibilityBullets)
+                    FourthIcon = true;
                 return;
             }
         }
 
         public void Dispose() {
+            _stackDigits.Clear();
         }
     }
 }
