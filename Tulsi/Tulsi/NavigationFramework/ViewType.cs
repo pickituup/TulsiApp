@@ -168,6 +168,10 @@ namespace Tulsi.NavigationFramework {
 
         ColdStorePage,
 
-        GodownPage
+        GodownPage,
+
+        PasscodePage,
+
+        PasscodeView
     }
 }

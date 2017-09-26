@@ -1,12 +1,11 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage
-    x:Class="Tulsi.PasscodePage"
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="Tulsi.Pages.Content.PasscodeView"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:toolKitImageResourceExtension="clr-namespace:Tulsi.ToolKit.MarkupExtensions"
-    NavigationPage.HasNavigationBar="false">
+    xmlns:toolKitImageResourceExtension="clr-namespace:Tulsi.ToolKit.MarkupExtensions">
 
-    <StackLayout x:Name="HeaderLayout" BackgroundColor="Transparent">
+    <StackLayout x:Name="HeaderLayout" BackgroundColor="#f3f3f3">
         <!--  ActionBar  -->
         <Grid x:Name="ToolbarGrid" BackgroundColor="#2793F5">
             <Grid.RowDefinitions>
@@ -235,4 +234,4 @@
             </Grid>
         </StackLayout>
     </StackLayout>
-</ContentPage>
+</ContentView>

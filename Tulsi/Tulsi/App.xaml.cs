@@ -4,6 +4,7 @@ using Tulsi.Helpers;
 using Tulsi.NavigationFramework;
 using Tulsi.Pages;
 using Tulsi.Pages.temp;
+using Tulsi.SharedService;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -15,9 +16,13 @@ namespace Tulsi {
         public App() {
             InitializeComponent();
 
-            //MainPage = new ProfilePage();
+            //MainPage = new PasscodePage();
 
-            BaseSingleton<ViewSwitchingLogic>.Instance.BuildNavigationStack(ViewType.TutorialPage);
+            if (DependencyService.Get<ISQLiteService>().IsPasscodeExist()) {
+                BaseSingleton<ViewSwitchingLogic>.Instance.BuildNavigationStack(ViewType.PasscodePage);
+            } else {
+                BaseSingleton<ViewSwitchingLogic>.Instance.BuildNavigationStack(ViewType.TutorialPage);
+            }
         }
 
         protected override void OnStart() {
