@@ -24,7 +24,7 @@ namespace Tulsi.Pages.Content {
         }
 
         public void ApplyVisualChangesWhileNavigating() {
-            
+
         }
 
         public void Dispose() {

@@ -4,8 +4,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:toolKitImageResourceExtension="clr-namespace:Tulsi.ToolKit.MarkupExtensions">
-
-    <StackLayout x:Name="HeaderLayout" BackgroundColor="#f3f3f3">
+    <StackLayout x:Name="HeaderLayout" BackgroundColor="White">
         <!--  ActionBar  -->
         <Grid x:Name="ToolbarGrid" BackgroundColor="#2793F5">
             <Grid.RowDefinitions>
