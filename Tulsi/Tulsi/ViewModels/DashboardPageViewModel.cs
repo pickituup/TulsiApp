@@ -58,6 +58,12 @@ namespace Tulsi.ViewModels {
             set { SetProperty(ref _newsData, value); }
         }
 
+        private bool _isRefreshing;
+        public bool IsRefreshing {
+            get => _isRefreshing;
+            private set => SetProperty<bool>(ref _isRefreshing, value);
+        }
+
         public ICommand DisplaySearchPageCommand { get; private set; }
 
         public ICommand DisplayLaddanPageCommand { get; private set; }
@@ -69,6 +75,8 @@ namespace Tulsi.ViewModels {
         public ICommand DisplayColdStorePageCommand { get; private set; }
 
         public ICommand DisplayGodownPageCommand { get; private set; }
+
+        public ICommand RefreshCommand { get; private set; }
 
         /// <summary>
         ///     ctor().
@@ -119,6 +127,26 @@ namespace Tulsi.ViewModels {
             DisplayColdStorePageCommand = new Command(() => BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.ColdStorePage));
 
             DisplayGodownPageCommand = new Command(() => BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.GodownPage));
+
+            RefreshCommand = new Command(() => {
+                if (IsRefreshing) {
+                    return;
+                }
+
+                int secondsCounter = 0;
+                IsRefreshing = true;
+
+                Device.StartTimer(TimeSpan.FromSeconds(1), () => {
+                    if (secondsCounter <= 3) {
+                        secondsCounter++;
+
+                        return true;
+                    }
+
+                    IsRefreshing = false;
+                    return false;
+                });
+            });
         }
 
         private void OnVisibleTodayBalance(object sender, VisibleTodayBalanceArgs e) {
