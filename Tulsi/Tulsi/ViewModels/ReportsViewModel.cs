@@ -29,8 +29,17 @@ namespace Tulsi.ViewModels {
             set {
                 if (SetProperty(ref _selectedMenuItem, value) && value != null) {
 
-                    BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.ReportsIntermediatePage);
-                    BaseSingleton<NavigationObserver>.Instance.OnNavigatedContent(value.Name, value.ViewType);
+                    //
+                    // TODO: add possibility to interact with action bar of each page so we don't need 
+                    // to use Intermediate page and we can remove all content duplicates of some pages.
+                    //
+                    if (value.ViewType == ViewType.AddReportAccessPage) {
+                        BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(value.ViewType);
+                    }
+                    else {
+                        BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.ReportsIntermediatePage);
+                        BaseSingleton<NavigationObserver>.Instance.OnNavigatedContent(value.Name, value.ViewType);
+                    }
 
                     SelectedMenuItem = null;
                 }

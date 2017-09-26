@@ -15,9 +15,35 @@ namespace Tulsi.ViewModels {
     public sealed class BankAccountDetailsViewModel : ViewModelBase, IViewModel {
 
         ObservableCollection<BankAccountData> _bankAccountDataSource;
+        public object _selectedBankAccountTransaction;
+
+        /// <summary>
+        ///     ctor().
+        /// </summary>
+        public BankAccountDetailsViewModel() {
+            HARDCODED_DATA_INSERT();
+
+            DisplaySearchPageCommand = new Command(() => BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.SearchPage));
+            NavigateBackCommand = new Command(() => BaseSingleton<ViewSwitchingLogic>.Instance.NavigateOneStepBack());
+            LooseTransactionSelectionCommand = new Command(() => {
+                SelectedBankAccountTransaction = null;
+            });
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public ObservableCollection<BankAccountData> BankAccountSource {
             get { return _bankAccountDataSource; }
             set { SetProperty(ref _bankAccountDataSource, value); }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public object SelectedBankAccountTransaction {
+            get => _selectedBankAccountTransaction;
+            set => SetProperty<object>(ref _selectedBankAccountTransaction, value);
         }
 
         // Navigate back.
@@ -27,48 +53,144 @@ namespace Tulsi.ViewModels {
         public ICommand DisplaySearchPageCommand { get; private set; }
 
         /// <summary>
-        ///     ctor().
+        /// 
         /// </summary>
-        public BankAccountDetailsViewModel() {
-            BankAccountSource = GetData();
+        public ICommand LooseTransactionSelectionCommand { get; private set; }
 
-            DisplaySearchPageCommand = new Command(() => BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.SearchPage));
-
-            NavigateBackCommand = new Command(() => BaseSingleton<ViewSwitchingLogic>.Instance.NavigateOneStepBack());
-
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Dispose() {
 
         }
 
-        private ObservableCollection<BankAccountData> GetData() {
-            return new ObservableCollection<BankAccountData>() {
+        /// <summary>
+        /// 
+        /// </summary>
+        private void HARDCODED_DATA_INSERT() {
+            BankAccountSource = new ObservableCollection<BankAccountData>() {
                 new BankAccountData() {
-                    Title = "Description",
-                    Description = "Amount",
                     Date = DateTime.Now,
-                    Data = new List<BankAccountEntry> {
-                        new BankAccountEntry { Cases = "430", Owner = "KFC Lokender", ColorFrame = Color.Red },
-                        new BankAccountEntry { Cases = "289", Owner = "RKO Ramrsh", ColorFrame = Color.Green },
-                        new BankAccountEntry { Cases = "29", Owner = "NS Cuttack", ColorFrame = Color.Red },
-                        new BankAccountEntry { Cases = "29", Owner = "SSA Delhi", ColorFrame = Color.Green }
+                    Title = "Owner",
+                    Description = "Amount",
+                    Data = new List<BankAccountEntry>() {
+                        new BankAccountEntry() {
+                            Name = "KFC Locender",
+                            Boxes = "340",
+                            Date = DateTime.Now,
+                            Ammounted = 30000,
+                            IsPendingRates = false,
+                            Type = "Debit",
+                            Status = "Paid to",
+                            Description = "SBI/Deduct/00923#"
+                        },
+                        new BankAccountEntry() {
+                            Name = "KFO Kavalek",
+                            Boxes = "140",
+                            Date = DateTime.Now,
+                            Ammounted = 33000,
+                            IsPendingRates = true,
+                            Type = "Debit",
+                            Status = "Pending",
+                            Description = "SBI/Deduct/00924#"
+                        },
+                        new BankAccountEntry() {
+                            Name = "HFC Shtuergjik",
+                            Boxes = "740",
+                            Date = DateTime.Now,
+                            Ammounted = 300000,
+                            IsPendingRates = false,
+                            Type = "Debit",
+                            Status = "Paid to",
+                            Description = "SBI/Deduct/00923#"
+                        },
                     }
                 },
                 new BankAccountData() {
-                    Title = "Owner",
-                    Description = "Cases",
                     Date = DateTime.Now,
-                    Data = new List<BankAccountEntry> {
-                        new BankAccountEntry { Cases = "430", Owner = "KFC Lokender", ColorFrame = Color.Green },
-                        new BankAccountEntry { Cases = "289", Owner = "RKO Ramrsh", ColorFrame = Color.Red },
-                        new BankAccountEntry { Cases = "289", Owner = "RKO Ramrsh", ColorFrame = Color.Green },
-                        new BankAccountEntry { Cases = "289", Owner = "RKO Ramrsh", ColorFrame = Color.Green },
-                        new BankAccountEntry { Cases = "29", Owner = "NS Cuttack", ColorFrame = Color.Green },
-                        new BankAccountEntry { Cases = "29", Owner = "SSA Delhi", ColorFrame = Color.Red }
+                    Title = "Owner",
+                    Description = "Amount",
+                    Data = new List<BankAccountEntry>() {
+                        new BankAccountEntry() {
+                            Name = "KFO Kavalek",
+                            Boxes = "140",
+                            Date = DateTime.Now,
+                            Ammounted = 33000,
+                            IsPendingRates = true,
+                            Type = "Debit",
+                            Status = "Pending",
+                            Description = "SBI/Deduct/00924#"
+                        },
+                        new BankAccountEntry() {
+                            Name = "KFC Locender",
+                            Boxes = "340",
+                            Date = DateTime.Now,
+                            Ammounted = 30000,
+                            IsPendingRates = false,
+                            Type = "Debit",
+                            Status = "Paid to",
+                            Description = "SBI/Deduct/00923#"
+                        },
+                        new BankAccountEntry() {
+                            Name = "HFC Shtuergjik",
+                            Boxes = "740",
+                            Date = DateTime.Now,
+                            Ammounted = 300000,
+                            IsPendingRates = false,
+                            Type = "Debit",
+                            Status = "Paid to",
+                            Description = "SBI/Deduct/00923#"
+                        },
+                        new BankAccountEntry() {
+                            Name = "KFC Locender",
+                            Boxes = "340",
+                            Date = DateTime.Now,
+                            Ammounted = 30000,
+                            IsPendingRates = false,
+                            Type = "Debit",
+                            Status = "Paid to",
+                            Description = "SBI/Deduct/00923#"
+                        }
                     }
-                }
+                },
+                new BankAccountData() {
+                    Date = DateTime.Now,
+                    Title = "Owner",
+                    Description = "Amount",
+                    Data = new List<BankAccountEntry>() {
+                        new BankAccountEntry() {
+                            Name = "KFC Locender",
+                            Boxes = "340",
+                            Date = DateTime.Now,
+                            Ammounted = 30000,
+                            IsPendingRates = false,
+                            Type = "Debit",
+                            Status = "Paid to",
+                            Description = "SBI/Deduct/00923#"
+                        },
+                        new BankAccountEntry() {
+                            Name = "KFO Kavalek",
+                            Boxes = "140",
+                            Date = DateTime.Now,
+                            Ammounted = 33000,
+                            IsPendingRates = true,
+                            Type = "Debit",
+                            Status = "Pending",
+                            Description = "SBI/Deduct/00924#"
+                        },
+                        new BankAccountEntry() {
+                            Name = "KFO Kavalek",
+                            Boxes = "140",
+                            Date = DateTime.Now,
+                            Ammounted = 33000,
+                            IsPendingRates = true,
+                            Type = "Debit",
+                            Status = "Pending",
+                            Description = "SBI/Deduct/00924#"
+                        },
+                    }
+                },
             };
-        }
-        public void Dispose() {
-
         }
     }
 }

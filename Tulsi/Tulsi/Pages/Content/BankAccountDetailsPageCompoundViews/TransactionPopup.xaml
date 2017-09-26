@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:toolKitBindingValueConverters="clr-namespace:Tulsi.ToolKit.BindingValueConverters"
+    x:Class="Tulsi.Pages.Content.BankAccountDetailsPageCompoundViews.TransactionPopup"
+    BackgroundColor="Transparent">
+
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <Color
+                x:Key="semiTransparentBackground_Color">#60000000</Color>
+
+            <toolKitBindingValueConverters:BoolToGenericObjectConverter
+                x:Key="BoolToGreenOrBlackColorConverter"
+                x:TypeArguments="Color"
+                FalseObject="DarkGreen"
+                TrueObject="Red" />
+        </ResourceDictionary>
+    </ContentView.Resources>
+
+    <Grid
+        RowSpacing="0"
+        ColumnSpacing="0"
+        BackgroundColor="{StaticResource Key=semiTransparentBackground_Color}">
+        <Grid.RowDefinitions>
+            <RowDefinition
+                Height="*"/>
+            <RowDefinition
+                Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <ContentView>
+            <ContentView.GestureRecognizers>
+                <TapGestureRecognizer
+                    Command="{Binding Path=LooseTransactionSelectionCommand}"/>
+            </ContentView.GestureRecognizers>
+        </ContentView>
+
+        <ContentView
+            x:Name="_movableContentSpot_ContentView"
+            Grid.Row="1">
+            <StackLayout
+                Grid.Row="1"
+                Padding="15,13"
+                Spacing="13">
+                <StackLayout.Resources>
+                    <ResourceDictionary>
+                        <Style
+                            TargetType="Label">
+                            <Setter
+                                Property="FontSize"
+                                Value="Medium"/>
+                        </Style>
+                    </ResourceDictionary>
+                </StackLayout.Resources>
+                <Label
+                    Text="Transaction Detail"
+                    HorizontalTextAlignment="Center"
+                    TextColor="DarkGray"/>
+
+                <StackLayout
+                    Orientation="Vertical">
+                    <StackLayout.Resources>
+                        <ResourceDictionary>
+                            <Style
+                                TargetType="Label">
+                                <Setter
+                                    Property="TextColor"
+                                    Value="Black"/>
+                            </Style>
+
+                            <Style
+                                TargetType="StackLayout">
+                                <Setter
+                                    Property="Orientation"
+                                    Value="Horizontal"/>
+                            </Style>
+                        </ResourceDictionary>
+                    </StackLayout.Resources>
+
+                    <StackLayout>
+                        <Label
+                            Text="&#8226; Name:"/>
+                        <Label
+                            Text="{Binding Path=Path=SelectedBankAccountTransaction.Name}"/>
+                    </StackLayout>
+                    <StackLayout>
+                        <Label
+                            Text="&#8226; Type:"/>
+                        <Label
+                            Text="{Binding Path=Path=SelectedBankAccountTransaction.Type}"/>
+                        <Label
+                            Text="{Binding Path=SelectedBankAccountTransaction.Status,
+                                StringFormat='({0})'}"
+                            TextColor="{Binding Path=SelectedBankAccountTransaction.IsPendingRates,
+                                Converter={StaticResource Key=BoolToGreenOrBlackColorConverter}}"/>
+                    </StackLayout>
+                    <StackLayout>
+                        <Label
+                            Text="&#8226; Description:"/>
+                        <Label
+                            Text="{Binding Path=Path=SelectedBankAccountTransaction.Description}"/>
+                    </StackLayout>
+                    <StackLayout>
+                        <Label
+                            Text="&#8226; Date:"/>
+                        <Label
+                            Text="{Binding Path=Path=SelectedBankAccountTransaction.Date,
+                                StringFormat='{0:d/MM/yy}'}"/>
+                    </StackLayout>
+                    <StackLayout>
+                        <Label
+                            Text="&#8226; Time"/>
+                        <Label
+                            Text="{Binding Path=Path=SelectedBankAccountTransaction.Date,
+                                StringFormat='{0:HH:mm}'}}"/>
+                    </StackLayout>
+                    <StackLayout>
+                        <Label
+                            Text="&#8226; Ammounted:"/>
+                        <Label
+                            Text="{Binding StringFormat='{0:n0}',
+                                Path=Path=SelectedBankAccountTransaction.Ammounted}"/>
+                    </StackLayout>
+                </StackLayout>
+
+                <Frame
+                    Padding="35,5"
+                    BackgroundColor="#2793F5"
+                    HasShadow="False"
+                    HorizontalOptions="Center">
+                    <Label
+                        Text="View in Ledger"
+                        TextColor="White"/>
+                </Frame>
+            </StackLayout>
+        </ContentView>
+    </Grid>
+</ContentView>

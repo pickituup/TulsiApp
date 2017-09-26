@@ -1,11 +1,47 @@
-﻿using Xamarin.Forms;
+﻿using System;
+using Xamarin.Forms;
 
 namespace Tulsi.Model {
     public class BankAccountEntry {
-        public Color ColorFrame { get; set; }
 
-        public string Owner { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public string Name { get; set; }
 
-        public string Cases { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public string Boxes { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string Description { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public DateTime Date { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string Type { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string Status { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public decimal Ammounted { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool IsPendingRates { get; set; }
     }
 }

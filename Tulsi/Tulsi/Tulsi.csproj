@@ -64,9 +64,13 @@
       <DependentUpon>ExpandedGroup.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\WhiteViewCell.cs" />
-    <Compile Include="Data\DataBase\DbContext.cs" />
-    <Compile Include="Data\DataBase\Tables\PasscodeState.cs" />
     <Compile Include="Model\TodayRatesDataCollection.cs" />
+    <Compile Include="Pages\AddReportAccessPage.xaml.cs">
+      <DependentUpon>AddReportAccessPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Content\BankAccountDetailsPageCompoundViews\TransactionPopup.xaml.cs">
+      <DependentUpon>TransactionPopup.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Content\ColdStorePageCompoundedViews\TransactionPopup.xaml.cs">
       <DependentUpon>TransactionPopup.xaml</DependentUpon>
     </Compile>
@@ -78,9 +82,6 @@
     </Compile>
     <Compile Include="Pages\Content\LadaanPageCompoundViews\TransactionPopup.xaml.cs">
       <DependentUpon>TransactionPopup.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Content\PasscodeView.xaml.cs">
-      <DependentUpon>PasscodeView.xaml</DependentUpon>
     </Compile>
     <Compile Include="SharedService\IDeviceServices.cs" />
     <Compile Include="ForDeveloper\MemoryInfo.cs" />
@@ -188,7 +189,7 @@
     <Compile Include="Pages\Content\AuditLogView.xaml.cs">
       <DependentUpon>AuditLogView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Content\BankAccountDetailControl\BankAccauntDetailMenuItem.xaml.cs">
+    <Compile Include="Pages\Content\BankAccountDetailsPageCompoundViews\BankAccauntDetailMenuItem.xaml.cs">
       <DependentUpon>BankAccauntDetailMenuItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Content\BankAccountsView.xaml.cs">
@@ -298,7 +299,6 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SharedService\IDisplaySize.cs" />
-    <Compile Include="SharedService\ISQLiteService.cs" />
     <Compile Include="ToolKit\BindingValueConverters\BoolToGenericObjectConverter.cs" />
     <Compile Include="ToolKit\BindingValueConverters\ByteToImageSourceConverter.cs" />
     <Compile Include="ToolKit\BindingValueConverters\IsNullToBoolConverter.cs" />
@@ -311,6 +311,7 @@
     <Compile Include="ToolKit\BindingValueConverters\StringToResourceImageSourceConverter.cs" />
     <Compile Include="ToolKit\MarkupExtensions\ImageResourceExtension.cs" />
     <Compile Include="ToolKit\Triggers\ChangeBackgroundColorTriggerAction.cs" />
+    <Compile Include="ViewModels\AddReportAccessPageViewModel.cs" />
     <Compile Include="ViewModels\ArrivalDetailsViewModel.cs" />
     <Compile Include="ViewModels\ArrivalPageViewModel.cs" />
     <Compile Include="ViewModels\AuditLogDetailsPageViewModel.cs" />
@@ -332,7 +333,6 @@
     <Compile Include="ViewModels\Content\ExpensesViewModel.cs" />
     <Compile Include="ViewModels\Content\GrowerProfileViewModel.cs" />
     <Compile Include="ViewModels\Content\GrowerViewModel.cs" />
-    <Compile Include="ViewModels\Content\PasscodeViewModel.cs" />
     <Compile Include="ViewModels\DashboardPageViewModel.cs" />
     <Compile Include="ViewModels\ExpensesListPageViewModel.cs" />
     <Compile Include="ViewModels\ExpensesPageViewModel.cs" />
@@ -342,7 +342,6 @@
     <Compile Include="ViewModels\LadaanPageViewModel.cs" />
     <Compile Include="ViewModels\LatePaymentsPageViewModel.cs" />
     <Compile Include="ViewModels\Menu\SideMenuViewModel.cs" />
-    <Compile Include="ViewModels\PasscodePageViewModel.cs" />
     <Compile Include="ViewModels\ProfilePageViewModel.cs" />
     <Compile Include="ViewModels\ProfitViewModel.cs" />
     <Compile Include="ViewModels\ReportsIntermediatePageViewModel.cs" />
@@ -374,18 +373,6 @@
     <Reference Include="SlideOverKit, Version=1.0.6135.18790, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\SlideOverKit.2.1.4\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\SlideOverKit.dll</HintPath>
       <Private>True</Private>
-    </Reference>
-    <Reference Include="SQLite-net, Version=1.4.118.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\sqlite-net-pcl.1.4.118\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10\SQLite-net.dll</HintPath>
-    </Reference>
-    <Reference Include="SQLitePCLRaw.batteries_green, Version=1.0.0.0, Culture=neutral, PublicKeyToken=a84b7dcfb1391f7f, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\SQLitePCLRaw.bundle_green.1.1.5\lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid10+MonoTouch10+Xamarin.iOS10\SQLitePCLRaw.batteries_green.dll</HintPath>
-    </Reference>
-    <Reference Include="SQLitePCLRaw.batteries_v2, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8226ea5df37bcae9, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\SQLitePCLRaw.bundle_green.1.1.5\lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid10+MonoTouch10+Xamarin.iOS10\SQLitePCLRaw.batteries_v2.dll</HintPath>
-    </Reference>
-    <Reference Include="SQLitePCLRaw.core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=1488e028ca7ab535, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\SQLitePCLRaw.core.1.1.5\lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid10+MonoTouch10+Xamarin.iOS10\SQLitePCLRaw.core.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.Calculate.Portable, Version=15.2451.0.43, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Syncfusion.Xamarin.Calculate.15.2.0.43\lib\portable-win+net45+wp80+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Syncfusion.Calculate.Portable.dll</HintPath>
@@ -930,7 +917,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Pages\Content\BankAccountDetailControl\BankAccauntDetailMenuItem.xaml">
+    <EmbeddedResource Include="Pages\Content\BankAccountDetailsPageCompoundViews\BankAccauntDetailMenuItem.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -965,7 +952,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Pages\Content\ColdStoreControl\" />
+    <EmbeddedResource Include="Pages\Content\BankAccountDetailsPageCompoundViews\TransactionPopup.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pages\Content\ColdStorePageCompoundedViews\TransactionPopup.xaml">
@@ -974,10 +964,13 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Pages\Content\PasscodeView.xaml">
+    <EmbeddedResource Include="Pages\AddReportAccessPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\ic_decline_white_no_border.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.4.270\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.4.270\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />

@@ -1,7 +1,7 @@
 ﻿using Tulsi.Controls;
 using Xamarin.Forms.Xaml;
 
-namespace Tulsi.Pages.Content.BankAccountDetailControl {
+namespace Tulsi.Pages.Content.BankAccountDetailsPageCompoundViews {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class BankAccauntDetailMenuItem : StackListItemBase {
         public BankAccauntDetailMenuItem() {

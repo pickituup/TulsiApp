@@ -72,10 +72,6 @@ namespace Tulsi.NavigationFramework {
                 {
                     ViewType.LoginPage,
                     () => new ViewBuider<LoginPage>().GetViewInNavigationFrame()
-                },
-                {
-                    ViewType.PasscodePage,
-                    ()=> new ViewBuider<PasscodePage>().GetViewInNavigationFrame()
                 }
             };
         }
@@ -247,12 +243,8 @@ namespace Tulsi.NavigationFramework {
                     ()=> new ViewBuider<GodownPage>().GetView()
                 },
                 {
-                    ViewType.PasscodePage,
-                    ()=> new ViewBuider<PasscodePage>().GetView()
-                },
-                {
-                    ViewType.PasscodeView,
-                    ()=> new ViewBuider<PasscodeView>().GetView()
+                    ViewType.AddReportAccessPage,
+                    ()=>new ViewBuider<AddReportAccessPage>().GetView()
                 }
             };
         }

@@ -170,8 +170,9 @@ namespace Tulsi.NavigationFramework {
 
         GodownPage,
 
-        PasscodePage,
-
-        PasscodeView
+        /// <summary>
+        /// AddReportsAccess page
+        /// </summary>
+        AddReportAccessPage
     }
 }

@@ -3,364 +3,169 @@
     x:Class="Tulsi.BankAccountDetailsPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:bankaccountDetailMenuItem="clr-namespace:Tulsi.Pages.Content.BankAccountDetailControl"
-    xmlns:controls="clr-namespace:Tulsi.Controls"
     xmlns:local="clr-namespace:Tulsi;assembly=Tulsi"
     xmlns:m="clr-namespace:SlideOverKit"
+    xmlns:relativeCompoundedViews="clr-namespace:Tulsi.Pages.Content.BankAccountDetailsPageCompoundViews"
+    xmlns:toolKitValueConverters="clr-namespace:Tulsi.ToolKit.BindingValueConverters"
+    xmlns:controls="clr-namespace:Tulsi.Controls"
     xmlns:toolKitImageResourceExtension="clr-namespace:Tulsi.ToolKit.MarkupExtensions"
-    NavigationPage.HasNavigationBar="false">
+    NavigationPage.HasNavigationBar="false"
+    x:Name="_root_ContentPage">
 
-    <StackLayout x:Name="HeaderLayout" BackgroundColor="#DCDCDC">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <toolKitValueConverters:IsNullToBoolConverter
+                x:Key="IsNullToBoolConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
-        <!--  Action bar  -->
-        <Grid x:Name="ToolbarGrid" BackgroundColor="#2793F5">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="50" />
-            </Grid.RowDefinitions>
-            <Grid
+    <Grid>
+        <StackLayout 
+        BackgroundColor="#DCDCDC">
+
+            <!--  Action bar  -->
+            <Grid x:Name="ToolbarGrid" BackgroundColor="#2793F5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                </Grid.RowDefinitions>
+                <Grid
                 Padding="15,0,0,0"
                 BackgroundColor="Transparent"
                 HorizontalOptions="Start">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="40" />
-                </Grid.ColumnDefinitions>
-                <Grid.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding NavigateBackCommand}" />
-                </Grid.GestureRecognizers>
-                <Image
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NavigateBackCommand}" />
+                    </Grid.GestureRecognizers>
+                    <Image
                     HeightRequest="20"
                     HorizontalOptions="Start"
                     Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.back.png}"
                     VerticalOptions="Center"
                     WidthRequest="15" />
-            </Grid>
+                </Grid>
 
-            <Label
+                <Label
                 x:Name="PageTitleLabel"
                 HorizontalOptions="Center"
                 Text="ICICI BANK"
                 TextColor="White"
                 VerticalOptions="Center" />
 
-            <Grid
+                <Grid
                 Padding="0,0,15,0"
                 BackgroundColor="Transparent"
                 HorizontalOptions="End">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="60" />
-                </Grid.ColumnDefinitions>
-                <Grid.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding DisplaySearchPageCommand}" />
-                </Grid.GestureRecognizers>
-                <Image
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="60" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding DisplaySearchPageCommand}" />
+                    </Grid.GestureRecognizers>
+                    <Image
                     HeightRequest="20"
                     HorizontalOptions="End"
                     Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.magnifier.png}"
                     VerticalOptions="Center"
                     WidthRequest="20" />
+                </Grid>
             </Grid>
-        </Grid>
 
-        <!--  MAIN CONTENT  -->
-        <StackLayout
+            <!--  MAIN CONTENT  -->
+            <StackLayout
             Padding="5,0"
             BackgroundColor="Transparent"
             Spacing="10">
 
-            <Frame
+                <Frame
                 Padding="5"
                 BackgroundColor="White"
                 CornerRadius="7"
                 HasShadow="False"
                 HeightRequest="40"
                 VerticalOptions="Start">
-                <Label
+                    <Label
                     HorizontalTextAlignment="Center"
                     TextColor="#2793F5"
                     VerticalTextAlignment="Center">
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <FormattedString.Spans>
-                                <Span FontAttributes="Bold" Text="Note: " />
-                                <Span Text="These are the bank account transactions that are synced with the system." />
-                            </FormattedString.Spans>
-                        </FormattedString>
-                    </Label.FormattedText>
-                </Label>
-            </Frame>
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <FormattedString.Spans>
+                                    <Span FontAttributes="Bold" Text="Note: " />
+                                    <Span Text="These are the bank account transactions that are synced with the system." />
+                                </FormattedString.Spans>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </Frame>
 
-            <ScrollView>
-                <controls:StackList BackgroundColor="Transparent" ItemsSource="{Binding BankAccountSource}">
-                    <controls:StackList.ItemTemplate>
-                        <DataTemplate>
-                            <Frame
+                <ScrollView>
+                    <controls:StackList BackgroundColor="Transparent" ItemsSource="{Binding BankAccountSource}">
+                        <controls:StackList.ItemTemplate>
+                            <DataTemplate>
+                                <Frame
                                 Padding="10"
                                 BackgroundColor="White"
                                 CornerRadius="7"
                                 HasShadow="False">
 
-                                <StackLayout BackgroundColor="Transparent" Spacing="10">
-                                    <Label
+                                    <StackLayout BackgroundColor="Transparent" Spacing="10">
+                                        <Label
                                         FontAttributes="Bold"
                                         FontSize="Medium"
                                         HorizontalTextAlignment="Center"
                                         Text="{Binding Date, StringFormat='{0:dd/MM/yyyy}'}"
                                         TextColor="{StaticResource MainColor}" />
-                                    <Frame
+                                        <Frame
                                         Padding="7"
                                         BackgroundColor="{StaticResource MainColor}"
                                         CornerRadius="7"
                                         HasShadow="False">
 
-                                        <StackLayout
+                                            <StackLayout
                                             Padding="15,0"
                                             BackgroundColor="Transparent"
                                             Orientation="Horizontal">
-                                            <Label
+                                                <Label
                                                 FontAttributes="Bold"
                                                 FontSize="Large"
                                                 HorizontalOptions="StartAndExpand"
                                                 Text="{Binding Title}"
                                                 TextColor="White" />
-                                            <Label
+                                                <Label
                                                 FontAttributes="Bold"
                                                 FontSize="Large"
                                                 HorizontalOptions="EndAndExpand"
                                                 Text="{Binding Description}"
                                                 TextColor="White" />
-                                        </StackLayout>
-                                    </Frame>
+                                            </StackLayout>
+                                        </Frame>
 
-                                    <controls:AdvancedStackList BackgroundColor="Transparent" ItemsSource="{Binding Data}">
-                                        <controls:AdvancedStackList.ItemTemplate>
-                                            <DataTemplate>
-                                                <bankaccountDetailMenuItem:BankAccauntDetailMenuItem />
-                                            </DataTemplate>
-                                        </controls:AdvancedStackList.ItemTemplate>
-                                    </controls:AdvancedStackList>
-                                </StackLayout>
-                            </Frame>
-                        </DataTemplate>
-                    </controls:StackList.ItemTemplate>
-                </controls:StackList>
-            </ScrollView>
+                                        <controls:AdvancedStackList 
+                                        BackgroundColor="Transparent"
+                                        ItemsSource="{Binding Data}"
+                                            SelectedItem="{Binding Source={Reference Name=_root_ContentPage},
+                                                Path=BindingContext.SelectedBankAccountTransaction,
+                                                Mode=TwoWay}">
+                                            <controls:AdvancedStackList.ItemTemplate>
+                                                <DataTemplate>
+                                                    <relativeCompoundedViews:BankAccauntDetailMenuItem />
+                                                </DataTemplate>
+                                            </controls:AdvancedStackList.ItemTemplate>
+                                        </controls:AdvancedStackList>
+                                    </StackLayout>
+                                </Frame>
+                            </DataTemplate>
+                        </controls:StackList.ItemTemplate>
+                    </controls:StackList>
+                </ScrollView>
+            </StackLayout>
         </StackLayout>
 
-
-        <!--<ScrollView>
-            <StackLayout x:Name="MainLayout" BackgroundColor="#DCDCDC">
-                <controls:RoundedContentView
-                    Grid.Column="1"
-                    Margin="10,0,10,0"
-                    BackgroundColor="#2793F5"
-                    CornerRadius="10">
-                    <controls:RoundedContentView.Content>
-                        <Grid BackgroundColor="#2793F5">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="30" />
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="40" />
-                            </Grid.RowDefinitions>
-                            <Label
-                                HorizontalTextAlignment="Center"
-                                Text="DD / MM / YY"
-                                TextColor="White"
-                                VerticalTextAlignment="Center" />
-                        </Grid>
-                    </controls:RoundedContentView.Content>
-                </controls:RoundedContentView>
-
-                <Grid Margin="10,-5,10,0" BackgroundColor="White">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="30" />
-                        <ColumnDefinition Width="auto" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="auto" />
-                        <ColumnDefinition Width="30" />
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto" />
-                        <RowDefinition Height="auto" />
-                        <RowDefinition Height="20" />
-                        <RowDefinition Height="auto" />
-                        <RowDefinition Height="auto" />
-                    </Grid.RowDefinitions>
-                    <Label
-                        Grid.Row="1"
-                        Grid.Column="1"
-                        HorizontalTextAlignment="Start"
-                        Text="RSO Rishi"
-                        VerticalTextAlignment="Center" />
-                    <Label
-                        Grid.Row="3"
-                        Grid.Column="1"
-                        HorizontalTextAlignment="Start"
-                        Text="PSO PushPender"
-                        VerticalTextAlignment="Center" />
-                    <Label
-                        Grid.Row="1"
-                        Grid.Column="3"
-                        HorizontalTextAlignment="End"
-                        Text="2,50,000"
-                        VerticalTextAlignment="Center" />
-                    <Label
-                        Grid.Row="3"
-                        Grid.Column="3"
-                        HorizontalTextAlignment="End"
-                        Text="5,00,000"
-                        VerticalTextAlignment="Center" />
-                </Grid>
-
-
-                <controls:RoundedContentView
-                    Grid.Column="1"
-                    Margin="10,0,10,0"
-                    BackgroundColor="#2793F5"
-                    CornerRadius="10">
-                    <controls:RoundedContentView.Content>
-                        <Grid BackgroundColor="#2793F5">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="30" />
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="40" />
-                            </Grid.RowDefinitions>
-                            <Label
-                                HorizontalTextAlignment="Center"
-                                Text="DD / MM / YY"
-                                TextColor="White"
-                                VerticalTextAlignment="Center" />
-                        </Grid>
-                    </controls:RoundedContentView.Content>
-                </controls:RoundedContentView>
-
-                <Grid Margin="10,-5,10,0" BackgroundColor="White">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="30" />
-                        <ColumnDefinition Width="auto" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="auto" />
-                        <ColumnDefinition Width="30" />
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto" />
-                        <RowDefinition Height="auto" />
-                        <RowDefinition Height="20" />
-                        <RowDefinition Height="auto" />
-                        <RowDefinition Height="20" />
-                        <RowDefinition Height="auto" />
-                    </Grid.RowDefinitions>
-                    <Label
-                        Grid.Row="1"
-                        Grid.Column="1"
-                        HorizontalTextAlignment="Start"
-                        Text="SKC Arjun"
-                        VerticalTextAlignment="Center" />
-                    <Label
-                        Grid.Row="3"
-                        Grid.Column="1"
-                        HorizontalTextAlignment="Start"
-                        Text="SKC Arjun"
-                        VerticalTextAlignment="Center" />
-                    <Label
-                        Grid.Row="5"
-                        Grid.Column="1"
-                        HorizontalTextAlignment="Start"
-                        Text="SKC Arjun"
-                        VerticalTextAlignment="Center" />
-                    <Label
-                        Grid.Row="1"
-                        Grid.Column="3"
-                        HorizontalTextAlignment="End"
-                        Text="70,000"
-                        VerticalTextAlignment="Center" />
-                    <Label
-                        Grid.Row="3"
-                        Grid.Column="3"
-                        HorizontalTextAlignment="End"
-                        Text="70,000"
-                        VerticalTextAlignment="Center" />
-                    <Label
-                        Grid.Row="5"
-                        Grid.Column="3"
-                        HorizontalTextAlignment="End"
-                        Text="70,000"
-                        VerticalTextAlignment="Center" />
-                </Grid>
-
-
-                <controls:RoundedContentView
-                    Grid.Column="1"
-                    Margin="10,0,10,0"
-                    BackgroundColor="#2793F5"
-                    CornerRadius="10">
-                    <controls:RoundedContentView.Content>
-                        <Grid BackgroundColor="#2793F5">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="30" />
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="40" />
-                            </Grid.RowDefinitions>
-                            <Label
-                                HorizontalTextAlignment="Center"
-                                Text="DD / MM / YY"
-                                TextColor="White"
-                                VerticalTextAlignment="Center" />
-                        </Grid>
-                    </controls:RoundedContentView.Content>
-                </controls:RoundedContentView>
-
-                <Grid Margin="10,-5,10,0" BackgroundColor="White">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="30" />
-                        <ColumnDefinition Width="auto" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="auto" />
-                        <ColumnDefinition Width="30" />
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto" />
-                        <RowDefinition Height="auto" />
-                        <RowDefinition Height="20" />
-                        <RowDefinition Height="auto" />
-                        <RowDefinition Height="auto" />
-                    </Grid.RowDefinitions>
-                    <Label
-                        Grid.Row="1"
-                        Grid.Column="1"
-                        HorizontalTextAlignment="Start"
-                        Text="SKC Arjun"
-                        VerticalTextAlignment="Center" />
-                    <Label
-                        Grid.Row="3"
-                        Grid.Column="1"
-                        HorizontalTextAlignment="Start"
-                        Text="SKC Arjun"
-                        VerticalTextAlignment="Center" />
-                    <Label
-                        Grid.Row="1"
-                        Grid.Column="3"
-                        HorizontalTextAlignment="End"
-                        Text="70,000"
-                        VerticalTextAlignment="Center" />
-                    <Label
-                        Grid.Row="3"
-                        Grid.Column="3"
-                        HorizontalTextAlignment="End"
-                        Text="70,000"
-                        VerticalTextAlignment="Center" />
-                </Grid>
-
-
-            </StackLayout>
-
-
-
-        </ScrollView>-->
-    </StackLayout>
+        <relativeCompoundedViews:TransactionPopup
+            PopupVisibility="{Binding Path=SelectedBankAccountTransaction,
+                Converter={StaticResource Key=IsNullToBoolConverter},
+                Mode=OneWay}"/>
+    </Grid>
 </ContentPage>
