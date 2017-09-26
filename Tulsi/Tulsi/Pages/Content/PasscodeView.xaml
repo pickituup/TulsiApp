@@ -4,6 +4,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:toolKitImageResourceExtension="clr-namespace:Tulsi.ToolKit.MarkupExtensions">
+
     <StackLayout x:Name="HeaderLayout" BackgroundColor="White">
         <!--  ActionBar  -->
         <Grid x:Name="ToolbarGrid" BackgroundColor="#2793F5">
@@ -15,24 +16,6 @@
                 Text="{Binding Title}"
                 TextColor="White"
                 VerticalOptions="Center" />
-
-            <Grid
-                Padding="0,0,15,0"
-                BackgroundColor="Transparent"
-                HorizontalOptions="End">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="60" />
-                </Grid.ColumnDefinitions>
-                <Grid.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding DisplaySearchPageCommand}" />
-                </Grid.GestureRecognizers>
-                <Image
-                    HeightRequest="20"
-                    HorizontalOptions="End"
-                    Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.magnifier.png}"
-                    VerticalOptions="Center"
-                    WidthRequest="20" />
-            </Grid>
         </Grid>
 
         <!--  MAIN CONTENT  -->
@@ -285,17 +268,19 @@
                         <TapGestureRecognizer Command="{Binding ButtonInputCommand}" CommandParameter="{Binding Source={x:Reference button0}, Text} " />
                     </Label.GestureRecognizers>
                 </Label>
-                <Label
-                    x:Name="backspaceButton"
+
+                <ContentView
                     Grid.Row="3"
                     Grid.Column="2"
                     BackgroundColor="#5A565A"
-                    Style="{StaticResource gridLabel}"
-                    Text="&#x21E6;">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding CleanDigitCommand}" />
-                    </Label.GestureRecognizers>
-                </Label>
+                    HorizontalOptions="Fill"
+                    VerticalOptions="Fill">
+                    <Image Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.backspace.png}" WidthRequest="20">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding CleanDigitCommand}" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                </ContentView>
             </Grid>
         </StackLayout>
     </StackLayout>

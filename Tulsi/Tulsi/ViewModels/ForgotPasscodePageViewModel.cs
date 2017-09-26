@@ -46,7 +46,7 @@ namespace Tulsi.ViewModels {
 
             ResetCommand = new Command(() => {
                 DependencyService.Get<ISQLiteService>().ClearPasscode();
-                BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.LoginPage);
+                BaseSingleton<ViewSwitchingLogic>.Instance.BuildNavigationStack(ViewType.TutorialPage);
             });
         }
 
