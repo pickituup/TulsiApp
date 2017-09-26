@@ -56,6 +56,7 @@
     <Compile Include="Controls\PrimitiveSegmentControl\WithoutFrameSegmentItem.xaml.cs">
       <DependentUpon>WithoutFrameSegmentItem.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\PullToRefreshLayout.cs" />
     <Compile Include="Controls\RoundedContentView.cs" />
     <Compile Include="Controls\RoundedView.cs" />
     <Compile Include="Controls\StackList.cs" />
