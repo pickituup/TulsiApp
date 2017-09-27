@@ -31,9 +31,9 @@ namespace Tulsi.Pages.Content {
             // dates
             arrivalCalendar.DatesBackgroundColor = Color.White;
             arrivalCalendar.DatesBackgroundColorOutsideMonth = Color.White;
+            arrivalCalendar.DatesTextColorOutsideMonth = Color.FromHex("#efefef");
             arrivalCalendar.DatesTextColor = Color.FromHex("#999999");
             arrivalCalendar.DatesFontSize = 12;
-            arrivalCalendar.DatesTextColorOutsideMonth = Color.White;
             // weekdays
             arrivalCalendar.WeekdaysFontSize = 14;
             arrivalCalendar.WeekdaysFontAttributes = FontAttributes.Bold;
@@ -68,7 +68,7 @@ namespace Tulsi.Pages.Content {
         }
 
         private void ArrivalCalendar_DateClicked(object sender, DateTimeEventArgs e) {
-            //_viewModel.DisplayMessage("Date", e.DateTime.Date.ToString() + " selected", "OK");
+            _viewModel.GetSelectionTransaction(e.DateTime);
         }
 
         public void ApplyVisualChangesWhileNavigating() {

@@ -5,9 +5,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:controls="clr-namespace:Tulsi.Controls"
     xmlns:forms="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.CarouselView"
-    xmlns:toolKitImageResourceExtension="clr-namespace:Tulsi.ToolKit.MarkupExtensions"
     xmlns:toolkitConverters="clr-namespace:Tulsi.ToolKit.BindingValueConverters"
     NavigationPage.HasNavigationBar="false">
+
     <ContentPage.Resources>
         <ResourceDictionary>
             <toolkitConverters:VisibilityViewConverter x:Key="visibility_converter" />

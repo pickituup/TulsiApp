@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Tulsi.Helpers;
+using Tulsi.Model;
 using Tulsi.Model.DataContainers;
 using Tulsi.Model.DataContainers.DataItems;
 using Tulsi.MVVM.Core;
@@ -14,10 +18,14 @@ using Xamarin.Forms;
 namespace Tulsi.ViewModels.Content {
     public sealed class ArrivalViewModel : ViewModelBase, IViewModel {
 
-        private readonly ArrivalsContainer _arrivalsContainer;
+        DateTime _selectedDate;
+        public DateTime SelectedDate {
+            get { return _selectedDate; }
+            set { SetProperty(ref _selectedDate, value); }
+        }
 
-        List<ArrivalItem> _arrivalItems;
-        public List<ArrivalItem> ArrivalItems {
+        ObservableCollection<ArrivalTransaction> _arrivalItems;
+        public ObservableCollection<ArrivalTransaction> ArrivalItems {
             get { return _arrivalItems; }
             set { SetProperty(ref _arrivalItems, value); }
         }
@@ -32,6 +40,12 @@ namespace Tulsi.ViewModels.Content {
             }
         }
 
+        ObservableCollection<ArrivalItem> _selectionTransactions;
+        public ObservableCollection<ArrivalItem> SelectionTransactions {
+            get { return _selectionTransactions; }
+            set { SetProperty(ref _selectionTransactions, value); }
+        }
+
         // Navigate back.
         public ICommand NavigateBackCommand { get; private set; }
 
@@ -39,20 +53,462 @@ namespace Tulsi.ViewModels.Content {
         ///     ctor().
         /// </summary>
         public ArrivalViewModel() {
-            _arrivalsContainer = new ArrivalsContainer();
+            SelectedDate = DateTime.Now;
 
-            ArrivalItems = _arrivalsContainer.BuildArrivalstems();
+            ArrivalItems = GetArrivalItems();
 
             NavigateBackCommand = new Command(() => BaseSingleton<ViewSwitchingLogic>.Instance.NavigateOneStepBack());
         }
 
-
-        internal void DisplayMessage(string title, string message, string value) {
-            DisplayAlert(title, message, value);
+        private ObservableCollection<ArrivalTransaction> GetArrivalItems() {
+            return new ObservableCollection<ArrivalTransaction>() {
+                new ArrivalTransaction {
+                    Date = new DateTime(2017, 09, 01),
+                    ArrivalTransactions = new List<ArrivalItem>() {
+                        new ArrivalItem {
+                                Title = "PSO Orch",
+                                Value = 100.110m,
+                                Number="280",
+                                Icon =ImageSource.FromStream(()=> {
+                                        Assembly assembly = GetType().GetTypeInfo().Assembly;
+                                        Stream stream = assembly.GetManifestResourceStream("Tulsi.Images.greencircle.png");
+                                        return stream; })
+                        },
+                        new ArrivalItem {
+                                Title = "PSO Orch",
+                                Value = 100.110m,
+                                Number="280",
+                                Icon =ImageSource.FromStream(()=> {
+                                        Assembly assembly = GetType().GetTypeInfo().Assembly;
+                                        Stream stream = assembly.GetManifestResourceStream("Tulsi.Images.purplecircle.png");
+                                        return stream; })
+                        },
+                        new ArrivalItem {
+                                Title = "PSO Orch",
+                                Value = 100.110m,
+                                Number="280",
+                                Icon =ImageSource.FromStream(()=> {
+                                        Assembly assembly = GetType().GetTypeInfo().Assembly;
+                                        Stream stream = assembly.GetManifestResourceStream("Tulsi.Images.greencircle.png");
+                                        return stream; })
+                        },
+                        new ArrivalItem {
+                                Title = "PSO Orch",
+                                Value = 100.110m,
+                                Number="280",
+                                Icon =ImageSource.FromStream(()=> {
+                                        Assembly assembly = GetType().GetTypeInfo().Assembly;
+                                        Stream stream = assembly.GetManifestResourceStream("Tulsi.Images.greencircle.png");
+                                        return stream; })
+                        },
+                        new ArrivalItem {
+                                Title = "PSO Orch",
+                                Value = 100.110m,
+                                Number="280",
+                                Icon =ImageSource.FromStream(()=> {
+                                        Assembly assembly = GetType().GetTypeInfo().Assembly;
+                                        Stream stream = assembly.GetManifestResourceStream("Tulsi.Images.greencircle.png");
+                                        return stream; })
+                        },
+                        new ArrivalItem {
+                                Title = "PSO Orch",
+                                Value =  100.110m,
+                                Number="280",
+                                Icon =ImageSource.FromStream(()=> {
+                                        Assembly assembly = GetType().GetTypeInfo().Assembly;
+                                        Stream stream = assembly.GetManifestResourceStream("Tulsi.Images.purplecircle.png");
+                                        return stream; })
+                        },
+                        new ArrivalItem {
+                                Title = "PSO Orch",
+                                Value = 100.110m,
+                                Number="280",
+                                Icon =ImageSource.FromStream(()=> {
+                                        Assembly assembly = GetType().GetTypeInfo().Assembly;
+                                        Stream stream = assembly.GetManifestResourceStream("Tulsi.Images.greencircle.png");
+                                        return stream; })
+                        },
+                        new ArrivalItem {
+                                Title = "PSO Orch",
+                                Value =  100.110m,
+                                Number="280",
+                                Icon =ImageSource.FromStream(()=> {
+                                        Assembly assembly = GetType().GetTypeInfo().Assembly;
+                                        Stream stream = assembly.GetManifestResourceStream("Tulsi.Images.purplecircle.png");
+                                        return stream; })
+                }
+                    }
+                },
+                new ArrivalTransaction {
+                    Date = new DateTime(2017, 09, 08),
+                    ArrivalTransactions = new List<ArrivalItem>() {
+                        new ArrivalItem {
+                                Title = "PSO Orch",
+                                Value = 100.110m,
+                                Number="280",
+                                Icon =ImageSource.FromStream(()=> {
+                                        Assembly assembly = GetType().GetTypeInfo().Assembly;
+                                        Stream stream = assembly.GetManifestResourceStream("Tulsi.Images.greencircle.png");
+                                        return stream; })
+                        },
+                        new ArrivalItem {
+                                Title = "PSO Orch",
+                                Value = 100.110m,
+                                Number="280",
+                                Icon =ImageSource.FromStream(()=> {
+                                        Assembly assembly = GetType().GetTypeInfo().Assembly;
+                                        Stream stream = assembly.GetManifestResourceStream("Tulsi.Images.purplecircle.png");
+                                        return stream; })
+                        },
+                        new ArrivalItem {
+                                Title = "PSO Orch",
+                                Value =  100.110m,
+                                Number="280",
+                                Icon =ImageSource.FromStream(()=> {
+                                        Assembly assembly = GetType().GetTypeInfo().Assembly;
+                                        Stream stream = assembly.GetManifestResourceStream("Tulsi.Images.purplecircle.png");
+                                        return stream; })
+                }
+                    }
+                },
+                new ArrivalTransaction {
+                    Date = new DateTime(2017, 09, 15),
+                    ArrivalTransactions = new List<ArrivalItem>() {
+                        new ArrivalItem {
+                                Title = "PSO Orch",
+                                Value = 100.110m,
+                                Number="280",
+                                Icon =ImageSource.FromStream(()=> {
+                                        Assembly assembly = GetType().GetTypeInfo().Assembly;
+                                        Stream stream = assembly.GetManifestResourceStream("Tulsi.Images.greencircle.png");
+                                        return stream; })
+                        },
+                        new ArrivalItem {
+                                Title = "PSO Orch",
+                                Value = 100.110m,
+                                Number="280",
+                                Icon =ImageSource.FromStream(()=> {
+                                        Assembly assembly = GetType().GetTypeInfo().Assembly;
+                                        Stream stream = assembly.GetManifestResourceStream("Tulsi.Images.greencircle.png");
+                                        return stream; })
+                        },
+                        new ArrivalItem {
+                                Title = "PSO Orch",
+                                Value =  100.110m,
+                                Number="280",
+                                Icon =ImageSource.FromStream(()=> {
+                                        Assembly assembly = GetType().GetTypeInfo().Assembly;
+                                        Stream stream = assembly.GetManifestResourceStream("Tulsi.Images.purplecircle.png");
+                                        return stream; })
+                        },
+                        new ArrivalItem {
+                                Title = "PSO Orch",
+                                Value = 100.110m,
+                                Number="280",
+                                Icon =ImageSource.FromStream(()=> {
+                                        Assembly assembly = GetType().GetTypeInfo().Assembly;
+                                        Stream stream = assembly.GetManifestResourceStream("Tulsi.Images.greencircle.png");
+                                        return stream; })
+                        },
+                        new ArrivalItem {
+                                Title = "PSO Orch",
+                                Value = 100.110m,
+                                Number="280",
+                                Icon =ImageSource.FromStream(()=> {
+                                        Assembly assembly = GetType().GetTypeInfo().Assembly;
+                                        Stream stream = assembly.GetManifestResourceStream("Tulsi.Images.purplecircle.png");
+                                        return stream; })
+                        },
+                        new ArrivalItem {
+                                Title = "PSO Orch",
+                                Value = 100.110m,
+                                Number="280",
+                                Icon =ImageSource.FromStream(()=> {
+                                        Assembly assembly = GetType().GetTypeInfo().Assembly;
+                                        Stream stream = assembly.GetManifestResourceStream("Tulsi.Images.greencircle.png");
+                                        return stream; })
+                        },
+                        new ArrivalItem {
+                                Title = "PSO Orch",
+                                Value =  100.110m,
+                                Number="280",
+                                Icon =ImageSource.FromStream(()=> {
+                                        Assembly assembly = GetType().GetTypeInfo().Assembly;
+                                        Stream stream = assembly.GetManifestResourceStream("Tulsi.Images.purplecircle.png");
+                                        return stream; })
+                        },
+                        new ArrivalItem {
+                                Title = "PSO Orch",
+                                Value = 100.110m,
+                                Number="280",
+                                Icon =ImageSource.FromStream(()=> {
+                                        Assembly assembly = GetType().GetTypeInfo().Assembly;
+                                        Stream stream = assembly.GetManifestResourceStream("Tulsi.Images.greencircle.png");
+                                        return stream; })
+                        },
+                        new ArrivalItem {
+                                Title = "PSO Orch",
+                                Value =  100.110m,
+                                Number="280",
+                                Icon =ImageSource.FromStream(()=> {
+                                        Assembly assembly = GetType().GetTypeInfo().Assembly;
+                                        Stream stream = assembly.GetManifestResourceStream("Tulsi.Images.purplecircle.png");
+                                        return stream; })
+                        },
+                        new ArrivalItem {
+                                Title = "PSO Orch",
+                                Value =  100.110m,
+                                Number="280",
+                                Icon =ImageSource.FromStream(()=> {
+                                        Assembly assembly = GetType().GetTypeInfo().Assembly;
+                                        Stream stream = assembly.GetManifestResourceStream("Tulsi.Images.purplecircle.png");
+                                        return stream; })
+                }
+                    }
+                },
+                new ArrivalTransaction {
+                    Date = new DateTime(2017, 09, 01),
+                    ArrivalTransactions = new List<ArrivalItem>() {
+                        new ArrivalItem {
+                                Title = "PSO Orch",
+                                Value = 100.110m,
+                                Number="280",
+                                Icon =ImageSource.FromStream(()=> {
+                                        Assembly assembly = GetType().GetTypeInfo().Assembly;
+                                        Stream stream = assembly.GetManifestResourceStream("Tulsi.Images.greencircle.png");
+                                        return stream; })
+                        },
+                        new ArrivalItem {
+                                Title = "PSO Orch",
+                                Value = 100.110m,
+                                Number="280",
+                                Icon =ImageSource.FromStream(()=> {
+                                        Assembly assembly = GetType().GetTypeInfo().Assembly;
+                                        Stream stream = assembly.GetManifestResourceStream("Tulsi.Images.purplecircle.png");
+                                        return stream; })
+                        },
+                        new ArrivalItem {
+                                Title = "PSO Orch",
+                                Value =  100.110m,
+                                Number="280",
+                                Icon =ImageSource.FromStream(()=> {
+                                        Assembly assembly = GetType().GetTypeInfo().Assembly;
+                                        Stream stream = assembly.GetManifestResourceStream("Tulsi.Images.purplecircle.png");
+                                        return stream; })
+                        },
+                        new ArrivalItem {
+                                Title = "PSO Orch",
+                                Value = 100.110m,
+                                Number="280",
+                                Icon =ImageSource.FromStream(()=> {
+                                        Assembly assembly = GetType().GetTypeInfo().Assembly;
+                                        Stream stream = assembly.GetManifestResourceStream("Tulsi.Images.greencircle.png");
+                                        return stream; })
+                        },
+                        new ArrivalItem {
+                                Title = "PSO Orch",
+                                Value =  100.110m,
+                                Number="280",
+                                Icon =ImageSource.FromStream(()=> {
+                                        Assembly assembly = GetType().GetTypeInfo().Assembly;
+                                        Stream stream = assembly.GetManifestResourceStream("Tulsi.Images.purplecircle.png");
+                                        return stream; })
+                        },
+                        new ArrivalItem {
+                                Title = "PSO Orch",
+                                Value = 100.110m,
+                                Number="280",
+                                Icon =ImageSource.FromStream(()=> {
+                                        Assembly assembly = GetType().GetTypeInfo().Assembly;
+                                        Stream stream = assembly.GetManifestResourceStream("Tulsi.Images.greencircle.png");
+                                        return stream; })
+                        },
+                        new ArrivalItem {
+                                Title = "PSO Orch",
+                                Value = 100.110m,
+                                Number="280",
+                                Icon =ImageSource.FromStream(()=> {
+                                        Assembly assembly = GetType().GetTypeInfo().Assembly;
+                                        Stream stream = assembly.GetManifestResourceStream("Tulsi.Images.greencircle.png");
+                                        return stream; })
+                        },
+                        new ArrivalItem {
+                                Title = "PSO Orch",
+                                Value =  100.110m,
+                                Number="280",
+                                Icon =ImageSource.FromStream(()=> {
+                                        Assembly assembly = GetType().GetTypeInfo().Assembly;
+                                        Stream stream = assembly.GetManifestResourceStream("Tulsi.Images.purplecircle.png");
+                                        return stream; })
+                        },
+                        new ArrivalItem {
+                                Title = "PSO Orch",
+                                Value = 100.110m,
+                                Number="280",
+                                Icon =ImageSource.FromStream(()=> {
+                                        Assembly assembly = GetType().GetTypeInfo().Assembly;
+                                        Stream stream = assembly.GetManifestResourceStream("Tulsi.Images.greencircle.png");
+                                        return stream; })
+                        },
+                        new ArrivalItem {
+                                Title = "PSO Orch",
+                                Value =  100.110m,
+                                Number="280",
+                                Icon =ImageSource.FromStream(()=> {
+                                        Assembly assembly = GetType().GetTypeInfo().Assembly;
+                                        Stream stream = assembly.GetManifestResourceStream("Tulsi.Images.purplecircle.png");
+                                        return stream; })
+                }
+                    }
+                },
+                new ArrivalTransaction {
+                    Date = new DateTime(2017, 09, 18),
+                    ArrivalTransactions = new List<ArrivalItem>() {
+                        new ArrivalItem {
+                                Title = "PSO Orch",
+                                Value = 100.110m,
+                                Number="280",
+                                Icon =ImageSource.FromStream(()=> {
+                                        Assembly assembly = GetType().GetTypeInfo().Assembly;
+                                        Stream stream = assembly.GetManifestResourceStream("Tulsi.Images.greencircle.png");
+                                        return stream; })
+                        },
+                        new ArrivalItem {
+                                Title = "PSO Orch",
+                                Value = 100.110m,
+                                Number="280",
+                                Icon =ImageSource.FromStream(()=> {
+                                        Assembly assembly = GetType().GetTypeInfo().Assembly;
+                                        Stream stream = assembly.GetManifestResourceStream("Tulsi.Images.greencircle.png");
+                                        return stream; })
+                        },
+                        new ArrivalItem {
+                                Title = "PSO Orch",
+                                Value =  100.110m,
+                                Number="280",
+                                Icon =ImageSource.FromStream(()=> {
+                                        Assembly assembly = GetType().GetTypeInfo().Assembly;
+                                        Stream stream = assembly.GetManifestResourceStream("Tulsi.Images.purplecircle.png");
+                                        return stream; })
+                        },
+                        new ArrivalItem {
+                                Title = "PSO Orch",
+                                Value = 100.110m,
+                                Number="280",
+                                Icon =ImageSource.FromStream(()=> {
+                                        Assembly assembly = GetType().GetTypeInfo().Assembly;
+                                        Stream stream = assembly.GetManifestResourceStream("Tulsi.Images.greencircle.png");
+                                        return stream; })
+                        },
+                        new ArrivalItem {
+                                Title = "PSO Orch",
+                                Value = 100.110m,
+                                Number="280",
+                                Icon =ImageSource.FromStream(()=> {
+                                        Assembly assembly = GetType().GetTypeInfo().Assembly;
+                                        Stream stream = assembly.GetManifestResourceStream("Tulsi.Images.purplecircle.png");
+                                        return stream; })
+                        },
+                        new ArrivalItem {
+                                Title = "PSO Orch",
+                                Value =  100.110m,
+                                Number="280",
+                                Icon =ImageSource.FromStream(()=> {
+                                        Assembly assembly = GetType().GetTypeInfo().Assembly;
+                                        Stream stream = assembly.GetManifestResourceStream("Tulsi.Images.purplecircle.png");
+                                        return stream; })
+                        },
+                        new ArrivalItem {
+                                Title = "PSO Orch",
+                                Value =  100.110m,
+                                Number="280",
+                                Icon =ImageSource.FromStream(()=> {
+                                        Assembly assembly = GetType().GetTypeInfo().Assembly;
+                                        Stream stream = assembly.GetManifestResourceStream("Tulsi.Images.purplecircle.png");
+                                        return stream; })
+                }
+                    }
+                },
+                new ArrivalTransaction {
+                    Date = new DateTime(2017, 09, 27),
+                    ArrivalTransactions = new List<ArrivalItem>() {
+                        new ArrivalItem {
+                                Title = "PSO Orch",
+                                Value = 100.110m,
+                                Number="280",
+                                Icon =ImageSource.FromStream(()=> {
+                                        Assembly assembly = GetType().GetTypeInfo().Assembly;
+                                        Stream stream = assembly.GetManifestResourceStream("Tulsi.Images.greencircle.png");
+                                        return stream; })
+                        },
+                        new ArrivalItem {
+                                Title = "PSO Orch",
+                                Value = 100.110m,
+                                Number="280",
+                                Icon =ImageSource.FromStream(()=> {
+                                        Assembly assembly = GetType().GetTypeInfo().Assembly;
+                                        Stream stream = assembly.GetManifestResourceStream("Tulsi.Images.purplecircle.png");
+                                        return stream; })
+                        },
+                        new ArrivalItem {
+                                Title = "PSO Orch",
+                                Value = 100.110m,
+                                Number="280",
+                                Icon =ImageSource.FromStream(()=> {
+                                        Assembly assembly = GetType().GetTypeInfo().Assembly;
+                                        Stream stream = assembly.GetManifestResourceStream("Tulsi.Images.greencircle.png");
+                                        return stream; })
+                        },
+                        new ArrivalItem {
+                                Title = "PSO Orch",
+                                Value =  100.110m,
+                                Number="280",
+                                Icon =ImageSource.FromStream(()=> {
+                                        Assembly assembly = GetType().GetTypeInfo().Assembly;
+                                        Stream stream = assembly.GetManifestResourceStream("Tulsi.Images.purplecircle.png");
+                                        return stream; })
+                        },
+                        new ArrivalItem {
+                                Title = "PSO Orch",
+                                Value = 100.110m,
+                                Number="280",
+                                Icon =ImageSource.FromStream(()=> {
+                                        Assembly assembly = GetType().GetTypeInfo().Assembly;
+                                        Stream stream = assembly.GetManifestResourceStream("Tulsi.Images.greencircle.png");
+                                        return stream; })
+                        },
+                        new ArrivalItem {
+                                Title = "PSO Orch",
+                                Value =  100.110m,
+                                Number="280",
+                                Icon =ImageSource.FromStream(()=> {
+                                        Assembly assembly = GetType().GetTypeInfo().Assembly;
+                                        Stream stream = assembly.GetManifestResourceStream("Tulsi.Images.purplecircle.png");
+                                        return stream; })
+                }
+                    }
+                }
+            };
         }
-       
+
+        internal void GetSelectionTransaction(DateTime dateTime) {
+            SelectedDate = dateTime;
+
+            if (ArrivalItems != null) {
+                var tt = (from item in ArrivalItems
+                         where item.Date == dateTime
+                         select item.ArrivalTransactions).ToList();
+
+                if (tt.Count > 0) {
+                    SelectionTransactions = new ObservableCollection<ArrivalItem>(tt.FirstOrDefault());
+                } else
+                    SelectionTransactions = new ObservableCollection<ArrivalItem>();
+            }
+        }
+
         public void Dispose() {
             ArrivalItems.Clear();
+            SelectionTransactions.Clear();
         }
     }
 }

@@ -287,17 +287,19 @@
                         <TapGestureRecognizer Command="{Binding ButtonInputCommand}" CommandParameter="{Binding Source={x:Reference button0}, Text} " />
                     </Label.GestureRecognizers>
                 </Label>
-                <Label
-                    x:Name="backspaceButton"
+
+                <ContentView
                     Grid.Row="3"
                     Grid.Column="2"
                     BackgroundColor="#5A565A"
-                    Style="{StaticResource gridLabel}"
-                    Text="&#x21E6;">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding CleanDigitCommand}" />
-                    </Label.GestureRecognizers>
-                </Label>
+                    HorizontalOptions="Fill"
+                    VerticalOptions="Fill">
+                    <Image Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.backspace.png}" WidthRequest="20">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding CleanDigitCommand}" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                </ContentView>
             </Grid>
         </StackLayout>
     </StackLayout>
