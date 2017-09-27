@@ -16,6 +16,7 @@ using PullToRefresh.Droid.Renderers;
 using System.ComponentModel;
 using System.Reflection;
 using Tulsi.Controls;
+using Tulsi.Droid.Renderers.Helpers;
 
 [assembly: ExportRenderer(typeof(PullToRefreshLayout), typeof(PullToRefreshLayoutRenderer))]
 namespace PullToRefresh.Droid.Renderers {
@@ -26,6 +27,10 @@ namespace PullToRefresh.Droid.Renderers {
         private bool _refreshing;
         private IVisualElementRenderer _packed;
         private BindableProperty _rendererProperty = null;
+        private TextView _hintLabel;
+        private Android.Widget.RelativeLayout _hintLayout;
+        private bool _isPreparingRefresh = false;
+        private DateTime _lastRefreshDate = DateTime.Now;
 
         public event EventHandler<VisualElementChangedEventArgs> ElementChanged;
         public event EventHandler<PropertyChangedEventArgs> ElementPropertyChanged;
@@ -37,9 +42,8 @@ namespace PullToRefresh.Droid.Renderers {
             : base(Forms.Context) { }
 
         /// <summary>
-        /// Gets the bindable property.
+        /// 
         /// </summary>
-        /// <returns>The bindable property.</returns>
         private BindableProperty RendererProperty {
             get {
                 if (_rendererProperty != null)
@@ -55,10 +59,8 @@ namespace PullToRefresh.Droid.Renderers {
         }
 
         /// <summary>
-        /// Gets or sets a value indicating whether this
-        /// <see cref="Refractored.XamForms.PullToRefresh.Droid.PullToRefreshLayoutRenderer"/> is refreshing.
+        /// 
         /// </summary>
-        /// <value><c>true</c> if refreshing; otherwise, <c>false</c>.</value>
         public override bool Refreshing {
             get {
                 return _refreshing;
@@ -81,6 +83,16 @@ namespace PullToRefresh.Droid.Renderers {
                 catch (Exception ex) { }
             }
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public VisualElementTracker Tracker { get; private set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public VisualElement Element { get; private set; }
 
         /// <summary>
         /// 
@@ -113,6 +125,10 @@ namespace PullToRefresh.Droid.Renderers {
                 SetOnRefreshListener(this);
             }
 
+            //
+            // TODO: remove that hardcoded values
+            //
+            SetProgressViewOffset(false, -80, 4);
             UpdateColors();
             UpdateIsRefreshing();
             UpdateIsSwipeToRefreshEnabled();
@@ -123,60 +139,9 @@ namespace PullToRefresh.Droid.Renderers {
         }
 
         /// <summary>
-        /// Managest adding and removing the android viewgroup to our actual swiperefreshlayout
-        /// </summary>
-        private void UpdateContent() {
-            if (RefreshView.Content == null) {
-                return;
-            }
-
-            if (_packed != null)
-                RemoveView(_packed.ViewGroup);
-
-            _packed = Platform.CreateRenderer(RefreshView.Content);
-
-            try {
-                RefreshView.Content.SetValue(RendererProperty, _packed);
-            }
-            catch (Exception ex) {
-                System.Diagnostics.Debug.WriteLine("Unable to sent renderer property, maybe an issue: " + ex);
-            }
-
-            AddView(_packed.ViewGroup, LayoutParams.MatchParent);
-        }
-
-        /// <summary>
         /// 
         /// </summary>
-        private void UpdateColors() {
-            if (RefreshView == null) {
-                return;
-            }
-            if (RefreshView.RefreshColor != Color.Default) {
-                SetColorSchemeColors(RefreshView.RefreshColor.ToAndroid());
-            }
-            if (RefreshView.RefreshBackgroundColor != Color.Default) {
-                SetProgressBackgroundColorSchemeColor(RefreshView.RefreshBackgroundColor.ToAndroid());
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        private void UpdateIsRefreshing() =>
-            Refreshing = RefreshView.IsRefreshing;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        private void UpdateIsSwipeToRefreshEnabled() =>
-            Enabled = RefreshView.IsPullToRefreshEnabled;
-
-        /// <summary>
-        /// Determines whether this instance can child scroll up.
-        /// We do this since the actual swipe refresh can't figure it out
-        /// </summary>
-        /// <returns><c>true</c> if this instance can child scroll up; otherwise, <c>false</c>.</returns>
+        /// <returns></returns>
         public override bool CanChildScrollUp() =>
             CanScrollUp(_packed.ViewGroup);
 
@@ -191,71 +156,72 @@ namespace PullToRefresh.Droid.Renderers {
                 return base.CanChildScrollUp();
             }
 
-            var sdk = (int)global::Android.OS.Build.VERSION.SdkInt;
-            if (sdk >= 16) {
-                //is a scroll container such as listview, scroll view, gridview
-                if (viewGroup.IsScrollContainer) {
-                    return base.CanChildScrollUp();
-                }
+            if (view is Android.Widget.ScrollView) {
+                var scrollview = view as Android.Widget.ScrollView;
+
+                int y = scrollview.ScrollY;
+                return !(scrollview.ScrollY <= 0.0);
             }
 
-            //if you have something custom and you can't scroll up you might need to enable this
-            //for instance on a custom recycler view where the code above isn't working!
-            for (int i = 0; i < viewGroup.ChildCount; i++) {
-                var child = viewGroup.GetChildAt(i);
-                if (child is Android.Widget.AbsListView) {
-                    var list = child as Android.Widget.AbsListView;
-                    if (list != null) {
-                        if (list.FirstVisiblePosition == 0) {
-                            var subChild = list.GetChildAt(0);
+            //var sdk = (int)global::Android.OS.Build.VERSION.SdkInt;
+            //if (sdk >= 16) {
+            //    if (viewGroup.IsScrollContainer) {
+            //        return base.CanChildScrollUp();
+            //    }
+            //}
 
-                            return subChild != null && subChild.Top != 0;
-                        }
+            //for (int i = 0; i < viewGroup.ChildCount; i++) {
+            //    var child = viewGroup.GetChildAt(i);
+            //    if (child is Android.Widget.AbsListView) {
+            //        var list = child as Android.Widget.AbsListView;
+            //        if (list != null) {
+            //            if (list.FirstVisiblePosition == 0) {
+            //                var subChild = list.GetChildAt(0);
 
-                        //if children are in list and we are scrolled a bit... sure you can scroll up
-                        return true;
-                    }
+            //                return subChild != null && subChild.Top != 0;
+            //            }
 
-                }
-                else if (child is Android.Widget.ScrollView) {
-                    var scrollview = child as Android.Widget.ScrollView;
-                    return (scrollview.ScrollY <= 0.0);
-                }
-                else if (child is Android.Webkit.WebView) {
-                    var webView = child as Android.Webkit.WebView;
-                    return (webView.ScrollY > 0.0);
-                }
-                else if (child is Android.Support.V4.Widget.SwipeRefreshLayout) {
-                    return CanScrollUp(child as ViewGroup);
-                }
-                //else if something else like a recycler view?
+            //            return true;
+            //        }
 
-            }
+            //    }
+            //    else if (child is Android.Widget.ScrollView) {
+            //        var scrollview = child as Android.Widget.ScrollView;
+            //        return (scrollview.ScrollY <= 0.0);
+            //    }
+            //    else if (child is Android.Webkit.WebView) {
+            //        var webView = child as Android.Webkit.WebView;
+            //        return (webView.ScrollY > 0.0);
+            //    }
+            //    else if (child is Android.Support.V4.Widget.SwipeRefreshLayout) {
+            //        return CanScrollUp(child as ViewGroup);
+            //    }
+            //    //else if something else like a recycler view?
+            //}
 
             return false;
         }
 
-
         /// <summary>
-        /// Helpers to cast our element easily
-        /// Will throw an exception if the Element is not correct
+        /// 
         /// </summary>
-        /// <value>The refresh view.</value>
         public PullToRefreshLayout RefreshView =>
             Element == null ? null : (PullToRefreshLayout)Element;
 
         /// <summary>
-        /// The refresh view has been refreshed
+        /// 
         /// </summary>
-        public void OnRefresh() => RefreshView?.RefreshCommand?.Execute(null);
+        public void OnRefresh() {
+            _lastRefreshDate = DateTime.Now;
+            RefreshView?.RefreshCommand?.Execute(null);
+        }
 
 
         /// <summary>
-        /// Handles the property changed.
-        /// Update the control and trigger refreshing
+        /// 
         /// </summary>
-        /// <param name="sender">Sender.</param>
-        /// <param name="e">E.</param>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void HandlePropertyChanged(object sender, PropertyChangedEventArgs e) {
             if (e.PropertyName == "Content")
                 UpdateContent();
@@ -270,11 +236,11 @@ namespace PullToRefresh.Droid.Renderers {
         }
 
         /// <summary>
-        /// Gets the size of the desired.
+        /// 
         /// </summary>
-        /// <returns>The desired size.</returns>
-        /// <param name="widthConstraint">Width constraint.</param>
-        /// <param name="heightConstraint">Height constraint.</param>
+        /// <param name="widthConstraint"></param>
+        /// <param name="heightConstraint"></param>
+        /// <returns></returns>
         public SizeRequest GetDesiredSize(int widthConstraint, int heightConstraint) {
             _packed.ViewGroup.Measure(widthConstraint, heightConstraint);
 
@@ -283,32 +249,46 @@ namespace PullToRefresh.Droid.Renderers {
         }
 
         /// <summary>
-        /// Updates the layout.
+        /// 
         /// </summary>
         public void UpdateLayout() => Tracker?.UpdateLayout();
 
-
         /// <summary>
-        /// Gets the tracker.
+        /// 
         /// </summary>
-        /// <value>The tracker.</value>
-        public VisualElementTracker Tracker { get; private set; }
-
-
-        /// <summary>
-        /// Gets the view group.
-        /// </summary>
-        /// <value>The view group.</value>
         public Android.Views.ViewGroup ViewGroup => this;
 
-
+        /// <summary>
+        /// 
+        /// </summary>
         public Android.Views.View View => this;
 
         /// <summary>
-        /// Gets the element.
+        /// 
         /// </summary>
-        /// <value>The element.</value>
-        public VisualElement Element { get; private set; }
+        /// <param name="id"></param>
+        public void SetLabelFor(int? id) { }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="e"></param>
+        /// <returns></returns>
+        public override bool OnTouchEvent(MotionEvent e) {
+            if (e.Action == MotionEventActions.Move) {
+                if (!_isPreparingRefresh) {
+                    TimeSpan timeOffset = DateTime.Now - _lastRefreshDate;
+                    _hintLabel.Text = string.Format("Updated {0} ago.", timeOffset.TotalMinutes < 1 ? string.Format("{0} sec", (int)timeOffset.TotalSeconds) : string.Format("{0} min", (int)timeOffset.TotalMinutes));
+                }
+
+                _isPreparingRefresh = true;
+            }
+            else if (e.Action == MotionEventActions.Up) {
+                _isPreparingRefresh = false;
+            }
+
+            return base.OnTouchEvent(e);
+        }
 
         /// <summary>
         /// Cleanup layout.
@@ -342,8 +322,102 @@ namespace PullToRefresh.Droid.Renderers {
             init = false;*/
         }
 
-        public void SetLabelFor(int? id) {
+        /// <summary>
+        /// 
+        /// </summary>
+        private void PrepareHint() {
+            _hintLabel = new TextView(this.Context);
+            _hintLabel.Text = "Hint label";
+            Android.Widget.RelativeLayout.LayoutParams relativeLayoutParameters =
+                new Android.Widget.RelativeLayout.LayoutParams(LayoutParams.WrapContent, LayoutParams.WrapContent);
+            relativeLayoutParameters.AddRule(LayoutRules.AlignParentBottom);
+            relativeLayoutParameters.AddRule(LayoutRules.CenterHorizontal);
+            _hintLabel.LayoutParameters = relativeLayoutParameters;
 
+            _hintLayout = new Android.Widget.RelativeLayout(this.Context);
+            _hintLayout.LayoutParameters = new Android.Widget.RelativeLayout.LayoutParams(LayoutParams.MatchParent, 0);
+            _hintLayout.SetPadding(0, 0, 0, 7);
+            _hintLayout.AddView(_hintLabel);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void UpdateContent() {
+            if (RefreshView.Content == null) {
+                return;
+            }
+
+            if (_packed != null) {
+                RemoveView(_packed.ViewGroup);
+            }
+
+            _packed = Platform.CreateRenderer(RefreshView.Content);
+
+            try {
+                RefreshView.Content.SetValue(RendererProperty, _packed);
+            }
+            catch (Exception ex) {
+                System.Diagnostics.Debug.WriteLine("Unable to sent renderer property, maybe an issue: " + ex);
+            }
+
+            PrepareHint();
+            PrepareSwipeObserver();
+
+            _packed.ViewGroup.LayoutParameters = new LayoutParams(LayoutParams.WrapContent, LayoutParams.WrapContent);
+
+            Android.Widget.LinearLayout baseLinearLayout = new Android.Widget.LinearLayout(this.Context);
+            baseLinearLayout.Orientation = Orientation.Vertical;
+            baseLinearLayout.AddView(_hintLayout);
+            baseLinearLayout.AddView(_packed.ViewGroup);
+
+            AddView(baseLinearLayout, LayoutParams.MatchParent);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void PrepareSwipeObserver() {
+            Android.Views.View swipeTarget = this.GetChildAt(0);
+
+            if (swipeTarget == null) {
+                return;
+            }
+
+            SwipeTargetObserver swipeTargetObserver = new SwipeTargetObserver() {
+                SwipeTarget = swipeTarget,
+                SwipeRefreshLayout = this,
+                HintLayout = _hintLayout
+            };
+
+            swipeTarget.ViewTreeObserver.AddOnPreDrawListener(swipeTargetObserver);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void UpdateColors() {
+            if (RefreshView == null) {
+                return;
+            }
+            if (RefreshView.RefreshColor != Color.Default) {
+                SetColorSchemeColors(RefreshView.RefreshColor.ToAndroid());
+            }
+            if (RefreshView.RefreshBackgroundColor != Color.Default) {
+                SetProgressBackgroundColorSchemeColor(RefreshView.RefreshBackgroundColor.ToAndroid());
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void UpdateIsRefreshing() =>
+            Refreshing = RefreshView.IsRefreshing;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void UpdateIsSwipeToRefreshEnabled() =>
+            Enabled = RefreshView.IsPullToRefreshEnabled;
     }
 }

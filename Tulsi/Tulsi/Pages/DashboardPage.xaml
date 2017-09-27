@@ -68,7 +68,8 @@
             <controls:PullToRefreshLayout
                 IsRefreshing="{Binding Path=IsRefreshing,
                     Mode=OneWay}"
-                RefreshCommand="{Binding Path=RefreshCommand}">
+                RefreshCommand="{Binding Path=RefreshCommand}"
+                RefreshColor="##2793F5">
                 <!--  Main content  -->
                 <ScrollView x:Name="scrolView">
                     <StackLayout x:Name="MainLayout" BackgroundColor="#DCDCDC">
