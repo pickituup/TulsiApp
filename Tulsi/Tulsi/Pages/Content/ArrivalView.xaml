@@ -28,12 +28,15 @@
                 Margin="0,10"
                 FontAttributes="Bold"
                 HorizontalOptions="Center"
-                Text="SELECT DATE" />
+                Text="SELECT DATE"
+                VerticalOptions="Start" />
 
+            <!--  CALENDAR  -->
             <controls:RoundedContentView
                 Padding="10"
                 BackgroundColor="White"
-                CornerRadius="25">
+                CornerRadius="25"
+                VerticalOptions="FillAndExpand">
                 <Grid BackgroundColor="Transparent">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
@@ -47,7 +50,6 @@
                         Grid.Row="0"
                         Margin="20"
                         IsVisible="True" />
-
                 </Grid>
             </controls:RoundedContentView>
 
@@ -55,9 +57,13 @@
             <controls:RoundedContentView
                 Margin="0,10,0,0"
                 BackgroundColor="White"
-                CornerRadius="5">
-                <StackLayout BackgroundColor="Transparent" Spacing="0">
-
+                CornerRadius="5"
+                VerticalOptions="End">
+                <Grid BackgroundColor="Transparent" RowSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
                     <!--  HEADER LIST  -->
                     <controls:RoundedContentView
                         BackgroundColor="{StaticResource MainColor}"
@@ -72,7 +78,7 @@
                                 FontSize="Medium"
                                 HorizontalOptions="StartAndExpand"
                                 HorizontalTextAlignment="Center"
-                                Text="FRIDAY JUNE 24"
+                                Text="{Binding SelectedDate, StringFormat='{0:dd/MM/yyyy}'}"
                                 TextColor="White"
                                 VerticalTextAlignment="Center" />
                             <StackLayout BackgroundColor="Transparent" Orientation="Horizontal">
@@ -99,9 +105,9 @@
                     </controls:RoundedContentView>
 
                     <ListView
+                        Grid.Row="1"
                         Margin="0"
-                        BackgroundColor="White"
-                        ItemsSource="{Binding ArrivalItems}"
+                        ItemsSource="{Binding SelectionTransactions}"
                         RowHeight="30"
                         SelectedItem="{Binding SelectedItem}"
                         SeparatorVisibility="None"
@@ -132,7 +138,6 @@
                                             Text="{Binding Title}"
                                             TextColor="#cccccc"
                                             VerticalTextAlignment="Center" />
-
                                         <Label
                                             Grid.Column="2"
                                             FontAttributes="Bold"
@@ -141,7 +146,6 @@
                                             Text="{Binding Number}"
                                             TextColor="#cccccc"
                                             VerticalTextAlignment="Center" />
-
                                         <Label
                                             Grid.Column="3"
                                             FontAttributes="Bold"
@@ -155,7 +159,7 @@
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
-                </StackLayout>
+                </Grid>
             </controls:RoundedContentView>
         </StackLayout>
     </ScrollView>

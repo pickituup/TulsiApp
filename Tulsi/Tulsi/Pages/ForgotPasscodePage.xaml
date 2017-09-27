@@ -48,38 +48,46 @@
             BackgroundColor="White"
             Spacing="0"
             VerticalOptions="FillAndExpand">
-            <controls:GifImage
-                x:Name="gifImage"
-                Aspect="AspectFill"
+            <Grid
                 BackgroundColor="#2A92ED"
-                HorizontalOptions="Fill"
-                Source="{Binding Icon}" />
-            
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <controls:GifImage
+                    
+                    HeightRequest="260"
+                    Source="{Binding Icon}"
+                    VerticalOptions="End" />
+            </Grid>
+
             <StackLayout
                 Padding="20,0"
                 BackgroundColor="Transparent"
                 Spacing="25"
                 VerticalOptions="CenterAndExpand">
                 <Label
-                    FontSize="30"
-                    TextColor="#3F4C5E"
                     FontAttributes="Bold"
+                    FontSize="30"
                     HorizontalOptions="Center"
-                    Text="Did you forget pin ?" />
+                    Text="Did you forget pin ?"
+                    TextColor="#3F4C5E" />
                 <Label
+                    FontSize="Medium"
                     HorizontalOptions="Center"
                     HorizontalTextAlignment="Center"
-                    FontSize="Medium"
                     LineBreakMode="WordWrap"
                     Text="No Problem, Login again by clicking the button bellow, we will reset it for you." />
                 <controls:RoundedContentView
                     BackgroundColor="{StaticResource MainColor}"
                     CornerRadius="10"
+                    HeightRequest="40"
                     HorizontalOptions="Center"
-                    WidthRequest="200"
-                    HeightRequest="40">
+                    WidthRequest="200">
                     <controls:RoundedContentView.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding ResetCommand}"/>
+                        <TapGestureRecognizer Command="{Binding ResetCommand}" />
                     </controls:RoundedContentView.GestureRecognizers>
                     <Label
                         FontSize="Large"
@@ -89,7 +97,7 @@
                 </controls:RoundedContentView>
                 <controls:RoundedContentView>
                     <controls:RoundedContentView.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding CancelCommand}"/>
+                        <TapGestureRecognizer Command="{Binding CancelCommand}" />
                     </controls:RoundedContentView.GestureRecognizers>
                     <Label
                         FontSize="Large"
