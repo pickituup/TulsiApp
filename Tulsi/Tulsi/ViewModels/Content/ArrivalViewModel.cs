@@ -507,8 +507,9 @@ namespace Tulsi.ViewModels.Content {
         }
 
         public void Dispose() {
-            ArrivalItems.Clear();
-            SelectionTransactions.Clear();
+            ArrivalItems?.Clear();
+
+            SelectionTransactions?.Clear();
         }
     }
 }
