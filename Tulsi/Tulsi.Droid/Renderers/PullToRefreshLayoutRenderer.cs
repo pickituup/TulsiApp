@@ -125,10 +125,17 @@ namespace PullToRefresh.Droid.Renderers {
                 SetOnRefreshListener(this);
             }
 
+            Android.Util.DisplayMetrics dm = Context.ApplicationContext.Resources.DisplayMetrics;
+            this.Measure(MeasureSpec.MakeMeasureSpec(dm.WidthPixels, MeasureSpecMode.Exactly),
+                    MeasureSpec.MakeMeasureSpec(dm.HeightPixels, MeasureSpecMode.Exactly));
+
             //
             // TODO: remove that hardcoded values
             //
-            SetProgressViewOffset(false, -80, 4);
+            int height = this.GetChildAt(0).MeasuredHeight;
+
+            SetProgressViewOffset(false, (height * -1), 4);
+
             UpdateColors();
             UpdateIsRefreshing();
             UpdateIsSwipeToRefreshEnabled();
