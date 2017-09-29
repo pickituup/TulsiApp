@@ -42,23 +42,26 @@ namespace Tulsi.Droid.Renderers.Helpers {
 
             //Console.WriteLine("---------------> {0}", _newBounds.Height());
             //Console.WriteLine("========================> {0}", _newBounds.Height());
-            Console.WriteLine("---------------> CircleControl {0}", SwipeTarget.Height);
-            Console.WriteLine("========================> HintLayout {0}", HintLayout.Height);
-            Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~> HintText {0}", HintLayout.GetChildAt(0).Height);
+
+            //Console.WriteLine("---------------> CircleControl {0}", SwipeTarget.Height);
+            //Console.WriteLine("========================> HintLayout {0}", HintLayout.Height);
+            //Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~> HintText {0}", HintLayout.GetChildAt(0).Height);
+
+            //Console.WriteLine("---------------> {0}", SwipeRefreshLayout.Top);
 
             if (!_oldBounds.Equals(_newBounds)) {
 
                 //
                 // TODO: remove that hardcoded values
                 //
-                if ((_newBounds.Height() + 108) < 0) {
+                if ((_newBounds.Height() + SwipeRefreshLayout.Top) < 0) {
                     HintLayout.LayoutParameters.Height = 0;
                 }
                 else {
                     //
                     // TODO: remove that hardcoded values
                     //
-                    HintLayout.LayoutParameters.Height = (int)((_newBounds.Height() + 108) * 1.75);
+                    HintLayout.LayoutParameters.Height = (int)((_newBounds.Height() + SwipeRefreshLayout.Top) * 1.70);
                 }
 
                 HintLayout.Invalidate();
@@ -69,5 +72,35 @@ namespace Tulsi.Droid.Renderers.Helpers {
 
             return true;
         }
+
+        //public bool OnPreDraw() {
+        //    _newBounds.Set(SwipeTarget.Left, SwipeRefreshLayout.Top, SwipeTarget.Right, SwipeTarget.Bottom);
+
+        //    Console.WriteLine("---------------> {0}", _newBounds.Height());
+        //    Console.WriteLine("========================> {0}", _newBounds.Height());
+
+        //    if (!_oldBounds.Equals(_newBounds)) {
+
+        //        //
+        //        // TODO: remove that hardcoded values
+        //        //
+        //        if ((_newBounds.Height() + 108) < 0) {
+        //            HintLayout.LayoutParameters.Height = 0;
+        //        }
+        //        else {
+        //            //
+        //            // TODO: remove that hardcoded values
+        //            //
+        //            HintLayout.LayoutParameters.Height = (int)((_newBounds.Height() + 108) * 1.75);
+        //        }
+
+        //        HintLayout.Invalidate();
+        //        HintLayout.RequestLayout();
+
+        //        _oldBounds.Set(_newBounds);
+        //    }
+
+        //    return true;
+        //}
     }
 }
