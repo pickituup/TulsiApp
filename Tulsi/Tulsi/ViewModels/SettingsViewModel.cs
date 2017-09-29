@@ -45,8 +45,6 @@ namespace Tulsi.ViewModels {
             }
         }
 
-        
-
         IView _importedView;
         public IView ImportedView {
             get { return _importedView; }
@@ -166,6 +164,7 @@ namespace Tulsi.ViewModels {
             }
 
             MessagingCenter.Unsubscribe<string>(this, "exitView");
+            MessagingCenter.Unsubscribe<ResponseUnchekPasscode>(this, "disablePasscode");
         }
     }
 }

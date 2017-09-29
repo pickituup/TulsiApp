@@ -47,17 +47,16 @@ namespace Tulsi.Droid.Renderers.Helpers {
             //Console.WriteLine("========================> HintLayout {0}", HintLayout.Height);
             //Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~> HintText {0}", HintLayout.GetChildAt(0).Height);
 
-            //Console.WriteLine("---------------> {0}", SwipeRefreshLayout.Top);
+            Console.WriteLine("---------------> {0}", (_newBounds.Height() + SwipeRefreshLayout.Top));
 
             if (!_oldBounds.Equals(_newBounds)) {
 
                 //
                 // TODO: remove that hardcoded values
                 //
-                if ((_newBounds.Height() + SwipeRefreshLayout.Top) < 0) {
+                if ((_newBounds.Height() + SwipeRefreshLayout.Top) <= 0) {
                     HintLayout.LayoutParameters.Height = 0;
-                }
-                else {
+                } else {
                     //
                     // TODO: remove that hardcoded values
                     //
