@@ -125,17 +125,7 @@ namespace PullToRefresh.Droid.Renderers {
                 SetOnRefreshListener(this);
             }
 
-            Android.Util.DisplayMetrics dm = Context.ApplicationContext.Resources.DisplayMetrics;
-            this.Measure(MeasureSpec.MakeMeasureSpec(dm.WidthPixels, MeasureSpecMode.Exactly),
-                    MeasureSpec.MakeMeasureSpec(dm.HeightPixels, MeasureSpecMode.Exactly));
-
-            //
-            // TODO: remove that hardcoded values
-            //
-            int height = this.GetChildAt(0).MeasuredHeight;
-
-            SetProgressViewOffset(false, (height * -1), 4);
-
+            SetIndicatorPosition();
             UpdateColors();
             UpdateIsRefreshing();
             UpdateIsSwipeToRefreshEnabled();
@@ -398,6 +388,17 @@ namespace PullToRefresh.Droid.Renderers {
             };
 
             swipeTarget.ViewTreeObserver.AddOnPreDrawListener(swipeTargetObserver);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void SetIndicatorPosition() {
+            Android.Util.DisplayMetrics dm = Context.ApplicationContext.Resources.DisplayMetrics;
+            this.Measure(MeasureSpec.MakeMeasureSpec(dm.WidthPixels, MeasureSpecMode.Exactly),
+                    MeasureSpec.MakeMeasureSpec(dm.HeightPixels, MeasureSpecMode.Exactly));
+
+            SetProgressViewOffset(false, (this.GetChildAt(0).MeasuredHeight * -1), 4);
         }
 
         /// <summary>
