@@ -95,7 +95,7 @@ namespace Tulsi {
 
                 tempLabel.IsVisible = false;
 
-                return true;
+                return false;
             });
         }
 

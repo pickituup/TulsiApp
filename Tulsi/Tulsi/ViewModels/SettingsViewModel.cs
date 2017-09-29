@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Tulsi.Helpers;
+using Tulsi.Model;
 using Tulsi.MVVM.Core;
 using Tulsi.NavigationFramework;
 using Tulsi.Observers;
@@ -38,7 +39,7 @@ namespace Tulsi.ViewModels {
                             Spot.TranslateTo(0, 0, 700);
                             IsImportedViewVisible = value;
                         } else {
-                            DependencyService.Get<ISQLiteService>().ClearPasscode();
+                            CanPasscodeOff();
                         }
                     }
             }
@@ -107,6 +108,21 @@ namespace Tulsi.ViewModels {
             SelectedCurrencyItem = CurrencyItems.FirstOrDefault();
 
             MessagingCenter.Subscribe<string>(this, "exitView", AutoHideView);
+
+            MessagingCenter.Subscribe<ResponseUnchekPasscode>(this, "disablePasscode", DisablePasscode);
+        }
+
+        private void CanPasscodeOff() {
+            RequestUncheckPasscode request = new RequestUncheckPasscode { NeedToUncheck = true };
+            MessagingCenter.Send(request, "canUnchekPasscodeRequest");
+
+            Spot.TranslateTo(0, 0, 700);
+            IsImportedViewVisible = true;
+        }
+
+        private void DisablePasscode(ResponseUnchekPasscode obj) {
+            if (obj.CanUncheck)
+                DependencyService.Get<ISQLiteService>().ClearPasscode();
         }
 
         private void AutoHideView(string obj) {
@@ -148,6 +164,7 @@ namespace Tulsi.ViewModels {
             }
 
             MessagingCenter.Unsubscribe<string>(this, "exitView");
+            MessagingCenter.Unsubscribe<ResponseUnchekPasscode>(this, "disablePasscode");
         }
     }
 }
