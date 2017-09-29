@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Tulsi.Model;
 using Tulsi.MVVM.Core;
 using Tulsi.SharedService;
 using Xamarin.Forms;
@@ -15,9 +16,15 @@ namespace Tulsi.ViewModels.Content {
 
         private const string NEW_PIN = "ENTER NEW PASSCODE";
 
+        private const string DISABLE_PASSCODE = "DISABLE PASSCODE";
+
         private const int PASSCODE_LENGTH = 4;
 
         private Stack<string> _stackDigits = new Stack<string>();
+
+        public bool CanDisablePasscode { get; set; }
+
+        public bool IsHaveUncheckRequest { get; set; }
 
         bool _visibilityBullets;
         public bool VisibilityBullets {
@@ -97,9 +104,16 @@ namespace Tulsi.ViewModels.Content {
         public PasscodeViewModel() {
             Title = NEW_PIN;
 
+            MessagingCenter.Subscribe<RequestUncheckPasscode>(this, "canUnchekPasscodeRequest", OnUncheckRequestRecieved);
+
             ButtonInputCommand = new Command(OnInputedDigit);
 
             CleanDigitCommand = new Command(OnCleanDigit);
+        }
+
+        private void OnUncheckRequestRecieved(RequestUncheckPasscode obj) {
+            Title = DISABLE_PASSCODE;
+            IsHaveUncheckRequest = obj.NeedToUncheck;
         }
 
         private void OnCleanDigit() {
@@ -142,17 +156,23 @@ namespace Tulsi.ViewModels.Content {
         private void OnInputedDigit(object obj) {
             SetPasscode((string)obj);
 
+            if (IsHaveUncheckRequest) {
+                if (_stackDigits.Count == PASSCODE_LENGTH)
+                    IsValidPasscode();
+                return;
+            }
+
             if (!DependencyService.Get<ISQLiteService>().IsPasscodeExist()) {
                 if (_stackDigits.Count == PASSCODE_LENGTH)
                     SavePasscode();
             } else {
                 if (_stackDigits.Count == PASSCODE_LENGTH) {
-                    ConfirmPasscode();
+                    IsValidPasscode();
                 }
             }
         }
 
-        private void ConfirmPasscode() {
+        private void IsValidPasscode() {
             string result = string.Empty;
             foreach (var item in _stackDigits) {
                 result = item + result;
@@ -160,6 +180,14 @@ namespace Tulsi.ViewModels.Content {
 
             int.TryParse(result, out int pin);
             bool valid = DependencyService.Get<ISQLiteService>().CheckPin(pin);
+
+            if (IsHaveUncheckRequest) {
+                CanDisablePasscode = valid;
+                if (CanDisablePasscode) {
+                    MessagingCenter.Send(new ResponseUnchekPasscode { CanUncheck = CanDisablePasscode }, "disablePasscode");
+                    IsHaveUncheckRequest = false;
+                }
+            }
 
             AutoExitView(valid);
         }
@@ -255,6 +283,8 @@ namespace Tulsi.ViewModels.Content {
 
         public void Dispose() {
             _stackDigits.Clear();
+
+            MessagingCenter.Unsubscribe<RequestUncheckPasscode>(this, "canUnchekPasscodeRequest");
         }
     }
 }

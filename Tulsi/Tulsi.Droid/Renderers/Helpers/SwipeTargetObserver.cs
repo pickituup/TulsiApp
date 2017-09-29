@@ -40,8 +40,11 @@ namespace Tulsi.Droid.Renderers.Helpers {
         public bool OnPreDraw() {
             _newBounds.Set(SwipeTarget.Left, SwipeRefreshLayout.Top, SwipeTarget.Right, SwipeTarget.Bottom);
 
-            Console.WriteLine("---------------> {0}", _newBounds.Height());
-            Console.WriteLine("========================> {0}", _newBounds.Height());
+            //Console.WriteLine("---------------> {0}", _newBounds.Height());
+            //Console.WriteLine("========================> {0}", _newBounds.Height());
+            Console.WriteLine("---------------> CircleControl {0}", SwipeTarget.Height);
+            Console.WriteLine("========================> HintLayout {0}", HintLayout.Height);
+            Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~> HintText {0}", HintLayout.GetChildAt(0).Height);
 
             if (!_oldBounds.Equals(_newBounds)) {
 

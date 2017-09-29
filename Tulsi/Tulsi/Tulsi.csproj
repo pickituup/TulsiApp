@@ -68,6 +68,8 @@
     <Compile Include="Data\DataBase\DbContext.cs" />
     <Compile Include="Data\DataBase\Tables\PasscodeState.cs" />
     <Compile Include="Model\ArrivalTransaction.cs" />
+    <Compile Include="Model\RequestUncheckPasscode.cs" />
+    <Compile Include="Model\ResponseUnchekPasscode.cs" />
     <Compile Include="Model\TodayRatesDataCollection.cs" />
     <Compile Include="Pages\AddReportAccessPage.xaml.cs">
       <DependentUpon>AddReportAccessPage.xaml</DependentUpon>
