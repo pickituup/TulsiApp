@@ -11,12 +11,25 @@
         BackgroundColor="Transparent"
         RowSpacing="0"
         VerticalOptions="Start">
+
+        <Grid.Resources>
+            <ResourceDictionary>
+                <Style x:Key="MenuItemStyleLabel" TargetType="Label">
+                    <Setter Property="BackgroundColor" Value="White" />
+                    <Setter Property="TextColor" Value="#2793F5" />
+                    <Setter Property="HorizontalOptions" Value="Start" />
+                    <Setter Property="VerticalOptions" Value="Center" />
+                    <Setter Property="FontSize" Value="10" />
+                </Style>
+            </ResourceDictionary>
+        </Grid.Resources>
+
         <Grid.RowDefinitions>
             <RowDefinition Height="130" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <Grid BackgroundColor="#2793f5">
+        <Grid BackgroundColor="{StaticResource MainColor}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="auto" />

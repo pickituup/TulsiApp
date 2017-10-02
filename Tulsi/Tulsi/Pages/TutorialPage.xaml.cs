@@ -31,23 +31,29 @@ namespace Tulsi.Pages {
         protected override void OnAppearing() {
             base.OnAppearing();
 
-            _viewModel.ChangeStatusBarColor("#ffffff");
+            SetPlatformStatusBarColor("#ffffff");
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         protected override void OnDisappearing() {
             base.OnDisappearing();
 
-            _viewModel.ChangeStatusBarColor(null);
+            SetPlatformStatusBarColor(null);
+        }
+
+        private void SetPlatformStatusBarColor(string color) {
+            switch (Device.RuntimePlatform) {
+                case Device.Android:
+                    _viewModel.ChangeStatusBarColor(color);
+                    break;
+                case Device.iOS:
+                    break;
+                default:
+                    _viewModel.ChangeStatusBarColor(null);
+                    break;
+            }
         }
 
         public void ApplyVisualChangesWhileNavigating() { }
-
-        public void Dispose() {
-            _viewModel.Dispose();
-        }
 
         private void OnSelectedItem(object sender, SelectedItemChangedEventArgs e) {
             if (e.SelectedItem is TutorialItem) {
@@ -71,6 +77,10 @@ namespace Tulsi.Pages {
                 default:
                     return null;
             }
+        }
+
+        public void Dispose() {
+            _viewModel.Dispose();
         }
     }
 }

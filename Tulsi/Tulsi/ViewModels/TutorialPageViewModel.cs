@@ -42,7 +42,7 @@ namespace Tulsi.ViewModels {
         /// 
         /// </summary>
         public void Dispose() {
-            Tutorials.Clear();
+            Tutorials?.Clear();
         }
 
         /// <summary>

@@ -5,15 +5,20 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Tulsi;assembly=Tulsi"
     NavigationPage.HasNavigationBar="false">
-    
+
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style TargetType="Entry">
                 <Setter Property="Margin" Value="10" />
             </Style>
+
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="#B3B3B3" />
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
-    
+
     <Grid x:Name="LoginGrid" BackgroundColor="#FFFFFF">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10" />
@@ -37,7 +42,10 @@
             Grid.Column="1"
             HeightRequest="83"
             WidthRequest="208" />
-        <Grid Grid.Row="6" Grid.Column="1" BackgroundColor="Transparent">
+        <Grid
+            Grid.Row="6"
+            Grid.Column="1"
+            BackgroundColor="Transparent">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="auto" />

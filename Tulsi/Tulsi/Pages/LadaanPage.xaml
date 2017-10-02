@@ -4,32 +4,34 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:controls="clr-namespace:Tulsi.Controls"
-    xmlns:toolKitValueConverters="clr-namespace:Tulsi.ToolKit.BindingValueConverters"
     xmlns:relativeCompoundedViews="clr-namespace:Tulsi.Pages.Content.LadaanPageCompoundViews"
     xmlns:toolKitImageResourceExtension="clr-namespace:Tulsi.ToolKit.MarkupExtensions"
-    NavigationPage.HasNavigationBar="false"
-    x:Name="root_ContentPage">
+    xmlns:toolKitValueConverters="clr-namespace:Tulsi.ToolKit.BindingValueConverters"
+    x:Name="root_ContentPage"
+    NavigationPage.HasNavigationBar="false">
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <toolKitValueConverters:IsNullToBoolConverter
-                x:Key="IsNullToBoolConverter"/>
+            <toolKitValueConverters:IsNullToBoolConverter x:Key="IsNullToBoolConverter" />
+
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="#B3B3B3" />
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
 
     <Grid>
-        <StackLayout
-        BackgroundColor="#DCDCDC"
-        Spacing="5">
+        <StackLayout BackgroundColor="#DCDCDC" Spacing="5">
             <!--  Tool bar  -->
             <Grid x:Name="ToolbarGrid" BackgroundColor="#2793F5">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50" />
                 </Grid.RowDefinitions>
                 <Grid
-                Padding="15,0,0,0"
-                BackgroundColor="Transparent"
-                HorizontalOptions="Start">
+                    Padding="15,0,0,0"
+                    BackgroundColor="Transparent"
+                    HorizontalOptions="Start">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="40" />
                     </Grid.ColumnDefinitions>
@@ -37,24 +39,24 @@
                         <TapGestureRecognizer Command="{Binding NavigateBackCommand}" />
                     </Grid.GestureRecognizers>
                     <Image
-                    HeightRequest="20"
-                    HorizontalOptions="Start"
-                    Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.back.png}"
-                    VerticalOptions="Center"
-                    WidthRequest="15" />
+                        HeightRequest="20"
+                        HorizontalOptions="Start"
+                        Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.back.png}"
+                        VerticalOptions="Center"
+                        WidthRequest="15" />
                 </Grid>
 
                 <Label
-                x:Name="PageTitleLabel"
-                HorizontalOptions="Center"
-                Text="LADAAN/BIJAK"
-                TextColor="White"
-                VerticalOptions="Center" />
+                    x:Name="PageTitleLabel"
+                    HorizontalOptions="Center"
+                    Text="LADAAN/BIJAK"
+                    TextColor="White"
+                    VerticalOptions="Center" />
 
                 <Grid
-                Padding="0,0,15,0"
-                BackgroundColor="Transparent"
-                HorizontalOptions="End">
+                    Padding="0,0,15,0"
+                    BackgroundColor="Transparent"
+                    HorizontalOptions="End">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="60" />
                     </Grid.ColumnDefinitions>
@@ -62,32 +64,32 @@
                         <TapGestureRecognizer Command="{Binding DisplaySearchPageCommand}" />
                     </Grid.GestureRecognizers>
                     <Image
-                    HeightRequest="20"
-                    HorizontalOptions="End"
-                    Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.magnifier.png}"
-                    VerticalOptions="Center"
-                    WidthRequest="20" />
+                        HeightRequest="20"
+                        HorizontalOptions="End"
+                        Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.magnifier.png}"
+                        VerticalOptions="Center"
+                        WidthRequest="20" />
                 </Grid>
             </Grid>
 
             <!--  MAIN CONTENT  -->
             <StackLayout
-            Padding="5,0"
-            BackgroundColor="Transparent"
-            Spacing="10">
-                
-                <!--Content header label-->
+                Padding="5,0"
+                BackgroundColor="Transparent"
+                Spacing="10">
+
+                <!--  Content header label  -->
                 <Frame
-                Padding="5"
-                BackgroundColor="White"
-                CornerRadius="7"
-                HasShadow="False"
-                HeightRequest="40"
-                VerticalOptions="Start">
+                    Padding="5"
+                    BackgroundColor="White"
+                    CornerRadius="7"
+                    HasShadow="False"
+                    HeightRequest="40"
+                    VerticalOptions="Start">
                     <Label
-                    HorizontalTextAlignment="Center"
-                    TextColor="#2793F5"
-                    VerticalTextAlignment="Center">
+                        HorizontalTextAlignment="Center"
+                        TextColor="#2793F5"
+                        VerticalTextAlignment="Center">
                         <Label.FormattedText>
                             <FormattedString>
                                 <FormattedString.Spans>
@@ -99,57 +101,53 @@
                     </Label>
                 </Frame>
 
-                <!--List of transactions-->
+                <!--  List of transactions  -->
                 <ScrollView>
-                    <controls:StackList 
-                        BackgroundColor="Transparent"
-                        ItemsSource="{Binding Path=LadaanSource}">
+                    <controls:StackList BackgroundColor="Transparent" ItemsSource="{Binding Path=LadaanSource}">
                         <controls:StackList.ItemTemplate>
                             <DataTemplate>
                                 <Frame
-                                Padding="10"
-                                BackgroundColor="White"
-                                CornerRadius="7"
-                                HasShadow="False">
+                                    Padding="10"
+                                    BackgroundColor="White"
+                                    CornerRadius="7"
+                                    HasShadow="False">
 
                                     <StackLayout BackgroundColor="Transparent" Spacing="10">
                                         <Label
-                                        FontAttributes="Bold"
-                                        FontSize="Medium"
-                                        HorizontalTextAlignment="Center"
-                                        Text="{Binding Date, StringFormat='{0:dd/MM/yyyy}'}"
-                                        TextColor="{StaticResource MainColor}" />
+                                            FontAttributes="Bold"
+                                            FontSize="Medium"
+                                            HorizontalTextAlignment="Center"
+                                            Text="{Binding Date, StringFormat='{0:dd/MM/yyyy}'}"
+                                            TextColor="{StaticResource MainColor}" />
                                         <Frame
-                                        Padding="7"
-                                        BackgroundColor="{StaticResource MainColor}"
-                                        CornerRadius="7"
-                                        HasShadow="False">
+                                            Padding="7"
+                                            BackgroundColor="{StaticResource MainColor}"
+                                            CornerRadius="7"
+                                            HasShadow="False">
 
                                             <StackLayout
-                                            Padding="15,0"
-                                            BackgroundColor="Transparent"
-                                            Orientation="Horizontal">
+                                                Padding="15,0"
+                                                BackgroundColor="Transparent"
+                                                Orientation="Horizontal">
                                                 <Label
-                                                FontAttributes="Bold"
-                                                FontSize="Large"
-                                                HorizontalOptions="StartAndExpand"
-                                                Text="Name"
-                                                TextColor="White" />
+                                                    FontAttributes="Bold"
+                                                    FontSize="Large"
+                                                    HorizontalOptions="StartAndExpand"
+                                                    Text="Name"
+                                                    TextColor="White" />
                                                 <Label
-                                                FontAttributes="Bold"
-                                                FontSize="Large"
-                                                HorizontalOptions="EndAndExpand"
-                                                Text="Cases"
-                                                TextColor="White" />
+                                                    FontAttributes="Bold"
+                                                    FontSize="Large"
+                                                    HorizontalOptions="EndAndExpand"
+                                                    Text="Cases"
+                                                    TextColor="White" />
                                             </StackLayout>
                                         </Frame>
 
-                                        <controls:AdvancedStackList 
-                                            BackgroundColor="Transparent" 
+                                        <controls:AdvancedStackList
+                                            BackgroundColor="Transparent"
                                             ItemsSource="{Binding Path=Data}"
-                                            SelectedItem="{Binding Source={Reference Name=root_ContentPage},
-                                                Path=BindingContext.SelectedLadaanTransaction,
-                                                Mode=TwoWay}">
+                                            SelectedItem="{Binding Source={Reference Name=root_ContentPage}, Path=BindingContext.SelectedLadaanTransaction, Mode=TwoWay}">
                                             <controls:AdvancedStackList.ItemTemplate>
                                                 <DataTemplate>
                                                     <relativeCompoundedViews:LaddanMenuItem />
@@ -165,9 +163,6 @@
             </StackLayout>
         </StackLayout>
 
-        <relativeCompoundedViews:TransactionPopup
-            PopupVisibility="{Binding Path=SelectedLadaanTransaction,
-                Converter={StaticResource Key=IsNullToBoolConverter},
-                Mode=OneWay}"/>
+        <relativeCompoundedViews:TransactionPopup PopupVisibility="{Binding Path=SelectedLadaanTransaction, Converter={StaticResource Key=IsNullToBoolConverter}, Mode=OneWay}" />
     </Grid>
 </ContentPage>

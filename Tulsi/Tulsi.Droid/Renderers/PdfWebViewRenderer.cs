@@ -19,8 +19,6 @@ namespace Tulsi.Droid.Renderers {
                 Control.Settings.BuiltInZoomControls = true;
                 Control.Settings.DisplayZoomControls = false;
 
-               
-                //Control.LoadUrl(string.Format("file:///android_asset/pdfviewer/index.html?file={0}", System.Net.WebUtility.UrlEncode(customWebView.Uri)));
                 Control.LoadUrl(string.Format("file:///android_asset/pdfviewer/index.html?file={0}", string.Format("file:///android_asset/Content/{0}", WebUtility.UrlEncode(customWebView.Uri))));
             }
         }

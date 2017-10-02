@@ -7,6 +7,15 @@
     xmlns:toolKitImageResourceExtension="clr-namespace:Tulsi.ToolKit.MarkupExtensions"
     NavigationPage.HasNavigationBar="false">
 
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="#B3B3B3" />
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
     <StackLayout
         x:Name="HeaderLayout"
         BackgroundColor="#DCDCDC"
@@ -57,7 +66,6 @@
                 </Grid.RowDefinitions>
 
                 <controls:GifImage
-                    
                     HeightRequest="260"
                     Source="{Binding Icon}"
                     VerticalOptions="End" />

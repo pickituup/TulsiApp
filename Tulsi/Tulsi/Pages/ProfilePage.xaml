@@ -8,6 +8,15 @@
     xmlns:toolKitImageResourceExtension="clr-namespace:Tulsi.ToolKit.MarkupExtensions"
     NavigationPage.HasNavigationBar="false">
 
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="#B3B3B3" />
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
     <Grid BackgroundColor="#f3f3f3" RowSpacing="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="1.4*" />
@@ -103,9 +112,7 @@
                     TextColor="#AAA6AB"
                     VerticalOptions="Center" />
             </controls:RoundedContentView>
-            <controls:RoundedContentView
-                BackgroundColor="White"
-                CornerRadius="5">
+            <controls:RoundedContentView BackgroundColor="White" CornerRadius="5">
                 <Label
                     Margin="20,5"
                     FontSize="Medium"
@@ -113,9 +120,7 @@
                     TextColor="#AAA6AB"
                     VerticalOptions="Center" />
             </controls:RoundedContentView>
-            <controls:RoundedContentView
-                BackgroundColor="White"
-                CornerRadius="5">
+            <controls:RoundedContentView BackgroundColor="White" CornerRadius="5">
                 <Label
                     Margin="20,5"
                     FontSize="Medium"
@@ -123,9 +128,7 @@
                     TextColor="#AAA6AB"
                     VerticalOptions="Center" />
             </controls:RoundedContentView>
-            <controls:RoundedContentView
-                BackgroundColor="White"
-                CornerRadius="5">
+            <controls:RoundedContentView BackgroundColor="White" CornerRadius="5">
                 <controls:RoundedContentView.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding LogOutCommand}" />
                 </controls:RoundedContentView.GestureRecognizers>

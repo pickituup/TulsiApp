@@ -12,7 +12,8 @@ namespace Tulsi.iOS.Services {
         }
 
         public int GetHeight() {
-            return default(int);
+            var screenSize = UIScreen.MainScreen.Bounds;
+            return (int)screenSize.Height;
         }
 
         public int GetHeightDiP() {
@@ -20,8 +21,8 @@ namespace Tulsi.iOS.Services {
         }
 
         public int GetWidth() {
-            var tt = UIScreen.MainScreen.Bounds;
-            return default(int);
+            var screenSize = UIScreen.MainScreen.Bounds;
+            return (int)screenSize.Width;
         }
 
         public int GetWidthDiP() {

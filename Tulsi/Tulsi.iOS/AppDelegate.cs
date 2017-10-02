@@ -22,6 +22,8 @@ namespace Tulsi.iOS {
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
 
+            SlideOverKit.iOS.MenuContainerPageiOSRenderer renderer = new SlideOverKit.iOS.MenuContainerPageiOSRenderer();
+
             return base.FinishedLaunching(app, options);
         }
     }
