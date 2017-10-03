@@ -4,6 +4,8 @@ using System.Linq;
 
 using Foundation;
 using UIKit;
+using Syncfusion.SfChart.iOS;
+using Syncfusion.SfChart.XForms.iOS.Renderers;
 
 namespace Tulsi.iOS {
     // The UIApplicationDelegate for the application. This class is responsible for launching the 
@@ -20,6 +22,9 @@ namespace Tulsi.iOS {
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options) {
             global::Xamarin.Forms.Forms.Init();
+
+            SfChartRenderer.Init();
+
             LoadApplication(new App());
 
             SlideOverKit.iOS.MenuContainerPageiOSRenderer renderer = new SlideOverKit.iOS.MenuContainerPageiOSRenderer();

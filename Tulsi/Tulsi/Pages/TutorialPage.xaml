@@ -13,11 +13,6 @@
             <toolkitConverters:VisibilityViewConverter x:Key="visibility_converter" />
 
             <toolkitConverters:ByteToImageSourceConverter x:Key="activityConverter" />
-
-            <Style TargetType="Label">
-                <Setter Property="TextColor" Value="#B3B3B3" />
-                <Setter Property="VerticalOptions" Value="Center" />
-            </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
 

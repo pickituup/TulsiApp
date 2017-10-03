@@ -11,11 +11,6 @@
             <Style TargetType="Entry">
                 <Setter Property="Margin" Value="10" />
             </Style>
-
-            <Style TargetType="Label">
-                <Setter Property="TextColor" Value="#B3B3B3" />
-                <Setter Property="VerticalOptions" Value="Center" />
-            </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
 

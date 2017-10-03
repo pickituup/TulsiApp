@@ -204,6 +204,7 @@
     <Compile Include="DeveloperService\AndroidMemoryService.cs" />
     <Compile Include="DeveloperService\MemoryHelper.cs" />
     <Compile Include="MainActivity.cs" />
+    <Compile Include="Renderers\ExtendedContentViewRenderer.cs" />
     <Compile Include="Renderers\Helpers\SwipeTargetObserver.cs" />
     <Compile Include="Renderers\PullToRefreshLayoutRenderer.cs" />
     <Compile Include="Renderers\ColorProgressBarRenderer.cs" />

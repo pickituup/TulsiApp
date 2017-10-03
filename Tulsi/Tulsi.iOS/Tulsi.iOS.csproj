@@ -96,6 +96,7 @@
     <Compile Include="Renderers\ColorProgressBar.cs" />
     <Compile Include="Renderers\CustomFrameRenderer.cs" />
     <Compile Include="Renderers\CustomWebViewRenderer.cs" />
+    <Compile Include="Renderers\ExtendedContentViewRenderer.cs" />
     <Compile Include="Renderers\PdfWebViewViewerRenderer.cs" />
     <Compile Include="Services\DisplaySizeiOS.cs" />
     <Compile Include="Services\SQLiteService.cs" />

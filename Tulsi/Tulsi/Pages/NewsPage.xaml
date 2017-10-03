@@ -1,14 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<m:MenuContainerPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:controls="clr-namespace:Tulsi.Controls"
-             xmlns:local="clr-namespace:Tulsi;assembly=Tulsi"
-             xmlns:toolKitImageResourceExtension="clr-namespace:Tulsi.ToolKit.MarkupExtensions"
-             xmlns:m="clr-namespace:SlideOverKit"
-             x:Class="Tulsi.NewsPage" NavigationPage.HasNavigationBar="false">
+<m:MenuContainerPage
+    x:Class="Tulsi.NewsPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:Tulsi.Controls"
+    xmlns:local="clr-namespace:Tulsi;assembly=Tulsi"
+    xmlns:m="clr-namespace:SlideOverKit"
+    xmlns:toolKitImageResourceExtension="clr-namespace:Tulsi.ToolKit.MarkupExtensions"
+    NavigationPage.HasNavigationBar="false">
 
-    <!--TODO: uncoment all and fix value can't be null XAML error.-->
-  <!--<StackLayout x:Name="HeaderLayout" BackgroundColor="#DCDCDC">
+    <!--  TODO: uncoment all and fix value can't be null XAML error.  -->
+    <!--<StackLayout x:Name="HeaderLayout" BackgroundColor="#DCDCDC">
     <Grid x:Name="ToolbarGrid">
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="10" />
@@ -274,4 +276,4 @@
       </AbsoluteLayout>
     </ScrollView>
   </StackLayout>-->
-  </m:MenuContainerPage>
+</m:MenuContainerPage>

@@ -43,6 +43,7 @@
     <Compile Include="Controls\CustomFrame.cs" />
     <Compile Include="Controls\CustomWebView.cs" />
     <Compile Include="Controls\EntryEx.cs" />
+    <Compile Include="Controls\ExtendedContentView.cs" />
     <Compile Include="Controls\GifImage.cs" />
     <Compile Include="Controls\PdfWebView.cs" />
     <Compile Include="Controls\PrimitiveSegmentControl\FramedLabelSegmentItem.xaml.cs">

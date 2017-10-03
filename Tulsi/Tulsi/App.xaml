@@ -8,6 +8,11 @@
         <ResourceDictionary>
             <Color x:Key="MainColor">#2793F5</Color>
 
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="#B3B3B3" />
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
+
             <!--<Style x:Key="MenuItemStyleBtn" TargetType="Button">
                 <Setter Property="BackgroundColor" Value="White" />
                 <Setter Property="TextColor" Value="#2793F5" />
