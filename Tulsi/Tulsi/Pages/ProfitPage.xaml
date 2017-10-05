@@ -16,7 +16,7 @@
         BackgroundColor="#f3f3f3"
         Spacing="5">
         <!--  Tool bar  -->
-        <Grid x:Name="ToolbarGrid" BackgroundColor="#2793F5">
+        <Grid x:Name="ToolbarGrid" BackgroundColor="{StaticResource MainColor}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="50" />
             </Grid.RowDefinitions>
@@ -68,9 +68,10 @@
             <StackLayout BackgroundColor="Transparent" Spacing="5">
 
                 <!--  PROFIT aprox  -->
-                <controls:RoundedContentView
+                <controls:ExtendedContentView
                     Margin="0,0,0,0"
-                    BackgroundColor="{StaticResource MainColor}"
+                    Padding="5"
+                    BackgroundColor="#2793F5"
                     CornerRadius="8">
                     <Grid
                         Padding="0,10"
@@ -112,10 +113,10 @@
                             VerticalOptions="Center"
                             VerticalTextAlignment="Center" />
                     </Grid>
-                </controls:RoundedContentView>
+                </controls:ExtendedContentView>
 
                 <!--  SELECTOR  -->
-                <controls:RoundedContentView
+                <controls:ExtendedContentView
                     BackgroundColor="White"
                     CornerRadius="13"
                     HeightRequest="30">
@@ -137,7 +138,7 @@
                                 Label="Weekly" />
                         </segmentControls:PrimitiveSegment.Segments>
                     </segmentControls:PrimitiveSegment>
-                </controls:RoundedContentView>
+                </controls:ExtendedContentView>
 
                 <!--  YEARS SELECTOR  -->
                 <segmentControls:PrimitiveSegment Orientation="Horizontal" Spacing="20">
@@ -154,7 +155,10 @@
                 </segmentControls:PrimitiveSegment>
 
                 <!--  CHART VIEW  -->
-                <controls:RoundedContentView BackgroundColor="White" CornerRadius="13">
+                <controls:ExtendedContentView
+                    Padding="5"
+                    BackgroundColor="White"
+                    CornerRadius="13">
                     <StackLayout BackgroundColor="Transparent">
 
                         <!--  FTYPE SELECTOR  -->
@@ -220,10 +224,10 @@
                                 VerticalOptions="Center" />
                         </Grid>
                     </StackLayout>
-                </controls:RoundedContentView>
+                </controls:ExtendedContentView>
 
                 <!--  BOTTOM LIST  -->
-                <controls:RoundedContentView
+                <controls:ExtendedContentView
                     Padding="25,5"
                     BackgroundColor="White"
                     CornerRadius="13">
@@ -284,7 +288,7 @@
 
 
                     </Grid>
-                </controls:RoundedContentView>
+                </controls:ExtendedContentView>
 
                 <Label
                     FontSize="18"

@@ -10,7 +10,14 @@
     xmlns:toolKitImageResourceExtension="clr-namespace:Tulsi.ToolKit.MarkupExtensions"
     xmlns:toolKitValueConverters="clr-namespace:Tulsi.ToolKit.BindingValueConverters"
     x:Name="_root_ContentPage"
+    BackgroundColor="{StaticResource MainColor}"
     NavigationPage.HasNavigationBar="false">
+
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <On Platform="iOS" Value="0,20,0,0" />
+        </OnPlatform>
+    </ContentPage.Padding>
 
     <ContentPage.Resources>
         <ResourceDictionary>

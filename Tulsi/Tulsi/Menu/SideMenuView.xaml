@@ -7,16 +7,12 @@
     xmlns:t="clr-namespace:SlideOverKit"
     xmlns:toolKitImageResourceExtension="clr-namespace:Tulsi.ToolKit.MarkupExtensions">
 
-    <Grid
-        BackgroundColor="Transparent"
-        RowSpacing="0"
-        VerticalOptions="Start">
-
+    <Grid BackgroundColor="Transparent" RowSpacing="0">
         <Grid.Resources>
             <ResourceDictionary>
                 <Style x:Key="MenuItemStyleLabel" TargetType="Label">
                     <Setter Property="BackgroundColor" Value="White" />
-                    <Setter Property="TextColor" Value="#2793F5" />
+                    <Setter Property="TextColor" Value="{StaticResource MainColor}" />
                     <Setter Property="HorizontalOptions" Value="Start" />
                     <Setter Property="VerticalOptions" Value="Center" />
                     <Setter Property="FontSize" Value="10" />
@@ -95,7 +91,7 @@
         <Grid
             Grid.Row="1"
             Margin="0,0,0,0"
-            BackgroundColor="Transparent">
+            VerticalOptions="Fill">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
                 <RowDefinition Height="auto" />
@@ -108,9 +104,9 @@
                 Margin="0,0,0,0"
                 ItemSelected="Handle_ItemSelected"
                 ItemsSource="{Binding SideMenuItems}"
+                RowHeight="40"
                 SelectedItem="{Binding SelectedSideMenuItem, Mode=TwoWay}"
-                SeparatorVisibility="None"
-                VerticalOptions="Center">
+                SeparatorVisibility="None">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -138,6 +134,7 @@
                                             FontSize="Medium"
                                             Style="{StaticResource MenuItemStyleLabel}"
                                             Text="{Binding Title}"
+                                            VerticalOptions="Center"
                                             VerticalTextAlignment="Center" />
                                     </StackLayout>
                                 </Grid>
@@ -152,41 +149,37 @@
                 Margin="100,0,0,0"
                 BackgroundColor="Transparent"
                 HorizontalOptions="Fill"
-                RowSpacing="0"
-                VerticalOptions="Start">
+                RowSpacing="0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="45" />
-                    <RowDefinition Height="45" />
-                    <RowDefinition Height="45" />
-                    <RowDefinition Height="45" />
-                    <RowDefinition Height="45" />
-                    <RowDefinition Height="45" />
-                    <RowDefinition Height="45" />
-                    <RowDefinition Height="45" />
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="40" />
                 </Grid.RowDefinitions>
+
                 <Label
                     Grid.Row="1"
-                    Margin="17,1,0,0"
+                    Margin="20,0,0,0"
                     BackgroundColor="Transparent"
-                    FontSize="Small"
-                    HorizontalOptions="Start"
+                    FontSize="Medium"
                     IsVisible="{Binding AmountVisible}"
                     Style="{StaticResource MenuItemStyleLabel}"
-                    Text="70L"
-                    VerticalOptions="Center" />
+                    Text="70L" />
                 <Label
                     Grid.Row="2"
                     Margin="30,0,0,0"
                     BackgroundColor="Transparent"
-                    FontSize="Small"
-                    HorizontalOptions="Start"
+                    FontSize="Medium"
                     IsVisible="{Binding AmountVisible}"
                     Style="{StaticResource MenuItemStyleLabel}"
-                    Text="2 Cr"
-                    VerticalOptions="Center" />
+                    Text="2 Cr" />
                 <Image
                     Grid.Row="3"
-                    Margin="48,0,0,2"
+                    Margin="48,0,0,0"
                     HeightRequest="7"
                     HorizontalOptions="Start"
                     Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.bluecircle.png}"
@@ -194,7 +187,7 @@
                     WidthRequest="7" />
                 <Image
                     Grid.Row="5"
-                    Margin="8,0,0,5"
+                    Margin="8,0,0,0"
                     HeightRequest="7"
                     HorizontalOptions="Start"
                     Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.greencircle.png}"

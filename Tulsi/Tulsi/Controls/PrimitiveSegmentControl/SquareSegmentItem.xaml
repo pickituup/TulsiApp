@@ -5,17 +5,15 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Tulsi.Controls.PrimitiveSegmentControl">
 
-    <Frame
+    <ContentView
         x:Name="baseView_Frame"
         Padding="5"
-        BackgroundColor="White"
-        CornerRadius="0"
-        HasShadow="False">
+        BackgroundColor="White">
 
         <Label
             x:Name="outputText_Label"
             HorizontalTextAlignment="Center"
             Text="Default text"
             TextColor="#AAAAAA" />
-    </Frame>
+    </ContentView>
 </local:PrimitiveSegmentItemBase>

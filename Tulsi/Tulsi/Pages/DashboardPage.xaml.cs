@@ -24,9 +24,6 @@ namespace Tulsi {
 
             BindingContext = _viewModel = new DashboardPageViewModel();
 
-            scrolView.Scrolled += ScrolView_Scrolled;
-            scrolView.LayoutChanged += ScrolView_LayoutChanged;
-
             SfChart chart = new SfChart();
             DoughnutSeries doughnutSeries = new DoughnutSeries() {
                 ItemsSource = _viewModel.ChartData,
@@ -75,14 +72,6 @@ namespace Tulsi {
             ChartGrid.Children.Add(MiddleStack);
         }
 
-        private void ScrolView_LayoutChanged(object sender, EventArgs e) {
-            
-        }
-
-        private void ScrolView_Scrolled(object sender, ScrolledEventArgs e) {
-            
-        }
-
         private void ShowMenuCommand(object sender, EventArgs e) {
             ShowMenu();
         }
@@ -90,6 +79,8 @@ namespace Tulsi {
         private void TranslateViewTapped(object sender, EventArgs e) {
             int displayHeight = DependencyService.Get<IDisplaySize>().GetHeight();
             welcome.TranslateTo(0, -displayHeight, 700);
+
+            SetPlatformPadding();
 
             Device.StartTimer(TimeSpan.FromSeconds(2), () => {
 
@@ -99,14 +90,21 @@ namespace Tulsi {
             });
         }
 
+        private void SetPlatformPadding() {
+            switch (Device.RuntimePlatform) {
+                case Device.iOS:
+                    this.Padding = new Thickness(0, 20, 0, 0);
+                    break;
+                default:
+                    break;
+            }
+        }
+
         /// <summary>
         /// Make some visual changes of current page through navigating process (hide side menu or smt...)
         /// </summary>
         public void ApplyVisualChangesWhileNavigating() {
             SlideMenu.HideWithoutAnimations();
-        }
-
-        protected override void OnDisappearing() {
         }
 
         /// <summary>

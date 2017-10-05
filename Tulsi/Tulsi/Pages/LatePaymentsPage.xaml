@@ -7,7 +7,14 @@
     xmlns:local="clr-namespace:Tulsi;assembly=Tulsi"
     xmlns:m="clr-namespace:SlideOverKit"
     xmlns:toolKitImageResourceExtension="clr-namespace:Tulsi.ToolKit.MarkupExtensions"
+    BackgroundColor="{StaticResource MainColor}"
     NavigationPage.HasNavigationBar="false">
+
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <On Platform="iOS" Value="0,20,0,0" />
+        </OnPlatform>
+    </ContentPage.Padding>
 
     <Grid>
         <StackLayout Grid.Row="0" BackgroundColor="#DCDCDC">
@@ -64,14 +71,15 @@
                 x:Name="MainLayout"
                 BackgroundColor="#DCDCDC"
                 Spacing="10">
-                <controls:CustomFrame
-                    Margin="5,0,5,0"
+
+                <controls:ExtendedContentView
+                    Margin="5,0"
+                    Padding="5"
                     BackgroundColor="White"
-                    BorderRadius="25">
+                    CornerRadius="10">
                     <Label
-                        Grid.Column="2"
                         HorizontalTextAlignment="Center"
-                        TextColor="#2793F5"
+                        TextColor="{StaticResource MainColor}"
                         VerticalTextAlignment="Center">
                         <Label.FormattedText>
                             <FormattedString>
@@ -82,52 +90,49 @@
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
-                </controls:CustomFrame>
-                <controls:CustomFrame
-                    Margin="5,0,5,0"
-                    BackgroundColor="White"
-                    BorderRadius="25">
-                    <Grid BackgroundColor="White">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="30" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="30" />
-                        </Grid.ColumnDefinitions>
+                </controls:ExtendedContentView>
 
-                        <ListView
-                            Grid.Column="1"
-                            ItemsSource="{Binding Path=LatePayments}"
-                            RowHeight="50"
-                            SelectedItem="{Binding Path=SelectedItem, Mode=TwoWay}">
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <controls:WhiteViewCell>
-                                        <ContentView BackgroundColor="White">
-                                            <Grid BackgroundColor="White">
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="*" />
-                                                    <ColumnDefinition Width="*" />
-                                                </Grid.ColumnDefinitions>
-                                                <Label
-                                                    Grid.Column="0"
-                                                    HorizontalOptions="Start"
-                                                    HorizontalTextAlignment="Start"
-                                                    Text="{Binding Name}"
-                                                    VerticalTextAlignment="Center" />
-                                                <Label
-                                                    Grid.Column="1"
-                                                    HorizontalOptions="End"
-                                                    HorizontalTextAlignment="Center"
-                                                    Text="{Binding Amount}"
-                                                    VerticalTextAlignment="Center" />
-                                            </Grid>
-                                        </ContentView>
-                                    </controls:WhiteViewCell>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                    </Grid>
-                </controls:CustomFrame>
+                <controls:ExtendedContentView
+                    Margin="5,0"
+                    Padding="20,5"
+                    BackgroundColor="White"
+                    CornerRadius="10">
+
+                    <ListView
+                        Grid.Column="1"
+                        ItemsSource="{Binding LatePayments}"
+                        RowHeight="50"
+                        SeparatorVisibility="None"
+                        SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <controls:WhiteViewCell>
+                                    <ContentView BackgroundColor="White">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Label
+                                                Grid.Column="0"
+                                                HorizontalOptions="Start"
+                                                HorizontalTextAlignment="Start"
+                                                Text="{Binding Name}"
+                                                VerticalTextAlignment="Center" />
+                                            <Label
+                                                Grid.Column="1"
+                                                HorizontalOptions="End"
+                                                HorizontalTextAlignment="Center"
+                                                Text="{Binding Amount}"
+                                                VerticalTextAlignment="Center" />
+                                        </Grid>
+                                    </ContentView>
+                                </controls:WhiteViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+                </controls:ExtendedContentView>
             </StackLayout>
         </StackLayout>
         <!--  Show/Hide content view spot.  -->

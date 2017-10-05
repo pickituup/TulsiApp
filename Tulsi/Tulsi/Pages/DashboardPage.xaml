@@ -9,13 +9,8 @@
     xmlns:local="clr-namespace:Tulsi;assembly=Tulsi"
     xmlns:m="clr-namespace:SlideOverKit"
     xmlns:toolKitImageResourceExtension="clr-namespace:Tulsi.ToolKit.MarkupExtensions"
+    BackgroundColor="{StaticResource MainColor}"
     NavigationPage.HasNavigationBar="false">
-
-    <m:MenuContainerPage.Padding>
-        <OnPlatform x:TypeArguments="Thickness">
-            <On Platform="iOS" Value="0,20,0,0" />
-        </OnPlatform>
-    </m:MenuContainerPage.Padding>
 
     <Grid>
         <StackLayout x:Name="HeaderLayout" BackgroundColor="#DCDCDC">

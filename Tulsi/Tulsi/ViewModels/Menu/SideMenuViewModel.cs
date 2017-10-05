@@ -11,6 +11,7 @@ using Xamarin.Forms;
 using Tulsi.Model.DataContainers;
 using Tulsi.Model.DataContainers.DataItems;
 using Tulsi.Observers;
+using System.Collections.ObjectModel;
 
 namespace Tulsi.ViewModels.Menu {
     public sealed class SideMenuViewModel : ViewModelBase, IViewModel {
@@ -24,8 +25,8 @@ namespace Tulsi.ViewModels.Menu {
         /// <summary>
         ///     Side menu items
         /// </summary>
-        List<SideMenuItem> _sideMenuItems;
-        public List<SideMenuItem> SideMenuItems {
+        ObservableCollection<SideMenuItem> _sideMenuItems;
+        public ObservableCollection<SideMenuItem> SideMenuItems {
             get { return _sideMenuItems; }
             set { SetProperty(ref _sideMenuItems, value); }
         }
@@ -53,9 +54,13 @@ namespace Tulsi.ViewModels.Menu {
 
             BaseSingleton<DashboardObserver>.Instance.HideAmount += OnHideAmount;
 
-            SideMenuItems = BaseSingleton<SideMenuContainer>.Instance.BuildSideMenuItems();
+            SideMenuItems = GetSideMenuItems();
 
             DisplayProfitPageCommand = new Command(() => BaseSingleton<ViewSwitchingLogic>.Instance.NavigateTo(ViewType.ProfitPage));
+        }
+
+        private ObservableCollection<SideMenuItem> GetSideMenuItems() {
+            return new ObservableCollection<SideMenuItem>(BaseSingleton<SideMenuContainer>.Instance.BuildSideMenuItems());
         }
 
         private void OnHideAmount(object sender, Observers.DashboardArgs.HideAmountArgs e) {

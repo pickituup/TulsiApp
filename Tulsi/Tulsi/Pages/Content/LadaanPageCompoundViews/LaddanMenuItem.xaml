@@ -26,14 +26,14 @@
                 </ResourceDictionary>
             </StackLayout.Resources>
 
-            <Label 
-                HorizontalOptions="StartAndExpand" 
-                Text="{Binding Path=Name}" 
-                FontSize="Medium" />
-            <Label 
-                HorizontalOptions="EndAndExpand" 
-                Text="{Binding Path=Boxes}" 
-                FontSize="Medium"/>
+            <Label
+                FontSize="Medium"
+                HorizontalOptions="StartAndExpand"
+                Text="{Binding Path=Name}" />
+            <Label
+                FontSize="Medium"
+                HorizontalOptions="EndAndExpand"
+                Text="{Binding Path=Boxes}" />
         </StackLayout>
     </Frame>
 </t:StackListItemBase>

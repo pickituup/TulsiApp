@@ -8,9 +8,16 @@
     xmlns:local="clr-namespace:Tulsi;assembly=Tulsi"
     xmlns:m="clr-namespace:SlideOverKit"
     xmlns:toolKitImageResourceExtension="clr-namespace:Tulsi.ToolKit.MarkupExtensions"
-    NavigationPage.HasNavigationBar="false">
+    BackgroundColor="{StaticResource MainColor}"
+    NavigationPage.HasNavigationBar="False">
 
-    <StackLayout>
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <On Platform="iOS" Value="0,20,0,0" />
+        </OnPlatform>
+    </ContentPage.Padding>
+
+    <StackLayout BackgroundColor="#ffffff">
         <!--  Tool bar  -->
         <Grid x:Name="ToolbarGrid" BackgroundColor="{StaticResource MainColor}">
             <Grid.RowDefinitions>

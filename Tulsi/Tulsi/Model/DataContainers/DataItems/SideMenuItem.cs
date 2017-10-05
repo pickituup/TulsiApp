@@ -8,6 +8,10 @@ namespace Tulsi.Model.DataContainers.DataItems {
         /// </summary>
         public string Title { get; set; }
 
+        public string Amount { get; set; }
+
+        public bool VisibleAmount { get; set; }
+
         /// <summary>
         ///     Menu item view type.
         /// </summary>

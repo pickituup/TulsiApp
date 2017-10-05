@@ -8,7 +8,14 @@
     xmlns:toolKitImageResourceExtension="clr-namespace:Tulsi.ToolKit.MarkupExtensions"
     xmlns:toolKitValueConverters="clr-namespace:Tulsi.ToolKit.BindingValueConverters"
     x:Name="root_ContentPage"
+    BackgroundColor="{StaticResource MainColor}"
     NavigationPage.HasNavigationBar="false">
+
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <On Platform="iOS" Value="0,20,0,0" />
+        </OnPlatform>
+    </ContentPage.Padding>
 
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -158,6 +165,6 @@
             </StackLayout>
         </StackLayout>
 
-        <relativeCompoundedViews:TransactionPopup PopupVisibility="{Binding Path=SelectedLadaanTransaction, Converter={StaticResource Key=IsNullToBoolConverter}, Mode=OneWay}" />
+        <relativeCompoundedViews:TransactionPopup PopupVisibility="{Binding SelectedLadaanTransaction, Converter={StaticResource Key=IsNullToBoolConverter}, Mode=OneWay}" />
     </Grid>
 </ContentPage>

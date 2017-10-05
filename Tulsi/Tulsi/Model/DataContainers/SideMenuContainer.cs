@@ -23,6 +23,7 @@ namespace Tulsi.Model.DataContainers {
                     ViewType = ViewType.DashboardPage },
                 new SideMenuItem {
                     Title = "Buyer",
+                    Amount = "70L",
                     Image = ImageSource.FromStream(()=> {
                             Assembly assembly = GetType().GetTypeInfo().Assembly;
                             Stream stream = assembly.GetManifestResourceStream("Tulsi.Images.menu_buyer.png");
@@ -30,6 +31,7 @@ namespace Tulsi.Model.DataContainers {
                     ViewType = ViewType.BuyerPage },
                 new SideMenuItem {
                     Title = "Grower",
+                    Amount = "2 Cr",
                     Image = ImageSource.FromStream(()=> {
                             Assembly assembly = GetType().GetTypeInfo().Assembly;
                             Stream stream = assembly.GetManifestResourceStream("Tulsi.Images.menu_grower.png");
