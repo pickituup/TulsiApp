@@ -16,9 +16,10 @@
                 BackgroundColor="#DCDCDC"
                 Spacing="10">
 
-                <controls:RoundedContentView
+                <controls:ExtendedContentView
                     Margin="0,0,0,0"
-                    BackgroundColor="#2793F5"
+                    Padding="5"
+                    BackgroundColor="{StaticResource MainColor}"
                     CornerRadius="10"
                     HeightRequest="40">
                     <Label
@@ -27,50 +28,45 @@
                         Text="Balance"
                         TextColor="White"
                         VerticalTextAlignment="Center" />
-                </controls:RoundedContentView>
+                </controls:ExtendedContentView>
 
-                <controls:CustomFrame
+                <controls:ExtendedContentView
                     Margin="5,-10,5,0"
+                    Padding="5"
                     BackgroundColor="White"
-                    BorderRadius="25">
-                    <Grid BackgroundColor="White">
+                    CornerRadius="10">
+                    <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="30" />
-                            <ColumnDefinition Width="20" />
-                            <ColumnDefinition Width="5" />
-                            <ColumnDefinition Width="50" />
                             <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="50" />
-                            <ColumnDefinition Width="20" />
+                            <ColumnDefinition Width="3*" />
+                            <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="25" />
                         </Grid.RowDefinitions>
                         <Image
-                            x:Name="ExpensesIcon"
-                            Grid.Column="1"
+                            Grid.Column="0"
                             HeightRequest="17"
                             HorizontalOptions="Center"
+                            Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.expenses_group.png}"
                             VerticalOptions="Center"
                             WidthRequest="20" />
                         <Label
-                            Grid.Column="3"
-                            HorizontalTextAlignment="Center"
+                            Grid.Column="1"
+                            HorizontalOptions="Start"
                             Text="Today"
-                            TextColor="#2793F5"
-                            VerticalTextAlignment="Center" />
+                            TextColor="{StaticResource MainColor}" />
                         <Label
-                            Grid.Column="5"
-                            HorizontalTextAlignment="End"
+                            Grid.Column="2"
+                            HorizontalOptions="Center"
                             Text="-$91.38"
-                            TextColor="#2793F5"
-                            VerticalTextAlignment="Center" />
+                            TextColor="{StaticResource MainColor}" />
                     </Grid>
-                </controls:CustomFrame>
+                </controls:ExtendedContentView>
 
                 <Grid
                     x:Name="Categories"
-                    Margin="5,0,5,0"
+                    Margin="5,0"
                     BackgroundColor="#DCDCDC">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto" />
@@ -87,11 +83,12 @@
                         <RowDefinition Height="auto" />
                     </Grid.RowDefinitions>
 
-                    <controls:CustomFrame
-                        Margin="5,0,5,0"
+                    <controls:ExtendedContentView
+                        Margin="5,0"
+                        Padding="5"
                         BackgroundColor="White"
-                        BorderRadius="25">
-                        <Grid BackgroundColor="White">
+                        CornerRadius="15">
+                        <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="50" />
                                 <ColumnDefinition Width="*" />
@@ -128,14 +125,15 @@
                                 VerticalTextAlignment="Center" />
 
                         </Grid>
-                    </controls:CustomFrame>
+                    </controls:ExtendedContentView>
 
-                    <controls:CustomFrame
+                    <controls:ExtendedContentView
                         Grid.Row="1"
-                        Margin="5,0,5,0"
+                        Margin="5,0"
+                        Padding="5"
                         BackgroundColor="White"
-                        BorderRadius="25">
-                        <Grid BackgroundColor="White">
+                        CornerRadius="15">
+                        <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="50" />
                                 <ColumnDefinition Width="*" />
@@ -171,14 +169,15 @@
                                 VerticalTextAlignment="Center" />
 
                         </Grid>
-                    </controls:CustomFrame>
+                    </controls:ExtendedContentView>
 
-                    <controls:CustomFrame
+                    <controls:ExtendedContentView
                         Grid.Row="2"
-                        Margin="5,0,5,0"
+                        Margin="5,0"
+                        Padding="5"
                         BackgroundColor="White"
-                        BorderRadius="25">
-                        <Grid BackgroundColor="White">
+                        CornerRadius="15">
+                        <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="50" />
                                 <ColumnDefinition Width="*" />
@@ -208,14 +207,15 @@
                                 VerticalTextAlignment="Center" />
 
                         </Grid>
-                    </controls:CustomFrame>
+                    </controls:ExtendedContentView>
 
-                    <controls:CustomFrame
+                    <controls:ExtendedContentView
                         Grid.Row="3"
-                        Margin="5,0,5,0"
+                        Margin="5,0"
+                        Padding="5"
                         BackgroundColor="White"
-                        BorderRadius="25">
-                        <Grid BackgroundColor="White">
+                        CornerRadius="15">
+                        <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="50" />
                                 <ColumnDefinition Width="*" />
@@ -246,14 +246,15 @@
                                 VerticalTextAlignment="Center" />
 
                         </Grid>
-                    </controls:CustomFrame>
+                    </controls:ExtendedContentView>
 
-                    <controls:CustomFrame
+                    <controls:ExtendedContentView
                         Grid.Row="4"
-                        Margin="5,0,5,0"
+                        Margin="5,0"
+                        Padding="5"
                         BackgroundColor="White"
-                        BorderRadius="25">
-                        <Grid BackgroundColor="White">
+                        CornerRadius="15">
+                        <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="50" />
                                 <ColumnDefinition Width="*" />
@@ -289,14 +290,15 @@
                                 VerticalTextAlignment="Center" />
 
                         </Grid>
-                    </controls:CustomFrame>
+                    </controls:ExtendedContentView>
 
-                    <controls:CustomFrame
+                    <controls:ExtendedContentView
                         Grid.Row="5"
-                        Margin="5,0,5,0"
+                        Margin="5,0"
+                        Padding="5"
                         BackgroundColor="White"
-                        BorderRadius="25">
-                        <Grid BackgroundColor="White">
+                        CornerRadius="15">
+                        <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="50" />
                                 <ColumnDefinition Width="*" />
@@ -331,7 +333,7 @@
                                 Text="-7.00"
                                 VerticalTextAlignment="Center" />
                         </Grid>
-                    </controls:CustomFrame>
+                    </controls:ExtendedContentView>
                 </Grid>
             </StackLayout>
         </ScrollView>

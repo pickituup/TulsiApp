@@ -4,11 +4,18 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:toolKitImageResourceExtension="clr-namespace:Tulsi.ToolKit.MarkupExtensions"
+    BackgroundColor="{StaticResource MainColor}"
     NavigationPage.HasNavigationBar="false">
 
-    <StackLayout x:Name="HeaderLayout" BackgroundColor="Transparent">
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <On Platform="iOS" Value="0,20,0,0" />
+        </OnPlatform>
+    </ContentPage.Padding>
+
+    <StackLayout x:Name="HeaderLayout" BackgroundColor="White">
         <!--  ActionBar  -->
-        <Grid x:Name="ToolbarGrid" BackgroundColor="#2793F5">
+        <Grid x:Name="ToolbarGrid" BackgroundColor="{StaticResource MainColor}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="50" />
             </Grid.RowDefinitions>

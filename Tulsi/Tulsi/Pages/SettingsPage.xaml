@@ -7,13 +7,19 @@
     xmlns:local="clr-namespace:Tulsi;assembly=Tulsi"
     xmlns:m="clr-namespace:SlideOverKit"
     xmlns:toolKitImageResourceExtension="clr-namespace:Tulsi.ToolKit.MarkupExtensions"
+    BackgroundColor="{StaticResource MainColor}"
     NavigationPage.HasNavigationBar="false">
 
-    <Grid>
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <On Platform="iOS" Value="0,20,0,0" />
+        </OnPlatform>
+    </ContentPage.Padding>
 
+    <Grid>
         <StackLayout x:Name="HeaderLayout" BackgroundColor="#DCDCDC">
             <!--  Tool bar  -->
-            <Grid x:Name="ToolbarGrid" BackgroundColor="#2793F5">
+            <Grid x:Name="ToolbarGrid" BackgroundColor="{StaticResource MainColor}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50" />
                 </Grid.RowDefinitions>
@@ -63,28 +69,28 @@
             <!--  MAIN CONTENT  -->
             <ScrollView>
                 <StackLayout x:Name="MainLayout" BackgroundColor="#DCDCDC">
-                    <controls:RoundedContentView
+                    <controls:ExtendedContentView
                         Margin="10"
-                        BackgroundColor="#2793F5"
+                        Padding="5"
+                        BackgroundColor="{StaticResource MainColor}"
                         CornerRadius="10"
                         HeightRequest="40">
-                        <controls:RoundedContentView.GestureRecognizers>
+                        <controls:ExtendedContentView.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding SetupDashboardPageCommand}" />
-                        </controls:RoundedContentView.GestureRecognizers>
-                        <controls:RoundedContentView.Content>
-                            <Label
-                                FontAttributes="Bold"
-                                HorizontalTextAlignment="Center"
-                                Text="SETUP DASHBOARD"
-                                TextColor="White"
-                                VerticalTextAlignment="Center" />
-                        </controls:RoundedContentView.Content>
-                    </controls:RoundedContentView>
+                        </controls:ExtendedContentView.GestureRecognizers>
+                        <Label
+                            FontAttributes="Bold"
+                            HorizontalTextAlignment="Center"
+                            Text="SETUP DASHBOARD"
+                            TextColor="White"
+                            VerticalTextAlignment="Center" />
+                    </controls:ExtendedContentView>
 
-                    <controls:CustomFrame
+                    <controls:ExtendedContentView
                         Margin="10,0,10,5"
+                        Padding="5"
                         BackgroundColor="White"
-                        BorderRadius="25"
+                        CornerRadius="10"
                         VerticalOptions="FillAndExpand">
 
                         <Grid
@@ -195,7 +201,7 @@
                                 VerticalOptions="Center"
                                 WidthRequest="45" />
                         </Grid>
-                    </controls:CustomFrame>
+                    </controls:ExtendedContentView>
                 </StackLayout>
             </ScrollView>
         </StackLayout>

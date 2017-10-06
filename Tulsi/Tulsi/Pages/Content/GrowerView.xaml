@@ -11,27 +11,32 @@
 
     <!--  MAIN CONTENT  -->
     <StackLayout x:Name="MainLayout" BackgroundColor="#DCDCDC">
-        <controls:CustomFrame
+        <controls:ExtendedContentView
             Margin="5,0,5,0"
+            Padding="5"
             BackgroundColor="White"
-            BorderRadius="25">
-            <Grid BackgroundColor="White" HorizontalOptions="Center">
+            CornerRadius="10">
+            <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="200" />
-                    <ColumnDefinition Width="120" />
+                    <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="*" />
                     <RowDefinition Height="20" />
                     <RowDefinition Height="auto" />
                     <RowDefinition Height="auto" />
                     <RowDefinition Height="auto" />
                 </Grid.RowDefinitions>
+
                 <Label
+                    Grid.Row="0"
+                    Grid.Column="0"
                     Grid.ColumnSpan="2"
                     HorizontalOptions="Center"
                     Text="GROWER SUMMARY"
                     VerticalOptions="Center" />
+
                 <Grid
                     x:Name="ChartGrid"
                     Grid.Row="1"
@@ -40,10 +45,8 @@
                         <RowDefinition Height="auto" />
                     </Grid.RowDefinitions>
                 </Grid>
-                <Grid
-                    Grid.Row="2"
-                    Grid.Column="1"
-                    BackgroundColor="White">
+
+                <Grid Grid.Row="2" Grid.Column="1">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="10" />
                         <ColumnDefinition Width="10" />
@@ -53,7 +56,7 @@
                         <RowDefinition Height="auto" />
                         <RowDefinition Height="auto" />
                     </Grid.RowDefinitions>
-                    <controls:RoundedContentView
+                    <controls:ExtendedContentView
                         Grid.RowSpan="2"
                         BackgroundColor="#82DA69"
                         CornerRadius="5"
@@ -71,10 +74,8 @@
                         FontSize="17"
                         Text="23%" />
                 </Grid>
-                <Grid
-                    Grid.Row="3"
-                    Grid.Column="1"
-                    BackgroundColor="White">
+
+                <Grid Grid.Row="3" Grid.Column="1">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="10" />
                         <ColumnDefinition Width="10" />
@@ -84,7 +85,7 @@
                         <RowDefinition Height="auto" />
                         <RowDefinition Height="auto" />
                     </Grid.RowDefinitions>
-                    <controls:RoundedContentView
+                    <controls:ExtendedContentView
                         Grid.RowSpan="2"
                         BackgroundColor="#9EE5FC"
                         CornerRadius="5"
@@ -103,13 +104,14 @@
                         Text="72%" />
                 </Grid>
             </Grid>
-        </controls:CustomFrame>
+        </controls:ExtendedContentView>
 
-        <controls:CustomFrame
-            Margin="5,0,5,0"
+        <controls:ExtendedContentView
+            Margin="5,0,5,10"
+            Padding="5"
             BackgroundColor="White"
-            BorderRadius="25">
-            <Grid BackgroundColor="White">
+            CornerRadius="10">
+            <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto" />
                     <RowDefinition Height="auto" />
@@ -138,13 +140,15 @@
                     </segmentControls:PrimitiveSegment.Segments>
                 </segmentControls:PrimitiveSegment>
 
-                <controls:RoundedContentView
+                <controls:ExtendedContentView
                     Grid.Row="2"
+                    Padding="5"
                     BackgroundColor="White"
                     CornerRadius="10">
                     <StackLayout BackgroundColor="Transparent" Spacing="0">
                         <!--  HEADER LIST  -->
-                        <controls:RoundedContentView
+                        <controls:ExtendedContentView
+                            Padding="5"
                             BackgroundColor="#8B8A86"
                             CornerRadius="10"
                             HeightRequest="40">
@@ -186,7 +190,7 @@
                                     TextColor="White"
                                     VerticalTextAlignment="Center" />
                             </StackLayout>
-                        </controls:RoundedContentView>
+                        </controls:ExtendedContentView>
 
                         <ListView
                             ItemsSource="{Binding TransactionsData, Mode=TwoWay}"
@@ -196,8 +200,9 @@
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <controls:WhiteViewCell>
-                                        <controls:RoundedContentView
+                                        <controls:ExtendedContentView
                                             Margin="5"
+                                            Padding="5"
                                             BackgroundColor="#EBECEE"
                                             CornerRadius="10">
                                             <Grid
@@ -243,14 +248,14 @@
                                                     VerticalOptions="Center"
                                                     VerticalTextAlignment="Center" />
                                             </Grid>
-                                        </controls:RoundedContentView>
+                                        </controls:ExtendedContentView>
                                     </controls:WhiteViewCell>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
                     </StackLayout>
-                </controls:RoundedContentView>
+                </controls:ExtendedContentView>
             </Grid>
-        </controls:CustomFrame>
+        </controls:ExtendedContentView>
     </StackLayout>
 </ContentView>

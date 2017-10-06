@@ -8,10 +8,8 @@ using Xamarin.Forms.Platform.Android;
 using Android.Graphics.Drawables;
 
 [assembly: ExportRenderer(typeof(EntryEx), typeof(EntryExRenderer))]
-namespace Tulsi.Droid.Renderers
-{
-    public class EntryExRenderer : EntryRenderer
-    {
+namespace Tulsi.Droid.Renderers {
+    public class EntryExRenderer : EntryRenderer {
         #region Private fields and properties
 
         private BorderRenderer _renderer;
@@ -21,8 +19,7 @@ namespace Tulsi.Droid.Renderers
 
         #region Parent override
 
-        protected override void OnElementChanged(ElementChangedEventArgs<Entry> e)
-        {
+        protected override void OnElementChanged(ElementChangedEventArgs<Entry> e) {
             base.OnElementChanged(e);
             if (e.OldElement != null || this.Element == null)
                 return;
@@ -33,8 +30,7 @@ namespace Tulsi.Droid.Renderers
             UpdateTextAlighnment(entryEx);
         }
 
-        protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
-        {
+        protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e) {
             base.OnElementPropertyChanged(sender, e);
             if (Element == null)
                 return;
@@ -42,28 +38,20 @@ namespace Tulsi.Droid.Renderers
             if (e.PropertyName == EntryEx.BorderWidthProperty.PropertyName ||
                 e.PropertyName == EntryEx.BorderColorProperty.PropertyName ||
                 e.PropertyName == EntryEx.BorderRadiusProperty.PropertyName ||
-                e.PropertyName == EntryEx.BackgroundColorProperty.PropertyName)
-            {
+                e.PropertyName == EntryEx.BackgroundColorProperty.PropertyName) {
                 UpdateBackground(entryEx);
-            }
-            else if (e.PropertyName == EntryEx.LeftPaddingProperty.PropertyName ||
-                e.PropertyName == EntryEx.RightPaddingProperty.PropertyName)
-            {
+            } else if (e.PropertyName == EntryEx.LeftPaddingProperty.PropertyName ||
+                  e.PropertyName == EntryEx.RightPaddingProperty.PropertyName) {
                 UpdatePadding(entryEx);
-            }
-            else if (e.PropertyName == Entry.HorizontalTextAlignmentProperty.PropertyName)
-            {
+            } else if (e.PropertyName == Entry.HorizontalTextAlignmentProperty.PropertyName) {
                 UpdateTextAlighnment(entryEx);
             }
         }
 
-        protected override void Dispose(bool disposing)
-        {
+        protected override void Dispose(bool disposing) {
             base.Dispose(disposing);
-            if (disposing)
-            {
-                if (_renderer != null)
-                {
+            if (disposing) {
+                if (_renderer != null) {
                     _renderer.Dispose();
                     _renderer = null;
                 }
@@ -74,10 +62,8 @@ namespace Tulsi.Droid.Renderers
 
         #region Utility methods
 
-        private void UpdateBackground(EntryEx entryEx)
-        {
-            if (_renderer != null)
-            {
+        private void UpdateBackground(EntryEx entryEx) {
+            if (_renderer != null) {
                 _renderer.Dispose();
                 _renderer = null;
             }
@@ -86,17 +72,14 @@ namespace Tulsi.Droid.Renderers
             Control.Background = _renderer.GetBorderBackground(entryEx.BorderColor, entryEx.BackgroundColor, entryEx.BorderWidth, entryEx.BorderRadius);
         }
 
-        private void UpdatePadding(EntryEx entryEx)
-        {
+        private void UpdatePadding(EntryEx entryEx) {
             Control.SetPadding((int)Forms.Context.ToPixels(entryEx.LeftPadding), 0,
                 (int)Forms.Context.ToPixels(entryEx.RightPadding), 0);
         }
 
-        private void UpdateTextAlighnment(EntryEx entryEx)
-        {
+        private void UpdateTextAlighnment(EntryEx entryEx) {
             var gravity = DefaultGravity;
-            switch (entryEx.HorizontalTextAlignment)
-            {
+            switch (entryEx.HorizontalTextAlignment) {
                 case Xamarin.Forms.TextAlignment.Start:
                     gravity |= GravityFlags.Start;
                     break;
@@ -112,8 +95,7 @@ namespace Tulsi.Droid.Renderers
 
         #endregion
     }
-    public class BorderRenderer : IDisposable
-    {
+    public class BorderRenderer : IDisposable {
         #region Parent override
 
         private GradientDrawable _background;
@@ -122,17 +104,13 @@ namespace Tulsi.Droid.Renderers
 
         #region IDisposable
 
-        public void Dispose()
-        {
+        public void Dispose() {
             Dispose(true);
         }
 
-        protected virtual void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                if (_background != null)
-                {
+        protected virtual void Dispose(bool disposing) {
+            if (disposing) {
+                if (_background != null) {
                     _background.Dispose();
                     _background = null;
                 }
@@ -143,10 +121,8 @@ namespace Tulsi.Droid.Renderers
 
         #region Public API
 
-        public Drawable GetBorderBackground(Color borderColor, Color backgroundColor, float borderWidth, float borderRadius)
-        {
-            if (_background != null)
-            {
+        public Drawable GetBorderBackground(Color borderColor, Color backgroundColor, float borderWidth, float borderRadius) {
+            if (_background != null) {
                 _background.Dispose();
                 _background = null;
             }
@@ -161,8 +137,7 @@ namespace Tulsi.Droid.Renderers
             _background.SetColor(backgroundColor.ToAndroid());
             if (radius > 0)
                 _background.SetCornerRadius(radius);
-            if (borderColor != Color.Transparent && strokeWidth > 0)
-            {
+            if (borderColor != Color.Transparent && strokeWidth > 0) {
                 _background.SetStroke((int)strokeWidth, borderColor.ToAndroid());
             }
             return _background;

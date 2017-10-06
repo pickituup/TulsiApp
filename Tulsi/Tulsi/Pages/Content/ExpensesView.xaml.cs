@@ -58,7 +58,7 @@ namespace Tulsi.Pages.Content {
             StackLayout MiddleStack = new StackLayout() {
                 VerticalOptions = LayoutOptions.Center,
                 HorizontalOptions = LayoutOptions.Center,
-                BackgroundColor = Color.White,
+                BackgroundColor = Color.Transparent,
             };
 
             Label MiddleText0 = new Label() {
@@ -87,7 +87,6 @@ namespace Tulsi.Pages.Content {
             MiddleStack.Children.Add(MiddleText0);
             MiddleStack.Children.Add(MiddleText1);
             MiddleStack.Children.Add(MiddleText2);
-            // MiddleStack.BackgroundColor = Color.Transparent;
 
             ChartGrid.Children.Add(MiddleStack);
         }

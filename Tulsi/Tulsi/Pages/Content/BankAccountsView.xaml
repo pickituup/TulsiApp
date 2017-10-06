@@ -50,6 +50,7 @@
             </Grid.RowDefinitions>
 
             <ListView
+                BackgroundColor="Transparent"
                 HasUnevenRows="True"
                 ItemsSource="{Binding BankAccounts}"
                 SelectedItem="{Binding SelectedBankAccount, Mode=TwoWay}"
@@ -63,7 +64,13 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <ContentView BackgroundColor="#DCDCDC">
+                            <ContentView>
+                                <ContentView.BackgroundColor>
+                                    <OnPlatform x:TypeArguments="Color">
+                                        <On Platform="iOS" Value="Transparent" />
+                                        <On Platform="Android" Value="#DCDCDC" />
+                                    </OnPlatform>
+                                </ContentView.BackgroundColor>
                                 <Frame
                                     Margin="0,4"
                                     BackgroundColor="White"
@@ -84,7 +91,7 @@
                                             Margin="0,15"
                                             HeightRequest="31"
                                             HorizontalOptions="Center"
-                                            Source="{Binding LogoPath, Converter={StaticResource Key=stringToResourceImageSourceConverter}}"
+                                            Source="{Binding LogoPath, Converter={StaticResource stringToResourceImageSourceConverter}}"
                                             VerticalOptions="Center"
                                             WidthRequest="150" />
 

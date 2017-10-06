@@ -16,7 +16,7 @@ namespace Tulsi {
         public App() {
             InitializeComponent();
 
-            //MainPage = new PasscodePage();
+            //MainPage = new ArrivalDetailsPage();
 
             if (DependencyService.Get<ISQLiteService>().IsPasscodeExist()) {
                 BaseSingleton<ViewSwitchingLogic>.Instance.BuildNavigationStack(ViewType.PasscodePage);

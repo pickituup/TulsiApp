@@ -6,7 +6,14 @@
     xmlns:controls="clr-namespace:Tulsi.Controls"
     xmlns:local="clr-namespace:Tulsi;assembly=Tulsi"
     xmlns:toolKitImageResourceExtension="clr-namespace:Tulsi.ToolKit.MarkupExtensions"
+    BackgroundColor="{StaticResource MainColor}"
     NavigationPage.HasNavigationBar="false">
+
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <On Platform="iOS" Value="0,20,0,0" />
+        </OnPlatform>
+    </ContentPage.Padding>
 
     <Grid BackgroundColor="#f3f3f3" RowSpacing="10">
         <Grid.RowDefinitions>
@@ -92,7 +99,7 @@
             Padding="20,0"
             BackgroundColor="Transparent"
             Spacing="20">
-            <controls:RoundedContentView
+            <controls:ExtendedContentView
                 Margin="0,5,0,0"
                 BackgroundColor="White"
                 CornerRadius="5">
@@ -102,34 +109,43 @@
                     Text="About"
                     TextColor="#AAA6AB"
                     VerticalOptions="Center" />
-            </controls:RoundedContentView>
-            <controls:RoundedContentView BackgroundColor="White" CornerRadius="5">
+            </controls:ExtendedContentView>
+            
+            <controls:ExtendedContentView
+                BackgroundColor="White"
+                CornerRadius="5">
                 <Label
                     Margin="20,5"
                     FontSize="Medium"
                     Text="How to Use"
                     TextColor="#AAA6AB"
                     VerticalOptions="Center" />
-            </controls:RoundedContentView>
-            <controls:RoundedContentView BackgroundColor="White" CornerRadius="5">
+            </controls:ExtendedContentView>
+            
+            <controls:ExtendedContentView
+                BackgroundColor="White"
+                CornerRadius="5">
                 <Label
                     Margin="20,5"
                     FontSize="Medium"
                     Text="Rate the App"
                     TextColor="#AAA6AB"
                     VerticalOptions="Center" />
-            </controls:RoundedContentView>
-            <controls:RoundedContentView BackgroundColor="White" CornerRadius="5">
-                <controls:RoundedContentView.GestureRecognizers>
+            </controls:ExtendedContentView>
+            
+            <controls:ExtendedContentView
+                BackgroundColor="White"
+                CornerRadius="5">
+                <controls:ExtendedContentView.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding LogOutCommand}" />
-                </controls:RoundedContentView.GestureRecognizers>
+                </controls:ExtendedContentView.GestureRecognizers>
                 <Label
                     Margin="20,5"
                     FontSize="Medium"
                     Text="Logout"
                     TextColor="#AAA6AB"
                     VerticalOptions="Center" />
-            </controls:RoundedContentView>
+            </controls:ExtendedContentView>
         </StackLayout>
     </Grid>
 </ContentPage>

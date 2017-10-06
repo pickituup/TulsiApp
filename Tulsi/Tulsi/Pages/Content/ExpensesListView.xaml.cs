@@ -22,8 +22,6 @@ namespace Tulsi.Pages.Content {
 
             BindingContext = _viewModel = new ExpensesListViewModel();
 
-            ExpensesIcon.Source = ImageSource.FromResource("Tulsi.Images.expenses_group.png");
-
             FoodIcon.Source = ImageSource.FromResource("Tulsi.Images.expenses_food.png");
             PersonalIcon.Source = ImageSource.FromResource("Tulsi.Images.expenses_personal.png");
             GroceriesIcon.Source = ImageSource.FromResource("Tulsi.Images.expenses_groceries.png");

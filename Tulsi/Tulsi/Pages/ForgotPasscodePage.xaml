@@ -5,7 +5,14 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:controls="clr-namespace:Tulsi.Controls"
     xmlns:toolKitImageResourceExtension="clr-namespace:Tulsi.ToolKit.MarkupExtensions"
+    BackgroundColor="{StaticResource MainColor}"
     NavigationPage.HasNavigationBar="false">
+
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <On Platform="iOS" Value="0,20,0,0" />
+        </OnPlatform>
+    </ContentPage.Padding>
 
     <StackLayout
         x:Name="HeaderLayout"
@@ -13,7 +20,7 @@
         Spacing="0"
         VerticalOptions="Fill">
         <!--  Tool bar  -->
-        <Grid x:Name="ToolbarGrid" BackgroundColor="#2793F5">
+        <Grid x:Name="ToolbarGrid" BackgroundColor="{StaticResource MainColor}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="50" />
             </Grid.RowDefinitions>
@@ -79,31 +86,31 @@
                     HorizontalTextAlignment="Center"
                     LineBreakMode="WordWrap"
                     Text="No Problem, Login again by clicking the button bellow, we will reset it for you." />
-                <controls:RoundedContentView
+                <controls:ExtendedContentView
                     BackgroundColor="{StaticResource MainColor}"
                     CornerRadius="10"
                     HeightRequest="40"
                     HorizontalOptions="Center"
                     WidthRequest="200">
-                    <controls:RoundedContentView.GestureRecognizers>
+                    <controls:ExtendedContentView.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding ResetCommand}" />
-                    </controls:RoundedContentView.GestureRecognizers>
+                    </controls:ExtendedContentView.GestureRecognizers>
                     <Label
                         FontSize="Large"
                         HorizontalOptions="Center"
                         Text="Reset Pin"
                         TextColor="White" />
-                </controls:RoundedContentView>
-                <controls:RoundedContentView>
-                    <controls:RoundedContentView.GestureRecognizers>
+                </controls:ExtendedContentView>
+                <controls:ExtendedContentView>
+                    <controls:ExtendedContentView.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding CancelCommand}" />
-                    </controls:RoundedContentView.GestureRecognizers>
+                    </controls:ExtendedContentView.GestureRecognizers>
                     <Label
                         FontSize="Large"
                         HorizontalOptions="Center"
                         Text="cancel"
                         TextColor="#949096" />
-                </controls:RoundedContentView>
+                </controls:ExtendedContentView>
             </StackLayout>
         </StackLayout>
     </StackLayout>

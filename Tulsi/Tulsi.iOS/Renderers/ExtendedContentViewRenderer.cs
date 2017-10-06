@@ -30,7 +30,7 @@ namespace Tulsi.iOS.Renderers {
             Layer.CornerRadius = borderRadius;
 
             if (Element.BackgroundColor != Color.Default) {
-                Layer.BackgroundColor = Element.BackgroundColor.ToCGColor();
+                Layer.BackgroundColor = Element.BackgroundColor.ToUIColor().CGColor;
             } else {
                 Layer.BackgroundColor = UIColor.White.CGColor;
             }

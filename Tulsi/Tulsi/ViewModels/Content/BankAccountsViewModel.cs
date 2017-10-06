@@ -59,13 +59,7 @@ namespace Tulsi.ViewModels.Content {
                     Ammount = 3200000,
                     SomeDescription = "IN SOFTWARE",
                     LastUpdateInfo = "last update 42 hours ago"
-                },
-                new BankAccount() {
-                    LogoPath = "Tulsi.Images.icici_logo.png",
-                    Ammount = 3200000,
-                    SomeDescription = "IN SOFTWARE",
-                    LastUpdateInfo = "last update 42 hours ago"
-                },
+                },               
                 new BankAccount() {
                     LogoPath = "Tulsi.Images.pnb_logo.png",
                     Ammount = 4000000,

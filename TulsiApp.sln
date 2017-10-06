@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26228.9
+VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tulsi", "Tulsi\Tulsi\Tulsi.csproj", "{EB3D0206-0C0D-4701-9A9D-4B468A3F3F6E}"
 EndProject
@@ -176,6 +176,7 @@ Global
 		{74459218-266A-4C7C-9B94-852CC00CCDC2}.Debug|Any CPU.ActiveCfg = Debug|iPhone
 		{74459218-266A-4C7C-9B94-852CC00CCDC2}.Debug|ARM.ActiveCfg = Debug|iPhone
 		{74459218-266A-4C7C-9B94-852CC00CCDC2}.Debug|iPhone.ActiveCfg = Debug|iPhone
+		{74459218-266A-4C7C-9B94-852CC00CCDC2}.Debug|iPhone.Build.0 = Debug|iPhone
 		{74459218-266A-4C7C-9B94-852CC00CCDC2}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
 		{74459218-266A-4C7C-9B94-852CC00CCDC2}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
 		{74459218-266A-4C7C-9B94-852CC00CCDC2}.Debug|x64.ActiveCfg = Debug|iPhone
@@ -191,5 +192,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1E22E59E-5445-41D1-9F96-3C1DCC32EADC}
 	EndGlobalSection
 EndGlobal

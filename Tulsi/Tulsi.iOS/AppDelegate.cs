@@ -25,6 +25,8 @@ namespace Tulsi.iOS {
 
             SfChartRenderer.Init();
 
+            XamForms.Controls.iOS.Calendar.Init();
+
             LoadApplication(new App());
 
             SlideOverKit.iOS.MenuContainerPageiOSRenderer renderer = new SlideOverKit.iOS.MenuContainerPageiOSRenderer();

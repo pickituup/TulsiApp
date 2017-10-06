@@ -10,14 +10,6 @@
     xmlns:m="clr-namespace:SlideOverKit"
     xmlns:toolKitImageResourceExtension="clr-namespace:Tulsi.ToolKit.MarkupExtensions">
 
-    <ContentView.Resources>
-        <ResourceDictionary>
-            <Style TargetType="StackLayout">
-                <Setter Property="BackgroundColor" Value="White" />
-            </Style>
-        </ResourceDictionary>
-    </ContentView.Resources>
-
     <!--  MAIN CONTENT  -->
     <ScrollView>
         <StackLayout
@@ -32,29 +24,25 @@
                 VerticalOptions="Start" />
 
             <!--  CALENDAR  -->
-            <controls:RoundedContentView
+            <controls:ExtendedContentView
                 Padding="10"
                 BackgroundColor="White"
-                CornerRadius="25"
+                CornerRadius="10"
                 VerticalOptions="FillAndExpand">
-                <Grid BackgroundColor="Transparent">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
-                    <Image
-                        Grid.Row="0"
-                        Aspect="Fill"
-                        Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.calendar_background.png}" />
-                    <calendar:Calendar
-                        x:Name="arrivalCalendar"
-                        Grid.Row="0"
-                        Margin="20"
-                        IsVisible="True" />
-                </Grid>
-            </controls:RoundedContentView>
+                <controls:ExtendedContentView
+                    Padding="5"
+                    BackgroundColor="White"
+                    BorderColor="{StaticResource MainColor}"
+                    BorderThickness="1"
+                    CornerRadius="10">
+                    <ContentView>
+                        <calendar:Calendar x:Name="arrivalCalendar" IsVisible="True" />
+                    </ContentView>
+                </controls:ExtendedContentView>
+            </controls:ExtendedContentView>
 
             <!--  BOTTOM CONTENT  -->
-            <controls:RoundedContentView
+            <controls:ExtendedContentView
                 Margin="0,10,0,0"
                 BackgroundColor="White"
                 CornerRadius="5"
@@ -65,7 +53,8 @@
                         <RowDefinition Height="auto" />
                     </Grid.RowDefinitions>
                     <!--  HEADER LIST  -->
-                    <controls:RoundedContentView
+                    <controls:ExtendedContentView
+                        Padding="5"
                         BackgroundColor="{StaticResource MainColor}"
                         CornerRadius="5"
                         HeightRequest="30">
@@ -102,7 +91,7 @@
                                     WidthRequest="10" />
                             </StackLayout>
                         </StackLayout>
-                    </controls:RoundedContentView>
+                    </controls:ExtendedContentView>
 
                     <ListView
                         Grid.Row="1"
@@ -160,7 +149,7 @@
                         </ListView.ItemTemplate>
                     </ListView>
                 </Grid>
-            </controls:RoundedContentView>
+            </controls:ExtendedContentView>
         </StackLayout>
     </ScrollView>
 </ContentView>

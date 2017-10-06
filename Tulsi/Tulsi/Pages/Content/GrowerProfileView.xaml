@@ -152,8 +152,9 @@
                     </StackLayout>
 
                     <!--  ROUNDED VIEW  -->
-                    <controls:RoundedContentView
+                    <controls:ExtendedContentView
                         Margin="5,0,5,10"
+                        Padding="5"
                         BackgroundColor="White"
                         CornerRadius="10"
                         HeightRequest="30"
@@ -177,7 +178,7 @@
                                 TextColor="#ec6687"
                                 VerticalTextAlignment="Center" />
                         </StackLayout>
-                    </controls:RoundedContentView>
+                    </controls:ExtendedContentView>
                 </StackLayout>
             </Grid>
 
@@ -186,11 +187,12 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
-                <controls:RoundedContentView BackgroundColor="White" CornerRadius="5">
+                <controls:ExtendedContentView BackgroundColor="White" CornerRadius="5">
                     <StackLayout BackgroundColor="Transparent" Spacing="0">
 
                         <!--  HEADER LIST  -->
-                        <controls:RoundedContentView
+                        <controls:ExtendedContentView
+                            Padding="5"
                             BackgroundColor="{StaticResource MainColor}"
                             CornerRadius="5"
                             HeightRequest="30">
@@ -232,7 +234,7 @@
                                     TextColor="White"
                                     VerticalTextAlignment="Center" />
                             </StackLayout>
-                        </controls:RoundedContentView>
+                        </controls:ExtendedContentView>
 
                         <!--  LIST  SelectedItem="{Binding Path=SelectedProfileTransaction, Mode=TwoWay}"  -->
                         <ListView
@@ -240,8 +242,7 @@
                             BackgroundColor="White"
                             ItemsSource="{Binding TransactionsData, Mode=TwoWay}"
                             RowHeight="40"
-                            SeparatorColor="#e6e6e6"
-                            SeparatorVisibility="Default"
+                            SeparatorVisibility="None"
                             VerticalOptions="Center">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
@@ -298,7 +299,7 @@
                             </ListView.ItemTemplate>
                         </ListView>
                     </StackLayout>
-                </controls:RoundedContentView>
+                </controls:ExtendedContentView>
             </Grid>
         </Grid>
     </ScrollView>

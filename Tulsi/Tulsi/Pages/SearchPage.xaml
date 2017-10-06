@@ -4,12 +4,17 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:controls="clr-namespace:Tulsi.Controls"
-    xmlns:local="clr-namespace:Tulsi;assembly=Tulsi"
-    xmlns:m="clr-namespace:SlideOverKit"
     xmlns:primitiveSegmentControls="clr-namespace:Tulsi.Controls.PrimitiveSegmentControl"
     xmlns:toolKitBindingValueConverters="clr-namespace:Tulsi.ToolKit.BindingValueConverters"
     xmlns:toolKitMarkupExtensions="clr-namespace:Tulsi.ToolKit.MarkupExtensions"
+    BackgroundColor="{StaticResource MainColor}"
     NavigationPage.HasNavigationBar="false">
+
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <On Platform="iOS" Value="0,20,0,0" />
+        </OnPlatform>
+    </ContentPage.Padding>
 
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -30,7 +35,7 @@
 
         <StackLayout Grid.Row="0" BackgroundColor="#DCDCDC">
             <!--  Tool bar  -->
-            <Grid x:Name="ToolbarGrid" BackgroundColor="#2793F5">
+            <Grid x:Name="ToolbarGrid" BackgroundColor="{StaticResource MainColor}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50" />
                 </Grid.RowDefinitions>
@@ -66,8 +71,8 @@
                 BackgroundColor="Transparent"
                 VerticalOptions="FillAndExpand">
                 <!--  Search entry with magnifier image  -->
-                <controls:RoundedContentView
-                    Padding="0"
+                <controls:ExtendedContentView
+                    Padding="5"
                     BackgroundColor="White"
                     CornerRadius="15">
                     <Grid
@@ -98,7 +103,7 @@
                             VerticalOptions="Center"
                             WidthRequest="20" />
                     </Grid>
-                </controls:RoundedContentView>
+                </controls:ExtendedContentView>
 
                 <primitiveSegmentControls:PrimitiveSegment BackgroundColor="Transparent" Orientation="Horizontal">
                     <primitiveSegmentControls:PrimitiveSegment.Segments>
@@ -173,7 +178,7 @@
                                         </Frame>
                                         <controls:ColorProgressBar
                                             BackgroundColor="#A6A6A6"
-                                            BarColor="{Binding Path=ContactProgress, Converter={StaticResource colorConverter}}"
+                                            BarColor="{Binding ContactProgress, Converter={StaticResource colorConverter}}"
                                             HeightRequest="5"
                                             Progress="{Binding ContactProgress}"
                                             VerticalOptions="Center" />

@@ -267,8 +267,8 @@
 
                     <controls:ExtendedContentView
                         Margin="5,0,5,10"
-                        BackgroundColor="White"
                         Padding="5"
+                        BackgroundColor="White"
                         CornerRadius="15">
                         <Grid BackgroundColor="White">
                             <Grid.RowDefinitions>
@@ -308,8 +308,8 @@
                                 <StackLayout BackgroundColor="Transparent" Spacing="0">
                                     <!--  HEADER LIST  -->
                                     <controls:ExtendedContentView
-                                        BackgroundColor="#8B8A86"
                                         Padding="5,0"
+                                        BackgroundColor="#8B8A86"
                                         CornerRadius="10"
                                         HeightRequest="40">
                                         <StackLayout

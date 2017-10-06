@@ -4,16 +4,23 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:controls="clr-namespace:Tulsi.Controls"
-    xmlns:local="clr-namespace:Tulsi;assembly=Tulsi"
     xmlns:toolKitImageResourceExtension="clr-namespace:Tulsi.ToolKit.MarkupExtensions"
+    BackgroundColor="{StaticResource MainColor}"
     NavigationPage.HasNavigationBar="false">
+
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <On Platform="iOS" Value="0,20,0,0" />
+        </OnPlatform>
+    </ContentPage.Padding>
 
     <StackLayout x:Name="MainLayout" BackgroundColor="#DCDCDC">
         <!--  Tool bar  -->
-        <Grid x:Name="ToolbarGrid" BackgroundColor="#2793F5">
+        <Grid x:Name="ToolbarGrid" BackgroundColor="{StaticResource MainColor}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="50" />
             </Grid.RowDefinitions>
+
             <Grid
                 Padding="15,0,0,0"
                 BackgroundColor="Transparent"
@@ -32,6 +39,7 @@
                     WidthRequest="15" />
             </Grid>
 
+            <!--  MAIN CONTENT  -->
             <Image
                 Margin="40,0,0,0"
                 HeightRequest="40"
@@ -72,10 +80,12 @@
             VerticalOptions="FillAndExpand">
             <ScrollView Grid.Row="1">
                 <StackLayout>
-                    <controls:CustomFrame
+                    <controls:ExtendedContentView
                         Margin="5,10,10,0"
+                        Padding="5"
                         BackgroundColor="White"
-                        BorderRadius="25">
+                        CornerRadius="10">
+
                         <Grid
                             BackgroundColor="White"
                             HorizontalOptions="End"
@@ -117,62 +127,62 @@
                                 VerticalOptions="Center"
                                 WidthRequest="12" />
                         </Grid>
-                    </controls:CustomFrame>
+                    </controls:ExtendedContentView>
 
-                    <controls:RoundedContentView
+                    <controls:ExtendedContentView
                         Margin="20,20,0,0"
-                        BackgroundColor="#2793F5"
+                        Padding="5"
+                        BackgroundColor="{StaticResource MainColor}"
                         CornerRadius="5"
                         HorizontalOptions="Start"
                         VerticalOptions="Center">
-                        <controls:RoundedContentView.Content>
-                            <Grid Margin="10" BackgroundColor="#2793F5">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="70" />
-                                    <ColumnDefinition Width="50" />
-                                    <ColumnDefinition Width="160" />
-                                    <ColumnDefinition Width="20" />
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto" />
-                                    <RowDefinition Height="auto" />
-                                    <RowDefinition Height="auto" />
-                                </Grid.RowDefinitions>
-                                <Label
-                                    Grid.ColumnSpan="4"
-                                    FontSize="12"
-                                    HorizontalOptions="Start"
-                                    Text="Hi Jakub, yes, I did finally. How are you? That is great idea, We should go!"
-                                    TextColor="White"
-                                    VerticalOptions="Center" />
-                                <Label
-                                    Grid.Row="2"
-                                    Grid.Column="0"
-                                    FontSize="10"
-                                    Text="May 20, 2016"
-                                    TextColor="#81C1FA" />
-                                <Label
-                                    Grid.Row="2"
-                                    Grid.Column="1"
-                                    FontSize="10"
-                                    Text="4:50 pm"
-                                    TextColor="#81C1FA" />
-                                <Image
-                                    Grid.Row="2"
-                                    Grid.Column="3"
-                                    HeightRequest="10"
-                                    HorizontalOptions="Center"
-                                    Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.chatbluetick.png}"
-                                    VerticalOptions="Center"
-                                    WidthRequest="12" />
-                            </Grid>
-                        </controls:RoundedContentView.Content>
-                    </controls:RoundedContentView>
+                        <Grid Margin="10" BackgroundColor="{StaticResource MainColor}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="70" />
+                                <ColumnDefinition Width="50" />
+                                <ColumnDefinition Width="160" />
+                                <ColumnDefinition Width="20" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
+                            <Label
+                                Grid.ColumnSpan="4"
+                                FontSize="12"
+                                HorizontalOptions="Start"
+                                Text="Hi Jakub, yes, I did finally. How are you? That is great idea, We should go!"
+                                TextColor="White"
+                                VerticalOptions="Center" />
+                            <Label
+                                Grid.Row="2"
+                                Grid.Column="0"
+                                FontSize="10"
+                                Text="May 20, 2016"
+                                TextColor="#81C1FA" />
+                            <Label
+                                Grid.Row="2"
+                                Grid.Column="1"
+                                FontSize="10"
+                                Text="4:50 pm"
+                                TextColor="#81C1FA" />
+                            <Image
+                                Grid.Row="2"
+                                Grid.Column="3"
+                                HeightRequest="10"
+                                HorizontalOptions="Center"
+                                Source="{toolKitImageResourceExtension:ImageResourceExtension Source=Tulsi.Images.chatbluetick.png}"
+                                VerticalOptions="Center"
+                                WidthRequest="12" />
+                        </Grid>
+                    </controls:ExtendedContentView>
 
-                    <controls:CustomFrame
+                    <controls:ExtendedContentView
                         Margin="5,10,10,0"
+                        Padding="5"
                         BackgroundColor="White"
-                        BorderRadius="25">
+                        CornerRadius="15">
                         <Grid
                             BackgroundColor="White"
                             HorizontalOptions="End"
@@ -214,7 +224,7 @@
                                 VerticalOptions="Center"
                                 WidthRequest="12" />
                         </Grid>
-                    </controls:CustomFrame>
+                    </controls:ExtendedContentView>
                 </StackLayout>
             </ScrollView>
         </StackLayout>
@@ -223,17 +233,24 @@
             Margin="5,0,5,5"
             BackgroundColor="Transparent"
             VerticalOptions="End">
-            <Label Margin="25,0,0,0" Text="Ivanka is Typing..." />
-            <controls:RoundedContentView
+
+            <Label Margin="30,0,0,0" Text="Ivanka is Typing..." />
+
+            <controls:ExtendedContentView
+                Padding="5"
+                Margin="5,0"
                 BackgroundColor="White"
                 CornerRadius="20"
                 VerticalOptions="End">
-                <Grid BackgroundColor="Transparent">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40" />
+                    </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="50" />
                     </Grid.ColumnDefinitions>
-                    <Entry
+                    <controls:EntryEx
                         Margin="20,0,0,0"
                         FontSize="15"
                         Placeholder="Your Message"
@@ -246,7 +263,7 @@
                         VerticalOptions="Center"
                         WidthRequest="30" />
                 </Grid>
-            </controls:RoundedContentView>
+            </controls:ExtendedContentView>
         </StackLayout>
     </StackLayout>
 </ContentPage>
