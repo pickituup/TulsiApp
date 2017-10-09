@@ -100,9 +100,12 @@
     <Compile Include="Renderers\CustomWebViewRenderer.cs" />
     <Compile Include="Renderers\EntryExRenderer.cs" />
     <Compile Include="Renderers\ExtendedContentViewRenderer.cs" />
+    <Compile Include="Renderers\GifImageViewRenderer.cs" />
     <Compile Include="Renderers\PdfWebViewViewerRenderer.cs" />
+    <Compile Include="Renderers\PullToRefreshLayoutRenderer.cs" />
     <Compile Include="Services\DisplaySizeiOS.cs" />
     <Compile Include="Services\SQLiteService.cs" />
+    <Content Include="Content\crafted.pdf" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist">
       <SubType>Designer</SubType>
@@ -181,6 +184,7 @@
       <HintPath>..\..\packages\Syncfusion.Xamarin.SfListView.15.2.0.43\lib\Xamarin.iOS10\Syncfusion.SfListView.XForms.iOS.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.Forms.CarouselView, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">

@@ -3,89 +3,102 @@
     x:Class="Tulsi.LoginPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:Tulsi;assembly=Tulsi"
+    xmlns:controls="clr-namespace:Tulsi.Controls"
+    xmlns:toolKitImageResourceExtension="clr-namespace:Tulsi.ToolKit.MarkupExtensions"
+    BackgroundColor="{StaticResource MainColor}"
     NavigationPage.HasNavigationBar="false">
 
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <Style TargetType="Entry">
-                <Setter Property="Margin" Value="10" />
-            </Style>
-        </ResourceDictionary>
-    </ContentPage.Resources>
+    <Grid BackgroundColor="White">
+        <StackLayout
+            Padding="20,0"
+            Spacing="40"
+            VerticalOptions="Center">
+            <!--  LOGO  -->
+            <Image
+                HeightRequest="83"
+                Source="{toolKitImageResourceExtension:ImageResource Tulsi.Images.logo.png}"
+                WidthRequest="208" />
 
-    <Grid x:Name="LoginGrid" BackgroundColor="#FFFFFF">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="10" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="10" />
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="2*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="2*" />
-            <RowDefinition Height="2*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="2*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="2*" />
-        </Grid.RowDefinitions>
-        <Image
-            x:Name="Logo"
-            Grid.Row="1"
-            Grid.Column="1"
-            HeightRequest="83"
-            WidthRequest="208" />
-        <Grid
-            Grid.Row="6"
-            Grid.Column="1"
-            BackgroundColor="Transparent">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="auto" />
-                <ColumnDefinition Width="5*" />
-                <ColumnDefinition Width="auto" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <StackLayout Grid.Column="1" BackgroundColor="Transparent">
-                <Label
-                    x:Name="LoginLink"
-                    HorizontalOptions="Center"
-                    Text="Log In"
-                    TextColor="#2692F4"
-                    VerticalOptions="Center" />
-                <BoxView
-                    Grid.Column="1"
-                    HeightRequest="3"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center"
-                    WidthRequest="35"
-                    Color="#2692F4" />
-            </StackLayout>
-            <StackLayout Grid.Column="3" BackgroundColor="Transparent">
-                <Label
-                    x:Name="SignupLink"
-                    HorizontalOptions="Center"
-                    Text="Sign Up"
-                    TextColor="#2692F4"
-                    VerticalOptions="Center" />
-                <BoxView
-                    Grid.Column="1"
-                    HeightRequest="3"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center"
-                    WidthRequest="35"
-                    Color="#2692F4" />
-            </StackLayout>
-        </Grid>
-        <Label
-            x:Name="ForgotPasswordLink"
-            Grid.Row="7"
-            Grid.Column="1"
-            HorizontalOptions="Center"
-            Text="Forgot Password"
-            TextColor="#d9d9d9"
-            VerticalOptions="Center" />
+            <controls:ExtendedContentView
+                Padding="15,15"
+                BackgroundColor="White"
+                BorderColor="#d9d9d9"
+                BorderThickness="2"
+                CornerRadius="25">
+                <controls:EntryEx
+                    FontSize="Medium"
+                    Keyboard="Email"
+                    Placeholder="Email" />
+            </controls:ExtendedContentView>
+
+            <controls:ExtendedContentView
+                Padding="15,15"
+                BackgroundColor="White"
+                BorderColor="#d9d9d9"
+                BorderThickness="2"
+                CornerRadius="25">
+                <controls:EntryEx
+                    FontSize="Medium"
+                    IsPassword="True"
+                    Placeholder="Password" />
+            </controls:ExtendedContentView>
+
+            <!--  LOGIN/SIGNIN  -->
+            <Grid BackgroundColor="Transparent">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <StackLayout Grid.Column="0" BackgroundColor="Transparent">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding LoginCommand}" />
+                    </StackLayout.GestureRecognizers>
+                    <Label
+                        FontSize="Large"
+                        HorizontalOptions="Center"
+                        Text="Log In"
+                        TextColor="#2692F4"
+                        VerticalOptions="Center" />
+                    <BoxView
+                        Grid.Column="1"
+                        HeightRequest="3"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        WidthRequest="35"
+                        Color="#2692F4" />
+                </StackLayout>
+
+                <StackLayout Grid.Column="1" BackgroundColor="Transparent">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SignInCommand}" />
+                    </StackLayout.GestureRecognizers>
+                    <Label
+                        FontSize="Large"
+                        HorizontalOptions="Center"
+                        Text="Sign Up"
+                        TextColor="#2692F4"
+                        VerticalOptions="Center" />
+                    <BoxView
+                        Grid.Column="1"
+                        HeightRequest="3"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        WidthRequest="35"
+                        Color="#2692F4" />
+                </StackLayout>
+            </Grid>
+
+            <Label
+                FontSize="Large"
+                HorizontalTextAlignment="Center"
+                Text="Forgot Password"
+                TextColor="#d9d9d9"
+                VerticalOptions="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ForgotPasswordCommand}" />
+                </Label.GestureRecognizers>
+            </Label>
+        </StackLayout>
     </Grid>
 </ContentPage>

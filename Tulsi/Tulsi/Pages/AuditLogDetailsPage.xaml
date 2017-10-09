@@ -84,6 +84,7 @@
                 VerticalOptions="FillAndExpand">
                 <Grid BackgroundColor="Transparent">
                     <controls:PdfWebView
+                        BackgroundColor="White"
                         HorizontalOptions="FillAndExpand"
                         Uri="crafted.pdf"
                         VerticalOptions="FillAndExpand" />
@@ -97,6 +98,7 @@
                 VerticalOptions="FillAndExpand">
                 <Grid BackgroundColor="Transparent">
                     <controls:PdfWebView
+                        BackgroundColor="White"
                         HorizontalOptions="FillAndExpand"
                         Uri="crafted.pdf"
                         VerticalOptions="FillAndExpand" />

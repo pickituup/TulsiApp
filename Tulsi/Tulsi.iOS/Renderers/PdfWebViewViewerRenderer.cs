@@ -10,6 +10,7 @@ using Tulsi.Controls;
 using System.Net;
 using Xamarin.Forms;
 using Tulsi.iOS.Renderers;
+using System.IO;
 
 [assembly: ExportRenderer(typeof(PdfWebView), typeof(PdfWebViewViewerRenderer))]
 namespace Tulsi.iOS.Renderers {
@@ -26,7 +27,9 @@ namespace Tulsi.iOS.Renderers {
             }
             if (e.NewElement != null) {
                 PdfWebView customWebView = Element as PdfWebView;
-                string fileName = WebUtility.UrlEncode(customWebView.Uri);
+                //string fileName = WebUtility.UrlEncode(customWebView.Uri);
+
+                string fileName = Path.Combine(NSBundle.MainBundle.BundlePath, string.Format("Content/{0}", WebUtility.UrlEncode(customWebView.Uri)));
                 Control.LoadRequest(new NSUrlRequest(new NSUrl(fileName)));
                 Control.ScalesPageToFit = true;
             }

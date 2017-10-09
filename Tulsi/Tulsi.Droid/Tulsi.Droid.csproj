@@ -205,6 +205,7 @@
     <Compile Include="DeveloperService\MemoryHelper.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Renderers\ExtendedContentViewRenderer.cs" />
+    <Compile Include="Renderers\GifImageViewRenderer.cs" />
     <Compile Include="Renderers\Helpers\SwipeTargetObserver.cs" />
     <Compile Include="Renderers\PullToRefreshLayoutRenderer.cs" />
     <Compile Include="Renderers\ColorProgressBarRenderer.cs" />
@@ -214,7 +215,6 @@
     <Compile Include="Renderers\CustomWebViewRenderer.cs" />
     <Compile Include="Renderers\EntryExRenderer.cs" />
     <Compile Include="Renderers\EntryRendererBase.cs" />
-    <Compile Include="Renderers\ImageViewRenderer.cs" />
     <Compile Include="Renderers\PdfWebViewRenderer.cs" />
     <Compile Include="Renderers\RoundedContentViewRenderer.cs" />
     <Compile Include="Renderers\RoundedViewRenderer.cs" />

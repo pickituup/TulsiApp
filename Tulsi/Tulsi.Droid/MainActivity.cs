@@ -11,6 +11,7 @@ using Android.Content;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using Tulsi.SharedService;
+using Tulsi.Droid.Renderers;
 
 [assembly: Xamarin.Forms.Dependency(typeof(Tulsi.Droid.DisplaySizeOnAndroid))]
 
@@ -28,7 +29,11 @@ namespace Tulsi.Droid {
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
+
+            GifImageViewRenderer.Init();
+
             XamForms.Controls.Droid.Calendar.Init();
+
             LoadApplication(new App()); 
         }
     }

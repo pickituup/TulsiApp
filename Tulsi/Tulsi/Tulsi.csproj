@@ -357,6 +357,7 @@
     <Compile Include="ViewModels\GrowerPageViewModel.cs" />
     <Compile Include="ViewModels\LadaanPageViewModel.cs" />
     <Compile Include="ViewModels\LatePaymentsPageViewModel.cs" />
+    <Compile Include="ViewModels\LoginPageViewModel.cs" />
     <Compile Include="ViewModels\Menu\SideMenuViewModel.cs" />
     <Compile Include="ViewModels\PasscodePageViewModel.cs" />
     <Compile Include="ViewModels\ProfilePageViewModel.cs" />

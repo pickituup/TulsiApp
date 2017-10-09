@@ -6,6 +6,7 @@ using Foundation;
 using UIKit;
 using Syncfusion.SfChart.iOS;
 using Syncfusion.SfChart.XForms.iOS.Renderers;
+using Tulsi.iOS.Renderers;
 
 namespace Tulsi.iOS {
     // The UIApplicationDelegate for the application. This class is responsible for launching the 
@@ -27,9 +28,13 @@ namespace Tulsi.iOS {
 
             XamForms.Controls.iOS.Calendar.Init();
 
-            LoadApplication(new App());
+            PullToRefreshLayoutRenderer.Init();
+
+            GifImageViewRenderer.Init();
 
             SlideOverKit.iOS.MenuContainerPageiOSRenderer renderer = new SlideOverKit.iOS.MenuContainerPageiOSRenderer();
+
+            LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);
         }
